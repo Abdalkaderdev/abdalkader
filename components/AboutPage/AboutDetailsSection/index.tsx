@@ -45,14 +45,29 @@ const skillsCategories = [
 ];
 const experiences = [
     {
-        position: "Web Developer / Motion Designer",
-        company: "at Digiverse Studio",
-        period: "sep 2018 - present"
+        position: "Chief Technology Officer (Co-Founder)",
+        company: "at Key Spare",
+        period: "Mar 2025 - Present"
     },
     {
-        position: "UIUX Designer / Web Developer",
-        company: "at Innvoise Agency",
-        period: "jan 2016 - aug 2018"
+        position: "IT Specialist",
+        company: "at Real House Real Estate",
+        period: "Jan 2025 - Present"
+    },
+    {
+        position: "IT Specialist (Freelancer)",
+        company: "at Headquarter Realestate & Innovations Department",
+        period: "Nov 2024 - Jan 2025"
+    },
+    {
+        position: "IT Manager",
+        company: "at Hamilton Iraq",
+        period: "Nov 2023 - Nov 2024"
+    },
+    {
+        position: "E-commerce Web Developer (Freelancer)",
+        company: "at Minime Iraq",
+        period: "Nov 2023 - Nov 2024"
     }
 ];
 
