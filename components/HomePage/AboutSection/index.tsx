@@ -72,7 +72,7 @@ export default function AboutSection() {
                     <Tag text="About" />
                 </div>
                 <h2 className={styles.aboutText} ref={aboutTextRef}>
-                    I'm Abdalkader Alhamoud — a Web Developer and AI Engineer with a passion for building modern, fast, and user-focused digital experiences. Whether it's crafting responsive websites or developing AI-powered tools, I bring ideas to life with clean code and creative energy.
+                    I&apos;m Abdalkader Alhamoud — a Web Developer and AI Engineer with a passion for building modern, fast, and user-focused digital experiences. Whether it&apos;s crafting responsive websites or developing AI-powered tools, I bring ideas to life with clean code and creative energy.
                 </h2>
                 <div className={styles.btnSpace} ref={btnWrapperRef}>
                     <Button text="More About Me" href="/about" />
