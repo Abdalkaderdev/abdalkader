@@ -64,7 +64,7 @@ export default function ImageTrail() {
     return (
         <>
             <div className={styles.content}>
-                <div ref={trailRef} className={styles.trail} style={{ backgroundImage: 'url(/images/hero.jpg)' }} />
+                <div ref={trailRef} className={styles.trail} style={{ backgroundImage: 'url(/images/about2.png)' }} />
             </div>
         </>
     );

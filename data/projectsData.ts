@@ -4,7 +4,7 @@ export const projects = [
     title: "Apple TV Clone",
     slug: "apple-tv-clone",
     category: ["Frontend Development", "UI/UX Design"],
-    img: "/images/apple-tv-clone.jpg",
+    img: "/images/apple.png",
 
     // Sticky
     owner: "Abdalkader Alhamoud",
@@ -29,7 +29,7 @@ export const projects = [
     title: "VirtualView",
     slug: "virtualview",
     category: ["Web Development", "Virtual Reality"],
-    img: "/images/virtualview.jpg",
+    img: "/images/virtual.png",
 
     // Sticky
     owner: "Abdalkader Alhamoud",
@@ -55,7 +55,7 @@ export const projects = [
     title: "Jegr Jalal Company",
     slug: "jegr-jalal-company",
     category: ["Web Development", "Corporate Website"],
-    img: "/images/jegr-jalal-company.jpg",
+    img: "/images/jegr.png",
 
     // Sticky
     owner: "Abdalkader Alhamoud",
@@ -80,7 +80,7 @@ export const projects = [
     title: "Doner QR Menu Magic",
     slug: "doner-qr-menu-magic",
     category: ["Web Development", "Restaurant Technology"],
-    img: "/images/doner-qr-menu-magic.jpg",
+    img: "/images/doner.png",
 
     // Sticky
     owner: "Abdalkader Alhamoud",
@@ -106,7 +106,7 @@ export const projects = [
     title: "Headquarter Iraq Real Estate",
     slug: "headquarter-iraq-real-estate",
     category: ["Web Development", "Real Estate"],
-    img: "/images/headquarter-iraq.jpg",
+    img: "/images/head.png",
 
     // Sticky
     owner: "Abdalkader Alhamoud",
@@ -131,7 +131,7 @@ export const projects = [
     title: "Innovations Architecture Department",
     slug: "innovations-architecture-department",
     category: ["Web Development", "Architecture"],
-    img: "/images/innovations-headquarter.jpg",
+    img: "/images/Head Quarter International – Find Your Place To Live - Google Chrome 8_3_2025 1_15_34 PM.png",
 
     // Sticky
     owner: "Abdalkader Alhamoud",
@@ -156,7 +156,7 @@ export const projects = [
     title: "Hamilton Iraq Real Estate",
     slug: "hamilton-iraq-real-estate",
     category: ["Web Development", "Real Estate"],
-    img: "/images/hamilton-iraq.jpg",
+    img: "/images/hamilton.png",
 
     // Sticky
     owner: "Abdalkader Alhamoud",

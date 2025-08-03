@@ -16,24 +16,24 @@ interface Service {
 // Define the services data
 const services: Service[] = [
     {
-        title: "Strategy",
+        title: "AI & Machine Learning",
         numbering: "01",
-        listItems: ["Discovery", "Research", "Analysis", "Consultation", "Optimization"],
+        listItems: ["OpenAI API", "Gemini / Vertex AI", "Amazon Bedrock", "LangChain", "Vector Databases", "LLMOps", "Responsible AI"],
     },
     {
-        title: "Design",
+        title: "Frontend Development",
         numbering: "02",
-        listItems: ["Branding", "UI/UX", "Visual Identity", "Graphics", "Illustration"],
+        listItems: ["React", "Next.js", "Three.js", "HTML/CSS/SCSS", "Tailwind CSS", "JavaScript", "Framer"],
     },
     {
-        title: "Development",
+        title: "Backend Development",
         numbering: "03",
-        listItems: ["Frontend", "Framer", "API Integration", "Testing", "Deployment"],
+        listItems: ["Python", "Node.js", "Express.js", "MongoDB", "SQL/MySQL", "REST APIs", "GraphQL"],
     },
     {
-        title: "Production",
+        title: "Tools & Platforms",
         numbering: "04",
-        listItems: ["3D modeling", "VR Experiences", "Visualization", "Motion Graphics", "Animations"],
+        listItems: ["AWS Generative AI", "Docker", "Git & GitHub", "Vercel/Netlify", "WordPress", "Shopify", "CMS Systems"],
     },
 ];
 

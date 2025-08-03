@@ -10,9 +10,181 @@
         color: $textGrey;
     }
 
-    /* ToolBox */
-    .Toolbox {
+    /* AI & Machine Learning */
+    .AIML {
         @include mT4;
+        border-top: 1px solid $borderColor;
+        padding: 4rem 0;
+        display: flex;
+        align-items: flex-start;
+
+        .tagline {
+            flex: .7;
+        }
+
+        .wrapper {
+            flex: 1;
+
+            h3 {
+                @include font-1_8;
+                display: inline-flex;
+                align-items: center;
+
+                &::after {
+                    content: '';
+                    width: .5rem;
+                    height: .5rem;
+                    background: $primary;
+                    margin: 0 1.2rem 0 .6rem;
+                    display: inline-block;
+                    border-radius: 50%;
+                }
+            }
+        }
+
+        @media (max-width: 600px) {
+            flex-direction: column;
+            gap: 2rem;
+            padding: 2rem 0;
+
+            .tagline{
+                flex: 1;
+            }
+        }
+    }
+
+    /* Frontend Development */
+    .Frontend {
+        @include mT2;
+        border-top: 1px solid $borderColor;
+        padding: 4rem 0;
+        display: flex;
+        align-items: flex-start;
+
+        .tagline {
+            flex: .7;
+        }
+
+        .wrapper {
+            flex: 1;
+
+            h3 {
+                @include font-1_8;
+                display: inline-flex;
+                align-items: center;
+
+                &::after {
+                    content: '';
+                    width: .5rem;
+                    height: .5rem;
+                    background: $primary;
+                    margin: 0 1.2rem 0 .6rem;
+                    display: inline-block;
+                    border-radius: 50%;
+                }
+            }
+        }
+
+        @media (max-width: 600px) {
+            flex-direction: column;
+            gap: 2rem;
+            padding: 2rem 0;
+
+            .tagline{
+                flex: 1;
+            }
+        }
+    }
+
+    /* Backend Development */
+    .Backend {
+        @include mT2;
+        border-top: 1px solid $borderColor;
+        padding: 4rem 0;
+        display: flex;
+        align-items: flex-start;
+
+        .tagline {
+            flex: .7;
+        }
+
+        .wrapper {
+            flex: 1;
+
+            h3 {
+                @include font-1_8;
+                display: inline-flex;
+                align-items: center;
+
+                &::after {
+                    content: '';
+                    width: .5rem;
+                    height: .5rem;
+                    background: $primary;
+                    margin: 0 1.2rem 0 .6rem;
+                    display: inline-block;
+                    border-radius: 50%;
+                }
+            }
+        }
+
+        @media (max-width: 600px) {
+            flex-direction: column;
+            gap: 2rem;
+            padding: 2rem 0;
+
+            .tagline{
+                flex: 1;
+            }
+        }
+    }
+
+    /* Design & Motion */
+    .Design {
+        @include mT2;
+        border-top: 1px solid $borderColor;
+        padding: 4rem 0;
+        display: flex;
+        align-items: flex-start;
+
+        .tagline {
+            flex: .7;
+        }
+
+        .wrapper {
+            flex: 1;
+
+            h3 {
+                @include font-1_8;
+                display: inline-flex;
+                align-items: center;
+
+                &::after {
+                    content: '';
+                    width: .5rem;
+                    height: .5rem;
+                    background: $primary;
+                    margin: 0 1.2rem 0 .6rem;
+                    display: inline-block;
+                    border-radius: 50%;
+                }
+            }
+        }
+
+        @media (max-width: 600px) {
+            flex-direction: column;
+            gap: 2rem;
+            padding: 2rem 0;
+
+            .tagline{
+                flex: 1;
+            }
+        }
+    }
+
+    /* Tools & Platforms */
+    .Tools {
+        @include mT2;
         border-top: 1px solid $borderColor;
         padding: 4rem 0;
         display: flex;
@@ -82,6 +254,55 @@
                 &:nth-child(2) {
                     @include mT3;
                 }
+            }
+        }
+
+        @media (max-width: 600px) {
+            flex-direction: column;
+            gap: 2rem;
+            padding: 2rem 0;
+
+            .tagline{
+                flex: 1;
+            }
+        }
+    }
+
+    /* Courses */
+    .Courses {
+        @include mT2;
+        border-top: 1px solid $borderColor;
+        padding: 4rem 0;
+        display: flex;
+        align-items: flex-start;
+
+        .tagline {
+            flex: .7;
+        }
+
+        .wrapper {
+            flex: 1;
+
+            .courseItem {
+                h3 {
+                    @include font-1_8;
+                    color: $white;
+                }
+
+                h4 {
+                    @include font-1;
+                    @include mT1;
+                    color: $textGrey;
+                }
+
+                &:nth-child(2) {
+                    @include mT3;
+                }
+            }
+
+            .courseStatus {
+                color: $primary !important;
+                font-weight: 500;
             }
         }
 

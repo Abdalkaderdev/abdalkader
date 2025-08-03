@@ -4,9 +4,7 @@ import styles from './Footer.module.scss';
 // address
 const contactInfo = (
     <p>
-        Prinsengracht 123, <br />
-        1016 GV Amsterdam, <br />
-        The Netherlands
+        Erbil, Iraq
     </p>
 );
 
