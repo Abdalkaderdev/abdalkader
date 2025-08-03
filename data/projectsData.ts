@@ -7,7 +7,7 @@ export const projects = [
     img: "/images/apple.png",
 
     // Sticky
-    owner: "Abdalkader Alhamoud",
+    owner: "Apple TV Clone",
     date: "Nov 15, 2024",
     services: "Frontend Development, UI/UX Design",
     duration: "18 Days",
@@ -32,7 +32,7 @@ export const projects = [
     img: "/images/virtual.png",
 
     // Sticky
-    owner: "Abdalkader Alhamoud",
+    owner: "VirtualView",
     date: "Nov 20, 2024",
     services: "Web Development, 3D Technology, UI/UX Design",
     duration: "35 Days",
@@ -58,7 +58,7 @@ export const projects = [
     img: "/images/jegr.png",
 
     // Sticky
-    owner: "Abdalkader Alhamoud",
+    owner: "Jegr Jalal Company",
     date: "Nov 25, 2024",
     services: "Web Development, UI/UX Design",
     duration: "20 Days",
@@ -83,7 +83,7 @@ export const projects = [
     img: "/images/doner.png",
 
     // Sticky
-    owner: "Abdalkader Alhamoud",
+    owner: "German Doner",
     date: "Dec 1, 2024",
     services: "Web Development, UI/UX Design",
     duration: "25 Days",
@@ -109,7 +109,7 @@ export const projects = [
     img: "/images/head.png",
 
     // Sticky
-    owner: "Abdalkader Alhamoud",
+    owner: "Headquarter Iraq Real Estate",
     date: "Dec 5, 2024",
     services: "Web Development, UI/UX Design",
     duration: "60 Days",
@@ -134,7 +134,7 @@ export const projects = [
     img: "/images/Head Quarter International – Find Your Place To Live - Google Chrome 8_3_2025 1_15_34 PM.png",
 
     // Sticky
-    owner: "Abdalkader Alhamoud",
+    owner: "Innovations Architecture Department",
     date: "Dec 10, 2024",
     services: "Web Development, UI/UX Design",
     duration: "30 Days",
@@ -159,7 +159,7 @@ export const projects = [
     img: "/images/hamilton.png",
 
     // Sticky
-    owner: "Abdalkader Alhamoud",
+    owner: "Hamilton Iraq Real Estate",
     date: "Dec 15, 2024",
     services: "Web Development, UI/UX Design",
     duration: "45 Days",
