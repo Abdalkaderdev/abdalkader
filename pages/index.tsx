@@ -1,5 +1,4 @@
 import AboutSection from "@/components/HomePage/AboutSection";
-import AwardSection from "@/components/HomePage/AwardSection";
 import BookCallSection from "@/components/HomePage/BookCallSection";
 import DribbleSection from "@/components/HomePage/DribbleSection";
 import HeroSection from "@/components/HomePage/HeroSection";
@@ -19,7 +18,6 @@ export default function HomePage() {
             <AboutSection />
             <ProjectSection />
             <ServiceSection />
-            <AwardSection />
             <DribbleSection />
             <BookCallSection />
         </>
