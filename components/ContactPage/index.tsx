@@ -7,6 +7,7 @@ import Link from 'next/link';
 export default function ContactSection() {
     const bannerHeadingRef = useRef<HTMLDivElement | null>(null);
     const textRef = useRef<HTMLDivElement | null>(null);
+    const linksWrapperRef = useRef<HTMLDivElement | null>(null);
 
     useEffect(() => {
         const tl = gsap.timeline({ paused: true });
@@ -23,14 +24,16 @@ export default function ContactSection() {
             tl.from(headingSpans, { y: "115%", duration: 0.6, stagger: 0.001 }, 0.4);
         }
 
-        // Animate links one by one using `fromTo`
-        const links = document.querySelectorAll(`.${styles.linkSection} a`);
-        if (links.length) {
-            tl.fromTo(
-                links,
-                { opacity: 0, y: 20 }, // Starting values (links start from opacity 0 and y offset 20px)
-                { opacity: 1, y: 0, duration: 0.6, stagger: 0.1, ease: "power3.out", delay: "-.9" } // Ending values (links become visible with no y offset)
-            );
+        // Animate links one by one using `fromTo` via wrapper ref
+        if (linksWrapperRef.current) {
+            const links = linksWrapperRef.current.querySelectorAll('a');
+            if (links.length) {
+                tl.fromTo(
+                    links,
+                    { opacity: 0, y: 20 },
+                    { opacity: 1, y: 0, duration: 0.6, stagger: 0.1, ease: "power3.out", delay: "-.9" }
+                );
+            }
         }
 
         // Play the animation
@@ -50,7 +53,7 @@ export default function ContactSection() {
 
             <section className={styles.linkSection}>
                 <p ref={textRef}>{splitText("Contact me on")}</p>
-                <div className={styles.wrapper}>
+                <div className={styles.wrapper} ref={linksWrapperRef}>
                     <Link href="mailto:hello@abdalkader.dev" className={styles.emailLink}>Email</Link>
                     <Link href="https://github.com/abdalkaderdev" target="_blank">GitHub</Link>
                     <Link href="https://linkedin.com/in/abdalkaderdev" target="_blank">LinkedIn</Link>
