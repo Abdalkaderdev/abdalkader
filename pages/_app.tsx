@@ -10,6 +10,10 @@ import Head from "next/head";
 import Loader from "@/components/Loader";
 import { useMemo } from "react";
 import { SITE_URL } from "@/utils/seo";
+import JsonLd from "@/components/SEO/JsonLd";
+import { personJsonLd, websiteJsonLd } from "@/utils/jsonld";
+import { ppRegular, ppMedium } from "@/libs/fonts";
+import Plausible from "@/components/Analytics/Plausible";
 
 export default function App({ Component, pageProps }: AppProps) {
     const router = useRouter();
@@ -111,8 +115,10 @@ export default function App({ Component, pageProps }: AppProps) {
             </Head>
 
             <Loader />
+            <Plausible domain={process.env.NEXT_PUBLIC_PLAUSIBLE_DOMAIN || ''} />
+            <JsonLd data={[personJsonLd(), websiteJsonLd()]} />
             <AnimatePresence mode="wait">
-                <motion.div key={router.asPath}>
+                <motion.div key={router.asPath} className={`${ppRegular.variable} ${ppMedium.variable}`}>
                     {/* Slide-in animation */}
                     {!prefersReducedMotion && (
                     <motion.div
@@ -138,6 +144,7 @@ export default function App({ Component, pageProps }: AppProps) {
                         <Nav />
                         <motion.main
                             key="main-content"
+                            id="main"
                             initial={{ opacity: 1 }}
                             animate={{ opacity: 1 }}
                             exit={{ opacity: prefersReducedMotion ? 1 : 0 }}  // Disable fade on exit if reduced motion
