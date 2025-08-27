@@ -7,6 +7,8 @@ import BookCallSection from '@/components/HomePage/BookCallSection';
 import Head from 'next/head';
 import { gsap } from '@/libs/gsap';
 import { useEffect, useRef } from 'react';
+import JsonLd from '@/components/SEO/JsonLd';
+import { projectJsonLd } from '@/utils/jsonld';
 
 // Fetch the list of possible slugs for static generation
 export const getStaticPaths: GetStaticPaths = async () => {
@@ -72,6 +74,7 @@ const ProjectPage = ({ project }: ProjectPageProps) => {
                 <meta property="og:description" content={`${project?.overview?.substring(0, 160)}...`} />
                 <meta property="og:image" content={project?.img} />
             </Head>
+            <JsonLd data={projectJsonLd(project)} />
             {/*========= Header ==========*/}
             <header className={styles.ProjectSinglePage}>
                 <div ref={imageRef} className={styles.imageWrapper}>
@@ -80,7 +83,8 @@ const ProjectPage = ({ project }: ProjectPageProps) => {
                         alt={project.title}
                         width={800}
                         height={500}
-                        unoptimized
+                        priority
+                        placeholder="empty"
                     />
                 </div>
 
