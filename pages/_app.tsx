@@ -14,7 +14,6 @@ import JsonLd from "@/components/SEO/JsonLd";
 import { personJsonLd, websiteJsonLd } from "@/utils/jsonld";
 import { ppRegular, ppMedium } from "@/libs/fonts";
 import Plausible from "@/components/Analytics/Plausible";
-import RoastToastWidget from "@/components/RoastToastWidget";
 
 export default function App({ Component, pageProps }: AppProps) {
     const router = useRouter();
@@ -159,7 +158,6 @@ export default function App({ Component, pageProps }: AppProps) {
                         </motion.main>
                         <Footer />
                     </SmoothScrolling>
-                    <RoastToastWidget />
                 </motion.div>
             </AnimatePresence>
         </>
