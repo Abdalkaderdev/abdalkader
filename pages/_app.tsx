@@ -64,6 +64,43 @@ export default function App({ Component, pageProps }: AppProps) {
                 <meta name="viewport" content="width=device-width, initial-scale=1" />
                 <meta name="robots" content="index, follow" />
                 <meta name="keywords" content="web developer, AI engineer, frontend developer, React, Next.js, TypeScript, portfolio" />
+
+                {/* JSON-LD: Person */}
+                <script
+                    type="application/ld+json"
+                    dangerouslySetInnerHTML={{
+                        __html: JSON.stringify({
+                            '@context': 'https://schema.org',
+                            '@type': 'Person',
+                            name: 'Abdalkader Alhamoud',
+                            url: 'https://abdalkader-alhamoud.vercel.app/',
+                            jobTitle: 'Web Developer & AI Engineer',
+                            sameAs: [
+                                'https://github.com/abdalkaderdev',
+                                'https://www.linkedin.com/in/abdalkaderdev',
+                                'https://www.instagram.com/abdalkader.dev'
+                            ]
+                        })
+                    }}
+                />
+
+                {/* JSON-LD: WebSite */}
+                <script
+                    type="application/ld+json"
+                    dangerouslySetInnerHTML={{
+                        __html: JSON.stringify({
+                            '@context': 'https://schema.org',
+                            '@type': 'WebSite',
+                            name: 'Abdalkader Alhamoud Portfolio',
+                            url: 'https://abdalkader-alhamoud.vercel.app/',
+                            potentialAction: {
+                                '@type': 'SearchAction',
+                                target: 'https://abdalkader-alhamoud.vercel.app/?q={search_term_string}',
+                                'query-input': 'required name=search_term_string'
+                            }
+                        })
+                    }}
+                />
             </Head>
 
             <Loader />
