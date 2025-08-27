@@ -80,7 +80,7 @@ const ProjectPage = ({ project }: ProjectPageProps) => {
                         alt={project.title}
                         width={800}
                         height={500}
-                        unoptimized
+                        
                     />
                 </div>
 

@@ -36,7 +36,7 @@ export default function ProjectsSection() {
                             alt={project.title}
                             width={500}
                             height={500}
-                            unoptimized
+                            
                         />
                         <div className={styles.projectDetails}>
                             <div className={styles.title}>
