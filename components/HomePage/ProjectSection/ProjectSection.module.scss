@@ -48,6 +48,8 @@
                 height: 100%;
                 object-fit: cover;
                 transition: transform $transition;
+                position: relative;
+                z-index: 1;
             }
 
             .projectDetails {
@@ -57,6 +59,7 @@
                 height: 100%;
                 @include paddingArround;
                 pointer-events: none;
+                z-index: 2;
 
                 .title {
                     position: absolute;
@@ -64,6 +67,7 @@
                     left: 50%;
                     transform: translate(-50%, -50%);
                     text-align: center;
+                    width: 100%;
                     overflow: hidden;
 
                     h3 {
@@ -101,11 +105,12 @@
 
                 .badges {
                     position: absolute;
-                    top: 1rem;
-                    left: 1rem;
+                    top: 0.75rem;
+                    left: 0.75rem;
                     display: flex;
                     gap: 0.5rem;
                     flex-wrap: wrap;
+                    pointer-events: auto;
 
                     .badge {
                         @include font0_7;
