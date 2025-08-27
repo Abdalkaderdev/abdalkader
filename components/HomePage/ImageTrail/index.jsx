@@ -1,4 +1,5 @@
 import { useEffect, useRef } from "react";
+import Image from "next/image";
 import styles from './ImageTrail.module.scss';
 
 const lerp = (a, b, n) => (1 - n) * a + n * b;
@@ -9,6 +10,10 @@ export default function ImageTrail() {
     const cursor = useRef({ x: 0, y: 0 });
 
     useEffect(() => {
+        const prefersReducedMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        if (prefersReducedMotion) {
+            return; // Do not initialize trail effect
+        }
         const getCursorPos = (ev) => {
             cursor.current = { x: ev.clientX, y: ev.clientY };
         };
@@ -65,6 +70,10 @@ export default function ImageTrail() {
         <>
             <div className={styles.content}>
                 <div ref={trailRef} className={styles.trail} style={{ backgroundImage: 'url(/images/about2.png)' }} />
+                {/* Static fallback for reduced motion users (hidden when JS trail is active) */}
+                <noscript>
+                    <Image src="/images/about2.png" width={800} height={600} alt="Decorative" />
+                </noscript>
             </div>
         </>
     );

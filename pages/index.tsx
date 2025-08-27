@@ -5,6 +5,7 @@ import HeroSection from "@/components/HomePage/HeroSection";
 import ProjectSection from "@/components/HomePage/ProjectSection";
 import ServiceSection from "@/components/HomePage/ServiceSection";
 import Head from "next/head";
+import { buildCanonical } from "@/utils/seo";
 
 export default function HomePage() {
 
@@ -13,6 +14,7 @@ export default function HomePage() {
             <Head>
                 <title>Abdalkader Alhamoud | Web Developer & AI Engineer</title>
                 <meta name="description" content="Portfolio of Abdalkader Alhamoud, a Web Developer and AI Engineer specializing in building modern, user-focused digital experiences." />
+                <link rel="canonical" href={buildCanonical('/')} />
             </Head>
             <HeroSection />
             <AboutSection />

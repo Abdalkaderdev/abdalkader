@@ -8,10 +8,16 @@ import { useEffect, useRef } from "react";
 import { useRouter } from "next/router";
 import Head from "next/head";
 import Loader from "@/components/Loader";
+import { useMemo } from "react";
+import { SITE_URL } from "@/utils/seo";
 
 export default function App({ Component, pageProps }: AppProps) {
     const router = useRouter();
     const scrollPositions = useRef<{ [key: string]: number }>({});
+    const prefersReducedMotion = useMemo(() => {
+        if (typeof window === 'undefined' || !window.matchMedia) return false;
+        return window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    }, []);
 
     // Scroll position management
     useEffect(() => {
@@ -38,6 +44,7 @@ export default function App({ Component, pageProps }: AppProps) {
             <Head>
                 <title>Abdalkader Alhamoud | Web Developer & AI Engineer</title>
                 <link rel="icon" type="image/x-icon" href="/images/favicon.png" />
+                <link rel="canonical" href={`${SITE_URL}${router.asPath === '/' ? '' : router.asPath}`.replace(/\/$/, '')} />
                 <meta
                     name="description"
                     content="Portfolio of Abdalkader Alhamoud, a Web Developer and AI Engineer specializing in building modern, user-focused digital experiences."
@@ -67,6 +74,7 @@ export default function App({ Component, pageProps }: AppProps) {
             <AnimatePresence mode="wait">
                 <motion.div key={router.asPath}>
                     {/* Slide-in animation */}
+                    {!prefersReducedMotion && (
                     <motion.div
                         className="slide-in"
                         initial={{ scaleY: 0 }}
@@ -74,16 +82,17 @@ export default function App({ Component, pageProps }: AppProps) {
                         exit={{ scaleY: 1 }}
                         transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
                         onAnimationComplete={() => window.scrollTo(0, 0)}
-                    />
+                    />)}
 
                     {/* Slide-out animation */}
+                    {!prefersReducedMotion && (
                     <motion.div
                         className="slide-out"
                         initial={{ scaleY: 1 }}
                         animate={{ scaleY: 0 }}
                         exit={{ scaleY: 0 }}
                         transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
-                    />
+                    />)}
 
                     <SmoothScrolling>
                         <Nav />
@@ -91,8 +100,8 @@ export default function App({ Component, pageProps }: AppProps) {
                             key="main-content"
                             initial={{ opacity: 1 }}
                             animate={{ opacity: 1 }}
-                            exit={{ opacity: 0 }}  // Fade out the main content on exit
-                            transition={{ duration: 0, ease: [0.22, 1, 0.36, 1] }}
+                            exit={{ opacity: prefersReducedMotion ? 1 : 0 }}  // Disable fade on exit if reduced motion
+                            transition={{ duration: prefersReducedMotion ? 0 : 0, ease: [0.22, 1, 0.36, 1] }}
                         >
                             <Component {...pageProps} />
                         </motion.main>
