@@ -52,9 +52,9 @@ export default function ContactSection() {
                 <p ref={textRef}>{splitText("Contact me on")}</p>
                 <div className={styles.wrapper}>
                     <Link href="mailto:hello@abdalkader.dev" className={styles.emailLink}>Email</Link>
-                    <Link href="https://github.com/abdalkaderdev" target="_blank">GitHub</Link>
-                    <Link href="https://linkedin.com/in/abdalkaderdev" target="_blank">LinkedIn</Link>
-                    <Link href="https://www.instagram.com/abdalkader.dev" target="_blank">Instagram</Link>
+                    <Link href="https://github.com/abdalkaderdev" target="_blank" rel="noopener noreferrer">GitHub</Link>
+                    <Link href="https://linkedin.com/in/abdalkaderdev" target="_blank" rel="noopener noreferrer">LinkedIn</Link>
+                    <Link href="https://www.instagram.com/abdalkader.dev" target="_blank" rel="noopener noreferrer">Instagram</Link>
                 </div>
             </section>
         </>

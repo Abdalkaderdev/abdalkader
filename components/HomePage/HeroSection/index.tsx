@@ -13,9 +13,6 @@ export default function HeroSection() {
         const marqueeTextElement = marqueeTextRef.current;
 
         if (marqueeElement && marqueeTextElement) {
-            // Duplicate the content to ensure smooth looping
-            marqueeTextElement.innerHTML += marqueeTextElement.innerHTML;
-
             // Create the infinite marquee animation
             gsap.to(marqueeTextElement, {
                 xPercent: -100, // Move by 100% of the element's width
@@ -34,12 +31,17 @@ export default function HeroSection() {
         <section className={styles.hero}>
             <ImageTrailEffect />
             <div className={styles.marquee} ref={marqueeRef}>
-                <div className={styles.content} ref={marqueeTextRef}>
-                    &nbsp;Abdalkader Alhamoud - Abdalkader Alhamoud - Abdalkader Alhamoud - Abdalkader Alhamoud -
+                <div className={styles.content} ref={marqueeTextRef} aria-hidden="true">
+                    <span>&nbsp;Abdalkader Alhamoud - Abdalkader Alhamoud - Abdalkader Alhamoud - Abdalkader Alhamoud -
                     Abdalkader Alhamoud - Abdalkader Alhamoud - Abdalkader Alhamoud - Abdalkader Alhamoud -
                     Abdalkader Alhamoud - Abdalkader Alhamoud - Abdalkader Alhamoud - Abdalkader Alhamoud -
                     Abdalkader Alhamoud - Abdalkader Alhamoud - Abdalkader Alhamoud - Abdalkader Alhamoud -
+                    Abdalkader Alhamoud - Abdalkader Alhamoud - Abdalkader Alhamoud - Abdalkader Alhamoud -</span>
+                    <span>&nbsp;Abdalkader Alhamoud - Abdalkader Alhamoud - Abdalkader Alhamoud - Abdalkader Alhamoud -
                     Abdalkader Alhamoud - Abdalkader Alhamoud - Abdalkader Alhamoud - Abdalkader Alhamoud -
+                    Abdalkader Alhamoud - Abdalkader Alhamoud - Abdalkader Alhamoud - Abdalkader Alhamoud -
+                    Abdalkader Alhamoud - Abdalkader Alhamoud - Abdalkader Alhamoud - Abdalkader Alhamoud -
+                    Abdalkader Alhamoud - Abdalkader Alhamoud - Abdalkader Alhamoud - Abdalkader Alhamoud -</span>
                 </div>
             </div>
             <h5 className={styles.tagline}>
