@@ -35,7 +35,7 @@
         gap: 1.2rem;
 
         label {
-            @include font-2;
+            @include font-1;
             color: $textGrey;
             margin-bottom: .4rem;
         }
@@ -68,8 +68,8 @@
         }
 
         .error {
-            color: $danger;
-            @include font-0_5;
+            color: #ff6b6b;
+            @include font0_7;
             margin-top: .35rem;
         }
 
@@ -83,7 +83,13 @@
         }
 
         .submitBtn {
-            @include button;
+            @include font-1;
+            background: $primary;
+            color: $white;
+            border: none;
+            padding: 0.9rem 1.2rem;
+            border-radius: 8px;
+            cursor: pointer;
         }
 
         .hiddenField {
