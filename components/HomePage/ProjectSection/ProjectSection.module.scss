@@ -181,6 +181,30 @@
                     transform: translateX(0);
                 }
             }
+
+            .quickActions {
+                position: absolute;
+                right: 1rem;
+                top: 1rem;
+                display: flex;
+                gap: 0.5rem;
+
+                .quickView {
+                    @include font0_7;
+                    background: $primary;
+                    color: $black;
+                    border: none;
+                    border-radius: 6px;
+                    padding: 0.5rem 0.8rem;
+                    cursor: pointer;
+                }
+            }
+
+            .cardLink {
+                display: block;
+                width: 100%;
+                height: 100%;
+            }
         }
     }
 }

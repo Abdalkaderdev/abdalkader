@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { gsap, ScrollTrigger } from '@/libs/gsap';
 import { splitText } from '@/utils/textUtils';
 import styles from './ProjectSection.module.scss';
@@ -8,9 +8,11 @@ import Button from '@/components/Button';
 import Tag from '@/components/Tag';
 import { projects } from '@/data/projectsData';
 import { isReducedMotion } from '@/utils/motion';
+import ProjectModal from '@/components/ProjectModal';
 
 export default function ProjectSection() {
-    const cardRefs = useRef<HTMLAnchorElement[]>([]);
+    const [openSlug, setOpenSlug] = useState<string | null>(null);
+    const cardRefs = useRef<HTMLElement[]>([]);
     const headingRef = useRef<HTMLDivElement | null>(null);
     const taglineRef = useRef<HTMLDivElement | null>(null);
     const btnWrapperRef = useRef<HTMLDivElement | null>(null);
@@ -62,7 +64,7 @@ export default function ProjectSection() {
         };
     }, []);
 
-    const addToRefs = (el: HTMLAnchorElement | null) => {
+    const addToRefs = (el: HTMLElement | null) => {
         if (el && !cardRefs.current.includes(el)) {
             cardRefs.current.push(el);
         }
@@ -88,17 +90,30 @@ export default function ProjectSection() {
             {/* projects wrapper */}
             <div className={styles.wrapper}>
                 {projects.map((project) => (
-                    <Link key={project.slug} href={`/projects/${project.slug}`} ref={addToRefs} className={`${styles.projectCard} ${styles.textOnly}`}>
-                        {/* Text-only variant on homepage */}
-                        <div className={styles.projectDetails}>
-                            <div className={styles.title}>
-                                <h3>{project.title}</h3>
+                    <div key={project.slug} className={`${styles.projectCard} ${styles.textOnly}`} ref={addToRefs}>
+                        <Link href={`/projects/${project.slug}`} className={styles.cardLink}>
+                            <div className={styles.projectDetails}>
+                                <div className={styles.title}>
+                                    <h3>{project.title}</h3>
+                                </div>
+                                <div className={styles.category}>
+                                    {project.category.map((cat, j) => <h5 key={j}>{cat}</h5>)}
+                                </div>
                             </div>
-                            <div className={styles.category}>
-                                {project.category.map((cat, j) => <h5 key={j}>{cat}</h5>)}
-                            </div>
+                        </Link>
+                        <div className={styles.quickActions}>
+                            <button className={styles.quickView} onClick={() => setOpenSlug(project.slug)}>Quick View</button>
                         </div>
-                    </Link>
+                        <ProjectModal
+                            isOpen={openSlug === project.slug}
+                            onClose={() => setOpenSlug(null)}
+                            title={project.title}
+                            categories={project.category}
+                            overview={project.overview}
+                            live={project.live}
+                            github={project.github}
+                        />
+                    </div>
                 ))}
             </div>
         </section>
