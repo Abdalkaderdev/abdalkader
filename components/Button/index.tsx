@@ -14,7 +14,7 @@ const Button: React.FC<ButtonProps> = ({ text, href, extraClass, targetBlank = f
             href={href}
             className={`${styles.btn} ${extraClass ? extraClass : ''}`}
             target={targetBlank ? '_blank' : '_self'} // Conditionally set target="_blank"
-            rel={targetBlank ? 'noopener noreferrer' : ''} // Add rel attribute for security when using target="_blank"
+            {...(targetBlank ? { rel: 'noopener noreferrer' } : {})} // Only add rel when target is _blank
         >
             {text}
         </Link>
