@@ -1,13 +1,14 @@
 const fs = require('fs');
 const path = require('path');
-// Resolve TS module transpiled by Next at runtime via require; fallback to .js if available
-let projects;
-try {
-    // eslint-disable-next-line @typescript-eslint/no-var-requires
-    ({ projects } = require('../data/projectsData'));
-} catch (e) {
-    // eslint-disable-next-line @typescript-eslint/no-var-requires
-    ({ projects } = require(path.join(process.cwd(), '.next', 'server', 'app', 'data', 'projectsData.js')));
+function extractProjectSlugsFromTS(tsPath) {
+    const content = fs.readFileSync(tsPath, 'utf8');
+    const slugRegex = /slug:\s*"([^"]+)"/g;
+    const slugs = [];
+    let match;
+    while ((match = slugRegex.exec(content)) !== null) {
+        slugs.push(match[1]);
+    }
+    return slugs;
 }
 
 const BASE = 'https://abdalkader-alhamoud.vercel.app';
@@ -17,8 +18,10 @@ function generate() {
         .map((u) => `<url><loc>${BASE}${u}</loc><priority>${u === '/' ? '1.0' : '0.8'}</priority></url>`) 
         .join('');
 
-    const projectUrls = projects
-        .map((p) => `<url><loc>${BASE}/projects/${p.slug}</loc><priority>0.7</priority></url>`) 
+    const dataPath = path.join(process.cwd(), 'data', 'projectsData.ts');
+    const slugs = extractProjectSlugsFromTS(dataPath);
+    const projectUrls = slugs
+        .map((slug) => `<url><loc>${BASE}/projects/${slug}</loc><priority>0.7</priority></url>`) 
         .join('');
 
     const xml = `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">${staticUrls}${projectUrls}</urlset>`;
