@@ -3,7 +3,12 @@ import { Html, Head, Main, NextScript } from "next/document";
 export default function Document() {
     return (
         <Html lang="en">
-            <Head />
+            <Head>
+                <link rel="preload" href="/fonts/PPNeueMontreal-Regular.woff2" as="font" type="font/woff2" crossOrigin="anonymous" />
+                <link rel="preload" href="/fonts/PPNeueMontreal-Medium.woff2" as="font" type="font/woff2" crossOrigin="anonymous" />
+                <meta property="og:site_name" content="Abdalkader Alhamoud" />
+                <meta name="theme-color" content="#f44e00" />
+            </Head>
             <body>
                 <Main />
                 <NextScript />

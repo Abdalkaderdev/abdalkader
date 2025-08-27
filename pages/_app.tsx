@@ -50,12 +50,15 @@ export default function App({ Component, pageProps }: AppProps) {
                 <meta property="og:type" content="website" />
                 <meta property="og:url" content="https://abdalkader-alhamoud.vercel.app/" />
                 <meta property="og:image" content="https://abdalkader-alhamoud.vercel.app/images/og-image.jpg" />
+                <meta property="og:image:width" content="1200" />
+                <meta property="og:image:height" content="630" />
                 
                 {/* Twitter Card tags */}
                 <meta name="twitter:card" content="summary_large_image" />
                 <meta name="twitter:title" content="Abdalkader Alhamoud | Web Developer & AI Engineer" />
                 <meta name="twitter:description" content="Portfolio of Abdalkader Alhamoud, showcasing projects in web development and AI engineering." />
                 <meta name="twitter:image" content="https://abdalkader-alhamoud.vercel.app/images/twitter-image.jpg" />
+                <meta name="twitter:site" content="@abdalkaderdev" />
                 
                 {/* Additional SEO tags */}
                 <meta name="viewport" content="width=device-width, initial-scale=1" />
