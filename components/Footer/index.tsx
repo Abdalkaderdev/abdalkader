@@ -34,7 +34,7 @@ const Footer: React.FC = () => {
                 <div className={styles.wrapper}>
                     <div className={styles.col}>
                         {contactInfo}
-                        <Link href='mailto:abdalkaderdealhamoud@gmail.com'>abdalkaderdealhamoud@gmail.com</Link>
+                        <Link href='mailto:hello@abdalkader.dev'>hello@abdalkader.dev</Link>
                     </div>
                     <div className={styles.linksCol}>
                         {navigationLinks}
