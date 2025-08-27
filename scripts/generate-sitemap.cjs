@@ -11,7 +11,7 @@ function extractProjectSlugsFromTS(tsPath) {
     return slugs;
 }
 
-const BASE = 'https://abdalkader-alhamoud.vercel.app';
+const BASE = process.env.NEXT_PUBLIC_SITE_URL || 'https://abdalkader.dev';
 
 function generate() {
     const staticUrls = ['/', '/about', '/projects', '/contact']
