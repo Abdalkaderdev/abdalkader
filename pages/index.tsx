@@ -4,6 +4,7 @@ import InstagramSection from "@/components/HomePage/DribbleSection";
 import HeroSection from "@/components/HomePage/HeroSection";
 import ProjectSection from "@/components/HomePage/ProjectSection";
 import ServiceSection from "@/components/HomePage/ServiceSection";
+// LiveDemos removed per text-only preference
 import Head from "next/head";
 import { buildCanonical } from "@/utils/seo";
 

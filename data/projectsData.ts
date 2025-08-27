@@ -23,6 +23,7 @@ export const projects: Project[] = [
     slug: "apple-tv-clone",
     category: ["Frontend Development", "UI/UX Design"],
     img: "/images/apple.png",
+    badges: ["React", "Next.js", "TypeScript", "GSAP"],
 
     // Sticky
     owner: "Apple TV Clone",
@@ -48,6 +49,7 @@ export const projects: Project[] = [
     slug: "virtualview",
     category: ["Web Development", "Virtual Reality"],
     img: "/images/virtual.png",
+    badges: ["Three.js", "WebGL", "Next.js"],
 
     // Sticky
     owner: "VirtualView",
@@ -74,6 +76,7 @@ export const projects: Project[] = [
     slug: "jegr-jalal-company",
     category: ["Web Development", "Corporate Website"],
     img: "/images/jegr.png",
+    badges: ["Next.js", "TypeScript", "SCSS"],
 
     // Sticky
     owner: "Jegr Jalal Company",
@@ -99,6 +102,7 @@ export const projects: Project[] = [
     slug: "doner-qr-menu-magic",
     category: ["Web Development", "Restaurant Technology"],
     img: "/images/doner.png",
+    badges: ["Next.js", "React", "SCSS"],
 
     // Sticky
     owner: "German Doner",
@@ -125,6 +129,7 @@ export const projects: Project[] = [
     slug: "headquarter-iraq-real-estate",
     category: ["Web Development", "Real Estate"],
     img: "/images/head.png",
+    badges: ["Next.js", "TypeScript", "Performance"],
 
     // Sticky
     owner: "Headquarter Iraq Real Estate",
@@ -150,6 +155,7 @@ export const projects: Project[] = [
     slug: "innovations-architecture-department",
     category: ["Web Development", "Architecture"],
     img: "/images/head-quarter-international-find-your-place-to-live-google-chrome-8-3-2025-1-15-34-pm.png",
+    badges: ["Next.js", "TypeScript", "Design Systems"],
 
     // Sticky
     owner: "Innovations Architecture Department",
@@ -175,6 +181,7 @@ export const projects: Project[] = [
     slug: "hamilton-iraq-real-estate",
     category: ["Web Development", "Real Estate"],
     img: "/images/hamilton.png",
+    badges: ["Next.js", "TypeScript", "SEO"],
 
     // Sticky
     owner: "Hamilton Iraq Real Estate",

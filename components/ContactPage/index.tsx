@@ -22,8 +22,8 @@ export default function ContactSection() {
 
         // Animate the text before links
         if (textRef.current) {
-            const headingSpans = textRef.current.querySelectorAll('span span');
-            tl.from(headingSpans, { y: "115%", duration: 0.6, stagger: 0.001 }, 0.4);
+            const textSpans = textRef.current.querySelectorAll('span span');
+            tl.from(textSpans, { y: "115%", duration: 0.6, stagger: 0.001 }, 0.4);
         }
 
         // Animate links one by one using `fromTo` via wrapper ref

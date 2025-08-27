@@ -3,7 +3,6 @@ import { useRouter } from 'next/router';
 import { gsap, ScrollTrigger } from '@/libs/gsap';
 import { splitText } from '@/utils/textUtils';
 import styles from './ProjectSection.module.scss';
-// Image import removed for text-only cards
 import Link from 'next/link';
 import Button from '@/components/Button';
 import Tag from '@/components/Tag';
@@ -57,6 +56,29 @@ export default function ProjectSection() {
                         scrub: 1,
                     },
                 });
+            }
+
+            // Animate badges into place when each card enters
+            if (card) {
+                const badges = card.querySelectorAll(`.${styles.badges} .${styles.badge}`);
+                if (badges.length) {
+                    gsap.fromTo(
+                        badges,
+                        { opacity: 0, y: -10 },
+                        {
+                            opacity: 1,
+                            y: 0,
+                            duration: 0.4,
+                            stagger: 0.06,
+                            ease: 'power2.out',
+                            scrollTrigger: {
+                                trigger: card,
+                                start: 'top 80%',
+                                toggleActions: 'play none none reverse',
+                            },
+                        }
+                    );
+                }
             }
         });
 

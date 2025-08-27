@@ -1,6 +1,5 @@
 // /pages/project.tsx
 import Link from 'next/link';
-// Image import removed for text-only cards
 import styles from './ProjectsSection.module.scss';
 import { projects } from '@/data/projectsData';
 import { useEffect, useRef, useState } from 'react';

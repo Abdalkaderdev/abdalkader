@@ -26,12 +26,16 @@ export default function App({ Component, pageProps }: AppProps) {
     // Scroll position management
     useEffect(() => {
         const saveScrollPosition = (url: string) => {
-            scrollPositions.current[url] = window.scrollY;
+            if (typeof window !== 'undefined') {
+                scrollPositions.current[url] = window.scrollY;
+            }
         };
 
         const restoreScrollPosition = (url: string) => {
-            const savedPosition = scrollPositions.current[url] || 0;
-            window.scrollTo(0, savedPosition);
+            if (typeof window !== 'undefined') {
+                const savedPosition = scrollPositions.current[url] || 0;
+                window.scrollTo(0, savedPosition);
+            }
         };
 
         router.events.on("routeChangeStart", saveScrollPosition);
@@ -127,7 +131,7 @@ export default function App({ Component, pageProps }: AppProps) {
                         animate={{ scaleY: 0 }}
                         exit={{ scaleY: 1 }}
                         transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
-                        onAnimationComplete={() => window.scrollTo(0, 0)}
+                        onAnimationComplete={() => { if (typeof window !== 'undefined') { window.scrollTo(0, 0); } }}
                     />)}
 
                     {/* Slide-out animation */}

@@ -14,36 +14,24 @@ export default function AboutSection() {
         const tagline = taglineRef.current;
         const buttonWrapper = btnWrapperRef.current;
 
-        // Animate the aboutText (already implemented)
+        // Animate the aboutText using pre-rendered spans
         if (aboutText) {
-            const text = aboutText.textContent?.trim() || "";
-            const hasProcessed = aboutText.querySelector(".letter");
+            const letters = aboutText.querySelectorAll(".letter");
+            gsap.set(letters, { opacity: 0.2 });
 
-            if (!hasProcessed) {
-                aboutText.innerHTML = text
-                    .split(" ")
-                    .map(word =>
-                        `<span class="word" style="will-change: opacity; display: inline-block;">${word.split("").map(letter => `<span class="letter" style="will-change: opacity; display: inline-block;">${letter}</span>`).join("")}</span>`
-                    )
-                    .join(" ") + " ";
-
-                const letters = aboutText.querySelectorAll(".letter");
-                gsap.set(letters, { opacity: 0.2 });
-
-                gsap.timeline({
-                    scrollTrigger: {
-                        trigger: aboutText,
-                        start: "top 90%",
-                        end: "bottom 60%",
-                        scrub: 1,
-                    },
-                }).to(letters, {
-                    opacity: 1,
-                    duration: 0.4,
-                    stagger: 0.02,
-                    ease: "power2.out",
-                });
-            }
+            gsap.timeline({
+                scrollTrigger: {
+                    trigger: aboutText,
+                    start: "top 90%",
+                    end: "bottom 60%",
+                    scrub: 1,
+                },
+            }).to(letters, {
+                opacity: 1,
+                duration: 0.4,
+                stagger: 0.02,
+                ease: "power2.out",
+            });
         }
 
         // Animate tagline and button using a helper function
@@ -72,7 +60,14 @@ export default function AboutSection() {
                     <Tag text="About" />
                 </div>
                 <h2 className={styles.aboutText} ref={aboutTextRef}>
-                    I&apos;m Abdalkader Alhamoud — a Web Developer and AI Engineer with a passion for building modern, fast, and user-focused digital experiences. Whether it&apos;s crafting responsive websites or developing AI-powered tools, I bring ideas to life with clean code and creative energy.
+                    {"I'm Abdalkader Alhamoud — a Web Developer and AI Engineer with a passion for building modern, fast, and user-focused digital experiences. Whether it's crafting responsive websites or developing AI-powered tools, I bring ideas to life with clean code and creative energy. ".split(" ").map((word, i) => (
+                        <span key={i} className="word" style={{ willChange: 'opacity', display: 'inline-block' }}>
+                            {word.split("").map((letter, j) => (
+                                <span key={`${i}-${j}`} className="letter" style={{ willChange: 'opacity', display: 'inline-block' }}>{letter}</span>
+                            ))}
+                            <span>&nbsp;</span>
+                        </span>
+                    ))}
                 </h2>
                 <div className={styles.btnSpace} ref={btnWrapperRef}>
                     <Button text="More About Me" href="/about" />

@@ -7,13 +7,13 @@ export default function Loader() {
     const router = useRouter();
 
     useEffect(() => {
-        const obj = { count: 0 };
+        const counter = { count: 0 };
 
         const tl = gsap.timeline({
             defaults: { ease: "power1.out" },
             onUpdate: () => {
                 if (percentageRef.current) {
-                    percentageRef.current.textContent = `${Math.floor(obj.count)}`;
+                    percentageRef.current.textContent = `${Math.floor(counter.count)}`;
                 }
             },
             onComplete: () => {
@@ -33,13 +33,13 @@ export default function Loader() {
             },
         });
 
-        tl.to(obj, {
+        tl.to(counter, {
             count: 100,
             duration: 6,
         });
 
         const handlePageLoad = () => {
-            if (obj.count === 100) {
+            if (counter.count === 100) {
                 tl.play();
             }
         };
