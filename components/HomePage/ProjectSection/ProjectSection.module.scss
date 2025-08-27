@@ -35,59 +35,55 @@
             position: sticky;
             top: 10vh;
             width: 65vw;
-            height: calc(100vh - 20vh);
+            height: calc(60vh);
             border-radius: 15px;
             overflow: hidden;
+            background: #121212;
+            border: 1px solid $borderColor;
 
             @media (max-width: 840px) {
                 width: 100%;
             }
 
-            img {
-                width: 100%;
-                height: 100%;
-                object-fit: cover;
-                transition: transform $transition;
-            }
+            // text-only
 
             .projectDetails {
                 position: absolute;
-                top: 0;
+                inset: 0;
                 width: 100%;
-                display: flex;
-                justify-content: space-between;
+                height: 100%;
                 @include paddingArround;
 
                 .title {
+                    position: absolute;
+                    top: 50%;
+                    left: 50%;
+                    transform: translate(-50%, -50%);
+                    text-align: center;
+                    width: 100%;
                     overflow: hidden;
 
                     h3 {
                         @include font-1_8;
-                        transform: translateY(-100%);
-                        transition: transform $transition;
+                        color: $primary;
                     }
                 }
 
-                .category {
+                .badges {
+                    position: absolute;
+                    top: 1rem;
+                    left: 1rem;
                     display: flex;
                     gap: 0.5rem;
+                    flex-wrap: wrap;
 
-                    h5 {
+                    .badge {
                         @include font0_7;
                         width: fit-content;
-                        padding: 0.8rem 1rem;
-                        background: #3030302c;
-                        backdrop-filter: blur(10px);
-                        border-radius: 5px;
-                        display: inline-block;
-                        overflow: hidden;
-                        transform: translateY(-50%);
-                        opacity: 0;
-                        transition: all $transition;
-
-                        &:nth-child(2) {
-                            transition-delay: 0.1s;
-                        }
+                        padding: 0.6rem 0.9rem;
+                        background: rgba(244, 78, 0, 0.18);
+                        border: 1px solid rgba(244, 78, 0, 0.35);
+                        border-radius: 999px;
                     }
                 }
 
@@ -103,26 +99,7 @@
                 }
             }
 
-            &:hover {
-                img {
-                    transform: scale(1.1);
-                }
-
-                .projectDetails {
-                    .title {
-                        h3 {
-                            transform: translateY(0);
-                        }
-                    }
-
-                    .category {
-                        h5 {
-                            opacity: 1;
-                            transform: translateY(0);
-                        }
-                    }
-                }
-            }
+            &:hover {}
         }
     }
 }
