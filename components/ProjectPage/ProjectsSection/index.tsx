@@ -4,12 +4,14 @@ import Link from 'next/link';
 import styles from './ProjectsSection.module.scss';
 import { projects } from '@/data/projectsData';
 import { useEffect, useRef, useState } from 'react';
+import { useRouter } from 'next/router';
 import { gsap } from '@/libs/gsap';
 import ProjectModal from '@/components/ProjectModal';
 
 export default function ProjectsSection() {
     const [openSlug, setOpenSlug] = useState<string | null>(null);
     const cardRefs = useRef<HTMLElement[]>([]);
+    const router = useRouter();
 
     const addToRefs = (el: HTMLElement | null) => {
         if (el && !cardRefs.current.includes(el)) {
@@ -27,6 +29,29 @@ export default function ProjectsSection() {
             delay: 1,
         });
     }, [])
+
+    // Sync modal with URL (?project=slug)
+    useEffect(() => {
+        const qp = router.query.project;
+        if (typeof qp === 'string') {
+            setOpenSlug(qp);
+        } else if (!qp) {
+            setOpenSlug(null);
+        }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [router.query.project]);
+
+    const openModal = (slug: string) => {
+        setOpenSlug(slug);
+        router.push({ pathname: router.pathname, query: { ...router.query, project: slug } }, undefined, { shallow: true });
+    };
+
+    const closeModal = () => {
+        setOpenSlug(null);
+        const rest = { ...router.query } as Record<string, string | string[]>;
+        delete rest.project;
+        router.push({ pathname: router.pathname, query: rest }, undefined, { shallow: true });
+    };
 
     return (
         <section className={styles.ProjectsSection}>
@@ -46,11 +71,11 @@ export default function ProjectsSection() {
                             </div>
                         </Link>
                         <div className={styles.quickActions}>
-                            <button className={styles.quickView} onClick={() => setOpenSlug(project.slug)}>Quick View</button>
+                            <button className={styles.quickView} onClick={() => openModal(project.slug)}>Quick View</button>
                         </div>
                         <ProjectModal
                             isOpen={openSlug === project.slug}
-                            onClose={() => setOpenSlug(null)}
+                            onClose={closeModal}
                             title={project.title}
                             categories={project.category}
                             overview={project.overview}
