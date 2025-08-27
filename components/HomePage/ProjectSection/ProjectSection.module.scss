@@ -46,6 +46,7 @@
             }
 
             // no image; text-only card
+            color: $white;
 
             .projectDetails {
                 position: absolute;
@@ -69,6 +70,7 @@
                         @include font-1_8;
                         transform: translateY(-100%);
                         transition: transform $transition;
+                        color: $primary;
                     }
                 }
 
@@ -111,10 +113,10 @@
                         @include font0_7;
                         width: fit-content;
                         padding: 0.6rem 0.9rem;
-                        background: #3030302c;
+                        background: rgba(244, 78, 0, 0.18);
                         backdrop-filter: blur(10px);
                         border-radius: 999px;
-                        border: 1px solid rgba(255,255,255,0.08);
+                        border: 1px solid rgba(244, 78, 0, 0.35);
                         display: inline-flex;
                         align-items: center;
                         transform: translateY(-20%);
@@ -123,7 +125,7 @@
 
                         &:hover {
                             transform: translateY(-4px);
-                            background: rgba(122,162,255,0.15);
+                            background: rgba(244, 78, 0, 0.28);
                             box-shadow: 0 6px 16px rgba(0,0,0,.25);
                         }
                     }
