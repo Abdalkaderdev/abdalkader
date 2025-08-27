@@ -35,22 +35,17 @@
             position: sticky;
             top: 10vh;
             width: 65vw;
-            height: calc(100vh - 20vh);
+            height: calc(60vh);
             border-radius: 15px;
             overflow: hidden;
+            background: #121212;
+            border: 1px solid $borderColor;
 
             @media (max-width: 840px) {
                 width: 100%;
             }
 
-            img {
-                width: 100%;
-                height: 100%;
-                object-fit: cover;
-                transition: transform $transition;
-                position: relative;
-                z-index: 1;
-            }
+            // no image; text-only card
 
             .projectDetails {
                 position: absolute;
@@ -147,9 +142,6 @@
             }
 
             &:hover {
-                img {
-                    transform: scale(1.1);
-                }
 
                 .projectDetails {
                     .title {

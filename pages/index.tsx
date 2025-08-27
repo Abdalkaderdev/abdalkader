@@ -4,7 +4,7 @@ import InstagramSection from "@/components/HomePage/DribbleSection";
 import HeroSection from "@/components/HomePage/HeroSection";
 import ProjectSection from "@/components/HomePage/ProjectSection";
 import ServiceSection from "@/components/HomePage/ServiceSection";
-import LiveDemosSection from "@/components/HomePage/LiveDemosSection";
+// LiveDemos removed per text-only preference
 import Head from "next/head";
 
 export default function HomePage() {
@@ -18,7 +18,6 @@ export default function HomePage() {
             <HeroSection />
             <AboutSection />
             <ProjectSection />
-            <LiveDemosSection />
             <ServiceSection />
                             <InstagramSection />
             <BookCallSection />

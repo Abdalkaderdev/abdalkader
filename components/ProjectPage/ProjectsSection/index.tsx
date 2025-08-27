@@ -1,6 +1,5 @@
 // /pages/project.tsx
 import Link from 'next/link';
-import Image from 'next/image';
 import styles from './ProjectsSection.module.scss';
 import { projects } from '@/data/projectsData';
 import { useEffect, useRef } from 'react';
@@ -31,13 +30,14 @@ export default function ProjectsSection() {
             <div className={styles.wrapper}>
                 {projects.map((project) => (
                     <Link key={project.slug} href={`/projects/${project.slug}`} className={styles.projectCard} ref={addToRefs}>
-                        <Image
-                            src={project.img}
-                            alt={project.title}
-                            width={500}
-                            height={500}
-                            
-                        />
+                        <div className={styles.projectTextThumb}>
+                            <h3>{project.title}</h3>
+                            <div className={styles.meta}>
+                                {project.category.map((cat: string) => (
+                                    <span key={cat}>{cat}</span>
+                                ))}
+                            </div>
+                        </div>
                         <div className={styles.projectDetails}>
                             <div className={styles.title}>
                                 <h3>{project.title}</h3>
