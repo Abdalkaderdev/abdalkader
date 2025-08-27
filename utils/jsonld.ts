@@ -45,3 +45,30 @@ export function projectJsonLd(project: {
   } as const;
 }
 
+export function breadcrumbsJsonLd(items: Array<{ name: string; item: string }>) {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: items.map((it, index) => ({
+      '@type': 'ListItem',
+      position: index + 1,
+      name: it.name,
+      item: it.item,
+    })),
+  };
+}
+
+export function contactPointJsonLd() {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'Organization',
+    url: SITE_URL,
+    contactPoint: [{
+      '@type': 'ContactPoint',
+      contactType: 'customer support',
+      email: 'hello@example.com',
+      availableLanguage: ['en'],
+    }],
+  };
+}
+

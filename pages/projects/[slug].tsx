@@ -8,7 +8,8 @@ import Head from 'next/head';
 import { gsap } from '@/libs/gsap';
 import { useEffect, useRef } from 'react';
 import JsonLd from '@/components/SEO/JsonLd';
-import { projectJsonLd } from '@/utils/jsonld';
+import { projectJsonLd, breadcrumbsJsonLd } from '@/utils/jsonld';
+import { SITE_URL } from '@/utils/seo';
 
 // Fetch the list of possible slugs for static generation
 export const getStaticPaths: GetStaticPaths = async () => {
@@ -74,7 +75,14 @@ const ProjectPage = ({ project }: ProjectPageProps) => {
                 <meta property="og:description" content={`${project?.overview?.substring(0, 160)}...`} />
                 <meta property="og:image" content={project?.img} />
             </Head>
-            <JsonLd data={projectJsonLd(project)} />
+            <JsonLd data={[
+                projectJsonLd(project),
+                breadcrumbsJsonLd([
+                    { name: 'Home', item: SITE_URL },
+                    { name: 'Projects', item: `${SITE_URL}/projects` },
+                    { name: project.title, item: `${SITE_URL}/projects/${project.title}` },
+                ]),
+            ]} />
             {/*========= Header ==========*/}
             <header className={styles.ProjectSinglePage}>
                 <div ref={imageRef} className={styles.imageWrapper}>

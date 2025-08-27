@@ -17,10 +17,20 @@
     .logo {
         @include font-1;
         font-family: PPmedium;
-        transition: color $transition;
+        transition: color $transition, text-shadow $transition;
 
         &:hover {
             color: $primary;
+            text-shadow: 0 0 6px rgba($primary, 0.6);
+        }
+
+        &:active {
+            color: lighten($primary, 10%);
+        }
+
+        &:focus-visible {
+            outline: 2px dashed $primary;
+            outline-offset: 3px;
         }
 
         @media (max-width: 600px) {
@@ -37,6 +47,8 @@
         position: absolute;
         left: 50%;
         transform: translateX(-50%);
+        background: transparent;
+        border: 0;
 
         .bar {
             width: 140px;
@@ -55,6 +67,11 @@
             .bar {
                 width: 160px;
             }
+        }
+
+        &:focus-visible {
+            outline: 2px dashed $primary;
+            outline-offset: 3px;
         }
     }
 }
