@@ -1,15 +1,19 @@
-import { NextRequest } from 'next/server';
+import { NextApiRequest, NextApiResponse } from 'next';
 import Groq from 'groq-sdk';
 
 const groq = new Groq({
   apiKey: process.env.GROQ_API_KEY,
 });
 
-export async function POST(request: NextRequest) {
-  const { input, mode } = await request.json();
+export default async function handler(req: NextApiRequest, res: NextApiResponse) {
+  if (req.method !== 'POST') {
+    return res.status(405).json({ error: 'Method not allowed' });
+  }
+
+  const { input, mode } = req.body;
 
   if (!input || !mode) {
-    return Response.json({ error: 'Input and mode are required' }, { status: 400 });
+    return res.status(400).json({ error: 'Input and mode are required' });
   }
 
   const modeInstruction = mode === 'roast' 
@@ -31,9 +35,9 @@ export async function POST(request: NextRequest) {
 
     const output = completion.choices[0]?.message?.content || 'No response generated';
     
-    return Response.json({ output });
+    res.status(200).json({ output });
   } catch (error) {
     console.error('Groq API error:', error);
-    return Response.json({ error: 'Failed to generate response' }, { status: 500 });
+    res.status(500).json({ error: 'Failed to generate response' });
   }
 }
