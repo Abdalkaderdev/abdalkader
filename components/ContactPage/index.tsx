@@ -3,6 +3,7 @@ import styles from './ContactPage.module.scss';
 import { splitText } from '@/utils/textUtils';
 import { gsap } from '@/libs/gsap';
 import Link from 'next/link';
+import { isReducedMotion } from '@/utils/motion';
 
 export default function ContactSection() {
     const bannerHeadingRef = useRef<HTMLDivElement | null>(null);
@@ -10,6 +11,7 @@ export default function ContactSection() {
     const linksWrapperRef = useRef<HTMLDivElement | null>(null);
 
     useEffect(() => {
+        if (isReducedMotion()) return; // Skip animations for reduced motion
         const tl = gsap.timeline({ paused: true });
 
         // Animate the banner heading

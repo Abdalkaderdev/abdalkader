@@ -7,6 +7,7 @@ import Link from 'next/link';
 import Button from '@/components/Button';
 import Tag from '@/components/Tag';
 import { projects } from '@/data/projectsData';
+import { isReducedMotion } from '@/utils/motion';
 
 export default function ProjectSection() {
     const cardRefs = useRef<HTMLAnchorElement[]>([]);
@@ -15,6 +16,7 @@ export default function ProjectSection() {
     const btnWrapperRef = useRef<HTMLDivElement | null>(null);
 
     useEffect(() => {
+        if (isReducedMotion()) return; // Respect user preference
         // Create a timeline for the heading wrapper animations
         const tl = gsap.timeline({
             scrollTrigger: {
