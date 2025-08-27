@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import ReactDOM from 'react-dom';
 import styles from './ProjectModal.module.scss';
 import { isReducedMotion } from '@/utils/motion';
@@ -12,9 +12,11 @@ type ProjectModalProps = {
     overview?: string;
     live?: string;
     github?: string;
+    slug: string;
 };
 
-export default function ProjectModal({ isOpen, onClose, title, categories, overview, live, github }: ProjectModalProps) {
+export default function ProjectModal({ isOpen, onClose, title, categories, overview, live, github, slug }: ProjectModalProps) {
+    const [copied, setCopied] = useState(false);
     useEffect(() => {
         if (!isOpen) return;
         const handleKeyDown = (e: KeyboardEvent) => {
@@ -31,6 +33,18 @@ export default function ProjectModal({ isOpen, onClose, title, categories, overv
     if (!isOpen) return null;
     const root = typeof window !== 'undefined' ? document.body : null;
     if (!root) return null;
+
+    const copyLink = async () => {
+        try {
+            const url = new URL(window.location.href);
+            url.searchParams.set('project', slug);
+            await navigator.clipboard.writeText(url.toString());
+            setCopied(true);
+            setTimeout(() => setCopied(false), 1500);
+        } catch {
+            // noop
+        }
+    };
 
     const content = (
         <div className={styles.backdrop} onClick={onClose}>
@@ -52,6 +66,7 @@ export default function ProjectModal({ isOpen, onClose, title, categories, overv
                 <div className={styles.actions}>
                     {live && <Button text="Live" href={live} targetBlank />}
                     {github && <Button text="GitHub" href={github} targetBlank />}
+                    <button className={styles.copy} onClick={copyLink}>{copied ? 'Copied' : 'Copy link'}</button>
                 </div>
             </div>
         </div>

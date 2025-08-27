@@ -64,6 +64,16 @@
     display: flex;
     gap: 0.75rem;
     margin-top: 1.25rem;
+
+    .copy {
+        @include font0_7;
+        background: transparent;
+        color: $white;
+        border: 1px solid $borderColor;
+        border-radius: 6px;
+        padding: 0.5rem 0.8rem;
+        cursor: pointer;
+    }
 }
 
 @keyframes in {

@@ -137,6 +137,7 @@ export default function ProjectSection() {
                             overview={project.overview}
                             live={project.live}
                             github={project.github}
+                            slug={project.slug}
                         />
                     </div>
                 ))}

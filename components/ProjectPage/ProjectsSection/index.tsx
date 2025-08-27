@@ -81,6 +81,7 @@ export default function ProjectsSection() {
                             overview={project.overview}
                             live={project.live}
                             github={project.github}
+                            slug={project.slug}
                         />
                     </div>
                 ))}
