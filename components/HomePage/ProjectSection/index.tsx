@@ -52,6 +52,29 @@ export default function ProjectSection() {
                     },
                 });
             }
+
+            // Animate badges into place when each card enters
+            if (card) {
+                const badges = card.querySelectorAll(`.${styles.badges} .${styles.badge}`);
+                if (badges.length) {
+                    gsap.fromTo(
+                        badges,
+                        { opacity: 0, y: -10 },
+                        {
+                            opacity: 1,
+                            y: 0,
+                            duration: 0.4,
+                            stagger: 0.06,
+                            ease: 'power2.out',
+                            scrollTrigger: {
+                                trigger: card,
+                                start: 'top 80%',
+                                toggleActions: 'play none none reverse',
+                            },
+                        }
+                    );
+                }
+            }
         });
 
         // Cleanup on unmount

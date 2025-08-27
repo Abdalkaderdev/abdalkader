@@ -130,14 +130,14 @@
                 }
 
                 @media (max-width: 600px) {
-                    flex-direction: column;
-                    gap: 1.5rem;
                     padding: 2rem 1rem;
-
-                    .category {
-                        flex-direction: column;
-                        gap: 0.5rem;
+                    .title {
+                        left: 50%;
+                        transform: translate(-50%, -50%);
+                        h3 { @include font-1; }
                     }
+                    .category { gap: 0.5rem; }
+                    .badges { gap: 0.4rem; }
                 }
             }
 
