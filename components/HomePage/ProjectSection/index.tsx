@@ -93,7 +93,7 @@ export default function ProjectSection() {
                                 <h3>{project.title}</h3>
                             </div>
                             <div className={styles.category}>
-                                {project.category.map((cat, j) => <h5 key={j}>{cat}</h5>)}
+                                {project.category.map((cat) => <h5 key={cat}>{cat}</h5>)}
                             </div>
                         </div>
                     </Link>

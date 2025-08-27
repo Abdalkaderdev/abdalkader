@@ -26,8 +26,8 @@ const ServiceCard = forwardRef<HTMLDivElement, ServiceCardProps>(
                         <div className={`${styles.flipCardBack} flipCardBackB`}>
                             <h3 className={styles.title}>{title}</h3>
                             <ul>
-                                {listItems.map((item, index) => (
-                                    <li key={index}>{item}</li>
+                                {listItems.map((item) => (
+                                    <li key={item}>{item}</li>
                                 ))}
                             </ul>
                             <h2 className={styles.numbering}>{numbering}</h2>
