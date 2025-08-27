@@ -16,6 +16,8 @@ export default function Nav() {
     const [menuOpen, setMenuOpen] = useState(false);
     const navigationMenuRef = useRef<HTMLDivElement>(null);
     const linksRef = useRef<HTMLUListElement>(null);
+    const firstLinkRef = useRef<HTMLAnchorElement>(null);
+    const previousFocusRef = useRef<HTMLElement | null>(null);
     const router = useRouter(); // Get the router instance
 
     // Menu Animation
@@ -70,6 +72,47 @@ export default function Nav() {
         };
     }, [menuOpen]);
 
+    // Accessibility: focus trap, ESC to close, restore focus
+    useEffect(() => {
+        if (menuOpen) {
+            previousFocusRef.current = (document.activeElement as HTMLElement) || null;
+            // Focus first link when menu opens
+            const firstLink = linksRef.current?.querySelector('a') as HTMLAnchorElement | null;
+            if (firstLink) {
+                firstLink.focus();
+            }
+
+            const handleKeyDown = (event: KeyboardEvent) => {
+                if (event.key === 'Escape') {
+                    setMenuOpen(false);
+                    event.stopPropagation();
+                }
+
+                if (event.key === 'Tab') {
+                    const focusable = linksRef.current?.querySelectorAll<HTMLElement>('a');
+                    if (!focusable || focusable.length === 0) return;
+                    const focusArray = Array.from(focusable);
+                    const first = focusArray[0];
+                    const last = focusArray[focusArray.length - 1];
+
+                    if (event.shiftKey && document.activeElement === first) {
+                        last.focus();
+                        event.preventDefault();
+                    } else if (!event.shiftKey && document.activeElement === last) {
+                        first.focus();
+                        event.preventDefault();
+                    }
+                }
+            };
+
+            document.addEventListener('keydown', handleKeyDown);
+            return () => document.removeEventListener('keydown', handleKeyDown);
+        } else {
+            // Restore focus to the element that triggered the menu
+            previousFocusRef.current?.focus?.();
+        }
+    }, [menuOpen]);
+
     // Close menu on route change
     useEffect(() => {
         const handleRouteChange = () => {
@@ -91,19 +134,48 @@ export default function Nav() {
                 <Link href='/' className={styles.logo}>
                     <span>Abdalkader Alhamoud</span>
                 </Link>
-                <div className={styles.menu_Toggle} onClick={() => setMenuOpen(prev => !prev)}>
+                <button
+                    type="button"
+                    className={styles.menu_Toggle}
+                    aria-haspopup="true"
+                    aria-expanded={menuOpen}
+                    aria-controls="site-navigation-menu"
+                    onClick={() => {
+                        setMenuOpen(prev => !prev);
+                    }}
+                    onKeyDown={(e) => {
+                        if (e.key === 'Enter' || e.key === ' ') {
+                            e.preventDefault();
+                            setMenuOpen(prev => !prev);
+                        }
+                    }}
+                >
                     <div className={styles.bar}></div>
                     <span>{menuOpen ? 'CLOSE' : 'MENU'}</span>
-                </div>
+                </button>
                 <Link href='/contact' className={styles.link}>
                     <span>Contact</span>
                 </Link>
             </nav>
-            <div ref={navigationMenuRef} className={styles.navigationMenu}>
-                <ul ref={linksRef}>
-                    {links.map(({ name, path }) => (
+            <div
+                ref={navigationMenuRef}
+                className={styles.navigationMenu}
+                role="dialog"
+                aria-modal="true"
+                aria-labelledby="site-navigation-menu-heading"
+                onClick={(e) => {
+                    // Close when clicking outside the list (backdrop)
+                    if (e.target === navigationMenuRef.current) setMenuOpen(false);
+                }}
+                style={{ visibility: menuOpen ? 'visible' : 'hidden' }}
+            >
+                <h2 id="site-navigation-menu-heading" style={{ position: 'absolute', left: '-9999px' }}>
+                    Main navigation
+                </h2>
+                <ul id="site-navigation-menu" ref={linksRef}>
+                    {links.map(({ name, path }, index) => (
                         <li key={name}>
-                            <Link href={path}>{name}</Link>
+                            <Link href={path} ref={index === 0 ? firstLinkRef : undefined}>{name}</Link>
                         </li>
                     ))}
                 </ul>

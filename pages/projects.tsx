@@ -2,6 +2,7 @@ import BookCallSection from "@/components/HomePage/BookCallSection";
 import ProjectHeroSection from "@/components/ProjectPage/ProjectHeroSection";
 import ProjectsSection from "@/components/ProjectPage/ProjectsSection";
 import Head from "next/head";
+import { buildCanonical } from "@/utils/seo";
 
 export default function ProjectPage() {
 
@@ -10,6 +11,7 @@ export default function ProjectPage() {
             <Head>
                 <title>Projects | Abdalkader Alhamoud</title>
                 <meta name="description" content="Explore the portfolio of projects by Abdalkader Alhamoud, featuring web development, AI engineering, and innovative digital solutions." />
+                <link rel="canonical" href={buildCanonical('/projects')} />
             </Head>
             <ProjectHeroSection />
             <ProjectsSection />

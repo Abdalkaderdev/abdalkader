@@ -8,7 +8,9 @@ export default function HeroSection() {
     const marqueeTextRef = useRef<HTMLDivElement | null>(null);
 
     useEffect(() => {
-        // Marquee animation
+        // Marquee animation (disabled for reduced motion)
+        const prefersReducedMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        if (prefersReducedMotion) return;
         const marqueeElement = marqueeRef.current;
         const marqueeTextElement = marqueeTextRef.current;
 
@@ -33,7 +35,7 @@ export default function HeroSection() {
     return (
         <section className={styles.hero}>
             <ImageTrailEffect />
-            <div className={styles.marquee} ref={marqueeRef}>
+            <div className={styles.marquee} ref={marqueeRef} aria-hidden="true">
                 <div className={styles.content} ref={marqueeTextRef}>
                     &nbsp;Abdalkader Alhamoud - Abdalkader Alhamoud - Abdalkader Alhamoud - Abdalkader Alhamoud -
                     Abdalkader Alhamoud - Abdalkader Alhamoud - Abdalkader Alhamoud - Abdalkader Alhamoud -
@@ -42,9 +44,9 @@ export default function HeroSection() {
                     Abdalkader Alhamoud - Abdalkader Alhamoud - Abdalkader Alhamoud - Abdalkader Alhamoud -
                 </div>
             </div>
-            <h5 className={styles.tagline}>
+            <h1 className={styles.tagline}>
                 Web Developer & AI Engineer
-            </h5>
+            </h1>
         </section>
     );
 }
