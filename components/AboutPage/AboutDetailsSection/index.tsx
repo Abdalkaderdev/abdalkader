@@ -3,6 +3,7 @@ import styles from './AboutDetailsSection.module.scss';
 import { splitText } from '@/utils/textUtils';
 import { gsap, ScrollTrigger } from '@/libs/gsap';
 import Tag from '@/components/Tag';
+import { isReducedMotion } from '@/utils/motion';
 
 // Setup Animation for all text
 const animateText = (ref: React.RefObject<HTMLElement>, startOffset: string = '70%', yValue: string = '115%', stagger: number = 0.003) => {
@@ -130,6 +131,7 @@ export default function AboutDetailsSection() {
     const toolsTaglineRef = useRef<HTMLDivElement | null>(null);
 
     useEffect(() => {
+        if (isReducedMotion()) return; // Respect reduced motion
         // Animate heading text
         if (headingRef.current) animateText(headingRef);
 

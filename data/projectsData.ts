@@ -1,4 +1,22 @@
-export const projects = [
+export interface Project {
+  title: string;
+  slug: string;
+  category: string[];
+  img: string;
+  owner: string;
+  date: string;
+  services: string;
+  duration: string;
+  budget: string;
+  live?: string;
+  github?: string;
+  overview: string;
+  objective: string;
+  process: string;
+  impact: string;
+}
+
+export const projects: Project[] = [
   {
     // For Post
     title: "Apple TV Clone",
@@ -131,7 +149,7 @@ export const projects = [
     title: "Innovations Architecture Department",
     slug: "innovations-architecture-department",
     category: ["Web Development", "Architecture"],
-    img: "/images/Head Quarter International – Find Your Place To Live - Google Chrome 8_3_2025 1_15_34 PM.png",
+    img: "/images/head-quarter-international-find-your-place-to-live-google-chrome-8-3-2025-1-15-34-pm.png",
 
     // Sticky
     owner: "Innovations Architecture Department",

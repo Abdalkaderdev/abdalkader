@@ -49,6 +49,7 @@ type ProjectPageProps = {
         objective: string;
         process: string;
         impact: string;
+        slug: string;
     };
 };
 
@@ -71,6 +72,26 @@ const ProjectPage = ({ project }: ProjectPageProps) => {
                 <meta property="og:title" content={`${project?.title || 'Untitled Project'} | Abdalkader Alhamoud`} />
                 <meta property="og:description" content={`${project?.overview?.substring(0, 160)}...`} />
                 <meta property="og:image" content={project?.img} />
+                <script
+                    type="application/ld+json"
+                    dangerouslySetInnerHTML={{
+                        __html: JSON.stringify({
+                            '@context': 'https://schema.org',
+                            '@type': 'CreativeWork',
+                            name: project.title,
+                            url: `https://abdalkader-alhamoud.vercel.app/projects/${project.slug}`,
+                            image: project.img,
+                            datePublished: project.date,
+                            author: {
+                                '@type': 'Person',
+                                name: 'Abdalkader Alhamoud',
+                                url: 'https://abdalkader-alhamoud.vercel.app/'
+                            },
+                            about: project.overview,
+                            keywords: project.category.join(', ')
+                        })
+                    }}
+                />
             </Head>
             {/*========= Header ==========*/}
             <header className={styles.ProjectSinglePage}>

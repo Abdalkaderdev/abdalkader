@@ -57,17 +57,57 @@ export default function App({ Component, pageProps }: AppProps) {
                 <meta property="og:type" content="website" />
                 <meta property="og:url" content="https://abdalkader-alhamoud.vercel.app/" />
                 <meta property="og:image" content="https://abdalkader-alhamoud.vercel.app/images/og-image.jpg" />
+                <meta property="og:image:width" content="1200" />
+                <meta property="og:image:height" content="630" />
                 
                 {/* Twitter Card tags */}
                 <meta name="twitter:card" content="summary_large_image" />
                 <meta name="twitter:title" content="Abdalkader Alhamoud | Web Developer & AI Engineer" />
                 <meta name="twitter:description" content="Portfolio of Abdalkader Alhamoud, showcasing projects in web development and AI engineering." />
                 <meta name="twitter:image" content="https://abdalkader-alhamoud.vercel.app/images/twitter-image.jpg" />
+                <meta name="twitter:site" content="@abdalkaderdev" />
                 
                 {/* Additional SEO tags */}
                 <meta name="viewport" content="width=device-width, initial-scale=1" />
                 <meta name="robots" content="index, follow" />
                 <meta name="keywords" content="web developer, AI engineer, frontend developer, React, Next.js, TypeScript, portfolio" />
+
+                {/* JSON-LD: Person */}
+                <script
+                    type="application/ld+json"
+                    dangerouslySetInnerHTML={{
+                        __html: JSON.stringify({
+                            '@context': 'https://schema.org',
+                            '@type': 'Person',
+                            name: 'Abdalkader Alhamoud',
+                            url: 'https://abdalkader-alhamoud.vercel.app/',
+                            jobTitle: 'Web Developer & AI Engineer',
+                            sameAs: [
+                                'https://github.com/abdalkaderdev',
+                                'https://www.linkedin.com/in/abdalkaderdev',
+                                'https://www.instagram.com/abdalkader.dev'
+                            ]
+                        })
+                    }}
+                />
+
+                {/* JSON-LD: WebSite */}
+                <script
+                    type="application/ld+json"
+                    dangerouslySetInnerHTML={{
+                        __html: JSON.stringify({
+                            '@context': 'https://schema.org',
+                            '@type': 'WebSite',
+                            name: 'Abdalkader Alhamoud Portfolio',
+                            url: 'https://abdalkader-alhamoud.vercel.app/',
+                            potentialAction: {
+                                '@type': 'SearchAction',
+                                target: 'https://abdalkader-alhamoud.vercel.app/?q={search_term_string}',
+                                'query-input': 'required name=search_term_string'
+                            }
+                        })
+                    }}
+                />
             </Head>
 
             <Loader />

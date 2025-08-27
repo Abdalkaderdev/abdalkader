@@ -1,0 +1,82 @@
+@import "@/styles/variables.scss";
+
+.backdrop {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.6);
+    display: grid;
+    place-items: center;
+    z-index: 10000;
+}
+
+.modal {
+    width: min(800px, 92vw);
+    background: linear-gradient(180deg, #111 0%, #0b0b0b 100%);
+    border: 1px solid $borderColor;
+    border-radius: 14px;
+    padding: 1.5rem;
+    transform: translateY(6px);
+    opacity: 0;
+    animation: in 320ms cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+
+    h3 { @include font-1_8; @include gradientText; }
+
+    .close {
+        background: transparent;
+        color: $white;
+        border: 1px solid $borderColor;
+        border-radius: 8px;
+        padding: 0.25rem 0.5rem;
+        cursor: pointer;
+    }
+}
+
+.meta {
+    display: flex;
+    gap: 0.5rem;
+    margin-top: 0.75rem;
+    flex-wrap: wrap;
+
+    span {
+        @include font0_7;
+        border: 1px solid $primary;
+        background: rgba(244, 78, 0, 0.08);
+        color: $white;
+        border-radius: 6px;
+        padding: 0.4rem 0.6rem;
+    }
+}
+
+.overview {
+    margin-top: 1rem;
+    color: $textGrey;
+    line-height: 1.6;
+}
+
+.actions {
+    display: flex;
+    gap: 0.75rem;
+    margin-top: 1.25rem;
+
+    .copy {
+        @include font0_7;
+        background: transparent;
+        color: $white;
+        border: 1px solid $borderColor;
+        border-radius: 6px;
+        padding: 0.5rem 0.8rem;
+        cursor: pointer;
+    }
+}
+
+@keyframes in {
+    to { transform: translateY(0); opacity: 1; }
+}
+

@@ -1,20 +1,26 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
+import { useRouter } from 'next/router';
 import { gsap, ScrollTrigger } from '@/libs/gsap';
 import { splitText } from '@/utils/textUtils';
 import styles from './ProjectSection.module.scss';
-import Image from 'next/image';
+// Image import removed for text-only cards
 import Link from 'next/link';
 import Button from '@/components/Button';
 import Tag from '@/components/Tag';
 import { projects } from '@/data/projectsData';
+import { isReducedMotion } from '@/utils/motion';
+import ProjectModal from '@/components/ProjectModal';
 
 export default function ProjectSection() {
-    const cardRefs = useRef<HTMLAnchorElement[]>([]);
+    const [openSlug, setOpenSlug] = useState<string | null>(null);
+    const cardRefs = useRef<HTMLElement[]>([]);
+    const router = useRouter();
     const headingRef = useRef<HTMLDivElement | null>(null);
     const taglineRef = useRef<HTMLDivElement | null>(null);
     const btnWrapperRef = useRef<HTMLDivElement | null>(null);
 
     useEffect(() => {
+        if (isReducedMotion()) return; // Respect user preference
         // Create a timeline for the heading wrapper animations
         const tl = gsap.timeline({
             scrollTrigger: {
@@ -60,7 +66,30 @@ export default function ProjectSection() {
         };
     }, []);
 
-    const addToRefs = (el: HTMLAnchorElement | null) => {
+    // Sync modal with URL (?project=slug)
+    useEffect(() => {
+        const qp = router.query.project;
+        if (typeof qp === 'string') {
+            setOpenSlug(qp);
+        } else if (!qp) {
+            setOpenSlug(null);
+        }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [router.query.project]);
+
+    const openModal = (slug: string) => {
+        setOpenSlug(slug);
+        router.push({ pathname: router.pathname, query: { ...router.query, project: slug } }, undefined, { shallow: true });
+    };
+
+    const closeModal = () => {
+        setOpenSlug(null);
+        const rest = { ...router.query } as Record<string, string | string[]>;
+        delete rest.project;
+        router.push({ pathname: router.pathname, query: rest }, undefined, { shallow: true });
+    };
+
+    const addToRefs = (el: HTMLElement | null) => {
         if (el && !cardRefs.current.includes(el)) {
             cardRefs.current.push(el);
         }
@@ -85,18 +114,32 @@ export default function ProjectSection() {
 
             {/* projects wrapper */}
             <div className={styles.wrapper}>
-                {projects.map((project, i) => (
-                    <Link key={project.slug} href={`/projects/${project.slug}`} ref={addToRefs} className={styles.projectCard}>
-                        <Image src={project.img} width={700} height={700} alt={project.title} priority={i === 0} sizes="(max-width: 840px) 90vw, 700px" />
-                        <div className={styles.projectDetails}>
-                            <div className={styles.title}>
-                                <h3>{project.title}</h3>
+                {projects.map((project) => (
+                    <div key={project.slug} className={`${styles.projectCard} ${styles.textOnly}`} ref={addToRefs}>
+                        <Link href={`/projects/${project.slug}`} className={styles.cardLink}>
+                            <div className={styles.projectDetails}>
+                                <div className={styles.title}>
+                                    <h3>{project.title}</h3>
+                                </div>
+                                <div className={styles.category}>
+                                    {project.category.map((cat, j) => <h5 key={j}>{cat}</h5>)}
+                                </div>
                             </div>
-                            <div className={styles.category}>
-                                {project.category.map((cat, j) => <h5 key={j}>{cat}</h5>)}
-                            </div>
+                        </Link>
+                        <div className={styles.quickActions}>
+                            <button className={styles.quickView} onClick={() => openModal(project.slug)}>Quick View</button>
                         </div>
-                    </Link>
+                        <ProjectModal
+                            isOpen={openSlug === project.slug}
+                            onClose={closeModal}
+                            title={project.title}
+                            categories={project.category}
+                            overview={project.overview}
+                            live={project.live}
+                            github={project.github}
+                            slug={project.slug}
+                        />
+                    </div>
                 ))}
             </div>
         </section>
