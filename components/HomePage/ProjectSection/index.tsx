@@ -95,6 +95,13 @@ export default function ProjectSection() {
                             <div className={styles.category}>
                                 {project.category.map((cat) => <h5 key={cat}>{cat}</h5>)}
                             </div>
+                            {project.badges && (
+                                <div className={styles.badges}>
+                                    {project.badges.map((badge: string) => (
+                                        <span key={badge} className={styles.badge}>{badge}</span>
+                                    ))}
+                                </div>
+                            )}
                         </div>
                     </Link>
                 ))}

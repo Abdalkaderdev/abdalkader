@@ -5,6 +5,7 @@ export const projects = [
     slug: "apple-tv-clone",
     category: ["Frontend Development", "UI/UX Design"],
     img: "/images/apple.png",
+    badges: ["React", "Next.js", "TypeScript", "GSAP"],
 
     // Sticky
     owner: "Apple TV Clone",
@@ -30,6 +31,7 @@ export const projects = [
     slug: "virtualview",
     category: ["Web Development", "Virtual Reality"],
     img: "/images/virtual.png",
+    badges: ["Three.js", "WebGL", "Next.js"],
 
     // Sticky
     owner: "VirtualView",
@@ -56,6 +58,7 @@ export const projects = [
     slug: "jegr-jalal-company",
     category: ["Web Development", "Corporate Website"],
     img: "/images/jegr.png",
+    badges: ["Next.js", "TypeScript", "SCSS"],
 
     // Sticky
     owner: "Jegr Jalal Company",
@@ -81,6 +84,7 @@ export const projects = [
     slug: "doner-qr-menu-magic",
     category: ["Web Development", "Restaurant Technology"],
     img: "/images/doner.png",
+    badges: ["Next.js", "React", "SCSS"],
 
     // Sticky
     owner: "German Doner",
@@ -107,6 +111,7 @@ export const projects = [
     slug: "headquarter-iraq-real-estate",
     category: ["Web Development", "Real Estate"],
     img: "/images/head.png",
+    badges: ["Next.js", "TypeScript", "Performance"],
 
     // Sticky
     owner: "Headquarter Iraq Real Estate",
@@ -132,6 +137,7 @@ export const projects = [
     slug: "innovations-architecture-department",
     category: ["Web Development", "Architecture"],
     img: "/images/Head Quarter International – Find Your Place To Live - Google Chrome 8_3_2025 1_15_34 PM.png",
+    badges: ["Next.js", "TypeScript", "Design Systems"],
 
     // Sticky
     owner: "Innovations Architecture Department",
@@ -157,6 +163,7 @@ export const projects = [
     slug: "hamilton-iraq-real-estate",
     category: ["Web Development", "Real Estate"],
     img: "/images/hamilton.png",
+    badges: ["Next.js", "TypeScript", "SEO"],
 
     // Sticky
     owner: "Hamilton Iraq Real Estate",
