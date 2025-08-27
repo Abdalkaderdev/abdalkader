@@ -7,17 +7,27 @@ const map = (x, a, b, c, d) => ((x - a) * (d - c)) / (b - a) + c;
 export default function ImageTrail() {
     const trailRef = useRef(null);
     const cursor = useRef({ x: 0, y: 0 });
+    const winsize = useRef({ width: 0, height: 0 });
 
     useEffect(() => {
         const getCursorPos = (ev) => {
-            cursor.current = { x: ev.clientX, y: ev.clientY };
+            const nx = ev.clientX;
+            const ny = ev.clientY;
+            // Only update and trigger if cursor actually moved
+            if (nx !== cursor.current.x || ny !== cursor.current.y) {
+                cursor.current = { x: nx, y: ny };
+                // Kick the render loop if not already running
+                if (imageTrailEffect && imageTrailEffect.rafId === null) {
+                    imageTrailEffect.rafId = requestAnimationFrame(() => imageTrailEffect.render());
+                }
+            }
         };
 
         const handleResize = () => {
             winsize.current = { width: window.innerWidth, height: window.innerHeight };
         };
 
-        const winsize = { width: window.innerWidth, height: window.innerHeight };
+        winsize.current = { width: window.innerWidth, height: window.innerHeight };
         window.addEventListener("mousemove", getCursorPos);
         window.addEventListener("resize", handleResize);
 
@@ -27,8 +37,10 @@ export default function ImageTrail() {
                 this.totalTrailElements = 9;
                 // Initialize imgTransforms as a plain array
                 this.imgTransforms = Array.from({ length: this.totalTrailElements }, () => ({ x: 0, y: 0, rx: 0, ry: 0, rz: 0 }));
+                this.lastCursor = { x: NaN, y: NaN };
+                this.rafId = null;
                 this.layout();
-                requestAnimationFrame(() => this.render());
+                // Do not start a continuous loop; wait for first input
             }
 
             layout() {
@@ -42,22 +54,47 @@ export default function ImageTrail() {
             }
 
             render() {
+                const targetX = map(cursor.current.x, 0, winsize.current.width, -200, 200);
+                const targetY = map(cursor.current.y, 0, winsize.current.height, -70, 70);
+                const targetRz = map(cursor.current.x, 0, winsize.current.width, -10, 10);
+
+                let maxDelta = 0;
                 this.imgTransforms.forEach((transform, i) => {
                     const amt = 0.02 * i + 0.05;
-                    transform.x = lerp(transform.x, map(cursor.current.x, 0, winsize.width, -200, 200), amt);
-                    transform.y = lerp(transform.y, map(cursor.current.y, 0, winsize.height, -70, 70), amt);
-                    transform.rz = lerp(transform.rz, map(cursor.current.x, 0, winsize.width, -10, 10), amt);
+                    const nx = lerp(transform.x, targetX, amt);
+                    const ny = lerp(transform.y, targetY, amt);
+                    const nrz = lerp(transform.rz, targetRz, amt);
+                    maxDelta = Math.max(maxDelta, Math.abs(nx - transform.x), Math.abs(ny - transform.y), Math.abs(nrz - transform.rz));
+                    transform.x = nx;
+                    transform.y = ny;
+                    transform.rz = nrz;
                     this.DOM.trailElems[i].style.transform = `translate(${transform.x}px, ${transform.y}px) rotateZ(${transform.rz}deg)`;
                 });
-                requestAnimationFrame(() => this.render());
+
+                // Determine if we should continue animating
+                const cursorMoved = (this.lastCursor.x !== cursor.current.x) || (this.lastCursor.y !== cursor.current.y);
+                this.lastCursor = { ...cursor.current };
+
+                const stillSettling = maxDelta > 0.05; // threshold for motion settling
+
+                if (cursorMoved || stillSettling) {
+                    this.rafId = requestAnimationFrame(() => this.render());
+                } else {
+                    // Stop the loop until next cursor movement
+                    this.rafId = null;
+                }
             }
         }
 
-        new ImageTrailEffect(trailRef.current);
+        let imageTrailEffect = new ImageTrailEffect(trailRef.current);
 
         return () => {
             window.removeEventListener("mousemove", getCursorPos);
             window.removeEventListener("resize", handleResize);
+            if (imageTrailEffect && imageTrailEffect.rafId) {
+                cancelAnimationFrame(imageTrailEffect.rafId);
+                imageTrailEffect.rafId = null;
+            }
         };
     }, []);
 
