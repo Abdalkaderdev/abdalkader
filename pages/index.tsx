@@ -3,7 +3,10 @@ import BookCallSection from "@/components/HomePage/BookCallSection";
 import InstagramSection from "@/components/HomePage/DribbleSection";
 import HeroSection from "@/components/HomePage/HeroSection";
 import ProjectSection from "@/components/HomePage/ProjectSection";
+import LiveDemosSection from "@/components/HomePage/LiveDemosSection";
 import ServiceSection from "@/components/HomePage/ServiceSection";
+import SkillsShowcase from "@/components/HomePage/SkillsShowcase";
+import ProcessSection from "@/components/HomePage/ProcessSection";
 import Head from "next/head";
 
 export default function HomePage() {
@@ -17,6 +20,9 @@ export default function HomePage() {
             <HeroSection />
             <AboutSection />
             <ProjectSection />
+            <LiveDemosSection />
+            <SkillsShowcase />
+            <ProcessSection />
             <ServiceSection />
                             <InstagramSection />
             <BookCallSection />
