@@ -132,16 +132,52 @@
             display: flex;
             align-items: flex-end;
             justify-content: space-between;
+            transition: transform $transition, border-color $transition, box-shadow $transition;
+
+            &::after {
+                content: "→";
+                position: absolute;
+                right: 1.5rem;
+                bottom: 1.5rem;
+                font-size: 1.2rem;
+                color: $primary;
+                opacity: 0;
+                transform: translateX(-6px);
+                transition: opacity $transition, transform $transition;
+            }
 
             .projectDetails {
                 position: relative;
                 top: auto;
+                width: 100%;
+                display: flex;
+                justify-content: space-between;
+                align-items: flex-end;
+                gap: 1rem;
+
+                .title h3 {
+                    font-weight: 600;
+                    letter-spacing: 0.06rem;
+                }
+
+                .category h5 {
+                    background: transparent;
+                    border: 1px solid $borderColor;
+                    color: $textGrey;
+                }
             }
 
             &:hover {
                 .projectDetails {
                     .title h3 { transform: translateY(0); }
                     .category h5 { opacity: 1; transform: translateY(0); }
+                }
+                transform: translateY(-4px);
+                border-color: rgba(255,255,255,0.08);
+                box-shadow: 0 10px 30px rgba(0,0,0,0.35);
+                &::after {
+                    opacity: 1;
+                    transform: translateX(0);
                 }
             }
         }
