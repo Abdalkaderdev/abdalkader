@@ -2,7 +2,7 @@ import { useEffect, useRef } from 'react';
 import { gsap, ScrollTrigger } from '@/libs/gsap';
 import { splitText } from '@/utils/textUtils';
 import styles from './ProjectSection.module.scss';
-import Image from 'next/image';
+// Image import removed for text-only cards
 import Link from 'next/link';
 import Button from '@/components/Button';
 import Tag from '@/components/Tag';
@@ -86,8 +86,8 @@ export default function ProjectSection() {
             {/* projects wrapper */}
             <div className={styles.wrapper}>
                 {projects.map((project) => (
-                    <Link key={project.slug} href={`/projects/${project.slug}`} ref={addToRefs} className={styles.projectCard}>
-                        <Image src={project.img} width={700} height={700} alt={project.title} unoptimized />
+                    <Link key={project.slug} href={`/projects/${project.slug}`} ref={addToRefs} className={`${styles.projectCard} ${styles.textOnly}`}>
+                        {/* Text-only variant on homepage */}
                         <div className={styles.projectDetails}>
                             <div className={styles.title}>
                                 <h3>{project.title}</h3>
