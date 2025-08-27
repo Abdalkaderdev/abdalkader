@@ -93,7 +93,7 @@ export default async function handler(
 		});
 
 		return res.status(200).json({ success: true, message: 'Your message has been sent successfully.' });
-	} catch (error) {
+	} catch {
 		return res.status(500).json({ success: false, errors: { form: 'Failed to send your message. Please try again later.' } });
 	}
 }

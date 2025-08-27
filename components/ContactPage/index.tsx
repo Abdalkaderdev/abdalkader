@@ -83,7 +83,7 @@ export default function ContactSection() {
             setMessage('');
             setCompany('');
             setErrors({});
-        } catch (err) {
+        } catch {
             setStatus('error');
             setErrors({ form: 'Network error. Please try again.' });
         }
