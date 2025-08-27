@@ -41,7 +41,7 @@ export default function RoastToastWidget() {
       const data = await res.json();
       const botMessage: Message = { text: data.output, isUser: false, id: (Date.now() + 1).toString() };
       setMessages(prev => [...prev, botMessage]);
-    } catch (error) {
+    } catch {
       const errorMessage: Message = { text: 'Oops! Something went wrong. Try again!', isUser: false, id: (Date.now() + 1).toString() };
       setMessages(prev => [...prev, errorMessage]);
     }
