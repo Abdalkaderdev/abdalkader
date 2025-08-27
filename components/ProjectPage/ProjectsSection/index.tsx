@@ -1,13 +1,10 @@
 // /pages/project.tsx
 import Link from 'next/link';
-import Image from 'next/image';
+// Image import removed for text-only cards
 import styles from './ProjectsSection.module.scss';
 import { projects } from '@/data/projectsData';
 import { useEffect, useRef } from 'react';
 import { gsap } from '@/libs/gsap';
-
-// Toggle to switch between text-only and image cards
-const TEXT_ONLY_CARDS = true;
 
 export default function ProjectsSection() {
     const cardRefs = useRef<HTMLAnchorElement[]>([]);
@@ -33,16 +30,7 @@ export default function ProjectsSection() {
         <section className={styles.ProjectsSection}>
             <div className={styles.wrapper}>
                 {projects.map((project) => (
-                    <Link key={project.slug} href={`/projects/${project.slug}`} className={`${styles.projectCard} ${TEXT_ONLY_CARDS ? styles.textOnly : ''}`} ref={addToRefs}>
-                        {!TEXT_ONLY_CARDS && (
-                            <Image
-                                src={project.img}
-                                alt={project.title}
-                                width={500}
-                                height={500}
-                                unoptimized
-                            />
-                        )}
+                    <Link key={project.slug} href={`/projects/${project.slug}`} className={`${styles.projectCard} ${styles.textOnly}`} ref={addToRefs}>
                         <div className={styles.projectDetails}>
                             <div className={styles.title}>
                                 <h3>{project.title}</h3>
