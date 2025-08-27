@@ -19,13 +19,56 @@ export default function ProjectsSection() {
     };
 
     useEffect(() => {
+        // Card entrance
         gsap.from(cardRefs.current, {
             opacity: 0,
-            y: "10%", // Move cards from below
-            duration: 1.2,
-            stagger: 0.1, // Stagger animation for each card
+            y: "10%",
+            duration: 1.0,
+            stagger: 0.08,
             ease: "power3.out",
-            delay: 1,
+            delay: 0.4,
+        });
+
+        // Title/category reveal per card
+        cardRefs.current.forEach((card) => {
+            const title = card.querySelector(`.${styles.title} h3`);
+            if (title) {
+                gsap.fromTo(
+                    title,
+                    { y: 20, opacity: 0 },
+                    {
+                        y: 0,
+                        opacity: 1,
+                        duration: 0.6,
+                        ease: 'power2.out',
+                        scrollTrigger: {
+                            trigger: card,
+                            start: 'top 85%',
+                            toggleActions: 'play none none reverse',
+                        },
+                    }
+                );
+            }
+
+            const cats = card.querySelectorAll(`.${styles.category} h5`);
+            if (cats.length) {
+                gsap.fromTo(
+                    cats,
+                    { y: 10, opacity: 0 },
+                    {
+                        y: 0,
+                        opacity: 1,
+                        duration: 0.4,
+                        stagger: 0.06,
+                        ease: 'power2.out',
+                        scrollTrigger: {
+                            trigger: card,
+                            start: 'top 80%',
+                            toggleActions: 'play none none reverse',
+                        },
+                    }
+                );
+            }
         });
     }, [])
 

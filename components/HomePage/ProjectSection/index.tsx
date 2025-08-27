@@ -79,6 +79,47 @@ export default function ProjectSection() {
                         }
                     );
                 }
+
+                // Title reveal
+                const title = card.querySelector(`.${styles.title} h3`);
+                if (title) {
+                    gsap.fromTo(
+                        title,
+                        { y: 20, opacity: 0 },
+                        {
+                            y: 0,
+                            opacity: 1,
+                            duration: 0.6,
+                            ease: 'power2.out',
+                            scrollTrigger: {
+                                trigger: card,
+                                start: 'top 85%',
+                                toggleActions: 'play none none reverse',
+                            },
+                        }
+                    );
+                }
+
+                // Categories reveal
+                const cats = card.querySelectorAll(`.${styles.category} h5`);
+                if (cats.length) {
+                    gsap.fromTo(
+                        cats,
+                        { y: 10, opacity: 0 },
+                        {
+                            y: 0,
+                            opacity: 1,
+                            duration: 0.4,
+                            stagger: 0.06,
+                            ease: 'power2.out',
+                            scrollTrigger: {
+                                trigger: card,
+                                start: 'top 80%',
+                                toggleActions: 'play none none reverse',
+                            },
+                        }
+                    );
+                }
             }
         });
 
