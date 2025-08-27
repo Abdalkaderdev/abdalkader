@@ -3,6 +3,7 @@ export interface Project {
   slug: string;
   category: string[];
   img: string;
+  badges?: string[];
   owner: string;
   date: string;
   services: string;
