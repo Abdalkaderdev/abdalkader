@@ -52,13 +52,18 @@
 
             .projectDetails {
                 position: absolute;
-                top: 0;
+                inset: 0;
                 width: 100%;
-                display: flex;
-                justify-content: space-between;
+                height: 100%;
                 @include paddingArround;
+                pointer-events: none;
 
                 .title {
+                    position: absolute;
+                    top: 50%;
+                    left: 50%;
+                    transform: translate(-50%, -50%);
+                    text-align: center;
                     overflow: hidden;
 
                     h3 {
@@ -69,6 +74,9 @@
                 }
 
                 .category {
+                    position: absolute;
+                    right: 1rem;
+                    bottom: 1rem;
                     display: flex;
                     gap: 0.5rem;
 
@@ -92,6 +100,9 @@
                 }
 
                 .badges {
+                    position: absolute;
+                    top: 1rem;
+                    left: 1rem;
                     display: flex;
                     gap: 0.5rem;
                     flex-wrap: wrap;
