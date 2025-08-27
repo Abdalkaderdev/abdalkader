@@ -6,6 +6,20 @@ import Tag from '@/components/Tag';
 import Button from '@/components/Button';
 import { splitText } from '@/utils/textUtils';
 
+// Animation and layout constants
+const CARD_POSITIONS = [13, 37.7, 62.4, 87];
+const CARD_ROTATIONS = [-15, -7.5, 7.5, 15];
+const SCROLL_PIN_MULTIPLIER = 3; // totalScrollHeight = window.innerHeight * SCROLL_PIN_MULTIPLIER
+const HEADING_START_OFFSET = 0.4; // seconds in the timeline for heading
+const TAGLINE_FROM_Y = 50;
+const BUTTON_FROM_Y = 50;
+const HEADING_STAGGER = 0.01;
+const HEADING_FROM_Y = '110%';
+const CARD_STAGGER_STEP = 0.05;
+const CARD_ANIMATION_SEGMENT = 1 / 3; // third of the scroll progress
+const FRONT_ROTATION_DEGREES = -180; // multiplied by animation progress
+const BACK_ROTATION_DEGREES = 180; // 180 - 180 * progress
+
 // Define the Service interface
 interface Service {
     title: string;
@@ -56,24 +70,24 @@ export default function ServiceSection() {
 
         // Tagline animation
         if (taglineRef.current) {
-            headingTimeline.from(taglineRef.current, { y: 50, opacity: 0, duration: 0.8 }, 0);
+            headingTimeline.from(taglineRef.current, { y: TAGLINE_FROM_Y, opacity: 0, duration: 0.8 }, 0);
         }
 
         // Heading text animation
         if (headingRef.current) {
             const headingSpans = headingRef.current.querySelectorAll('span span');
-            headingTimeline.from(headingSpans, { y: '110%', duration: 0.6, stagger: 0.01 }, 0.4);
+            headingTimeline.from(headingSpans, { y: HEADING_FROM_Y, duration: 0.6, stagger: HEADING_STAGGER }, HEADING_START_OFFSET);
         }
 
         // Button wrapper animation
         if (btnWrapperRef.current) {
-            headingTimeline.from(btnWrapperRef.current, { y: 50, opacity: 0, duration: 0.8 }, 0.8);
+            headingTimeline.from(btnWrapperRef.current, { y: BUTTON_FROM_Y, opacity: 0, duration: 0.8 }, 0.8);
         }
 
         // Cards animations
-        const positions = [13, 37.7, 62.4, 87];
-        const rotations = [-15, -7.5, 7.5, 15];
-        const totalScrollHeight = window.innerHeight * 3;
+        const positions = CARD_POSITIONS;
+        const rotations = CARD_ROTATIONS;
+        const totalScrollHeight = window.innerHeight * SCROLL_PIN_MULTIPLIER;
 
         const cardTriggers = cardRefs.current.map((card, index) => {
             if (card) {
@@ -96,9 +110,9 @@ export default function ServiceSection() {
                 const frontEl = card.querySelector('.flipCardFrontA');
                 const backEl = card.querySelector('.flipCardBackB');
                 if (frontEl && backEl) {
-                    const staggerOffset = index * 0.05;
-                    const startOffset = 1 / 3 + staggerOffset;
-                    const endOffset = 2 / 3 + staggerOffset;
+                    const staggerOffset = index * CARD_STAGGER_STEP;
+                    const startOffset = CARD_ANIMATION_SEGMENT + staggerOffset;
+                    const endOffset = 2 * CARD_ANIMATION_SEGMENT + staggerOffset;
 
                     return ScrollTrigger.create({
                         trigger: container.current,
@@ -108,9 +122,9 @@ export default function ServiceSection() {
                         onUpdate: (self) => {
                             const progress = self.progress;
                             if (progress >= startOffset && progress <= endOffset) {
-                                const animationProgress = (progress - startOffset) / (1 / 3);
-                                const frontRotation = -180 * animationProgress;
-                                const backRotation = 180 - 180 * animationProgress;
+                                const animationProgress = (progress - startOffset) / CARD_ANIMATION_SEGMENT;
+                                const frontRotation = FRONT_ROTATION_DEGREES * animationProgress;
+                                const backRotation = BACK_ROTATION_DEGREES - BACK_ROTATION_DEGREES * animationProgress;
 
                                 gsap.to(frontEl, { rotateY: frontRotation, ease: 'power1.out' });
                                 gsap.to(backEl, { rotateY: backRotation, ease: 'power1.out' });
