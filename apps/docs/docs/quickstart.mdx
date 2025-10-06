@@ -1,0 +1,177 @@
+---
+title: Quick Start
+description: 'Get up and running with Component Library in minutes'
+---
+
+## Basic Usage
+
+Import components and start building:
+
+```tsx
+import { Button, Input } from '@abdalkader/component-library';
+import '@abdalkader/component-library/dist/styles.css';
+
+function App() {
+  return (
+    <div>
+      <Button variant="primary">Click me</Button>
+      <Input label="Email" type="email" placeholder="Enter email" />
+    </div>
+  );
+}
+```
+
+## Form Example
+
+Build a complete form with validation:
+
+```tsx
+import React, { useState } from 'react';
+import { Button, Input } from '@abdalkader/component-library';
+
+function LoginForm() {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [errors, setErrors] = useState({ email: false, password: false });
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    
+    const newErrors = {
+      email: !email.includes('@'),
+      password: password.length < 8,
+    };
+    
+    setErrors(newErrors);
+    
+    if (!newErrors.email && !newErrors.password) {
+      console.log('Form submitted:', { email, password });
+    }
+  };
+
+  return (
+    <form onSubmit={handleSubmit} style={{ maxWidth: '400px' }}>
+      <Input
+        label="Email"
+        type="email"
+        value={email}
+        onChange={(e) => setEmail(e.target.value)}
+        error={errors.email}
+        errorMessage={errors.email ? 'Please enter a valid email' : undefined}
+        required
+      />
+      
+      <Input
+        label="Password"
+        type="password"
+        value={password}
+        onChange={(e) => setPassword(e.target.value)}
+        error={errors.password}
+        errorMessage={errors.password ? 'Password must be at least 8 characters' : undefined}
+        helperText="Use a strong password"
+        required
+      />
+      
+      <Button type="submit" variant="primary">
+        Sign In
+      </Button>
+    </form>
+  );
+}
+```
+
+## Component Variants
+
+### Button Variants
+
+```tsx
+<Button variant="primary">Primary</Button>
+<Button variant="secondary">Secondary</Button>
+<Button variant="danger">Danger</Button>
+```
+
+### Button Sizes
+
+```tsx
+<Button size="small">Small</Button>
+<Button size="medium">Medium</Button>
+<Button size="large">Large</Button>
+```
+
+### Input Types
+
+```tsx
+<Input type="text" label="Text" />
+<Input type="email" label="Email" />
+<Input type="password" label="Password" />
+<Input type="number" label="Number" />
+```
+
+## Accessibility
+
+All components include proper ARIA attributes:
+
+```tsx
+<Button aria-label="Close dialog">×</Button>
+
+<Input
+  label="Username"
+  required
+  aria-describedby="username-helper"
+  helperText="Choose a unique username"
+/>
+```
+
+## TypeScript Support
+
+Full type safety with IntelliSense:
+
+```tsx
+import { ButtonProps, InputProps } from '@abdalkader/component-library';
+
+const buttonProps: ButtonProps = {
+  variant: 'primary',
+  size: 'medium',
+  disabled: false,
+  children: 'Click me',
+};
+
+const inputProps: InputProps = {
+  label: 'Email',
+  type: 'email',
+  required: true,
+};
+```
+
+## Next Steps
+
+<CardGroup cols={2}>
+  <Card
+    title="Theming"
+    icon="palette"
+    href="/docs/theming"
+  >
+    Customize component styles
+  </Card>
+  <Card
+    title="Components"
+    icon="grid"
+    href="/components/button"
+  >
+    Explore all components
+  </Card>
+  <Card
+    title="Accessibility"
+    icon="universal-access"
+    href="/guides/accessibility"
+  >
+    Learn about accessibility features
+  </Card>
+  <Card
+    title="Storybook"
+    icon="book"
+    href="https://components.abdalkader.dev"
+  >
+    Interactive examples
+  </Card>
+</CardGroup>

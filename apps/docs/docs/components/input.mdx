@@ -1,0 +1,249 @@
+---
+title: Input
+description: 'A fully accessible input component with label, error states, and helper text support'
+---
+
+## Overview
+
+The Input component provides a complete form input solution with built-in label, error handling, and accessibility features.
+
+## Import
+
+```tsx
+import { Input } from '@abdalkader/component-library';
+```
+
+## Basic Usage
+
+```tsx
+<Input
+  label="Email"
+  type="email"
+  placeholder="Enter your email"
+/>
+```
+
+## With Label
+
+```tsx
+<Input
+  label="Full Name"
+  placeholder="John Doe"
+  required
+/>
+```
+
+## Input Types
+
+<CodeGroup>
+
+```tsx Text
+<Input label="Username" type="text" />
+```
+
+```tsx Email
+<Input label="Email" type="email" />
+```
+
+```tsx Password
+<Input label="Password" type="password" />
+```
+
+```tsx Number
+<Input label="Age" type="number" min={0} max={120} />
+```
+
+</CodeGroup>
+
+## Error State
+
+```tsx
+<Input
+  label="Email"
+  type="email"
+  value="invalid-email"
+  error={true}
+  errorMessage="Please enter a valid email address"
+/>
+```
+
+## Helper Text
+
+```tsx
+<Input
+  label="Password"
+  type="password"
+  helperText="Must be at least 8 characters long"
+/>
+```
+
+## Required Field
+
+```tsx
+<Input
+  label="Email"
+  type="email"
+  required
+/>
+```
+
+## Controlled Component
+
+```tsx
+function MyForm() {
+  const [email, setEmail] = useState('');
+  
+  return (
+    <Input
+      label="Email"
+      type="email"
+      value={email}
+      onChange={(e) => setEmail(e.target.value)}
+    />
+  );
+}
+```
+
+## Form Validation
+
+```tsx
+function ValidatedInput() {
+  const [email, setEmail] = useState('');
+  const [error, setError] = useState(false);
+  
+  const validate = (value: string) => {
+    const isValid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
+    setError(!isValid && value.length > 0);
+  };
+  
+  return (
+    <Input
+      label="Email"
+      type="email"
+      value={email}
+      onChange={(e) => {
+        setEmail(e.target.value);
+        validate(e.target.value);
+      }}
+      error={error}
+      errorMessage={error ? 'Invalid email address' : undefined}
+      required
+    />
+  );
+}
+```
+
+## Accessibility
+
+The Input component includes proper ARIA attributes:
+
+- Automatic ID generation for label association
+- `aria-invalid` for error states
+- `aria-describedby` for helper text and errors
+- `aria-required` for required fields
+
+## Props
+
+<ResponseField name="label" type="string">
+  Label text for the input
+</ResponseField>
+
+<ResponseField name="type" type="'text' | 'email' | 'password' | 'number' | 'tel' | 'url'" default="text">
+  HTML input type
+</ResponseField>
+
+<ResponseField name="placeholder" type="string">
+  Placeholder text
+</ResponseField>
+
+<ResponseField name="value" type="string">
+  Input value (controlled)
+</ResponseField>
+
+<ResponseField name="defaultValue" type="string">
+  Default value (uncontrolled)
+</ResponseField>
+
+<ResponseField name="onChange" type="(e: ChangeEvent) => void">
+  Change event handler
+</ResponseField>
+
+<ResponseField name="error" type="boolean" default="false">
+  Error state
+</ResponseField>
+
+<ResponseField name="errorMessage" type="string">
+  Error message to display
+</ResponseField>
+
+<ResponseField name="helperText" type="string">
+  Helper text below input
+</ResponseField>
+
+<ResponseField name="required" type="boolean" default="false">
+  Marks field as required
+</ResponseField>
+
+<ResponseField name="disabled" type="boolean" default="false">
+  Disables the input
+</ResponseField>
+
+## Examples
+
+### Login Form
+
+```tsx
+function LoginForm() {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  
+  return (
+    <form>
+      <Input
+        label="Email"
+        type="email"
+        value={email}
+        onChange={(e) => setEmail(e.target.value)}
+        required
+      />
+      <Input
+        label="Password"
+        type="password"
+        value={password}
+        onChange={(e) => setPassword(e.target.value)}
+        required
+      />
+      <Button type="submit">Sign In</Button>
+    </form>
+  );
+}
+```
+
+### Search Input
+
+```tsx
+<Input
+  type="text"
+  placeholder="Search..."
+  aria-label="Search"
+/>
+```
+
+## Related
+
+<CardGroup cols={2}>
+  <Card
+    title="Button Component"
+    icon="hand-pointer"
+    href="/components/button"
+  >
+    Button component
+  </Card>
+  <Card
+    title="API Reference"
+    icon="code"
+    href="/api/input-props"
+  >
+    Complete prop types
+  </Card>
+</CardGroup>

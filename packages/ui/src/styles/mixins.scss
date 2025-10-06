@@ -1,0 +1,210 @@
+// Portfolio Design System Mixins
+// Extracted from portfolio for reuse across all apps
+
+// Layout Mixins
+@mixin section {
+  position: relative;
+  padding-left: var(--padding-section-desktop);
+  padding-right: var(--padding-section-desktop);
+
+  @media (max-width: 600px) {
+    padding-left: var(--padding-section-mobile);
+    padding-right: var(--padding-section-mobile);
+  }
+}
+
+@mixin padding-around {
+  padding: var(--space-2);
+
+  @media (max-width: 600px) {
+    padding: var(--space-1);
+  }
+}
+
+// Typography Mixins
+@mixin gradient-text {
+  background: var(--brand-gradient);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+@mixin font-hero {
+  font-size: var(--font-size-hero-desktop);
+  line-height: var(--line-height-tight);
+  font-weight: var(--font-weight-light);
+  text-transform: uppercase;
+
+  @media (max-width: 1080px) {
+    font-size: var(--font-size-hero-tablet);
+  }
+
+  @media (max-width: 600px) {
+    font-size: var(--font-size-hero-mobile);
+  }
+}
+
+@mixin font-heading {
+  font-size: var(--font-size-heading-desktop);
+  line-height: var(--line-height-tight);
+  font-weight: var(--font-weight-light);
+  text-transform: uppercase;
+
+  @media (max-width: 1080px) {
+    font-size: var(--font-size-heading-tablet);
+  }
+
+  @media (max-width: 600px) {
+    font-size: var(--font-size-heading-mobile);
+  }
+}
+
+@mixin font-subheading {
+  font-size: var(--font-size-subheading-desktop);
+  letter-spacing: var(--letter-spacing-base);
+  text-transform: uppercase;
+  font-weight: var(--font-weight-light);
+
+  @media (max-width: 1080px) {
+    font-size: var(--font-size-subheading-tablet);
+  }
+}
+
+@mixin font-body {
+  font-size: var(--font-size-md);
+  line-height: var(--line-height-base);
+  letter-spacing: var(--letter-spacing-tight);
+  text-transform: uppercase;
+  font-weight: var(--font-weight-light);
+
+  @media (max-width: 1080px) {
+    font-size: var(--font-size-sm);
+  }
+}
+
+@mixin font-label {
+  font-size: var(--font-size-xs);
+  letter-spacing: var(--letter-spacing-wide);
+  text-transform: uppercase;
+}
+
+// Spacing Mixins
+@mixin margin-top-xl {
+  margin-top: var(--space-8);
+
+  @media (max-width: 840px) {
+    margin-top: var(--space-5);
+  }
+
+  @media (max-width: 600px) {
+    margin-top: var(--space-3);
+  }
+}
+
+@mixin margin-top-lg {
+  margin-top: var(--space-3);
+
+  @media (max-width: 600px) {
+    margin-top: var(--space-2);
+  }
+}
+
+@mixin margin-top-md {
+  margin-top: var(--space-2);
+
+  @media (max-width: 600px) {
+    margin-top: var(--space-1);
+  }
+}
+
+@mixin margin-top-sm {
+  margin-top: var(--space-1);
+
+  @media (max-width: 600px) {
+    margin-top: var(--space-xs);
+  }
+}
+
+// Effect Mixins
+@mixin glow-effect {
+  filter: var(--shadow-glow);
+  transition: filter var(--transition-base);
+
+  &:hover {
+    filter: var(--shadow-glow-hover);
+  }
+}
+
+@mixin button-inset {
+  box-shadow: var(--shadow-inset-light);
+  transition: all var(--transition-base);
+
+  &:hover {
+    box-shadow: var(--shadow-inset-light-hover);
+  }
+
+  &:active {
+    transform: translateY(1px) scale(0.99);
+    box-shadow: var(--shadow-inset-dark);
+  }
+}
+
+@mixin focus-visible {
+  &:focus-visible {
+    outline: var(--focus-outline);
+    outline-offset: var(--focus-offset);
+  }
+}
+
+@mixin focus-visible-solid {
+  &:focus-visible {
+    outline: var(--focus-outline-solid);
+    outline-offset: var(--focus-offset-sm);
+  }
+}
+
+// Animation Mixins
+@mixin smooth-transition {
+  transition: var(--transition-smooth);
+}
+
+@mixin hover-opacity {
+  opacity: 1;
+  transition: opacity var(--transition-smooth);
+
+  &:hover {
+    opacity: 1;
+  }
+}
+
+// Responsive Mixins
+@mixin mobile {
+  @media (max-width: 600px) {
+    @content;
+  }
+}
+
+@mixin tablet {
+  @media (max-width: 840px) {
+    @content;
+  }
+}
+
+@mixin desktop {
+  @media (max-width: 1080px) {
+    @content;
+  }
+}
+
+// Utility Mixins
+@mixin backdrop-blur {
+  backdrop-filter: var(--backdrop-blur);
+}
+
+@mixin mix-blend-difference {
+  mix-blend-mode: difference;
+}
+
+@mixin text-shadow-glow {
+  text-shadow: var(--text-shadow-glow);
+}

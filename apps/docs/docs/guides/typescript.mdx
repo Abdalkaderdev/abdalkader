@@ -1,0 +1,315 @@
+---
+title: TypeScript
+description: 'Using Component Library with TypeScript for type-safe development'
+---
+
+## Overview
+
+Component Library is built with TypeScript and provides comprehensive type definitions for all components and props.
+
+## Type Definitions
+
+All components export their prop types:
+
+```tsx
+import { Button, ButtonProps, Input, InputProps } from '@abdalkader/component-library';
+```
+
+## Button Types
+
+### ButtonProps Interface
+
+```tsx
+interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+  variant?: 'primary' | 'secondary' | 'danger';
+  size?: 'small' | 'medium' | 'large';
+  disabled?: boolean;
+  children: React.ReactNode;
+  'aria-label'?: string;
+  'aria-describedby'?: string;
+}
+```
+
+### Usage
+
+```tsx
+import { ButtonProps } from '@abdalkader/component-library';
+
+const buttonConfig: ButtonProps = {
+  variant: 'primary',
+  size: 'medium',
+  onClick: () => console.log('Clicked'),
+  children: 'Click me',
+};
+
+<Button {...buttonConfig} />
+```
+
+## Input Types
+
+### InputProps Interface
+
+```tsx
+interface InputProps extends Omit<React.InputHTMLAttributes<HTMLInputElement>, 'size'> {
+  type?: 'text' | 'email' | 'password' | 'number' | 'tel' | 'url';
+  label?: string;
+  error?: boolean;
+  errorMessage?: string;
+  required?: boolean;
+  helperText?: string;
+}
+```
+
+### Usage
+
+```tsx
+import { InputProps } from '@abdalkader/component-library';
+
+const inputConfig: InputProps = {
+  label: 'Email',
+  type: 'email',
+  required: true,
+  placeholder: 'Enter email',
+};
+
+<Input {...inputConfig} />
+```
+
+## Generic Components
+
+Create reusable typed components:
+
+```tsx
+import { Button, ButtonProps } from '@abdalkader/component-library';
+
+interface ActionButtonProps extends ButtonProps {
+  action: 'save' | 'delete' | 'cancel';
+}
+
+function ActionButton({ action, ...props }: ActionButtonProps) {
+  const variants = {
+    save: 'primary',
+    delete: 'danger',
+    cancel: 'secondary',
+  } as const;
+  
+  return <Button variant={variants[action]} {...props} />;
+}
+
+// Usage with full type safety
+<ActionButton action="save">Save</ActionButton>
+```
+
+## Form Types
+
+Type-safe form handling:
+
+```tsx
+interface LoginFormData {
+  email: string;
+  password: string;
+}
+
+function LoginForm() {
+  const [formData, setFormData] = useState<LoginFormData>({
+    email: '',
+    password: '',
+  });
+  
+  const handleChange = (field: keyof LoginFormData) => 
+    (e: React.ChangeEvent<HTMLInputElement>) => {
+      setFormData(prev => ({ ...prev, [field]: e.target.value }));
+    };
+  
+  return (
+    <form>
+      <Input
+        label="Email"
+        type="email"
+        value={formData.email}
+        onChange={handleChange('email')}
+      />
+      <Input
+        label="Password"
+        type="password"
+        value={formData.password}
+        onChange={handleChange('password')}
+      />
+    </form>
+  );
+}
+```
+
+## Ref Types
+
+Using refs with TypeScript:
+
+```tsx
+import { useRef } from 'react';
+import { Button, Input } from '@abdalkader/component-library';
+
+function MyComponent() {
+  const buttonRef = useRef<HTMLButtonElement>(null);
+  const inputRef = useRef<HTMLInputElement>(null);
+  
+  const focusInput = () => {
+    inputRef.current?.focus();
+  };
+  
+  return (
+    <>
+      <Input ref={inputRef} label="Email" />
+      <Button ref={buttonRef} onClick={focusInput}>
+        Focus Input
+      </Button>
+    </>
+  );
+}
+```
+
+## Event Types
+
+Properly typed event handlers:
+
+```tsx
+import { Input } from '@abdalkader/component-library';
+
+function MyForm() {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    console.log(e.target.value);
+  };
+  
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    // Handle form submission
+  };
+  
+  return (
+    <form onSubmit={handleSubmit}>
+      <Input onChange={handleChange} />
+    </form>
+  );
+}
+```
+
+## Extending Component Props
+
+Extend component props for custom wrappers:
+
+```tsx
+import { Button, ButtonProps } from '@abdalkader/component-library';
+
+interface LoadingButtonProps extends ButtonProps {
+  loading?: boolean;
+}
+
+function LoadingButton({ loading, children, ...props }: LoadingButtonProps) {
+  return (
+    <Button {...props} disabled={loading || props.disabled}>
+      {loading ? 'Loading...' : children}
+    </Button>
+  );
+}
+```
+
+## Type Guards
+
+Create type guards for runtime checks:
+
+```tsx
+import { ButtonProps } from '@abdalkader/component-library';
+
+function isPrimaryButton(props: ButtonProps): boolean {
+  return props.variant === 'primary';
+}
+
+function isDangerButton(props: ButtonProps): boolean {
+  return props.variant === 'danger';
+}
+```
+
+## Utility Types
+
+Use TypeScript utility types:
+
+```tsx
+import { ButtonProps } from '@abdalkader/component-library';
+
+// Pick specific props
+type ButtonVariantProps = Pick<ButtonProps, 'variant' | 'size'>;
+
+// Omit props
+type ButtonWithoutChildren = Omit<ButtonProps, 'children'>;
+
+// Partial props
+type PartialButtonProps = Partial<ButtonProps>;
+
+// Required props
+type RequiredButtonProps = Required<ButtonProps>;
+```
+
+## Best Practices
+
+<AccordionGroup>
+  <Accordion title="Import types explicitly">
+    ```tsx
+    import { Button, type ButtonProps } from '@abdalkader/component-library';
+    ```
+  </Accordion>
+  
+  <Accordion title="Use const assertions">
+    ```tsx
+    const variants = ['primary', 'secondary', 'danger'] as const;
+    type Variant = typeof variants[number];
+    ```
+  </Accordion>
+  
+  <Accordion title="Leverage type inference">
+    ```tsx
+    // TypeScript infers the type
+    const handleClick = (e) => console.log(e);
+    <Button onClick={handleClick} />
+    ```
+  </Accordion>
+  
+  <Accordion title="Use discriminated unions">
+    ```tsx
+    type ButtonState = 
+      | { loading: true; disabled: true }
+      | { loading: false; disabled?: boolean };
+    ```
+  </Accordion>
+</AccordionGroup>
+
+## TSConfig Recommendations
+
+```json
+{
+  "compilerOptions": {
+    "jsx": "react-jsx",
+    "strict": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true
+  }
+}
+```
+
+## Related
+
+<CardGroup cols={2}>
+  <Card
+    title="API Reference"
+    icon="code"
+    href="/api/button-props"
+  >
+    Complete type definitions
+  </Card>
+  <Card
+    title="Components"
+    icon="grid"
+    href="/components/button"
+  >
+    Component documentation
+  </Card>
+</CardGroup>

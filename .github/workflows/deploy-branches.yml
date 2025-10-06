@@ -1,0 +1,42 @@
+name: Multi-Branch Deployment
+
+on:
+  push:
+    branches:
+      - main
+      - develop
+      - components
+      - blog
+      - ai-editor
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+      
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v2
+        with:
+          version: 8
+      
+      - name: Install dependencies
+        run: pnpm install
+      
+      - name: Build UI Library
+        run: pnpm --filter @abdalkader/ui build
+      
+      - name: Deploy to Vercel
+        run: |
+          if [ "${{ github.ref }}" == "refs/heads/main" ]; then
+            echo "Deploying Portfolio to Production"
+          elif [ "${{ github.ref }}" == "refs/heads/develop" ]; then
+            echo "Deploying Portfolio to Staging"
+          elif [ "${{ github.ref }}" == "refs/heads/components" ]; then
+            echo "Deploying Storybook"
+          fi

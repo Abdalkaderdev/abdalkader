@@ -1,0 +1,132 @@
+/* Design Tokens - Extracted from Portfolio */
+:root {
+  /* Brand Colors */
+  --brand-primary: #f44e00;
+  --brand-primary-light: #fa7300;
+  --brand-gradient: linear-gradient(to bottom, #f44e00, #fa7300);
+  --brand-gradient-top: linear-gradient(to top, #f44e00, #fa7300);
+  
+  /* Semantic Colors */
+  --color-success: #28a745;
+  --color-danger: #dc3545;
+  --color-warning: #ffc107;
+  --color-info: #17a2b8;
+  
+  /* Neutral Palette */
+  --color-white: #f8f8f8;
+  --color-black: #000000;
+  --color-text-dark: #131313;
+  --color-text-grey: #787878;
+  --color-navigation: rgba(45, 45, 45, 0.35);
+  --color-border: rgb(37, 37, 37);
+  
+  /* Typography */
+  --font-primary: 'PPNeueMontreal-Regular', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-medium: 'PPNeueMontreal-Medium', -apple-system, BlinkMacSystemFont, sans-serif;
+  
+  /* Font Sizes - Portfolio Scale */
+  --font-size-xs: 0.6rem;       /* 9.6px - Small labels */
+  --font-size-sm: 0.7rem;       /* 11.2px - Labels */
+  --font-size-base: 0.9rem;     /* 14.4px - Buttons */
+  --font-size-md: 1rem;         /* 16px - Body */
+  --font-size-lg: 1.8rem;       /* 28.8px - Subheadings */
+  --font-size-xl: 2.75rem;      /* 44px - Headings */
+  --font-size-2xl: 4.5rem;      /* 72px - Hero */
+  
+  /* Responsive Font Sizes */
+  --font-size-hero-desktop: 4.5rem;
+  --font-size-hero-tablet: 3.2rem;
+  --font-size-hero-mobile: 2.5rem;
+  --font-size-heading-desktop: 2.75rem;
+  --font-size-heading-tablet: 2.2rem;
+  --font-size-heading-mobile: 1.8rem;
+  --font-size-subheading-desktop: 1.8rem;
+  --font-size-subheading-tablet: 1.2rem;
+  
+  --font-weight-light: 300;
+  --font-weight-normal: 400;
+  --font-weight-bold: 700;
+  
+  --line-height-tight: 0.9;
+  --line-height-base: 1.6;
+  --letter-spacing-tight: 0.05rem;
+  --letter-spacing-base: 0.08rem;
+  --letter-spacing-wide: 0.1rem;
+  
+  /* Spacing Scale - Portfolio System */
+  --space-0: 0;
+  --space-xs: 0.7rem;   /* 11.2px - Menu gaps */
+  --space-sm: 0.8rem;   /* 12.8px - List gaps */
+  --space-1: 1rem;      /* 16px - Base padding */
+  --space-2: 2rem;      /* 32px - Section padding */
+  --space-3: 3rem;      /* 48px - Margin top small */
+  --space-5: 5rem;      /* 80px - Margin top medium */
+  --space-6: 6rem;      /* 96px - Section gaps mobile */
+  --space-8: 8rem;      /* 128px - Section gaps tablet */
+  --space-10: 10rem;    /* 160px - Section gaps desktop */
+  
+  /* Component Spacing */
+  --padding-section-desktop: 2rem;
+  --padding-section-mobile: 1rem;
+  --padding-button: 1rem 2rem;
+  --padding-nav: 1.4rem 2rem;
+  --gap-section-desktop: 10rem;
+  --gap-section-tablet: 8rem;
+  --gap-section-mobile: 6rem;
+  
+  /* Border Radius */
+  --radius-sm: 6px;
+  --radius-base: 8px;
+  --radius-md: 12px;
+  --radius-full: 100px;
+  
+  /* Shadows & Effects */
+  --shadow-glow: 0px 0px 5px var(--brand-primary);
+  --shadow-glow-hover: 0px 0px 10px var(--brand-primary);
+  --shadow-inset-light: inset 0px -20px 20px rgba(255, 255, 255, 0.2);
+  --shadow-inset-light-hover: inset 0px -30px 20px rgba(255, 255, 255, 0.2);
+  --shadow-inset-dark: inset 0px -15px 15px rgba(0, 0, 0, 0.2);
+  --text-shadow-glow: 0 0 6px rgba(244, 78, 0, 0.6);
+  --backdrop-blur: blur(50px);
+  
+  /* Transitions & Animations */
+  --transition-smooth: 0.8s cubic-bezier(0.19, 1, 0.22, 1);
+  --transition-base: 0.5s ease;
+  --transition-fast: 0.3s ease-in-out;
+  --transition-color: color 0.8s cubic-bezier(0.19, 1, 0.22, 1);
+  --ease-portfolio: cubic-bezier(0.19, 1, 0.22, 1);
+  
+  /* Z-Index Scale */
+  --z-base: 0;
+  --z-dropdown: 1000;
+  --z-sticky: 1100;
+  --z-fixed: 1200;
+  --z-modal-backdrop: 1300;
+  --z-modal: 1400;
+  --z-popover: 1500;
+  --z-tooltip: 1600;
+  
+  /* Breakpoints */
+  --breakpoint-mobile: 600px;
+  --breakpoint-tablet: 840px;
+  --breakpoint-desktop: 1080px;
+  
+  /* Focus & Accessibility */
+  --focus-outline: 2px dashed var(--brand-primary);
+  --focus-outline-solid: 2px solid var(--color-white);
+  --focus-offset: 3px;
+  --focus-offset-sm: 2px;
+  
+  /* Z-Index Scale */
+  --z-nav: 20;
+  --z-menu: 10;
+  --z-intro: 5000000;
+  --z-transition: 1000;
+  
+  /* Component-Specific */
+  --nav-bar-width: 140px;
+  --nav-bar-width-hover: 160px;
+  --nav-bar-height: 5px;
+  --menu-top-offset: 10px;
+  --menu-border-radius: 8px;
+}

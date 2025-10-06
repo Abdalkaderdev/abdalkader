@@ -16,6 +16,7 @@ const csp = "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval'
 /** @type {import('next').NextConfig} */
 const nextConfig = {
     trailingSlash: true,
+    transpilePackages: ['@abdalkader/ui'],
     async headers() {
         return [
             { source: '/(.*)', headers: [...securityHeaders, { key: 'Content-Security-Policy', value: csp }] },
