@@ -1,0 +1,217 @@
+---
+title: Button Props
+description: 'Complete API reference for Button component props'
+---
+
+## ButtonProps Interface
+
+```tsx
+interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+  variant?: 'primary' | 'secondary' | 'danger';
+  size?: 'small' | 'medium' | 'large';
+  disabled?: boolean;
+  children: React.ReactNode;
+  'aria-label'?: string;
+  'aria-describedby'?: string;
+}
+```
+
+## Props
+
+### variant
+
+<ParamField path="variant" type="'primary' | 'secondary' | 'danger'" default="primary">
+  Visual style variant of the button.
+  
+  - `primary`: Main action button with primary brand color
+  - `secondary`: Secondary action button with muted color
+  - `danger`: Destructive action button with danger color
+</ParamField>
+
+**Example:**
+```tsx
+<Button variant="primary">Primary</Button>
+<Button variant="secondary">Secondary</Button>
+<Button variant="danger">Delete</Button>
+```
+
+### size
+
+<ParamField path="size" type="'small' | 'medium' | 'large'" default="medium">
+  Size of the button affecting padding and font size.
+  
+  - `small`: Compact button (min-height: 2rem)
+  - `medium`: Standard button (min-height: 2.5rem)
+  - `large`: Prominent button (min-height: 3rem)
+</ParamField>
+
+**Example:**
+```tsx
+<Button size="small">Small</Button>
+<Button size="medium">Medium</Button>
+<Button size="large">Large</Button>
+```
+
+### disabled
+
+<ParamField path="disabled" type="boolean" default="false">
+  Disables the button, preventing interaction and reducing opacity.
+</ParamField>
+
+**Example:**
+```tsx
+<Button disabled>Disabled Button</Button>
+```
+
+### children
+
+<ParamField path="children" type="React.ReactNode" required>
+  Content to be rendered inside the button. Can be text, icons, or other React elements.
+</ParamField>
+
+**Example:**
+```tsx
+<Button>Text Content</Button>
+<Button><Icon /> With Icon</Button>
+```
+
+### type
+
+<ParamField path="type" type="'button' | 'submit' | 'reset'" default="button">
+  HTML button type attribute.
+  
+  - `button`: Standard button
+  - `submit`: Form submission button
+  - `reset`: Form reset button
+</ParamField>
+
+**Example:**
+```tsx
+<Button type="submit">Submit Form</Button>
+<Button type="reset">Reset</Button>
+```
+
+### onClick
+
+<ParamField path="onClick" type="(event: React.MouseEvent) => void">
+  Click event handler function.
+</ParamField>
+
+**Example:**
+```tsx
+<Button onClick={() => console.log('Clicked')}>
+  Click me
+</Button>
+```
+
+### className
+
+<ParamField path="className" type="string">
+  Additional CSS classes to apply to the button.
+</ParamField>
+
+**Example:**
+```tsx
+<Button className="custom-class">Styled Button</Button>
+```
+
+### aria-label
+
+<ParamField path="aria-label" type="string">
+  Accessible label for screen readers. Required for icon-only buttons.
+</ParamField>
+
+**Example:**
+```tsx
+<Button aria-label="Close dialog">×</Button>
+```
+
+### aria-describedby
+
+<ParamField path="aria-describedby" type="string">
+  ID of element that describes the button.
+</ParamField>
+
+**Example:**
+```tsx
+<Button aria-describedby="save-description">Save</Button>
+<span id="save-description" className="sr-only">
+  Save your changes
+</span>
+```
+
+## Inherited Props
+
+Button extends `React.ButtonHTMLAttributes<HTMLButtonElement>`, inheriting all standard HTML button attributes:
+
+- `id`
+- `name`
+- `value`
+- `form`
+- `formAction`
+- `formMethod`
+- `formTarget`
+- `formNoValidate`
+- `autoFocus`
+- `onFocus`
+- `onBlur`
+- `onMouseEnter`
+- `onMouseLeave`
+- And all other standard button attributes
+
+## CSS Classes
+
+| Class | Description |
+|-------|-------------|
+| `.btn` | Base button class |
+| `.btn--primary` | Primary variant |
+| `.btn--secondary` | Secondary variant |
+| `.btn--danger` | Danger variant |
+| `.btn--small` | Small size |
+| `.btn--medium` | Medium size |
+| `.btn--large` | Large size |
+
+## CSS Variables
+
+| Variable | Default | Description |
+|----------|---------|-------------|
+| `--primary-color` | `#007bff` | Primary button background |
+| `--primary-hover` | `#0056b3` | Primary button hover state |
+| `--secondary-color` | `#6c757d` | Secondary button background |
+| `--danger-color` | `#dc3545` | Danger button background |
+| `--font-family` | System fonts | Button font family |
+| `--border-radius` | `0.375rem` | Button border radius |
+| `--transition-base` | `all 0.2s ease-in-out` | Button transitions |
+
+## TypeScript
+
+Import the type:
+
+```tsx
+import { ButtonProps } from '@abdalkader/component-library';
+
+const props: ButtonProps = {
+  variant: 'primary',
+  size: 'medium',
+  children: 'Click me',
+};
+```
+
+## Related
+
+<CardGroup cols={2}>
+  <Card
+    title="Button Component"
+    icon="hand-pointer"
+    href="/components/button"
+  >
+    Component documentation
+  </Card>
+  <Card
+    title="Input Props"
+    icon="input-text"
+    href="/api/input-props"
+  >
+    Input API reference
+  </Card>
+</CardGroup>

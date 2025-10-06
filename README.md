@@ -1,36 +1,113 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Abdalkader Monorepo
+
+Personal portfolio and component library monorepo.
+
+## Structure
+
+```
+abdalkader/
+├── apps/
+│   ├── portfolio/    # Next.js portfolio (abdalkader.dev)
+│   └── docs/         # Storybook + Mintlify docs
+├── packages/
+│   └── ui/           # @abdalkader/ui component library
+```
 
 ## Getting Started
 
-First, run the development server:
+### Prerequisites
+
+- Node.js 18+
+- pnpm 8+
+
+### Installation
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+# Install pnpm globally
+npm install -g pnpm
+
+# Install dependencies
+pnpm install
+
+# Build all packages
+pnpm build
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### Development
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+# Run all apps in dev mode
+pnpm dev
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+# Run specific app
+pnpm --filter @abdalkader/portfolio dev
+pnpm --filter @abdalkader/docs dev
+pnpm --filter @abdalkader/ui dev
+```
 
-## Learn More
+### Building
 
-To learn more about Next.js, take a look at the following resources:
+```bash
+# Build all
+pnpm build
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+# Build specific package
+pnpm --filter @abdalkader/ui build
+pnpm --filter @abdalkader/portfolio build
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### Testing
 
-## Deploy on Vercel
+```bash
+# Run all tests
+pnpm test
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+# Test UI library
+pnpm --filter @abdalkader/ui test
+```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Apps
+
+### Portfolio (`apps/portfolio`)
+- **URL**: https://abdalkader.dev
+- **Tech**: Next.js 14, SCSS, GSAP, Framer Motion
+- **Purpose**: Personal portfolio website
+
+### Docs (`apps/docs`)
+- **URL**: https://abdalkader.dev/storybook
+- **Tech**: Storybook, Mintlify
+- **Purpose**: Component library documentation
+
+## Packages
+
+### UI (`packages/ui`)
+- **Package**: `@abdalkader/ui`
+- **Tech**: React, TypeScript, Rollup
+- **Purpose**: Reusable component library
+
+## Deployment
+
+### Portfolio
+- Platform: Vercel
+- Auto-deploys from `main` branch
+- URL: https://abdalkader.dev
+
+### Docs
+- Platform: Vercel
+- Auto-deploys from `main` branch
+- URL: https://abdalkader.dev/storybook
+
+## Scripts
+
+```bash
+pnpm dev          # Start all apps in dev mode
+pnpm build        # Build all packages
+pnpm lint         # Lint all packages
+pnpm test         # Test all packages
+pnpm typecheck    # Type check all packages
+pnpm clean        # Clean all build artifacts
+```
+
+## License
+
+MIT © Abdalkader

@@ -1,0 +1,143 @@
+title: Abdalkader's Blog
+subtitle: Personal blog about web development and technology
+description: >-
+  A modern blog platform featuring technical tutorials, project showcases, and
+  industry insights
+keywords: web development, technology, programming, tutorials
+author: Abdalkader
+language: en
+timezone: ''
+url: https://abdalkader.dev
+permalink: 'blog/:title/'
+permalink_defaults: null
+pretty_urls:
+  trailing_index: false
+  trailing_html: false
+source_dir: source
+public_dir: public
+tag_dir: tags
+archive_dir: archives
+category_dir: categories
+code_dir: downloads/code
+i18n_dir: ':lang'
+skip_render: null
+new_post_name: ':title.md'
+default_layout: post
+titlecase: false
+external_link:
+  enable: true
+  field: site
+  exclude: ''
+filename_case: 0
+render_drafts: false
+post_asset_folder: false
+relative_link: false
+future: true
+syntax_highlighter: highlight.js
+highlight:
+  enable: true
+  line_number: true
+  auto_detect: false
+  tab_replace: ''
+  wrap: true
+  hljs: false
+prismjs:
+  enable: false
+  preprocess: false
+  line_number: true
+  tab_replace: ''
+index_generator:
+  path: ''
+  per_page: 10
+  order_by: '-date'
+default_category: uncategorized
+category_map: null
+tag_map: null
+meta_generator: true
+date_format: YYYY-MM-DD
+time_format: HH:mm:ss
+updated_option: mtime
+per_page: 10
+pagination_dir: page
+include: null
+exclude: null
+ignore: null
+theme: icarus
+
+# Plugins
+sitemap:
+  path: sitemap.xml
+  rel: false
+  tags: true
+  categories: true
+
+feed:
+  enable: true
+  type: atom
+  path: atom.xml
+  limit: 20
+  hub:
+  content:
+  content_limit: 140
+  content_limit_delim: ' '
+  order_by: -date
+  icon: icon.png
+  autodiscovery: true
+
+# Search Database
+search:
+  path: search.xml
+  field: post
+  content: true
+  format: html
+
+# Word Count
+symbols_count_time:
+  symbols: true
+  time: true
+  total_symbols: true
+  total_time: true
+  exclude_codeblock: false
+  awl: 4
+  wpm: 275
+  suffix: "mins."
+
+# Prism Syntax Highlighting
+prism_plugin:
+  mode: 'preprocess'
+  theme: 'tomorrow'
+  line_number: true
+  custom_css:
+
+# Related Posts
+related_posts:
+  enable: true
+  title: "Related Posts"
+  display_in_home: false
+  params:
+    maxCount: 5
+    PPMixingRate: 0.0
+    isDate: false
+    isImage: false
+    isExcerpt: false
+
+# Algolia Search
+algolia:
+  applicationID: '12WCJTIDSP'
+  apiKey: 'd5276da306cd5167cb2f806ab031b302'
+  adminApiKey: 'ac2a2b4373dd07c932ababda28e97898'
+  indexName: 'abdalkader-blog'
+  chunkSize: 5000
+  fields:
+    - content:strip:truncate,0,500
+    - excerpt:strip
+    - gallery
+    - permalink
+    - photos
+    - slug
+    - tags
+    - title
+    - updated
+
+deploy:
+  type: ''

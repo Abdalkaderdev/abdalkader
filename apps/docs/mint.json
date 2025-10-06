@@ -1,0 +1,96 @@
+{
+  "name": "Component Library",
+  "logo": {
+    "dark": "/logo/dark.svg",
+    "light": "/logo/light.svg"
+  },
+  "favicon": "/favicon.svg",
+  "colors": {
+    "primary": "#007bff",
+    "light": "#3b9eff",
+    "dark": "#0056b3",
+    "anchors": {
+      "from": "#007bff",
+      "to": "#0056b3"
+    }
+  },
+  "topbarLinks": [
+    {
+      "name": "Storybook",
+      "url": "https://components.abdalkader.dev"
+    }
+  ],
+  "topbarCtaButton": {
+    "name": "GitHub",
+    "url": "https://github.com/abdalkader/component-library"
+  },
+  "tabs": [
+    {
+      "name": "Components",
+      "url": "components"
+    },
+    {
+      "name": "API Reference",
+      "url": "api"
+    }
+  ],
+  "anchors": [
+    {
+      "name": "NPM Package",
+      "icon": "npm",
+      "url": "https://www.npmjs.com/package/@abdalkader/component-library"
+    },
+    {
+      "name": "Storybook",
+      "icon": "book",
+      "url": "https://components.abdalkader.dev"
+    },
+    {
+      "name": "Portfolio",
+      "icon": "globe",
+      "url": "https://abdalkader.dev"
+    }
+  ],
+  "navigation": [
+    {
+      "group": "Getting Started",
+      "pages": [
+        "docs/introduction",
+        "docs/installation",
+        "docs/quickstart",
+        "docs/theming"
+      ]
+    },
+    {
+      "group": "Guides",
+      "pages": [
+        "guides/accessibility",
+        "guides/typescript",
+        "guides/contributing"
+      ]
+    },
+    {
+      "group": "Components",
+      "pages": [
+        "components/button",
+        "components/input"
+      ]
+    },
+    {
+      "group": "API Reference",
+      "pages": [
+        "api/button-props",
+        "api/input-props"
+      ]
+    }
+  ],
+  "footerSocials": {
+    "github": "https://github.com/abdalkader/component-library",
+    "website": "https://abdalkader.dev"
+  },
+  "analytics": {
+    "ga4": {
+      "measurementId": "G-XXXXXXXXXX"
+    }
+  }
+}

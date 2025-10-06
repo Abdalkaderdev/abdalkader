@@ -1,0 +1,61 @@
+/* Force brand colors - highest specificity */
+
+html, body {
+  background-color: #0d0d0d !important;
+  color: #e5e2df !important;
+}
+
+* {
+  color: #e5e2df !important;
+}
+
+/* All containers */
+.container, .content, .section, .card, .widget, .box, .article, .navbar, .footer {
+  background-color: #0d0d0d !important;
+  color: #e5e2df !important;
+}
+
+.card, .widget, .box {
+  background-color: #121212 !important;
+  border: 1px solid #242424 !important;
+}
+
+/* All links and accents */
+a, .tag, .button, .btn, .is-primary, .has-text-primary, .is-link, .has-text-link {
+  color: #ff7a25 !important;
+}
+
+.tag, .button, .btn, .is-primary {
+  background-color: #ff7a25 !important;
+  color: #ffffff !important;
+}
+
+/* Override any yellow/info colors */
+.is-info, .has-background-info, .is-warning, .has-background-warning {
+  background-color: #ff7a25 !important;
+  color: #ffffff !important;
+}
+
+.has-text-info, .has-text-warning {
+  color: #ff7a25 !important;
+}
+
+/* Navigation */
+.navbar, .navbar-menu, .navbar-brand, .navbar-item {
+  background-color: #121212 !important;
+  color: #e5e2df !important;
+}
+
+.navbar-item:hover {
+  color: #ff7a25 !important;
+}
+
+/* Headings */
+h1, h2, h3, h4, h5, h6 {
+  color: #e5e2df !important;
+}
+
+/* Meta text */
+.article-meta, .post-meta, .text-muted, .muted, small {
+  color: #888888 !important;
+}

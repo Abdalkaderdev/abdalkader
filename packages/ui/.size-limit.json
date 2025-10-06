@@ -1,0 +1,19 @@
+[
+  {
+    "name": "Full Library",
+    "path": "dist/index.esm.js",
+    "limit": "10 KB"
+  },
+  {
+    "name": "Button Component",
+    "path": "dist/index.esm.js",
+    "import": "{ Button }",
+    "limit": "3 KB"
+  },
+  {
+    "name": "Input Component",
+    "path": "dist/index.esm.js",
+    "import": "{ Input }",
+    "limit": "4 KB"
+  }
+]
