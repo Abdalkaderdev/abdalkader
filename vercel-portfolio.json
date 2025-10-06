@@ -1,7 +1,7 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
-  "buildCommand": "pnpm turbo run build --filter=@abdalkader/portfolio",
-  "installCommand": "pnpm install",
+  "buildCommand": "pnpm install --no-frozen-lockfile && pnpm turbo run build --filter=@abdalkader/portfolio...",
+  "installCommand": null,
   "outputDirectory": "apps/portfolio/.next",
   "framework": "nextjs"
 }
