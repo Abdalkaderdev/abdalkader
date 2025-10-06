@@ -5,7 +5,8 @@
     "build": {
       "dependsOn": ["^build"],
       "outputs": [".next/**", "!.next/cache/**", "dist/**", "storybook-static/**", "public/**"],
-      "cache": true
+      "cache": true,
+      "env": ["NODE_ENV", "NEXT_PUBLIC_SITE_URL", "VERCEL_GIT_COMMIT_REF"]
     },
     "@abdalkader/portfolio#build": {
       "dependsOn": ["^build"],
