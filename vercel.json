@@ -1,15 +1,15 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
-  "buildCommand": "pnpm turbo run build --filter=$VERCEL_APP",
+  "buildCommand": "pnpm turbo run build --filter=@abdalkader/portfolio",
   "installCommand": "pnpm install",
-  "framework": null,
+  "outputDirectory": "apps/portfolio/.next",
+  "framework": "nextjs",
   "git": {
     "deploymentEnabled": {
       "main": true,
       "develop": true,
       "components": true,
-      "blog": true,
-      "ai-editor": true
+      "blog": true
     }
   }
 }

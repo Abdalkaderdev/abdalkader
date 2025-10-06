@@ -4,7 +4,28 @@
   "tasks": {
     "build": {
       "dependsOn": ["^build"],
-      "outputs": [".next/**", "!.next/cache/**", "dist/**", "storybook-static/**"]
+      "outputs": [".next/**", "!.next/cache/**", "dist/**", "storybook-static/**", "public/**"],
+      "cache": true
+    },
+    "@abdalkader/portfolio#build": {
+      "dependsOn": ["^build"],
+      "outputs": ["apps/portfolio/.next/**", "!apps/portfolio/.next/cache/**"],
+      "cache": true
+    },
+    "@abdalkader/docs#build": {
+      "dependsOn": ["^build"],
+      "outputs": ["apps/docs/storybook-static/**"],
+      "cache": true
+    },
+    "@abdalkader/blog#build": {
+      "dependsOn": [],
+      "outputs": ["apps/blog/public/**"],
+      "cache": true
+    },
+    "@abdalkader/ui#build": {
+      "dependsOn": [],
+      "outputs": ["packages/ui/dist/**"],
+      "cache": true
     },
     "dev": {
       "cache": false,

@@ -7,8 +7,8 @@ keywords: web development, technology, programming, tutorials
 author: Abdalkader
 language: en
 timezone: ''
-url: https://abdalkader.dev
-permalink: 'blog/:title/'
+url: https://blog.abdalkader.dev
+permalink: ':title/'
 permalink_defaults: null
 pretty_urls:
   trailing_index: false
