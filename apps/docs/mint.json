@@ -1,17 +1,17 @@
 {
-  "name": "Component Library",
+  "name": "Abdalkader Design System",
   "logo": {
     "dark": "/logo/dark.svg",
     "light": "/logo/light.svg"
   },
   "favicon": "/favicon.svg",
   "colors": {
-    "primary": "#007bff",
-    "light": "#3b9eff",
-    "dark": "#0056b3",
+    "primary": "#f44e00",
+    "light": "#fa7300",
+    "dark": "#d63384",
     "anchors": {
-      "from": "#007bff",
-      "to": "#0056b3"
+      "from": "#f44e00",
+      "to": "#fa7300"
     }
   },
   "topbarLinks": [
@@ -22,7 +22,7 @@
   ],
   "topbarCtaButton": {
     "name": "GitHub",
-    "url": "https://github.com/abdalkader/component-library"
+    "url": "https://github.com/Abdalkaderdev/abdalkader"
   },
   "tabs": [
     {
@@ -85,7 +85,7 @@
     }
   ],
   "footerSocials": {
-    "github": "https://github.com/abdalkader/component-library",
+    "github": "https://github.com/Abdalkaderdev/abdalkader",
     "website": "https://abdalkader.dev"
   },
   "analytics": {
