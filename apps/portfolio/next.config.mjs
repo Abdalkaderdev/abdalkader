@@ -1,7 +1,15 @@
 /** @type {import('next').NextConfig} */
-import bundleAnalyzer from 'next-bundle-analyzer';
+let withBundleAnalyzer = (config) => config;
 
-const withBundleAnalyzer = bundleAnalyzer({ enabled: process.env.ANALYZE === 'true' });
+// Only use bundle analyzer in development or when explicitly requested
+if (process.env.NODE_ENV !== 'production' || process.env.ANALYZE === 'true') {
+  try {
+    const bundleAnalyzer = require('next-bundle-analyzer');
+    withBundleAnalyzer = bundleAnalyzer({ enabled: process.env.ANALYZE === 'true' });
+  } catch (error) {
+    console.warn('next-bundle-analyzer not available, skipping bundle analysis');
+  }
+}
 
 const securityHeaders = [
     { key: 'X-Frame-Options', value: 'SAMEORIGIN' },

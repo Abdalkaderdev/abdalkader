@@ -1,7 +1,6 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
-  "buildCommand": "cd ../.. && pnpm install --no-frozen-lockfile && pnpm turbo run build --filter=@abdalkader/portfolio...",
-  "installCommand": null,
+  "monorepo": true,
   "git": {
     "deploymentEnabled": {
       "main": true,

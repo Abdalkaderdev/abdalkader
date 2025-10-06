@@ -32,13 +32,12 @@ module.exports = [
       commonjs(),
       typescript({
         tsconfig: './tsconfig.json',
-        declaration: true,
-        declarationDir: 'dist',
-        rootDir: 'src',
+        declaration: false, // We'll handle declarations separately
         exclude: ['**/*.stories.tsx', '**/*.test.tsx', '**/*.spec.tsx'],
         compilerOptions: {
-          jsx: 'react',
-          declaration: true,
+          jsx: 'react-jsx',
+          declaration: false,
+          emitDeclarationOnly: false,
         },
       }),
       postcss({
@@ -58,12 +57,15 @@ module.exports = [
     ],
   },
   {
-    input: 'dist/index.d.ts',
+    input: 'src/index.ts',
     output: [{ file: 'dist/index.d.ts', format: 'esm' }],
     plugins: [
       dts({
+        tsconfig: './tsconfig.json',
         compilerOptions: {
           preserveSymlinks: false,
+          incremental: false,
+          declarationMap: false,
         },
       }),
     ],

@@ -10,22 +10,22 @@
     },
     "@abdalkader/portfolio#build": {
       "dependsOn": ["^build"],
-      "outputs": ["apps/portfolio/.next/**", "!apps/portfolio/.next/cache/**"],
+      "outputs": [".next/**", "!.next/cache/**"],
       "cache": true
     },
     "@abdalkader/docs#build": {
       "dependsOn": ["^build"],
-      "outputs": ["apps/docs/storybook-static/**"],
+      "outputs": ["storybook-static/**"],
       "cache": true
     },
     "@abdalkader/blog#build": {
       "dependsOn": [],
-      "outputs": ["apps/blog/public/**"],
+      "outputs": ["public/**"],
       "cache": true
     },
     "@abdalkader/ui#build": {
       "dependsOn": [],
-      "outputs": ["packages/ui/dist/**"],
+      "outputs": ["dist/**"],
       "cache": true
     },
     "dev": {
