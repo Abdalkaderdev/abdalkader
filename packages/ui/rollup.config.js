@@ -51,8 +51,10 @@ module.exports = [
       }),
     ],
     external: [
-      ...Object.keys(pkg.peerDependencies || {}),
+      'react',
+      'react-dom',
       'react/jsx-runtime',
+      ...Object.keys(pkg.peerDependencies || {}),
     ],
   },
   {

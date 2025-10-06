@@ -1,7 +1,22 @@
-@import './design-tokens.css';
-
-/* Legacy component tokens - will be deprecated */
+/* Design Tokens */
 :root {
+  /* Brand Colors */
+  --brand-primary: #f44e00;
+  --brand-primary-light: #fa7300;
+  --brand-gradient: linear-gradient(to bottom, #f44e00, #fa7300);
+  
+  /* Spacing Scale */
+  --space-1: 1rem;
+  --space-2: 2rem;
+  --space-4: 4rem;
+  --space-6: 6rem;
+  --space-8: 8rem;
+  
+  /* Transitions */
+  --transition-smooth: 0.8s cubic-bezier(0.19, 1, 0.22, 1);
+  --ease-portfolio: cubic-bezier(0.19, 1, 0.22, 1);
+  
+  /* Legacy component tokens - will be deprecated */
   /* Colors */
   --primary-color: var(--brand-primary);
   --primary-hover: #0056b3;
