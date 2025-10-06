@@ -1,0 +1,88 @@
+/* Force override Icarus default styles */
+
+/* Override body and html */
+html, body {
+  background-color: #000 !important;
+  color: #f8f8f8 !important;
+}
+
+/* Override all text colors */
+.content, .article, .widget, .navbar, .footer, p, h1, h2, h3, h4, h5, h6, span, div {
+  color: #f8f8f8 !important;
+}
+
+/* Override background colors */
+.navbar, .card, .widget, .article {
+  background-color: #111111 !important;
+  border-color: rgb(37, 37, 37) !important;
+}
+
+/* Override primary colors */
+.button, .tag, .pagination .current, a:hover {
+  background-color: #ff6b35 !important;
+  color: #000 !important;
+}
+
+/* Override links */
+a {
+  color: #ff6b35 !important;
+}
+
+a:hover {
+  color: #ff8c42 !important;
+}
+
+/* Override navbar */
+.navbar {
+  background-color: rgba(45, 45, 45, 0.35) !important;
+  backdrop-filter: blur(10px) !important;
+}
+
+/* Override sidebar */
+.widget-title {
+  background-color: #111111 !important;
+  color: #f8f8f8 !important;
+}
+
+/* Override code blocks */
+pre, code {
+  background-color: #1a1a1a !important;
+  color: #f8f8f8 !important;
+}
+
+/* Override footer */
+.footer {
+  background-color: #111111 !important;
+  color: #787878 !important;
+}
+
+/* Override content area */
+.content {
+  background-color: #000 !important;
+}
+
+/* Override article content */
+.article-content {
+  color: #f8f8f8 !important;
+}
+
+/* Override meta text */
+.article-meta, .widget-content {
+  color: #787878 !important;
+}
+
+/* Override borders and gradients */
+.card::before, .article::before, .widget::before {
+  background: linear-gradient(90deg, #ff6b35, #ff8c42) !important;
+}
+
+/* Override scrollbar */
+::-webkit-scrollbar-thumb {
+  background: #ff6b35 !important;
+}
+
+/* Override selection */
+::selection {
+  background-color: #ff6b35 !important;
+  color: #000 !important;
+}
