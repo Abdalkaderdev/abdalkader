@@ -26,7 +26,8 @@
     "@abdalkader/ui#build": {
       "dependsOn": [],
       "outputs": ["dist/**"],
-      "cache": true
+      "cache": true,
+      "env": ["NODE_ENV"]
     },
     "dev": {
       "cache": false,
