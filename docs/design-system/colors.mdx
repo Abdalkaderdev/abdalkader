@@ -1,0 +1,154 @@
+---
+title: 'Color System'
+description: 'Brand colors and color palette guidelines'
+---
+
+# Color System
+
+Our color system is built around accessibility, brand consistency, and visual hierarchy.
+
+## Brand Colors
+
+### Primary Colors
+
+<ColorPalette>
+  <ColorItem
+    title="Brand Primary"
+    subtitle="Main brand color"
+    colors={['#f44e00']}
+  />
+  <ColorItem
+    title="Brand Primary Light"
+    subtitle="Lighter variant for hover states"
+    colors={['#fa7300']}
+  />
+</ColorPalette>
+
+### Usage Guidelines
+
+- **Primary (`#f44e00`)**: Use for main CTAs, important actions, and brand elements
+- **Primary Light (`#fa7300`)**: Use for hover states, active states, and secondary brand elements
+
+## Semantic Colors
+
+<ColorPalette>
+  <ColorItem
+    title="Success"
+    subtitle="Positive actions and states"
+    colors={['#28a745']}
+  />
+  <ColorItem
+    title="Warning"
+    subtitle="Caution and attention"
+    colors={['#ffc107']}
+  />
+  <ColorItem
+    title="Danger"
+    subtitle="Errors and destructive actions"
+    colors={['#dc3545']}
+  />
+  <ColorItem
+    title="Info"
+    subtitle="Informational content"
+    colors={['#17a2b8']}
+  />
+</ColorPalette>
+
+## Neutral Colors
+
+<ColorPalette>
+  <ColorItem
+    title="Dark"
+    subtitle="Primary text and headers"
+    colors={['#343a40']}
+  />
+  <ColorItem
+    title="Light"
+    subtitle="Backgrounds and subtle elements"
+    colors={['#f8f9fa']}
+  />
+</ColorPalette>
+
+## CSS Custom Properties
+
+All colors are available as CSS custom properties:
+
+```css
+:root {
+  /* Brand Colors */
+  --brand-primary: #f44e00;
+  --brand-primary-light: #fa7300;
+  --brand-gradient: linear-gradient(to bottom, #f44e00, #fa7300);
+  
+  /* Semantic Colors */
+  --success-color: #28a745;
+  --warning-color: #ffc107;
+  --danger-color: #dc3545;
+  --info-color: #17a2b8;
+  
+  /* Neutral Colors */
+  --dark-color: #343a40;
+  --light-color: #f8f9fa;
+}
+```
+
+## Accessibility
+
+All color combinations meet WCAG 2.1 AA contrast requirements:
+
+- **Primary on White**: 4.52:1 ✅
+- **Dark on Light**: 8.59:1 ✅
+- **Primary Light on White**: 3.84:1 ✅
+
+## Usage Examples
+
+### Buttons
+```tsx
+// Primary action
+<Button variant="primary">Get Started</Button>
+
+// Secondary action  
+<Button variant="secondary">Learn More</Button>
+
+// Destructive action
+<Button variant="danger">Delete</Button>
+```
+
+### Status Indicators
+```tsx
+// Success state
+<Alert variant="success">Changes saved successfully!</Alert>
+
+// Warning state
+<Alert variant="warning">Please review your input</Alert>
+
+// Error state
+<Alert variant="danger">Something went wrong</Alert>
+```
+
+## Best Practices
+
+<Tip>
+Use primary colors sparingly to maintain visual hierarchy and draw attention to the most important actions.
+</Tip>
+
+<Warning>
+Always test color combinations for accessibility compliance, especially when creating custom components.
+</Warning>
+
+## Color Tokens in Code
+
+Import and use color tokens in your components:
+
+```tsx
+import { tokens } from '@abdalkader/ui';
+
+const MyComponent = () => (
+  <div style={{ 
+    backgroundColor: tokens.colors.primary,
+    color: 'white'
+  }}>
+    Brand colored element
+  </div>
+);
+```

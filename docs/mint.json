@@ -1,0 +1,92 @@
+{
+  "name": "Abdalkader Design System",
+  "logo": {
+    "dark": "/logo/dark.svg",
+    "light": "/logo/light.svg"
+  },
+  "favicon": "/favicon.svg",
+  "colors": {
+    "primary": "#f44e00",
+    "light": "#fa7300",
+    "dark": "#d63384",
+    "anchors": {
+      "from": "#f44e00",
+      "to": "#fa7300"
+    }
+  },
+  "topbarLinks": [
+    {
+      "name": "Components",
+      "url": "https://components.abdalkader.dev"
+    },
+    {
+      "name": "Portfolio",
+      "url": "https://abdalkader.dev"
+    }
+  ],
+  "topbarCtaButton": {
+    "name": "GitHub",
+    "url": "https://github.com/Abdalkaderdev/abdalkader"
+  },
+  "navigation": [
+    {
+      "group": "Getting Started",
+      "pages": [
+        "introduction",
+        "installation",
+        "quickstart"
+      ]
+    },
+    {
+      "group": "Design System",
+      "pages": [
+        "design-system/overview",
+        "design-system/colors",
+        "design-system/typography",
+        "design-system/spacing",
+        "design-system/animations"
+      ]
+    },
+    {
+      "group": "Components",
+      "pages": [
+        "components/overview",
+        "components/button",
+        "components/input",
+        "components/layout"
+      ]
+    },
+    {
+      "group": "Guides",
+      "pages": [
+        "guides/theming",
+        "guides/accessibility",
+        "guides/typescript",
+        "guides/contributing"
+      ]
+    },
+    {
+      "group": "API Reference",
+      "pages": [
+        "api/design-tokens",
+        "api/component-props",
+        "api/utilities"
+      ]
+    }
+  ],
+  "footerSocials": {
+    "github": "https://github.com/Abdalkaderdev/abdalkader",
+    "website": "https://abdalkader.dev",
+    "linkedin": "https://linkedin.com/in/abdalkader"
+  },
+  "analytics": {
+    "ga4": {
+      "measurementId": "G-XXXXXXXXXX"
+    }
+  },
+  "feedback": {
+    "thumbsRating": true,
+    "suggestEdit": true,
+    "raiseIssue": true
+  }
+}

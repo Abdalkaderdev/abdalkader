@@ -1,0 +1,163 @@
+---
+title: Button
+description: 'A versatile button component with multiple variants, sizes, and full accessibility support'
+---
+
+## Overview
+
+The Button component provides a flexible and accessible way to trigger actions in your application. It supports multiple variants, sizes, and states.
+
+## Import
+
+```tsx
+import { Button } from '@abdalkader/component-library';
+```
+
+## Basic Usage
+
+```tsx
+<Button variant="primary" onClick={() => console.log('Clicked')}>
+  Click me
+</Button>
+```
+
+## Variants
+
+<CodeGroup>
+
+```tsx Primary
+<Button variant="primary">Primary Button</Button>
+```
+
+```tsx Secondary
+<Button variant="secondary">Secondary Button</Button>
+```
+
+```tsx Danger
+<Button variant="danger">Danger Button</Button>
+```
+
+</CodeGroup>
+
+## Sizes
+
+<CodeGroup>
+
+```tsx Small
+<Button size="small">Small Button</Button>
+```
+
+```tsx Medium
+<Button size="medium">Medium Button</Button>
+```
+
+```tsx Large
+<Button size="large">Large Button</Button>
+```
+
+</CodeGroup>
+
+## States
+
+### Disabled
+
+```tsx
+<Button disabled>Disabled Button</Button>
+```
+
+## Form Integration
+
+### Submit Button
+
+```tsx
+<form onSubmit={handleSubmit}>
+  <Input label="Email" type="email" />
+  <Button type="submit" variant="primary">
+    Submit
+  </Button>
+</form>
+```
+
+## Accessibility
+
+The Button component includes proper ARIA attributes and keyboard support:
+
+```tsx
+<Button
+  aria-label="Close dialog"
+  aria-describedby="dialog-description"
+>
+  ×
+</Button>
+```
+
+### Keyboard Support
+
+| Key | Action |
+|-----|--------|
+| `Enter` | Activates the button |
+| `Space` | Activates the button |
+
+## Props
+
+<ResponseField name="variant" type="'primary' | 'secondary' | 'danger'" default="primary">
+  Visual style variant of the button
+</ResponseField>
+
+<ResponseField name="size" type="'small' | 'medium' | 'large'" default="medium">
+  Size of the button
+</ResponseField>
+
+<ResponseField name="disabled" type="boolean" default="false">
+  Disables the button
+</ResponseField>
+
+<ResponseField name="type" type="'button' | 'submit' | 'reset'" default="button">
+  HTML button type
+</ResponseField>
+
+<ResponseField name="onClick" type="() => void">
+  Click event handler
+</ResponseField>
+
+<ResponseField name="children" type="React.ReactNode" required>
+  Button content
+</ResponseField>
+
+## Examples
+
+### Icon Button
+
+```tsx
+<Button variant="secondary" aria-label="Delete item">
+  <TrashIcon />
+</Button>
+```
+
+### Button Group
+
+```tsx
+<div style={{ display: 'flex', gap: '0.5rem' }}>
+  <Button variant="secondary">Cancel</Button>
+  <Button variant="primary">Save</Button>
+</div>
+```
+
+## Related
+
+<CardGroup cols={2}>
+  <Card
+    title="Input Component"
+    icon="input-text"
+    href="/components/input"
+  >
+    Form input component
+  </Card>
+  <Card
+    title="API Reference"
+    icon="code"
+    href="/api/button-props"
+  >
+    Complete prop types
+  </Card>
+</CardGroup>

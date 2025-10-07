@@ -1,0 +1,290 @@
+---
+title: 'Design Tokens API'
+description: 'Complete reference for design tokens and CSS custom properties'
+---
+
+# Design Tokens API
+
+Design tokens are the foundation of our design system, providing consistent values for colors, spacing, typography, and more.
+
+## Usage
+
+### CSS Custom Properties
+```css
+.my-component {
+  color: var(--brand-primary);
+  padding: var(--space-md);
+  font-size: var(--font-size-lg);
+  transition: var(--transition-smooth);
+}
+```
+
+### JavaScript/TypeScript
+```tsx
+import { tokens } from '@abdalkader/ui';
+
+const MyComponent = () => (
+  <div style={{
+    backgroundColor: tokens.colors.primary,
+    padding: tokens.spacing.md,
+    fontSize: tokens.typography.sizes.lg
+  }}>
+    Styled with design tokens
+  </div>
+);
+```
+
+## Color Tokens
+
+### Brand Colors
+| Token | Value | CSS Variable |
+|-------|-------|--------------|
+| `primary` | `#f44e00` | `--brand-primary` |
+| `primaryLight` | `#fa7300` | `--brand-primary-light` |
+| `gradient` | `linear-gradient(to bottom, #f44e00, #fa7300)` | `--brand-gradient` |
+
+### Semantic Colors
+| Token | Value | CSS Variable |
+|-------|-------|--------------|
+| `success` | `#28a745` | `--success-color` |
+| `warning` | `#ffc107` | `--warning-color` |
+| `danger` | `#dc3545` | `--danger-color` |
+| `info` | `#17a2b8` | `--info-color` |
+
+### Neutral Colors
+| Token | Value | CSS Variable |
+|-------|-------|--------------|
+| `dark` | `#343a40` | `--dark-color` |
+| `light` | `#f8f9fa` | `--light-color` |
+
+## Typography Tokens
+
+### Font Families
+| Token | Value | CSS Variable |
+|-------|-------|--------------|
+| `primary` | `'PPNeueMontreal-Regular', sans-serif` | `--font-primary` |
+
+### Font Sizes
+| Token | Value | CSS Variable |
+|-------|-------|--------------|
+| `xs` | `0.75rem` | `--font-size-xs` |
+| `sm` | `0.875rem` | `--font-size-sm` |
+| `base` | `1rem` | `--font-size-base` |
+| `lg` | `1.125rem` | `--font-size-lg` |
+| `xl` | `1.25rem` | `--font-size-xl` |
+| `2xl` | `1.5rem` | `--font-size-2xl` |
+| `3xl` | `2rem` | `--font-size-3xl` |
+| `4xl` | `2.5rem` | `--font-size-4xl` |
+
+### Font Weights
+| Token | Value | CSS Variable |
+|-------|-------|--------------|
+| `normal` | `400` | `--font-weight-normal` |
+| `medium` | `500` | `--font-weight-medium` |
+| `semibold` | `600` | `--font-weight-semibold` |
+
+### Line Heights
+| Token | Value | CSS Variable |
+|-------|-------|--------------|
+| `tight` | `1.2` | `--line-height-tight` |
+| `snug` | `1.3` | `--line-height-snug` |
+| `normal` | `1.4` | `--line-height-normal` |
+| `relaxed` | `1.5` | `--line-height-relaxed` |
+| `loose` | `1.6` | `--line-height-loose` |
+
+## Spacing Tokens
+
+| Token | Value | CSS Variable |
+|-------|-------|--------------|
+| `xs` | `0.25rem` | `--space-xs` |
+| `sm` | `0.5rem` | `--space-sm` |
+| `md` | `1rem` | `--space-md` |
+| `lg` | `1.5rem` | `--space-lg` |
+| `xl` | `2rem` | `--space-xl` |
+| `2xl` | `3rem` | `--space-2xl` |
+| `3xl` | `4rem` | `--space-3xl` |
+| `4xl` | `6rem` | `--space-4xl` |
+| `5xl` | `8rem` | `--space-5xl` |
+
+## Animation Tokens
+
+### Duration
+| Token | Value | CSS Variable |
+|-------|-------|--------------|
+| `instant` | `0ms` | `--duration-instant` |
+| `fast` | `150ms` | `--duration-fast` |
+| `normal` | `300ms` | `--duration-normal` |
+| `slow` | `500ms` | `--duration-slow` |
+| `slower` | `800ms` | `--duration-slower` |
+
+### Easing
+| Token | Value | CSS Variable |
+|-------|-------|--------------|
+| `easeOut` | `cubic-bezier(0.25, 0.46, 0.45, 0.94)` | `--ease-out` |
+| `easeIn` | `cubic-bezier(0.55, 0.055, 0.675, 0.19)` | `--ease-in` |
+| `easeInOut` | `cubic-bezier(0.645, 0.045, 0.355, 1)` | `--ease-in-out` |
+| `bounce` | `cubic-bezier(0.68, -0.55, 0.265, 1.55)` | `--ease-bounce` |
+| `smooth` | `cubic-bezier(0.19, 1, 0.22, 1)` | `--ease-smooth` |
+
+### Combined Transitions
+| Token | Value | CSS Variable |
+|-------|-------|--------------|
+| `fast` | `150ms ease-out` | `--transition-fast` |
+| `normal` | `300ms ease-out` | `--transition-normal` |
+| `slow` | `500ms ease-in-out` | `--transition-slow` |
+| `smooth` | `800ms cubic-bezier(0.19, 1, 0.22, 1)` | `--transition-smooth` |
+
+## Border Tokens
+
+| Token | Value | CSS Variable |
+|-------|-------|--------------|
+| `width` | `1px` | `--border-width` |
+| `color` | `#dee2e6` | `--border-color` |
+| `radiusSm` | `0.25rem` | `--border-radius-sm` |
+| `radius` | `0.375rem` | `--border-radius` |
+| `radiusLg` | `0.5rem` | `--border-radius-lg` |
+
+## Shadow Tokens
+
+| Token | Value | CSS Variable |
+|-------|-------|--------------|
+| `sm` | `0 1px 2px 0 rgba(0, 0, 0, 0.05)` | `--shadow-sm` |
+| `base` | `0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06)` | `--shadow` |
+| `lg` | `0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05)` | `--shadow-lg` |
+
+## TypeScript Types
+
+```tsx
+export interface DesignTokens {
+  colors: {
+    primary: string;
+    primaryLight: string;
+    success: string;
+    warning: string;
+    danger: string;
+    info: string;
+    dark: string;
+    light: string;
+  };
+  
+  typography: {
+    fontFamily: {
+      primary: string;
+    };
+    fontSize: {
+      xs: string;
+      sm: string;
+      base: string;
+      lg: string;
+      xl: string;
+      '2xl': string;
+      '3xl': string;
+      '4xl': string;
+    };
+    fontWeight: {
+      normal: number;
+      medium: number;
+      semibold: number;
+    };
+    lineHeight: {
+      tight: number;
+      snug: number;
+      normal: number;
+      relaxed: number;
+      loose: number;
+    };
+  };
+  
+  spacing: {
+    xs: string;
+    sm: string;
+    md: string;
+    lg: string;
+    xl: string;
+    '2xl': string;
+    '3xl': string;
+    '4xl': string;
+    '5xl': string;
+  };
+  
+  animation: {
+    duration: {
+      instant: string;
+      fast: string;
+      normal: string;
+      slow: string;
+      slower: string;
+    };
+    easing: {
+      easeOut: string;
+      easeIn: string;
+      easeInOut: string;
+      bounce: string;
+      smooth: string;
+    };
+  };
+}
+```
+
+## Usage Examples
+
+### Component Styling
+```tsx
+import { tokens } from '@abdalkader/ui';
+
+const StyledComponent = styled.div`
+  background-color: ${tokens.colors.primary};
+  padding: ${tokens.spacing.md};
+  border-radius: ${tokens.borders.radius};
+  transition: all ${tokens.animation.duration.fast} ${tokens.animation.easing.easeOut};
+  
+  &:hover {
+    background-color: ${tokens.colors.primaryLight};
+    transform: translateY(-2px);
+  }
+`;
+```
+
+### CSS-in-JS
+```tsx
+const styles = {
+  container: {
+    backgroundColor: tokens.colors.light,
+    padding: tokens.spacing.lg,
+    fontSize: tokens.typography.fontSize.base,
+    fontFamily: tokens.typography.fontFamily.primary,
+  },
+  
+  button: {
+    backgroundColor: tokens.colors.primary,
+    color: 'white',
+    padding: `${tokens.spacing.sm} ${tokens.spacing.md}`,
+    borderRadius: tokens.borders.radius,
+    transition: `all ${tokens.animation.duration.fast} ${tokens.animation.easing.easeOut}`,
+  }
+};
+```
+
+### Tailwind CSS Integration
+```tsx
+// tailwind.config.js
+module.exports = {
+  theme: {
+    extend: {
+      colors: {
+        primary: 'var(--brand-primary)',
+        'primary-light': 'var(--brand-primary-light)',
+      },
+      spacing: {
+        'xs': 'var(--space-xs)',
+        'sm': 'var(--space-sm)',
+        'md': 'var(--space-md)',
+        'lg': 'var(--space-lg)',
+      },
+      fontFamily: {
+        'primary': 'var(--font-primary)',
+      },
+    },
+  },
+};
+```
