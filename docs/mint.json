@@ -1,10 +1,6 @@
 {
   "name": "Abdalkader Design System",
-  "logo": {
-    "dark": "/logo/dark.svg",
-    "light": "/logo/light.svg"
-  },
-  "favicon": "/favicon.svg",
+  "favicon": "/favicon.png",
   "colors": {
     "primary": "#f44e00",
     "light": "#fa7300",
@@ -35,6 +31,19 @@
         "introduction",
         "installation",
         "quickstart"
+      ]
+    },
+    {
+      "group": "Portfolio Projects",
+      "pages": [
+        "projects/overview",
+        "projects/apple-tv-clone",
+        "projects/virtualview",
+        "projects/jegr-jalal-company",
+        "projects/doner-qr-menu-magic",
+        "projects/headquarter-iraq-real-estate",
+        "projects/innovations-architecture-department",
+        "projects/hamilton-iraq-real-estate"
       ]
     },
     {
