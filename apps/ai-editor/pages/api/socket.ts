@@ -13,7 +13,7 @@ interface SocketServer extends NetServer {
 }
 
 interface SocketResponse extends NextApiResponse {
-  socket: {
+  socket: NextApiResponse['socket'] & {
     server: SocketServer;
   };
 }

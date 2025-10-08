@@ -1,6 +1,15 @@
 import { useRef, useEffect } from 'react';
-import Editor from '@monaco-editor/react';
+import dynamic from 'next/dynamic';
 import * as monaco from 'monaco-editor';
+
+const Editor = dynamic(() => import('@monaco-editor/react'), {
+  ssr: false,
+  loading: () => (
+    <div className="flex items-center justify-center h-full">
+      <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-500"></div>
+    </div>
+  )
+});
 
 interface CodeEditorProps {
   value: string;

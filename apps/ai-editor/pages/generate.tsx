@@ -2,11 +2,37 @@ import { useState, useCallback } from 'react';
 import { motion } from 'framer-motion';
 import { FiHome, FiCode, FiDownload, FiCopy, FiRefreshCw } from 'react-icons/fi';
 import Link from 'next/link';
-import AIPrompt from '../components/AIPrompt';
-import CodeEditor from '../components/CodeEditor';
-import ComponentPreview from '../components/ComponentPreview';
+import dynamic from 'next/dynamic';
 import { useLivePreview } from '../hooks/useLivePreview';
 import { codeTemplates, getTemplatesByCategory } from '../utils/codeTemplates';
+
+const AIPrompt = dynamic(() => import('../components/AIPrompt'), {
+  ssr: false,
+  loading: () => (
+    <div className="bg-gray-100 dark:bg-gray-800 rounded-lg p-4 animate-pulse">
+      <div className="h-4 bg-gray-300 dark:bg-gray-600 rounded mb-4"></div>
+      <div className="h-20 bg-gray-300 dark:bg-gray-600 rounded"></div>
+    </div>
+  )
+});
+
+const CodeEditor = dynamic(() => import('../components/CodeEditor'), {
+  ssr: false,
+  loading: () => (
+    <div className="flex items-center justify-center h-96 bg-gray-100 dark:bg-gray-800 rounded-lg">
+      <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-500"></div>
+    </div>
+  )
+});
+
+const ComponentPreview = dynamic(() => import('../components/ComponentPreview'), {
+  ssr: false,
+  loading: () => (
+    <div className="flex items-center justify-center h-96 bg-gray-100 dark:bg-gray-800 rounded-lg">
+      <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-500"></div>
+    </div>
+  )
+});
 
 interface GenerationOptions {
   componentType: 'functional' | 'class';

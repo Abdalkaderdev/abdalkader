@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { FiZap, FiSend, FiRefreshCw, FiSettings, FiLightbulb } from 'react-icons/fi';
+import { FiZap, FiSend, FiRefreshCw, FiSettings } from 'react-icons/fi';
+import { HiLightBulb } from 'react-icons/hi';
 
 interface AIPromptProps {
   onGenerate: (prompt: string, options: GenerationOptions) => void;
@@ -173,7 +174,7 @@ export default function AIPrompt({ onGenerate, isLoading = false, error = null, 
       {/* Quick Prompts */}
       <div className="mt-6">
         <div className="flex items-center gap-2 mb-3">
-          <FiLightbulb className="w-4 h-4 text-yellow-500" />
+          <HiLightBulb className="w-4 h-4 text-yellow-500" />
           <h3 className="text-sm font-medium text-gray-900 dark:text-white">
             Quick Prompts
           </h3>
