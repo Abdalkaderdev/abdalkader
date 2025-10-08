@@ -6,12 +6,12 @@
   },
   "favicon": "/favicon.svg",
   "colors": {
-    "primary": "#007bff",
-    "light": "#3b9eff",
-    "dark": "#0056b3",
+    "primary": "#f44e00",
+    "light": "#fa7300",
+    "dark": "#f44e00",
     "anchors": {
-      "from": "#007bff",
-      "to": "#0056b3"
+      "from": "#f44e00",
+      "to": "#fa7300"
     }
   },
   "topbarLinks": [
@@ -92,5 +92,6 @@
     "ga4": {
       "measurementId": "G-XXXXXXXXXX"
     }
-  }
+  },
+  "css": ["docs/custom.css"]
 }
