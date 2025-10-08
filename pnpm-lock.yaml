@@ -14,6 +14,9 @@ importers:
 
   apps/blog:
     dependencies:
+      '@abdalkader/ui':
+        specifier: file:../../packages/ui
+        version: file:packages/ui(react-dom@18.3.1)(react@18.3.1)
       hexo:
         specifier: ^8.0.0
         version: 8.0.0
@@ -72,7 +75,7 @@ importers:
   apps/docs:
     dependencies:
       '@abdalkader/ui':
-        specifier: workspace:*
+        specifier: link:../../packages/ui
         version: link:../../packages/ui
     devDependencies:
       '@storybook/addon-a11y':
@@ -16565,4 +16568,16 @@ packages:
       '@types/react': 18.3.25
       react: 18.3.1
       use-sync-external-store: 1.6.0(react@18.3.1)
+    dev: false
+
+  file:packages/ui(react-dom@18.3.1)(react@18.3.1):
+    resolution: {directory: packages/ui, type: directory}
+    id: file:packages/ui
+    name: '@abdalkader/ui'
+    peerDependencies:
+      react: '>=16.8.0'
+      react-dom: '>=16.8.0'
+    dependencies:
+      react: 18.3.1
+      react-dom: 18.3.1(react@18.3.1)
     dev: false

@@ -11,7 +11,7 @@
     "clean": "rm -rf storybook-static"
   },
   "dependencies": {
-    "@abdalkader/ui": "workspace:*"
+    "@abdalkader/ui": "link:../../packages/ui"
   },
   "devDependencies": {
     "@storybook/addon-a11y": "^7.0.0",

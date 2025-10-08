@@ -1,132 +1,294 @@
-/* Design Tokens - Extracted from Portfolio */
+/**
+ * Abdalkader Design System - CSS Variables
+ * EXACT values extracted from portfolio
+ * Single source of truth for all subdomains
+ */
+
 :root {
-  /* Brand Colors */
-  --brand-primary: #f44e00;
-  --brand-primary-light: #fa7300;
-  --brand-gradient: linear-gradient(to bottom, #f44e00, #fa7300);
-  --brand-gradient-top: linear-gradient(to top, #f44e00, #fa7300);
-  
-  /* Semantic Colors */
-  --color-success: #28a745;
-  --color-danger: #dc3545;
-  --color-warning: #ffc107;
-  --color-info: #17a2b8;
-  
-  /* Neutral Palette */
+  /* ===== COLORS - EXACT PORTFOLIO VALUES ===== */
+  --color-primary: #f44e00;
+  --color-primary-light: #fa7300;
+  --color-primary-gradient: linear-gradient(to bottom, #f44e00, #fa7300);
   --color-white: #f8f8f8;
-  --color-black: #000000;
+  --color-black: #000;
   --color-text-dark: #131313;
   --color-text-grey: #787878;
-  --color-navigation: rgba(45, 45, 45, 0.35);
+  --color-navigation: #2d2d2d59;
   --color-border: rgb(37, 37, 37);
+
+  /* ===== TYPOGRAPHY - EXACT PORTFOLIO VALUES ===== */
+  --font-primary: 'PPNeueMontreal-Regular', sans-serif;
+  --font-secondary: 'PPNeueMontreal-Medium', sans-serif;
   
-  /* Typography */
-  --font-primary: 'PPNeueMontreal-Regular', -apple-system, BlinkMacSystemFont, sans-serif;
-  --font-medium: 'PPNeueMontreal-Medium', -apple-system, BlinkMacSystemFont, sans-serif;
+  /* Font Variables for Next.js */
+  --font-pp-regular: 'PPNeueMontreal-Regular';
+  --font-pp-medium: 'PPNeueMontreal-Medium';
   
-  /* Font Sizes - Portfolio Scale */
-  --font-size-xs: 0.6rem;       /* 9.6px - Small labels */
-  --font-size-sm: 0.7rem;       /* 11.2px - Labels */
-  --font-size-base: 0.9rem;     /* 14.4px - Buttons */
-  --font-size-md: 1rem;         /* 16px - Body */
-  --font-size-lg: 1.8rem;       /* 28.8px - Subheadings */
-  --font-size-xl: 2.75rem;      /* 44px - Headings */
-  --font-size-2xl: 4.5rem;      /* 72px - Hero */
+  /* Typography Scale - EXACT portfolio responsive values */
+  --text-hero: 4.5rem;
+  --text-hero-md: 3.2rem;
+  --text-hero-sm: 2.5rem;
+  --text-large: 2.75rem;
+  --text-large-md: 2.2rem;
+  --text-large-sm: 1.8rem;
+  --text-medium: 1.8rem;
+  --text-medium-md: 1.2rem;
+  --text-base: 1rem;
+  --text-base-md: 0.8rem;
+  --text-small: 0.7rem;
   
-  /* Responsive Font Sizes */
-  --font-size-hero-desktop: 4.5rem;
-  --font-size-hero-tablet: 3.2rem;
-  --font-size-hero-mobile: 2.5rem;
-  --font-size-heading-desktop: 2.75rem;
-  --font-size-heading-tablet: 2.2rem;
-  --font-size-heading-mobile: 1.8rem;
-  --font-size-subheading-desktop: 1.8rem;
-  --font-size-subheading-tablet: 1.2rem;
-  
-  --font-weight-light: 300;
-  --font-weight-normal: 400;
-  --font-weight-bold: 700;
-  
+  /* Line Heights - EXACT portfolio values */
   --line-height-tight: 0.9;
-  --line-height-base: 1.6;
-  --letter-spacing-tight: 0.05rem;
-  --letter-spacing-base: 0.08rem;
-  --letter-spacing-wide: 0.1rem;
-  
-  /* Spacing Scale - Portfolio System */
-  --space-0: 0;
-  --space-xs: 0.7rem;   /* 11.2px - Menu gaps */
-  --space-sm: 0.8rem;   /* 12.8px - List gaps */
-  --space-1: 1rem;      /* 16px - Base padding */
-  --space-2: 2rem;      /* 32px - Section padding */
-  --space-3: 3rem;      /* 48px - Margin top small */
-  --space-5: 5rem;      /* 80px - Margin top medium */
-  --space-6: 6rem;      /* 96px - Section gaps mobile */
-  --space-8: 8rem;      /* 128px - Section gaps tablet */
-  --space-10: 10rem;    /* 160px - Section gaps desktop */
-  
-  /* Component Spacing */
-  --padding-section-desktop: 2rem;
-  --padding-section-mobile: 1rem;
-  --padding-button: 1rem 2rem;
-  --padding-nav: 1.4rem 2rem;
-  --gap-section-desktop: 10rem;
-  --gap-section-tablet: 8rem;
-  --gap-section-mobile: 6rem;
-  
-  /* Border Radius */
-  --radius-sm: 6px;
-  --radius-base: 8px;
-  --radius-md: 12px;
-  --radius-full: 100px;
-  
-  /* Shadows & Effects */
-  --shadow-glow: 0px 0px 5px var(--brand-primary);
-  --shadow-glow-hover: 0px 0px 10px var(--brand-primary);
-  --shadow-inset-light: inset 0px -20px 20px rgba(255, 255, 255, 0.2);
-  --shadow-inset-light-hover: inset 0px -30px 20px rgba(255, 255, 255, 0.2);
-  --shadow-inset-dark: inset 0px -15px 15px rgba(0, 0, 0, 0.2);
-  --text-shadow-glow: 0 0 6px rgba(244, 78, 0, 0.6);
-  --backdrop-blur: blur(50px);
-  
-  /* Transitions & Animations */
+  --line-height-normal: 1;
+  --line-height-relaxed: 1.2;
+
+  /* ===== ANIMATIONS - EXACT PORTFOLIO VALUES ===== */
   --transition-smooth: 0.8s cubic-bezier(0.19, 1, 0.22, 1);
-  --transition-base: 0.5s ease;
   --transition-fast: 0.3s ease-in-out;
-  --transition-color: color 0.8s cubic-bezier(0.19, 1, 0.22, 1);
-  --ease-portfolio: cubic-bezier(0.19, 1, 0.22, 1);
+  --transition-focus: 0.2s ease;
+  --easing-smooth: cubic-bezier(0.19, 1, 0.22, 1);
+  --duration-slow: 0.8s;
+  --duration-fast: 0.3s;
+  --duration-focus: 0.2s;
+  --stagger-delay: 0.003s;
+
+  /* ===== SPACING - EXACT PORTFOLIO VALUES ===== */
+  --space-xs: 0.8rem;
+  --space-sm: 1rem;
+  --space-md: 1.5rem;
+  --space-lg: 2rem;
+  --space-xl: 3rem;
+  --space-2xl: 5rem;
+  --space-3xl: 6rem;
+  --space-4xl: 8rem;
+  --space-5xl: 10rem;
   
-  /* Z-Index Scale */
-  --z-base: 0;
+  /* Section Spacing - EXACT portfolio values */
+  --section-gap: 10rem;
+  --section-gap-md: 8rem;
+  --section-gap-sm: 6rem;
+  --section-padding: 2rem;
+  --section-padding-sm: 1rem;
+
+  /* ===== LAYOUT - EXACT PORTFOLIO VALUES ===== */
+  --container-max-width: 1200px;
+  --border-radius: 12px;
+  --border-radius-sm: 6px;
+
+  /* ===== Z-INDEX SCALE ===== */
   --z-dropdown: 1000;
-  --z-sticky: 1100;
-  --z-fixed: 1200;
-  --z-modal-backdrop: 1300;
-  --z-modal: 1400;
-  --z-popover: 1500;
-  --z-tooltip: 1600;
-  
-  /* Breakpoints */
-  --breakpoint-mobile: 600px;
-  --breakpoint-tablet: 840px;
-  --breakpoint-desktop: 1080px;
-  
-  /* Focus & Accessibility */
-  --focus-outline: 2px dashed var(--brand-primary);
-  --focus-outline-solid: 2px solid var(--color-white);
-  --focus-offset: 3px;
-  --focus-offset-sm: 2px;
-  
-  /* Z-Index Scale */
-  --z-nav: 20;
-  --z-menu: 10;
-  --z-intro: 5000000;
-  --z-transition: 1000;
-  
-  /* Component-Specific */
-  --nav-bar-width: 140px;
-  --nav-bar-width-hover: 160px;
-  --nav-bar-height: 5px;
-  --menu-top-offset: 10px;
-  --menu-border-radius: 8px;
+  --z-sticky: 1020;
+  --z-fixed: 1030;
+  --z-modal-backdrop: 1040;
+  --z-modal: 1050;
+  --z-popover: 1060;
+  --z-tooltip: 1070;
+  --z-toast: 1080;
+  --z-loading: 5000000;
+
+  /* ===== SHADOWS & EFFECTS ===== */
+  --shadow-glow: 0 0 20px rgba(244, 78, 0, 0.3);
+  --shadow-inset: inset 0 2px 4px rgba(0, 0, 0, 0.1);
+  --shadow-focus: 0 0 0 2px #f44e00;
+  --backdrop-blur: blur(10px);
+
+  /* ===== BREAKPOINTS - EXACT PORTFOLIO VALUES ===== */
+  --breakpoint-sm: 600px;
+  --breakpoint-md: 840px;
+  --breakpoint-lg: 1080px;
+}
+
+/* ===== RESPONSIVE TYPOGRAPHY - EXACT PORTFOLIO LOGIC ===== */
+@media (max-width: 1080px) {
+  :root {
+    --text-hero: var(--text-hero-md);
+    --text-large: var(--text-large-md);
+  }
+}
+
+@media (max-width: 840px) {
+  :root {
+    --section-gap: var(--section-gap-md);
+  }
+}
+
+@media (max-width: 600px) {
+  :root {
+    --text-hero: var(--text-hero-sm);
+    --text-large: var(--text-large-sm);
+    --text-medium: var(--text-medium-md);
+    --text-base: var(--text-base-md);
+    --section-gap: var(--section-gap-sm);
+    --section-padding: var(--section-padding-sm);
+  }
+}
+
+/* ===== UTILITY CLASSES - PORTFOLIO STYLES ===== */
+.portfolio-gradient-text {
+  background: var(--color-primary-gradient);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.portfolio-button-primary {
+  background: var(--color-primary);
+  color: var(--color-black);
+  border: none;
+  border-radius: var(--border-radius-sm);
+  padding: 1rem 2rem;
+  font-family: var(--font-secondary);
+  font-size: var(--text-base);
+  text-transform: uppercase;
+  letter-spacing: 0.05rem;
+  transition: var(--transition-smooth);
+  cursor: pointer;
+}
+
+.portfolio-button-primary:hover {
+  background: var(--color-primary-light);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-glow);
+}
+
+.portfolio-button-primary:focus-visible {
+  outline: 2px dashed var(--color-primary);
+  outline-offset: 3px;
+}
+
+.portfolio-input {
+  background: transparent;
+  border: 1px solid var(--color-border);
+  border-radius: var(--border-radius-sm);
+  padding: 1rem;
+  color: var(--color-white);
+  font-family: var(--font-primary);
+  transition: var(--transition-smooth);
+}
+
+.portfolio-input:focus {
+  outline: none;
+  border-color: var(--color-primary);
+  box-shadow: var(--shadow-focus);
+}
+
+/* ===== ANIMATION KEYFRAMES - EXACT PORTFOLIO VALUES ===== */
+@keyframes portfolioFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes portfolioSlideIn {
+  from {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes portfolioFloat {
+  0% {
+    transform: translate(-50%, -50%);
+  }
+  50% {
+    transform: translate(-50%, -40%);
+  }
+  100% {
+    transform: translate(-50%, -50%);
+  }
+}
+
+@keyframes portfolioGlow {
+  0%, 100% {
+    box-shadow: 0 0 5px rgba(244, 78, 0, 0.2);
+  }
+  50% {
+    box-shadow: 0 0 20px rgba(244, 78, 0, 0.4);
+  }
+}
+
+/* ===== ANIMATION CLASSES ===== */
+.portfolio-animate-fade-in {
+  animation: portfolioFadeIn var(--duration-slow) var(--easing-smooth) forwards;
+}
+
+.portfolio-animate-slide-in {
+  animation: portfolioSlideIn var(--duration-slow) var(--easing-smooth) forwards;
+}
+
+.portfolio-animate-float {
+  animation: portfolioFloat 3s ease-in-out infinite;
+}
+
+.portfolio-animate-glow {
+  animation: portfolioGlow 2s ease-in-out infinite;
+}
+
+.portfolio-stagger > * {
+  animation: portfolioFadeIn var(--duration-slow) var(--easing-smooth) forwards;
+  opacity: 0;
+}
+
+.portfolio-stagger > *:nth-child(1) { animation-delay: calc(1 * var(--stagger-delay)); }
+.portfolio-stagger > *:nth-child(2) { animation-delay: calc(2 * var(--stagger-delay)); }
+.portfolio-stagger > *:nth-child(3) { animation-delay: calc(3 * var(--stagger-delay)); }
+.portfolio-stagger > *:nth-child(4) { animation-delay: calc(4 * var(--stagger-delay)); }
+.portfolio-stagger > *:nth-child(5) { animation-delay: calc(5 * var(--stagger-delay)); }
+.portfolio-stagger > *:nth-child(6) { animation-delay: calc(6 * var(--stagger-delay)); }
+.portfolio-stagger > *:nth-child(7) { animation-delay: calc(7 * var(--stagger-delay)); }
+.portfolio-stagger > *:nth-child(8) { animation-delay: calc(8 * var(--stagger-delay)); }
+.portfolio-stagger > *:nth-child(9) { animation-delay: calc(9 * var(--stagger-delay)); }
+.portfolio-stagger > *:nth-child(10) { animation-delay: calc(10 * var(--stagger-delay)); }
+
+/* ===== SCROLLBAR STYLING - EXACT PORTFOLIO ===== */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-primary);
+}
+
+/* ===== SELECTION STYLING - EXACT PORTFOLIO ===== */
+::selection {
+  color: var(--color-black);
+  background-color: var(--color-primary);
+}
+
+/* ===== FOCUS STYLES - EXACT PORTFOLIO ===== */
+:focus-visible {
+  outline: 2px dashed var(--color-primary);
+  outline-offset: 3px;
+}
+
+/* ===== RESPONSIVE UTILITIES ===== */
+@media (max-width: 600px) {
+  .portfolio-hide-mobile {
+    display: none !important;
+  }
+}
+
+@media (max-width: 840px) {
+  .portfolio-hide-tablet {
+    display: none !important;
+  }
+}
+
+@media (max-width: 1080px) {
+  .portfolio-hide-desktop {
+    display: none !important;
+  }
 }

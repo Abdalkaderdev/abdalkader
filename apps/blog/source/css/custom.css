@@ -1,8 +1,29 @@
-/* Custom CSS to match abdalkader.dev */
+/* Custom CSS to match abdalkader.dev EXACTLY */
 
+/* Import the centralized design system */
+@import url('./design-system.css');
+
+/* Portfolio font loading */
+@font-face {
+  font-family: 'PPNeueMontreal-Regular';
+  src: url('../fonts/PPNeueMontreal-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'PPNeueMontreal-Medium';
+  src: url('../fonts/PPNeueMontreal-Medium.woff2') format('woff2');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Override with EXACT portfolio values */
 :root {
-  --primary-color: #ff6b35;
-  --secondary-color: #ff8c42;
+  --primary-color: #f44e00; /* EXACT portfolio primary */
+  --secondary-color: #fa7300; /* EXACT portfolio primary light */
   --text-primary: #f8f8f8;
   --text-secondary: #787878;
   --text-dark: #131313;
@@ -11,7 +32,7 @@
   --border-color: rgb(37, 37, 37);
   --navigation-color: #2d2d2d59;
   --code-bg: #1a1a1a;
-  --transition: 0.8s cubic-bezier(0.19, 1, 0.22, 1);
+  --transition: 0.8s cubic-bezier(0.19, 1, 0.22, 1); /* EXACT portfolio easing */
   --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3), 0 2px 4px -1px rgba(0, 0, 0, 0.2);
   --shadow-lg: 0 20px 25px -5px rgba(0, 0, 0, 0.4), 0 10px 10px -5px rgba(0, 0, 0, 0.2);
 }
@@ -31,9 +52,9 @@ html, body {
   height: 100%;
 }
 
-/* Typography */
+/* Typography - EXACT portfolio fonts */
 body {
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  font-family: 'PPNeueMontreal-Regular', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
   color: var(--text-primary);
   background-color: var(--bg-primary);
   line-height: 1.6;

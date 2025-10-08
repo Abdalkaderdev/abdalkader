@@ -14,6 +14,7 @@ import JsonLd from "@/components/SEO/JsonLd";
 import { personJsonLd, websiteJsonLd } from "@/utils/jsonld";
 import { ppRegular, ppMedium } from "@/libs/fonts";
 import Plausible from "@/components/Analytics/Plausible";
+import '@abdalkader/ui/dist/styles.css';
 import StagingDashboard from "@/components/StagingDashboard";
 import { ErrorBoundary } from "@/utils/errorTracking";
 import { initPerformanceMonitoring, reportWebVitals } from "@/utils/performanceMonitoring";

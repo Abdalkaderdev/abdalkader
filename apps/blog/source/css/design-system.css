@@ -1,0 +1,223 @@
+/**
+ * Abdalkader Design System Integration for Blog
+ * Imports the centralized design system and applies portfolio styling
+ */
+
+/* Import the centralized design system */
+@import url('../../node_modules/@abdalkader/ui/dist/styles.css');
+
+/* Blog-specific overrides to match portfolio exactly */
+body {
+  font-family: var(--font-primary), 'PPNeueMontreal-Regular', sans-serif;
+  background: var(--color-black);
+  color: var(--color-white);
+  line-height: var(--line-height-normal);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Typography matching portfolio */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-primary), 'PPNeueMontreal-Regular', sans-serif;
+  color: var(--color-white);
+  margin: 0;
+}
+
+h1 {
+  font-size: var(--text-hero);
+  line-height: var(--line-height-tight);
+  font-weight: 300;
+  text-transform: uppercase;
+}
+
+h2 {
+  font-size: var(--text-large);
+  line-height: var(--line-height-tight);
+  font-weight: 300;
+  text-transform: uppercase;
+}
+
+h3 {
+  font-size: var(--text-medium);
+  font-weight: 300;
+  text-transform: uppercase;
+  letter-spacing: 0.08rem;
+}
+
+/* Links matching portfolio */
+a {
+  color: var(--color-white);
+  text-decoration: none;
+  transition: var(--transition-smooth);
+}
+
+a:hover {
+  color: var(--color-primary);
+}
+
+a:focus-visible {
+  outline: 2px dashed var(--color-primary);
+  outline-offset: 3px;
+  border-radius: var(--border-radius-sm);
+}
+
+/* Code blocks matching portfolio */
+pre, code {
+  font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+  background: rgba(45, 45, 45, 0.3);
+  border: 1px solid var(--color-border);
+  border-radius: var(--border-radius-sm);
+  padding: 1rem;
+  color: var(--color-white);
+}
+
+code {
+  padding: 0.2rem 0.4rem;
+  font-size: 0.9em;
+}
+
+/* Buttons matching portfolio */
+button, .btn {
+  background: var(--color-primary);
+  color: var(--color-black);
+  border: none;
+  border-radius: var(--border-radius-sm);
+  padding: 1rem 2rem;
+  font-family: var(--font-secondary), 'PPNeueMontreal-Medium', sans-serif;
+  font-size: var(--text-base);
+  text-transform: uppercase;
+  letter-spacing: 0.05rem;
+  cursor: pointer;
+  transition: var(--transition-smooth);
+}
+
+button:hover, .btn:hover {
+  background: var(--color-primary-light);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-glow);
+}
+
+button:focus-visible, .btn:focus-visible {
+  outline: 2px dashed var(--color-primary);
+  outline-offset: 3px;
+}
+
+/* Form elements matching portfolio */
+input, textarea, select {
+  background: transparent;
+  border: 1px solid var(--color-border);
+  border-radius: var(--border-radius-sm);
+  padding: 1rem;
+  color: var(--color-white);
+  font-family: var(--font-primary);
+  transition: var(--transition-smooth);
+}
+
+input:focus, textarea:focus, select:focus {
+  outline: none;
+  border-color: var(--color-primary);
+  box-shadow: var(--shadow-focus);
+}
+
+/* Navigation matching portfolio */
+.nav, .navigation {
+  background: var(--color-navigation);
+  backdrop-filter: var(--backdrop-blur);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.nav a, .navigation a {
+  color: var(--color-white);
+  font-family: var(--font-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.05rem;
+  padding: 0.5rem 1rem;
+  border-radius: var(--border-radius-sm);
+  transition: var(--transition-smooth);
+}
+
+.nav a:hover, .navigation a:hover {
+  color: var(--color-primary);
+  background: rgba(244, 78, 0, 0.1);
+}
+
+/* Cards matching portfolio */
+.card, .post, .article {
+  background: rgba(45, 45, 45, 0.1);
+  border: 1px solid var(--color-border);
+  border-radius: var(--border-radius);
+  padding: var(--space-lg);
+  transition: var(--transition-smooth);
+  backdrop-filter: var(--backdrop-blur);
+}
+
+.card:hover, .post:hover, .article:hover {
+  border-color: var(--color-primary);
+  box-shadow: var(--shadow-glow);
+  transform: translateY(-4px);
+}
+
+/* Selection styling matching portfolio */
+::selection {
+  color: var(--color-black);
+  background-color: var(--color-primary);
+}
+
+/* Scrollbar styling matching portfolio */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-primary);
+}
+
+/* Responsive typography */
+@media (max-width: 1080px) {
+  h1 {
+    font-size: var(--text-hero-md);
+  }
+  
+  h2 {
+    font-size: var(--text-large-md);
+  }
+}
+
+@media (max-width: 600px) {
+  h1 {
+    font-size: var(--text-hero-sm);
+  }
+  
+  h2 {
+    font-size: var(--text-large-sm);
+  }
+  
+  h3 {
+    font-size: var(--text-medium-md);
+  }
+  
+  button, .btn {
+    padding: 0.8rem 1.5rem;
+    font-size: var(--text-small);
+  }
+}
+
+/* Animation classes for blog elements */
+.blog-fade-in {
+  animation: portfolioFadeIn var(--duration-slow) var(--easing-smooth) forwards;
+}
+
+.blog-stagger > * {
+  animation: portfolioFadeIn var(--duration-slow) var(--easing-smooth) forwards;
+  opacity: 0;
+}
+
+.blog-stagger > *:nth-child(1) { animation-delay: calc(1 * var(--stagger-delay)); }
+.blog-stagger > *:nth-child(2) { animation-delay: calc(2 * var(--stagger-delay)); }
+.blog-stagger > *:nth-child(3) { animation-delay: calc(3 * var(--stagger-delay)); }
+.blog-stagger > *:nth-child(4) { animation-delay: calc(4 * var(--stagger-delay)); }
+.blog-stagger > *:nth-child(5) { animation-delay: calc(5 * var(--stagger-delay)); }
