@@ -3,15 +3,80 @@ import ObjectDetectionDemo from '@/components/lab/ObjectDetectionDemo'
 import LabHeader from '@/components/lab/LabHeader'
 
 export const metadata: Metadata = {
-  title: 'Real-time Object Detection Demo | AI Lab',
-  description: 'Interactive object detection demo using TensorFlow.js COCO-SSD model with real-time webcam processing.',
-  keywords: ['object detection', 'computer vision', 'tensorflow', 'coco-ssd', 'real-time', 'webcam'],
+  title: 'AI-Powered Real-time Object Detection | TensorFlow.js COCO-SSD Demo | Abdalkader.dev',
+  description: 'Interactive computer vision demonstration using TensorFlow.js COCO-SSD model for real-time object detection. Experience AI-powered image recognition with 80 object classes, confidence scoring, and mobile-optimized performance.',
+  keywords: ['AI object detection', 'computer vision demo', 'TensorFlow.js', 'COCO-SSD model', 'machine learning', 'real-time AI', 'browser AI', 'image recognition', 'neural networks'],
+  authors: [{ name: 'Abdalkader Alhamoud' }],
+  creator: 'Abdalkader Alhamoud',
+  openGraph: {
+    title: 'AI-Powered Real-time Object Detection | TensorFlow.js COCO-SSD Demo',
+    description: 'Interactive computer vision demonstration using TensorFlow.js COCO-SSD model for real-time object detection with 80 object classes.',
+    url: 'https://lab.abdalkader.dev/object-detection-demo',
+    siteName: 'Abdalkader AI Lab',
+    type: 'article',
+    locale: 'en_US',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'AI-Powered Real-time Object Detection | TensorFlow.js COCO-SSD Demo',
+    description: 'Interactive computer vision demonstration using TensorFlow.js COCO-SSD model for real-time object detection.',
+    creator: '@abdalkaderdev',
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
+  alternates: {
+    canonical: 'https://lab.abdalkader.dev/object-detection-demo',
+  },
 }
 
 export default function ObjectDetectionDemoPage() {
   return (
     <main className="min-h-screen">
       <LabHeader />
+      
+      {/* Structured Data for CreativeWork */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            '@context': 'https://schema.org',
+            '@type': 'CreativeWork',
+            name: 'AI-Powered Real-time Object Detection Demo',
+            description: 'Interactive computer vision demonstration using TensorFlow.js COCO-SSD model for real-time object detection with 80 object classes.',
+            url: 'https://lab.abdalkader.dev/object-detection-demo',
+            applicationCategory: 'MLApplication',
+            programmingLanguage: ['JavaScript', 'TypeScript', 'TensorFlow.js'],
+            runtimePlatform: 'Web',
+            creator: {
+              '@type': 'Person',
+              name: 'Abdalkader Alhamoud',
+              jobTitle: 'AI & Full-Stack Developer',
+              url: 'https://abdalkader.dev'
+            },
+            dateCreated: '2024-01-15',
+            dateModified: '2024-01-15',
+            about: [
+              {
+                '@type': 'Thing',
+                name: 'Computer Vision'
+              },
+              {
+                '@type': 'Thing', 
+                name: 'Object Detection'
+              },
+              {
+                '@type': 'Thing',
+                name: 'Machine Learning'
+              }
+            ],
+            keywords: 'AI object detection, computer vision, TensorFlow.js, COCO-SSD, machine learning, real-time AI',
+            license: 'MIT',
+            isAccessibleForFree: true
+          })
+        }}
+      />
       
       <div className="container mx-auto px-4 py-8">
         {/* Hero Section */}
