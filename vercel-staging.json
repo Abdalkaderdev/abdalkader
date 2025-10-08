@@ -1,0 +1,49 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "name": "abdalkader-dev",
+  "buildCommand": "pnpm turbo run build --filter=@abdalkader/portfolio",
+  "installCommand": "pnpm install",
+  "outputDirectory": "apps/portfolio/.next",
+  "framework": "nextjs",
+  "git": {
+    "deploymentEnabled": {
+      "develop": true
+    }
+  },
+  "env": {
+    "NODE_ENV": "staging",
+    "NEXT_PUBLIC_ENVIRONMENT": "staging",
+    "NEXT_PUBLIC_ENABLE_FEATURE_FLAGS": "true",
+    "NEXT_PUBLIC_ENABLE_PERFORMANCE_MONITORING": "true",
+    "NEXT_PUBLIC_ENABLE_ERROR_TRACKING": "true",
+    "NEXT_PUBLIC_VERBOSE_ERRORS": "true"
+  },
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        {
+          "key": "X-Environment",
+          "value": "staging"
+        },
+        {
+          "key": "X-Robots-Tag",
+          "value": "noindex, nofollow"
+        }
+      ]
+    }
+  ],
+  "redirects": [
+    {
+      "source": "/health",
+      "destination": "/api/health",
+      "permanent": false
+    }
+  ],
+  "rewrites": [
+    {
+      "source": "/staging-tools/:path*",
+      "destination": "/api/staging/:path*"
+    }
+  ]
+}

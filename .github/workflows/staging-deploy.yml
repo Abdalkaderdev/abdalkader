@@ -1,0 +1,179 @@
+name: Staging Environment Deployment
+
+on:
+  push:
+    branches: [develop]
+  pull_request:
+    branches: [develop]
+
+env:
+  VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
+  VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID_STAGING }}
+
+jobs:
+  test:
+    name: Run Tests & Quality Checks
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v2
+        with:
+          version: 8
+          
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18
+          cache: 'pnpm'
+          
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+        
+      - name: Build UI Library
+        run: pnpm --filter @abdalkader/ui build
+        
+      - name: Lint code
+        run: pnpm lint
+        
+      - name: Type check
+        run: pnpm typecheck
+        
+      - name: Run tests
+        run: pnpm test
+        
+      - name: Build portfolio for staging
+        run: pnpm turbo run build --filter=@abdalkader/portfolio
+        
+      - name: Bundle size analysis
+        run: |
+          cd apps/portfolio
+          npx next-bundle-analyzer --analyze
+        continue-on-error: true
+
+  lighthouse:
+    name: Lighthouse CI
+    runs-on: ubuntu-latest
+    needs: test
+    if: github.event_name == 'pull_request'
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v2
+        with:
+          version: 8
+          
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18
+          cache: 'pnpm'
+          
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+        
+      - name: Build UI Library
+        run: pnpm --filter @abdalkader/ui build
+        
+      - name: Build portfolio
+        run: pnpm turbo run build --filter=@abdalkader/portfolio
+        
+      - name: Install Lighthouse CI
+        run: npm install -g @lhci/cli@0.13.x
+        
+      - name: Run Lighthouse CI
+        run: |
+          cd apps/portfolio
+          npx lhci autorun \
+            --collect.staticDistDir=.next \
+            --assert.assertions.categories.performance=0.8 \
+            --assert.assertions.categories.accessibility=0.9 \
+            --assert.assertions.categories.best-practices=0.8 \
+            --assert.assertions.categories.seo=0.9
+        env:
+          LHCI_GITHUB_APP_TOKEN: ${{ secrets.LHCI_GITHUB_APP_TOKEN }}
+
+  deploy-staging:
+    name: Deploy to Staging
+    runs-on: ubuntu-latest
+    needs: test
+    if: github.ref == 'refs/heads/develop' && github.event_name == 'push'
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v2
+        with:
+          version: 8
+          
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18
+          cache: 'pnpm'
+          
+      - name: Install Vercel CLI
+        run: npm install --global vercel@latest
+        
+      - name: Pull Vercel Environment Information
+        run: vercel pull --yes --environment=preview --token=${{ secrets.VERCEL_TOKEN }}
+        
+      - name: Build Project Artifacts
+        run: vercel build --token=${{ secrets.VERCEL_TOKEN }}
+        
+      - name: Deploy Project Artifacts to Vercel
+        id: deploy
+        run: |
+          url=$(vercel deploy --prebuilt --token=${{ secrets.VERCEL_TOKEN }})
+          echo "deployment-url=$url" >> $GITHUB_OUTPUT
+          
+      - name: Assign Custom Domain
+        run: |
+          vercel alias ${{ steps.deploy.outputs.deployment-url }} dev.abdalkader.dev --token=${{ secrets.VERCEL_TOKEN }}
+          
+      - name: Comment PR with deployment URL
+        if: github.event_name == 'pull_request'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            github.rest.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: '🚀 Staging deployment ready at: https://dev.abdalkader.dev'
+            })
+
+  performance-monitoring:
+    name: Performance Monitoring
+    runs-on: ubuntu-latest
+    needs: deploy-staging
+    if: github.ref == 'refs/heads/develop' && github.event_name == 'push'
+    
+    steps:
+      - name: Wait for deployment
+        run: sleep 30
+        
+      - name: Check deployment health
+        run: |
+          curl -f https://dev.abdalkader.dev || exit 1
+          
+      - name: Run performance audit
+        run: |
+          npx lighthouse https://dev.abdalkader.dev \
+            --output json \
+            --output-path lighthouse-report.json \
+            --chrome-flags="--headless --no-sandbox"
+            
+      - name: Upload performance report
+        uses: actions/upload-artifact@v4
+        with:
+          name: lighthouse-report
+          path: lighthouse-report.json
