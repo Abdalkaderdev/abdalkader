@@ -43,8 +43,14 @@
 }
 
 /* Storybook Body - EXACT portfolio styling */
-.sb-show-main {
+.sb-show-main,
+.sb-show-main *,
+html,
+body,
+#root,
+#docs-root {
   background: var(--portfolio-black) !important;
+  background-color: var(--portfolio-black) !important;
   color: var(--portfolio-white) !important;
   font-family: var(--portfolio-font-primary) !important;
   -webkit-font-smoothing: antialiased !important;
@@ -288,11 +294,59 @@
   color: var(--portfolio-white) !important;
 }
 
-/* Override any remaining default Storybook colors */
-.sb-bar [style*="color:"], .docs-story [style*="color:"], .sb-canvas [style*="color:"] {
+/* Aggressive overrides for ALL possible elements */
+* {
+  background-color: var(--portfolio-black) !important;
+  background: var(--portfolio-black) !important;
   color: var(--portfolio-white) !important;
+}
+
+/* Specific Storybook element overrides */
+.sb-bar,
+.sb-bar *,
+.sb-toolbar,
+.sb-toolbar *,
+.sb-canvas,
+.sb-canvas *,
+.docs-story,
+.docs-story *,
+.sb-addon-panel,
+.sb-addon-panel *,
+.sb-panel,
+.sb-panel *,
+.sb-sidebar,
+.sb-sidebar *,
+.sb-nav,
+.sb-nav *,
+.sb-content,
+.sb-content * {
+  background: var(--portfolio-black) !important;
+  background-color: var(--portfolio-black) !important;
+  color: var(--portfolio-white) !important;
+}
+
+/* Override any remaining default Storybook colors */
+.sb-bar [style*="color:"], .docs-story [style*="color:"], .sb-canvas [style*="color:"],
+.sb-bar [style*="background:"], .docs-story [style*="background:"], .sb-canvas [style*="background:"] {
+  color: var(--portfolio-white) !important;
+  background: var(--portfolio-black) !important;
 }
 
 .sb-bar [style*="background-color:"], .docs-story [style*="background-color:"], .sb-canvas [style*="background-color:"] {
   background-color: var(--portfolio-black) !important;
+  background: var(--portfolio-black) !important;
+}
+
+/* Force dark backgrounds on all divs and containers */
+div,
+section,
+article,
+main,
+aside,
+header,
+footer,
+nav {
+  background: var(--portfolio-black) !important;
+  background-color: var(--portfolio-black) !important;
+  color: var(--portfolio-white) !important;
 }

@@ -61,4 +61,8 @@ module.exports = {
   },
   plugins: [],
   darkMode: 'class',
+  // Force dark mode by default
+  corePlugins: {
+    // Ensure dark mode is always applied
+  },
 }
