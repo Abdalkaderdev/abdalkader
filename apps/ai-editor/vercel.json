@@ -1,14 +1,14 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
-  "buildCommand": "cd apps/ai-editor && npm run build",
+  "buildCommand": "pnpm build",
   "installCommand": "pnpm install --no-frozen-lockfile",
-  "outputDirectory": "apps/ai-editor/.next",
+  "outputDirectory": ".next",
   "framework": "nextjs",
   "functions": {
-    "apps/ai-editor/pages/api/generate.ts": {
+    "pages/api/generate.ts": {
       "maxDuration": 30
     },
-    "apps/ai-editor/pages/api/socket.ts": {
+    "pages/api/socket.ts": {
       "maxDuration": 10
     }
   }
