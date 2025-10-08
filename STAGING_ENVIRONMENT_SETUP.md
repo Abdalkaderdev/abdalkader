@@ -7,14 +7,14 @@ This document outlines the complete staging environment setup for the Abdalkader
 ## 📋 Environment Architecture
 
 ### Branch Strategy
-- **Production**: `main` → `abdalkader.dev`
-- **Staging**: `develop` → `dev.abdalkader.dev`
+- **Production**: `main` → `abdalkader.dev` (production environment)
+- **Staging**: `main` → `dev.abdalkader.dev` (staging environment)
 - **Development**: Feature branches → Preview deployments
 
 ### Domain Structure
 ```
-abdalkader.dev          → Production (main branch)
-dev.abdalkader.dev      → Staging (develop branch)
+abdalkader.dev          → Production (main branch, production env)
+dev.abdalkader.dev      → Staging (main branch, staging env)
 docs.abdalkader.dev     → Documentation site
 ```
 
@@ -96,15 +96,15 @@ NEXT_PUBLIC_AB_TESTING=true
 
 ### 1. Manual Deployment
 ```bash
-# Switch to develop branch
-git checkout develop
+# Switch to main branch
+git checkout main
 
 # Run staging deployment script
 node scripts/deploy-staging.js
 ```
 
 ### 2. Automated Deployment
-- **Trigger**: Push to `develop` branch
+- **Trigger**: Push to `main` branch
 - **Process**: GitHub Actions → Tests → Build → Deploy → Lighthouse Audit
 - **URL**: `https://dev.abdalkader.dev`
 
@@ -202,10 +202,10 @@ vercel --target staging
 ### Development Workflow
 1. **Feature Development**: Create feature branch
 2. **Local Testing**: Test with staging configuration
-3. **Pull Request**: Submit PR to develop branch
-4. **Staging Deployment**: Auto-deploy on merge
+3. **Pull Request**: Submit PR to main branch
+4. **Staging Deployment**: Auto-deploy to staging environment
 5. **Testing**: Comprehensive staging testing
-6. **Production**: Merge to main for production
+6. **Production**: Same code runs in production environment
 
 ### Staging Testing Checklist
 - [ ] Feature functionality

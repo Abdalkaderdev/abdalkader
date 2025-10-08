@@ -11,9 +11,9 @@
   "git": {
     "deploymentEnabled": {
       "main": true,
-      "develop": true,
       "components": true,
-      "blog": true
+      "blog": true,
+      "docs": true
     }
   },
   "functions": {

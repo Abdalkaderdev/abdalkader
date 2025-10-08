@@ -10,7 +10,7 @@ const fs = require('fs');
 const path = require('path');
 
 // Configuration
-const STAGING_BRANCH = 'develop';
+const STAGING_BRANCH = 'main';
 const STAGING_DOMAIN = 'dev.abdalkader.dev';
 const PROJECT_ROOT = path.join(__dirname, '..');
 
@@ -61,7 +61,7 @@ function checkPrerequisites() {
     throw new Error('pnpm is not installed');
   }
   
-  // Check if we're on the develop branch
+  // Check if we're on the main branch
   const currentBranch = exec('git branch --show-current', { stdio: 'pipe' }).toString().trim();
   if (currentBranch !== STAGING_BRANCH) {
     throw new Error(`Must be on ${STAGING_BRANCH} branch. Current branch: ${currentBranch}`);
