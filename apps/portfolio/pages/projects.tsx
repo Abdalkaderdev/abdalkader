@@ -9,8 +9,8 @@ export default function ProjectPage() {
     return (
         <>
             <Head>
-                <title>Projects | Abdalkader Alhamoud</title>
-                <meta name="description" content="Explore the portfolio of projects by Abdalkader Alhamoud, featuring web development, AI engineering, and innovative digital solutions." />
+                <title>AI & Web Development Projects | End-to-End Solutions | Abdalkader.dev</title>
+                <meta name="description" content="Discover AI-powered web applications, machine learning projects, and intelligent e-commerce solutions. From recommendation engines to computer vision applications." />
                 <link rel="canonical" href={buildCanonical('/projects')} />
             </Head>
             <ProjectHeroSection />
