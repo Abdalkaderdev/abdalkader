@@ -1,9 +1,9 @@
 import OpenAI from 'openai';
 
-const openai = new OpenAI({
+const openai = process.env.OPENAI_API_KEY ? new OpenAI({
   apiKey: process.env.OPENAI_API_KEY,
   dangerouslyAllowBrowser: false // This should only run on server-side
-});
+}) : null;
 
 export interface GenerateComponentRequest {
   prompt: string;
@@ -53,6 +53,10 @@ Spacing:
 `;
 
 export async function generateComponent(request: GenerateComponentRequest): Promise<GenerateComponentResponse> {
+  if (!openai) {
+    throw new Error('OpenAI API key not configured. Please set OPENAI_API_KEY environment variable.');
+  }
+  
   try {
     const systemPrompt = `${DESIGN_SYSTEM_CONTEXT}
 
@@ -128,6 +132,10 @@ Please generate clean, production-ready code that follows best practices.`;
 }
 
 export async function improveComponent(code: string, improvements: string): Promise<GenerateComponentResponse> {
+  if (!openai) {
+    throw new Error('OpenAI API key not configured. Please set OPENAI_API_KEY environment variable.');
+  }
+  
   try {
     const systemPrompt = `${DESIGN_SYSTEM_CONTEXT}
 

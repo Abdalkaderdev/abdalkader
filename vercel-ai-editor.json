@@ -11,9 +11,5 @@
     "apps/ai-editor/pages/api/socket.ts": {
       "maxDuration": 10
     }
-  },
-  "env": {
-    "OPENAI_API_KEY": "@openai-api-key",
-    "DESIGN_TOKENS_URL": "@design-tokens-url"
   }
 }
