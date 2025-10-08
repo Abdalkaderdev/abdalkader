@@ -2,18 +2,35 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+/* Portfolio font loading */
+@font-face {
+  font-family: 'PPNeueMontreal-Regular';
+  src: url('/fonts/PPNeueMontreal-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
+@font-face {
+  font-family: 'PPNeueMontreal-Medium';
+  src: url('/fonts/PPNeueMontreal-Medium.woff2') format('woff2');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* EXACT portfolio colors */
+:root {
+  --foreground-rgb: 248, 248, 248; /* portfolio white */
+  --background-start-rgb: 0, 0, 0; /* portfolio black */
+  --background-end-rgb: 0, 0, 0; /* portfolio black */
+  --portfolio-primary: #f44e00;
+  --portfolio-primary-light: #fa7300;
+  --portfolio-white: #f8f8f8;
+  --portfolio-black: #000;
+  --portfolio-text-grey: #787878;
+  --portfolio-border: rgb(37, 37, 37);
+  --portfolio-transition: 0.8s cubic-bezier(0.19, 1, 0.22, 1);
 }
 
 * {
@@ -29,60 +46,177 @@ body {
 }
 
 body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+  color: var(--portfolio-white);
+  background: var(--portfolio-black);
+  font-family: 'PPNeueMontreal-Regular', Inter, system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 a {
-  color: inherit;
+  color: var(--portfolio-white);
   text-decoration: none;
+  transition: var(--portfolio-transition);
 }
 
-@media (prefers-color-scheme: dark) {
-  html {
-    color-scheme: dark;
-  }
+a:hover {
+  color: var(--portfolio-primary);
 }
 
-/* Monaco Editor Styles */
+/* Force dark mode for portfolio consistency */
+html {
+  color-scheme: dark;
+}
+
+/* Monaco Editor Styles - Portfolio themed */
 .monaco-editor-container {
-  border: 1px solid #e5e7eb;
-  border-radius: 0.5rem;
+  border: 1px solid var(--portfolio-border);
+  border-radius: 6px;
+  overflow: hidden;
+  background: rgba(45, 45, 45, 0.1);
+  backdrop-filter: blur(10px);
+}
+
+/* Component Preview Styles - Portfolio themed */
+.component-preview {
+  background: rgba(45, 45, 45, 0.1);
+  border: 1px solid var(--portfolio-border);
+  border-radius: 12px;
+  padding: 2rem;
+  min-height: 200px;
+  backdrop-filter: blur(10px);
+  transition: var(--portfolio-transition);
+}
+
+.component-preview:hover {
+  border-color: var(--portfolio-primary);
+  box-shadow: 0 0 20px rgba(244, 78, 0, 0.3);
+  transform: translateY(-4px);
+}
+
+/* AI Prompt Styles - Portfolio themed */
+.ai-prompt-container {
+  background: rgba(45, 45, 45, 0.1);
+  border: 1px solid var(--portfolio-border);
+  border-radius: 12px;
+  padding: 2rem;
+  backdrop-filter: blur(10px);
+  transition: var(--portfolio-transition);
+}
+
+.ai-prompt-container:hover {
+  border-color: var(--portfolio-primary);
+  box-shadow: 0 0 20px rgba(244, 78, 0, 0.3);
+}
+
+/* Portfolio Button Styles */
+.portfolio-btn {
+  background: var(--portfolio-primary);
+  color: var(--portfolio-black);
+  border: none;
+  border-radius: 6px;
+  padding: 1rem 2rem;
+  font-family: 'PPNeueMontreal-Medium', system-ui, sans-serif;
+  font-size: 1rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.05rem;
+  cursor: pointer;
+  transition: var(--portfolio-transition);
+  position: relative;
   overflow: hidden;
 }
 
-.dark .monaco-editor-container {
-  border-color: #374151;
+.portfolio-btn:hover {
+  background: var(--portfolio-primary-light);
+  transform: translateY(-2px);
+  box-shadow: 0 0 20px rgba(244, 78, 0, 0.3);
 }
 
-/* Component Preview Styles */
-.component-preview {
-  background: white;
-  border: 1px solid #e5e7eb;
-  border-radius: 0.5rem;
+.portfolio-btn:focus-visible {
+  outline: 2px dashed var(--portfolio-primary);
+  outline-offset: 3px;
+}
+
+/* Portfolio Input Styles */
+.portfolio-input {
+  background: transparent;
+  border: 1px solid var(--portfolio-border);
+  border-radius: 6px;
   padding: 1rem;
-  min-height: 200px;
+  color: var(--portfolio-white);
+  font-family: 'PPNeueMontreal-Regular', system-ui, sans-serif;
+  transition: var(--portfolio-transition);
 }
 
-.dark .component-preview {
-  background: #1f2937;
-  border-color: #374151;
+.portfolio-input:focus {
+  outline: none;
+  border-color: var(--portfolio-primary);
+  box-shadow: 0 0 0 2px rgba(244, 78, 0, 0.2);
 }
 
-/* AI Prompt Styles */
-.ai-prompt-container {
-  background: #f9fafb;
-  border: 1px solid #e5e7eb;
-  border-radius: 0.5rem;
-  padding: 1rem;
+/* Portfolio Typography */
+.portfolio-heading-hero {
+  font-family: 'PPNeueMontreal-Regular', system-ui, sans-serif;
+  font-size: 4.5rem;
+  line-height: 0.9;
+  font-weight: 300;
+  text-transform: uppercase;
+  color: var(--portfolio-white);
+  margin: 0;
 }
 
-.dark .ai-prompt-container {
-  background: #111827;
-  border-color: #374151;
+.portfolio-heading-large {
+  font-family: 'PPNeueMontreal-Regular', system-ui, sans-serif;
+  font-size: 2.75rem;
+  line-height: 0.9;
+  font-weight: 300;
+  text-transform: uppercase;
+  color: var(--portfolio-white);
+  margin: 0;
+}
+
+/* Selection styling - EXACT portfolio */
+::selection {
+  color: var(--portfolio-black);
+  background-color: var(--portfolio-primary);
+}
+
+/* Scrollbar styling - EXACT portfolio */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--portfolio-primary);
+}
+
+/* Responsive typography */
+@media (max-width: 1080px) {
+  .portfolio-heading-hero {
+    font-size: 3.2rem;
+  }
+  
+  .portfolio-heading-large {
+    font-size: 2.2rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .portfolio-heading-hero {
+    font-size: 2.5rem;
+  }
+  
+  .portfolio-heading-large {
+    font-size: 1.8rem;
+  }
+  
+  .portfolio-btn {
+    padding: 0.8rem 1.5rem;
+    font-size: 0.875rem;
+  }
 }

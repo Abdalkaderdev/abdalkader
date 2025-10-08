@@ -52,10 +52,10 @@ export default function AIPrompt({ onGenerate, isLoading = false, error = null, 
   return (
     <div className="ai-prompt-container">
       <div className="flex items-center gap-3 mb-4">
-        <div className="w-8 h-8 bg-gradient-to-r from-purple-500 to-pink-500 rounded-lg flex items-center justify-center">
-          <FiZap className="w-4 h-4 text-white" />
+        <div className="w-8 h-8 bg-portfolio-primary rounded-lg flex items-center justify-center">
+          <FiZap className="w-4 h-4 text-portfolio-black" />
         </div>
-        <h2 className="text-lg font-semibold text-gray-900 dark:text-white">
+        <h2 className="portfolio-heading-large text-lg">
           AI Code Generator
         </h2>
         <button
@@ -144,7 +144,7 @@ export default function AIPrompt({ onGenerate, isLoading = false, error = null, 
           <button
             type="submit"
             disabled={!prompt.trim() || isLoading}
-            className="absolute bottom-3 right-3 p-2 bg-gradient-to-r from-purple-500 to-pink-500 text-white rounded-lg hover:shadow-lg transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
+            className="portfolio-btn absolute bottom-3 right-3 p-2 disabled:opacity-50 disabled:cursor-not-allowed"
           >
             {isLoading ? (
               <FiRefreshCw className="w-4 h-4 animate-spin" />

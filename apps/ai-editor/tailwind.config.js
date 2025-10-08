@@ -8,34 +8,53 @@ module.exports = {
   theme: {
     extend: {
       colors: {
+        // EXACT portfolio colors
         primary: {
-          50: '#eff6ff',
-          100: '#dbeafe',
-          200: '#bfdbfe',
-          300: '#93c5fd',
-          400: '#60a5fa',
-          500: '#3b82f6',
-          600: '#2563eb',
-          700: '#1d4ed8',
-          800: '#1e40af',
-          900: '#1e3a8a',
+          50: '#fef2f1',
+          100: '#fee4e2',
+          200: '#fecdd3',
+          300: '#fda4af',
+          400: '#fb7185',
+          500: '#f44e00', // EXACT portfolio primary
+          600: '#fa7300', // EXACT portfolio primary light
+          700: '#dc2626',
+          800: '#b91c1c',
+          900: '#991b1b',
         },
+        // Portfolio color aliases
+        'portfolio-primary': '#f44e00',
+        'portfolio-primary-light': '#fa7300',
+        'portfolio-white': '#f8f8f8',
+        'portfolio-black': '#000000',
+        'portfolio-text-grey': '#787878',
+        'portfolio-border': 'rgb(37, 37, 37)',
       },
       fontFamily: {
-        sans: ['Inter', 'system-ui', 'sans-serif'],
+        // EXACT portfolio fonts
+        sans: ['PPNeueMontreal-Regular', 'Inter', 'system-ui', 'sans-serif'],
+        'portfolio-regular': ['PPNeueMontreal-Regular', 'system-ui', 'sans-serif'],
+        'portfolio-medium': ['PPNeueMontreal-Medium', 'system-ui', 'sans-serif'],
       },
       animation: {
-        'fade-in': 'fadeIn 0.5s ease-in-out',
-        'slide-up': 'slideUp 0.3s ease-out',
+        // EXACT portfolio animations
+        'fade-in': 'portfolioFadeIn 0.8s cubic-bezier(0.19, 1, 0.22, 1)',
+        'slide-up': 'portfolioSlideUp 0.8s cubic-bezier(0.19, 1, 0.22, 1)',
+        'portfolio-fade-in': 'portfolioFadeIn 0.8s cubic-bezier(0.19, 1, 0.22, 1)',
+        'portfolio-slide-in': 'portfolioSlideIn 0.8s cubic-bezier(0.19, 1, 0.22, 1)',
       },
       keyframes: {
-        fadeIn: {
-          '0%': { opacity: '0' },
-          '100%': { opacity: '1' },
+        // EXACT portfolio keyframes
+        portfolioFadeIn: {
+          '0%': { opacity: '0', transform: 'translateY(30px)' },
+          '100%': { opacity: '1', transform: 'translateY(0)' },
         },
-        slideUp: {
-          '0%': { transform: 'translateY(10px)', opacity: '0' },
+        portfolioSlideUp: {
+          '0%': { transform: 'translateY(30px)', opacity: '0' },
           '100%': { transform: 'translateY(0)', opacity: '1' },
+        },
+        portfolioSlideIn: {
+          '0%': { opacity: '0', transform: 'translateX(-30px)' },
+          '100%': { opacity: '1', transform: 'translateX(0)' },
         },
       },
     },
