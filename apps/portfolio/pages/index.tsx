@@ -13,8 +13,8 @@ export default function HomePage() {
     return (
         <>
             <Head>
-                <title>Abdalkader Alhamoud | Web Developer & AI Engineer</title>
-                <meta name="description" content="Portfolio of Abdalkader Alhamoud, a Web Developer and AI Engineer specializing in building modern, user-focused digital experiences." />
+                <title>Abdalkader - AI/ML & Full-Stack Developer | React, Python, TensorFlow.js</title>
+                <meta name="description" content="Full-Stack Developer & AI Specialist. I build intelligent web applications, e-commerce stores, and interactive ML experiments. Explore my professional projects and AI lab." />
                 <link rel="canonical" href={buildCanonical('/')} />
             </Head>
             <HeroSection />

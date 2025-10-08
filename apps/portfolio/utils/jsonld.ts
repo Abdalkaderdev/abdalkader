@@ -6,10 +6,23 @@ export function personJsonLd() {
     '@type': 'Person',
     name: 'Abdalkader Alhamoud',
     url: SITE_URL,
-    jobTitle: 'Web Developer & AI Engineer',
+    jobTitle: 'AI-Enhanced Full-Stack Developer',
+    knowsAbout: [
+      'Artificial Intelligence',
+      'Machine Learning', 
+      'Python',
+      'React',
+      'Kotlin',
+      'Full-Stack Development',
+      'E-commerce',
+      'TensorFlow.js',
+      'Next.js',
+      'TypeScript'
+    ],
     sameAs: [
-      'https://github.com/abdalkader',
-      'https://www.linkedin.com/in/abdalkader',
+      'https://github.com/abdalkaderdev',
+      'https://www.linkedin.com/in/abdalkaderdev',
+      'https://www.instagram.com/abdalkader.dev'
     ],
   };
 }
@@ -18,8 +31,9 @@ export function websiteJsonLd() {
   return {
     '@context': 'https://schema.org',
     '@type': 'WebSite',
-    name: 'Abdalkader Alhamoud Portfolio',
+    name: 'Abdalkader - AI/ML & Full-Stack Developer Portfolio',
     url: SITE_URL,
+    description: 'Portfolio of Abdalkader Alhamoud, an AI-Enhanced Full-Stack Developer specializing in building intelligent web applications and ML experiments.',
     potentialAction: {
       '@type': 'SearchAction',
       target: `${SITE_URL}/?q={search_term_string}`,
@@ -33,7 +47,20 @@ export function projectJsonLd(project: {
   img: string;
   overview: string;
   live: string;
+  category?: string[];
+  badges?: string[];
 }) {
+  const isAIProject = project.category?.some(cat => 
+    cat.toLowerCase().includes('ai') || 
+    cat.toLowerCase().includes('machine learning') ||
+    cat.toLowerCase().includes('ml') ||
+    project.badges?.some(badge => 
+      badge.toLowerCase().includes('tensorflow') ||
+      badge.toLowerCase().includes('pytorch') ||
+      badge.toLowerCase().includes('ai')
+    )
+  );
+
   return {
     '@context': 'https://schema.org',
     '@type': 'CreativeWork',
@@ -42,6 +69,13 @@ export function projectJsonLd(project: {
     description: project.overview,
     url: project.live || SITE_URL,
     creator: personJsonLd(),
+    ...(isAIProject && {
+      applicationCategory: 'MLApplication',
+      programmingLanguage: project.badges?.filter(badge => 
+        ['Python', 'JavaScript', 'TypeScript', 'React', 'Next.js'].includes(badge)
+      ),
+      runtimePlatform: 'Web'
+    })
   } as const;
 }
 

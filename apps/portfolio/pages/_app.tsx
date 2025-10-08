@@ -50,35 +50,35 @@ export default function App({ Component, pageProps }: AppProps) {
     return (
         <>
             <Head>
-                <title>Abdalkader Alhamoud | Web Developer & AI Engineer</title>
+                <title>Abdalkader - AI/ML & Full-Stack Developer | React, Python, TensorFlow.js</title>
                 <link rel="icon" type="image/x-icon" href="/images/favicon.png" />
                 <link rel="canonical" href={`${SITE_URL}${router.asPath === '/' ? '' : router.asPath}`.replace(/\/$/, '')} />
                 <meta
                     name="description"
-                    content="Portfolio of Abdalkader Alhamoud, a Web Developer and AI Engineer specializing in building modern, user-focused digital experiences."
+                    content="Full-Stack Developer & AI Specialist. I build intelligent web applications, e-commerce stores, and interactive ML experiments. Explore my professional projects and AI lab."
                 />
                 <meta name="author" content="Abdalkader Alhamoud" />
                 
                 {/* Open Graph tags */}
-                <meta property="og:title" content="Abdalkader Alhamoud | Web Developer & AI Engineer" />
-                <meta property="og:description" content="Portfolio of Abdalkader Alhamoud, showcasing projects in web development and AI engineering." />
+                <meta property="og:title" content="Abdalkader - AI/ML & Full-Stack Developer | React, Python, TensorFlow.js" />
+                <meta property="og:description" content="Full-Stack Developer & AI Specialist. I build intelligent web applications, e-commerce stores, and interactive ML experiments. Explore my professional projects and AI lab." />
                 <meta property="og:type" content="website" />
-                <meta property="og:url" content="https://abdalkader-alhamoud.vercel.app/" />
-                <meta property="og:image" content="https://abdalkader-alhamoud.vercel.app/images/og-image.jpg" />
+                <meta property="og:url" content="https://abdalkader.dev/" />
+                <meta property="og:image" content="https://abdalkader.dev/images/og-image.jpg" />
                 <meta property="og:image:width" content="1200" />
                 <meta property="og:image:height" content="630" />
                 
                 {/* Twitter Card tags */}
                 <meta name="twitter:card" content="summary_large_image" />
-                <meta name="twitter:title" content="Abdalkader Alhamoud | Web Developer & AI Engineer" />
-                <meta name="twitter:description" content="Portfolio of Abdalkader Alhamoud, showcasing projects in web development and AI engineering." />
-                <meta name="twitter:image" content="https://abdalkader-alhamoud.vercel.app/images/twitter-image.jpg" />
+                <meta name="twitter:title" content="Abdalkader - AI/ML & Full-Stack Developer | React, Python, TensorFlow.js" />
+                <meta name="twitter:description" content="Full-Stack Developer & AI Specialist. I build intelligent web applications, e-commerce stores, and interactive ML experiments. Explore my professional projects and AI lab." />
+                <meta name="twitter:image" content="https://abdalkader.dev/images/twitter-image.jpg" />
                 <meta name="twitter:site" content="@abdalkaderdev" />
                 
                 {/* Additional SEO tags */}
                 <meta name="viewport" content="width=device-width, initial-scale=1" />
                 <meta name="robots" content="index, follow" />
-                <meta name="keywords" content="web developer, AI engineer, frontend developer, React, Next.js, TypeScript, portfolio" />
+                <meta name="keywords" content="AI developer, machine learning engineer, full-stack developer, React developer, Python developer, TensorFlow.js, AI integration, ML applications, intelligent web apps, AI specialist, e-commerce development" />
 
                 {/* JSON-LD: Person */}
                 <script
@@ -88,8 +88,20 @@ export default function App({ Component, pageProps }: AppProps) {
                             '@context': 'https://schema.org',
                             '@type': 'Person',
                             name: 'Abdalkader Alhamoud',
-                            url: 'https://abdalkader-alhamoud.vercel.app/',
-                            jobTitle: 'Web Developer & AI Engineer',
+                            url: 'https://abdalkader.dev/',
+                            jobTitle: 'AI-Enhanced Full-Stack Developer',
+                            knowsAbout: [
+                                'Artificial Intelligence',
+                                'Machine Learning', 
+                                'Python',
+                                'React',
+                                'Kotlin',
+                                'Full-Stack Development',
+                                'E-commerce',
+                                'TensorFlow.js',
+                                'Next.js',
+                                'TypeScript'
+                            ],
                             sameAs: [
                                 'https://github.com/abdalkaderdev',
                                 'https://www.linkedin.com/in/abdalkaderdev',
@@ -106,11 +118,12 @@ export default function App({ Component, pageProps }: AppProps) {
                         __html: JSON.stringify({
                             '@context': 'https://schema.org',
                             '@type': 'WebSite',
-                            name: 'Abdalkader Alhamoud Portfolio',
-                            url: 'https://abdalkader-alhamoud.vercel.app/',
+                            name: 'Abdalkader - AI/ML & Full-Stack Developer Portfolio',
+                            url: 'https://abdalkader.dev/',
+                            description: 'Portfolio of Abdalkader Alhamoud, an AI-Enhanced Full-Stack Developer specializing in building intelligent web applications and ML experiments.',
                             potentialAction: {
                                 '@type': 'SearchAction',
-                                target: 'https://abdalkader-alhamoud.vercel.app/?q={search_term_string}',
+                                target: 'https://abdalkader.dev/?q={search_term_string}',
                                 'query-input': 'required name=search_term_string'
                             }
                         })
