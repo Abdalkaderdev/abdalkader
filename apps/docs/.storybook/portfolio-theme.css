@@ -1,0 +1,298 @@
+/**
+ * Portfolio Theme for Storybook
+ * Overrides Storybook's default theme to match portfolio exactly
+ */
+
+/* Portfolio font loading */
+@font-face {
+  font-family: 'PPNeueMontreal-Regular';
+  src: url('/fonts/PPNeueMontreal-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'PPNeueMontreal-Medium';
+  src: url('/fonts/PPNeueMontreal-Medium.woff2') format('woff2');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Override Storybook theme with EXACT portfolio values */
+:root {
+  /* Colors - EXACT portfolio values */
+  --portfolio-primary: #f44e00;
+  --portfolio-primary-light: #fa7300;
+  --portfolio-white: #f8f8f8;
+  --portfolio-black: #000;
+  --portfolio-text-grey: #787878;
+  --portfolio-border: rgb(37, 37, 37);
+  --portfolio-navigation: #2d2d2d59;
+  
+  /* Typography - EXACT portfolio fonts */
+  --portfolio-font-primary: 'PPNeueMontreal-Regular', sans-serif;
+  --portfolio-font-secondary: 'PPNeueMontreal-Medium', sans-serif;
+  
+  /* Animations - EXACT portfolio values */
+  --portfolio-transition: 0.8s cubic-bezier(0.19, 1, 0.22, 1);
+  --portfolio-easing: cubic-bezier(0.19, 1, 0.22, 1);
+  --portfolio-duration: 0.8s;
+  --portfolio-stagger: 0.003s;
+}
+
+/* Storybook Body - EXACT portfolio styling */
+.sb-show-main {
+  background: var(--portfolio-black) !important;
+  color: var(--portfolio-white) !important;
+  font-family: var(--portfolio-font-primary) !important;
+  -webkit-font-smoothing: antialiased !important;
+  -moz-osx-font-smoothing: grayscale !important;
+}
+
+/* Storybook Sidebar - EXACT portfolio styling */
+.sb-bar {
+  background: var(--portfolio-navigation) !important;
+  backdrop-filter: blur(10px) !important;
+  border-right: 1px solid var(--portfolio-border) !important;
+}
+
+/* Storybook Navigation - EXACT portfolio styling */
+.sb-bar a, .sb-bar button {
+  color: var(--portfolio-white) !important;
+  font-family: var(--portfolio-font-secondary) !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.05rem !important;
+  transition: var(--portfolio-transition) !important;
+}
+
+.sb-bar a:hover, .sb-bar button:hover {
+  color: var(--portfolio-primary) !important;
+  background: rgba(244, 78, 0, 0.1) !important;
+}
+
+/* Storybook Toolbar - EXACT portfolio styling */
+.sb-toolbar {
+  background: var(--portfolio-navigation) !important;
+  backdrop-filter: blur(10px) !important;
+  border-bottom: 1px solid var(--portfolio-border) !important;
+}
+
+/* Storybook Canvas - EXACT portfolio styling */
+.sb-canvas {
+  background: var(--portfolio-black) !important;
+}
+
+/* Storybook Docs - EXACT portfolio styling */
+.docs-story {
+  background: var(--portfolio-black) !important;
+  color: var(--portfolio-white) !important;
+}
+
+/* Typography - EXACT portfolio styling */
+.sb-bar h1, .sb-bar h2, .sb-bar h3,
+.docs-story h1, .docs-story h2, .docs-story h3 {
+  font-family: var(--portfolio-font-primary) !important;
+  color: var(--portfolio-white) !important;
+  font-weight: 300 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.05rem !important;
+}
+
+.sb-bar h1, .docs-story h1 {
+  font-size: 4.5rem !important;
+  line-height: 0.9 !important;
+}
+
+.sb-bar h2, .docs-story h2 {
+  font-size: 2.75rem !important;
+  line-height: 0.9 !important;
+}
+
+.sb-bar h3, .docs-story h3 {
+  font-size: 1.8rem !important;
+  letter-spacing: 0.08rem !important;
+}
+
+/* Links - EXACT portfolio styling */
+.sb-bar a, .docs-story a {
+  color: var(--portfolio-white) !important;
+  text-decoration: none !important;
+  transition: var(--portfolio-transition) !important;
+}
+
+.sb-bar a:hover, .docs-story a:hover {
+  color: var(--portfolio-primary) !important;
+}
+
+/* Buttons - EXACT portfolio styling */
+.sb-bar button, .docs-story button {
+  background: var(--portfolio-primary) !important;
+  color: var(--portfolio-black) !important;
+  border: none !important;
+  border-radius: 6px !important;
+  padding: 1rem 2rem !important;
+  font-family: var(--portfolio-font-secondary) !important;
+  font-size: 1rem !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.05rem !important;
+  cursor: pointer !important;
+  transition: var(--portfolio-transition) !important;
+  position: relative !important;
+  overflow: hidden !important;
+}
+
+.sb-bar button:hover, .docs-story button:hover {
+  background: var(--portfolio-primary-light) !important;
+  transform: translateY(-2px) !important;
+  box-shadow: 0 0 20px rgba(244, 78, 0, 0.3) !important;
+}
+
+/* Code blocks - EXACT portfolio styling */
+.sb-bar pre, .sb-bar code,
+.docs-story pre, .docs-story code {
+  font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace !important;
+  background: rgba(45, 45, 45, 0.3) !important;
+  border: 1px solid var(--portfolio-border) !important;
+  border-radius: 6px !important;
+  color: var(--portfolio-white) !important;
+}
+
+/* Selection styling - EXACT portfolio */
+::selection {
+  color: var(--portfolio-black) !important;
+  background-color: var(--portfolio-primary) !important;
+}
+
+/* Scrollbar styling - EXACT portfolio */
+::-webkit-scrollbar {
+  width: 10px !important;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent !important;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--portfolio-primary) !important;
+}
+
+/* Focus styles - EXACT portfolio */
+*:focus-visible {
+  outline: 2px dashed var(--portfolio-primary) !important;
+  outline-offset: 3px !important;
+}
+
+/* Storybook specific overrides */
+.sb-bar .sidebar-item {
+  color: var(--portfolio-white) !important;
+  font-family: var(--portfolio-font-secondary) !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.05rem !important;
+  padding: 0.5rem 1rem !important;
+  border-radius: 6px !important;
+  transition: var(--portfolio-transition) !important;
+}
+
+.sb-bar .sidebar-item:hover {
+  color: var(--portfolio-primary) !important;
+  background: rgba(244, 78, 0, 0.1) !important;
+}
+
+.sb-bar .sidebar-item[data-selected="true"] {
+  color: var(--portfolio-primary) !important;
+  background: rgba(244, 78, 0, 0.1) !important;
+}
+
+/* Storybook Canvas Background */
+.sb-canvas .sb-canvas-panel {
+  background: var(--portfolio-black) !important;
+}
+
+/* Storybook Controls - EXACT portfolio styling */
+.sb-bar .control {
+  background: rgba(45, 45, 45, 0.1) !important;
+  border: 1px solid var(--portfolio-border) !important;
+  border-radius: 6px !important;
+  color: var(--portfolio-white) !important;
+  font-family: var(--portfolio-font-primary) !important;
+}
+
+/* Storybook Addons - EXACT portfolio styling */
+.sb-bar .addon-panel {
+  background: var(--portfolio-navigation) !important;
+  border-top: 1px solid var(--portfolio-border) !important;
+}
+
+/* Animation classes - EXACT portfolio */
+.portfolio-fade-in {
+  animation: portfolioFadeIn 0.8s cubic-bezier(0.19, 1, 0.22, 1) forwards !important;
+}
+
+.portfolio-stagger > * {
+  animation: portfolioFadeIn 0.8s cubic-bezier(0.19, 1, 0.22, 1) forwards !important;
+  opacity: 0 !important;
+}
+
+.portfolio-stagger > *:nth-child(1) { animation-delay: 0.003s !important; }
+.portfolio-stagger > *:nth-child(2) { animation-delay: 0.006s !important; }
+.portfolio-stagger > *:nth-child(3) { animation-delay: 0.009s !important; }
+.portfolio-stagger > *:nth-child(4) { animation-delay: 0.012s !important; }
+.portfolio-stagger > *:nth-child(5) { animation-delay: 0.015s !important; }
+
+/* Portfolio fade-in animation */
+@keyframes portfolioFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive typography - EXACT portfolio logic */
+@media (max-width: 1080px) {
+  .sb-bar h1, .docs-story h1 {
+    font-size: 3.2rem !important;
+  }
+  
+  .sb-bar h2, .docs-story h2 {
+    font-size: 2.2rem !important;
+  }
+}
+
+@media (max-width: 600px) {
+  .sb-bar h1, .docs-story h1 {
+    font-size: 2.5rem !important;
+  }
+  
+  .sb-bar h2, .docs-story h2 {
+    font-size: 1.8rem !important;
+  }
+  
+  .sb-bar h3, .docs-story h3 {
+    font-size: 1.2rem !important;
+  }
+  
+  .sb-bar button, .docs-story button {
+    padding: 0.8rem 1.5rem !important;
+    font-size: 0.875rem !important;
+  }
+}
+
+/* Ensure all Storybook text uses portfolio colors */
+.sb-bar *, .docs-story *, .sb-canvas * {
+  color: var(--portfolio-white) !important;
+}
+
+/* Override any remaining default Storybook colors */
+.sb-bar [style*="color:"], .docs-story [style*="color:"], .sb-canvas [style*="color:"] {
+  color: var(--portfolio-white) !important;
+}
+
+.sb-bar [style*="background-color:"], .docs-story [style*="background-color:"], .sb-canvas [style*="background-color:"] {
+  background-color: var(--portfolio-black) !important;
+}

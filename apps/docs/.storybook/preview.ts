@@ -1,5 +1,6 @@
 import type { Preview } from '@storybook/react';
 import '@abdalkader/ui/dist/styles.css';
+import './portfolio-theme.css';
 
 const preview: Preview = {
   parameters: {
