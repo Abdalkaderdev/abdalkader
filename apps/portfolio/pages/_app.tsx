@@ -17,6 +17,9 @@ import Plausible from "@/components/Analytics/Plausible";
 import StagingDashboard from "@/components/StagingDashboard";
 import { ErrorBoundary } from "@/utils/errorTracking";
 import { initPerformanceMonitoring, reportWebVitals } from "@/utils/performanceMonitoring";
+import StagingBanner from "@/src/components/StagingBanner";
+import StagingTools from "@/src/components/StagingTools";
+import { initializeStagingEnvironment } from "@/src/config/staging";
 
 export default function App({ Component, pageProps }: AppProps) {
     const router = useRouter();
@@ -29,9 +32,10 @@ export default function App({ Component, pageProps }: AppProps) {
         return window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     }, []);
 
-    // Initialize performance monitoring for staging
+    // Initialize staging environment
     useEffect(() => {
         if (isStaging) {
+            initializeStagingEnvironment();
             initPerformanceMonitoring();
         }
     }, [isStaging]);
@@ -174,12 +178,19 @@ export default function App({ Component, pageProps }: AppProps) {
                         </SmoothScrolling>
                     </ErrorBoundary>
                     
-                    {/* Staging Dashboard - Only show in staging environment */}
+                    {/* Staging Environment Components - Only show in staging environment */}
                     {isStaging && (
-                        <StagingDashboard 
-                            isVisible={showStagingDashboard}
-                            onToggle={() => setShowStagingDashboard(!showStagingDashboard)}
-                        />
+                        <>
+                            <StagingBanner />
+                            <StagingDashboard 
+                                isVisible={showStagingDashboard}
+                                onToggle={() => setShowStagingDashboard(!showStagingDashboard)}
+                            />
+                            <StagingTools 
+                                isVisible={showStagingDashboard}
+                                onToggle={() => setShowStagingDashboard(!showStagingDashboard)}
+                            />
+                        </>
                     )}
                 </motion.div>
             </AnimatePresence>

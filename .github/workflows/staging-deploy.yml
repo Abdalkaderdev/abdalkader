@@ -1,4 +1,4 @@
-name: Staging Environment Deployment
+name: Staging Deployment
 
 on:
   push:
@@ -7,173 +7,197 @@ on:
     branches: [develop]
 
 env:
-  VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
-  VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID_STAGING }}
+  NODE_VERSION: '18'
+  PNPM_VERSION: '8.15.0'
 
 jobs:
   test:
-    name: Run Tests & Quality Checks
+    name: Run Tests & Linting
     runs-on: ubuntu-latest
-    
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
-        
-      - name: Setup pnpm
-        uses: pnpm/action-setup@v2
-        with:
-          version: 8
-          
+
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 18
-          cache: 'pnpm'
-          
+          node-version: ${{ env.NODE_VERSION }}
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v2
+        with:
+          version: ${{ env.PNPM_VERSION }}
+
+      - name: Get pnpm store directory
+        shell: bash
+        run: |
+          echo "STORE_PATH=$(pnpm store path --silent)" >> $GITHUB_ENV
+
+      - name: Setup pnpm cache
+        uses: actions/cache@v3
+        with:
+          path: ${{ env.STORE_PATH }}
+          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
+          restore-keys: |
+            ${{ runner.os }}-pnpm-store-
+
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
-        
-      - name: Build UI Library
-        run: pnpm --filter @abdalkader/ui build
-        
-      - name: Lint code
-        run: pnpm lint
-        
-      - name: Type check
-        run: pnpm typecheck
-        
+
+      - name: Run linting
+        run: pnpm turbo run lint
+
+      - name: Run type checking
+        run: pnpm turbo run typecheck
+
       - name: Run tests
-        run: pnpm test
-        
-      - name: Build portfolio for staging
-        run: pnpm turbo run build --filter=@abdalkader/portfolio
-        
-      - name: Bundle size analysis
+        run: pnpm turbo run test
+
+  build:
+    name: Build Portfolio
+    runs-on: ubuntu-latest
+    needs: test
+    if: github.ref == 'refs/heads/develop'
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v2
+        with:
+          version: ${{ env.PNPM_VERSION }}
+
+      - name: Get pnpm store directory
+        shell: bash
         run: |
-          cd apps/portfolio
-          npx next-bundle-analyzer --analyze
-        continue-on-error: true
+          echo "STORE_PATH=$(pnpm store path --silent)" >> $GITHUB_ENV
+
+      - name: Setup pnpm cache
+        uses: actions/cache@v3
+        with:
+          path: ${{ env.STORE_PATH }}
+          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
+          restore-keys: |
+            ${{ runner.os }}-pnpm-store-
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Build portfolio
+        run: pnpm turbo run build --filter=@abdalkader/portfolio
+
+      - name: Upload build artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: portfolio-build
+          path: apps/portfolio/.next
+          retention-days: 1
 
   lighthouse:
     name: Lighthouse CI
     runs-on: ubuntu-latest
-    needs: test
-    if: github.event_name == 'pull_request'
-    
+    needs: build
+    if: github.ref == 'refs/heads/develop'
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
-        
-      - name: Setup pnpm
-        uses: pnpm/action-setup@v2
+
+      - name: Download build artifacts
+        uses: actions/download-artifact@v3
         with:
-          version: 8
-          
+          name: portfolio-build
+          path: apps/portfolio/.next
+
+      - name: Run Lighthouse CI
+        uses: treosh/lighthouse-ci-action@v10
+        with:
+          configPath: './.lighthouserc.json'
+          uploadArtifacts: true
+          temporaryPublicStorage: true
+
+  bundle-analysis:
+    name: Bundle Size Analysis
+    runs-on: ubuntu-latest
+    needs: build
+    if: github.ref == 'refs/heads/develop'
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 18
-          cache: 'pnpm'
-          
+          node-version: ${{ env.NODE_VERSION }}
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v2
+        with:
+          version: ${{ env.PNPM_VERSION }}
+
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
-        
-      - name: Build UI Library
-        run: pnpm --filter @abdalkader/ui build
-        
-      - name: Build portfolio
-        run: pnpm turbo run build --filter=@abdalkader/portfolio
-        
-      - name: Install Lighthouse CI
-        run: npm install -g @lhci/cli@0.13.x
-        
-      - name: Run Lighthouse CI
-        run: |
-          cd apps/portfolio
-          npx lhci autorun \
-            --collect.staticDistDir=.next \
-            --assert.assertions.categories.performance=0.8 \
-            --assert.assertions.categories.accessibility=0.9 \
-            --assert.assertions.categories.best-practices=0.8 \
-            --assert.assertions.categories.seo=0.9
-        env:
-          LHCI_GITHUB_APP_TOKEN: ${{ secrets.LHCI_GITHUB_APP_TOKEN }}
 
-  deploy-staging:
-    name: Deploy to Staging
-    runs-on: ubuntu-latest
-    needs: test
-    if: github.ref == 'refs/heads/develop' && github.event_name == 'push'
-    
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
-        
-      - name: Setup pnpm
-        uses: pnpm/action-setup@v2
+      - name: Download build artifacts
+        uses: actions/download-artifact@v3
         with:
-          version: 8
-          
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: 18
-          cache: 'pnpm'
-          
-      - name: Install Vercel CLI
-        run: npm install --global vercel@latest
-        
-      - name: Pull Vercel Environment Information
-        run: vercel pull --yes --environment=preview --token=${{ secrets.VERCEL_TOKEN }}
-        
-      - name: Build Project Artifacts
-        run: vercel build --token=${{ secrets.VERCEL_TOKEN }}
-        
-      - name: Deploy Project Artifacts to Vercel
-        id: deploy
+          name: portfolio-build
+          path: apps/portfolio/.next
+
+      - name: Analyze bundle size
         run: |
-          url=$(vercel deploy --prebuilt --token=${{ secrets.VERCEL_TOKEN }})
-          echo "deployment-url=$url" >> $GITHUB_OUTPUT
-          
-      - name: Assign Custom Domain
-        run: |
-          vercel alias ${{ steps.deploy.outputs.deployment-url }} dev.abdalkader.dev --token=${{ secrets.VERCEL_TOKEN }}
-          
-      - name: Comment PR with deployment URL
+          echo "Bundle size analysis:"
+          du -sh apps/portfolio/.next
+          find apps/portfolio/.next -name "*.js" -exec du -h {} + | sort -hr | head -10
+
+      - name: Comment bundle size on PR
         if: github.event_name == 'pull_request'
         uses: actions/github-script@v7
         with:
           script: |
+            const fs = require('fs');
+            const path = require('path');
+            
+            const bundleSize = fs.readFileSync('apps/portfolio/.next/static/chunks/pages/_app-*.js', 'utf8');
+            const size = Buffer.byteLength(bundleSize, 'utf8');
+            
             github.rest.issues.createComment({
               issue_number: context.issue.number,
               owner: context.repo.owner,
               repo: context.repo.repo,
-              body: '🚀 Staging deployment ready at: https://dev.abdalkader.dev'
-            })
+              body: `## Bundle Size Report\n\nMain bundle size: ${(size / 1024).toFixed(2)} KB`
+            });
 
-  performance-monitoring:
-    name: Performance Monitoring
+  deploy:
+    name: Deploy to Staging
     runs-on: ubuntu-latest
-    needs: deploy-staging
-    if: github.ref == 'refs/heads/develop' && github.event_name == 'push'
-    
+    needs: [test, build, lighthouse, bundle-analysis]
+    if: github.ref == 'refs/heads/develop'
+    environment: staging
     steps:
-      - name: Wait for deployment
-        run: sleep 30
-        
-      - name: Check deployment health
-        run: |
-          curl -f https://dev.abdalkader.dev || exit 1
-          
-      - name: Run performance audit
-        run: |
-          npx lighthouse https://dev.abdalkader.dev \
-            --output json \
-            --output-path lighthouse-report.json \
-            --chrome-flags="--headless --no-sandbox"
-            
-      - name: Upload performance report
-        uses: actions/upload-artifact@v4
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Deploy to Vercel
+        uses: amondnet/vercel-action@v25
         with:
-          name: lighthouse-report
-          path: lighthouse-report.json
+          vercel-token: ${{ secrets.VERCEL_TOKEN }}
+          vercel-org-id: ${{ secrets.VERCEL_ORG_ID }}
+          vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID }}
+          working-directory: ./
+          vercel-args: '--prod'
+          scope: ${{ secrets.VERCEL_SCOPE }}
+
+      - name: Notify deployment status
+        if: always()
+        run: |
+          if [ ${{ job.status }} == 'success' ]; then
+            echo "✅ Staging deployment successful!"
+            echo "🌐 Staging URL: https://dev.abdalkader.dev"
+          else
+            echo "❌ Staging deployment failed!"
+          fi

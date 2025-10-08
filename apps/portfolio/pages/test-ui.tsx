@@ -1,5 +1,5 @@
 import { Button, Input } from '@abdalkader/ui';
-import '@abdalkader/ui/dist/styles.css';
+// import '@abdalkader/ui/dist/styles.css'; // Commented out - UI package CSS not available
 import { useState } from 'react';
 
 export default function TestUI() {

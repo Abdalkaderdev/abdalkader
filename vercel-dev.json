@@ -5,16 +5,12 @@
   "outputDirectory": "apps/portfolio/.next",
   "framework": "nextjs",
   "env": {
-    "NODE_ENV": "production",
-    "NEXT_PUBLIC_ENVIRONMENT": "@vercel/git-branch-name"
-  },
-  "git": {
-    "deploymentEnabled": {
-      "main": true,
-      "develop": true,
-      "components": true,
-      "blog": true
-    }
+    "NODE_ENV": "development",
+    "NEXT_PUBLIC_ENVIRONMENT": "staging",
+    "NEXT_PUBLIC_FEATURE_FLAGS": "true",
+    "NEXT_PUBLIC_DEBUG": "true",
+    "NEXT_PUBLIC_PERFORMANCE_MONITORING": "true",
+    "NEXT_PUBLIC_ERROR_TRACKING": "true"
   },
   "functions": {
     "apps/portfolio/pages/api/**/*.js": {
@@ -27,13 +23,15 @@
       "headers": [
         {
           "key": "X-Environment",
-          "value": "@vercel/git-branch-name"
+          "value": "staging"
         },
         {
           "key": "X-Robots-Tag",
-          "value": "@vercel/git-branch-name == 'develop' ? 'noindex, nofollow' : 'index, follow'"
+          "value": "noindex, nofollow"
         }
       ]
     }
-  ]
+  ],
+  "redirects": [],
+  "rewrites": []
 }
