@@ -134,7 +134,7 @@ export default function Home() {
           className="text-center mt-16"
         >
           <p className="text-gray-500 dark:text-gray-400">
-            Part of the Abdalkader Web Ecosystem • Built with ❤️ for developers
+            Part of the Abdalkader Web Ecosystem • Built with ❤️ for developers • v1.0.1
           </p>
         </motion.div>
       </div>
