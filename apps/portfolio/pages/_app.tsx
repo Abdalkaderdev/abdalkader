@@ -50,18 +50,18 @@ export default function App({ Component, pageProps }: AppProps) {
     return (
         <>
             <Head>
-                <title>Abdalkader - AI/ML & Full-Stack Developer | React, Python, TensorFlow.js</title>
+                <title>Abdalkader - AI/ML & Full-Stack Web Developer | Python, React, TensorFlow</title>
                 <link rel="icon" type="image/x-icon" href="/images/favicon.png" />
                 <link rel="canonical" href={`${SITE_URL}${router.asPath === '/' ? '' : router.asPath}`.replace(/\/$/, '')} />
                 <meta
                     name="description"
-                    content="Full-Stack Developer & AI Specialist. I build intelligent web applications, e-commerce stores, and interactive ML experiments. Explore my professional projects and AI lab."
+                    content="Specializing in AI-powered web solutions. I build machine learning models, full-stack applications, and high-converting e-commerce stores. Explore my portfolio and interactive AI lab."
                 />
                 <meta name="author" content="Abdalkader Alhamoud" />
                 
                 {/* Open Graph tags */}
-                <meta property="og:title" content="Abdalkader - AI/ML & Full-Stack Developer | React, Python, TensorFlow.js" />
-                <meta property="og:description" content="Full-Stack Developer & AI Specialist. I build intelligent web applications, e-commerce stores, and interactive ML experiments. Explore my professional projects and AI lab." />
+                <meta property="og:title" content="Abdalkader - AI/ML & Full-Stack Web Developer | Python, React, TensorFlow" />
+                <meta property="og:description" content="Specializing in AI-powered web solutions. I build machine learning models, full-stack applications, and high-converting e-commerce stores. Explore my portfolio and interactive AI lab." />
                 <meta property="og:type" content="website" />
                 <meta property="og:url" content="https://abdalkader.dev/" />
                 <meta property="og:image" content="https://abdalkader.dev/images/og-image.jpg" />
@@ -70,8 +70,8 @@ export default function App({ Component, pageProps }: AppProps) {
                 
                 {/* Twitter Card tags */}
                 <meta name="twitter:card" content="summary_large_image" />
-                <meta name="twitter:title" content="Abdalkader - AI/ML & Full-Stack Developer | React, Python, TensorFlow.js" />
-                <meta name="twitter:description" content="Full-Stack Developer & AI Specialist. I build intelligent web applications, e-commerce stores, and interactive ML experiments. Explore my professional projects and AI lab." />
+                <meta name="twitter:title" content="Abdalkader - AI/ML & Full-Stack Web Developer | Python, React, TensorFlow" />
+                <meta name="twitter:description" content="Specializing in AI-powered web solutions. I build machine learning models, full-stack applications, and high-converting e-commerce stores. Explore my portfolio and interactive AI lab." />
                 <meta name="twitter:image" content="https://abdalkader.dev/images/twitter-image.jpg" />
                 <meta name="twitter:site" content="@abdalkaderdev" />
                 
@@ -89,18 +89,24 @@ export default function App({ Component, pageProps }: AppProps) {
                             '@type': 'Person',
                             name: 'Abdalkader Alhamoud',
                             url: 'https://abdalkader.dev/',
-                            jobTitle: 'AI-Enhanced Full-Stack Developer',
+                            jobTitle: 'AI & Full-Stack Developer',
                             knowsAbout: [
-                                'Artificial Intelligence',
-                                'Machine Learning', 
+                                'Machine Learning',
+                                'Deep Learning',
+                                'Neural Networks',
+                                'Computer Vision',
+                                'Natural Language Processing',
+                                'TensorFlow',
+                                'PyTorch',
                                 'Python',
                                 'React',
-                                'Kotlin',
+                                'Next.js',
+                                'TypeScript',
                                 'Full-Stack Development',
                                 'E-commerce',
-                                'TensorFlow.js',
-                                'Next.js',
-                                'TypeScript'
+                                'API Development',
+                                'Data Science',
+                                'AI Model Deployment'
                             ],
                             sameAs: [
                                 'https://github.com/abdalkaderdev',

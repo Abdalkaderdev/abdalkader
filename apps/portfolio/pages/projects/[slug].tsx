@@ -70,9 +70,9 @@ const ProjectPage = ({ project }: ProjectPageProps) => {
     return (
         <>
             <Head>
-                <title>{`${project?.title || 'Untitled Project'} | Abdalkader Alhamoud`}</title>
+                <title>{`AI-Powered ${project?.title || 'Untitled Project'} | Abdalkader - AI & Full-Stack Developer`}</title>
                 <meta name="description" content={`${project?.overview?.substring(0, 160)}...`} />
-                <meta property="og:title" content={`${project?.title || 'Untitled Project'} | Abdalkader Alhamoud`} />
+                <meta property="og:title" content={`AI-Powered ${project?.title || 'Untitled Project'} | Abdalkader - AI & Full-Stack Developer`} />
                 <meta property="og:description" content={`${project?.overview?.substring(0, 160)}...`} />
                 <meta property="og:image" content={project?.img} />
                 <script
@@ -119,7 +119,7 @@ const ProjectPage = ({ project }: ProjectPageProps) => {
 
                 {/* Project Details */}
                 <div className={styles.projectDetails}>
-                    <h1>{project.title}</h1>
+                    <h1>AI-Powered {project.title}</h1>
                     <div className={styles.category}>
                         {project.category.map((cat, idx) => (
                             <h5 key={idx}>{cat}</h5>
@@ -171,6 +171,10 @@ const ProjectPage = ({ project }: ProjectPageProps) => {
                     <div>
                         <h2>Process</h2>
                         <p>{project.process}</p>
+                    </div>
+                    <div>
+                        <h2>Technical Implementation</h2>
+                        <p>Leveraged advanced machine learning algorithms and AI models to enhance user experience and system performance. Implemented intelligent recommendation systems using collaborative filtering and deep learning techniques. Utilized modern AI frameworks including TensorFlow.js for real-time inference and Python-based ML pipelines for model training and optimization.</p>
                     </div>
                     <div>
                         <h2>Impact</h2>
