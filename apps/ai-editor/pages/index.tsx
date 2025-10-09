@@ -12,6 +12,9 @@ import RegionalExpertise from '../components/Business/RegionalExpertise';
 import StickyCTA from '../components/Business/StickyCTA';
 import LabNav from '../components/Navigation/LabNav';
 import BusinessAnalytics from '../components/Analytics/BusinessAnalytics';
+import PerformanceMonitor from '../components/Performance/PerformanceMonitor';
+import BundleAnalyzer from '../components/Performance/BundleAnalyzer';
+import AccessibilityTester from '../components/Accessibility/AccessibilityTester';
 import { useAccessibility } from '../hooks/useAccessibility';
 import { labWebsiteJsonLd, labCollectionJsonLd, personJsonLd } from '../utils/jsonld';
 
@@ -215,6 +218,9 @@ export default function Home() {
         </motion.div>
       </main>
       <StickyCTA />
+      <PerformanceMonitor showDetails={process.env.NODE_ENV === 'development'} />
+      <BundleAnalyzer showDetails={process.env.NODE_ENV === 'development'} />
+      <AccessibilityTester showDetails={process.env.NODE_ENV === 'development'} />
       </div>
     </>
   );

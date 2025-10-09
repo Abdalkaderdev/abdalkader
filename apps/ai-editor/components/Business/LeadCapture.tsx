@@ -1,7 +1,10 @@
 import { useState } from 'react';
+import { useForm } from 'react-hook-form';
+import { zodResolver } from '@hookform/resolvers/zod';
 import { motion } from 'framer-motion';
-import { FiMail, FiDownload, FiExternalLink, FiCheck } from 'react-icons/fi';
+import { FiMail, FiDownload, FiExternalLink, FiCheck, FiAlertCircle } from 'react-icons/fi';
 import AccessibleButton from '../AccessibleButton';
+import { leadCaptureSchema, type LeadCaptureFormData } from '../../lib/validations';
 
 interface LeadCaptureProps {
   variant?: 'hero' | 'sidebar' | 'modal';
@@ -9,27 +12,51 @@ interface LeadCaptureProps {
 }
 
 export default function LeadCapture({ variant = 'hero', className = '' }: LeadCaptureProps) {
-  const [email, setEmail] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
-  const [interest, setInterest] = useState('');
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
+  const {
+    register,
+    handleSubmit,
+    formState: { errors, isSubmitting: isFormSubmitting },
+    reset,
+    watch
+  } = useForm<LeadCaptureFormData>({
+    resolver: zodResolver(leadCaptureSchema),
+    defaultValues: {
+      email: '',
+      interest: '',
+      company: '',
+      message: '',
+      budget: 'not-sure',
+      timeline: 'exploring'
+    }
+  });
+
+  const onSubmit = async (data: LeadCaptureFormData) => {
     setIsSubmitting(true);
     
-    // Simulate API call
-    await new Promise(resolve => setTimeout(resolve, 1000));
-    
-    setIsSuccess(true);
-    setIsSubmitting(false);
-    
-    // Reset after 3 seconds
-    setTimeout(() => {
-      setIsSuccess(false);
-      setEmail('');
-      setInterest('');
-    }, 3000);
+    try {
+      // Simulate API call
+      await new Promise(resolve => setTimeout(resolve, 1000));
+      
+      // Track lead generation
+      if (typeof window !== 'undefined' && (window as any).trackLeadGeneration) {
+        (window as any).trackLeadGeneration('lead_capture_form', data.interest);
+      }
+      
+      setIsSuccess(true);
+      reset();
+      
+      // Reset success state after 3 seconds
+      setTimeout(() => {
+        setIsSuccess(false);
+      }, 3000);
+    } catch (error) {
+      console.error('Lead capture error:', error);
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const getVariantStyles = () => {
@@ -82,25 +109,39 @@ export default function LeadCapture({ variant = 'hero', className = '' }: LeadCa
         </p>
       </div>
 
-      <form onSubmit={handleSubmit} className="space-y-4">
+      <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
+        {/* Email Field */}
         <div>
           <input
+            {...register('email')}
             type="email"
             placeholder="your.email@company.com"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            required
-            className="w-full px-4 py-3 bg-gray-800 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:border-orange-500 focus:outline-none"
+            className={`w-full px-4 py-3 bg-gray-800 border rounded-lg text-white placeholder-gray-400 focus:outline-none transition-colors ${
+              errors.email 
+                ? 'border-red-500 focus:border-red-500' 
+                : 'border-gray-600 focus:border-orange-500'
+            }`}
             style={{ fontFamily: 'var(--font-pp-regular)' }}
           />
+          {errors.email && (
+            <div className="flex items-center gap-1 mt-1 text-red-400 text-sm">
+              <FiAlertCircle className="w-4 h-4" />
+              <span style={{ fontFamily: 'var(--font-pp-regular)' }}>
+                {errors.email.message}
+              </span>
+            </div>
+          )}
         </div>
 
+        {/* Interest Field */}
         <div>
           <select
-            value={interest}
-            onChange={(e) => setInterest(e.target.value)}
-            required
-            className="w-full px-4 py-3 bg-gray-800 border border-gray-600 rounded-lg text-white focus:border-orange-500 focus:outline-none"
+            {...register('interest')}
+            className={`w-full px-4 py-3 bg-gray-800 border rounded-lg text-white focus:outline-none transition-colors ${
+              errors.interest 
+                ? 'border-red-500 focus:border-red-500' 
+                : 'border-gray-600 focus:border-orange-500'
+            }`}
             style={{ fontFamily: 'var(--font-pp-regular)' }}
           >
             <option value="">What's your project focus?</option>
@@ -112,17 +153,55 @@ export default function LeadCapture({ variant = 'hero', className = '' }: LeadCa
             <option value="consultation">AI Strategy Consultation</option>
             <option value="collaboration">Open Source Collaboration</option>
           </select>
+          {errors.interest && (
+            <div className="flex items-center gap-1 mt-1 text-red-400 text-sm">
+              <FiAlertCircle className="w-4 h-4" />
+              <span style={{ fontFamily: 'var(--font-pp-regular)' }}>
+                {errors.interest.message}
+              </span>
+            </div>
+          )}
+        </div>
+
+        {/* Company Field (Optional) */}
+        <div>
+          <input
+            {...register('company')}
+            type="text"
+            placeholder="Company name (optional)"
+            className="w-full px-4 py-3 bg-gray-800 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:border-orange-500 focus:outline-none transition-colors"
+            style={{ fontFamily: 'var(--font-pp-regular)' }}
+          />
+        </div>
+
+        {/* Message Field (Optional) */}
+        <div>
+          <textarea
+            {...register('message')}
+            placeholder="Tell me about your project (optional)"
+            rows={3}
+            className="w-full px-4 py-3 bg-gray-800 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:border-orange-500 focus:outline-none transition-colors resize-none"
+            style={{ fontFamily: 'var(--font-pp-regular)' }}
+          />
+          {errors.message && (
+            <div className="flex items-center gap-1 mt-1 text-red-400 text-sm">
+              <FiAlertCircle className="w-4 h-4" />
+              <span style={{ fontFamily: 'var(--font-pp-regular)' }}>
+                {errors.message.message}
+              </span>
+            </div>
+          )}
         </div>
 
         <AccessibleButton
           type="submit"
           variant="primary"
           size="lg"
-          loading={isSubmitting}
+          loading={isSubmitting || isFormSubmitting}
           className="w-full"
           ariaLabel="Submit project inquiry"
         >
-          {isSubmitting ? 'Sending...' : 'Start Conversation'}
+          {isSubmitting || isFormSubmitting ? 'Sending...' : 'Start Conversation'}
         </AccessibleButton>
       </form>
 
