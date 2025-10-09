@@ -15,6 +15,7 @@ export default function LabNav() {
     { name: 'Experiments', href: '/experiments', icon: <FiCode className="w-5 h-5" /> },
     { name: 'Playground', href: '/playground', icon: <FiZap className="w-5 h-5" /> },
     { name: 'Business', href: '/business', icon: <FiBriefcase className="w-5 h-5" /> },
+    { name: 'Content', href: '/content-showcase', icon: <FiUsers className="w-5 h-5" /> },
   ];
 
   const handleMenuToggle = () => {

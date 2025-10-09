@@ -19,6 +19,7 @@ import PerformanceDashboard from '../components/Performance/PerformanceDashboard
 import AccessibilityTester from '../components/Accessibility/AccessibilityTester';
 import ConversionTracker from '../components/Analytics/ConversionTracker';
 import CompetitiveAnalyzer from '../components/Analytics/CompetitiveAnalyzer';
+import BrandMessaging from '../components/Content/BrandMessaging';
 import { useAccessibility } from '../hooks/useAccessibility';
 import { labWebsiteJsonLd, labCollectionJsonLd, personJsonLd } from '../utils/jsonld';
 
@@ -154,6 +155,9 @@ export default function Home() {
             </motion.div>
           ))}
         </section>
+
+        {/* Brand Messaging */}
+        <BrandMessaging />
 
         {/* Authority Indicators */}
         <AuthorityIndicators />
