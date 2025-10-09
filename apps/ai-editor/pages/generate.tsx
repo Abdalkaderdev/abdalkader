@@ -5,6 +5,9 @@ import Link from 'next/link';
 import dynamic from 'next/dynamic';
 import { useLivePreview } from '../hooks/useLivePreview';
 import { codeTemplates, getTemplatesByCategory } from '../utils/codeTemplates';
+import SEOHead from '../components/SEO/Head';
+import JsonLd from '../components/SEO/JsonLd';
+import { experimentJsonLd, breadcrumbsJsonLd } from '../utils/jsonld';
 
 const AIPrompt = dynamic(() => import('../components/AIPrompt'), {
   ssr: false,
@@ -163,8 +166,31 @@ export default function Generate() {
     setGenerationResult(null);
   };
 
+  const experimentData = {
+    title: 'AI Code Generator',
+    description: 'Generate React components using natural language prompts. AI-powered code generation with live preview, TypeScript support, and integration with design systems.',
+    url: '/generate',
+    category: 'AI Code Generation',
+    technologies: ['React', 'TypeScript', 'OpenAI', 'Monaco Editor', 'Tailwind CSS'],
+    image: '/images/experiments/ai-code-generator.jpg'
+  };
+
+  const breadcrumbs = [
+    { name: 'AI Lab', item: '/' },
+    { name: 'AI Code Generator', item: '/generate' }
+  ];
+
   return (
-    <div className="min-h-screen bg-gray-50 dark:bg-gray-900">
+    <>
+      <SEOHead 
+        title="AI Code Generator - Natural Language to React Components"
+        description="Generate React components using natural language prompts. AI-powered code generation with live preview, TypeScript support, and integration with design systems."
+        keywords={['AI Code Generator', 'React Components', 'Natural Language', 'Code Generation', 'TypeScript', 'OpenAI']}
+      />
+      <JsonLd type="experiment" data={experimentData} />
+      <JsonLd type="breadcrumbs" data={breadcrumbs} />
+      
+      <div className="min-h-screen bg-gray-50 dark:bg-gray-900">
       {/* Header */}
       <div className="bg-white dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700">
         <div className="container mx-auto px-4 py-4">
@@ -362,6 +388,7 @@ export default function Generate() {
           </div>
         </div>
       </div>
-    </div>
+      </div>
+    </>
   );
 }

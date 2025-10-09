@@ -1,0 +1,53 @@
+// AI Lab Design System Variables
+
+// Colors
+$primary: #f44e00;
+$primary-light: #fa7300;
+$white: #f8f8f8;
+$black: #000000;
+$text-grey: #787878;
+$border: rgb(37, 37, 37);
+
+// Typography
+$font-regular: 'PPNeueMontreal-Regular', 'Inter', 'system-ui', 'sans-serif';
+$font-medium: 'PPNeueMontreal-Medium', 'system-ui', 'sans-serif';
+
+// Spacing
+$spacing-xs: 0.25rem;
+$spacing-sm: 0.5rem;
+$spacing-md: 1rem;
+$spacing-lg: 1.5rem;
+$spacing-xl: 2rem;
+$spacing-2xl: 3rem;
+
+// Breakpoints
+$breakpoint-sm: 640px;
+$breakpoint-md: 768px;
+$breakpoint-lg: 1024px;
+$breakpoint-xl: 1280px;
+
+// Animations
+$transition-fast: 0.2s ease;
+$transition-normal: 0.3s ease;
+$transition-slow: 0.5s ease;
+
+// Mixins
+@mixin lab-card {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  padding: 1.5rem;
+}
+
+@mixin gradient-text {
+  background: linear-gradient(135deg, $primary, $primary-light);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+@mixin button-hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(244, 78, 0, 0.3);
+}

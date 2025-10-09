@@ -4,12 +4,12 @@ import { projects } from '@/data/projectsData'; // Import the data from the new 
 import styles from './ProjectPage.module.scss';
 import Button from '@/components/Button';
 import BookCallSection from '@/components/HomePage/BookCallSection';
-import Head from 'next/head';
 import { gsap } from '@/libs/gsap';
 import { useEffect, useRef } from 'react';
 import JsonLd from '@/components/SEO/JsonLd';
+import SEOHead from '@/components/SEO/Head';
 import { projectJsonLd, breadcrumbsJsonLd } from '@/utils/jsonld';
-import { SITE_URL } from '@/utils/seo';
+import { SITE_URL, buildCanonical } from '@/utils/seo';
 
 // Fetch the list of possible slugs for static generation
 export const getStaticPaths: GetStaticPaths = async () => {
@@ -67,41 +67,30 @@ const ProjectPage = ({ project }: ProjectPageProps) => {
         });
     }, []);
 
+    const projectTitle = `AI-Powered ${project?.title || 'Untitled Project'} | Abdalkader - AI & Full-Stack Developer`;
+    const projectDescription = `${project?.overview?.substring(0, 160)}...`;
+    const projectUrl = buildCanonical(`/projects/${project.slug}`);
+    
     return (
         <>
-            <Head>
-                <title>{`AI-Powered ${project?.title || 'Untitled Project'} | Abdalkader - AI & Full-Stack Developer`}</title>
-                <meta name="description" content={`${project?.overview?.substring(0, 160)}...`} />
-                <meta property="og:title" content={`AI-Powered ${project?.title || 'Untitled Project'} | Abdalkader - AI & Full-Stack Developer`} />
-                <meta property="og:description" content={`${project?.overview?.substring(0, 160)}...`} />
-                <meta property="og:image" content={project?.img} />
-                <script
-                    type="application/ld+json"
-                    dangerouslySetInnerHTML={{
-                        __html: JSON.stringify({
-                            '@context': 'https://schema.org',
-                            '@type': 'CreativeWork',
-                            name: project.title,
-                            url: `https://abdalkader-alhamoud.vercel.app/projects/${project.slug}`,
-                            image: project.img,
-                            datePublished: project.date,
-                            author: {
-                                '@type': 'Person',
-                                name: 'Abdalkader Alhamoud',
-                                url: 'https://abdalkader-alhamoud.vercel.app/'
-                            },
-                            about: project.overview,
-                            keywords: project.category.join(', ')
-                        })
-                    }}
-                />
-            </Head>
+            <SEOHead
+                title={projectTitle}
+                description={projectDescription}
+                canonical={projectUrl}
+                ogImage={project.img}
+                twitterImage={project.img}
+                type="article"
+                publishedTime={project.date}
+                author="Abdalkader Alhamoud"
+                section="AI Projects"
+                tags={project.category}
+                structuredData={projectJsonLd(project)}
+            />
             <JsonLd data={[
-                projectJsonLd(project),
                 breadcrumbsJsonLd([
                     { name: 'Home', item: SITE_URL },
                     { name: 'Projects', item: `${SITE_URL}/projects` },
-                    { name: project.title, item: `${SITE_URL}/projects/${project.title}` },
+                    { name: project.title, item: projectUrl },
                 ]),
             ]} />
             {/*========= Header ==========*/}
