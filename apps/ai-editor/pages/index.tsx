@@ -5,6 +5,13 @@ import { FiCode, FiZap, FiPlay, FiGithub } from 'react-icons/fi';
 import SEOHead from '../components/SEO/Head';
 import JsonLd from '../components/SEO/JsonLd';
 import AccessibleButton from '../components/AccessibleButton';
+import LeadCapture from '../components/Business/LeadCapture';
+import AuthorityIndicators from '../components/Business/AuthorityIndicators';
+import ClientTestimonials from '../components/Business/ClientTestimonials';
+import RegionalExpertise from '../components/Business/RegionalExpertise';
+import StickyCTA from '../components/Business/StickyCTA';
+import LabNav from '../components/Navigation/LabNav';
+import BusinessAnalytics from '../components/Analytics/BusinessAnalytics';
 import { useAccessibility } from '../hooks/useAccessibility';
 import { labWebsiteJsonLd, labCollectionJsonLd, personJsonLd } from '../utils/jsonld';
 
@@ -49,8 +56,10 @@ export default function Home() {
       <JsonLd type="website" />
       <JsonLd type="collection" />
       <JsonLd type="person" />
+      <BusinessAnalytics pageName="AI Lab Homepage" />
       
       <div ref={containerRef} className="min-h-screen bg-gradient-to-br from-black via-gray-900 to-black">
+      <LabNav />
       <main className="container mx-auto px-4 py-16">
         {/* Header */}
         <motion.div
@@ -139,6 +148,12 @@ export default function Home() {
           ))}
         </section>
 
+        {/* Authority Indicators */}
+        <AuthorityIndicators />
+
+        {/* Lead Capture */}
+        <LeadCapture variant="hero" />
+
         {/* Tech Stack */}
         <section
           className="lab-card p-8"
@@ -181,6 +196,12 @@ export default function Home() {
           </motion.div>
         </section>
 
+        {/* Client Testimonials */}
+        <ClientTestimonials />
+
+        {/* Regional Expertise */}
+        <RegionalExpertise />
+
         {/* Footer */}
         <motion.div
           initial={{ opacity: 0 }}
@@ -193,6 +214,7 @@ export default function Home() {
           </p>
         </motion.div>
       </main>
+      <StickyCTA />
       </div>
     </>
   );
