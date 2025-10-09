@@ -66,7 +66,7 @@ export default function Home() {
       <JsonLd type="person" />
       <BusinessAnalytics pageName="AI Lab Homepage" />
       
-      <div ref={containerRef} className="min-h-screen bg-gradient-to-br from-black via-gray-900 to-black">
+      <div ref={containerRef as React.RefObject<HTMLDivElement>} className="min-h-screen bg-gradient-to-br from-black via-gray-900 to-black">
       <LabNav />
       <main className="container mx-auto px-4 py-16">
         {/* Header */}
@@ -83,28 +83,28 @@ export default function Home() {
             Explore cutting-edge AI experiments, machine learning demos, and interactive TensorFlow.js applications. From real-time object detection to neural network visualizations.
           </p>
           <div className="flex items-center justify-center gap-4">
-            <AccessibleButton
-              as={Link}
-              href="/experiments"
-              variant="primary"
-              size="lg"
-              ariaLabel="Explore AI experiments and interactive demos"
-              announceOnClick
-              announceMessage="Navigating to experiments page"
-            >
-              Explore AI Experiments
-            </AccessibleButton>
-            <AccessibleButton
-              as={Link}
-              href="/playground"
-              variant="outline"
-              size="lg"
-              ariaLabel="Open component playground for live coding"
-              announceOnClick
-              announceMessage="Opening component playground"
-            >
-              Component Playground
-            </AccessibleButton>
+            <Link href="/experiments">
+              <AccessibleButton
+                variant="primary"
+                size="lg"
+                ariaLabel="Explore AI experiments and interactive demos"
+                announceOnClick
+                announceMessage="Navigating to experiments page"
+              >
+                Explore AI Experiments
+              </AccessibleButton>
+            </Link>
+            <Link href="/playground">
+              <AccessibleButton
+                variant="outline"
+                size="lg"
+                ariaLabel="Open component playground for live coding"
+                announceOnClick
+                announceMessage="Opening component playground"
+              >
+                Component Playground
+              </AccessibleButton>
+            </Link>
           </div>
         </motion.div>
 

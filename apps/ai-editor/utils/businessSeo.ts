@@ -162,5 +162,5 @@ export function generateBusinessKeywords(page: string, region?: string, industry
   keywords = keywords.concat(BUSINESS_KEYWORDS.secondary);
   
   // Remove duplicates and return
-  return [...new Set(keywords)];
+  return Array.from(new Set(keywords));
 }

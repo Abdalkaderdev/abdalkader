@@ -61,7 +61,7 @@ export default function handler(req: NextApiRequest, res: NextApiResponse<Search
     // Add search relevance scoring
     const scoredResults = limitedResults.map(experiment => {
       let score = 0;
-      const queryLower = query.toLowerCase();
+      const queryLower = Array.isArray(query) ? query[0].toLowerCase() : query.toLowerCase();
 
       // Title match (highest priority)
       if (experiment.title.toLowerCase().includes(queryLower)) {

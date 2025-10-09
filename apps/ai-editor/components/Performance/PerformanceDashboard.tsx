@@ -3,10 +3,10 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { 
   FiZap, FiTarget, FiTrendingUp, FiUsers, FiClock, 
   FiEye, FiMousePointer, FiCheckCircle, FiAlertTriangle,
-  FiBarChart3, FiSettings, FiX
+  FiBarChart, FiSettings, FiX
 } from 'react-icons/fi';
 import { usePerformanceBudget } from '../../hooks/usePerformanceBudget';
-import { LIGHTHOUSE_TARGETS, PERFORMANCE_TARGETS } from '../../utils/seoOptimizer';
+import { LIGHTHOUSE_TARGETS } from '../../utils/lighthouseOptimizer';
 
 interface PerformanceDashboardProps {
   showDetails?: boolean;
@@ -56,7 +56,7 @@ export default function PerformanceDashboard({ showDetails = false, className = 
   });
 
   const tabs = [
-    { id: 'overview', label: 'Overview', icon: <FiBarChart3 className="w-4 h-4" /> },
+    { id: 'overview', label: 'Overview', icon: <FiBarChart className="w-4 h-4" /> },
     { id: 'performance', label: 'Performance', icon: <FiZap className="w-4 h-4" /> },
     { id: 'seo', label: 'SEO', icon: <FiTrendingUp className="w-4 h-4" /> },
     { id: 'conversion', label: 'Conversion', icon: <FiTarget className="w-4 h-4" /> }
@@ -108,7 +108,7 @@ export default function PerformanceDashboard({ showDetails = false, className = 
             onClick={() => setIsExpanded(!isExpanded)}
             className="text-gray-400 hover:text-white transition-colors"
           >
-            {isExpanded ? <FiX className="w-4 h-4" /> : <FiBarChart3 className="w-4 h-4" />}
+            {isExpanded ? <FiX className="w-4 h-4" /> : <FiBarChart className="w-4 h-4" />}
           </button>
         </div>
 
@@ -241,13 +241,13 @@ export default function PerformanceDashboard({ showDetails = false, className = 
                     </span>
                   </div>
                   <div className="flex items-center gap-2">
-                    <span className={`text-sm font-semibold ${getScoreColor(metrics.fid || 0, LIGHTHOUSE_TARGETS.FID)}`}>
+                    <span className={`text-sm font-semibold ${getScoreColor(metrics.fid || 0, 100)}`}>
                       {metrics.fid ? `${metrics.fid.toFixed(0)}ms` : 'Loading...'}
                     </span>
                     <span className="text-xs text-gray-500">
-                      / {LIGHTHOUSE_TARGETS.FID}ms
+                      / 100ms
                     </span>
-                    {metrics.fid && getScoreIcon(metrics.fid, LIGHTHOUSE_TARGETS.FID)}
+                    {metrics.fid && getScoreIcon(metrics.fid, 100)}
                   </div>
                 </div>
 
@@ -260,13 +260,13 @@ export default function PerformanceDashboard({ showDetails = false, className = 
                     </span>
                   </div>
                   <div className="flex items-center gap-2">
-                    <span className={`text-sm font-semibold ${getScoreColor(metrics.cls || 0, LIGHTHOUSE_TARGETS.CLS)}`}>
+                    <span className={`text-sm font-semibold ${getScoreColor(metrics.cls || 0, 0.1)}`}>
                       {metrics.cls ? metrics.cls.toFixed(3) : 'Loading...'}
                     </span>
                     <span className="text-xs text-gray-500">
-                      / {LIGHTHOUSE_TARGETS.CLS}
+                      / 0.1
                     </span>
-                    {metrics.cls && getScoreIcon(metrics.cls, LIGHTHOUSE_TARGETS.CLS)}
+                    {metrics.cls && getScoreIcon(metrics.cls, 0.1)}
                   </div>
                 </div>
               </div>
@@ -332,13 +332,13 @@ export default function PerformanceDashboard({ showDetails = false, className = 
                     </span>
                   </div>
                   <div className="flex items-center gap-2">
-                    <span className={`text-sm font-semibold ${getStatusColor(dashboardData.conversion.demoToContact, PERFORMANCE_TARGETS.CONVERSION.DEMO_TO_CONTACT)}`}>
+                    <span className={`text-sm font-semibold ${getStatusColor(dashboardData.conversion.demoToContact, 5)}`}>
                       {dashboardData.conversion.demoToContact}%
                     </span>
                     <span className="text-xs text-gray-500">
-                      / {PERFORMANCE_TARGETS.CONVERSION.DEMO_TO_CONTACT}%
+                      / 5%
                     </span>
-                    {getScoreIcon(dashboardData.conversion.demoToContact, PERFORMANCE_TARGETS.CONVERSION.DEMO_TO_CONTACT)}
+                    {getScoreIcon(dashboardData.conversion.demoToContact, 5)}
                   </div>
                 </div>
 
@@ -351,13 +351,13 @@ export default function PerformanceDashboard({ showDetails = false, className = 
                     </span>
                   </div>
                   <div className="flex items-center gap-2">
-                    <span className={`text-sm font-semibold ${getStatusColor(dashboardData.conversion.timeOnPage, PERFORMANCE_TARGETS.CONVERSION.TIME_ON_PAGE)}`}>
+                    <span className={`text-sm font-semibold ${getStatusColor(dashboardData.conversion.timeOnPage, 120)}`}>
                       {Math.round(dashboardData.conversion.timeOnPage / 60)}m {dashboardData.conversion.timeOnPage % 60}s
                     </span>
                     <span className="text-xs text-gray-500">
-                      / {Math.round(PERFORMANCE_TARGETS.CONVERSION.TIME_ON_PAGE / 60)}m
+                      / 2m
                     </span>
-                    {getScoreIcon(dashboardData.conversion.timeOnPage, PERFORMANCE_TARGETS.CONVERSION.TIME_ON_PAGE)}
+                    {getScoreIcon(dashboardData.conversion.timeOnPage, 120)}
                   </div>
                 </div>
 

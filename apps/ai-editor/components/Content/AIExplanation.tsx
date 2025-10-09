@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { FiLightbulb, FiTarget, FiTrendingUp, FiUsers, FiDollarSign, FiArrowRight, FiPlay } from 'react-icons/fi';
+import { FiZap, FiTarget, FiTrendingUp, FiUsers, FiDollarSign, FiArrowRight, FiPlay } from 'react-icons/fi';
 
 interface AIExplanationProps {
   concept: {
@@ -27,7 +27,7 @@ export default function AIExplanation({ concept, className = '' }: AIExplanation
   const [activeTab, setActiveTab] = useState<'overview' | 'applications' | 'benefits' | 'getting-started'>('overview');
 
   const tabs = [
-    { id: 'overview', label: 'Overview', icon: <FiLightbulb className="w-4 h-4" /> },
+    { id: 'overview', label: 'Overview', icon: <FiZap className="w-4 h-4" /> },
     { id: 'applications', label: 'Applications', icon: <FiTarget className="w-4 h-4" /> },
     { id: 'benefits', label: 'Benefits', icon: <FiTrendingUp className="w-4 h-4" /> },
     { id: 'getting-started', label: 'Getting Started', icon: <FiPlay className="w-4 h-4" /> }
@@ -82,7 +82,7 @@ export default function AIExplanation({ concept, className = '' }: AIExplanation
               {/* Real World Analogy */}
               <div>
                 <h2 className="text-2xl font-semibold text-white mb-4 flex items-center gap-2" style={{ fontFamily: 'var(--font-pp-medium)' }}>
-                  <FiLightbulb className="w-6 h-6 text-yellow-500" />
+                  <FiZap className="w-6 h-6 text-yellow-500" />
                   Think of it like...
                 </h2>
                 <div className="bg-yellow-500/10 border border-yellow-500/30 rounded-lg p-6">

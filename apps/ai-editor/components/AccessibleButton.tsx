@@ -71,7 +71,7 @@ const AccessibleButton = forwardRef<HTMLButtonElement, AccessibleButtonProps>(
         aria-label={ariaLabel}
         aria-describedby={ariaDescription ? `${props.id}-description` : undefined}
         aria-disabled={disabled || loading}
-        {...props}
+        {...(props as any)}
       >
         {loading && (
           <motion.div

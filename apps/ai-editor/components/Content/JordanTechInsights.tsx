@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { FiMapPin, FiTrendingUp, FiUsers, FiBuilding, FiGlobe, FiStar, FiTarget, FiZap } from 'react-icons/fi';
+import { FiMapPin, FiTrendingUp, FiUsers, FiHome, FiGlobe, FiStar, FiTarget, FiZap } from 'react-icons/fi';
 
 interface JordanTechInsightsProps {
   className?: string;
@@ -11,8 +11,8 @@ export default function JordanTechInsights({ className = '' }: JordanTechInsight
       title: 'Jordan\'s AI Ecosystem Today',
       description: 'A thriving tech scene with growing AI adoption and talent development',
       stats: [
-        { label: 'AI Startups', value: '25+', icon: <FiBuilding className="w-5 h-5" /> },
-        { label: 'Tech Companies', value: '500+', icon: <FiBuilding className="w-5 h-5" /> },
+        { label: 'AI Startups', value: '25+', icon: <FiHome className="w-5 h-5" /> },
+        { label: 'Tech Companies', value: '500+', icon: <FiHome className="w-5 h-5" /> },
         { label: 'Developers', value: '15K+', icon: <FiUsers className="w-5 h-5" /> },
         { label: 'AI Specialists', value: '200+', icon: <FiZap className="w-5 h-5" /> }
       ]
@@ -54,7 +54,7 @@ export default function JordanTechInsights({ className = '' }: JordanTechInsight
         name: 'Universities',
         description: 'Educational institutions developing AI talent',
         examples: ['University of Jordan', 'German Jordanian University', 'Princess Sumaya University'],
-        icon: <FiBuilding className="w-6 h-6" />
+        icon: <FiHome className="w-6 h-6" />
       },
       {
         name: 'Government',

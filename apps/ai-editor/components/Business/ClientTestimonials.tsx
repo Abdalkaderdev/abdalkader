@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { FiQuote, FiStar, FiMapPin } from 'react-icons/fi';
+import { FiMessageSquare, FiStar, FiMapPin } from 'react-icons/fi';
 
 interface ClientTestimonialsProps {
   className?: string;
@@ -58,7 +58,7 @@ export default function ClientTestimonials({ className = '' }: ClientTestimonial
             className="lab-card p-6 relative"
           >
             <div className="absolute top-4 right-4 text-orange-500">
-              <FiQuote className="w-6 h-6 opacity-50" />
+              <FiMessageSquare className="w-6 h-6 opacity-50" />
             </div>
 
             <div className="flex items-center mb-4">

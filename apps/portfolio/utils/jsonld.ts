@@ -7,6 +7,12 @@ export function personJsonLd() {
     name: 'Abdalkader Alhamoud',
     url: SITE_URL,
     jobTitle: 'AI & Full-Stack Developer',
+    description: 'AI-Enhanced Full-Stack Developer specializing in building intelligent web applications and ML experiments',
+    address: {
+      '@type': 'PostalAddress',
+      addressLocality: 'Amman',
+      addressCountry: 'Jordan'
+    },
     knowsAbout: [
       'Machine Learning',
       'Deep Learning',
@@ -40,6 +46,10 @@ export function websiteJsonLd() {
     name: 'Abdalkader - AI/ML & Full-Stack Developer Portfolio',
     url: SITE_URL,
     description: 'Portfolio of Abdalkader Alhamoud, an AI-Enhanced Full-Stack Developer specializing in building intelligent web applications and ML experiments.',
+    author: {
+      '@type': 'Person',
+      name: 'Abdalkader Alhamoud'
+    },
     potentialAction: {
       '@type': 'SearchAction',
       target: `${SITE_URL}/?q={search_term_string}`,
@@ -98,6 +108,30 @@ export function breadcrumbsJsonLd(items: Array<{ name: string; item: string }>) 
   };
 }
 
+export function organizationJsonLd() {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'Organization',
+    name: 'Abdalkader Development',
+    url: SITE_URL,
+    description: 'AI-powered web development services specializing in machine learning integration and full-stack applications',
+    founder: {
+      '@type': 'Person',
+      name: 'Abdalkader Alhamoud'
+    },
+    address: {
+      '@type': 'PostalAddress',
+      addressLocality: 'Amman',
+      addressCountry: 'Jordan'
+    },
+    sameAs: [
+      'https://github.com/abdalkaderdev',
+      'https://www.linkedin.com/in/abdalkaderdev',
+      'https://www.instagram.com/abdalkader.dev'
+    ]
+  };
+}
+
 export function contactPointJsonLd() {
   return {
     '@context': 'https://schema.org',
@@ -106,7 +140,7 @@ export function contactPointJsonLd() {
     contactPoint: [{
       '@type': 'ContactPoint',
       contactType: 'customer support',
-      email: 'hello@example.com',
+      email: 'hello@abdalkader.dev',
       availableLanguage: ['en'],
     }],
   };

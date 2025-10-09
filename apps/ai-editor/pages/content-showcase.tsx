@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { FiCode, FiBookOpen, FiLightbulb, FiMapPin, FiChevronRight } from 'react-icons/fi';
+import { FiCode, FiBookOpen, FiZap, FiMapPin, FiChevronRight } from 'react-icons/fi';
 import SEOHead from '../components/SEO/Head';
 import JsonLd from '../components/SEO/JsonLd';
 import LabNav from '../components/Navigation/LabNav';
@@ -38,7 +38,7 @@ export default function ContentShowcase() {
       id: 'explanation',
       title: 'AI Explanations',
       description: 'Making AI accessible to non-technical audiences',
-      icon: <FiLightbulb className="w-6 h-6" />,
+      icon: <FiZap className="w-6 h-6" />,
       color: 'from-purple-500 to-pink-500'
     },
     {
@@ -256,7 +256,7 @@ class OptimizedModel {
       <JsonLd type="website" />
       <JsonLd type="person" />
       
-      <div ref={containerRef} className="min-h-screen bg-gradient-to-br from-black via-gray-900 to-black">
+      <div ref={containerRef as React.RefObject<HTMLDivElement>} className="min-h-screen bg-gradient-to-br from-black via-gray-900 to-black">
         <LabNav />
         <main className="container mx-auto px-4 py-16">
           {/* Header */}

@@ -78,7 +78,7 @@ export default function BusinessPage() {
       <JsonLd type="website" />
       <JsonLd type="person" />
       
-      <div ref={containerRef} className="min-h-screen bg-gradient-to-br from-black via-gray-900 to-black">
+      <div ref={containerRef as React.RefObject<HTMLDivElement>} className="min-h-screen bg-gradient-to-br from-black via-gray-900 to-black">
         <LabNav />
         <main className="container mx-auto px-4 py-16">
           {/* Hero Section */}

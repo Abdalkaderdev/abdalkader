@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { FiZap, FiTarget, FiTrendingUp, FiCheckCircle, FiAlertTriangle } from 'react-icons/fi';
-import { LighthouseOptimizer, LIGHTHOUSE_TARGETS } from '../../utils/lighthouseOptimizer';
+import { LighthouseOptimizer as LighthouseOptimizerUtil, LIGHTHOUSE_TARGETS } from '../../utils/lighthouseOptimizer';
 
 interface LighthouseOptimizerProps {
   showDetails?: boolean;
@@ -19,7 +19,7 @@ export default function LighthouseOptimizer({ showDetails = false, className = '
     pwa: number;
   } | null>(null);
 
-  const optimizer = LighthouseOptimizer.getInstance();
+  const optimizer = LighthouseOptimizerUtil.getInstance();
 
   useEffect(() => {
     // Run initial optimization

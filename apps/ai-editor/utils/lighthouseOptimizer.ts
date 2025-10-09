@@ -50,9 +50,10 @@ export const PERFORMANCE_STRATEGIES = {
       // Move non-critical CSS to async loading
       const nonCriticalCSS = document.querySelectorAll('link[rel="stylesheet"]:not([data-critical])');
       nonCriticalCSS.forEach(link => {
-        link.media = 'print';
-        link.onload = () => {
-          link.media = 'all';
+        const linkElement = link as HTMLLinkElement;
+        linkElement.media = 'print';
+        linkElement.onload = () => {
+          linkElement.media = 'all';
         };
       });
     }

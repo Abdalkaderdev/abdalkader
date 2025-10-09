@@ -25,9 +25,71 @@ const csp = "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval'
 const nextConfig = {
     trailingSlash: true,
     transpilePackages: ['@abdalkader/ui'],
+    
+    // Performance optimizations
+    compress: true,
+    poweredByHeader: false,
+    generateEtags: false,
+    
+    // Image optimization
+    images: {
+        formats: ['image/webp', 'image/avif'],
+        minimumCacheTTL: 60,
+        dangerouslyAllowSVG: true,
+        contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;",
+    },
+    
+    // Bundle optimization
+    webpack: (config, { isServer, dev }) => {
+        // Optimize chunks
+        if (!dev) {
+            config.optimization.splitChunks = {
+                chunks: 'all',
+                cacheGroups: {
+                    default: false,
+                    vendors: false,
+                    // UI components chunk
+                    ui: {
+                        name: 'ui',
+                        test: /[\\/]node_modules[\\/]@abdalkader[\\/]ui/,
+                        chunks: 'all',
+                        priority: 20,
+                    },
+                    // Common libraries
+                    common: {
+                        name: 'common',
+                        minChunks: 2,
+                        chunks: 'all',
+                        priority: 10,
+                        reuseExistingChunk: true,
+                    },
+                },
+            };
+        }
+        return config;
+    },
+    
     async headers() {
         return [
             { source: '/(.*)', headers: [...securityHeaders, { key: 'Content-Security-Policy', value: csp }] },
+            {
+                source: '/fonts/(.*)',
+                headers: [
+                    {
+                        key: 'Cache-Control',
+                        value: 'public, max-age=31536000, immutable',
+                    },
+                ],
+            },
+            {
+                source: '/images/(.*)',
+                headers: [
+                    {
+                        key: 'Cache-Control',
+                        value: 'public, max-age=31536000, immutable',
+                    },
+                ],
+            },
         ];
     },
 };

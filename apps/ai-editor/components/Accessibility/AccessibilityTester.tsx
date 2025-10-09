@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { FiEye, FiEyeOff, FiVolume2, FiVolumeX, FiMousePointer, FiKeyboard } from 'react-icons/fi';
+import { FiEye, FiEyeOff, FiVolume2, FiVolumeX, FiMousePointer, FiType } from 'react-icons/fi';
 
 interface AccessibilityTest {
   id: string;
@@ -336,7 +336,7 @@ export default function AccessibilityTester({ showDetails = false, className = '
 
   const getCategoryIcon = (category: AccessibilityTest['category']) => {
     switch (category) {
-      case 'keyboard': return <FiKeyboard className="w-4 h-4" />;
+      case 'keyboard': return <FiType className="w-4 h-4" />;
       case 'screen-reader': return <FiVolume2 className="w-4 h-4" />;
       case 'visual': return <FiEye className="w-4 h-4" />;
       case 'motor': return <FiMousePointer className="w-4 h-4" />;

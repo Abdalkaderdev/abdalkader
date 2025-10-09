@@ -105,7 +105,7 @@ export default function CompetitiveAnalyzer({ showDetails = false, className = '
         keyword.toLowerCase().includes(ourKeyword.toLowerCase())
       )
     );
-    setKeywordGaps([...new Set(gaps)]);
+    setKeywordGaps(Array.from(new Set(gaps)));
   }, []);
 
   const analyzeCompetitors = async () => {
