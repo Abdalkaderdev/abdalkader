@@ -5,13 +5,22 @@
   "scripts": {
     "dev": "next dev -p 3002",
     "build": "next build",
+    "postbuild": "next-sitemap",
     "start": "next start -p 3002",
     "lint": "next lint",
-    "clean": "rm -rf .next"
+    "clean": "rm -rf .next",
+    "analyze": "ANALYZE=true next build"
   },
   "dependencies": {
     "@abdalkader/ui": "workspace:*",
     "@monaco-editor/react": "^4.6.0",
+    "@tensorflow/tfjs": "^4.15.0",
+    "@tensorflow/tfjs-backend-webgl": "^4.15.0",
+    "@tensorflow/tfjs-converter": "^4.15.0",
+    "@tensorflow/tfjs-core": "^4.15.0",
+    "@tensorflow-models/coco-ssd": "^2.2.2",
+    "@tensorflow-models/mobilenet": "^2.1.0",
+    "@tensorflow-models/posenet": "^2.2.2",
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
@@ -19,6 +28,7 @@
     "framer-motion": "^11.11.11",
     "monaco-editor": "^0.45.0",
     "next": "14.2.25",
+    "next-sitemap": "^4.2.3",
     "openai": "^4.67.3",
     "postcss": "^8.5.6",
     "react": "^18",
@@ -33,6 +43,7 @@
   "devDependencies": {
     "@types/uuid": "^10.0.0",
     "eslint": "^8",
-    "eslint-config-next": "14.2.25"
+    "eslint-config-next": "14.2.25",
+    "webpack-bundle-analyzer": "^4.10.1"
   }
 }

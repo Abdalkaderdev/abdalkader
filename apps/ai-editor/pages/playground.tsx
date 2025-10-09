@@ -4,6 +4,9 @@ import { FiDownload, FiCopy, FiPlay, FiHome } from 'react-icons/fi';
 import Link from 'next/link';
 import dynamic from 'next/dynamic';
 import { useLivePreview } from '../hooks/useLivePreview';
+import SEOHead from '../components/SEO/Head';
+import JsonLd from '../components/SEO/JsonLd';
+import { experimentJsonLd, breadcrumbsJsonLd } from '../utils/jsonld';
 
 const CodeEditor = dynamic(() => import('../components/CodeEditor'), {
   ssr: false,
@@ -203,8 +206,31 @@ function PreviewComponent() {
     }
   ];
 
+  const experimentData = {
+    title: 'Component Playground',
+    description: 'Interactive component playground with live preview, code editing, and real-time updates. Test UI components, forms, and React patterns with instant feedback.',
+    url: '/playground',
+    category: 'Interactive Development',
+    technologies: ['React', 'TypeScript', 'Next.js', 'Monaco Editor'],
+    image: '/images/experiments/component-playground.jpg'
+  };
+
+  const breadcrumbs = [
+    { name: 'AI Lab', item: '/' },
+    { name: 'Component Playground', item: '/playground' }
+  ];
+
   return (
-    <div className="min-h-screen bg-gray-50 dark:bg-gray-900">
+    <>
+      <SEOHead 
+        title="Component Playground - Interactive Development Environment"
+        description="Interactive component playground with live preview, code editing, and real-time updates. Test UI components, forms, and React patterns with instant feedback."
+        keywords={['Component Playground', 'Live Preview', 'Code Editor', 'React Components', 'Interactive Development']}
+      />
+      <JsonLd type="experiment" data={experimentData} />
+      <JsonLd type="breadcrumbs" data={breadcrumbs} />
+      
+      <div className="min-h-screen bg-gray-50 dark:bg-gray-900">
       {/* Header */}
       <div className="bg-white dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700">
         <div className="container mx-auto px-4 py-4">
@@ -314,6 +340,7 @@ function PreviewComponent() {
           </div>
         </div>
       </div>
-    </div>
+      </div>
+    </>
   );
 }

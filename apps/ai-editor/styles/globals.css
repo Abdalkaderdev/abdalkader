@@ -1,3 +1,4 @@
+@import "./variables.scss";
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -17,6 +18,146 @@
   font-weight: 500;
   font-style: normal;
   font-display: swap;
+}
+
+/* Design System Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body,
+html {
+    width: 100%;
+    height: 100%;
+}
+
+body {
+    font-family: var(--font-pp-regular), PPregular, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    overflow-x: clip;
+    font-variation-settings: normal;
+    font-feature-settings: normal;
+    font-display: swap;
+    overscroll-behavior: none;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    background: $lab-bg;
+    color: $lab-text;
+    backface-visibility: hidden;
+    touch-action: manipulation;
+    transition: none !important;
+}
+
+/* Skip link for keyboard users */
+.skip-link {
+    position: absolute;
+    top: -40px;
+    left: 0;
+    background: $primary;
+    color: $black;
+    padding: 8px 12px;
+    z-index: 10000;
+    transition: top 0.2s ease;
+    border-radius: 4px;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.skip-link:focus {
+    top: 10px;
+}
+
+/* Visible focus styles */
+:focus-visible {
+    outline: 2px dashed $primary;
+    outline-offset: 3px;
+    border-radius: 4px;
+}
+
+/* Gradient text utility */
+.gradient-text {
+    @include gradientText;
+}
+
+/* Lab-specific component styles */
+.lab-card {
+    background: $lab-card;
+    border: 1px solid $lab-border;
+    border-radius: 12px;
+    transition: $transition;
+}
+
+.lab-card:hover {
+    border-color: $primary;
+    box-shadow: 0 8px 32px rgba(244, 78, 0, 0.1);
+}
+
+.lab-button {
+    background: linear-gradient(135deg, $primary, #fa7300);
+    color: $black;
+    border: none;
+    border-radius: 8px;
+    padding: 12px 24px;
+    font-weight: 500;
+    transition: $transition;
+    cursor: pointer;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.lab-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(244, 78, 0, 0.3);
+}
+
+.lab-button:active {
+    transform: translateY(0);
+}
+
+/* Animation utilities */
+.animate-gradient {
+    background-size: 200% 200%;
+    animation: gradient-shift 3s ease infinite;
+}
+
+.animate-pulse-glow {
+    animation: pulse-glow 2s ease-in-out infinite;
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: $lab-bg;
+}
+
+::-webkit-scrollbar-thumb {
+    background: $primary;
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #fa7300;
+}
+
+/* Selection styling */
+::selection {
+    color: $black;
+    background-color: $primary;
+}
+
+/* Focus styles for interactive elements */
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible {
+    outline: 2px solid $primary;
+    outline-offset: 2px;
+    border-radius: 4px;
 }
 
 /* EXACT portfolio colors */
