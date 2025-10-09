@@ -14,7 +14,11 @@ import LabNav from '../components/Navigation/LabNav';
 import BusinessAnalytics from '../components/Analytics/BusinessAnalytics';
 import PerformanceMonitor from '../components/Performance/PerformanceMonitor';
 import BundleAnalyzer from '../components/Performance/BundleAnalyzer';
+import LighthouseOptimizer from '../components/Performance/LighthouseOptimizer';
+import PerformanceDashboard from '../components/Performance/PerformanceDashboard';
 import AccessibilityTester from '../components/Accessibility/AccessibilityTester';
+import ConversionTracker from '../components/Analytics/ConversionTracker';
+import CompetitiveAnalyzer from '../components/Analytics/CompetitiveAnalyzer';
 import { useAccessibility } from '../hooks/useAccessibility';
 import { labWebsiteJsonLd, labCollectionJsonLd, personJsonLd } from '../utils/jsonld';
 
@@ -218,9 +222,13 @@ export default function Home() {
         </motion.div>
       </main>
       <StickyCTA />
+      <PerformanceDashboard showDetails={process.env.NODE_ENV === 'development'} />
       <PerformanceMonitor showDetails={process.env.NODE_ENV === 'development'} />
       <BundleAnalyzer showDetails={process.env.NODE_ENV === 'development'} />
+      <LighthouseOptimizer showDetails={process.env.NODE_ENV === 'development'} />
       <AccessibilityTester showDetails={process.env.NODE_ENV === 'development'} />
+      <ConversionTracker showDetails={process.env.NODE_ENV === 'development'} />
+      <CompetitiveAnalyzer showDetails={process.env.NODE_ENV === 'development'} />
       </div>
     </>
   );
