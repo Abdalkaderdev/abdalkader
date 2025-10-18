@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { getFeatureFlags, type FeatureFlags } from '../../utils/featureFlags';
 import { performanceMonitor } from '../../utils/performanceMonitoring';
 import { errorTracker } from '../../utils/errorTracking';
-import { getEnvironment } from '../../utils/environment';
+import { getEnvironment } from '../../src/utils/environment';
 import styles from './StagingDashboard.module.scss';
 
 interface StagingDashboardProps {

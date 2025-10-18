@@ -3,7 +3,7 @@
  * Allows enabling/disabling features without code deployment
  */
 
-import { getEnvironment, isStaging } from '../utils/environment';
+import { isStaging } from '../utils/environment';
 
 export interface FeatureFlags {
   // Performance monitoring
