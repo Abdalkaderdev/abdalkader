@@ -1,218 +1,278 @@
 import React, { useState } from 'react';
 import Head from 'next/head';
-import { QuantumButton } from '../components/QuantumButton';
-import { EntangledPair } from '../components/EntangledPair';
-import { useQuantumTransition } from '../hooks/useQuantumTransition';
-import { QuantumTransition } from '../utils/quantumRandom';
+import { motion } from 'framer-motion';
+import { SchrodingerDemo } from '../components/demos/SchrodingerDemo';
+import { EntanglementDemo } from '../components/demos/EntanglementDemo';
+import { WaveVisualizer } from '../components/visualizations/WaveVisualizer';
+import { SuperpositionElement } from '../components/quantum/SuperpositionElement';
 
 export default function Home() {
-  const [buttonClicks, setButtonClicks] = useState(0);
-  const [entangledState, setEntangledState] = useState<any>(null);
+  const [activeDemo, setActiveDemo] = useState<'schrodinger' | 'entanglement' | 'waves'>('schrodinger');
+  const [quantumClicks, setQuantumClicks] = useState(0);
 
-  // Quantum transition configuration
-  const transitionConfig = {
-    transitions: [
-      { from: 'idle', to: 'pulse', probability: 0.4, duration: 1000 },
-      { from: 'idle', to: 'float', probability: 0.3, duration: 1500 },
-      { from: 'idle', to: 'wave', probability: 0.3, duration: 2000 },
-    ] as QuantumTransition[],
-    autoTrigger: true,
-    triggerInterval: 3000,
-    waveEffect: true,
-    noiseIntensity: 0.1,
-  };
+  const demos = [
+    { id: 'schrodinger', name: 'Schrödinger\'s UI', icon: '🐱' },
+    { id: 'entanglement', name: 'Quantum Entanglement', icon: '🔗' },
+    { id: 'waves', name: 'Wave Functions', icon: '🌊' }
+  ] as const;
 
-  const { currentTransition, triggerTransition, isTransitioning, waveValue, noiseValue } = useQuantumTransition(transitionConfig);
-
-  const handleButtonClick = () => {
-    setButtonClicks(prev => prev + 1);
-  };
-
-  const handleEntangledStateChange = (id: string, value: any) => {
-    setEntangledState({ id, value, timestamp: Date.now() });
+  const handleQuantumClick = () => {
+    setQuantumClicks(prev => prev + 1);
   };
 
   return (
     <>
       <Head>
         <title>Quantum Animation System - quantumanim.abdalkader.dev</title>
-        <meta name="description" content="Interactive quantum animation system with superposition, entanglement, and probability-based transitions" />
+        <meta name="description" content="Interactive quantum physics playground with superposition, entanglement, and wave functions" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main className="min-h-screen bg-dark-900 text-white">
-        {/* Background quantum particles */}
-        <div className="fixed inset-0 pointer-events-none overflow-hidden">
-          <div className="quantum-particle" style={{ top: '20%', left: '10%' }} />
-          <div className="quantum-particle" style={{ top: '60%', left: '80%' }} />
-          <div className="quantum-particle" style={{ top: '40%', left: '50%' }} />
-          <div className="quantum-particle" style={{ top: '80%', left: '20%' }} />
-          <div className="quantum-particle" style={{ top: '10%', left: '70%' }} />
+      <main className="min-h-screen bg-black text-white overflow-x-hidden">
+        {/* Quantum Field Background */}
+        <div className="fixed inset-0 pointer-events-none">
+          <div className="absolute inset-0 bg-gradient-to-br from-cyan-900/20 via-purple-900/20 to-pink-900/20" />
+          <div className="quantum-particle" style={{ top: '20%', left: '10%', animationDelay: '0s' }} />
+          <div className="quantum-particle" style={{ top: '60%', left: '80%', animationDelay: '1s' }} />
+          <div className="quantum-particle" style={{ top: '40%', left: '50%', animationDelay: '2s' }} />
+          <div className="quantum-particle" style={{ top: '80%', left: '20%', animationDelay: '0.5s' }} />
+          <div className="quantum-particle" style={{ top: '10%', left: '70%', animationDelay: '1.5s' }} />
         </div>
 
-        <div className="relative z-10 container mx-auto px-4 py-16">
-          {/* Header */}
-          <header className="text-center mb-16">
-            <h1 className="text-6xl md:text-8xl font-bold mb-6 quantum-text-glow">
-              Quantum
-              <span className="block text-transparent bg-clip-text bg-gradient-to-r from-quantum-blue via-quantum-purple to-quantum-pink">
-                Animation
-              </span>
-            </h1>
-            <p className="text-xl md:text-2xl text-gray-300 mb-8 max-w-3xl mx-auto">
-              Experience quantum mechanics through interactive animations. 
-              Superposition, entanglement, and probability-based transitions.
-            </p>
-            <div className="flex flex-wrap justify-center gap-4 text-sm text-gray-400">
-              <span className="px-3 py-1 bg-dark-700 rounded-full">Superposition</span>
-              <span className="px-3 py-1 bg-dark-700 rounded-full">Entanglement</span>
-              <span className="px-3 py-1 bg-dark-700 rounded-full">Probability</span>
-              <span className="px-3 py-1 bg-dark-700 rounded-full">Wave Functions</span>
-            </div>
-          </header>
-
-          {/* Quantum Transition Demo */}
-          <section className="mb-16">
-            <h2 className="text-3xl font-bold text-center mb-8 quantum-text-glow">
-              Probability-Based Transitions
-            </h2>
-            <div className="max-w-2xl mx-auto">
-              <div 
-                className="quantum-wave-effect p-8 rounded-lg quantum-border quantum-glow"
-                style={{
-                  transform: `translateY(${waveValue * 10}px) translateX(${noiseValue * 5}px)`,
-                }}
+        <div className="relative z-10">
+          {/* Hero Section */}
+          <section className="min-h-screen flex items-center justify-center px-4">
+            <div className="text-center max-w-6xl mx-auto">
+              <motion.h1 
+                className="text-7xl md:text-9xl font-bold mb-8 quantum-text-glow"
+                initial={{ opacity: 0, y: 50 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 1 }}
               >
-                <div className="text-center">
-                  <h3 className="text-xl font-semibold mb-4">
-                    Current Transition: {currentTransition?.to || 'idle'}
-                  </h3>
-                  <p className="text-gray-300 mb-4">
-                    Wave Value: {waveValue.toFixed(3)} | Noise: {noiseValue.toFixed(3)}
-                  </p>
-                  <button
-                    onClick={triggerTransition}
-                    disabled={isTransitioning}
-                    className="px-6 py-3 bg-quantum-purple hover:bg-quantum-pink disabled:opacity-50 rounded-lg transition-colors duration-300"
+                Quantum
+                <motion.span 
+                  className="block text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-magenta-400 to-cyan-400"
+                  animate={{ 
+                    backgroundPosition: ['0% 50%', '100% 50%', '0% 50%']
+                  }}
+                  transition={{ 
+                    duration: 3, 
+                    repeat: Infinity, 
+                    ease: "linear" 
+                  }}
+                  style={{
+                    backgroundSize: '200% 100%'
+                  }}
+                >
+                  Animation
+                </motion.span>
+              </motion.h1>
+              
+              <motion.p 
+                className="text-xl md:text-2xl text-gray-300 mb-12 max-w-4xl mx-auto leading-relaxed"
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 1, delay: 0.3 }}
+              >
+                Experience quantum physics through interactive animations. 
+                Superposition, entanglement, wave functions, and the mysterious world of quantum mechanics.
+              </motion.p>
+
+              {/* Quantum Button */}
+              <motion.div
+                initial={{ opacity: 0, scale: 0.8 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.8, delay: 0.6 }}
+              >
+                <SuperpositionElement
+                  states={['Explore Quantum World', 'Discover Superposition', 'Experience Entanglement', 'Witness Wave Collapse']}
+                  onCollapse={handleQuantumClick}
+                  className="quantum-glow-intense"
+                  animationConfig={{
+                    duration: 4,
+                    ease: "easeInOut",
+                    repeat: -1,
+                    yoyo: true
+                  }}
+                >
+                  {(state, isSuperposition) => (
+                    <motion.button
+                      className="px-12 py-6 text-2xl font-bold rounded-2xl transition-all duration-500"
+                      style={{
+                        background: isSuperposition 
+                          ? 'linear-gradient(45deg, #00FFFF, #FF00FF, #00FFFF)'
+                          : 'linear-gradient(45deg, #00FF00, #0080FF, #00FF00)',
+                        backgroundSize: isSuperposition ? '200% 200%' : '100% 100%',
+                        animation: isSuperposition ? 'gradient-shift 2s ease infinite' : 'none'
+                      }}
+                      whileHover={{ scale: 1.05 }}
+                      whileTap={{ scale: 0.95 }}
+                    >
+                      {isSuperposition ? 'I am in Superposition' : state}
+                    </motion.button>
+                  )}
+                </SuperpositionElement>
+              </motion.div>
+
+              <motion.p 
+                className="mt-8 text-cyan-400 text-lg"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 1, delay: 1 }}
+              >
+                Quantum Clicks: {quantumClicks}
+              </motion.p>
+            </div>
+          </section>
+
+          {/* Demo Navigation */}
+          <section className="py-16 px-4">
+            <div className="max-w-6xl mx-auto">
+              <motion.h2 
+                className="text-4xl font-bold text-center mb-12 quantum-text-glow"
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8 }}
+                viewport={{ once: true }}
+              >
+                Quantum Physics Demos
+              </motion.h2>
+
+              {/* Demo Tabs */}
+              <div className="flex justify-center mb-12">
+                <div className="bg-gray-900/50 rounded-2xl p-2 backdrop-blur-sm">
+                  {demos.map((demo) => (
+                    <button
+                      key={demo.id}
+                      onClick={() => setActiveDemo(demo.id as any)}
+                      className={`px-6 py-3 rounded-xl transition-all duration-300 ${
+                        activeDemo === demo.id
+                          ? 'bg-gradient-to-r from-cyan-500 to-magenta-500 text-white shadow-lg'
+                          : 'text-gray-400 hover:text-white hover:bg-gray-800/50'
+                      }`}
+                    >
+                      <span className="mr-2">{demo.icon}</span>
+                      {demo.name}
+                    </button>
+                  ))}
+                </div>
+              </div>
+
+              {/* Demo Content */}
+              <motion.div
+                key={activeDemo}
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5 }}
+                className="min-h-[600px]"
+              >
+                {activeDemo === 'schrodinger' && <SchrodingerDemo />}
+                {activeDemo === 'entanglement' && <EntanglementDemo />}
+                {activeDemo === 'waves' && (
+                  <div className="max-w-6xl mx-auto">
+                    <WaveVisualizer 
+                      width={800} 
+                      height={400}
+                      showInterference={true}
+                      showTunneling={true}
+                    />
+                  </div>
+                )}
+              </motion.div>
+            </div>
+          </section>
+
+          {/* Quantum Principles */}
+          <section className="py-20 px-4 bg-gradient-to-b from-transparent to-gray-900/30">
+            <div className="max-w-6xl mx-auto">
+              <motion.h2 
+                className="text-4xl font-bold text-center mb-16 quantum-text-glow"
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8 }}
+                viewport={{ once: true }}
+              >
+                Quantum Principles
+              </motion.h2>
+
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                {[
+                  {
+                    title: 'Superposition',
+                    description: 'Objects exist in multiple states simultaneously until observed',
+                    icon: '↕️',
+                    color: 'from-cyan-400 to-blue-500'
+                  },
+                  {
+                    title: 'Entanglement',
+                    description: 'Distant particles instantly affect each other',
+                    icon: '🔗',
+                    color: 'from-magenta-400 to-pink-500'
+                  },
+                  {
+                    title: 'Wave Collapse',
+                    description: 'Measurement forces quantum states to become definite',
+                    icon: '💥',
+                    color: 'from-green-400 to-emerald-500'
+                  },
+                  {
+                    title: 'Uncertainty',
+                    description: 'Some properties cannot be known simultaneously',
+                    icon: '❓',
+                    color: 'from-purple-400 to-indigo-500'
+                  }
+                ].map((principle, index) => (
+                  <motion.div
+                    key={principle.title}
+                    className="p-6 bg-gray-800/50 rounded-2xl backdrop-blur-sm border border-gray-700/50"
+                    initial={{ opacity: 0, y: 30 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.6, delay: index * 0.1 }}
+                    viewport={{ once: true }}
+                    whileHover={{ scale: 1.05, y: -5 }}
                   >
-                    {isTransitioning ? 'Transitioning...' : 'Trigger Quantum Transition'}
-                  </button>
-                </div>
-              </div>
-            </div>
-          </section>
-
-          {/* Superposition Button Demo */}
-          <section className="mb-16">
-            <h2 className="text-3xl font-bold text-center mb-8 quantum-text-glow">
-              Superposition Button
-            </h2>
-            <div className="text-center">
-              <p className="text-gray-300 mb-8">
-                Click the button to collapse its quantum superposition state
-              </p>
-              <div className="flex flex-wrap justify-center gap-4">
-                <QuantumButton
-                  onClick={handleButtonClick}
-                  className="quantum-glow"
-                >
-                  Collapse Superposition
-                </QuantumButton>
-                <QuantumButton
-                  onClick={handleButtonClick}
-                  autoCollapse={true}
-                  className="quantum-glow"
-                >
-                  Auto-Collapse
-                </QuantumButton>
-                <QuantumButton
-                  onClick={handleButtonClick}
-                  className="quantum-glow"
-                >
-                  Quantum State
-                </QuantumButton>
-              </div>
-              <p className="mt-4 text-gray-400">
-                Button clicks: {buttonClicks}
-              </p>
-            </div>
-          </section>
-
-          {/* Entangled Components Demo */}
-          <section className="mb-16">
-            <h2 className="text-3xl font-bold text-center mb-8 quantum-text-glow">
-              Entangled Components
-            </h2>
-            <div className="max-w-4xl mx-auto">
-              <p className="text-gray-300 text-center mb-8">
-                Click either component to see instant entanglement. 
-                When one changes, the other mirrors it instantly.
-              </p>
-              
-              <EntangledPair
-                id1="quantum-card-1"
-                id2="quantum-card-2"
-                component1={
-                  <div className="p-6 bg-gradient-to-br from-quantum-blue to-quantum-purple rounded-lg quantum-glow cursor-pointer hover:scale-105 transition-transform duration-300">
-                    <h3 className="text-xl font-bold mb-2">Quantum Card 1</h3>
-                    <p className="text-sm opacity-90">Click me to entangle!</p>
-                  </div>
-                }
-                component2={
-                  <div className="p-6 bg-gradient-to-br from-quantum-purple to-quantum-pink rounded-lg quantum-glow cursor-pointer hover:scale-105 transition-transform duration-300">
-                    <h3 className="text-xl font-bold mb-2">Quantum Card 2</h3>
-                    <p className="text-sm opacity-90">I mirror the other card!</p>
-                  </div>
-                }
-                onStateChange={handleEntangledStateChange}
-                className="relative"
-              />
-              
-              {entangledState && (
-                <div className="mt-6 p-4 bg-dark-800 rounded-lg">
-                  <h4 className="font-semibold mb-2">Entanglement Status:</h4>
-                  <p className="text-sm text-gray-300">
-                    Last change: {entangledState.id} at {new Date(entangledState.timestamp).toLocaleTimeString()}
-                  </p>
-                </div>
-              )}
-            </div>
-          </section>
-
-          {/* Quantum Effects Showcase */}
-          <section className="mb-16">
-            <h2 className="text-3xl font-bold text-center mb-8 quantum-text-glow">
-              Quantum Effects
-            </h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
-              <div className="quantum-superposition-effect p-6 bg-dark-800 rounded-lg quantum-border">
-                <h3 className="text-lg font-semibold mb-2">Superposition Effect</h3>
-                <p className="text-sm text-gray-300">Multiple states existing simultaneously</p>
-              </div>
-              
-              <div className="quantum-wave-effect p-6 bg-dark-800 rounded-lg quantum-border">
-                <h3 className="text-lg font-semibold mb-2">Wave Effect</h3>
-                <p className="text-sm text-gray-300">Quantum wave propagation</p>
-              </div>
-              
-              <div className="p-6 bg-dark-800 rounded-lg quantum-border quantum-glow">
-                <h3 className="text-lg font-semibold mb-2">Quantum Glow</h3>
-                <p className="text-sm text-gray-300">Energy field visualization</p>
+                    <div className={`w-16 h-16 rounded-2xl bg-gradient-to-r ${principle.color} flex items-center justify-center text-3xl mb-4`}>
+                      {principle.icon}
+                    </div>
+                    <h3 className="text-xl font-bold mb-3 text-white">{principle.title}</h3>
+                    <p className="text-gray-300 text-sm leading-relaxed">{principle.description}</p>
+                  </motion.div>
+                ))}
               </div>
             </div>
           </section>
 
           {/* Footer */}
-          <footer className="text-center text-gray-400">
-            <p className="mb-4">
-              Built with React, TypeScript, and quantum mechanics principles
-            </p>
-            <p className="text-sm">
-              quantumanim.abdalkader.dev • Quantum Animation System
-            </p>
+          <footer className="py-16 px-4 text-center">
+            <div className="max-w-4xl mx-auto">
+              <motion.div
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8 }}
+                viewport={{ once: true }}
+              >
+                <h3 className="text-2xl font-bold mb-4 quantum-text-glow">
+                  Quantum Animation System
+                </h3>
+                <p className="text-gray-400 mb-6">
+                  Built with Next.js 15, TypeScript, Framer Motion, Three.js, and GSAP
+                </p>
+                <p className="text-sm text-gray-500">
+                  quantumanim.abdalkader.dev • Exploring quantum mechanics through interactive animations
+                </p>
+              </motion.div>
+            </div>
           </footer>
         </div>
+
+        <style jsx>{`
+          @keyframes gradient-shift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+          }
+        `}</style>
       </main>
     </>
   );
