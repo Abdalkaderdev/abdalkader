@@ -1,0 +1,281 @@
+/* Aggressive Theme Override for Icarus Blog */
+/* This file ensures the portfolio dark theme is applied */
+
+/* Force dark theme on all elements */
+* {
+  background-color: inherit !important;
+}
+
+html {
+  background: #000000 !important;
+  color: #f8f8f8 !important;
+}
+
+body {
+  background: #000000 !important;
+  color: #f8f8f8 !important;
+}
+
+/* Override Icarus theme completely */
+.icarus {
+  background: #000000 !important;
+  color: #f8f8f8 !important;
+}
+
+.icarus .main {
+  background: #000000 !important;
+  color: #f8f8f8 !important;
+}
+
+.icarus .article {
+  background: #000000 !important;
+  color: #f8f8f8 !important;
+}
+
+.icarus .card {
+  background: #0a0a0a !important;
+  border: 1px solid #252525 !important;
+  color: #f8f8f8 !important;
+}
+
+.icarus .navbar {
+  background: #0a0a0a !important;
+  border-bottom: 1px solid #252525 !important;
+}
+
+.icarus .navbar .navbar-brand {
+  color: #f8f8f8 !important;
+}
+
+.icarus .navbar .navbar-menu .navbar-item {
+  color: #787878 !important;
+}
+
+.icarus .navbar .navbar-menu .navbar-item:hover {
+  color: #f44e00 !important;
+}
+
+.icarus .sidebar {
+  background: #0a0a0a !important;
+  border: 1px solid #252525 !important;
+}
+
+.icarus .sidebar .widget {
+  background: #0a0a0a !important;
+  color: #f8f8f8 !important;
+}
+
+.icarus .sidebar .widget .widget-title {
+  color: #f8f8f8 !important;
+}
+
+.icarus .footer {
+  background: #0a0a0a !important;
+  border-top: 1px solid #252525 !important;
+  color: #f8f8f8 !important;
+}
+
+/* Text overrides */
+.icarus h1,
+.icarus h2,
+.icarus h3,
+.icarus h4,
+.icarus h5,
+.icarus h6 {
+  color: #f8f8f8 !important;
+}
+
+.icarus p,
+.icarus span,
+.icarus div {
+  color: #f8f8f8 !important;
+}
+
+.icarus a {
+  color: #f44e00 !important;
+}
+
+.icarus a:hover {
+  color: #fa7300 !important;
+}
+
+/* Code blocks */
+.icarus code {
+  background: #000000 !important;
+  color: #f44e00 !important;
+  border: 1px solid #252525 !important;
+}
+
+.icarus pre {
+  background: #000000 !important;
+  border: 1px solid #252525 !important;
+}
+
+.icarus pre code {
+  background: none !important;
+  color: #f8f8f8 !important;
+}
+
+/* Tables */
+.icarus table {
+  background: #0a0a0a !important;
+  color: #f8f8f8 !important;
+}
+
+.icarus table th,
+.icarus table td {
+  background: #0a0a0a !important;
+  color: #f8f8f8 !important;
+  border: 1px solid #252525 !important;
+}
+
+/* Forms */
+.icarus input,
+.icarus textarea,
+.icarus select {
+  background: #0a0a0a !important;
+  color: #f8f8f8 !important;
+  border: 1px solid #252525 !important;
+}
+
+/* Buttons */
+.icarus .button {
+  background: #f44e00 !important;
+  color: #000000 !important;
+  border: none !important;
+}
+
+.icarus .button:hover {
+  background: #fa7300 !important;
+}
+
+/* Override any white backgrounds */
+.icarus .is-white {
+  background: #000000 !important;
+}
+
+.icarus .has-background-white {
+  background: #000000 !important;
+}
+
+.icarus .container,
+.icarus .section,
+.icarus .content,
+.icarus .main-content {
+  background: #000000 !important;
+  color: #f8f8f8 !important;
+}
+
+/* Force dark theme on all child elements */
+.icarus * {
+  background-color: inherit !important;
+}
+
+/* Specific overrides for common Icarus elements */
+.icarus .level {
+  background: #0a0a0a !important;
+  color: #f8f8f8 !important;
+}
+
+.icarus .media {
+  background: #0a0a0a !important;
+  color: #f8f8f8 !important;
+}
+
+.icarus .menu {
+  background: #0a0a0a !important;
+  color: #f8f8f8 !important;
+}
+
+.icarus .menu-list a {
+  color: #f8f8f8 !important;
+}
+
+.icarus .menu-list a:hover {
+  color: #f44e00 !important;
+  background: #0a0a0a !important;
+}
+
+/* Pagination */
+.icarus .pagination {
+  background: #0a0a0a !important;
+}
+
+.icarus .pagination .pagination-link {
+  background: #0a0a0a !important;
+  color: #f8f8f8 !important;
+  border: 1px solid #252525 !important;
+}
+
+.icarus .pagination .pagination-link:hover {
+  background: #f44e00 !important;
+  color: #000000 !important;
+}
+
+/* Tags */
+.icarus .tag {
+  background: #f44e00 !important;
+  color: #000000 !important;
+}
+
+.icarus .tag:hover {
+  background: #fa7300 !important;
+}
+
+/* Breadcrumb */
+.icarus .breadcrumb {
+  background: #0a0a0a !important;
+  color: #f8f8f8 !important;
+}
+
+.icarus .breadcrumb a {
+  color: #f44e00 !important;
+}
+
+/* Notification */
+.icarus .notification {
+  background: #0a0a0a !important;
+  color: #f8f8f8 !important;
+  border: 1px solid #252525 !important;
+}
+
+/* Progress bar */
+.icarus .progress {
+  background: #0a0a0a !important;
+}
+
+.icarus .progress::-webkit-progress-bar {
+  background: #0a0a0a !important;
+}
+
+.icarus .progress::-webkit-progress-value {
+  background: #f44e00 !important;
+}
+
+/* Modal */
+.icarus .modal {
+  background: #0a0a0a !important;
+  color: #f8f8f8 !important;
+}
+
+.icarus .modal .modal-card {
+  background: #0a0a0a !important;
+  color: #f8f8f8 !important;
+}
+
+.icarus .modal .modal-card-head {
+  background: #0a0a0a !important;
+  color: #f8f8f8 !important;
+  border-bottom: 1px solid #252525 !important;
+}
+
+.icarus .modal .modal-card-body {
+  background: #0a0a0a !important;
+  color: #f8f8f8 !important;
+}
+
+.icarus .modal .modal-card-foot {
+  background: #0a0a0a !important;
+  color: #f8f8f8 !important;
+  border-top: 1px solid #252525 !important;
+}

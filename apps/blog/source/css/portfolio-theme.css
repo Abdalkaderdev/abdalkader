@@ -50,13 +50,82 @@
   box-sizing: border-box;
 }
 
+html {
+  background: var(--color-bg-primary) !important;
+}
+
 body {
   font-family: var(--font-primary);
-  background: var(--color-bg-primary);
-  color: var(--color-text-primary);
+  background: var(--color-bg-primary) !important;
+  color: var(--color-text-primary) !important;
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+/* Override Icarus theme defaults */
+.icarus {
+  background: var(--color-bg-primary) !important;
+  color: var(--color-text-primary) !important;
+}
+
+/* Main content area */
+.main {
+  background: var(--color-bg-primary) !important;
+  color: var(--color-text-primary) !important;
+}
+
+/* Article content */
+.article {
+  background: var(--color-bg-primary) !important;
+  color: var(--color-text-primary) !important;
+}
+
+/* Card components */
+.card {
+  background: var(--color-bg-secondary) !important;
+  border: 1px solid var(--color-border) !important;
+  color: var(--color-text-primary) !important;
+}
+
+/* Navigation */
+.navbar {
+  background: var(--color-bg-secondary) !important;
+  border-bottom: 1px solid var(--color-border) !important;
+}
+
+.navbar .navbar-brand {
+  color: var(--color-text-primary) !important;
+}
+
+.navbar .navbar-menu .navbar-item {
+  color: var(--color-text-secondary) !important;
+}
+
+.navbar .navbar-menu .navbar-item:hover {
+  color: var(--color-primary) !important;
+}
+
+/* Sidebar */
+.sidebar {
+  background: var(--color-bg-secondary) !important;
+  border: 1px solid var(--color-border) !important;
+}
+
+.sidebar .widget {
+  background: var(--color-bg-secondary) !important;
+  color: var(--color-text-primary) !important;
+}
+
+.sidebar .widget .widget-title {
+  color: var(--color-text-primary) !important;
+}
+
+/* Footer */
+.footer {
+  background: var(--color-bg-secondary) !important;
+  border-top: 1px solid var(--color-border) !important;
+  color: var(--color-text-primary) !important;
 }
 
 /* Header Styling */
@@ -471,4 +540,152 @@ body {
 :focus-visible {
   outline: 2px dashed var(--color-primary);
   outline-offset: 3px;
+}
+
+/* Icarus Theme Overrides */
+.icarus .main {
+  background: var(--color-bg-primary) !important;
+}
+
+.icarus .article {
+  background: var(--color-bg-primary) !important;
+}
+
+.icarus .card {
+  background: var(--color-bg-secondary) !important;
+  border: 1px solid var(--color-border) !important;
+  color: var(--color-text-primary) !important;
+}
+
+.icarus .navbar {
+  background: var(--color-bg-secondary) !important;
+  border-bottom: 1px solid var(--color-border) !important;
+}
+
+.icarus .navbar .navbar-brand {
+  color: var(--color-text-primary) !important;
+}
+
+.icarus .navbar .navbar-menu .navbar-item {
+  color: var(--color-text-secondary) !important;
+}
+
+.icarus .navbar .navbar-menu .navbar-item:hover {
+  color: var(--color-primary) !important;
+}
+
+.icarus .sidebar {
+  background: var(--color-bg-secondary) !important;
+  border: 1px solid var(--color-border) !important;
+}
+
+.icarus .sidebar .widget {
+  background: var(--color-bg-secondary) !important;
+  color: var(--color-text-primary) !important;
+}
+
+.icarus .sidebar .widget .widget-title {
+  color: var(--color-text-primary) !important;
+}
+
+.icarus .footer {
+  background: var(--color-bg-secondary) !important;
+  border-top: 1px solid var(--color-border) !important;
+  color: var(--color-text-primary) !important;
+}
+
+/* Override any white backgrounds */
+.icarus .container,
+.icarus .section,
+.icarus .content,
+.icarus .main-content {
+  background: var(--color-bg-primary) !important;
+  color: var(--color-text-primary) !important;
+}
+
+/* Text color overrides */
+.icarus h1,
+.icarus h2,
+.icarus h3,
+.icarus h4,
+.icarus h5,
+.icarus h6 {
+  color: var(--color-text-primary) !important;
+}
+
+.icarus p,
+.icarus span,
+.icarus div {
+  color: var(--color-text-primary) !important;
+}
+
+.icarus a {
+  color: var(--color-primary) !important;
+}
+
+.icarus a:hover {
+  color: var(--color-primary-light) !important;
+}
+
+/* Code blocks */
+.icarus code {
+  background: var(--color-bg-primary) !important;
+  color: var(--color-primary) !important;
+  border: 1px solid var(--color-border) !important;
+}
+
+.icarus pre {
+  background: var(--color-bg-primary) !important;
+  border: 1px solid var(--color-border) !important;
+}
+
+.icarus pre code {
+  background: none !important;
+  color: var(--color-text-primary) !important;
+}
+
+/* Tables */
+.icarus table {
+  background: var(--color-bg-secondary) !important;
+  color: var(--color-text-primary) !important;
+}
+
+.icarus table th,
+.icarus table td {
+  background: var(--color-bg-secondary) !important;
+  color: var(--color-text-primary) !important;
+  border: 1px solid var(--color-border) !important;
+}
+
+/* Forms */
+.icarus input,
+.icarus textarea,
+.icarus select {
+  background: var(--color-bg-secondary) !important;
+  color: var(--color-text-primary) !important;
+  border: 1px solid var(--color-border) !important;
+}
+
+/* Buttons */
+.icarus .button {
+  background: var(--color-primary) !important;
+  color: var(--color-black) !important;
+  border: none !important;
+}
+
+.icarus .button:hover {
+  background: var(--color-primary-light) !important;
+}
+
+/* Override any remaining white backgrounds with !important */
+.icarus * {
+  background-color: inherit !important;
+}
+
+.icarus .is-white {
+  background: var(--color-bg-primary) !important;
+}
+
+.icarus .has-background-white {
+  background: var(--color-bg-primary) !important;
 }
