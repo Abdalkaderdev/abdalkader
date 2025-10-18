@@ -5,6 +5,7 @@
   "installCommand": "pnpm install --no-frozen-lockfile",
   "outputDirectory": "apps/quantumanim/.next",
   "framework": "nextjs",
+  "rootDirectory": "apps/quantumanim",
   "env": {
     "NEXT_PUBLIC_APP_URL": "https://quantumanim.abdalkader.dev"
   }
