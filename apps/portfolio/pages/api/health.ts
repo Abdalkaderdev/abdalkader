@@ -1,4 +1,5 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
+import { getEnvironment } from '../../src/utils/environment';
 
 interface HealthCheckResponse {
   status: 'healthy' | 'unhealthy';
@@ -22,7 +23,7 @@ export default function handler(
     return res.status(405).json({
       status: 'unhealthy',
       timestamp: new Date().toISOString(),
-      environment: process.env.NEXT_PUBLIC_ENVIRONMENT || 'unknown',
+      environment: getEnvironment(),
       uptime: process.uptime(),
       checks: {},
     });
@@ -36,7 +37,7 @@ export default function handler(
     const healthResponse: HealthCheckResponse = {
       status: 'healthy',
       timestamp: new Date().toISOString(),
-      environment: process.env.NEXT_PUBLIC_ENVIRONMENT || 'production',
+      environment: getEnvironment(),
       version: process.env.NEXT_PUBLIC_BUILD_ID || '1.0.0',
       uptime: process.uptime(),
       checks: {
@@ -56,7 +57,7 @@ export default function handler(
     res.status(503).json({
       status: 'unhealthy',
       timestamp: new Date().toISOString(),
-      environment: process.env.NEXT_PUBLIC_ENVIRONMENT || 'unknown',
+      environment: getEnvironment(),
       uptime: process.uptime(),
       checks: {},
     });

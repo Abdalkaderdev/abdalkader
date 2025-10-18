@@ -8,6 +8,7 @@
 import React, { useState, useEffect } from 'react';
 import { setFeatureFlag, getAllFeatureFlags } from '../lib/feature-flags';
 import { getPerformanceDashboard, performanceMonitor } from '../lib/performance-monitor';
+import { getEnvironment } from '../utils/environment';
 import { getErrorDashboard, errorTracker } from '../lib/error-tracker';
 import { getABTestingDashboard, abTesting } from '../lib/ab-testing';
 
@@ -23,7 +24,7 @@ export default function StagingTools({ isVisible, onToggle }: StagingToolsProps)
 
   useEffect(() => {
     // Only show in staging environment
-    if (process.env.NEXT_PUBLIC_ENVIRONMENT !== 'staging') {
+    if (getEnvironment() !== 'staging') {
       return;
     }
 
@@ -51,7 +52,7 @@ export default function StagingTools({ isVisible, onToggle }: StagingToolsProps)
     getABTestingDashboard();
   };
 
-  if (process.env.NEXT_PUBLIC_ENVIRONMENT !== 'staging') {
+  if (getEnvironment() !== 'staging') {
     return null;
   }
 

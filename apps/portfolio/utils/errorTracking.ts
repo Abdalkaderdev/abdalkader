@@ -4,6 +4,7 @@
  */
 
 import React from 'react';
+import { getEnvironment } from '../src/utils/environment';
 
 interface ErrorReport {
   message: string;
@@ -103,7 +104,7 @@ class ErrorTracker {
       timestamp: Date.now(),
       sessionId: this.sessionId,
       buildId: this.buildId,
-      environment: process.env.NEXT_PUBLIC_ENVIRONMENT || 'unknown',
+      environment: getEnvironment(),
       additionalContext,
     };
 
@@ -145,7 +146,7 @@ class ErrorTracker {
       timestamp: Date.now(),
       sessionId: this.sessionId,
       buildId: this.buildId,
-      environment: process.env.NEXT_PUBLIC_ENVIRONMENT || 'unknown',
+      environment: getEnvironment(),
       additionalContext: {
         type: 'warning',
         ...context,
@@ -263,7 +264,7 @@ export class ErrorBoundary extends React.Component<
  * Default error fallback component
  */
 function DefaultErrorFallback(): React.ReactElement {
-  const isStaging = process.env.NEXT_PUBLIC_ENVIRONMENT === 'staging';
+  const isStaging = getEnvironment() === 'staging';
   
   return React.createElement('div', {
     style: {

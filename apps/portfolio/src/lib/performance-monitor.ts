@@ -4,6 +4,7 @@
  */
 
 import { getFeatureFlag } from './feature-flags';
+import { getEnvironment } from '../utils/environment';
 
 interface PerformanceMetric {
   name: string;
@@ -160,7 +161,7 @@ class PerformanceMonitor {
   private sendToAnalytics(metric: PerformanceMetric): void {
     // In a real implementation, you would send this to your analytics service
     // For staging, we'll just log it
-    if (process.env.NEXT_PUBLIC_ENVIRONMENT === 'staging') {
+    if (getEnvironment() === 'staging') {
       // This would typically be sent to services like:
       // - Google Analytics
       // - DataDog

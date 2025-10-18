@@ -3,6 +3,8 @@
  * Allows testing of WIP features in staging without affecting production
  */
 
+import { getEnvironment } from '../src/utils/environment';
+
 export interface FeatureFlags {
   // UI/UX Features
   newContactForm: boolean;
@@ -70,7 +72,7 @@ const stagingFlags: FeatureFlags = {
  * Get feature flags based on environment
  */
 export function getFeatureFlags(): FeatureFlags {
-  const environment = process.env.NEXT_PUBLIC_ENVIRONMENT || 'production';
+  const environment = getEnvironment();
   const enableFeatureFlags = process.env.NEXT_PUBLIC_ENABLE_FEATURE_FLAGS === 'true';
   
   if (environment === 'staging' && enableFeatureFlags) {

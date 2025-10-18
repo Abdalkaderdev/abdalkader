@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { getFeatureFlags, type FeatureFlags } from '../../utils/featureFlags';
 import { performanceMonitor } from '../../utils/performanceMonitoring';
 import { errorTracker } from '../../utils/errorTracking';
+import { getEnvironment } from '../../utils/environment';
 import styles from './StagingDashboard.module.scss';
 
 interface StagingDashboardProps {
@@ -178,7 +179,7 @@ export default function StagingDashboard({ isVisible, onToggle }: StagingDashboa
 
       <div className={styles.footer}>
         <div className={styles.environmentInfo}>
-          <span>Environment: {process.env.NEXT_PUBLIC_ENVIRONMENT}</span>
+          <span>Environment: {getEnvironment()}</span>
           <span>Session: {errorTracker.sessionId?.substring(0, 8)}...</span>
         </div>
       </div>

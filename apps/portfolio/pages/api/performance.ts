@@ -1,4 +1,5 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
+import { getEnvironment } from '../../src/utils/environment';
 
 interface PerformanceMetric {
   name: string;
@@ -27,7 +28,7 @@ export default function handler(
   }
 
   // Only enable in staging environment
-  if (process.env.NEXT_PUBLIC_ENVIRONMENT !== 'staging') {
+  if (getEnvironment() !== 'staging') {
     return res.status(404).json({
       success: false,
       message: 'Performance monitoring not available in this environment',

@@ -13,6 +13,7 @@ import { SITE_URL } from "@/utils/seo";
 import JsonLd from "@/components/SEO/JsonLd";
 import { personJsonLd, websiteJsonLd } from "@/utils/jsonld";
 import { ppRegular, ppMedium } from "@/libs/fonts";
+import { getEnvironment } from "@/utils/environment";
 import Plausible from "@/components/Analytics/Plausible";
 import '@abdalkader/ui/dist/styles.css';
 import StagingDashboard from "@/components/StagingDashboard";
@@ -26,7 +27,7 @@ export default function App({ Component, pageProps }: AppProps) {
     const router = useRouter();
     const scrollPositions = useRef<{ [key: string]: number }>({});
     const [showStagingDashboard, setShowStagingDashboard] = useState(false);
-    const isStaging = process.env.NEXT_PUBLIC_ENVIRONMENT === 'staging';
+    const isStaging = getEnvironment() === 'staging';
     
     const prefersReducedMotion = useMemo(() => {
         if (typeof window === 'undefined' || !window.matchMedia) return false;

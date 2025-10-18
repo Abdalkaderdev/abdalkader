@@ -3,6 +3,8 @@
  * Centralized configuration for staging-specific settings
  */
 
+import { getEnvironment } from '../utils/environment';
+
 export const stagingConfig = {
   // Environment identification
   environment: 'staging',
@@ -133,7 +135,7 @@ export const stagingConfig = {
  * Check if we're in staging environment
  */
 export function isStagingEnvironment(): boolean {
-  return process.env.NEXT_PUBLIC_ENVIRONMENT === 'staging' || 
+  return getEnvironment() === 'staging' || 
          process.env.NODE_ENV === 'development';
 }
 

@@ -4,6 +4,7 @@
  */
 
 import { getFeatureFlag } from './feature-flags';
+import { getEnvironment } from '../utils/environment';
 import React from 'react';
 
 interface ErrorContext {
@@ -234,7 +235,7 @@ class ErrorTracker {
     // - Rollbar
     // - Custom error reporting endpoint
     
-    if (process.env.NEXT_PUBLIC_ENVIRONMENT === 'staging') {
+    if (getEnvironment() === 'staging') {
       console.log('📧 Error Report:', error);
       
       // Example: Send to custom endpoint

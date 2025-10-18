@@ -1,5 +1,6 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
 import { getFeatureFlags, type FeatureFlags } from '../../../utils/featureFlags';
+import { getEnvironment } from '../../../src/utils/environment';
 
 interface FeatureFlagsResponse {
   success: boolean;
@@ -12,7 +13,7 @@ export default function handler(
   res: NextApiResponse<FeatureFlagsResponse>
 ) {
   // Only enable in staging environment
-  if (process.env.NEXT_PUBLIC_ENVIRONMENT !== 'staging') {
+  if (getEnvironment() !== 'staging') {
     return res.status(404).json({
       success: false,
       message: 'Feature flags API not available in this environment',

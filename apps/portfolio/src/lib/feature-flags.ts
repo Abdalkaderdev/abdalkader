@@ -43,7 +43,7 @@ const defaultFlags: FeatureFlags = {
  */
 export function getFeatureFlag<K extends keyof FeatureFlags>(flag: K): FeatureFlags[K] {
   // In staging, allow runtime flag overrides via localStorage
-  if (typeof window !== 'undefined' && process.env.NEXT_PUBLIC_ENVIRONMENT === 'staging') {
+  if (typeof window !== 'undefined' && isStaging()) {
     const storedFlags = localStorage.getItem('feature-flags');
     if (storedFlags) {
       try {
@@ -67,7 +67,7 @@ export function setFeatureFlag<K extends keyof FeatureFlags>(
   flag: K, 
   value: FeatureFlags[K]
 ): void {
-  if (process.env.NEXT_PUBLIC_ENVIRONMENT !== 'staging') {
+  if (!isStaging()) {
     console.warn('Feature flags can only be modified in staging environment');
     return;
   }

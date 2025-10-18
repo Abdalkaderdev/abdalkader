@@ -4,6 +4,7 @@
  */
 
 import { getFeatureFlag } from './feature-flags';
+import { getEnvironment } from '../utils/environment';
 
 interface Experiment {
   id: string;
@@ -259,7 +260,7 @@ class ABTestingFramework {
 
   private sendToAnalytics(eventName: string, properties: Record<string, unknown>): void {
     // In a real implementation, you would send this to analytics services
-    if (process.env.NEXT_PUBLIC_ENVIRONMENT === 'staging') {
+    if (getEnvironment() === 'staging') {
       console.log('📊 Analytics Event:', { eventName, properties, userId: this.userId });
     }
   }
