@@ -27,6 +27,12 @@ const CrossAppNavigation = () => {
       description: 'Component library and playground',
       icon: '🧩'
     },
+    { 
+      name: 'Quantum Lab', 
+      url: 'https://quantumanim.abdalkader.dev', 
+      description: 'Interactive quantum physics playground',
+      icon: '⚛️'
+    },
   ];
 
   return (

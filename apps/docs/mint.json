@@ -18,6 +18,14 @@
     {
       "name": "Portfolio",
       "url": "https://abdalkader.dev"
+    },
+    {
+      "name": "Blog",
+      "url": "https://blog.abdalkader.dev"
+    },
+    {
+      "name": "Quantum Lab",
+      "url": "https://quantumanim.abdalkader.dev"
     }
   ],
   "topbarCtaButton": {
@@ -37,6 +45,7 @@
       "group": "Portfolio Projects",
       "pages": [
         "projects/overview",
+        "projects/quantum-animation-system",
         "projects/apple-tv-clone",
         "projects/virtualview",
         "projects/jegr-jalal-company",

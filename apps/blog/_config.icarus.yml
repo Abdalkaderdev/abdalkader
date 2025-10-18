@@ -130,6 +130,7 @@ navbar:
         Portfolio: https://abdalkader.dev
         Docs: https://docs.abdalkader.dev
         Components: https://storybook.abdalkader.dev
+        Quantum Lab: https://quantumanim.abdalkader.dev
     # Links to be shown on the right of the navigation bar
     links:
         Portfolio:
