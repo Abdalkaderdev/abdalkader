@@ -11,7 +11,11 @@ const branch = process.env.VERCEL_GIT_COMMIT_REF ||
                process.env.GITHUB_REF_NAME ||
                execSync('git branch --show-current').toString().trim();
 
+// Clean up branch name (remove cursor/ prefix if present)
+const cleanBranch = branch.replace(/^cursor\//, '');
+
 console.log(`🔍 Detected branch: ${branch}`);
+console.log(`🧹 Cleaned branch: ${cleanBranch}`);
 
 // Build configuration for each branch
 const buildConfig = {
@@ -34,15 +38,15 @@ const buildConfig = {
 };
 
 // Get build config for current branch or default to portfolio
-const config = buildConfig[branch] || buildConfig.main;
+const config = buildConfig[cleanBranch] || buildConfig.main;
 
 console.log(`🏗️  Building ${config.name}...`);
 
 try {
   execSync(config.command, { stdio: 'inherit' });
-  console.log(`✅ Build complete for branch: ${branch}`);
+  console.log(`✅ Build complete for branch: ${cleanBranch}`);
   process.exit(0);
 } catch (error) {
-  console.error(`❌ Build failed for branch: ${branch}`);
+  console.error(`❌ Build failed for branch: ${cleanBranch}`);
   process.exit(1);
 }

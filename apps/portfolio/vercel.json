@@ -1,21 +1,17 @@
 {
-  "buildCommand": "cd ../.. && pnpm install --no-frozen-lockfile && pnpm turbo run build --filter=@abdalkader/portfolio...",
+  "buildCommand": "cd ../.. && pnpm install && pnpm turbo run build --filter=@abdalkader/portfolio",
   "outputDirectory": ".next",
-  "installCommand": null,
+  "installCommand": "pnpm install",
   "framework": "nextjs",
   "trailingSlash": true,
   "cleanUrls": true,
-  "buildCommand": "pnpm turbo run build --filter=@abdalkader/portfolio",
-  "installCommand": "pnpm install",
-  "outputDirectory": ".next",
-  "framework": "nextjs",
   "env": {
-    "NODE_ENV": "development",
-    "NEXT_PUBLIC_ENVIRONMENT": "staging",
-    "NEXT_PUBLIC_DEBUG": "true",
-    "NEXT_PUBLIC_FEATURE_FLAGS": "true",
+    "NODE_ENV": "production",
+    "NEXT_PUBLIC_ENVIRONMENT": "@vercel/git-branch-name",
+    "NEXT_PUBLIC_DEBUG": "false",
+    "NEXT_PUBLIC_FEATURE_FLAGS": "false",
     "NEXT_PUBLIC_PERFORMANCE_MONITORING": "true",
     "NEXT_PUBLIC_ERROR_TRACKING": "true",
-    "NEXT_PUBLIC_AB_TESTING": "true"
+    "NEXT_PUBLIC_AB_TESTING": "false"
   }
 }
