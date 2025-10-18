@@ -210,7 +210,7 @@ export const ButtonPlayground: Story = {
   },
 };
 
-export const DesignSystemVisualizer: Story = {
+export const DesignSystemVisualizerStory: Story = {
   render: () => <DesignSystemVisualizer />,
   parameters: {
     docs: {

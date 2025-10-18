@@ -274,7 +274,7 @@ export const InputPlayground: Story = {
   },
 };
 
-export const TestingTools: Story = {
+export const TestingToolsStory: Story = {
   render: () => (
     <TestingTools>
       <div style={{ padding: '2rem', display: 'flex', flexDirection: 'column', gap: '1rem', minWidth: '300px' }}>
