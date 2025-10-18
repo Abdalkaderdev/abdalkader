@@ -7,6 +7,10 @@ import { CodePlayground } from '@/components/code/CodePlayground';
 import { EnhancedLanguageFamilyTree } from '@/components/visualization/EnhancedLanguageFamilyTree';
 import { AIAssistant } from '@/components/ai/AIAssistant';
 import { EnhancedAIIntegration } from '@/components/ai/EnhancedAIIntegration';
+import { UnifiedHeader } from '@/components/ecosystem/UnifiedHeader';
+import { EcosystemMap } from '@/components/ecosystem/EcosystemMap';
+import { CrossDomainProvider } from '@/components/ecosystem/CrossDomainProvider';
+import { EcosystemAuthProvider } from '@/contexts/EcosystemAuthContext';
 import { Navigation } from '@/components/Navigation';
 import { Hero } from '@/components/Hero';
 import { ParadigmExplorer } from '@/components/ParadigmExplorer';
@@ -23,7 +27,7 @@ import languagesData from '@/lib/data/languages.json';
 
 export default function Home() {
   const [languages, setLanguages] = useState<Language[]>([]);
-  const [activeSection, setActiveSection] = useState<'timeline' | 'playground' | 'family-tree' | 'paradigms' | 'ai' | 'ai-enhanced' | 'exhibitions'>('timeline');
+  const [activeSection, setActiveSection] = useState<'timeline' | 'playground' | 'family-tree' | 'paradigms' | 'ai' | 'ai-enhanced' | 'exhibitions' | 'ecosystem'>('timeline');
   const [exhibitionSection, setExhibitionSection] = useState<ExhibitionSection>('pioneers-hall');
   const [selectedLanguage, setSelectedLanguage] = useState<Language | null>(null);
   const { staggerCards } = usePortfolioAnimations();
@@ -128,6 +132,12 @@ export default function Home() {
             <EnhancedAIIntegration />
           </SectionTransition>
         );
+      case 'ecosystem':
+        return (
+          <SectionTransition delay={0.2}>
+            <EcosystemMap showStats showInactive />
+          </SectionTransition>
+        );
       case 'exhibitions':
         return (
           <ExhibitionLayout
@@ -144,31 +154,36 @@ export default function Home() {
   };
 
   return (
-    <PageTransition>
-      <div className="min-h-screen bg-gradient-to-br from-black via-gray-900 to-black dark:from-black dark:via-gray-900 dark:to-black light:from-white light:via-gray-50 light:to-gray-100">
-        {activeSection !== 'exhibitions' && (
-          <Navigation
-            activeSection={activeSection}
-            onSectionChange={handleSectionChange}
-          />
-        )}
-        
-        <main className="container mx-auto px-4 py-8 pt-24">
-          {activeSection === 'timeline' && (
-            <SectionTransition delay={0}>
-              <Hero
-                title="Programming Language History Museum"
-                subtitle="Explore the evolution of programming languages from 1843 to present"
-                onExplore={() => setActiveSection('timeline')}
-              />
-            </SectionTransition>
-          )}
-          
-          <StaggerContainer className="w-full" staggerDelay={0.1}>
-            {renderActiveSection()}
-          </StaggerContainer>
-        </main>
-      </div>
-    </PageTransition>
+    <EcosystemAuthProvider>
+      <CrossDomainProvider>
+        <PageTransition>
+          <div className="min-h-screen bg-gradient-to-br from-black via-gray-900 to-black dark:from-black dark:via-gray-900 dark:to-black light:from-white light:via-gray-50 light:to-gray-100">
+            {/* Unified Header */}
+            <UnifiedHeader 
+              showSearch 
+              showNotifications 
+              showUserMenu 
+              showEcosystemMap 
+            />
+            
+            <main className="container mx-auto px-4 py-8 pt-24">
+              {activeSection === 'timeline' && (
+                <SectionTransition delay={0}>
+                  <Hero
+                    title="Programming Language History Museum"
+                    subtitle="Explore the evolution of programming languages from 1843 to present"
+                    onExplore={() => setActiveSection('timeline')}
+                  />
+                </SectionTransition>
+              )}
+              
+              <StaggerContainer className="w-full" staggerDelay={0.1}>
+                {renderActiveSection()}
+              </StaggerContainer>
+            </main>
+          </div>
+        </PageTransition>
+      </CrossDomainProvider>
+    </EcosystemAuthProvider>
   );
 }

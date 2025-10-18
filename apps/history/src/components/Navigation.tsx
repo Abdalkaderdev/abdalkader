@@ -19,6 +19,7 @@ const navigationItems = [
   { id: 'ai', label: 'AI Assistant', icon: Brain },
   { id: 'ai-enhanced', label: 'AI Enhanced', icon: Brain },
   { id: 'exhibitions', label: 'Exhibitions', icon: Layers },
+  { id: 'ecosystem', label: 'Ecosystem', icon: Globe },
 ];
 
 export function Navigation({ activeSection, onSectionChange }: NavigationProps) {
