@@ -6,6 +6,7 @@ import { HistoricalTimeline } from '@/components/timeline/HistoricalTimeline';
 import { CodePlayground } from '@/components/code/CodePlayground';
 import { EnhancedLanguageFamilyTree } from '@/components/visualization/EnhancedLanguageFamilyTree';
 import { AIAssistant } from '@/components/ai/AIAssistant';
+import { EnhancedAIIntegration } from '@/components/ai/EnhancedAIIntegration';
 import { Navigation } from '@/components/Navigation';
 import { Hero } from '@/components/Hero';
 import { ParadigmExplorer } from '@/components/ParadigmExplorer';
@@ -22,7 +23,7 @@ import languagesData from '@/lib/data/languages.json';
 
 export default function Home() {
   const [languages, setLanguages] = useState<Language[]>([]);
-  const [activeSection, setActiveSection] = useState<'timeline' | 'playground' | 'family-tree' | 'paradigms' | 'ai' | 'exhibitions'>('timeline');
+  const [activeSection, setActiveSection] = useState<'timeline' | 'playground' | 'family-tree' | 'paradigms' | 'ai' | 'ai-enhanced' | 'exhibitions'>('timeline');
   const [exhibitionSection, setExhibitionSection] = useState<ExhibitionSection>('pioneers-hall');
   const [selectedLanguage, setSelectedLanguage] = useState<Language | null>(null);
   const { staggerCards } = usePortfolioAnimations();
@@ -119,6 +120,12 @@ export default function Home() {
               languages={languages}
               selectedLanguage={selectedLanguage}
             />
+          </SectionTransition>
+        );
+      case 'ai-enhanced':
+        return (
+          <SectionTransition delay={0.2}>
+            <EnhancedAIIntegration />
           </SectionTransition>
         );
       case 'exhibitions':
