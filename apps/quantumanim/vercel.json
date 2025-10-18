@@ -7,10 +7,5 @@
   "framework": "nextjs",
   "env": {
     "NEXT_PUBLIC_APP_URL": "https://quantumanim.abdalkader.dev"
-  },
-  "functions": {
-    "apps/quantumanim/pages/api/**/*.ts": {
-      "maxDuration": 10
-    }
   }
 }
