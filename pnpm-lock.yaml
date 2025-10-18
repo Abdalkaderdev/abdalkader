@@ -97,27 +97,6 @@ importers:
         specifier: link:../../packages/ui
         version: link:../../packages/ui
     devDependencies:
-      '@storybook/addon-a11y':
-        specifier: ^7.0.0
-        version: 7.6.20
-      '@storybook/addon-essentials':
-        specifier: ^7.0.0
-        version: 7.6.20(@types/react-dom@18.3.7)(@types/react@18.3.26)(react-dom@18.3.1)(react@18.3.1)
-      '@storybook/addon-interactions':
-        specifier: ^7.0.0
-        version: 7.6.20
-      '@storybook/react':
-        specifier: ^7.0.0
-        version: 7.6.20(react-dom@18.3.1)(react@18.3.1)(typescript@5.9.3)
-      '@storybook/react-vite':
-        specifier: ^7.0.0
-        version: 7.6.20(react-dom@18.3.1)(react@18.3.1)(typescript@5.9.3)(vite@4.5.14)
-      '@storybook/test-runner':
-        specifier: ^0.23.0
-        version: 0.23.0(storybook@7.6.20)
-      axe-playwright:
-        specifier: ^2.0.0
-        version: 2.2.2(playwright@1.56.1)
       mintlify:
         specifier: ^4.2.173
         version: 4.2.173(@radix-ui/react-popover@1.1.15)(@types/react@18.3.26)(react-dom@18.3.1)(typescript@5.9.3)
@@ -127,9 +106,6 @@ importers:
       react-dom:
         specifier: ^18.0.0
         version: 18.3.1(react@18.3.1)
-      storybook:
-        specifier: ^7.0.0
-        version: 7.6.20
       typescript:
         specifier: ^5.0.0
         version: 5.9.3
@@ -191,6 +167,46 @@ importers:
       next-sitemap:
         specifier: ^4.2.3
         version: 4.2.3(next@14.2.25)
+
+  apps/storybook:
+    dependencies:
+      '@abdalkader/ui':
+        specifier: link:../../packages/ui
+        version: link:../../packages/ui
+    devDependencies:
+      '@storybook/addon-a11y':
+        specifier: ^7.0.0
+        version: 7.6.20
+      '@storybook/addon-essentials':
+        specifier: ^7.0.0
+        version: 7.6.20(@types/react-dom@18.3.7)(@types/react@18.3.26)(react-dom@18.3.1)(react@18.3.1)
+      '@storybook/addon-interactions':
+        specifier: ^7.0.0
+        version: 7.6.20
+      '@storybook/react':
+        specifier: ^7.0.0
+        version: 7.6.20(react-dom@18.3.1)(react@18.3.1)(typescript@5.9.3)
+      '@storybook/react-vite':
+        specifier: ^7.0.0
+        version: 7.6.20(react-dom@18.3.1)(react@18.3.1)(typescript@5.9.3)(vite@4.5.14)
+      '@storybook/test-runner':
+        specifier: ^0.23.0
+        version: 0.23.0(storybook@7.6.20)
+      axe-playwright:
+        specifier: ^2.0.0
+        version: 2.2.2(playwright@1.56.1)
+      react:
+        specifier: ^18.0.0
+        version: 18.3.1
+      react-dom:
+        specifier: ^18.0.0
+        version: 18.3.1(react@18.3.1)
+      storybook:
+        specifier: ^7.0.0
+        version: 7.6.20
+      typescript:
+        specifier: ^5.0.0
+        version: 5.9.3
 
   packages/ui:
     dependencies:

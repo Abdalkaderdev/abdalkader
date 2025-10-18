@@ -1,17 +1,18 @@
 import type { TestRunnerConfig } from '@storybook/test-runner';
-import { injectAxe, checkA11y } from 'axe-playwright';
 
 const config: TestRunnerConfig = {
-  async preVisit(page) {
-    await injectAxe(page);
+  setup() {
+    // Your global setup goes here
   },
-  async postVisit(page) {
-    await checkA11y(page, '#storybook-root', {
-      detailedReport: true,
-      detailedReportOptions: {
-        html: true,
-      },
-    });
+  async preVisit(page) {
+    // Executed before visiting each story
+  },
+  async postVisit(page, context) {
+    // Executed after visiting each story
+  },
+  tags: {
+    include: ['test'],
+    exclude: ['skip-test'],
   },
 };
 

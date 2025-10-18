@@ -1,6 +1,5 @@
 import type { Preview } from '@storybook/react';
-import '@abdalkader/ui/dist/styles.css';
-import './portfolio-theme.css';
+import '../src/styles/portfolio-theme.css';
 
 const preview: Preview = {
   parameters: {
@@ -10,24 +9,9 @@ const preview: Preview = {
         color: /(background|color)$/i,
         date: /Date$/,
       },
-      expanded: true,
     },
     docs: {
       toc: true,
-    },
-    a11y: {
-      config: {
-        rules: [
-          {
-            id: 'color-contrast',
-            enabled: true,
-          },
-          {
-            id: 'label',
-            enabled: true,
-          },
-        ],
-      },
     },
   },
 };

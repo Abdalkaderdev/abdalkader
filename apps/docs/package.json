@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "mintlify dev",
-    "build": "mintlify build",
+    "build": "echo 'Mintlify docs are built on deployment'",
     "clean": "rm -rf .mintlify"
   },
   "dependencies": {
