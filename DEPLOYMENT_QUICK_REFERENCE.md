@@ -7,7 +7,7 @@
 | **Portfolio** | `abdalkader.dev` | Next.js | `cd apps/portfolio && pnpm build` | `.next` |
 | **Blog** | `blog.abdalkader.dev` | Hexo | `cd apps/blog && pnpm build` | `public` |
 | **Docs** | `docs.abdalkader.dev` | Docusaurus | `cd apps/docs && pnpm build` | `.mintlify` |
-| **Storybook** | `components.abdalkader.dev` | Other | `cd apps/storybook && pnpm build` | `storybook-static` |
+| **Storybook** | `storybook.abdalkader.dev` | Other | `cd apps/storybook && pnpm build` | `storybook-static` |
 
 ## 🔧 Vercel Project Names
 
@@ -78,7 +78,7 @@ MINTLIFY_SITE_URL=https://docs.abdalkader.dev
 
 ### Storybook
 ```
-STORYBOOK_SITE_URL=https://components.abdalkader.dev
+STORYBOOK_SITE_URL=https://storybook.abdalkader.dev
 ```
 
 ## 🔍 Testing Checklist

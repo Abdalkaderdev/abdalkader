@@ -6,7 +6,7 @@ This guide will help you deploy all your apps to Vercel with custom domains:
 - **Portfolio**: `abdalkader.dev`
 - **Blog**: `blog.abdalkader.dev`
 - **Docs**: `docs.abdalkader.dev`
-- **Storybook**: `components.abdalkader.dev`
+- **Storybook**: `storybook.abdalkader.dev`
 
 ## 📋 Prerequisites
 
@@ -159,7 +159,7 @@ For each project:
    - Portfolio: `abdalkader.dev`
    - Blog: `blog.abdalkader.dev`
    - Docs: `docs.abdalkader.dev`
-   - Storybook: `components.abdalkader.dev`
+   - Storybook: `storybook.abdalkader.dev`
 
 ### 4.2 Verify Domain Configuration
 1. Vercel will show DNS configuration
@@ -189,7 +189,7 @@ MINTLIFY_SITE_URL=https://docs.abdalkader.dev
 
 ### 5.4 Storybook Environment Variables
 ```bash
-STORYBOOK_SITE_URL=https://components.abdalkader.dev
+STORYBOOK_SITE_URL=https://storybook.abdalkader.dev
 ```
 
 ## 🔄 Step 6: Set Up Automatic Deployments
@@ -221,7 +221,7 @@ curl -I https://blog.abdalkader.dev
 curl -I https://docs.abdalkader.dev
 
 # Test storybook
-curl -I https://components.abdalkader.dev
+curl -I https://storybook.abdalkader.dev
 ```
 
 ### 7.2 Verify Cross-App Navigation
