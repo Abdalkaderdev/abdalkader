@@ -9,6 +9,7 @@
     "build:storybook": "turbo run build --filter=@abdalkader/storybook",
     "build:docs": "turbo run build --filter=@abdalkader/docs",
     "build:blog": "turbo run build --filter=@abdalkader/blog",
+    "build:bible": "turbo run build --filter=@abdalkader/bible-web",
     "build:ui": "turbo run build --filter=@abdalkader/ui",
     "lint": "turbo run lint",
     "test": "turbo run test",
