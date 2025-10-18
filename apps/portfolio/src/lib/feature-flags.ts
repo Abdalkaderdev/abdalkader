@@ -3,6 +3,8 @@
  * Allows enabling/disabling features without code deployment
  */
 
+import { getEnvironment, isStaging } from '../utils/environment';
+
 export interface FeatureFlags {
   // Performance monitoring
   enablePerformanceMonitoring: boolean;
@@ -24,13 +26,13 @@ export interface FeatureFlags {
 }
 
 const defaultFlags: FeatureFlags = {
-  enablePerformanceMonitoring: process.env.NODE_ENV === 'development' || process.env.NEXT_PUBLIC_ENVIRONMENT === 'staging',
-  enableErrorTracking: process.env.NEXT_PUBLIC_ENVIRONMENT === 'staging',
+  enablePerformanceMonitoring: process.env.NODE_ENV === 'development' || isStaging(),
+  enableErrorTracking: isStaging(),
   enableDebugMode: process.env.NODE_ENV === 'development',
   enableConsoleLogging: process.env.NEXT_PUBLIC_DEBUG === 'true',
-  enableABTesting: process.env.NEXT_PUBLIC_ENVIRONMENT === 'staging',
+  enableABTesting: isStaging(),
   enableNewAnimations: process.env.NEXT_PUBLIC_FEATURE_FLAGS === 'true',
-  enableAdvancedAnalytics: process.env.NEXT_PUBLIC_ENVIRONMENT === 'staging',
+  enableAdvancedAnalytics: isStaging(),
   enableNewHeader: false,
   enableDarkModeToggle: process.env.NEXT_PUBLIC_FEATURE_FLAGS === 'true',
   enableAccessibilityImprovements: true,
