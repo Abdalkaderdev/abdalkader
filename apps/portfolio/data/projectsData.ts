@@ -20,6 +20,29 @@ export interface Project {
 export const projects: Project[] = [
   {
     // For Post
+    title: "Quantum Animation System",
+    slug: "quantum-animation-system",
+    category: ["Web Development", "Interactive Animation", "Physics Simulation"],
+    img: "/images/quantum-animation.png",
+    badges: ["Next.js 15", "TypeScript", "Three.js", "Framer Motion", "GSAP"],
+    owner: "Quantum Animation Lab",
+    date: "Jan 15, 2025",
+    services: "Web Development, Interactive Animation, Physics Simulation",
+    duration: "45 Days",
+    budget: "2000$",
+    live: "https://quantumanim.abdalkader.dev/",
+    github: "https://github.com/Abdalkaderdev/abdalkader/tree/main/apps/quantumanim",
+    overview:
+      "Quantum Animation System is an innovative interactive playground that demonstrates quantum physics principles through UI animations and visualizations. Built with Next.js 15, TypeScript, Three.js, Framer Motion, and GSAP, the platform creates an engaging educational experience that makes complex quantum concepts accessible through interactive demos, particle systems, and real-time physics simulations. The system features Schrödinger's UI components, quantum entanglement visualizations, wave function collapse animations, and educational modules that bring quantum mechanics to life.",
+    objective:
+      "The primary goal was to create an interactive educational platform that makes quantum physics concepts accessible and engaging through modern web technologies. The platform needed to demonstrate complex quantum principles like superposition, entanglement, wave function collapse, quantum tunneling, and quantum interference through intuitive UI interactions and stunning visualizations. Special attention was given to creating accurate physics simulations while maintaining visual appeal and educational value. The design approach focused on creating an immersive experience that allows users to explore quantum concepts through hands-on interaction, making abstract physics principles tangible and understandable.",
+    process:
+      "The development process began with extensive research into quantum physics principles and educational methodologies. I analyzed existing physics simulation tools and identified opportunities to create a more engaging and accessible learning experience. The design phase involved creating wireframes and prototypes that focused on interactive learning, ensuring that users could explore quantum concepts through intuitive controls and visual feedback. Technical implementation utilized cutting-edge web technologies including Three.js for 3D particle systems, Framer Motion for smooth animations, and GSAP for complex physics simulations. Special attention was given to creating responsive visualizations that work across different devices while maintaining performance. The platform was built with modularity in mind, allowing for easy addition of new quantum experiments and educational content.",
+    impact:
+      "The Quantum Animation System has successfully created a new paradigm for physics education, making complex quantum concepts accessible to learners of all levels. The platform has received positive feedback from educators, students, and physics enthusiasts, with many noting the intuitive interface and engaging visualizations. The project has contributed to the advancement of educational technology, demonstrating how modern web development can make abstract scientific concepts tangible and interactive. The platform continues to expand its educational content and is being adopted by educational institutions for physics instruction.",
+  },
+  {
+    // For Post
     title: "Apple TV Clone",
     slug: "apple-tv-clone",
     category: ["Frontend Development", "UI/UX Design"],

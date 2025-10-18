@@ -23,6 +23,7 @@ const crossAppLinks = [
     { text: 'Blog', href: 'https://blog.abdalkader.dev', external: true },
     { text: 'Docs', href: 'https://docs.abdalkader.dev', external: true },
     { text: 'Components', href: 'https://storybook.abdalkader.dev', external: true },
+    { text: 'Quantum Lab', href: 'https://quantumanim.abdalkader.dev', external: true },
 ].map(({ text, href, external }) => (
     <a key={text} href={href} target={external ? "_blank" : "_self"} rel={external ? "noopener noreferrer" : undefined}>{text}</a>
 ));

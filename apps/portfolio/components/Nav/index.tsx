@@ -17,6 +17,7 @@ const crossAppLinks = [
     { name: 'Blog', path: 'https://blog.abdalkader.dev', external: true },
     { name: 'Docs', path: 'https://docs.abdalkader.dev', external: true },
     { name: 'Components', path: 'https://storybook.abdalkader.dev', external: true },
+    { name: 'Quantum Lab', path: 'https://quantumanim.abdalkader.dev', external: true },
 ];
 
 export default function Nav() {
