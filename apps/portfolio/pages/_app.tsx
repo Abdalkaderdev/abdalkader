@@ -13,7 +13,7 @@ import { SITE_URL } from "@/utils/seo";
 import JsonLd from "@/components/SEO/JsonLd";
 import { personJsonLd, websiteJsonLd } from "@/utils/jsonld";
 import { ppRegular, ppMedium } from "@/libs/fonts";
-import { getEnvironment } from "@/utils/environment";
+import { getEnvironment } from "@/src/utils/environment";
 import Plausible from "@/components/Analytics/Plausible";
 import '@abdalkader/ui/dist/styles.css';
 import StagingDashboard from "@/components/StagingDashboard";
