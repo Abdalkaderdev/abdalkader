@@ -21,6 +21,7 @@
     "@storybook/react-vite": "^7.0.0",
     "@storybook/test-runner": "^0.23.0",
     "axe-playwright": "^2.0.0",
+    "mintlify": "^4.2.173",
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
     "storybook": "^7.0.0",

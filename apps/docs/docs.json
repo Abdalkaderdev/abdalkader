@@ -1,0 +1,108 @@
+{
+  "$schema": "https://mintlify.com/docs.json",
+  "theme": "mint",
+  "name": "Abdalkader Design System",
+  "colors": {
+    "primary": "#f44e00",
+    "light": "#fa7300",
+    "dark": "#f44e00"
+  },
+  "favicon": "/favicon.svg",
+  "navigation": {
+    "tabs": [
+      {
+        "tab": "Documentation",
+        "groups": [
+          {
+            "group": "Getting Started",
+            "pages": [
+              "docs/introduction",
+              "docs/installation",
+              "docs/quickstart",
+              "docs/theming"
+            ]
+          },
+          {
+            "group": "Guides",
+            "pages": [
+              "guides/accessibility",
+              "guides/typescript",
+              "guides/contributing"
+            ]
+          }
+        ]
+      },
+      {
+        "tab": "Components",
+        "groups": [
+          {
+            "group": "Components",
+            "pages": [
+              "components/button",
+              "components/input"
+            ]
+          }
+        ]
+      },
+      {
+        "tab": "API Reference",
+        "groups": [
+          {
+            "group": "API Reference",
+            "pages": [
+              "api/button-props",
+              "api/input-props"
+            ]
+          }
+        ]
+      }
+    ],
+    "global": {
+      "anchors": [
+        {
+          "anchor": "NPM Package",
+          "href": "https://www.npmjs.com/package/@abdalkader/component-library",
+          "icon": "npm"
+        },
+        {
+          "anchor": "Storybook",
+          "href": "https://components.abdalkader.dev",
+          "icon": "book"
+        },
+        {
+          "anchor": "Portfolio",
+          "href": "https://abdalkader.dev",
+          "icon": "globe"
+        }
+      ]
+    }
+  },
+  "logo": {
+    "light": "/logo/light.svg",
+    "dark": "/logo/dark.svg"
+  },
+  "navbar": {
+    "links": [
+      {
+        "label": "Storybook",
+        "href": "https://components.abdalkader.dev"
+      }
+    ],
+    "primary": {
+      "type": "button",
+      "label": "GitHub",
+      "href": "https://github.com/Abdalkaderdev/abdalkader"
+    }
+  },
+  "footer": {
+    "socials": {
+      "github": "https://github.com/Abdalkaderdev/abdalkader",
+      "website": "https://abdalkader.dev"
+    }
+  },
+  "integrations": {
+    "ga4": {
+      "measurementId": "G-XXXXXXXXXX"
+    }
+  }
+}
