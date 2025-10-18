@@ -1,0 +1,87 @@
+/* Bible App Button Styles - Mintlify-inspired clean design */
+.bible-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  border-radius: 8px;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-weight: 500;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  line-height: 1;
+  white-space: nowrap;
+  user-select: none;
+  gap: 0.5rem;
+}
+
+.bible-btn:focus-visible {
+  outline: 2px solid var(--bible-primary, #3b82f6);
+  outline-offset: 2px;
+}
+
+.bible-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+/* Variants */
+.bible-btn--primary {
+  background: var(--bible-primary, #3b82f6);
+  color: white;
+}
+
+.bible-btn--primary:hover:not(:disabled) {
+  background: var(--bible-primary-hover, #2563eb);
+  transform: translateY(-1px);
+}
+
+.bible-btn--secondary {
+  background: transparent;
+  color: var(--bible-text, #374151);
+  border: 1px solid var(--bible-border, #d1d5db);
+}
+
+.bible-btn--secondary:hover:not(:disabled) {
+  background: var(--bible-bg-hover, #f9fafb);
+  border-color: var(--bible-primary, #3b82f6);
+}
+
+.bible-btn--ghost {
+  background: transparent;
+  color: var(--bible-text, #374151);
+}
+
+.bible-btn--ghost:hover:not(:disabled) {
+  background: var(--bible-bg-hover, #f9fafb);
+}
+
+.bible-btn--danger {
+  background: var(--bible-danger, #ef4444);
+  color: white;
+}
+
+.bible-btn--danger:hover:not(:disabled) {
+  background: var(--bible-danger-hover, #dc2626);
+}
+
+/* Sizes */
+.bible-btn--sm {
+  padding: 0.5rem 0.75rem;
+  font-size: 0.875rem;
+  min-height: 2rem;
+}
+
+.bible-btn--md {
+  padding: 0.75rem 1rem;
+  font-size: 0.875rem;
+  min-height: 2.5rem;
+}
+
+.bible-btn--lg {
+  padding: 1rem 1.5rem;
+  font-size: 1rem;
+  min-height: 3rem;
+}

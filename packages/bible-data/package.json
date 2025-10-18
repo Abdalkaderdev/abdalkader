@@ -1,0 +1,23 @@
+{
+  "name": "@abdalkader/bible-data",
+  "version": "1.0.0",
+  "description": "Bible text and metadata",
+  "main": "dist/index.js",
+  "module": "dist/index.esm.js",
+  "types": "dist/index.d.ts",
+  "files": ["dist", "data"],
+  "scripts": {
+    "build": "rollup -c",
+    "dev": "rollup -c -w",
+    "typecheck": "tsc --noEmit",
+    "clean": "rm -rf dist"
+  },
+  "devDependencies": {
+    "@rollup/plugin-commonjs": "^25.0.8",
+    "@rollup/plugin-node-resolve": "^15.3.1",
+    "@rollup/plugin-typescript": "^11.1.6",
+    "rollup": "^3.29.5",
+    "rollup-plugin-dts": "^5.3.1",
+    "typescript": "^5.9.3"
+  }
+}

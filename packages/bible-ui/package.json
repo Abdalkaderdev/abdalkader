@@ -1,0 +1,35 @@
+{
+  "name": "@abdalkader/bible-ui",
+  "version": "1.0.0",
+  "description": "Shared UI components for Bible App",
+  "main": "dist/index.js",
+  "module": "dist/index.esm.js",
+  "types": "dist/index.d.ts",
+  "sideEffects": ["*.css"],
+  "files": ["dist"],
+  "scripts": {
+    "build": "rollup -c",
+    "dev": "rollup -c -w",
+    "typecheck": "tsc --noEmit",
+    "clean": "rm -rf dist"
+  },
+  "peerDependencies": {
+    "react": ">=18.0.0",
+    "react-dom": ">=18.0.0"
+  },
+  "dependencies": {
+    "clsx": "^2.0.0",
+    "lucide-react": "^0.400.0"
+  },
+  "devDependencies": {
+    "@rollup/plugin-commonjs": "^25.0.8",
+    "@rollup/plugin-node-resolve": "^15.3.1",
+    "@rollup/plugin-typescript": "^11.1.6",
+    "@types/react": "^18.0.0",
+    "@types/react-dom": "^18.0.0",
+    "rollup": "^3.29.5",
+    "rollup-plugin-dts": "^5.3.1",
+    "rollup-plugin-postcss": "^4.0.2",
+    "typescript": "^5.9.3"
+  }
+}

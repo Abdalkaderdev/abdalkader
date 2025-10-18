@@ -1,0 +1,102 @@
+/* Bible App Search Input Styles */
+.search-input {
+  width: 100%;
+}
+
+.search-input__wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.search-input__icon {
+  position: absolute;
+  left: 1rem;
+  color: var(--bible-text-secondary, #6b7280);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.search-input__field {
+  width: 100%;
+  padding: 0.75rem 1rem 0.75rem 3rem;
+  border: 1px solid var(--bible-border, #d1d5db);
+  border-radius: 8px;
+  font-size: 1rem;
+  background: var(--bible-input-bg, #ffffff);
+  color: var(--bible-text, #374151);
+  transition: all 0.2s ease;
+}
+
+.search-input__field:focus {
+  outline: none;
+  border-color: var(--bible-primary, #3b82f6);
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+.search-input__field::placeholder {
+  color: var(--bible-text-muted, #9ca3af);
+}
+
+.search-input__clear {
+  position: absolute;
+  right: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.5rem;
+  height: 1.5rem;
+  border: none;
+  background: transparent;
+  color: var(--bible-text-secondary, #6b7280);
+  cursor: pointer;
+  border-radius: 4px;
+  transition: all 0.2s ease;
+}
+
+.search-input__clear:hover {
+  background: var(--bible-bg-hover, #f3f4f6);
+  color: var(--bible-text, #374151);
+}
+
+.search-input__spinner {
+  position: absolute;
+  right: 1rem;
+  width: 1rem;
+  height: 1rem;
+  border: 2px solid var(--bible-border, #d1d5db);
+  border-top: 2px solid var(--bible-primary, #3b82f6);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+  .search-input__field {
+    background: var(--bible-input-bg-dark, #1f2937);
+    border-color: var(--bible-border-dark, #374151);
+    color: var(--bible-text-dark, #f9fafb);
+  }
+  
+  .search-input__field:focus {
+    border-color: var(--bible-primary, #3b82f6);
+  }
+  
+  .search-input__icon {
+    color: var(--bible-text-secondary-dark, #9ca3af);
+  }
+  
+  .search-input__clear {
+    color: var(--bible-text-secondary-dark, #9ca3af);
+  }
+  
+  .search-input__clear:hover {
+    background: var(--bible-bg-hover-dark, #374151);
+    color: var(--bible-text-dark, #f9fafb);
+  }
+}

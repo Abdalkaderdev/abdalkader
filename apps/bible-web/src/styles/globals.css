@@ -1,0 +1,136 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* CSS Variables for theming */
+:root {
+  --bible-primary: #3b82f6;
+  --bible-primary-hover: #2563eb;
+  --bible-secondary: #6b7280;
+  --bible-danger: #ef4444;
+  --bible-danger-hover: #dc2626;
+  --bible-text: #374151;
+  --bible-text-secondary: #6b7280;
+  --bible-text-muted: #9ca3af;
+  --bible-border: #d1d5db;
+  --bible-bg: #ffffff;
+  --bible-bg-hover: #f3f4f6;
+  --bible-card-bg: #ffffff;
+  --bible-input-bg: #ffffff;
+}
+
+.dark {
+  --bible-text: #f9fafb;
+  --bible-text-secondary: #9ca3af;
+  --bible-text-muted: #6b7280;
+  --bible-border: #374151;
+  --bible-bg: #111827;
+  --bible-bg-hover: #374151;
+  --bible-card-bg: #1f2937;
+  --bible-input-bg: #1f2937;
+}
+
+/* Base styles */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  color: var(--bible-text);
+  background-color: var(--bible-bg);
+  line-height: 1.6;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--bible-border);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--bible-text-secondary);
+}
+
+/* Focus styles */
+:focus-visible {
+  outline: 2px solid var(--bible-primary);
+  outline-offset: 2px;
+}
+
+/* Selection styles */
+::selection {
+  background-color: var(--bible-primary);
+  color: white;
+}
+
+/* Typography */
+.prose {
+  color: var(--bible-text);
+}
+
+.prose h1,
+.prose h2,
+.prose h3,
+.prose h4,
+.prose h5,
+.prose h6 {
+  color: var(--bible-text);
+}
+
+.prose strong {
+  color: var(--bible-text);
+}
+
+.prose a {
+  color: var(--bible-primary);
+  text-decoration: none;
+}
+
+.prose a:hover {
+  color: var(--bible-primary-hover);
+}
+
+/* Utility classes */
+.text-balance {
+  text-wrap: balance;
+}
+
+/* Animation utilities */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.3s ease-out;
+}
+
+/* Loading spinner */
+.spinner {
+  width: 20px;
+  height: 20px;
+  border: 2px solid var(--bible-border);
+  border-top: 2px solid var(--bible-primary);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}

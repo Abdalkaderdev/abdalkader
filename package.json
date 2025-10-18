@@ -9,6 +9,7 @@
     "build:portfolio": "turbo run build --filter=@abdalkader/portfolio...",
     "build:docs": "turbo run build --filter=@abdalkader/ui && cd apps/docs && pnpm build-storybook",
     "build:blog": "cd apps/blog && npm run build",
+    "build:bible": "turbo run build --filter=@abdalkader/bible-web...",
     "build:ui": "turbo run build --filter=@abdalkader/ui",
     "lint": "turbo run lint",
     "test": "turbo run test",
