@@ -26,6 +26,27 @@ export class WaveFunction {
     this.config = { ...config };
   }
 
+  // Getter methods for accessing configuration
+  get amplitude(): number {
+    return this.config.amplitude;
+  }
+
+  get frequency(): number {
+    return this.config.frequency;
+  }
+
+  get phase(): number {
+    return this.config.phase;
+  }
+
+  get wavelength(): number {
+    return this.config.wavelength;
+  }
+
+  get direction(): { x: number; y: number } {
+    return this.config.direction;
+  }
+
   /**
    * Calculate wave function value at position and time
    */

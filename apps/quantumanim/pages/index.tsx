@@ -5,15 +5,23 @@ import { SchrodingerDemo } from '../components/demos/SchrodingerDemo';
 import { EntanglementDemo } from '../components/demos/EntanglementDemo';
 import { WaveVisualizer } from '../components/visualizations/WaveVisualizer';
 import { SuperpositionElement } from '../components/quantum/SuperpositionElement';
+import QuantumSandbox from '../components/demos/QuantumSandbox';
+import QuantumExperiments from '../components/demos/QuantumExperiments';
+import EducationalMode from '../components/demos/EducationalMode';
+import QuantumParticleSystem from '../components/visualizations/QuantumParticleSystem';
 
 export default function Home() {
-  const [activeDemo, setActiveDemo] = useState<'schrodinger' | 'entanglement' | 'waves'>('schrodinger');
+  const [activeDemo, setActiveDemo] = useState<'schrodinger' | 'entanglement' | 'waves' | 'sandbox' | 'experiments' | 'education' | 'particles'>('schrodinger');
   const [quantumClicks, setQuantumClicks] = useState(0);
 
   const demos = [
     { id: 'schrodinger', name: 'Schrödinger\'s UI', icon: '🐱' },
     { id: 'entanglement', name: 'Quantum Entanglement', icon: '🔗' },
-    { id: 'waves', name: 'Wave Functions', icon: '🌊' }
+    { id: 'waves', name: 'Wave Functions', icon: '🌊' },
+    { id: 'sandbox', name: 'Quantum Sandbox', icon: '🧪' },
+    { id: 'experiments', name: 'Quantum Experiments', icon: '⚛️' },
+    { id: 'education', name: 'Educational Mode', icon: '📚' },
+    { id: 'particles', name: 'Particle System', icon: '✨' }
   ] as const;
 
   const handleQuantumClick = () => {
@@ -179,6 +187,10 @@ export default function Home() {
                     />
                   </div>
                 )}
+                {activeDemo === 'sandbox' && <QuantumSandbox />}
+                {activeDemo === 'experiments' && <QuantumExperiments />}
+                {activeDemo === 'education' && <EducationalMode />}
+                {activeDemo === 'particles' && <QuantumParticleSystem />}
               </motion.div>
             </div>
           </section>

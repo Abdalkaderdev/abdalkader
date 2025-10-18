@@ -27,7 +27,10 @@
     "@react-three/fiber": "^8.15.0",
     "@react-three/drei": "^9.90.0",
     "react-use-measure": "^2.1.0",
-    "use-gesture": "^1.0.0"
+    "use-gesture": "^1.0.0",
+    "quantum-circuit": "^0.9.242",
+    "ml-matrix": "^6.10.0",
+    "simplex-noise": "^4.0.0"
   },
   "devDependencies": {
     "eslint": "^8",
