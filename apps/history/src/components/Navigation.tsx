@@ -17,6 +17,7 @@ const navigationItems = [
   { id: 'family-tree', label: 'Family Tree', icon: GitBranch },
   { id: 'paradigms', label: 'Paradigms', icon: Layers },
   { id: 'ai', label: 'AI Assistant', icon: Brain },
+  { id: 'exhibitions', label: 'Exhibitions', icon: Layers },
 ];
 
 export function Navigation({ activeSection, onSectionChange }: NavigationProps) {

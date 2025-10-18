@@ -10,12 +10,20 @@ import { Navigation } from '@/components/Navigation';
 import { Hero } from '@/components/Hero';
 import { ParadigmExplorer } from '@/components/ParadigmExplorer';
 import { PageTransition, SectionTransition, StaggerContainer, StaggerItem } from '@/components/transitions/PageTransition';
+import { ExhibitionLayout, ExhibitionSection } from '@/components/exhibition/ExhibitionLayout';
+import { PioneersHall } from '@/components/exhibition/PioneersHall';
+import { RevolutionWing } from '@/components/exhibition/RevolutionWing';
+import { InternetAgeGallery } from '@/components/exhibition/InternetAgeGallery';
+import { ModernEraPavilion } from '@/components/exhibition/ModernEraPavilion';
+import { ParadigmTheater } from '@/components/exhibition/ParadigmTheater';
+import { AITutorStudio } from '@/components/exhibition/AITutorStudio';
 import { useGSAP, usePortfolioAnimations } from '@/hooks/useAnimations';
 import languagesData from '@/lib/data/languages.json';
 
 export default function Home() {
   const [languages, setLanguages] = useState<Language[]>([]);
-  const [activeSection, setActiveSection] = useState<'timeline' | 'playground' | 'family-tree' | 'paradigms' | 'ai'>('timeline');
+  const [activeSection, setActiveSection] = useState<'timeline' | 'playground' | 'family-tree' | 'paradigms' | 'ai' | 'exhibitions'>('timeline');
+  const [exhibitionSection, setExhibitionSection] = useState<ExhibitionSection>('pioneers-hall');
   const [selectedLanguage, setSelectedLanguage] = useState<Language | null>(null);
   const { staggerCards } = usePortfolioAnimations();
 
@@ -36,6 +44,33 @@ export default function Home() {
   const handleSectionChange = (section: typeof activeSection) => {
     // Add page transition effect
     setActiveSection(section);
+  };
+
+  const handleExhibitionChange = (section: ExhibitionSection) => {
+    setExhibitionSection(section);
+  };
+
+  const handleBackToHome = () => {
+    setActiveSection('timeline');
+  };
+
+  const renderExhibitionSection = () => {
+    switch (exhibitionSection) {
+      case 'pioneers-hall':
+        return <PioneersHall />;
+      case 'revolution-wing':
+        return <RevolutionWing />;
+      case 'internet-gallery':
+        return <InternetAgeGallery />;
+      case 'modern-pavilion':
+        return <ModernEraPavilion />;
+      case 'paradigm-theater':
+        return <ParadigmTheater />;
+      case 'ai-tutor-studio':
+        return <AITutorStudio />;
+      default:
+        return <PioneersHall />;
+    }
   };
 
   const renderActiveSection = () => {
@@ -86,6 +121,16 @@ export default function Home() {
             />
           </SectionTransition>
         );
+      case 'exhibitions':
+        return (
+          <ExhibitionLayout
+            currentSection={exhibitionSection}
+            onSectionChange={handleExhibitionChange}
+            onBackToHome={handleBackToHome}
+          >
+            {renderExhibitionSection()}
+          </ExhibitionLayout>
+        );
       default:
         return null;
     }
@@ -94,10 +139,12 @@ export default function Home() {
   return (
     <PageTransition>
       <div className="min-h-screen bg-gradient-to-br from-black via-gray-900 to-black dark:from-black dark:via-gray-900 dark:to-black light:from-white light:via-gray-50 light:to-gray-100">
-        <Navigation
-          activeSection={activeSection}
-          onSectionChange={handleSectionChange}
-        />
+        {activeSection !== 'exhibitions' && (
+          <Navigation
+            activeSection={activeSection}
+            onSectionChange={handleSectionChange}
+          />
+        )}
         
         <main className="container mx-auto px-4 py-8 pt-24">
           {activeSection === 'timeline' && (
