@@ -191,7 +191,7 @@ export const AsSubmitButton: Story = {
   },
 };
 
-export const InteractivePlayground: Story = {
+export const ButtonPlayground: Story = {
   render: () => (
     <InteractivePlayground
       componentName="Button"

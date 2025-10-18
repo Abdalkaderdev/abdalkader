@@ -252,7 +252,7 @@ export const FormValidation: Story = {
   },
 };
 
-export const InteractivePlayground: Story = {
+export const InputPlayground: Story = {
   render: () => (
     <InteractivePlayground
       componentName="Input"
