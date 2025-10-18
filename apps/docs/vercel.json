@@ -2,7 +2,7 @@
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "buildCommand": "echo 'Mintlify docs are built on deployment'",
   "outputDirectory": ".",
-  "framework": "other",
+  "framework": "docusaurus",
   "installCommand": "pnpm install --no-frozen-lockfile",
   "routes": [
     {
