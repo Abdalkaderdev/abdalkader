@@ -15,6 +15,13 @@
   --color-text-grey: #787878;
   --color-navigation: #2d2d2d59;
   --color-border: rgb(37, 37, 37);
+  
+  /* Additional colors for better contrast */
+  --color-bg-primary: #000;
+  --color-bg-secondary: #0a0a0a;
+  --color-text-primary: #f8f8f8;
+  --color-text-secondary: #787878;
+  --color-accent: #f44e00;
 
   /* ===== TYPOGRAPHY - EXACT PORTFOLIO VALUES ===== */
   --font-primary: 'PPNeueMontreal-Regular', sans-serif;

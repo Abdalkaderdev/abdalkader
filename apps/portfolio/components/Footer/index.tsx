@@ -18,6 +18,15 @@ const navigationLinks = [
     <Link key={text} href={href}>{text}</Link>
 ));
 
+// Cross-app links
+const crossAppLinks = [
+    { text: 'Blog', href: 'https://blog.abdalkader.dev', external: true },
+    { text: 'Docs', href: 'https://docs.abdalkader.dev', external: true },
+    { text: 'Components', href: 'https://components.abdalkader.dev', external: true },
+].map(({ text, href, external }) => (
+    <a key={text} href={href} target={external ? "_blank" : "_self"} rel={external ? "noopener noreferrer" : undefined}>{text}</a>
+));
+
 // Social links
 const socialLinks = [
     { text: 'GitHub', href: 'https://github.com/abdalkaderdev' },
@@ -38,6 +47,10 @@ const Footer: React.FC = () => {
                     </div>
                     <div className={styles.linksCol}>
                         {navigationLinks}
+                    </div>
+                    <div className={styles.linksCol}>
+                        <h3>Apps</h3>
+                        {crossAppLinks}
                     </div>
                 </div>
                 <div className={styles.border} />

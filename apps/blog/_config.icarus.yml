@@ -102,6 +102,7 @@ head:
         - 'name=msapplication-TileColor;content=#ff7a25'
     # Custom CSS files
     css:
+        - /css/portfolio-theme.css
         - /css/theme-toggle.css
         - /css/social-share.css
         - /css/code-theme.css
@@ -124,6 +125,9 @@ navbar:
         Resources: /resources
         Projects: /projects
         About: /about
+        Portfolio: https://abdalkader.dev
+        Docs: https://docs.abdalkader.dev
+        Components: https://components.abdalkader.dev
     # Links to be shown on the right of the navigation bar
     links:
         Portfolio:

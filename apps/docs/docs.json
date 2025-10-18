@@ -84,6 +84,14 @@
   "navbar": {
     "links": [
       {
+        "label": "Portfolio",
+        "href": "https://abdalkader.dev"
+      },
+      {
+        "label": "Blog",
+        "href": "https://blog.abdalkader.dev"
+      },
+      {
         "label": "Storybook",
         "href": "https://components.abdalkader.dev"
       }
@@ -98,7 +106,21 @@
     "socials": {
       "github": "https://github.com/Abdalkaderdev/abdalkader",
       "website": "https://abdalkader.dev"
-    }
+    },
+    "links": [
+      {
+        "label": "Portfolio",
+        "href": "https://abdalkader.dev"
+      },
+      {
+        "label": "Blog",
+        "href": "https://blog.abdalkader.dev"
+      },
+      {
+        "label": "Components",
+        "href": "https://components.abdalkader.dev"
+      }
+    ]
   },
   "integrations": {
     "ga4": {

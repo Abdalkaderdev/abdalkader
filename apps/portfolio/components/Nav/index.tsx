@@ -12,6 +12,13 @@ const links = [
     { name: 'Contact', path: '/contact' },
 ];
 
+// Cross-app navigation links
+const crossAppLinks = [
+    { name: 'Blog', path: 'https://blog.abdalkader.dev', external: true },
+    { name: 'Docs', path: 'https://docs.abdalkader.dev', external: true },
+    { name: 'Components', path: 'https://components.abdalkader.dev', external: true },
+];
+
 export default function Nav() {
     const [menuOpen, setMenuOpen] = useState(false);
     const navigationMenuRef = useRef<HTMLDivElement>(null);
@@ -176,6 +183,18 @@ export default function Nav() {
                     {links.map(({ name, path }, index) => (
                         <li key={name}>
                             <Link href={path} ref={index === 0 ? firstLinkRef : undefined}>{name}</Link>
+                        </li>
+                    ))}
+                    <li className={styles.divider}></li>
+                    {crossAppLinks.map(({ name, path, external }) => (
+                        <li key={name}>
+                            <a 
+                                href={path} 
+                                target={external ? "_blank" : "_self"}
+                                rel={external ? "noopener noreferrer" : undefined}
+                            >
+                                {name}
+                            </a>
                         </li>
                     ))}
                 </ul>
