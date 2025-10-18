@@ -55,10 +55,10 @@ jobs:
             echo "✅ Staging deployment complete: https://dev.abdalkader.dev"
             
           elif [ "${{ github.ref }}" == "refs/heads/components" ]; then
-            echo "📚 Deploying Storybook to docs.abdalkader.dev"
-            echo "VERCEL_PROJECT_ID=${{ secrets.VERCEL_PROJECT_ID_DOCS }}" >> $GITHUB_ENV
-            cd apps/docs
-            pnpm build-storybook
+            echo "📚 Deploying Storybook to components.abdalkader.dev"
+            echo "VERCEL_PROJECT_ID=${{ secrets.VERCEL_PROJECT_ID_STORYBOOK }}" >> $GITHUB_ENV
+            cd apps/storybook
+            pnpm build
             vercel pull --yes --environment=production --token=${{ secrets.VERCEL_TOKEN }}
             vercel deploy --prebuilt --prod --token=${{ secrets.VERCEL_TOKEN }}
             

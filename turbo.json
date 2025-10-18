@@ -13,9 +13,14 @@
       "outputs": [".next/**", "!.next/cache/**"],
       "cache": true
     },
-    "@abdalkader/docs#build": {
+    "@abdalkader/storybook#build": {
       "dependsOn": ["^build"],
       "outputs": ["storybook-static/**"],
+      "cache": true
+    },
+    "@abdalkader/docs#build": {
+      "dependsOn": [],
+      "outputs": [".mintlify/**"],
       "cache": true
     },
     "@abdalkader/blog#build": {
