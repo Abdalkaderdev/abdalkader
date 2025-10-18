@@ -1,5 +1,8 @@
 /* Custom CSS to match abdalkader.dev EXACTLY */
 
+/* Import the centralized design system */
+@import url('./design-system.css');
+
 /* Portfolio font loading */
 @font-face {
   font-family: 'PPNeueMontreal-Regular';
@@ -17,9 +20,10 @@
   font-display: swap;
 }
 
+/* Override with EXACT portfolio values */
 :root {
-  --primary-color: #f44e00;
-  --secondary-color: #fa7300;
+  --primary-color: #f44e00; /* EXACT portfolio primary */
+  --secondary-color: #fa7300; /* EXACT portfolio primary light */
   --text-primary: #f8f8f8;
   --text-secondary: #787878;
   --text-dark: #131313;
@@ -28,7 +32,7 @@
   --border-color: rgb(37, 37, 37);
   --navigation-color: #2d2d2d59;
   --code-bg: #1a1a1a;
-  --transition: 0.8s cubic-bezier(0.19, 1, 0.22, 1);
+  --transition: 0.8s cubic-bezier(0.19, 1, 0.22, 1); /* EXACT portfolio easing */
   --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3), 0 2px 4px -1px rgba(0, 0, 0, 0.2);
   --shadow-lg: 0 20px 25px -5px rgba(0, 0, 0, 0.4), 0 10px 10px -5px rgba(0, 0, 0, 0.2);
 }

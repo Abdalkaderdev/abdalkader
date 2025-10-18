@@ -37,30 +37,30 @@ export const Input = React.forwardRef<HTMLInputElement, InputProps>((
   ].filter(Boolean).join(' ') || undefined;
 
   return (
-    <div className={`input-wrapper ${className}`.trim()}>
+    <div className={`portfolio-input-wrapper ${className}`.trim()}>
       {label && (
-        <label htmlFor={inputId} className="input-label">
+        <label htmlFor={inputId} className="portfolio-input-label">
           {label}
-          {required && <span className="input-required" aria-label="required">*</span>}
+          {required && <span className="portfolio-input-required" aria-label="required">*</span>}
         </label>
       )}
       <input
         ref={ref}
         type={type}
         id={inputId}
-        className={`input ${error ? 'input--error' : ''}`}
+        className={`portfolio-input ${error ? 'portfolio-input--error' : ''}`}
         aria-invalid={error}
         aria-describedby={describedBy}
         aria-required={required}
         {...props}
       />
       {error && errorMessage && (
-        <div id={errorId} className="input-error" role="alert">
+        <div id={errorId} className="portfolio-input-error" role="alert">
           {errorMessage}
         </div>
       )}
       {helperText && !error && (
-        <div id={helperId} className="input-helper">
+        <div id={helperId} className="portfolio-input-helper">
           {helperText}
         </div>
       )}

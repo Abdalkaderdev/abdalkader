@@ -1,0 +1,332 @@
+/**
+ * Portfolio Theme Integration for Mintlify Docs
+ * Makes docs match portfolio design exactly
+ */
+
+/* Import the centralized design system */
+@import url('../../node_modules/@abdalkader/ui/dist/styles.css');
+
+/* Portfolio font loading */
+@font-face {
+  font-family: 'PPNeueMontreal-Regular';
+  src: url('/fonts/PPNeueMontreal-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'PPNeueMontreal-Medium';
+  src: url('/fonts/PPNeueMontreal-Medium.woff2') format('woff2');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Override Mintlify theme variables with EXACT portfolio values */
+:root {
+  /* Colors - EXACT portfolio values */
+  --primary-color: #f44e00 !important;
+  --primary-color-hover: #fa7300 !important;
+  --secondary-color: #fa7300 !important;
+  
+  /* Typography - EXACT portfolio fonts */
+  --font-family: 'PPNeueMontreal-Regular', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+  --font-family-heading: 'PPNeueMontreal-Medium', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+  
+  /* Background colors */
+  --background-color: #000 !important;
+  --background-secondary: #111 !important;
+  
+  /* Text colors */
+  --text-primary: #f8f8f8 !important;
+  --text-secondary: #787878 !important;
+  --text-muted: #787878 !important;
+  
+  /* Border colors */
+  --border-color: rgb(37, 37, 37) !important;
+  
+  /* Spacing - EXACT portfolio values */
+  --spacing-xs: 0.8rem !important;
+  --spacing-sm: 1rem !important;
+  --spacing-md: 1.5rem !important;
+  --spacing-lg: 2rem !important;
+  --spacing-xl: 3rem !important;
+  --spacing-2xl: 5rem !important;
+  
+  /* Transitions - EXACT portfolio values */
+  --transition: 0.8s cubic-bezier(0.19, 1, 0.22, 1) !important;
+  --transition-fast: 0.3s ease-in-out !important;
+  
+  /* Shadows - EXACT portfolio values */
+  --shadow-glow: 0 0 20px rgba(244, 78, 0, 0.3) !important;
+  --shadow-focus: 0 0 0 2px #f44e00 !important;
+}
+
+/* Body styling - EXACT portfolio values */
+body {
+  font-family: var(--font-family) !important;
+  background-color: var(--background-color) !important;
+  color: var(--text-primary) !important;
+  -webkit-font-smoothing: antialiased !important;
+  -moz-osx-font-smoothing: grayscale !important;
+}
+
+/* Typography - EXACT portfolio styling */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-family-heading) !important;
+  color: var(--text-primary) !important;
+  font-weight: 300 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.05rem !important;
+}
+
+h1 {
+  font-size: clamp(2.5rem, 8vw, 4.5rem) !important;
+  line-height: 0.9 !important;
+}
+
+h2 {
+  font-size: clamp(1.8rem, 6vw, 2.75rem) !important;
+  line-height: 0.9 !important;
+}
+
+h3 {
+  font-size: clamp(1.2rem, 4vw, 1.8rem) !important;
+  letter-spacing: 0.08rem !important;
+}
+
+/* Links - EXACT portfolio styling */
+a {
+  color: var(--text-primary) !important;
+  text-decoration: none !important;
+  transition: var(--transition) !important;
+}
+
+a:hover {
+  color: var(--primary-color) !important;
+}
+
+a:focus-visible {
+  outline: 2px dashed var(--primary-color) !important;
+  outline-offset: 3px !important;
+  border-radius: 6px !important;
+}
+
+/* Navigation - EXACT portfolio styling */
+.navbar, .sidebar, .navigation {
+  background: rgba(45, 45, 45, 0.35) !important;
+  backdrop-filter: blur(10px) !important;
+  border-bottom: 1px solid var(--border-color) !important;
+}
+
+.navbar-brand, .logo {
+  font-family: var(--font-family-heading) !important;
+  color: var(--primary-color) !important;
+  font-weight: 500 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.05rem !important;
+}
+
+.navbar-item, .nav-item, .sidebar-item {
+  color: var(--text-primary) !important;
+  font-family: var(--font-family-heading) !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.05rem !important;
+  padding: 0.5rem 1rem !important;
+  border-radius: 6px !important;
+  transition: var(--transition) !important;
+}
+
+.navbar-item:hover, .nav-item:hover, .sidebar-item:hover {
+  color: var(--primary-color) !important;
+  background: rgba(244, 78, 0, 0.1) !important;
+}
+
+/* Buttons - EXACT portfolio styling */
+button, .btn, .button {
+  background: var(--primary-color) !important;
+  color: var(--background-color) !important;
+  border: none !important;
+  border-radius: 6px !important;
+  padding: 1rem 2rem !important;
+  font-family: var(--font-family-heading) !important;
+  font-size: 1rem !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.05rem !important;
+  cursor: pointer !important;
+  transition: var(--transition) !important;
+  position: relative !important;
+  overflow: hidden !important;
+}
+
+button:hover, .btn:hover, .button:hover {
+  background: var(--primary-color-hover) !important;
+  transform: translateY(-2px) !important;
+  box-shadow: var(--shadow-glow) !important;
+}
+
+button:focus-visible, .btn:focus-visible, .button:focus-visible {
+  outline: 2px dashed var(--primary-color) !important;
+  outline-offset: 3px !important;
+}
+
+/* Code blocks - EXACT portfolio styling */
+pre, code {
+  font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace !important;
+  background: rgba(45, 45, 45, 0.3) !important;
+  border: 1px solid var(--border-color) !important;
+  border-radius: 6px !important;
+  color: var(--text-primary) !important;
+}
+
+code {
+  padding: 0.2rem 0.4rem !important;
+  font-size: 0.9em !important;
+}
+
+pre {
+  padding: 1rem !important;
+  overflow-x: auto !important;
+}
+
+/* Cards - EXACT portfolio styling */
+.card, .content-card {
+  background: rgba(45, 45, 45, 0.1) !important;
+  border: 1px solid var(--border-color) !important;
+  border-radius: 12px !important;
+  padding: var(--spacing-lg) !important;
+  transition: var(--transition) !important;
+  backdrop-filter: blur(10px) !important;
+}
+
+.card:hover, .content-card:hover {
+  border-color: var(--primary-color) !important;
+  box-shadow: var(--shadow-glow) !important;
+  transform: translateY(-4px) !important;
+}
+
+/* Form elements - EXACT portfolio styling */
+input, textarea, select {
+  background: transparent !important;
+  border: 1px solid var(--border-color) !important;
+  border-radius: 6px !important;
+  padding: 1rem !important;
+  color: var(--text-primary) !important;
+  font-family: var(--font-family) !important;
+  transition: var(--transition) !important;
+}
+
+input:focus, textarea:focus, select:focus {
+  outline: none !important;
+  border-color: var(--primary-color) !important;
+  box-shadow: var(--shadow-focus) !important;
+}
+
+/* Selection styling - EXACT portfolio */
+::selection {
+  color: var(--background-color) !important;
+  background-color: var(--primary-color) !important;
+}
+
+/* Scrollbar styling - EXACT portfolio */
+::-webkit-scrollbar {
+  width: 10px !important;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent !important;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--primary-color) !important;
+}
+
+/* Animation classes - EXACT portfolio */
+.portfolio-fade-in {
+  animation: portfolioFadeIn 0.8s cubic-bezier(0.19, 1, 0.22, 1) forwards !important;
+}
+
+.portfolio-stagger > * {
+  animation: portfolioFadeIn 0.8s cubic-bezier(0.19, 1, 0.22, 1) forwards !important;
+  opacity: 0 !important;
+}
+
+.portfolio-stagger > *:nth-child(1) { animation-delay: 0.003s !important; }
+.portfolio-stagger > *:nth-child(2) { animation-delay: 0.006s !important; }
+.portfolio-stagger > *:nth-child(3) { animation-delay: 0.009s !important; }
+.portfolio-stagger > *:nth-child(4) { animation-delay: 0.012s !important; }
+.portfolio-stagger > *:nth-child(5) { animation-delay: 0.015s !important; }
+
+/* Responsive typography - EXACT portfolio logic */
+@media (max-width: 1080px) {
+  h1 {
+    font-size: 3.2rem !important;
+  }
+  
+  h2 {
+    font-size: 2.2rem !important;
+  }
+}
+
+@media (max-width: 600px) {
+  h1 {
+    font-size: 2.5rem !important;
+  }
+  
+  h2 {
+    font-size: 1.8rem !important;
+  }
+  
+  h3 {
+    font-size: 1.2rem !important;
+  }
+  
+  button, .btn, .button {
+    padding: 0.8rem 1.5rem !important;
+    font-size: 0.875rem !important;
+  }
+}
+
+/* Focus styles for accessibility - EXACT portfolio */
+*:focus-visible {
+  outline: 2px dashed var(--primary-color) !important;
+  outline-offset: 3px !important;
+}
+
+/* Override Mintlify specific classes */
+.mintlify-doc {
+  font-family: var(--font-family) !important;
+  background-color: var(--background-color) !important;
+  color: var(--text-primary) !important;
+}
+
+.mintlify-nav {
+  background: rgba(45, 45, 45, 0.35) !important;
+  backdrop-filter: blur(10px) !important;
+  border-bottom: 1px solid var(--border-color) !important;
+}
+
+.mintlify-content {
+  background-color: var(--background-color) !important;
+  color: var(--text-primary) !important;
+}
+
+.mintlify-sidebar {
+  background-color: var(--background-secondary) !important;
+  border-right: 1px solid var(--border-color) !important;
+}
+
+/* Ensure all text uses portfolio colors */
+p, li, span, div {
+  color: var(--text-primary) !important;
+}
+
+/* Override any remaining Mintlify theme colors */
+[style*="color:"] {
+  color: var(--text-primary) !important;
+}
+
+[style*="background-color:"] {
+  background-color: var(--background-color) !important;
+}

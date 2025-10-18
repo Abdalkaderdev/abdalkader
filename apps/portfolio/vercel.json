@@ -4,5 +4,18 @@
   "installCommand": null,
   "framework": "nextjs",
   "trailingSlash": true,
-  "cleanUrls": true
+  "cleanUrls": true,
+  "buildCommand": "pnpm turbo run build --filter=@abdalkader/portfolio",
+  "installCommand": "pnpm install",
+  "outputDirectory": ".next",
+  "framework": "nextjs",
+  "env": {
+    "NODE_ENV": "development",
+    "NEXT_PUBLIC_ENVIRONMENT": "staging",
+    "NEXT_PUBLIC_DEBUG": "true",
+    "NEXT_PUBLIC_FEATURE_FLAGS": "true",
+    "NEXT_PUBLIC_PERFORMANCE_MONITORING": "true",
+    "NEXT_PUBLIC_ERROR_TRACKING": "true",
+    "NEXT_PUBLIC_AB_TESTING": "true"
+  }
 }

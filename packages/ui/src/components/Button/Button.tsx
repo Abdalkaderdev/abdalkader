@@ -2,7 +2,7 @@ import React from 'react';
 import './Button.css';
 
 export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
-  variant?: 'primary' | 'secondary' | 'danger';
+  variant?: 'primary' | 'secondary' | 'ghost';
   size?: 'small' | 'medium' | 'large';
   disabled?: boolean;
   children: React.ReactNode;
@@ -28,7 +28,7 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>((
     <button
       ref={ref}
       type={type}
-      className={`btn btn--${variant} btn--${size} ${className}`.trim()}
+      className={`portfolio-btn portfolio-btn--${variant} portfolio-btn--${size} ${className}`.trim()}
       disabled={disabled}
       aria-label={ariaLabel}
       aria-describedby={ariaDescribedBy}

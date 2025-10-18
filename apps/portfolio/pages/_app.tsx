@@ -4,7 +4,7 @@ import SmoothScrolling from "@/components/SmoothScrolling";
 import "@/styles/globals.scss";  // Ensure this is your global SCSS import
 import type { AppProps } from "next/app";
 import { AnimatePresence, motion } from "framer-motion";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useRouter } from "next/router";
 import Head from "next/head";
 import Loader from "@/components/Loader";
@@ -14,14 +14,32 @@ import JsonLd from "@/components/SEO/JsonLd";
 import { personJsonLd, websiteJsonLd } from "@/utils/jsonld";
 import { ppRegular, ppMedium } from "@/libs/fonts";
 import Plausible from "@/components/Analytics/Plausible";
+import '@abdalkader/ui/dist/styles.css';
+import StagingDashboard from "@/components/StagingDashboard";
+import { ErrorBoundary } from "@/utils/errorTracking";
+import { initPerformanceMonitoring, reportWebVitals } from "@/utils/performanceMonitoring";
+import StagingBanner from "@/src/components/StagingBanner";
+import StagingTools from "@/src/components/StagingTools";
+import { initializeStagingEnvironment } from "@/src/config/staging";
 
 export default function App({ Component, pageProps }: AppProps) {
     const router = useRouter();
     const scrollPositions = useRef<{ [key: string]: number }>({});
+    const [showStagingDashboard, setShowStagingDashboard] = useState(false);
+    const isStaging = process.env.NEXT_PUBLIC_ENVIRONMENT === 'staging';
+    
     const prefersReducedMotion = useMemo(() => {
         if (typeof window === 'undefined' || !window.matchMedia) return false;
         return window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     }, []);
+
+    // Initialize staging environment
+    useEffect(() => {
+        if (isStaging) {
+            initializeStagingEnvironment();
+            initPerformanceMonitoring();
+        }
+    }, [isStaging]);
 
     // Scroll position management
     useEffect(() => {
@@ -163,22 +181,42 @@ export default function App({ Component, pageProps }: AppProps) {
                         transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
                     />)}
 
-                    <SmoothScrolling>
-                        <Nav />
-                        <motion.main
-                            key="main-content"
-                            id="main"
-                            initial={{ opacity: 1 }}
-                            animate={{ opacity: 1 }}
-                            exit={{ opacity: prefersReducedMotion ? 1 : 0 }}  // Disable fade on exit if reduced motion
-                            transition={{ duration: prefersReducedMotion ? 0 : 0, ease: [0.22, 1, 0.36, 1] }}
-                        >
-                            <Component {...pageProps} />
-                        </motion.main>
-                        <Footer />
-                    </SmoothScrolling>
+                    <ErrorBoundary>
+                        <SmoothScrolling>
+                            <Nav />
+                            <motion.main
+                                key="main-content"
+                                id="main"
+                                initial={{ opacity: 1 }}
+                                animate={{ opacity: 1 }}
+                                exit={{ opacity: prefersReducedMotion ? 1 : 0 }}  // Disable fade on exit if reduced motion
+                                transition={{ duration: prefersReducedMotion ? 0 : 0, ease: [0.22, 1, 0.36, 1] }}
+                            >
+                                <Component {...pageProps} />
+                            </motion.main>
+                            <Footer />
+                        </SmoothScrolling>
+                    </ErrorBoundary>
+                    
+                    {/* Staging Environment Components - Only show in staging environment */}
+                    {isStaging && (
+                        <>
+                            <StagingBanner />
+                            <StagingDashboard 
+                                isVisible={showStagingDashboard}
+                                onToggle={() => setShowStagingDashboard(!showStagingDashboard)}
+                            />
+                            <StagingTools 
+                                isVisible={showStagingDashboard}
+                                onToggle={() => setShowStagingDashboard(!showStagingDashboard)}
+                            />
+                        </>
+                    )}
                 </motion.div>
             </AnimatePresence>
         </>
     );
 }
+
+// Export Web Vitals function for Next.js
+export { reportWebVitals };
