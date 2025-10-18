@@ -3,6 +3,7 @@ import { Button } from '@abdalkader/ui';
 import React from 'react';
 import InteractivePlayground from '../src/components/InteractivePlayground';
 import DesignSystemVisualizer from '../src/components/DesignSystemVisualizer';
+import { EnhancedButton } from '../src/components/EnhancedButton';
 
 const meta: Meta<typeof Button> = {
   title: 'Components/Button',
@@ -216,6 +217,91 @@ export const DesignSystemVisualizerStory: Story = {
     docs: {
       description: {
         story: 'Explore the design system tokens including colors, typography, spacing, and animations.',
+      },
+    },
+  },
+};
+
+// Enhanced Button Stories
+export const EnhancedButtons: Story = {
+  render: () => (
+    <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap', alignItems: 'center' }}>
+      <EnhancedButton variant="primary" status="stable">
+        Primary Stable
+      </EnhancedButton>
+      <EnhancedButton variant="secondary" status="beta">
+        Secondary Beta
+      </EnhancedButton>
+      <EnhancedButton variant="outline" status="experimental">
+        Outline Experimental
+      </EnhancedButton>
+      <EnhancedButton variant="danger" status="deprecated">
+        Danger Deprecated
+      </EnhancedButton>
+    </div>
+  ),
+  parameters: {
+    docs: {
+      description: {
+        story: 'Enhanced buttons with component status indicators and improved accessibility features.',
+      },
+    },
+  },
+};
+
+export const LoadingStates: Story = {
+  render: () => (
+    <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap', alignItems: 'center' }}>
+      <EnhancedButton variant="primary" loading>
+        Loading Primary
+      </EnhancedButton>
+      <EnhancedButton variant="secondary" loading disabled>
+        Loading Disabled
+      </EnhancedButton>
+      <EnhancedButton variant="outline" loading status="beta">
+        Loading Beta
+      </EnhancedButton>
+    </div>
+  ),
+  parameters: {
+    docs: {
+      description: {
+        story: 'Buttons in various loading states with proper accessibility indicators.',
+      },
+    },
+  },
+};
+
+export const AccessibilityFeatures: Story = {
+  render: () => (
+    <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap', alignItems: 'center' }}>
+      <EnhancedButton 
+        variant="primary" 
+        aria-label="Save document"
+        aria-describedby="save-help"
+      >
+        Save
+      </EnhancedButton>
+      <EnhancedButton 
+        variant="secondary" 
+        disabled
+        aria-label="This action is currently disabled"
+      >
+        Disabled Action
+      </EnhancedButton>
+      <EnhancedButton 
+        variant="outline" 
+        loading
+        aria-label="Processing request, please wait"
+      >
+        Process
+      </EnhancedButton>
+    </div>
+  ),
+  parameters: {
+    docs: {
+      description: {
+        story: 'Buttons with enhanced accessibility features including proper ARIA labels and descriptions.',
       },
     },
   },

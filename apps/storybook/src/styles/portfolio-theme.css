@@ -6,6 +6,12 @@
 /* Import the centralized design system */
 @import url('../../node_modules/@abdalkader/ui/dist/styles.css');
 
+/* Import UI/UX enhancements */
+@import url('./design-system-tokens.css');
+@import url('./accessibility-fixes.css');
+@import url('./visual-hierarchy.css');
+@import url('./responsive-fixes.css');
+
 /* Portfolio font loading */
 @font-face {
   font-family: 'PPNeueMontreal-Regular';

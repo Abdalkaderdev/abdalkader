@@ -6,6 +6,9 @@
 /* Import the centralized design system */
 @import url('../../node_modules/@abdalkader/ui/dist/styles.css');
 
+/* Import UI/UX enhancements */
+@import url('./blog-enhancements.css');
+
 /* Blog-specific overrides to match portfolio exactly */
 body {
   font-family: var(--font-primary), 'PPNeueMontreal-Regular', sans-serif;

@@ -1,0 +1,421 @@
+/**
+ * RESPONSIVE DESIGN FIXES FOR STORYBOOK & BLOG
+ * Ensures optimal experience across all device sizes
+ */
+
+/* ========================================
+   MOBILE RESPONSIVENESS FIXES
+   ======================================== */
+
+@media (max-width: 768px) {
+  /* Storybook Mobile Fixes */
+  .sb-component-section {
+    padding: 1rem !important;
+    margin-bottom: 2rem !important;
+  }
+  
+  .sb-component-title {
+    font-size: 1.25rem !important;
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 0.5rem !important;
+  }
+  
+  .sb-component-status {
+    margin-left: 0 !important;
+    margin-top: 0.5rem !important;
+  }
+  
+  .sb-components-grid {
+    grid-template-columns: 1fr !important;
+    gap: var(--space-lg) !important;
+  }
+  
+  .sb-sidebar {
+    position: fixed !important;
+    top: 0 !important;
+    left: -100% !important;
+    width: 280px !important;
+    height: 100vh !important;
+    z-index: 1000 !important;
+    transition: left 0.3s ease !important;
+    background: var(--bg-surface) !important;
+    box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1) !important;
+  }
+  
+  .sb-sidebar.open {
+    left: 0 !important;
+  }
+  
+  .sb-sidebar-overlay {
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+    background: rgba(0, 0, 0, 0.5) !important;
+    z-index: 999 !important;
+    opacity: 0 !important;
+    visibility: hidden !important;
+    transition: all 0.3s ease !important;
+  }
+  
+  .sb-sidebar-overlay.open {
+    opacity: 1 !important;
+    visibility: visible !important;
+  }
+  
+  .sb-mobile-menu-toggle {
+    display: block !important;
+    position: fixed !important;
+    top: 1rem !important;
+    left: 1rem !important;
+    z-index: 1001 !important;
+    background: var(--brand-primary) !important;
+    color: white !important;
+    border: none !important;
+    border-radius: 6px !important;
+    padding: 0.5rem !important;
+    cursor: pointer !important;
+  }
+  
+  /* Blog Mobile Fixes */
+  .blog-article h1 {
+    font-size: 2rem !important;
+  }
+  
+  .blog-article h2 {
+    font-size: 1.75rem !important;
+  }
+  
+  .blog-article h3 {
+    font-size: 1.25rem !important;
+  }
+  
+  .blog-nav {
+    flex-direction: column !important;
+    gap: 1rem !important;
+  }
+  
+  .blog-card {
+    padding: 1.5rem !important;
+  }
+  
+  .blog-card-title {
+    font-size: 1.25rem !important;
+  }
+  
+  .blog-article pre {
+    padding: 1rem !important;
+    font-size: 0.8rem !important;
+    overflow-x: auto !important;
+  }
+  
+  .blog-article pre::before {
+    display: none !important;
+  }
+  
+  /* Cross-app navigation mobile */
+  .cross-app-nav__grid {
+    grid-template-columns: 1fr !important;
+  }
+  
+  .cross-app-nav__link {
+    padding: 1rem !important;
+  }
+}
+
+/* ========================================
+   TABLET RESPONSIVENESS FIXES
+   ======================================== */
+
+@media (min-width: 769px) and (max-width: 1024px) {
+  /* Storybook Tablet Fixes */
+  .sb-components-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: var(--space-lg) !important;
+  }
+  
+  .sb-component-section {
+    padding: 1.5rem !important;
+  }
+  
+  /* Blog Tablet Fixes */
+  .blog-article h1 {
+    font-size: 2.25rem !important;
+  }
+  
+  .blog-article h2 {
+    font-size: 1.875rem !important;
+  }
+  
+  .blog-nav {
+    gap: 1.5rem !important;
+  }
+  
+  .cross-app-nav__grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+}
+
+/* ========================================
+   LARGE SCREEN OPTIMIZATIONS
+   ======================================== */
+
+@media (min-width: 1200px) {
+  /* Storybook Large Screen */
+  .sb-components-grid {
+    grid-template-columns: repeat(3, 1fr) !important;
+  }
+  
+  .sb-component-section {
+    padding: 2.5rem !important;
+  }
+  
+  /* Blog Large Screen */
+  .blog-article {
+    max-width: 800px !important;
+    margin: 0 auto !important;
+  }
+  
+  .blog-article h1 {
+    font-size: 3rem !important;
+  }
+  
+  .blog-article h2 {
+    font-size: 2.25rem !important;
+  }
+  
+  .cross-app-nav__grid {
+    grid-template-columns: repeat(4, 1fr) !important;
+  }
+}
+
+/* ========================================
+   EXTRA LARGE SCREEN OPTIMIZATIONS
+   ======================================== */
+
+@media (min-width: 1400px) {
+  .sb-components-grid {
+    grid-template-columns: repeat(4, 1fr) !important;
+  }
+  
+  .blog-article {
+    max-width: 900px !important;
+  }
+  
+  .blog-article h1 {
+    font-size: 3.5rem !important;
+  }
+}
+
+/* ========================================
+   LANDSCAPE ORIENTATION FIXES
+   ======================================== */
+
+@media (orientation: landscape) and (max-height: 500px) {
+  .sb-sidebar {
+    width: 250px !important;
+  }
+  
+  .sb-component-section {
+    padding: 1rem !important;
+  }
+  
+  .blog-article h1 {
+    font-size: 1.75rem !important;
+  }
+  
+  .blog-article h2 {
+    font-size: 1.5rem !important;
+  }
+}
+
+/* ========================================
+   TOUCH DEVICE OPTIMIZATIONS
+   ======================================== */
+
+@media (hover: none) and (pointer: coarse) {
+  /* Increase touch targets */
+  .btn,
+  button,
+  a[role="button"],
+  .sb-nav-item,
+  .blog-nav a,
+  .blog-tags a {
+    min-height: 44px !important;
+    min-width: 44px !important;
+    padding: 0.75rem 1rem !important;
+  }
+  
+  /* Remove hover effects on touch devices */
+  .btn:hover,
+  .card:hover,
+  .blog-card:hover,
+  .sb-nav-item:hover {
+    transform: none !important;
+    box-shadow: none !important;
+  }
+  
+  /* Add active states for touch feedback */
+  .btn:active,
+  .card:active,
+  .blog-card:active,
+  .sb-nav-item:active {
+    transform: scale(0.98) !important;
+    opacity: 0.8 !important;
+  }
+}
+
+/* ========================================
+   PRINT STYLES
+   ======================================== */
+
+@media print {
+  .sb-sidebar,
+  .sb-mobile-menu-toggle,
+  .blog-nav,
+  .blog-footer,
+  .cross-app-nav {
+    display: none !important;
+  }
+  
+  .sb-component-section,
+  .blog-article {
+    break-inside: avoid !important;
+    page-break-inside: avoid !important;
+  }
+  
+  .blog-article h1,
+  .blog-article h2,
+  .blog-article h3 {
+    break-after: avoid !important;
+    page-break-after: avoid !important;
+  }
+  
+  .blog-article pre {
+    break-inside: avoid !important;
+    page-break-inside: avoid !important;
+    background: #f8f9fa !important;
+    color: #000 !important;
+    border: 1px solid #000 !important;
+  }
+  
+  a {
+    color: #000 !important;
+    text-decoration: underline !important;
+  }
+  
+  a[href^="http"]:after {
+    content: " (" attr(href) ")" !important;
+    font-size: 0.8em !important;
+    color: #666 !important;
+  }
+}
+
+/* ========================================
+   HIGH DPI DISPLAY OPTIMIZATIONS
+   ======================================== */
+
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+  .sb-component-section,
+  .blog-card,
+  .btn {
+    border-width: 0.5px !important;
+  }
+  
+  .blog-article pre::before {
+    font-size: 0.7rem !important;
+  }
+}
+
+/* ========================================
+   REDUCED MOTION SUPPORT
+   ======================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  .sb-sidebar,
+  .sb-sidebar-overlay,
+  .btn,
+  .card,
+  .blog-card,
+  .sb-nav-item,
+  .blog-nav a,
+  .blog-tags a {
+    transition: none !important;
+    animation: none !important;
+  }
+  
+  .btn:hover,
+  .card:hover,
+  .blog-card:hover,
+  .sb-nav-item:hover,
+  .blog-nav a:hover,
+  .blog-tags a:hover {
+    transform: none !important;
+  }
+}
+
+/* ========================================
+   CONTAINER QUERIES (FUTURE-PROOFING)
+   ======================================== */
+
+@supports (container-type: inline-size) {
+  .sb-component-container {
+    container-type: inline-size;
+  }
+  
+  @container (max-width: 300px) {
+    .sb-component-title {
+      font-size: 1rem !important;
+    }
+    
+    .sb-component-description {
+      font-size: 0.875rem !important;
+    }
+  }
+}
+
+/* ========================================
+   ACCESSIBILITY IMPROVEMENTS FOR MOBILE
+   ======================================== */
+
+@media (max-width: 768px) {
+  /* Ensure proper focus management on mobile */
+  .sb-sidebar:focus-within {
+    left: 0 !important;
+  }
+  
+  /* Improve touch accessibility */
+  .btn:focus-visible,
+  .sb-nav-item:focus-visible,
+  .blog-nav a:focus-visible {
+    outline: 3px solid var(--brand-primary) !important;
+    outline-offset: 2px !important;
+  }
+  
+  /* Ensure readable text sizes */
+  .sb-component-description,
+  .blog-article p {
+    font-size: 1rem !important;
+    line-height: 1.6 !important;
+  }
+  
+  /* Improve button spacing for touch */
+  .btn + .btn {
+    margin-left: 0.5rem !important;
+  }
+  
+  /* Stack buttons vertically on very small screens */
+  @media (max-width: 480px) {
+    .btn-group {
+      flex-direction: column !important;
+      gap: 0.5rem !important;
+    }
+    
+    .btn-group .btn {
+      margin-left: 0 !important;
+      width: 100% !important;
+    }
+  }
+}
