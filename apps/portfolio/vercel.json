@@ -1,7 +1,7 @@
 {
-  "buildCommand": "cd ../.. && pnpm install && pnpm turbo run build --filter=@abdalkader/portfolio",
+  "buildCommand": "cd ../.. && pnpm install --no-frozen-lockfile && pnpm turbo run build --filter=@abdalkader/portfolio",
   "outputDirectory": ".next",
-  "installCommand": "pnpm install",
+  "installCommand": "pnpm install --no-frozen-lockfile",
   "framework": "nextjs",
   "trailingSlash": true,
   "cleanUrls": true,
