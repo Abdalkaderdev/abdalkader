@@ -1,0 +1,290 @@
+---
+title: Input Props
+description: 'Complete API reference for Input component props'
+---
+
+## InputProps Interface
+
+```tsx
+interface InputProps extends Omit<React.InputHTMLAttributes<HTMLInputElement>, 'size'> {
+  type?: 'text' | 'email' | 'password' | 'number' | 'tel' | 'url';
+  label?: string;
+  error?: boolean;
+  errorMessage?: string;
+  required?: boolean;
+  helperText?: string;
+}
+```
+
+## Props
+
+### label
+
+<ParamField path="label" type="string">
+  Label text displayed above the input. Automatically associates with input using `htmlFor`.
+</ParamField>
+
+**Example:**
+```tsx
+<Input label="Email Address" />
+```
+
+### type
+
+<ParamField path="type" type="'text' | 'email' | 'password' | 'number' | 'tel' | 'url'" default="text">
+  HTML input type attribute.
+  
+  - `text`: Standard text input
+  - `email`: Email input with validation
+  - `password`: Password input (masked)
+  - `number`: Numeric input
+  - `tel`: Telephone number
+  - `url`: URL input
+</ParamField>
+
+**Example:**
+```tsx
+<Input type="email" label="Email" />
+<Input type="password" label="Password" />
+```
+
+### placeholder
+
+<ParamField path="placeholder" type="string">
+  Placeholder text shown when input is empty.
+</ParamField>
+
+**Example:**
+```tsx
+<Input placeholder="Enter your email" />
+```
+
+### value
+
+<ParamField path="value" type="string">
+  Controlled input value.
+</ParamField>
+
+**Example:**
+```tsx
+const [value, setValue] = useState('');
+<Input value={value} onChange={(e) => setValue(e.target.value)} />
+```
+
+### defaultValue
+
+<ParamField path="defaultValue" type="string">
+  Default value for uncontrolled input.
+</ParamField>
+
+**Example:**
+```tsx
+<Input defaultValue="initial value" />
+```
+
+### onChange
+
+<ParamField path="onChange" type="(event: React.ChangeEvent<HTMLInputElement>) => void">
+  Change event handler called when input value changes.
+</ParamField>
+
+**Example:**
+```tsx
+<Input onChange={(e) => console.log(e.target.value)} />
+```
+
+### error
+
+<ParamField path="error" type="boolean" default="false">
+  Error state that changes input styling and sets `aria-invalid`.
+</ParamField>
+
+**Example:**
+```tsx
+<Input error={true} errorMessage="Invalid input" />
+```
+
+### errorMessage
+
+<ParamField path="errorMessage" type="string">
+  Error message displayed below input when `error` is true. Has `role="alert"` for screen readers.
+</ParamField>
+
+**Example:**
+```tsx
+<Input
+  error={true}
+  errorMessage="Please enter a valid email address"
+/>
+```
+
+### helperText
+
+<ParamField path="helperText" type="string">
+  Helper text displayed below input. Hidden when error message is shown.
+</ParamField>
+
+**Example:**
+```tsx
+<Input
+  label="Password"
+  helperText="Must be at least 8 characters"
+/>
+```
+
+### required
+
+<ParamField path="required" type="boolean" default="false">
+  Marks field as required. Adds asterisk (*) to label and sets `aria-required`.
+</ParamField>
+
+**Example:**
+```tsx
+<Input label="Email" required />
+```
+
+### disabled
+
+<ParamField path="disabled" type="boolean" default="false">
+  Disables the input, preventing interaction.
+</ParamField>
+
+**Example:**
+```tsx
+<Input disabled />
+```
+
+### id
+
+<ParamField path="id" type="string">
+  HTML id attribute. Auto-generated if not provided.
+</ParamField>
+
+**Example:**
+```tsx
+<Input id="email-input" label="Email" />
+```
+
+### className
+
+<ParamField path="className" type="string">
+  Additional CSS classes applied to the wrapper div.
+</ParamField>
+
+**Example:**
+```tsx
+<Input className="custom-input" />
+```
+
+## Number Input Props
+
+When `type="number"`, additional props are available:
+
+### min
+
+<ParamField path="min" type="number">
+  Minimum value for number input.
+</ParamField>
+
+### max
+
+<ParamField path="max" type="number">
+  Maximum value for number input.
+</ParamField>
+
+### step
+
+<ParamField path="step" type="number">
+  Step increment for number input.
+</ParamField>
+
+**Example:**
+```tsx
+<Input
+  type="number"
+  min={0}
+  max={100}
+  step={5}
+/>
+```
+
+## Inherited Props
+
+Input extends `React.InputHTMLAttributes<HTMLInputElement>`, inheriting all standard HTML input attributes:
+
+- `name`
+- `autoComplete`
+- `autoFocus`
+- `readOnly`
+- `maxLength`
+- `minLength`
+- `pattern`
+- `onFocus`
+- `onBlur`
+- `onKeyDown`
+- And all other standard input attributes
+
+## CSS Classes
+
+| Class | Description |
+|-------|-------------|
+| `.input-wrapper` | Wrapper div container |
+| `.input-label` | Label element |
+| `.input-required` | Required asterisk |
+| `.input` | Input element |
+| `.input--error` | Error state styling |
+| `.input-error` | Error message |
+| `.input-helper` | Helper text |
+
+## CSS Variables
+
+| Variable | Default | Description |
+|----------|---------|-------------|
+| `--primary-color` | `#007bff` | Focus border color |
+| `--danger-color` | `#dc3545` | Error border color |
+| `--border-color` | `#dee2e6` | Default border color |
+| `--font-family` | System fonts | Input font family |
+| `--border-radius` | `0.375rem` | Input border radius |
+| `--focus-ring-color` | `rgba(59, 130, 246, 0.5)` | Focus ring color |
+
+## ARIA Attributes
+
+The Input component automatically manages ARIA attributes:
+
+- `aria-invalid`: Set to `true` when `error` is true
+- `aria-required`: Set to `true` when `required` is true
+- `aria-describedby`: Links to error message and helper text
+- Auto-generated unique IDs for accessibility
+
+## TypeScript
+
+Import the type:
+
+```tsx
+import { InputProps } from '@abdalkader/component-library';
+
+const props: InputProps = {
+  label: 'Email',
+  type: 'email',
+  required: true,
+};
+```
+
+## Related
+
+<CardGroup cols={2}>
+  <Card
+    title="Input Component"
+    icon="input-text"
+    href="/components/input"
+  >
+    Component documentation
+  </Card>
+  <Card
+    title="Button Props"
+    icon="hand-pointer"
+    href="/api/button-props"
+  >
+    Button API reference
+  </Card>
+</CardGroup>

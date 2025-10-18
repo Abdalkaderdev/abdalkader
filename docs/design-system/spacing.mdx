@@ -1,0 +1,236 @@
+---
+title: 'Spacing System'
+description: 'Consistent spacing scale for margins, padding, and layout'
+---
+
+# Spacing System
+
+Our spacing system provides consistent rhythm and visual hierarchy through a carefully crafted scale.
+
+## Spacing Scale
+
+Our spacing system is based on a 4px base unit, creating a harmonious and predictable scale.
+
+| Token | Value | Pixels | Usage |
+|-------|-------|--------|-------|
+| `xs` | 0.25rem | 4px | Fine adjustments, borders |
+| `sm` | 0.5rem | 8px | Small gaps, compact layouts |
+| `md` | 1rem | 16px | Standard spacing, default gaps |
+| `lg` | 1.5rem | 24px | Section spacing, comfortable gaps |
+| `xl` | 2rem | 32px | Large sections, major spacing |
+| `2xl` | 3rem | 48px | Page sections, hero spacing |
+| `3xl` | 4rem | 64px | Major page divisions |
+| `4xl` | 6rem | 96px | Extra large spacing, hero sections |
+| `5xl` | 8rem | 128px | Maximum spacing for special layouts |
+
+## CSS Custom Properties
+
+```css
+:root {
+  /* Spacing Scale */
+  --space-xs: 0.25rem;  /* 4px */
+  --space-sm: 0.5rem;   /* 8px */
+  --space-md: 1rem;     /* 16px */
+  --space-lg: 1.5rem;   /* 24px */
+  --space-xl: 2rem;     /* 32px */
+  --space-2xl: 3rem;    /* 48px */
+  --space-3xl: 4rem;    /* 64px */
+  --space-4xl: 6rem;    /* 96px */
+  --space-5xl: 8rem;    /* 128px */
+  
+  /* Semantic Spacing */
+  --space-component: var(--space-md);
+  --space-section: var(--space-2xl);
+  --space-page: var(--space-4xl);
+}
+```
+
+## Usage Guidelines
+
+### Component Spacing
+```css
+/* Button internal spacing */
+.button {
+  padding: var(--space-sm) var(--space-md);
+}
+
+/* Card component */
+.card {
+  padding: var(--space-lg);
+  margin-bottom: var(--space-md);
+}
+```
+
+### Layout Spacing
+```css
+/* Section spacing */
+.section {
+  margin-bottom: var(--space-2xl);
+}
+
+/* Page container */
+.page {
+  padding: var(--space-xl) var(--space-md);
+}
+```
+
+## Responsive Spacing
+
+### Mobile-First Approach
+```css
+/* Base (mobile) spacing */
+.responsive-section {
+  padding: var(--space-md);
+  margin-bottom: var(--space-lg);
+}
+
+/* Tablet and up */
+@media (min-width: 768px) {
+  .responsive-section {
+    padding: var(--space-lg);
+    margin-bottom: var(--space-xl);
+  }
+}
+
+/* Desktop and up */
+@media (min-width: 1024px) {
+  .responsive-section {
+    padding: var(--space-xl);
+    margin-bottom: var(--space-2xl);
+  }
+}
+```
+
+### Responsive Spacing Utilities
+```tsx
+// Using responsive spacing in components
+<div className="p-md md:p-lg lg:p-xl">
+  Content with responsive padding
+</div>
+
+<section className="mb-lg md:mb-xl lg:mb-2xl">
+  Section with responsive bottom margin
+</section>
+```
+
+## Common Patterns
+
+### Stack Spacing
+Consistent vertical spacing between elements:
+
+```css
+.stack > * + * {
+  margin-top: var(--space-md);
+}
+
+.stack-sm > * + * {
+  margin-top: var(--space-sm);
+}
+
+.stack-lg > * + * {
+  margin-top: var(--space-lg);
+}
+```
+
+### Grid Gaps
+```css
+.grid {
+  display: grid;
+  gap: var(--space-md);
+}
+
+.grid-sm {
+  gap: var(--space-sm);
+}
+
+.grid-lg {
+  gap: var(--space-lg);
+}
+```
+
+## Component Examples
+
+### Button Spacing
+```tsx
+// Internal button spacing
+<Button>
+  {/* padding: 8px 16px */}
+  Click me
+</Button>
+
+// Button group spacing
+<div className="flex gap-md">
+  <Button variant="primary">Save</Button>
+  <Button variant="secondary">Cancel</Button>
+</div>
+```
+
+### Card Spacing
+```tsx
+<Card>
+  {/* Internal padding: 24px */}
+  <CardHeader className="mb-md">
+    {/* margin-bottom: 16px */}
+    Card Title
+  </CardHeader>
+  <CardContent>
+    Card content with consistent spacing
+  </CardContent>
+</Card>
+```
+
+### Form Spacing
+```tsx
+<form className="space-y-lg">
+  {/* gap between form elements: 24px */}
+  <Input label="Name" />
+  <Input label="Email" />
+  <Button type="submit">Submit</Button>
+</form>
+```
+
+## Best Practices
+
+<Tip>
+Use the spacing scale consistently throughout your designs. Avoid arbitrary spacing values that don't align with the system.
+</Tip>
+
+<Warning>
+Be careful with very large spacing values (4xl, 5xl) - they should be used sparingly for special layouts only.
+</Warning>
+
+### Design Guidelines
+
+1. **Consistent Rhythm**: Use the spacing scale to create consistent vertical and horizontal rhythm
+2. **Breathing Room**: Ensure adequate spacing around interactive elements (minimum 8px)
+3. **Visual Grouping**: Use spacing to create visual relationships between related elements
+4. **Responsive Consideration**: Adjust spacing for different screen sizes to maintain optimal layouts
+
+### Common Spacing Combinations
+
+- **Tight spacing**: `xs` (4px) - for borders, fine adjustments
+- **Compact layouts**: `sm` (8px) - for dense interfaces, mobile layouts
+- **Standard spacing**: `md` (16px) - most common spacing, default choice
+- **Comfortable spacing**: `lg` (24px) - for better readability and breathing room
+- **Section separation**: `xl` to `2xl` (32px-48px) - between major sections
+- **Page-level spacing**: `3xl` to `4xl` (64px-96px) - for hero sections, major divisions
+
+## Spacing in Components
+
+All components use the spacing system internally:
+
+```tsx
+import { Stack, Box } from '@abdalkader/ui';
+
+// Stack component with consistent spacing
+<Stack spacing="md">
+  <div>Item 1</div>
+  <div>Item 2</div>
+  <div>Item 3</div>
+</Stack>
+
+// Box component with spacing props
+<Box p="lg" m="md">
+  Content with padding and margin
+</Box>
+```

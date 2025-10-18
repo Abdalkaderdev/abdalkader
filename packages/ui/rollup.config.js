@@ -33,7 +33,7 @@ module.exports = [
       typescript({
         tsconfig: './tsconfig.json',
         declaration: false, // We'll handle declarations separately
-        exclude: ['**/*.stories.tsx', '**/*.test.tsx', '**/*.spec.tsx'],
+        exclude: ['**/*.stories.tsx', '**/*.test.tsx', '**/*.spec.tsx', '**/test/**/*'],
         compilerOptions: {
           jsx: 'react-jsx',
           declaration: false,

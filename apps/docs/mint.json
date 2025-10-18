@@ -1,5 +1,5 @@
 {
-  "name": "Component Library",
+  "name": "Abdalkader Design System",
   "logo": {
     "dark": "/logo/dark.svg",
     "light": "/logo/light.svg"
@@ -22,7 +22,7 @@
   ],
   "topbarCtaButton": {
     "name": "GitHub",
-    "url": "https://github.com/abdalkader/component-library"
+    "url": "https://github.com/Abdalkaderdev/abdalkader"
   },
   "tabs": [
     {
@@ -85,7 +85,7 @@
     }
   ],
   "footerSocials": {
-    "github": "https://github.com/abdalkader/component-library",
+    "github": "https://github.com/Abdalkaderdev/abdalkader",
     "website": "https://abdalkader.dev"
   },
   "analytics": {

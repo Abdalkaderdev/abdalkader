@@ -1,0 +1,303 @@
+---
+title: 'Animation System'
+description: 'Motion design principles, timing, and animation guidelines'
+---
+
+# Animation System
+
+Our animation system creates delightful, purposeful motion that enhances user experience without being distracting.
+
+## Animation Principles
+
+### 🎯 **Purposeful Motion**
+Every animation serves a purpose - guiding attention, providing feedback, or enhancing spatial understanding.
+
+### ⚡ **Performance First**
+All animations are optimized for 60fps performance using hardware acceleration and efficient properties.
+
+### ♿ **Respectful of Preferences**
+Animations respect user preferences for reduced motion and provide appropriate fallbacks.
+
+## Timing System
+
+### Duration Scale
+
+| Token | Value | Usage |
+|-------|-------|-------|
+| `instant` | 0ms | Immediate state changes |
+| `fast` | 150ms | Quick feedback, hover states |
+| `normal` | 300ms | Standard transitions |
+| `slow` | 500ms | Complex animations, page transitions |
+| `slower` | 800ms | Hero animations, special effects |
+
+### Easing Functions
+
+| Name | Value | Usage |
+|------|-------|-------|
+| `ease-out` | `cubic-bezier(0.25, 0.46, 0.45, 0.94)` | Elements entering the screen |
+| `ease-in` | `cubic-bezier(0.55, 0.055, 0.675, 0.19)` | Elements leaving the screen |
+| `ease-in-out` | `cubic-bezier(0.645, 0.045, 0.355, 1)` | Elements moving within the screen |
+| `bounce` | `cubic-bezier(0.68, -0.55, 0.265, 1.55)` | Playful interactions |
+| `smooth` | `cubic-bezier(0.19, 1, 0.22, 1)` | Smooth, elegant transitions |
+
+## CSS Custom Properties
+
+```css
+:root {
+  /* Duration */
+  --duration-instant: 0ms;
+  --duration-fast: 150ms;
+  --duration-normal: 300ms;
+  --duration-slow: 500ms;
+  --duration-slower: 800ms;
+  
+  /* Easing */
+  --ease-out: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  --ease-in: cubic-bezier(0.55, 0.055, 0.675, 0.19);
+  --ease-in-out: cubic-bezier(0.645, 0.045, 0.355, 1);
+  --ease-bounce: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  --ease-smooth: cubic-bezier(0.19, 1, 0.22, 1);
+  
+  /* Common Transitions */
+  --transition-fast: var(--duration-fast) var(--ease-out);
+  --transition-normal: var(--duration-normal) var(--ease-out);
+  --transition-slow: var(--duration-slow) var(--ease-in-out);
+  --transition-smooth: var(--duration-slower) var(--ease-smooth);
+}
+```
+
+## Common Animation Patterns
+
+### Hover Transitions
+```css
+.button {
+  transition: all var(--transition-fast);
+  transform: translateY(0);
+}
+
+.button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+```
+
+### Fade Animations
+```css
+.fade-in {
+  opacity: 0;
+  animation: fadeIn var(--duration-normal) var(--ease-out) forwards;
+}
+
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+  }
+}
+```
+
+### Slide Animations
+```css
+.slide-up {
+  transform: translateY(20px);
+  opacity: 0;
+  animation: slideUp var(--duration-slow) var(--ease-out) forwards;
+}
+
+@keyframes slideUp {
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+```
+
+### Scale Animations
+```css
+.scale-in {
+  transform: scale(0.95);
+  opacity: 0;
+  animation: scaleIn var(--duration-normal) var(--ease-out) forwards;
+}
+
+@keyframes scaleIn {
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+```
+
+## Component Animations
+
+### Button States
+```tsx
+// Hover and active states
+<Button className="hover:scale-105 active:scale-95 transition-transform duration-fast">
+  Interactive Button
+</Button>
+```
+
+### Modal Transitions
+```tsx
+// Modal entrance animation
+<Modal 
+  className="animate-in fade-in slide-in-from-bottom-4 duration-normal"
+  exitClassName="animate-out fade-out slide-out-to-bottom-4 duration-fast"
+>
+  Modal Content
+</Modal>
+```
+
+### Loading States
+```tsx
+// Skeleton loading animation
+<div className="animate-pulse bg-gray-200 rounded">
+  Loading content...
+</div>
+
+// Spinner animation
+<div className="animate-spin rounded-full border-2 border-primary">
+  <div className="sr-only">Loading...</div>
+</div>
+```
+
+## Accessibility Considerations
+
+### Reduced Motion Support
+```css
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+```
+
+### Focus Animations
+```css
+.focus-ring {
+  transition: box-shadow var(--transition-fast);
+}
+
+.focus-ring:focus-visible {
+  box-shadow: 0 0 0 3px rgba(244, 78, 0, 0.3);
+}
+```
+
+## Performance Optimization
+
+### Hardware Acceleration
+```css
+.optimized-animation {
+  /* Trigger hardware acceleration */
+  transform: translateZ(0);
+  will-change: transform;
+}
+
+.optimized-animation:hover {
+  /* Only animate transform and opacity for best performance */
+  transform: translateY(-2px) translateZ(0);
+}
+```
+
+### Animation Cleanup
+```css
+.animation-complete {
+  /* Remove will-change after animation completes */
+  will-change: auto;
+}
+```
+
+## Framer Motion Integration
+
+For complex animations, we use Framer Motion:
+
+```tsx
+import { motion } from 'framer-motion';
+
+// Page transitions
+<motion.div
+  initial={{ opacity: 0, y: 20 }}
+  animate={{ opacity: 1, y: 0 }}
+  exit={{ opacity: 0, y: -20 }}
+  transition={{ 
+    duration: 0.3,
+    ease: [0.25, 0.46, 0.45, 0.94]
+  }}
+>
+  Page Content
+</motion.div>
+
+// Stagger animations
+<motion.div
+  variants={{
+    hidden: { opacity: 0 },
+    show: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1
+      }
+    }
+  }}
+  initial="hidden"
+  animate="show"
+>
+  {items.map((item, i) => (
+    <motion.div
+      key={i}
+      variants={{
+        hidden: { opacity: 0, y: 20 },
+        show: { opacity: 1, y: 0 }
+      }}
+    >
+      {item}
+    </motion.div>
+  ))}
+</motion.div>
+```
+
+## Best Practices
+
+<Tip>
+Use animations to guide user attention and provide feedback, but avoid overusing them as they can become distracting.
+</Tip>
+
+<Warning>
+Always test animations on lower-end devices to ensure they don't negatively impact performance.
+</Warning>
+
+### Animation Guidelines
+
+1. **Subtle by Default**: Most animations should be subtle and enhance rather than dominate the experience
+2. **Consistent Timing**: Use the timing scale consistently across similar interactions
+3. **Meaningful Motion**: Every animation should have a clear purpose and enhance understanding
+4. **Performance Conscious**: Prefer animating `transform` and `opacity` properties
+5. **Accessible**: Always provide reduced motion alternatives
+
+### Common Use Cases
+
+- **Micro-interactions**: Button hovers, form field focus states
+- **State Changes**: Loading states, success/error feedback
+- **Navigation**: Page transitions, modal appearances
+- **Content Reveal**: Scroll-triggered animations, progressive disclosure
+- **Spatial Relationships**: Moving elements, layout changes
+
+## Animation Utilities
+
+Pre-built animation classes for common patterns:
+
+```css
+/* Utility classes */
+.animate-fade-in { animation: fadeIn 300ms ease-out; }
+.animate-slide-up { animation: slideUp 500ms ease-out; }
+.animate-scale-in { animation: scaleIn 300ms ease-out; }
+.animate-bounce-in { animation: bounceIn 500ms cubic-bezier(0.68, -0.55, 0.265, 1.55); }
+
+/* Hover utilities */
+.hover-lift:hover { transform: translateY(-2px); }
+.hover-scale:hover { transform: scale(1.05); }
+.hover-glow:hover { box-shadow: 0 0 20px rgba(244, 78, 0, 0.3); }
+```
