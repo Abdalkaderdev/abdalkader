@@ -22,7 +22,7 @@ const navigationLinks = [
 const crossAppLinks = [
     { text: 'Blog', href: 'https://blog.abdalkader.dev', external: true },
     { text: 'Docs', href: 'https://docs.abdalkader.dev', external: true },
-    { text: 'Components', href: 'https://components.abdalkader.dev', external: true },
+    { text: 'Components', href: 'https://storybook.abdalkader.dev', external: true },
 ].map(({ text, href, external }) => (
     <a key={text} href={href} target={external ? "_blank" : "_self"} rel={external ? "noopener noreferrer" : undefined}>{text}</a>
 ));
@@ -30,7 +30,7 @@ const crossAppLinks = [
 // Social links
 const socialLinks = [
     { text: 'GitHub', href: 'https://github.com/abdalkaderdev' },
-    { text: 'LinkedIn', href: 'https://linkedin.com/in/abdalkaderdev' },
+    { text: 'LinkedIn', href: 'https://www.linkedin.com/in/abdalkaderdev' },
     { text: 'Instagram', href: 'https://www.instagram.com/abdalkader.dev' },
 ].map(({ text, href }) => (
     <Link key={text} href={href} target="_blank" rel="noopener noreferrer">{text}</Link>

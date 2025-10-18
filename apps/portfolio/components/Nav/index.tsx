@@ -16,7 +16,7 @@ const links = [
 const crossAppLinks = [
     { name: 'Blog', path: 'https://blog.abdalkader.dev', external: true },
     { name: 'Docs', path: 'https://docs.abdalkader.dev', external: true },
-    { name: 'Components', path: 'https://components.abdalkader.dev', external: true },
+    { name: 'Components', path: 'https://storybook.abdalkader.dev', external: true },
 ];
 
 export default function Nav() {

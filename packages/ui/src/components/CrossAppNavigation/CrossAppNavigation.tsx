@@ -31,7 +31,7 @@ const CrossAppNavigation: React.FC<CrossAppNavigationProps> = ({
     },
     { 
       name: 'Components', 
-      url: 'https://components.abdalkader.dev', 
+      url: 'https://storybook.abdalkader.dev', 
       description: 'Component library',
       icon: '🧩'
     },

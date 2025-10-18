@@ -21,6 +21,12 @@ const CrossAppNavigation = () => {
       description: 'Project documentation',
       icon: '📚'
     },
+    { 
+      name: 'Components', 
+      url: 'https://storybook.abdalkader.dev', 
+      description: 'Component library and playground',
+      icon: '🧩'
+    },
   ];
 
   return (

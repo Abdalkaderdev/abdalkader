@@ -13,7 +13,7 @@
   "topbarLinks": [
     {
       "name": "Components",
-      "url": "https://components.abdalkader.dev"
+      "url": "https://storybook.abdalkader.dev"
     },
     {
       "name": "Portfolio",
@@ -22,7 +22,7 @@
   ],
   "topbarCtaButton": {
     "name": "GitHub",
-    "url": "https://github.com/Abdalkaderdev/abdalkader"
+    "url": "https://github.com/Abdalkaderdev"
   },
   "navigation": [
     {
@@ -84,9 +84,9 @@
     }
   ],
   "footerSocials": {
-    "github": "https://github.com/Abdalkaderdev/abdalkader",
+    "github": "https://github.com/Abdalkaderdev",
     "website": "https://abdalkader.dev",
-    "linkedin": "https://linkedin.com/in/abdalkader"
+    "linkedin": "https://www.linkedin.com/in/abdalkaderdev"
   },
   "analytics": {
     "ga4": {

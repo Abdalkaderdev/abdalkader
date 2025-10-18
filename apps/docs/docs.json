@@ -66,7 +66,7 @@
         },
         {
           "anchor": "Storybook",
-          "href": "https://components.abdalkader.dev",
+          "href": "https://storybook.abdalkader.dev",
           "icon": "book"
         },
         {
@@ -93,18 +93,18 @@
       },
       {
         "label": "Storybook",
-        "href": "https://components.abdalkader.dev"
+        "href": "https://storybook.abdalkader.dev"
       }
     ],
     "primary": {
       "type": "button",
       "label": "GitHub",
-      "href": "https://github.com/Abdalkaderdev/abdalkader"
+      "href": "https://github.com/Abdalkaderdev"
     }
   },
   "footer": {
     "socials": {
-      "github": "https://github.com/Abdalkaderdev/abdalkader",
+      "github": "https://github.com/Abdalkaderdev",
       "website": "https://abdalkader.dev"
     },
     "links": [
@@ -118,7 +118,7 @@
       },
       {
         "label": "Components",
-        "href": "https://components.abdalkader.dev"
+        "href": "https://storybook.abdalkader.dev"
       }
     ]
   },

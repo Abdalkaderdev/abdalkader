@@ -127,7 +127,7 @@ navbar:
         About: /about
         Portfolio: https://abdalkader.dev
         Docs: https://docs.abdalkader.dev
-        Components: https://components.abdalkader.dev
+        Components: https://storybook.abdalkader.dev
     # Links to be shown on the right of the navigation bar
     links:
         Portfolio:
@@ -241,7 +241,7 @@ widgets:
                 url: https://github.com/abdalkaderdev
             LinkedIn:
                 icon: fab fa-linkedin
-                url: https://linkedin.com/in/abdalkaderdev
+                url: https://www.linkedin.com/in/abdalkaderdev
             Instagram:
                 icon: fab fa-instagram
                 url: https://www.instagram.com/abdalkader.dev
