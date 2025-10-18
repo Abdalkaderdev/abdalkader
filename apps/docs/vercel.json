@@ -1,6 +1,7 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
-  "buildCommand": "cd ../.. && pnpm install --no-frozen-lockfile && pnpm turbo run build --filter=@abdalkader/ui && cd apps/docs && echo 'Mintlify docs are built on deployment'",
-  "installCommand": "pnpm install --no-frozen-lockfile",
-  "outputDirectory": "."
+  "buildCommand": "echo 'Mintlify docs are built on deployment'",
+  "outputDirectory": ".",
+  "framework": "docusaurus",
+  "installCommand": "pnpm install --no-frozen-lockfile"
 }
