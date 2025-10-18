@@ -168,27 +168,6 @@ git push -u origin blog
 
 ### Add AI Editor (5 min)
 ```bash
-# Create app
-cd apps
-npx create-next-app@latest ai-editor
-
-# Update package.json
-{
-  "name": "@abdalkader/ai-editor",
-  "dependencies": {
-    "@abdalkader/ui": "workspace:*"
-  }
-}
-
-# Create branch
-git checkout -b ai-editor
-git add .
-git commit -m "feat: init ai-editor"
-git push -u origin ai-editor
-
-# Create Vercel project
-# Branch: ai-editor
-# Domain: editor.abdalkader.dev
 ```
 
 ---

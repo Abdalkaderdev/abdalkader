@@ -199,7 +199,6 @@ deploy:
       "develop": true,
       "components": true,
       "blog": true,
-      "ai-editor": true
     }
   }
 }

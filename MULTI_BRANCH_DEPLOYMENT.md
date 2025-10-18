@@ -14,7 +14,6 @@ Enterprise-level deployment strategy using **ONE monorepo** with **multiple Verc
 | `develop` | `dev.abdalkader.dev` | Portfolio | Staging/preview |
 | `components` | `components.abdalkader.dev` | Storybook | Component library docs |
 | `blog` | `blog.abdalkader.dev` | Blog | Future blog (Next.js) |
-| `ai-editor` | `editor.abdalkader.dev` | AI Editor | AI code editor app |
 
 ---
 
@@ -228,34 +227,6 @@ git push -u origin blog
 # - Domain: blog.abdalkader.dev
 ```
 
-### AI Editor App (ai-editor branch)
-
-```bash
-# Create AI editor app
-cd apps
-npx create-next-app@latest ai-editor
-
-# Update package.json
-{
-  "name": "@abdalkader/ai-editor",
-  "dependencies": {
-    "@abdalkader/ui": "workspace:*",
-    "@monaco-editor/react": "^4.6.0"
-  }
-}
-
-# Create branch
-git checkout -b ai-editor
-git add .
-git commit -m "feat: initialize AI editor app"
-git push -u origin ai-editor
-
-# Create Vercel project
-# - Branch: ai-editor
-# - Build: pnpm turbo run build --filter=@abdalkader/ai-editor
-# - Output: apps/ai-editor/.next
-# - Domain: editor.abdalkader.dev
-```
 
 ---
 
@@ -323,7 +294,6 @@ git checkout main && git pull
 git checkout develop && git merge main
 git checkout components && git merge main
 git checkout blog && git merge main
-git checkout ai-editor && git merge main
 ```
 
 ### 2. Use Turbo for Efficient Builds

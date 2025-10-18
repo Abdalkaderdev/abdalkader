@@ -7,7 +7,6 @@ on:
       - develop
       - components
       - blog
-      - ai-editor
 
 env:
   VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
@@ -67,7 +66,4 @@ jobs:
             echo "📝 Deploying Blog"
             # Add blog deployment logic here
             
-          elif [ "${{ github.ref }}" == "refs/heads/ai-editor" ]; then
-            echo "🤖 Deploying AI Editor"
-            # Add AI editor deployment logic here
           fi

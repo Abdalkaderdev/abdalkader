@@ -259,10 +259,9 @@ git checkout main && git merge design/update-tokens
 git checkout develop && git merge main
 git checkout components && git merge main
 git checkout blog && git merge main
-git checkout ai-editor && git merge main
 
 # Push all
-git push origin main develop components blog ai-editor
+git push origin main develop components blog
 ```
 
 ---
@@ -428,10 +427,6 @@ git checkout blog
 git merge main
 git push origin blog
 
-# Sync to ai-editor (if exists)
-git checkout ai-editor
-git merge main
-git push origin ai-editor
 ```
 
 ---
