@@ -1,6 +1,8 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { Button } from '@abdalkader/ui';
 import React from 'react';
+import InteractivePlayground from '../src/components/InteractivePlayground';
+import DesignSystemVisualizer from '../src/components/DesignSystemVisualizer';
 
 const meta: Meta<typeof Button> = {
   title: 'Components/Button',
@@ -184,6 +186,36 @@ export const AsSubmitButton: Story = {
     docs: {
       description: {
         story: 'Button can be used as a form submit button by setting type="submit".',
+      },
+    },
+  },
+};
+
+export const InteractivePlayground: Story = {
+  render: () => (
+    <InteractivePlayground
+      componentName="Button"
+      initialCode={`<Button variant="primary" size="medium">
+  Click me!
+</Button>`}
+      component={Button}
+    />
+  ),
+  parameters: {
+    docs: {
+      description: {
+        story: 'Interactive playground where you can edit code and see live preview of the Button component.',
+      },
+    },
+  },
+};
+
+export const DesignSystemVisualizer: Story = {
+  render: () => <DesignSystemVisualizer />,
+  parameters: {
+    docs: {
+      description: {
+        story: 'Explore the design system tokens including colors, typography, spacing, and animations.',
       },
     },
   },

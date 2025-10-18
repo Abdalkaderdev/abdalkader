@@ -1,6 +1,8 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { Input } from '@abdalkader/ui';
 import React, { useState } from 'react';
+import InteractivePlayground from '../src/components/InteractivePlayground';
+import TestingTools from '../src/components/TestingTools';
 
 const meta: Meta<typeof Input> = {
   title: 'Components/Input',
@@ -245,6 +247,66 @@ export const FormValidation: Story = {
     docs: {
       description: {
         story: 'Example of real-time form validation with error handling.',
+      },
+    },
+  },
+};
+
+export const InteractivePlayground: Story = {
+  render: () => (
+    <InteractivePlayground
+      componentName="Input"
+      initialCode={`<Input 
+  label="Email Address" 
+  type="email" 
+  placeholder="Enter your email"
+  required
+/>`}
+      component={Input}
+    />
+  ),
+  parameters: {
+    docs: {
+      description: {
+        story: 'Interactive playground where you can edit code and see live preview of the Input component.',
+      },
+    },
+  },
+};
+
+export const TestingTools: Story = {
+  render: () => (
+    <TestingTools>
+      <div style={{ padding: '2rem', display: 'flex', flexDirection: 'column', gap: '1rem', minWidth: '300px' }}>
+        <Input
+          label="Full Name"
+          placeholder="Enter your full name"
+          required
+        />
+        <Input
+          label="Email Address"
+          type="email"
+          placeholder="email@example.com"
+          required
+        />
+        <Input
+          label="Password"
+          type="password"
+          placeholder="Enter password"
+          helperText="Must be at least 8 characters"
+        />
+        <Input
+          label="Phone Number"
+          type="tel"
+          placeholder="(555) 555-5555"
+        />
+      </div>
+    </TestingTools>
+  ),
+  parameters: {
+    docs: {
+      description: {
+        story: 'Comprehensive testing tools including viewport testing, accessibility scanning, visual regression, and interaction tracking.',
       },
     },
   },
