@@ -1,0 +1,95 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  
+  body {
+    @apply bg-background text-text;
+  }
+}
+
+@layer components {
+  .portfolio-hero-text {
+    @apply text-4xl md:text-5xl lg:text-6xl font-bold;
+  }
+  
+  .portfolio-medium-text {
+    @apply text-xl md:text-2xl font-semibold;
+  }
+  
+  .portfolio-base-text {
+    @apply text-base md:text-lg;
+  }
+  
+  .portfolio-small-text {
+    @apply text-sm md:text-base;
+  }
+  
+  .neural-glow {
+    @apply shadow-lg;
+    box-shadow: 0 0 20px rgba(0, 255, 136, 0.3);
+  }
+  
+  .brainwave-pattern {
+    background: linear-gradient(45deg, #8b5cf6, #a78bfa, #c084fc);
+    background-size: 400% 400%;
+    animation: brainwave 3s ease-in-out infinite;
+  }
+  
+  .neural-network {
+    background-image: 
+      radial-gradient(circle at 20% 50%, rgba(0, 255, 136, 0.1) 0%, transparent 50%),
+      radial-gradient(circle at 80% 20%, rgba(139, 92, 246, 0.1) 0%, transparent 50%),
+      radial-gradient(circle at 40% 80%, rgba(255, 107, 107, 0.1) 0%, transparent 50%);
+  }
+}
+
+@layer utilities {
+  .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+  }
+  
+  .motion-reduce {
+    @apply transition-none;
+  }
+  
+  .motion-reduce * {
+    @apply transition-none;
+  }
+  
+  .high-contrast {
+    @apply contrast-200;
+  }
+  
+  .large-text {
+    @apply text-lg;
+  }
+  
+  .large-text h1 {
+    @apply text-5xl;
+  }
+  
+  .large-text h2 {
+    @apply text-4xl;
+  }
+  
+  .large-text h3 {
+    @apply text-3xl;
+  }
+  
+  .focus-visible:focus {
+    @apply outline-2 outline-offset-2 outline-primary;
+  }
+}
