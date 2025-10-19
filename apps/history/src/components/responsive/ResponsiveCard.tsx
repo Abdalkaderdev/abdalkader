@@ -184,12 +184,7 @@ export const ResponsiveCard: React.FC<ResponsiveCardProps> = ({
       animate: { 
         opacity: 1, 
         y: 0, 
-        scale: 1,
-        transition: { 
-          duration: 0.6, 
-          ease: [0.19, 1, 0.22, 1],
-          delay: delay * 0.1 
-        }
+        scale: 1
       },
       exit: { 
         opacity: 0, 
@@ -206,6 +201,11 @@ export const ResponsiveCard: React.FC<ResponsiveCardProps> = ({
         scale: 0.98,
         transition: { duration: 0.1 }
       },
+      transition: {
+        duration: 0.6,
+        ease: "easeOut",
+        delay: delay * 0.1
+      }
     };
   };
 
@@ -230,7 +230,7 @@ export const ResponsiveCard: React.FC<ResponsiveCardProps> = ({
       aria-expanded={ariaExpanded}
       aria-controls={ariaControls}
       id={id}
-      variants={animationVariants}
+      variants={animationVariants as any}
       initial="initial"
       animate="animate"
       exit="exit"

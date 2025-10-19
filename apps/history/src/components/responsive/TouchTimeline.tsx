@@ -267,7 +267,7 @@ export const TouchTimeline: React.FC<TouchTimelineProps> = ({
             {sortedItems.map((item, index) => (
               <motion.div
                 key={item.id}
-                ref={el => itemRefs.current[index] = el}
+                ref={(el) => { itemRefs.current[index] = el; }}
                 className={`relative cursor-pointer transition-all duration-300 ${getItemClasses()} ${
                   index === currentIndex 
                     ? 'scale-105 z-10' 
