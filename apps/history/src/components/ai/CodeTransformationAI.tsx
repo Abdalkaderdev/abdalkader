@@ -97,19 +97,29 @@ Please provide:
 Target era: ${selectedEra}`;
 
       const response = await executeAIRequest(
-        (prompt: string) => ({
-          messages: [
-            { 
-              role: 'system', 
-              content: 'You are an expert programming language historian. Transform modern code to historical programming styles, explaining the changes and historical context.' 
-            },
-            { role: 'user', content: prompt }
-          ]
-        }),
+        async (prompt: string) => {
+          const { groqClient } = await import('@/lib/groq/groqClient');
+          const response = await groqClient.chat.completions.create({
+            messages: [
+              { 
+                role: 'system', 
+                content: 'You are an expert programming language historian. Transform modern code to historical programming styles, explaining the changes and historical context.' 
+              },
+              { role: 'user', content: prompt }
+            ],
+            model: 'llama3-8b-8192',
+            temperature: 0.7,
+            max_tokens: 1024
+          });
+          
+          return {
+            content: response.choices[0]?.message?.content || 'No response generated',
+            model: 'llama3-8b-8192'
+          };
+        },
         'code-transform',
         selectedEra,
-        inputCode,
-        0
+        inputCode
       );
 
       if (response) {

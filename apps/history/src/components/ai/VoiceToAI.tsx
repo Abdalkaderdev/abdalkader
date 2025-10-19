@@ -117,8 +117,7 @@ export const VoiceToAI: React.FC<VoiceToAIProps> = ({
         }),
         'voice-chat',
         'voice',
-        'Voice question about programming languages',
-        0
+        'Voice question about programming languages'
       );
 
       if (response) {

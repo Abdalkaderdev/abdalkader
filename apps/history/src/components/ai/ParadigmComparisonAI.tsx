@@ -126,8 +126,7 @@ Focus on the historical development and practical applications during ${selected
         }),
         'paradigm-comparison',
         `${selectedParadigm1}-vs-${selectedParadigm2}`,
-        prompt,
-        0
+        prompt
       );
 
       if (response) {

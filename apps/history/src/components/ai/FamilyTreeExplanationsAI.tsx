@@ -96,8 +96,7 @@ Make it engaging and educational, suitable for someone learning about programmin
         }),
         'family-tree-explanation',
         selectedLanguage,
-        prompt,
-        0
+        prompt
       );
 
       if (response) {

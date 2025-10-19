@@ -304,30 +304,55 @@
   
   /* Museum Card Variants */
   .museum-card-timeline {
-    @apply portfolio-card;
+    background: rgba(0, 0, 0, 0.7);
+    backdrop-filter: var(--backdrop-blur);
+    border: 1px solid var(--color-border);
+    border-radius: var(--border-radius);
+    padding: var(--space-lg);
+    transition: var(--transition-smooth);
     background: linear-gradient(135deg, rgba(244, 78, 0, 0.1), rgba(250, 115, 0, 0.05));
     border-left: 4px solid var(--color-primary);
   }
   
   .museum-card-language {
-    @apply portfolio-card-glass;
+    background: rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(244, 78, 0, 0.2);
+    border-radius: var(--border-radius);
+    padding: var(--space-lg);
+    transition: var(--transition-smooth);
     background: linear-gradient(135deg, rgba(0, 0, 0, 0.8), rgba(244, 78, 0, 0.1));
   }
   
   .museum-card-paradigm {
-    @apply portfolio-card;
+    background: rgba(0, 0, 0, 0.7);
+    backdrop-filter: var(--backdrop-blur);
+    border: 1px solid var(--color-border);
+    border-radius: var(--border-radius);
+    padding: var(--space-lg);
+    transition: var(--transition-smooth);
     background: linear-gradient(135deg, rgba(250, 115, 0, 0.1), rgba(244, 78, 0, 0.05));
     border-top: 4px solid var(--color-primary-light);
   }
   
   .museum-card-code {
-    @apply portfolio-card-glass;
+    background: rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(244, 78, 0, 0.2);
+    border-radius: var(--border-radius);
+    padding: var(--space-lg);
+    transition: var(--transition-smooth);
     background: linear-gradient(135deg, rgba(0, 0, 0, 0.9), rgba(244, 78, 0, 0.15));
     border: 1px solid var(--color-primary);
   }
   
   .museum-card-ai {
-    @apply portfolio-card;
+    background: rgba(0, 0, 0, 0.7);
+    backdrop-filter: var(--backdrop-blur);
+    border: 1px solid var(--color-border);
+    border-radius: var(--border-radius);
+    padding: var(--space-lg);
+    transition: var(--transition-smooth);
     background: linear-gradient(135deg, rgba(244, 78, 0, 0.2), rgba(250, 115, 0, 0.1));
     border: 2px solid var(--color-primary);
     animation: portfolioGlow 2s ease-in-out infinite;

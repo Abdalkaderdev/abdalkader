@@ -116,8 +116,7 @@ Format the response as a structured learning path with clear milestones.`;
         }),
         'learning-path',
         selectedInterests.join('-'),
-        prompt,
-        0
+        prompt
       );
 
       if (response) {
