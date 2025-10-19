@@ -273,8 +273,7 @@ export const EcosystemMap: React.FC<EcosystemMapProps> = ({
                 {/* Actions */}
                 <div className="flex gap-2">
                   <InteractiveButton
-                    onClick={(e) => {
-                      e.stopPropagation();
+                    onClick={() => {
                       navigateToDomain(domain.subdomain);
                     }}
                     variant="primary"
@@ -286,8 +285,7 @@ export const EcosystemMap: React.FC<EcosystemMapProps> = ({
                   </InteractiveButton>
                   
                   <InteractiveButton
-                    onClick={(e) => {
-                      e.stopPropagation();
+                    onClick={() => {
                       // Open in new tab
                       window.open(getDomainUrl(domain.subdomain), '_blank');
                     }}

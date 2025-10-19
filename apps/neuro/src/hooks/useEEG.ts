@@ -2,6 +2,60 @@ import { useState, useEffect, useCallback, useRef } from 'react';
 import { EEGData, BioSignalState, BCIEvent } from '@/lib/bci/eegProcessor';
 import { eegProcessor } from '@/lib/bci/eegProcessor';
 
+// Web Bluetooth API type declarations
+declare global {
+  interface BluetoothDevice {
+    id: string;
+    name?: string;
+    gatt?: BluetoothRemoteGATTServer;
+  }
+  
+  interface BluetoothRemoteGATTServer {
+    device: BluetoothDevice;
+    connected: boolean;
+    connect(): Promise<BluetoothRemoteGATTServer>;
+    disconnect(): void;
+    getPrimaryService(service: string): Promise<BluetoothRemoteGATTService>;
+  }
+  
+  interface BluetoothRemoteGATTService {
+    device: BluetoothDevice;
+    uuid: string;
+    getCharacteristic(characteristic: string): Promise<BluetoothRemoteGATTCharacteristic>;
+  }
+  
+  interface BluetoothRemoteGATTCharacteristic {
+    service: BluetoothRemoteGATTService;
+    uuid: string;
+    value?: DataView;
+    readValue(): Promise<DataView>;
+    writeValue(value: BufferSource): Promise<void>;
+    startNotifications(): Promise<BluetoothRemoteGATTCharacteristic>;
+    stopNotifications(): Promise<BluetoothRemoteGATTCharacteristic>;
+    addEventListener(type: string, listener: (event: any) => void): void;
+    removeEventListener(type: string, listener: (event: any) => void): void;
+  }
+  
+  interface Navigator {
+    bluetooth?: {
+      requestDevice(options: RequestDeviceOptions): Promise<BluetoothDevice>;
+      getAvailability(): Promise<boolean>;
+    };
+  }
+  
+  interface RequestDeviceOptions {
+    filters?: BluetoothLEScanFilter[];
+    optionalServices?: string[];
+    acceptAllDevices?: boolean;
+  }
+  
+  interface BluetoothLEScanFilter {
+    services?: string[];
+    name?: string;
+    namePrefix?: string;
+  }
+}
+
 export interface EEGState {
   isConnected: boolean;
   isRecording: boolean;
@@ -68,6 +122,10 @@ export const useEEG = (config: EEGConfig = {
       setState(prev => ({ ...prev, error: null }));
 
       // Request Bluetooth device
+      if (!navigator.bluetooth) {
+        throw new Error('Web Bluetooth API not supported');
+      }
+      
       const device = await navigator.bluetooth.requestDevice({
         acceptAllDevices: true,
         optionalServices: ['battery_service', 'device_information']
@@ -156,7 +214,7 @@ export const useEEG = (config: EEGConfig = {
 
   // Handle received data
   const handleDataReceived = useCallback((event: Event) => {
-    const characteristic = event.target as BluetoothRemoteGATTCharacteristic;
+    const characteristic = event.target as unknown as BluetoothRemoteGATTCharacteristic;
     const value = characteristic.value;
     
     if (!value) return;

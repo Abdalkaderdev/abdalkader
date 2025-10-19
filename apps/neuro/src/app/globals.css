@@ -4,11 +4,11 @@
 
 @layer base {
   * {
-    @apply border-border;
+    @apply border-gray-800;
   }
   
   body {
-    @apply bg-background text-text;
+    @apply bg-black text-white;
   }
 }
 

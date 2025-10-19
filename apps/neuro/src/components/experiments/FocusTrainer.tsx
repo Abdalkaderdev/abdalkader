@@ -323,7 +323,7 @@ export const FocusTrainer: React.FC<FocusTrainerProps> = ({
             ) : (
               <InteractiveButton
                 onClick={stopTraining}
-                variant="danger"
+                variant="secondary"
                 className="flex-1"
               >
                 <Pause className="w-4 h-4 mr-2" />
