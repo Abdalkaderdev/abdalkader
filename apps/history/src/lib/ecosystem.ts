@@ -152,6 +152,40 @@ export const ECOSYSTEM_DOMAINS: EcosystemDomain[] = [
       bounceRate: 0.25,
     },
   },
+  {
+    id: 'neuro',
+    name: 'Neuro Interface',
+    subdomain: 'neuro',
+    domain: 'abdalkader.dev',
+    description: 'Brain-Computer Interface web platform with real-time bio-signal processing',
+    icon: '🧠',
+    color: '#8b5cf6',
+    status: 'active',
+    features: ['EEG Processing', 'BCI Control', 'Neuro Feedback', 'Real-time Visualization'],
+    lastUpdated: '2024-01-17',
+    analytics: {
+      visitors: 1800,
+      pageViews: 4200,
+      bounceRate: 0.28,
+    },
+  },
+  {
+    id: 'therapy',
+    name: 'AI Therapy',
+    subdomain: 'therapy',
+    domain: 'abdalkader.dev',
+    description: 'Privacy-first AI therapy platform with empathetic conversations',
+    icon: '💚',
+    color: '#10b981',
+    status: 'active',
+    features: ['AI Chat', 'Mood Tracking', 'Crisis Support', 'Encrypted Storage'],
+    lastUpdated: '2024-01-17',
+    analytics: {
+      visitors: 2500,
+      pageViews: 6800,
+      bounceRate: 0.22,
+    },
+  },
 ];
 
 export const ECOSYSTEM_CONFIG = {
