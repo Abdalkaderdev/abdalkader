@@ -27,4 +27,4 @@ const nextConfig: NextConfig = {
   },
 }
 
-export default nextConfig
+export default nextConfig// Force Vercel rebuild Sun Oct 19 08:34:34 AM UTC 2025
