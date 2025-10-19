@@ -122,7 +122,7 @@ const QuantumParticles: React.FC<{ count: number; isRunning: boolean }> = ({ cou
   );
 
   return (
-    <Points ref={pointsRef} positions={positions}>
+    <Points ref={pointsRef as any} positions={positions}>
       <PointMaterial
         size={0.1}
         color="#00ffff"
