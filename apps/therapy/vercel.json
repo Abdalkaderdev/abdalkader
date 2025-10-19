@@ -1,5 +1,5 @@
 {
-  "buildCommand": "cd apps/therapy && pnpm build",
+  "buildCommand": "pnpm turbo run build --filter=@abdalkader/therapy",
   "outputDirectory": "apps/therapy/.next",
   "framework": "nextjs",
   "installCommand": "pnpm install",

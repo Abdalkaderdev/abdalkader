@@ -1,5 +1,5 @@
 {
-  "buildCommand": "cd apps/neuro && pnpm build",
+  "buildCommand": "pnpm turbo run build --filter=@abdalkader/neuro",
   "outputDirectory": "apps/neuro/.next",
   "framework": "nextjs",
   "installCommand": "pnpm install",

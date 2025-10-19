@@ -1,5 +1,5 @@
 {
-  "buildCommand": "cd apps/quantumanim && pnpm build",
+  "buildCommand": "pnpm turbo run build --filter=@abdalkader/quantumanim",
   "outputDirectory": "apps/quantumanim/.next",
   "framework": "nextjs",
   "installCommand": "pnpm install",

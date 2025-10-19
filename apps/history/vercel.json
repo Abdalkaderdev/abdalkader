@@ -1,5 +1,5 @@
 {
-  "buildCommand": "cd apps/history && pnpm build",
+  "buildCommand": "pnpm turbo run build --filter=@abdalkader/history",
   "outputDirectory": "apps/history/.next",
   "framework": "nextjs",
   "installCommand": "pnpm install",
