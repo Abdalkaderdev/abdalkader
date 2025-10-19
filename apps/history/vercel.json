@@ -1,6 +1,6 @@
 {
-  "buildCommand": "cd apps/therapy && pnpm build",
-  "outputDirectory": "apps/therapy/.next",
+  "buildCommand": "cd apps/history && pnpm build",
+  "outputDirectory": "apps/history/.next",
   "framework": "nextjs",
   "installCommand": "pnpm install",
   "env": {
@@ -8,7 +8,7 @@
     "GROQ_API_KEY": "@groq_api_key"
   },
   "functions": {
-    "apps/therapy/pages/api/**/*.js": {
+    "apps/history/pages/api/**/*.js": {
       "maxDuration": 30
     }
   },
@@ -37,12 +37,8 @@
           "value": "max-age=31536000; includeSubDomains"
         },
         {
-          "key": "X-Robots-Tag",
-          "value": "noindex, nofollow"
-        },
-        {
           "key": "Content-Security-Policy",
-          "value": "default-src 'self'; script-src 'self' 'unsafe-eval' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self' https://api.groq.com; frame-ancestors 'none';"
+          "value": "default-src 'self'; script-src 'self' 'unsafe-eval' 'unsafe-inline' https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self' https://api.groq.com; frame-ancestors 'none';"
         }
       ]
     },
