@@ -4,8 +4,7 @@
   "framework": "nextjs",
   "installCommand": "pnpm install --no-frozen-lockfile",
   "env": {
-    "NODE_ENV": "production",
-    "NEXT_PUBLIC_GROQ_API_KEY": "@groq_api_key"
+    "NODE_ENV": "production"
   },
   "headers": [
     {
