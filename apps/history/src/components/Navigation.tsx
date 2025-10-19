@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Menu, X, History, Code, GitBranch, Brain, Layers } from 'lucide-react';
+import { Menu, X, History, Code, GitBranch, Brain, Layers, Globe } from 'lucide-react';
 import { ThemeToggle } from '@/components/ThemeToggle';
 import { useReducedMotion } from '@/hooks/useAnimations';
 
