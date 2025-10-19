@@ -5,7 +5,7 @@
   "installCommand": "pnpm install --no-frozen-lockfile",
   "env": {
     "NODE_ENV": "production",
-    "GROQ_API_KEY": "@groq_api_key"
+    "NEXT_PUBLIC_GROQ_API_KEY": "@groq_api_key"
   },
   "headers": [
     {

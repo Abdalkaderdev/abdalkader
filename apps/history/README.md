@@ -77,7 +77,7 @@ An interactive, AI-powered museum showcasing the evolution of programming langua
    
    Add your Groq API key to `.env.local`:
    ```env
-   GROQ_API_KEY=your_groq_api_key_here
+   NEXT_PUBLIC_GROQ_API_KEY=your_groq_api_key_here
    NEXT_PUBLIC_APP_URL=https://history.abdalkader.dev
    ```
 
