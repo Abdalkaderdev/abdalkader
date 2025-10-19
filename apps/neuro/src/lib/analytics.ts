@@ -98,16 +98,20 @@ class AnalyticsManager {
     this.trackPageView();
 
     // Track unload events
-    window.addEventListener('beforeunload', () => {
-      this.flushEvents();
-    });
+    if (typeof window !== 'undefined') {
+      window.addEventListener('beforeunload', () => {
+        this.flushEvents();
+      });
+    }
 
     // Track visibility changes
-    document.addEventListener('visibilitychange', () => {
-      if (document.visibilityState === 'hidden') {
-        this.flushEvents();
-      }
-    });
+    if (typeof document !== 'undefined') {
+      document.addEventListener('visibilitychange', () => {
+        if (document.visibilityState === 'hidden') {
+          this.flushEvents();
+        }
+      });
+    }
 
     this.isInitialized = true;
   }
@@ -153,8 +157,8 @@ class AnalyticsManager {
       case 'navigation':
         const navEntry = entry as PerformanceNavigationTiming;
         metrics.ttfb = navEntry.responseStart - navEntry.requestStart;
-        metrics.domLoad = navEntry.domContentLoadedEventEnd - navEntry.navigationStart;
-        metrics.windowLoad = navEntry.loadEventEnd - navEntry.navigationStart;
+        metrics.domLoad = navEntry.domContentLoadedEventEnd - navEntry.fetchStart;
+        metrics.windowLoad = navEntry.loadEventEnd - navEntry.fetchStart;
         break;
     }
 
@@ -175,14 +179,14 @@ class AnalyticsManager {
     const event: AnalyticsEvent = {
       id: `event_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`,
       type,
-      domain: window.location.hostname,
-      path: window.location.pathname,
+      domain: typeof window !== 'undefined' ? window.location.hostname : 'unknown',
+      path: typeof window !== 'undefined' ? window.location.pathname : '/',
       timestamp: Date.now(),
       userId: this.userId,
       sessionId: this.sessionId,
       data,
-      userAgent: navigator.userAgent,
-      referrer: document.referrer,
+      userAgent: typeof navigator !== 'undefined' ? navigator.userAgent : '',
+      referrer: typeof document !== 'undefined' ? document.referrer : '',
     };
 
     this.events.push(event);
@@ -197,6 +201,8 @@ class AnalyticsManager {
   }
 
   public trackPageView(page?: string): void {
+    if (typeof window === 'undefined') return;
+    
     this.trackEvent('page_view', {
       page: page || window.location.pathname,
       title: document.title,
@@ -229,6 +235,8 @@ class AnalyticsManager {
   }
 
   public trackScroll(depth: number): void {
+    if (typeof document === 'undefined') return;
+    
     this.trackEvent('scroll', {
       depth,
       percentage: Math.round((depth / document.body.scrollHeight) * 100),
@@ -274,7 +282,7 @@ class AnalyticsManager {
         body: JSON.stringify({
           events: this.events,
           sessionId: this.sessionId,
-          domain: window.location.hostname,
+          domain: typeof window !== 'undefined' ? window.location.hostname : 'unknown',
         }),
       });
 

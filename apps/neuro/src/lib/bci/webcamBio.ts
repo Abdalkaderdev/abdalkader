@@ -168,7 +168,7 @@ class WebcamBioProcessor {
     }
     
     // Calculate heart rate from green channel variation
-    const variation = this.calculateVariation(this.heartRateHistory);
+    const variation = this.calculateVariation(new Uint8ClampedArray(this.heartRateHistory));
     const heartRate = 60 + (variation * 20); // Convert to BPM
     
     this.lastHeartRate = Math.max(40, Math.min(200, heartRate));

@@ -237,7 +237,7 @@ export const useEEG = (config: EEGConfig = {
     }
 
     // Process stream for events
-    eegProcessor.processStream(dataArray, config.channels);
+    eegProcessor.processStream(Array.from(dataArray), config.channels);
   }, [config]);
 
   // Convert raw data to EEG format (device-specific)
