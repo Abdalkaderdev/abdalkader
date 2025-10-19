@@ -117,7 +117,7 @@ Target era: ${selectedEra}`;
             model: 'llama3-8b-8192'
           };
         },
-        'code-transform',
+        'code',
         selectedEra,
         inputCode
       );

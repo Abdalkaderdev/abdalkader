@@ -97,11 +97,23 @@ export const AITutorStudio: React.FC = () => {
     
     // Start with an AI introduction
     const introduction = await executeAIRequest(
-      (prompt: string) => ({ messages: [{ role: 'user', content: prompt }] }),
+      async (prompt: string) => {
+        const { groqClient } = await import('@/lib/groq/groqClient');
+        const response = await groqClient.chat.completions.create({
+          messages: [{ role: 'user', content: prompt }],
+          model: 'llama3-8b-8192',
+          temperature: 0.7,
+          max_tokens: 1024
+        });
+        
+        return {
+          content: response.choices[0]?.message?.content || 'No response generated',
+          model: 'llama3-8b-8192'
+        };
+      },
       'tutor',
       topic.id,
-      topic.prompt,
-      0
+      topic.prompt
     );
     
     if (introduction) {
@@ -119,17 +131,27 @@ export const AITutorStudio: React.FC = () => {
 
     try {
       const response = await executeAIRequest(
-        (prompt: string) => ({ 
-          messages: [
-            { role: 'user', content: selectedTopic.prompt },
-            ...chatHistory.map(msg => ({ role: msg.role, content: msg.content })),
-            { role: 'user', content: userMessage }
-          ]
-        }),
-        'tutor',
+        async (prompt: string) => {
+          const { groqClient } = await import('@/lib/groq/groqClient');
+          const response = await groqClient.chat.completions.create({
+            messages: [
+              { role: 'user', content: selectedTopic.prompt },
+              ...chatHistory.map(msg => ({ role: msg.role === 'ai' ? 'assistant' as const : msg.role as 'user', content: msg.content })),
+              { role: 'user', content: userMessage }
+            ],
+            model: 'llama3-8b-8192',
+            temperature: 0.7,
+            max_tokens: 1024
+          });
+          
+          return {
+            content: response.choices[0]?.message?.content || 'No response generated',
+            model: 'llama3-8b-8192'
+          };
+        },
+        'question',
         selectedTopic.id,
-        userMessage,
-        0
+        userMessage
       );
 
       if (response) {

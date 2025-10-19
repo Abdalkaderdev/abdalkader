@@ -76,17 +76,27 @@ export const EnhancedAIChat: React.FC<EnhancedAIChatProps> = ({
 
     try {
       const response = await executeAIRequest(
-        (prompt: string) => ({
-          messages: [
-            { role: 'system', content: `You are an expert programming language historian and educator. Context: ${context}. Provide detailed, accurate, and engaging responses about programming languages, their history, paradigms, and evolution.` },
-            ...messages.map(msg => ({ role: msg.role, content: msg.content })),
-            { role: 'user', content: inputValue }
-          ]
-        }),
-        'chat',
+        async (prompt: string) => {
+          const { groqClient } = await import('@/lib/groq/groqClient');
+          const response = await groqClient.chat.completions.create({
+            messages: [
+              { role: 'system', content: `You are an expert programming language historian and educator. Context: ${context}. Provide detailed, accurate, and engaging responses about programming languages, their history, paradigms, and evolution.` },
+              ...messages.map(msg => ({ role: msg.role === 'ai' ? 'assistant' as const : msg.role as 'user', content: msg.content })),
+              { role: 'user', content: inputValue }
+            ],
+            model: 'llama3-8b-8192',
+            temperature: 0.7,
+            max_tokens: 1024
+          });
+          
+          return {
+            content: response.choices[0]?.message?.content || 'No response generated',
+            model: 'llama3-8b-8192'
+          };
+        },
+        'question',
         context,
-        inputValue,
-        0
+        inputValue
       );
 
       if (response) {

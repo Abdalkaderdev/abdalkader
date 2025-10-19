@@ -48,6 +48,7 @@ export interface EcosystemAnalytics {
     domain: string;
     views: number;
     uniqueVisitors: number;
+    bounceRate: number;
   }>;
   topDomains: Array<{
     domain: string;

@@ -106,16 +106,27 @@ export const VoiceToAI: React.FC<VoiceToAIProps> = ({
       // In a real implementation, you would send the audio to a speech-to-text service
       // For now, we'll simulate with a text prompt
       const response = await executeAIRequest(
-        (prompt: string) => ({
-          messages: [
-            { 
-              role: 'system', 
-              content: 'You are an expert programming language historian. Respond to voice questions about programming languages, their history, and evolution. Keep responses conversational and engaging.' 
-            },
-            { role: 'user', content: 'User asked a question about programming languages via voice.' }
-          ]
-        }),
-        'voice-chat',
+        async (prompt: string) => {
+          const { groqClient } = await import('@/lib/groq/groqClient');
+          const response = await groqClient.chat.completions.create({
+            messages: [
+              { 
+                role: 'system', 
+                content: 'You are an expert programming language historian. Respond to voice questions about programming languages, their history, and evolution. Keep responses conversational and engaging.' 
+              },
+              { role: 'user', content: 'User asked a question about programming languages via voice.' }
+            ],
+            model: 'llama3-8b-8192',
+            temperature: 0.7,
+            max_tokens: 1024
+          });
+          
+          return {
+            content: response.choices[0]?.message?.content || 'No response generated',
+            model: 'llama3-8b-8192'
+          };
+        },
+        'question',
         'voice',
         'Voice question about programming languages'
       );

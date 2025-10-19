@@ -105,7 +105,7 @@ export function CodeEditor({ language, code, onCodeChange }: CodeEditorProps) {
         height="100%"
         language={getMonacoLanguage(language.name)}
         value={code}
-        onChange={onCodeChange}
+        onChange={(value) => onCodeChange(value || '')}
         onMount={handleEditorDidMount}
         theme={editorTheme}
         options={{

@@ -105,16 +105,27 @@ Please provide:
 Format the response as a structured learning path with clear milestones.`;
 
       const response = await executeAIRequest(
-        (prompt: string) => ({
-          messages: [
-            { 
-              role: 'system', 
-              content: 'You are an expert programming educator and career advisor. Create personalized, practical learning paths that help people achieve their programming goals efficiently.' 
-            },
-            { role: 'user', content: prompt }
-          ]
-        }),
-        'learning-path',
+        async (prompt: string) => {
+          const { groqClient } = await import('@/lib/groq/groqClient');
+          const response = await groqClient.chat.completions.create({
+            messages: [
+              { 
+                role: 'system', 
+                content: 'You are an expert programming educator and career advisor. Create personalized, practical learning paths that help people achieve their programming goals efficiently.' 
+              },
+              { role: 'user', content: prompt }
+            ],
+            model: 'llama3-8b-8192',
+            temperature: 0.7,
+            max_tokens: 1024
+          });
+          
+          return {
+            content: response.choices[0]?.message?.content || 'No response generated',
+            model: 'llama3-8b-8192'
+          };
+        },
+        'question',
         selectedInterests.join('-'),
         prompt
       );

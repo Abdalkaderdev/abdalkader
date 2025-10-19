@@ -85,16 +85,27 @@ Please include:
 Make it engaging and educational, suitable for someone learning about programming language history.`;
 
       const response = await executeAIRequest(
-        (prompt: string) => ({
-          messages: [
-            { 
-              role: 'system', 
-              content: 'You are an expert programming language historian and computer science educator. Provide detailed, accurate, and engaging explanations about programming languages and their place in the language family tree.' 
-            },
-            { role: 'user', content: prompt }
-          ]
-        }),
-        'family-tree-explanation',
+        async (prompt: string) => {
+          const { groqClient } = await import('@/lib/groq/groqClient');
+          const response = await groqClient.chat.completions.create({
+            messages: [
+              { 
+                role: 'system', 
+                content: 'You are an expert programming language historian and computer science educator. Provide detailed, accurate, and engaging explanations about programming languages and their place in the language family tree.' 
+              },
+              { role: 'user', content: prompt }
+            ],
+            model: 'llama3-8b-8192',
+            temperature: 0.7,
+            max_tokens: 1024
+          });
+          
+          return {
+            content: response.choices[0]?.message?.content || 'No response generated',
+            model: 'llama3-8b-8192'
+          };
+        },
+        'history',
         selectedLanguage,
         prompt
       );
