@@ -422,7 +422,11 @@ class AITherapist {
   }
 }
 
-// Create singleton instance
-export const aiTherapist = new AITherapist(process.env.NEXT_PUBLIC_GROQ_API_KEY || '');
+// Create singleton instance with fallback for missing API key
+const apiKey = process.env.NEXT_PUBLIC_GROQ_API_KEY;
+if (!apiKey) {
+  console.warn('NEXT_PUBLIC_GROQ_API_KEY not found. AI therapy features will be limited.');
+}
+export const aiTherapist = new AITherapist(apiKey || '');
 
 export default aiTherapist;
