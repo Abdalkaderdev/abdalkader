@@ -157,4 +157,4 @@ This project is private and proprietary.
 **Abdalkader**
 - Website: https://abdalkader.dev
 - GitHub: https://github.com/Abdalkaderdev
-- LinkedIn: https://linkedin.com/in/abdalkader
+- LinkedIn: https://linkedin.com/in/abdalkader# Vercel Build Fix
