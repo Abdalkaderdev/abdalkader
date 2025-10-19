@@ -336,3 +336,106 @@ p, li, span, div {
 [style*="background-color:"] {
   background-color: var(--background-color) !important;
 }
+
+/* Force dark theme on all Storybook elements */
+body,
+html,
+#root,
+#storybook-root,
+.sb-show-main,
+.sb-main-padded,
+.sb-main-padded > div,
+.sb-main-padded > div > div {
+  background: var(--background-color) !important;
+  color: var(--text-primary) !important;
+}
+
+/* Override Storybook's default white backgrounds */
+.sb-show-main,
+.sb-main-padded,
+.sb-main-padded > div,
+.sb-main-padded > div > div,
+.sb-main-padded > div > div > div {
+  background: var(--background-color) !important;
+}
+
+/* Force all text to be visible */
+.sb-show-main *,
+.sb-main-padded *,
+.sb-main-padded > div *,
+.sb-main-padded > div > div * {
+  color: var(--text-primary) !important;
+}
+
+/* Override any white backgrounds */
+[style*="background-color: white"],
+[style*="background-color: #fff"],
+[style*="background-color: #ffffff"],
+[style*="background: white"],
+[style*="background: #fff"],
+[style*="background: #ffffff"] {
+  background: var(--background-color) !important;
+}
+
+/* Override any white text */
+[style*="color: white"],
+[style*="color: #fff"],
+[style*="color: #ffffff"] {
+  color: var(--text-primary) !important;
+}
+
+/* Storybook specific overrides */
+.sb-show-main .sb-bar,
+.sb-show-main .sb-bar *,
+.sb-show-main .sb-bar .sb-bar__inner,
+.sb-show-main .sb-bar .sb-bar__inner * {
+  background: var(--background-secondary) !important;
+  color: var(--text-primary) !important;
+}
+
+/* Ensure all components are visible */
+.sb-show-main .sb-bar .sb-bar__inner .sb-bar__inner-content,
+.sb-show-main .sb-bar .sb-bar__inner .sb-bar__inner-content * {
+  color: var(--text-primary) !important;
+}
+
+/* Override any remaining white backgrounds in components */
+.sb-show-main .sb-bar .sb-bar__inner .sb-bar__inner-content [style*="background-color: white"],
+.sb-show-main .sb-bar .sb-bar__inner .sb-bar__inner-content [style*="background-color: #fff"],
+.sb-show-main .sb-bar .sb-bar__inner .sb-bar__inner-content [style*="background-color: #ffffff"] {
+  background: var(--background-color) !important;
+}
+
+/* Force visibility on all text elements */
+.sb-show-main p,
+.sb-show-main span,
+.sb-show-main div,
+.sb-show-main h1,
+.sb-show-main h2,
+.sb-show-main h3,
+.sb-show-main h4,
+.sb-show-main h5,
+.sb-show-main h6,
+.sb-show-main li,
+.sb-show-main td,
+.sb-show-main th,
+.sb-show-main a,
+.sb-show-main button {
+  color: var(--text-primary) !important;
+}
+
+/* Override any remaining white text */
+.sb-show-main .has-text-white,
+.sb-show-main .text-white,
+.sb-show-main .is-white {
+  color: var(--text-primary) !important;
+}
+
+/* Override any remaining white backgrounds */
+.sb-show-main .is-white,
+.sb-show-main .has-background-white,
+.sb-show-main .has-background-light,
+.sb-show-main .is-light {
+  background: var(--background-color) !important;
+  color: var(--text-primary) !important;
+}

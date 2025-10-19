@@ -689,3 +689,78 @@ body {
 .icarus .has-background-white {
   background: var(--color-bg-primary) !important;
 }
+
+/* Force dark theme on all elements */
+.icarus,
+.icarus *,
+.icarus body,
+.icarus html,
+.icarus .container,
+.icarus .section,
+.icarus .content,
+.icarus .main-content,
+.icarus .wrapper,
+.icarus .page,
+.icarus .post,
+.icarus .article,
+.icarus .card,
+.icarus .widget,
+.icarus .sidebar,
+.icarus .navbar,
+.icarus .footer {
+  background: var(--color-bg-primary) !important;
+  color: var(--color-text-primary) !important;
+}
+
+/* Override any white text that should be dark */
+.icarus .has-text-white,
+.icarus .text-white,
+.icarus .is-white {
+  color: var(--color-text-primary) !important;
+}
+
+/* Override any dark text that should be light */
+.icarus .has-text-dark,
+.icarus .text-dark,
+.icarus .is-dark {
+  color: var(--color-text-primary) !important;
+}
+
+/* Force all text to be visible */
+.icarus p,
+.icarus span,
+.icarus div,
+.icarus h1,
+.icarus h2,
+.icarus h3,
+.icarus h4,
+.icarus h5,
+.icarus h6,
+.icarus li,
+.icarus td,
+.icarus th {
+  color: var(--color-text-primary) !important;
+}
+
+/* Override Bulma's default white backgrounds */
+.icarus .is-white,
+.icarus .has-background-white,
+.icarus .has-background-light,
+.icarus .is-light {
+  background: var(--color-bg-primary) !important;
+  color: var(--color-text-primary) !important;
+}
+
+/* Override any remaining white backgrounds */
+.icarus [style*="background-color: white"],
+.icarus [style*="background-color: #fff"],
+.icarus [style*="background-color: #ffffff"] {
+  background: var(--color-bg-primary) !important;
+}
+
+/* Override any remaining white text */
+.icarus [style*="color: white"],
+.icarus [style*="color: #fff"],
+.icarus [style*="color: #ffffff"] {
+  color: var(--color-text-primary) !important;
+}
