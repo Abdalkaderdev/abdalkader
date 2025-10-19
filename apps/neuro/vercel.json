@@ -1,5 +1,5 @@
 {
-  "buildCommand": "pnpm turbo run build --filter=@abdalkader/neuro",
+  "buildCommand": "cd ../.. && pnpm install --no-frozen-lockfile && pnpm turbo run build --filter=@abdalkader/neuro",
   "outputDirectory": "apps/neuro/.next",
   "framework": "nextjs",
   "installCommand": "pnpm install --no-frozen-lockfile",

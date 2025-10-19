@@ -1,8 +1,8 @@
 {
-  "buildCommand": "pnpm turbo run build --filter=@abdalkader/history",
+  "buildCommand": "cd ../.. && pnpm install --no-frozen-lockfile && pnpm turbo run build --filter=@abdalkader/history",
   "outputDirectory": "apps/history/.next",
   "framework": "nextjs",
-  "installCommand": "pnpm install",
+  "installCommand": "pnpm install --no-frozen-lockfile",
   "env": {
     "NODE_ENV": "production",
     "GROQ_API_KEY": "@groq_api_key"
