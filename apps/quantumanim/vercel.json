@@ -7,11 +7,6 @@
     "NEXT_PUBLIC_APP_URL": "https://quantumanim.abdalkader.dev",
     "NODE_ENV": "production"
   },
-  "functions": {
-    "apps/quantumanim/app/api/**/*.js": {
-      "maxDuration": 30
-    }
-  },
   "headers": [
     {
       "source": "/(.*)",
