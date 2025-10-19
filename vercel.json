@@ -13,7 +13,11 @@
       "main": true,
       "components": true,
       "blog": true,
-      "docs": true
+      "docs": true,
+      "history": true,
+      "therapy": true,
+      "neuro": true,
+      "quantumanim": true
     }
   },
   "functions": {
