@@ -285,8 +285,7 @@ export const EcosystemMap: React.FC<EcosystemMapProps> = ({
                   </InteractiveButton>
                   
                   <InteractiveButton
-                    onClick={(e) => {
-                      e.stopPropagation();
+                    onClick={() => {
                       // Open in new tab
                       window.open(getDomainUrl(domain.subdomain), '_blank');
                     }}

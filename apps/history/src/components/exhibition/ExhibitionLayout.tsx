@@ -272,4 +272,3 @@ export const ExhibitionLayout: React.FC<ExhibitionLayoutProps> = ({
 };
 
 export { exhibitionSections };
-export type { ExhibitionSection };

@@ -111,7 +111,7 @@ export const AITutorStudio: React.FC = () => {
           model: 'llama3-8b-8192'
         };
       },
-      'tutor',
+        'question',
       topic.id,
       topic.prompt
     );
