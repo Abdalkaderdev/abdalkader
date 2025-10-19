@@ -1,8 +1,8 @@
 {
-  "buildCommand": "cd ../.. && pnpm install --no-frozen-lockfile && pnpm turbo run build --filter=@abdalkader/quantumanim",
+  "buildCommand": "cd ../.. && corepack enable && pnpm install --no-frozen-lockfile && pnpm turbo run build --filter=@abdalkader/quantumanim",
   "outputDirectory": "apps/quantumanim/.next",
   "framework": "nextjs",
-  "installCommand": "pnpm install --no-frozen-lockfile",
+  "installCommand": "corepack enable && pnpm install --no-frozen-lockfile",
   "env": {
     "NEXT_PUBLIC_APP_URL": "https://quantumanim.abdalkader.dev",
     "NODE_ENV": "production"
