@@ -6,6 +6,7 @@ import { Heart, Brain, BookOpen, Shield, Activity, Globe } from 'lucide-react';
 import { UnifiedHeader } from '@/components/ecosystem/UnifiedHeader';
 import { CrossDomainProvider } from '@/components/ecosystem/CrossDomainProvider';
 import { EcosystemAuthProvider } from '@/contexts/EcosystemAuthContext';
+import PortfolioHeader from '@/components/shared/PortfolioHeader';
 import { AIConversation } from '@/components/therapy/AIConversation';
 import { MedicalDisclaimers } from '@/components/legal/MedicalDisclaimers';
 import { AdvancedMoodTracker } from '@/components/tracking/AdvancedMoodTracker';
@@ -428,12 +429,11 @@ export default function TherapyPlatform() {
           </div>
           
           <div className="relative z-10">
-            {/* Unified Header */}
-            <UnifiedHeader 
-              showSearch 
-              showNotifications 
-              showUserMenu 
-              showEcosystemMap 
+            {/* Portfolio Style Header */}
+            <PortfolioHeader 
+              appName="AI Therapy"
+              appDescription="Privacy-first AI therapy platform with empathetic conversations"
+              currentApp="AI Therapy"
             />
             
             {/* Navigation */}

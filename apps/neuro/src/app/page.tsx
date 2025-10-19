@@ -6,6 +6,7 @@ import { Brain, Activity, Target, Code, Zap, Globe } from 'lucide-react';
 import { UnifiedHeader } from '@/components/ecosystem/UnifiedHeader';
 import { CrossDomainProvider } from '@/components/ecosystem/CrossDomainProvider';
 import { EcosystemAuthProvider } from '@/contexts/EcosystemAuthContext';
+import PortfolioHeader from '@/components/shared/PortfolioHeader';
 import { EEGVisualizer } from '@/components/bci/EEGVisualizer';
 import { FocusTrainer } from '@/components/experiments/FocusTrainer';
 import { useEEG } from '@/hooks/useEEG';
@@ -214,12 +215,11 @@ eegStream.on('data', (data) => {
           </div>
           
           <div className="relative z-10">
-            {/* Unified Header */}
-            <UnifiedHeader 
-              showSearch 
-              showNotifications 
-              showUserMenu 
-              showEcosystemMap 
+            {/* Portfolio Style Header */}
+            <PortfolioHeader 
+              appName="Neuro Interface"
+              appDescription="Brain-Computer Interface web platform with real-time bio-signal processing"
+              currentApp="Neuro Interface"
             />
             
             {/* Navigation */}

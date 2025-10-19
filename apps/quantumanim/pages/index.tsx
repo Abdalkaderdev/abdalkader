@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import Head from 'next/head';
 import { motion } from 'framer-motion';
+import PortfolioHeader from '../src/components/shared/PortfolioHeader';
 import { SchrodingerDemo } from '../components/demos/SchrodingerDemo';
 import { EntanglementDemo } from '../components/demos/EntanglementDemo';
 import { WaveVisualizer } from '../components/visualizations/WaveVisualizer';
@@ -38,6 +39,13 @@ export default function Home() {
       </Head>
 
       <main className="min-h-screen bg-black text-white overflow-x-hidden">
+        {/* Portfolio Style Header */}
+        <PortfolioHeader 
+          appName="Quantum Lab"
+          appDescription="Interactive quantum physics playground with superposition, entanglement, and wave functions"
+          currentApp="Quantum Lab"
+        />
+        
         {/* Quantum Field Background */}
         <div className="fixed inset-0 pointer-events-none">
           <div className="absolute inset-0 bg-gradient-to-br from-cyan-900/20 via-purple-900/20 to-pink-900/20" />
