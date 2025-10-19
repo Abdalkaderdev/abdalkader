@@ -8,10 +8,15 @@ import { CrossDomainProvider } from '@/components/ecosystem/CrossDomainProvider'
 import { EcosystemAuthProvider } from '@/contexts/EcosystemAuthContext';
 import { AIConversation } from '@/components/therapy/AIConversation';
 import { MedicalDisclaimers } from '@/components/legal/MedicalDisclaimers';
+import { AdvancedMoodTracker } from '@/components/tracking/AdvancedMoodTracker';
+import { PersonalizedExercises } from '@/components/exercises/PersonalizedExercises';
 import { TherapyMessage, TherapySession } from '@/lib/therapy/aiTherapist';
 import { insightsEngine } from '@/lib/therapy/insightsEngine';
 import { privacyManager } from '@/lib/storage/privacyManager';
+import { modalityManager } from '@/lib/therapy/modalities';
 import { useReducedMotion } from '@/hooks/useAnimations';
+import { useAccessibility } from '@/hooks/useAccessibility';
+import { InteractiveButton } from '@/components/interactions/InteractiveButton';
 
 type ActiveSection = 'chat' | 'journal' | 'exercises' | 'resources' | 'dashboard';
 
@@ -24,7 +29,18 @@ export default function TherapyPlatform() {
   const [showDisclaimers, setShowDisclaimers] = useState(true);
   const [moodEntries, setMoodEntries] = useState<any[]>([]);
   const [insights, setInsights] = useState<any>(null);
+  const [selectedModality, setSelectedModality] = useState<string | null>(null);
+  const [userProfile, setUserProfile] = useState({
+    mood: 5,
+    stress: 5,
+    anxiety: 5,
+    depression: 5,
+    experience: 'beginner' as 'beginner' | 'intermediate' | 'advanced',
+    preferences: [] as string[],
+    goals: [] as string[]
+  });
   const reducedMotion = useReducedMotion();
+  const { settings: accessibilitySettings, features: accessibilityFeatures } = useAccessibility();
 
   const navigationItems = [
     { id: 'dashboard', label: 'Dashboard', icon: Activity },
@@ -97,6 +113,45 @@ export default function TherapyPlatform() {
       setInsights(analysis);
     }
   }, [moodEntries]);
+
+  // Update user profile when mood changes
+  useEffect(() => {
+    setUserProfile(prev => ({
+      ...prev,
+      mood,
+      stress,
+      anxiety: mood <= 3 ? 8 : mood <= 5 ? 6 : mood <= 7 ? 4 : 2,
+      depression: mood <= 3 ? 8 : mood <= 5 ? 6 : mood <= 7 ? 4 : 2
+    }));
+  }, [mood, stress]);
+
+  // Handle mood entry
+  const handleMoodEntry = (entry: any) => {
+    setMoodEntries(prev => [...prev, entry]);
+    setMood(entry.mood);
+    setStress(entry.stress);
+    
+    // Announce to screen readers
+    accessibilityFeatures.announce(`Mood entry saved: ${entry.mood} out of 10`);
+  };
+
+  // Handle exercise completion
+  const handleExerciseComplete = (exercise: any) => {
+    console.log('Exercise completed:', exercise);
+    
+    // Announce to screen readers
+    accessibilityFeatures.announce(`Exercise completed: ${exercise.name}`);
+    
+    // Update user profile based on exercise type
+    if (exercise.type === 'breathing' || exercise.type === 'meditation') {
+      setStress(prev => Math.max(1, prev - 1));
+    }
+  };
+
+  // Get recommended modality
+  const getRecommendedModality = () => {
+    return modalityManager.getRecommendedModality(userProfile);
+  };
 
   const renderActiveSection = () => {
     switch (activeSection) {
@@ -255,53 +310,26 @@ export default function TherapyPlatform() {
               </p>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <div className="bg-black/50 rounded-lg p-6 border border-green-500/30">
-                <h3 className="portfolio-medium-text text-white mb-4">Mood Tracker</h3>
-                <div className="space-y-4">
-                  <div>
-                    <label className="portfolio-small-text text-gray-300 mb-2 block">How are you feeling today?</label>
-                    <input
-                      type="range"
-                      min="1"
-                      max="10"
-                      value={mood}
-                      onChange={(e) => setMood(Number(e.target.value))}
-                      className="w-full"
-                    />
-                    <div className="flex justify-between text-sm text-gray-400 mt-1">
-                      <span>Very Low</span>
-                      <span>Very High</span>
-                    </div>
-                  </div>
-                  
-                  <div>
-                    <label className="portfolio-small-text text-gray-300 mb-2 block">Stress Level</label>
-                    <input
-                      type="range"
-                      min="1"
-                      max="10"
-                      value={stress}
-                      onChange={(e) => setStress(Number(e.target.value))}
-                      className="w-full"
-                    />
-                    <div className="flex justify-between text-sm text-gray-400 mt-1">
-                      <span>Very Low</span>
-                      <span>Very High</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+              <AdvancedMoodTracker
+                onMoodEntry={handleMoodEntry}
+                className="lg:col-span-1"
+              />
               <div className="bg-black/50 rounded-lg p-6 border border-green-500/30">
                 <h3 className="portfolio-medium-text text-white mb-4">Journal Entry</h3>
                 <textarea
                   placeholder="What's on your mind today?"
                   className="w-full h-32 bg-gray-800/50 border border-gray-600 rounded-lg px-4 py-3 text-white placeholder-gray-400 focus:outline-none focus:border-green-500 transition-colors resize-none"
+                  aria-label="Journal entry text area"
                 />
-                <button className="mt-4 px-4 py-2 bg-green-500 text-white rounded-lg hover:bg-green-600 transition-colors">
-                  Save Entry
-                </button>
+                <div className="mt-4 flex gap-2">
+                  <InteractiveButton variant="primary" size="sm">
+                    Save Entry
+                  </InteractiveButton>
+                  <InteractiveButton variant="ghost" size="sm">
+                    Clear
+                  </InteractiveButton>
+                </div>
               </div>
             </div>
           </div>
@@ -317,35 +345,10 @@ export default function TherapyPlatform() {
               </p>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {[
-                { title: 'Breathing Exercise', description: '5-minute guided breathing for stress relief', duration: '5 min' },
-                { title: 'Mindfulness Meditation', description: 'Present-moment awareness practice', duration: '10 min' },
-                { title: 'Gratitude Journaling', description: 'Reflect on positive aspects of your day', duration: '15 min' },
-                { title: 'Progressive Muscle Relaxation', description: 'Release tension through guided relaxation', duration: '20 min' },
-                { title: 'Cognitive Restructuring', description: 'Challenge negative thought patterns', duration: '30 min' },
-                { title: 'Body Scan Meditation', description: 'Mindful awareness of physical sensations', duration: '25 min' }
-              ].map((exercise, index) => (
-                <motion.div
-                  key={index}
-                  className="bg-black/50 rounded-lg p-6 border border-green-500/30 hover:border-green-400/50 transition-all cursor-pointer"
-                  whileHover={reducedMotion ? {} : { scale: 1.02 }}
-                  whileTap={reducedMotion ? {} : { scale: 0.98 }}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: index * 0.1 }}
-                >
-                  <h3 className="portfolio-medium-text text-white mb-2">{exercise.title}</h3>
-                  <p className="portfolio-small-text text-gray-300 mb-4">{exercise.description}</p>
-                  <div className="flex items-center justify-between">
-                    <span className="text-sm text-green-400">{exercise.duration}</span>
-                    <button className="px-3 py-1 bg-green-500/20 text-green-400 rounded text-sm hover:bg-green-500/30 transition-colors">
-                      Start
-                    </button>
-                  </div>
-                </motion.div>
-              ))}
-            </div>
+            <PersonalizedExercises
+              userProfile={userProfile}
+              onExerciseComplete={handleExerciseComplete}
+            />
           </div>
         );
 
