@@ -98,7 +98,10 @@ export const AnalyticsDashboard: React.FC<AnalyticsDashboardProps> = ({
           averageSessionDuration: 180, // Mock data
         },
         topPages: analyticsData.topPages,
-        topDomains: analyticsData.topDomains,
+        topDomains: analyticsData.topDomains.map(domain => ({
+          ...domain,
+          growth: (domain as any).growth || 0
+        })),
         realTime: {
           activeUsers: Math.floor(Math.random() * 50) + 10, // Mock real-time data
           currentPage: window.location.pathname,
