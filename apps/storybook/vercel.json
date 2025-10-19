@@ -1,7 +1,7 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
-  "buildCommand": "corepack enable && pnpm turbo run build --filter=@abdalkader/storybook",
-  "installCommand": "corepack enable && pnpm install --no-frozen-lockfile",
+  "buildCommand": "bash ../../install-pnpm.sh && pnpm turbo run build --filter=@abdalkader/storybook",
+  "installCommand": "bash ../../install-pnpm.sh",
   "outputDirectory": "storybook-static",
   "framework": "storybook"
 }

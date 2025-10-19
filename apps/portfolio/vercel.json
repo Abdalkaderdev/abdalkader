@@ -1,7 +1,7 @@
 {
-  "buildCommand": "cd ../.. && corepack enable && pnpm install --no-frozen-lockfile && pnpm turbo run build --filter=@abdalkader/portfolio",
+  "buildCommand": "cd ../.. && bash install-pnpm.sh && pnpm turbo run build --filter=@abdalkader/portfolio",
   "outputDirectory": ".next",
-  "installCommand": "corepack enable && pnpm install --no-frozen-lockfile",
+  "installCommand": "bash ../../install-pnpm.sh",
   "framework": "nextjs",
   "trailingSlash": true,
   "cleanUrls": true,

@@ -1,8 +1,8 @@
 {
-  "buildCommand": "cd ../.. && corepack enable && pnpm install --no-frozen-lockfile && pnpm turbo run build --filter=@abdalkader/history",
+  "buildCommand": "cd ../.. && bash install-pnpm.sh && pnpm turbo run build --filter=@abdalkader/history",
   "outputDirectory": "apps/history/.next",
   "framework": "nextjs",
-  "installCommand": "corepack enable && pnpm install --no-frozen-lockfile",
+  "installCommand": "bash ../../install-pnpm.sh",
   "env": {
     "NODE_ENV": "production"
   },
