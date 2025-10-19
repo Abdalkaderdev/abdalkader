@@ -12,6 +12,7 @@ import { EcosystemMap } from '@/components/ecosystem/EcosystemMap';
 import { CrossDomainProvider } from '@/components/ecosystem/CrossDomainProvider';
 import { EcosystemAuthProvider } from '@/contexts/EcosystemAuthContext';
 import { Navigation } from '@/components/Navigation';
+import PortfolioHeader from '@/components/shared/PortfolioHeader';
 import { Hero } from '@/components/Hero';
 import { ParadigmExplorer } from '@/components/ParadigmExplorer';
 import { PageTransition, SectionTransition, StaggerContainer, StaggerItem } from '@/components/transitions/PageTransition';
@@ -158,15 +159,14 @@ export default function Home() {
       <CrossDomainProvider>
         <PageTransition>
           <div className="min-h-screen bg-gradient-to-br from-black via-gray-900 to-black dark:from-black dark:via-gray-900 dark:to-black light:from-white light:via-gray-50 light:to-gray-100">
-            {/* Unified Header */}
-            <UnifiedHeader 
-              showSearch 
-              showNotifications 
-              showUserMenu 
-              showEcosystemMap 
+            {/* Portfolio Style Header */}
+            <PortfolioHeader 
+              appName="Programming Museum"
+              appDescription="Explore the evolution of programming languages from 1843 to present"
+              currentApp="Programming Museum"
             />
             
-            <main className="container mx-auto px-4 py-8 pt-24">
+            <main className="container mx-auto px-4 py-8 pt-32">
               {activeSection === 'timeline' && (
                 <SectionTransition delay={0}>
                   <Hero
