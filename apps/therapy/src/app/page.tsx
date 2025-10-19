@@ -7,7 +7,10 @@ import { UnifiedHeader } from '@/components/ecosystem/UnifiedHeader';
 import { CrossDomainProvider } from '@/components/ecosystem/CrossDomainProvider';
 import { EcosystemAuthProvider } from '@/contexts/EcosystemAuthContext';
 import { AIConversation } from '@/components/therapy/AIConversation';
+import { MedicalDisclaimers } from '@/components/legal/MedicalDisclaimers';
 import { TherapyMessage, TherapySession } from '@/lib/therapy/aiTherapist';
+import { insightsEngine } from '@/lib/therapy/insightsEngine';
+import { privacyManager } from '@/lib/storage/privacyManager';
 import { useReducedMotion } from '@/hooks/useAnimations';
 
 type ActiveSection = 'chat' | 'journal' | 'exercises' | 'resources' | 'dashboard';
@@ -18,6 +21,9 @@ export default function TherapyPlatform() {
   const [sessions, setSessions] = useState<TherapySession[]>([]);
   const [mood, setMood] = useState(5);
   const [stress, setStress] = useState(5);
+  const [showDisclaimers, setShowDisclaimers] = useState(true);
+  const [moodEntries, setMoodEntries] = useState<any[]>([]);
+  const [insights, setInsights] = useState<any>(null);
   const reducedMotion = useReducedMotion();
 
   const navigationItems = [
@@ -60,7 +66,37 @@ export default function TherapyPlatform() {
   const handleCrisisDetected = (crisis: any) => {
     console.log('Crisis detected:', crisis);
     // In real implementation, this would trigger appropriate crisis response
+    // For now, we'll just log it and show an alert
+    alert(`Crisis detected: ${crisis.level.level}. Please call 988 or 911 immediately.`);
   };
+
+  // Handle disclaimers
+  const handleAcceptDisclaimers = () => {
+    setShowDisclaimers(false);
+    // Store acceptance in localStorage
+    localStorage.setItem('therapy_disclaimers_accepted', 'true');
+  };
+
+  const handleDeclineDisclaimers = () => {
+    // Redirect to a safe page or show alternative resources
+    window.location.href = 'https://suicidepreventionlifeline.org';
+  };
+
+  // Check if disclaimers were already accepted
+  useEffect(() => {
+    const accepted = localStorage.getItem('therapy_disclaimers_accepted');
+    if (accepted === 'true') {
+      setShowDisclaimers(false);
+    }
+  }, []);
+
+  // Load insights when mood entries change
+  useEffect(() => {
+    if (moodEntries.length > 0) {
+      const analysis = insightsEngine.analyzeMoodPatterns();
+      setInsights(analysis);
+    }
+  }, [moodEntries]);
 
   const renderActiveSection = () => {
     switch (activeSection) {
@@ -372,6 +408,13 @@ export default function TherapyPlatform() {
     <EcosystemAuthProvider>
       <CrossDomainProvider>
         <div className="min-h-screen bg-gradient-to-br from-black via-green-900/20 to-black relative overflow-hidden">
+          {/* Medical Disclaimers Modal */}
+          {showDisclaimers && (
+            <MedicalDisclaimers
+              onAccept={handleAcceptDisclaimers}
+              onDecline={handleDeclineDisclaimers}
+            />
+          )}
           {/* Background Pattern */}
           <div className="absolute inset-0 opacity-5">
             <div className="absolute inset-0" style={{

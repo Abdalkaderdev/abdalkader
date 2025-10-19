@@ -139,8 +139,24 @@ class AITherapist {
     confidence: number;
   }> {
     try {
+      // Check for crisis indicators first
+      const { crisisManager } = await import('./crisisManager');
+      const crisisAnalysis = crisisManager.analyzeCrisis(content);
+      
+      if (crisisAnalysis.isCrisis) {
+        return {
+          content: crisisManager.generateCrisisMessage(crisisAnalysis),
+          emotion: 'concern',
+          confidence: 1.0
+        };
+      }
+
       const systemPrompt = this.getSystemPrompt();
       const conversationHistory = this.getConversationHistory();
+      
+      // Add emotion context to the prompt
+      const emotionContext = emotion ? `\n\nUser's current emotional state: ${emotion}` : '';
+      const enhancedSystemPrompt = `${systemPrompt}${emotionContext}`;
       
       const response = await fetch(`${this.baseUrl}/chat/completions`, {
         method: 'POST',
@@ -151,21 +167,28 @@ class AITherapist {
         body: JSON.stringify({
           model: 'llama3-8b-8192',
           messages: [
-            { role: 'system', content: systemPrompt },
+            { role: 'system', content: enhancedSystemPrompt },
             ...conversationHistory,
             { role: 'user', content: content }
           ],
           max_tokens: 500,
           temperature: 0.7,
-          top_p: 0.9
+          top_p: 0.9,
+          stream: false
         })
       });
 
       if (!response.ok) {
-        throw new Error(`API request failed: ${response.status}`);
+        const errorData = await response.json().catch(() => ({}));
+        throw new Error(`API request failed: ${response.status} - ${errorData.error?.message || 'Unknown error'}`);
       }
 
       const data = await response.json();
+      
+      if (!data.choices || !data.choices[0] || !data.choices[0].message) {
+        throw new Error('Invalid API response format');
+      }
+
       const aiResponse = data.choices[0].message.content;
 
       // Analyze response for emotion and confidence
@@ -179,10 +202,20 @@ class AITherapist {
       };
     } catch (error) {
       console.error('Error generating response:', error);
+      
+      // Return appropriate fallback based on error type
+      if (error instanceof Error && error.message.includes('API request failed')) {
+        return {
+          content: "I'm experiencing technical difficulties right now. Please try again in a moment, or if you're in crisis, please call 988 or 911 immediately.",
+          emotion: 'concern',
+          confidence: 0.2
+        };
+      }
+      
       return {
-        content: "I'm sorry, I'm having trouble processing that right now. Could you please try again?",
-        emotion: 'neutral',
-        confidence: 0.3
+        content: "I'm here to listen and support you. Could you please tell me more about what's on your mind?",
+        emotion: 'empathy',
+        confidence: 0.5
       };
     }
   }

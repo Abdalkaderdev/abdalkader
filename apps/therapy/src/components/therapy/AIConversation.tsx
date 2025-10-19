@@ -5,6 +5,8 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Send, Mic, MicOff, Bot, User, Heart, AlertTriangle, Shield, Clock } from 'lucide-react';
 import { InteractiveButton } from '@/components/interactions/InteractiveButton';
 import { TherapyMessage, TherapySession, CrisisDetection } from '@/lib/therapy/aiTherapist';
+import { crisisManager } from '@/lib/therapy/crisisManager';
+import { useVoiceTherapy } from '@/hooks/useVoiceTherapy';
 import { useReducedMotion } from '@/hooks/useAnimations';
 
 interface AIConversationProps {
@@ -22,10 +24,26 @@ export const AIConversation: React.FC<AIConversationProps> = ({
 }) => {
   const [inputValue, setInputValue] = useState('');
   const [isTyping, setIsTyping] = useState(false);
-  const [isRecording, setIsRecording] = useState(false);
   const [crisisAlert, setCrisisAlert] = useState<CrisisDetection | null>(null);
+  const [voiceEnabled, setVoiceEnabled] = useState(true);
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const reducedMotion = useReducedMotion();
+  
+  // Voice therapy hook
+  const {
+    isListening,
+    isSpeaking,
+    transcript,
+    confidence,
+    error: voiceError,
+    isSupported: voiceSupported,
+    startListening,
+    stopListening,
+    speak,
+    stopSpeaking,
+    clearTranscript,
+    clearError
+  } = useVoiceTherapy();
 
   // Auto-scroll to bottom when new messages arrive
   useEffect(() => {
@@ -34,18 +52,40 @@ export const AIConversation: React.FC<AIConversationProps> = ({
 
   // Handle sending message
   const handleSendMessage = async () => {
-    if (!inputValue.trim() || !session) return;
+    const messageContent = inputValue.trim() || transcript.trim();
+    if (!messageContent || !session) return;
+
+    // Check for crisis indicators
+    const crisisAnalysis = crisisManager.analyzeCrisis(messageContent);
+    if (crisisAnalysis.isCrisis) {
+      setCrisisAlert(crisisAnalysis);
+      onCrisisDetected(crisisAnalysis);
+      
+      const crisisMessage: TherapyMessage = {
+        id: Date.now().toString(),
+        role: 'therapist',
+        content: crisisManager.generateCrisisMessage(crisisAnalysis),
+        timestamp: Date.now(),
+        modality: session.modality,
+        emotion: 'concern',
+        confidence: 1.0
+      };
+      
+      onMessageSent(crisisMessage);
+      return;
+    }
 
     const userMessage: TherapyMessage = {
       id: Date.now().toString(),
       role: 'user',
-      content: inputValue,
+      content: messageContent,
       timestamp: Date.now(),
-      confidence: 1.0
+      confidence: confidence || 1.0
     };
 
     onMessageSent(userMessage);
     setInputValue('');
+    clearTranscript();
     setIsTyping(true);
 
     // Simulate AI response (in real implementation, this would call the AI therapist)
@@ -62,47 +102,48 @@ export const AIConversation: React.FC<AIConversationProps> = ({
 
       onMessageSent(aiMessage);
       setIsTyping(false);
+      
+      // Speak the response if voice is enabled
+      if (voiceEnabled && voiceSupported) {
+        speak(aiMessage.content);
+      }
     }, 2000);
   };
 
   // Handle voice input
   const handleVoiceInput = () => {
-    if (!('webkitSpeechRecognition' in window)) {
+    if (!voiceSupported) {
       alert('Voice recognition is not supported in this browser.');
       return;
     }
 
-    const recognition = new (window as any).webkitSpeechRecognition();
-    recognition.continuous = false;
-    recognition.interimResults = false;
-    recognition.lang = 'en-US';
-
-    recognition.onstart = () => {
-      setIsRecording(true);
-    };
-
-    recognition.onresult = (event: any) => {
-      const transcript = event.results[0][0].transcript;
-      setInputValue(transcript);
-      setIsRecording(false);
-    };
-
-    recognition.onerror = () => {
-      setIsRecording(false);
-    };
-
-    recognition.onend = () => {
-      setIsRecording(false);
-    };
-
-    recognition.start();
+    if (isListening) {
+      stopListening();
+    } else {
+      startListening();
+    }
   };
+
+  // Update input when transcript changes
+  useEffect(() => {
+    if (transcript) {
+      setInputValue(transcript);
+    }
+  }, [transcript]);
 
   // Handle key press
   const handleKeyPress = (e: React.KeyboardEvent) => {
     if (e.key === 'Enter' && !e.shiftKey) {
       e.preventDefault();
       handleSendMessage();
+    }
+  };
+
+  // Handle voice toggle
+  const handleVoiceToggle = () => {
+    setVoiceEnabled(!voiceEnabled);
+    if (isSpeaking) {
+      stopSpeaking();
     }
   };
 
@@ -172,16 +213,54 @@ export const AIConversation: React.FC<AIConversationProps> = ({
             <div className="flex items-center gap-3">
               <AlertTriangle className="w-5 h-5 text-red-400" />
               <div>
-                <h4 className="portfolio-small-text text-red-400 font-medium">Crisis Detected</h4>
+                <h4 className="portfolio-small-text text-red-400 font-medium">
+                  Crisis Detected - {crisisAlert.level.level.toUpperCase()}
+                </h4>
                 <p className="portfolio-small-text text-red-300">
-                  {crisisAlert.recommendations[0]}
+                  {crisisAlert.level.immediateActions[0]}
                 </p>
               </div>
             </div>
             <div className="mt-3 space-y-1">
-              {crisisAlert.emergencyResources.map((resource, index) => (
+              {crisisAlert.emergencyContacts.map((resource, index) => (
                 <p key={index} className="text-sm text-red-300">{resource}</p>
               ))}
+            </div>
+            <div className="mt-3 flex gap-2">
+              <button
+                onClick={() => setCrisisAlert(null)}
+                className="px-3 py-1 bg-red-500/20 text-red-300 rounded text-sm hover:bg-red-500/30 transition-colors"
+              >
+                Dismiss
+              </button>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+      {/* Voice Error Alert */}
+      <AnimatePresence>
+        {voiceError && (
+          <motion.div
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -20 }}
+            className="bg-orange-500/20 border border-orange-500/30 p-4 m-4 rounded-lg"
+          >
+            <div className="flex items-center gap-3">
+              <AlertTriangle className="w-5 h-5 text-orange-400" />
+              <div>
+                <h4 className="portfolio-small-text text-orange-400 font-medium">Voice Error</h4>
+                <p className="portfolio-small-text text-orange-300">{voiceError}</p>
+              </div>
+            </div>
+            <div className="mt-3 flex gap-2">
+              <button
+                onClick={clearError}
+                className="px-3 py-1 bg-orange-500/20 text-orange-300 rounded text-sm hover:bg-orange-500/30 transition-colors"
+              >
+                Dismiss
+              </button>
             </div>
           </motion.div>
         )}
@@ -304,15 +383,26 @@ export const AIConversation: React.FC<AIConversationProps> = ({
               onClick={handleVoiceInput}
               variant="ghost"
               size="sm"
-              className={`p-3 ${isRecording ? 'bg-red-500/20 text-red-400' : ''}`}
-              disabled={isTyping}
+              className={`p-3 ${isListening ? 'bg-red-500/20 text-red-400' : ''}`}
+              disabled={isTyping || !voiceSupported}
+              title={voiceSupported ? (isListening ? 'Stop listening' : 'Start voice input') : 'Voice not supported'}
             >
-              {isRecording ? <MicOff className="w-4 h-4" /> : <Mic className="w-4 h-4" />}
+              {isListening ? <MicOff className="w-4 h-4" /> : <Mic className="w-4 h-4" />}
+            </InteractiveButton>
+            
+            <InteractiveButton
+              onClick={handleVoiceToggle}
+              variant="ghost"
+              size="sm"
+              className={`p-3 ${voiceEnabled ? 'bg-green-500/20 text-green-400' : 'bg-gray-500/20 text-gray-400'}`}
+              title={voiceEnabled ? 'Disable voice responses' : 'Enable voice responses'}
+            >
+              {voiceEnabled ? <Mic className="w-4 h-4" /> : <MicOff className="w-4 h-4" />}
             </InteractiveButton>
             
             <InteractiveButton
               onClick={handleSendMessage}
-              disabled={!inputValue.trim() || isTyping}
+              disabled={(!inputValue.trim() && !transcript.trim()) || isTyping}
               variant="primary"
               size="sm"
               className="p-3"
