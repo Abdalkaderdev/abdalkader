@@ -3,6 +3,14 @@ import { UnifiedProject } from '@/lib/projectRegistry';
 import styles from './ProjectLifecycle.module.scss';
 import { Calendar, CheckCircle, Code, Rocket, Sparkles } from 'lucide-react';
 
+interface TimelineEvent {
+  id: string;
+  title: string;
+  description: string;
+  date: string | Date;
+  type: string;
+}
+
 interface ProjectTimelineProps {
   project: UnifiedProject;
 }
@@ -46,33 +54,31 @@ export function ProjectTimeline({ project }: ProjectTimelineProps) {
     <div className={styles.timelineContainer}>
       <div className={styles.timelineLine} />
       <div className={styles.timelineEvents}>
-         {events.map((event) => (
-           // eslint-disable-next-line @typescript-eslint/no-explicit-any
-           <div key={(event as any).id} className={styles.timelineEvent}>
+         {events.map((event) => {
+           const timelineEvent = event as TimelineEvent;
+           return (
+           <div key={timelineEvent.id} className={styles.timelineEvent}>
              <div className={styles.eventMarker}>
-               {/* eslint-disable-next-line @typescript-eslint/no-explicit-any */}
-               {getEventIcon((event as any).type)}
+               {getEventIcon(timelineEvent.type)}
              </div>
              <div className={styles.eventContent}>
                <div className={styles.eventHeader}>
-                 {/* eslint-disable-next-line @typescript-eslint/no-explicit-any */}
-                 <h4>{(event as any).title}</h4>
+                 <h4>{timelineEvent.title}</h4>
                  <span className={styles.eventDate}>
                    <Calendar className={styles.dateIcon} />
-                   {new Date((event as any).date).toLocaleDateString('en-US', {
+                   {new Date(timelineEvent.date).toLocaleDateString('en-US', {
                      year: 'numeric',
                      month: 'long',
                      day: 'numeric'
                    })}
                  </span>
                </div>
-               {/* eslint-disable-next-line @typescript-eslint/no-explicit-any */}
-               <p className={styles.eventDescription}>{(event as any).description}</p>
-               {/* eslint-disable-next-line @typescript-eslint/no-explicit-any */}
-               <span className={styles.eventType}>{(event as any).type}</span>
+               <p className={styles.eventDescription}>{timelineEvent.description}</p>
+               <span className={styles.eventType}>{timelineEvent.type}</span>
              </div>
            </div>
-         ))}
+           );
+         })}
       </div>
       
       {project.history.url && (

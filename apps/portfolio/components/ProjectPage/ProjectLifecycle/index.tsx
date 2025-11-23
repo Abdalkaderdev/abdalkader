@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-// @ts-expect-error - Direct import from source until package is built
 import { getProjectBySlug } from '../../../../../packages/ui/src/lib/projectRegistry';
 import { ProjectTimeline } from './ProjectTimeline';
 import { ProjectComponents } from './ProjectComponents';

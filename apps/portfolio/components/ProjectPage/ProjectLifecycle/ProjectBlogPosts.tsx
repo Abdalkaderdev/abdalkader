@@ -3,6 +3,13 @@ import { UnifiedProject } from '@/lib/projectRegistry';
 import styles from './ProjectLifecycle.module.scss';
 import { FileText, ExternalLink, Calendar } from 'lucide-react';
 
+interface BlogPost {
+  url: string;
+  title: string;
+  excerpt?: string;
+  date: string | Date;
+}
+
 interface ProjectBlogPostsProps {
   project: UnifiedProject;
 }
@@ -30,29 +37,27 @@ export function ProjectBlogPosts({ project }: ProjectBlogPostsProps) {
   return (
     <div className={styles.blogContainer}>
       <div className={styles.blogGrid}>
-         {posts.map((post, index: number) => (
+         {posts.map((post, index: number) => {
+           const blogPost = post as BlogPost;
+           return (
            <a
              key={index}
-             // eslint-disable-next-line @typescript-eslint/no-explicit-any
-             href={(post as any).url}
+             href={blogPost.url}
              target="_blank"
              rel="noopener noreferrer"
              className={styles.blogCard}
            >
              <div className={styles.blogHeader}>
                <FileText className={styles.blogIcon} />
-               {/* eslint-disable-next-line @typescript-eslint/no-explicit-any */}
-               <h4>{(post as any).title}</h4>
+               <h4>{blogPost.title}</h4>
              </div>
-             {/* eslint-disable-next-line @typescript-eslint/no-explicit-any */}
-             {(post as any).excerpt && (
-               // eslint-disable-next-line @typescript-eslint/no-explicit-any
-               <p className={styles.blogExcerpt}>{(post as any).excerpt}</p>
+             {blogPost.excerpt && (
+               <p className={styles.blogExcerpt}>{blogPost.excerpt}</p>
              )}
              <div className={styles.blogFooter}>
                <span className={styles.blogDate}>
                  <Calendar className={styles.dateIcon} />
-                 {new Date((post as any).date).toLocaleDateString('en-US', {
+                 {new Date(blogPost.date).toLocaleDateString('en-US', {
                    year: 'numeric',
                    month: 'long',
                    day: 'numeric'
@@ -61,7 +66,8 @@ export function ProjectBlogPosts({ project }: ProjectBlogPostsProps) {
                <ExternalLink className={styles.externalIcon} />
              </div>
            </a>
-         ))}
+           );
+         })}
       </div>
       
       <div className={styles.blogFooter}>

@@ -148,12 +148,14 @@ export default function ProjectsSection() {
                         <ProjectModal
                             isOpen={openSlug === project.slug}
                             onClose={closeModal}
-                            title={project.title}
-                            categories={project.category}
-                            overview={project.overview}
-                            live={project.live}
-                            github={project.github}
-                            slug={project.slug}
+                            project={{
+                                title: project.title,
+                                category: project.category,
+                                overview: project.overview,
+                                live: project.live,
+                                github: project.github,
+                                slug: project.slug,
+                            }}
                         />
                     </div>
                 ))

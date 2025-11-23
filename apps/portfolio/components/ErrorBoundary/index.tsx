@@ -1,4 +1,5 @@
 import React, { ReactNode, ReactElement } from 'react';
+import Link from 'next/link';
 import styles from './ErrorBoundary.module.scss';
 
 interface Props {
@@ -40,8 +41,8 @@ export class ErrorBoundary extends React.Component<Props, State> {
       return (
         <div className={styles.errorContainer}>
           <div className={styles.errorContent}>
-            <h1>Oops! Something went wrong</h1>
-            <p>We're sorry for the inconvenience. An unexpected error has occurred.</p>
+             <h1>Oops! Something went wrong</h1>
+             <p>We&rsquo;re sorry for the inconvenience. An unexpected error has occurred.</p>
             
             {process.env.NODE_ENV === 'development' && this.state.error && (
               <details className={styles.errorDetails}>
@@ -52,17 +53,17 @@ export class ErrorBoundary extends React.Component<Props, State> {
             
             <div className={styles.actions}>
               <button 
-                onClick={this.handleReset}
-                className={styles.primaryBtn}
-              >
-                Try Again
-              </button>
-              <a 
-                href="/"
-                className={styles.secondaryBtn}
-              >
-                Go to Home
-              </a>
+                 onClick={this.handleReset}
+                 className={styles.primaryBtn}
+               >
+                 Try Again
+               </button>
+               <Link 
+                 href="/"
+                 className={styles.secondaryBtn}
+               >
+                 Go to Home
+               </Link>
             </div>
           </div>
         </div>

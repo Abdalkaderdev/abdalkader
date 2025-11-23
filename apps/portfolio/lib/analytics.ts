@@ -151,15 +151,7 @@ export const trackDownload = (fileName: string, fileType: string) => {
 
 declare global {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  function gtag(
-    command: string,
-    action: string,
-    properties?: Record<string, any>
-  ): void;
-
+  function gtag(command: string, action: string, properties?: Record<string, any>): void;
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  function plausible(
-    eventName: string,
-    options?: { props?: Record<string, any> }
-  ): void;
+  function plausible(eventName: string, options?: { props?: Record<string, any> }): void;
 }

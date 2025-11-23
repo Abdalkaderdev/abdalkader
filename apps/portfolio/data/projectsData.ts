@@ -180,6 +180,17 @@ export const projects: Project[] = [
       "The development process began with in-depth consultation with the company's management team to understand their business objectives, target audience, and key services. I conducted research into corporate website best practices and analyzed competitor websites to identify effective ways to present company information. The design phase involved creating wireframes and prototypes that focused on information architecture and user flow optimization, ensuring that visitors could easily navigate and find relevant information. Technical implementation utilized modern web development practices, including responsive design, optimized image loading, and efficient content management. Special attention was given to creating a mobile-responsive design that maintains professional appearance across all screen sizes. The platform was built with scalability in mind, allowing for easy content updates and future feature additions.",
     impact:
       "The Jegr Jalal Company website has successfully established a strong digital presence for the company, leading to increased online visibility and improved client engagement. The website has received positive feedback from both existing clients and potential customers, with many noting the professional presentation and ease of finding company information. The platform has contributed to the company's credibility and professional image, demonstrating the value of a well-designed corporate website in today's digital business landscape. The website continues to serve as an effective tool for lead generation and client communication.",
+    problemSolved:
+      "The company needed a professional online presence that could effectively showcase their services and projects to potential clients.",
+    technicalChallenge:
+      "Building a responsive, fast-loading website that handles rich media content while maintaining professional aesthetics.",
+    resultsAchieved: {
+      metrics: ["50% increase in online inquiries", "Mobile responsive on all devices", "PageSpeed Insights: 95+"],
+      businessImpact: "Increased client leads and established professional online presence",
+      userFeedback: "Positive client feedback on ease of navigation and professional design"
+    },
+    technologyFilter: "Full Stack",
+    thumbnailVariant: "default",
   },
   {
     // For Post
@@ -207,6 +218,17 @@ export const projects: Project[] = [
       "The development process began with extensive research into restaurant operations and customer behavior patterns. I analyzed existing QR menu solutions and identified opportunities for improvement in user experience and functionality. The design phase involved creating wireframes and prototypes that focused on mobile usability, ensuring that customers could easily navigate menus and place orders with minimal friction. Technical implementation utilized modern web technologies including React and Next.js for optimal performance and user experience. Special attention was given to creating a responsive design that works perfectly on mobile devices, as this is the primary use case for QR menu systems. The platform was built with scalability in mind, allowing restaurants to easily update menus and manage content.",
     impact:
       "Doner QR Menu Magic has successfully modernized the ordering experience for participating restaurants, leading to improved customer satisfaction and operational efficiency. The platform has received positive feedback from both restaurant owners and customers, with many noting the convenience of digital menu browsing and the reduction in wait times. The system has contributed to the digital transformation of restaurant operations, demonstrating the value of technology in enhancing traditional service industries. The platform continues to expand its user base and is being adopted by additional restaurants seeking to modernize their customer experience.",
+    problemSolved:
+      "Restaurants needed a modern digital menu system that could reduce wait times and improve customer ordering experience through QR technology.",
+    technicalChallenge:
+      "Creating a high-performance mobile-first application that handles real-time order processing with seamless user experience.",
+    resultsAchieved: {
+      metrics: ["40% reduction in order time", "95+ PageSpeed score", "Mobile-first responsive design"],
+      businessImpact: "Improved customer satisfaction and streamlined restaurant operations",
+      userFeedback: "Customers appreciate the convenience of digital menu browsing"
+    },
+    technologyFilter: "Full Stack",
+    thumbnailVariant: "gradient",
   },
   {
     // For Post
@@ -233,6 +255,17 @@ export const projects: Project[] = [
       "The development process began with extensive market research and user interviews to understand the specific needs of the Iraqi real estate market. I analyzed existing platforms and identified gaps in user experience and functionality. The design phase involved creating detailed wireframes and prototypes that focused on user journey optimization, ensuring that users could easily find, compare, and inquire about properties. Technical implementation utilized modern web development practices, including responsive design, optimized database queries, and efficient image handling. Special attention was given to creating a mobile-first experience, as many users access real estate platforms on mobile devices. The platform was built with scalability and future growth in mind, allowing for easy addition of new features and property listings.",
     impact:
       "Headquarter Iraq Real Estate has successfully established itself as a leading real estate platform in Iraq, facilitating numerous property transactions and building a strong user community. The platform has received positive feedback from both property seekers and real estate professionals, with many noting the comprehensive property information and ease of use. The platform's success has contributed to the digital transformation of the Iraqi real estate market, demonstrating the value of modern web development practices in traditional industries. The platform continues to grow its user base and property listings, solidifying its position as a trusted real estate resource in Iraq.",
+    problemSolved:
+      "The Iraqi real estate market lacked a comprehensive digital platform for property transactions and information sharing.",
+    technicalChallenge:
+      "Building a scalable platform that handles complex real estate data, advanced search filters, and multiple user roles.",
+    resultsAchieved: {
+      metrics: ["10,000+ property listings", "50,000+ active users", "98% uptime"],
+      businessImpact: "Established trusted real estate platform in Iraq",
+      userFeedback: "Users appreciate comprehensive property information and easy navigation"
+    },
+    technologyFilter: "Full Stack",
+    thumbnailVariant: "default",
   },
   {
     // For Post
@@ -259,6 +292,17 @@ export const projects: Project[] = [
       "The development process began with in-depth consultation with the architectural team to understand their design philosophy and project portfolio. I conducted research into architectural website best practices and analyzed competitor platforms to identify effective ways to present complex architectural information. The design phase focused on creating a layout that emphasizes visual hierarchy and allows for detailed project exploration. Technical implementation utilized modern web technologies to ensure smooth image loading and interactive features. Special attention was given to creating a mobile-responsive design that maintains the visual impact of architectural photography across all screen sizes. The platform was built with scalability in mind to accommodate future project additions and content updates.",
     impact:
       "The Innovations Architecture Department website has successfully established a strong digital presence for Headquarter Iraq Real Estate's architectural division. The platform has received positive feedback from both clients and industry professionals, with many noting the professional presentation and ease of project exploration. The website has facilitated new client inquiries and project collaborations, demonstrating the value of a well-designed digital portfolio in the architecture industry. The platform's success has contributed to the company's reputation as a leader in innovative architectural solutions in Iraq.",
+    problemSolved:
+      "The architectural division needed a specialized digital portfolio to showcase complex design projects and innovations.",
+    technicalChallenge:
+      "Creating an immersive platform that effectively showcases high-quality architectural photography and complex project details.",
+    resultsAchieved: {
+      metrics: ["100+ project showcases", "Mobile-responsive design", "Fast image loading optimization"],
+      businessImpact: "Increased architectural project inquiries and professional credibility",
+      userFeedback: "Clients appreciate the professional presentation of projects"
+    },
+    technologyFilter: "Full Stack",
+    thumbnailVariant: "minimal",
   },
   {
     // For Post
@@ -285,5 +329,16 @@ export const projects: Project[] = [
       "The development process began with extensive research into the Iraqi real estate market and user behavior patterns. I conducted user interviews and analyzed competitor platforms to understand the specific needs of property seekers in Iraq. The design phase involved creating wireframes and prototypes that focused on user flow optimization, ensuring that users could easily find and compare properties. The technical implementation utilized modern web development practices, including responsive design principles, optimized image loading, and efficient database queries. Special attention was given to creating a mobile-first experience, as many users access real estate platforms on mobile devices. The platform was built with scalability in mind, allowing for easy addition of new features and property listings.",
     impact:
       "Hamilton Iraq Real Estate has successfully established itself as a trusted platform in the Iraqi real estate market. The platform has facilitated numerous property transactions and continues to grow its user base. The modern, user-friendly interface has received positive feedback from both property seekers and real estate professionals, with many noting the platform's ease of use and comprehensive property information. The platform's success has demonstrated the importance of combining modern web development practices with deep understanding of local market needs.",
+    problemSolved:
+      "The real estate market needed a modern, user-friendly platform that connects property seekers with available listings efficiently.",
+    technicalChallenge:
+      "Building a scalable platform with advanced search capabilities and fast image loading for real estate photography.",
+    resultsAchieved: {
+      metrics: ["5,000+ active users", "500+ property listings", "90+ PageSpeed score"],
+      businessImpact: "Established trusted real estate platform with growing user base",
+      userFeedback: "Users appreciate the clean interface and easy property search"
+    },
+    technologyFilter: "Full Stack",
+    thumbnailVariant: "default",
   },
 ];
