@@ -48,9 +48,16 @@ export function LoadingState({
     );
   }
 
+  // Map LoadingState size to Spinner size
+  const spinnerSizeMap = {
+    small: 'sm',
+    medium: 'md',
+    large: 'lg',
+  } as const;
+
   return (
     <div className={`loading-state loading-state--spinner loading-state--${size} ${fullScreen ? 'loading-state--fullscreen' : ''} ${className}`.trim()}>
-      <Spinner size={size} />
+      <Spinner size={spinnerSizeMap[size]} />
       {message && <p className="loading-state__message">{message}</p>}
     </div>
   );
