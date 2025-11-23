@@ -7,6 +7,7 @@ import { FileText, ExternalLink, Calendar } from 'lucide-react';
 interface BlogPost {
   url: string;
   title: string;
+  slug: string;
   excerpt?: string;
   date: string | Date;
 }
