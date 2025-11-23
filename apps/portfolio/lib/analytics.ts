@@ -149,6 +149,46 @@ export const trackDownload = (fileName: string, fileType: string) => {
   });
 };
 
+/**
+ * Track cross-domain link click
+ */
+export const trackCrossDomainLink = (
+  from: string,
+  to: string,
+  linkType: 'history' | 'storybook' | 'docs' | 'blog',
+  projectSlug?: string,
+  additionalData?: Record<string, any>
+) => {
+  trackEvent({
+    name: 'cross_domain_link',
+    properties: {
+      from_domain: from,
+      to_domain: to,
+      link_type: linkType,
+      project_slug: projectSlug,
+      ...additionalData,
+    },
+  });
+};
+
+/**
+ * Track project lifecycle interaction
+ */
+export const trackProjectLifecycleInteraction = (
+  projectSlug: string,
+  tab: 'timeline' | 'components' | 'docs' | 'blog',
+  action: 'view' | 'click' | 'expand'
+) => {
+  trackEvent({
+    name: 'project_lifecycle_interaction',
+    properties: {
+      project_slug: projectSlug,
+      tab,
+      action,
+    },
+  });
+};
+
 declare global {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   function gtag(command: string, action: string, properties?: Record<string, any>): void;

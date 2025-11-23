@@ -1,9 +1,9 @@
 #!/bin/bash
 set -e
 
-# Install the correct pnpm version
-echo "Installing pnpm 8.15.0..."
-npm install -g pnpm@8.15.0
+# Install the correct pnpm version (8.15.1+ fixes registry issues)
+echo "Installing pnpm 8.15.1..."
+npm install -g pnpm@8.15.1
 
 # Update PATH to use the new pnpm
 export PATH="$(npm config get prefix)/bin:$PATH"

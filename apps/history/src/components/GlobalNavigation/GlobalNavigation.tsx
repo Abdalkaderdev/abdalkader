@@ -1,12 +1,9 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-// @ts-ignore - Direct import from source
-import { GlobalNavigationHub } from '../../../../packages/ui/src/components/GlobalNavigationHub/GlobalNavigationHub';
-// @ts-ignore
-import type { RelatedContent } from '../../../../packages/ui/src/components/GlobalNavigationHub/GlobalNavigationHub';
-// @ts-ignore
-import { getCurrentSiteContext, getContextRelatedContent } from '../../../../packages/ui/src/lib/navigationContext';
+import { GlobalNavigationHub } from '@abdalkader/ui';
+import type { RelatedContent } from '@abdalkader/ui';
+import { getCurrentSiteContext, getContextRelatedContent } from '@abdalkader/ui';
 import { usePathname } from 'next/navigation';
 
 export function GlobalNavigation() {

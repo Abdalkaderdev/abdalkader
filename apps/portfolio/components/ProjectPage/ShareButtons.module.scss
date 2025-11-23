@@ -1,0 +1,79 @@
+@import "@/styles/variables.scss";
+
+.shareButtons {
+  margin-top: 2rem;
+  padding: 1.5rem;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 0.5rem;
+  backdrop-filter: blur(10px);
+}
+
+.shareLabel {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: $white;
+  text-transform: uppercase;
+  letter-spacing: 0.05rem;
+}
+
+.shareIcon {
+  width: 1rem;
+  height: 1rem;
+  color: $primary;
+}
+
+.shareGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 0.75rem;
+}
+
+.shareButton {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1rem;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 0.5rem;
+  color: $white;
+  font-size: 0.875rem;
+  cursor: pointer;
+  transition: all $transition;
+  text-decoration: none;
+
+  &:hover {
+    background: rgba($primary, 0.1);
+    border-color: $primary;
+    color: $primary;
+    transform: translateY(-2px);
+  }
+
+  &:active {
+    transform: translateY(0);
+  }
+
+  &.copied {
+    background: rgba(76, 175, 80, 0.2);
+    border-color: #4caf50;
+    color: #4caf50;
+  }
+}
+
+.buttonIcon {
+  width: 1.25rem;
+  height: 1.25rem;
+}
+
+@media (max-width: 600px) {
+  .shareGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+

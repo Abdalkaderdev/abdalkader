@@ -5,6 +5,7 @@ import styles from './ProjectPage.module.scss';
 import Button from '@/components/Button';
 import BookCallSection from '@/components/HomePage/BookCallSection';
 import { ProjectLifecycle } from '@/components/ProjectPage/ProjectLifecycle';
+import { ShareButtons } from '@/components/ProjectPage/ShareButtons';
 import Head from 'next/head';
 import { gsap } from '@/libs/gsap';
 import { useEffect, useRef } from 'react';
@@ -71,11 +72,29 @@ const ProjectPage = ({ project }: ProjectPageProps) => {
     return (
         <>
             <Head>
-                <title>{`AI-Powered ${project?.title || 'Untitled Project'} | Abdalkader - AI & Full-Stack Developer`}</title>
+                <title>{`${project?.title || 'Untitled Project'} | Abdalkader - AI & Full-Stack Developer`}</title>
                 <meta name="description" content={`${project?.overview?.substring(0, 160)}...`} />
-                <meta property="og:title" content={`AI-Powered ${project?.title || 'Untitled Project'} | Abdalkader - AI & Full-Stack Developer`} />
+                <meta name="keywords" content={project?.category?.join(', ') || ''} />
+                <meta name="author" content="Abdalkader Alhamoud" />
+                <link rel="canonical" href={`${SITE_URL}/projects/${project.slug}`} />
+                
+                {/* Open Graph / Facebook */}
+                <meta property="og:type" content="website" />
+                <meta property="og:url" content={`${SITE_URL}/projects/${project.slug}`} />
+                <meta property="og:title" content={`${project?.title || 'Untitled Project'} | Abdalkader`} />
                 <meta property="og:description" content={`${project?.overview?.substring(0, 160)}...`} />
-                <meta property="og:image" content={project?.img} />
+                <meta property="og:image" content={`${SITE_URL}${project?.img}`} />
+                <meta property="og:image:width" content="1200" />
+                <meta property="og:image:height" content="630" />
+                <meta property="og:site_name" content="Abdalkader Portfolio" />
+                
+                {/* Twitter */}
+                <meta name="twitter:card" content="summary_large_image" />
+                <meta name="twitter:url" content={`${SITE_URL}/projects/${project.slug}`} />
+                <meta name="twitter:title" content={`${project?.title || 'Untitled Project'} | Abdalkader`} />
+                <meta name="twitter:description" content={`${project?.overview?.substring(0, 160)}...`} />
+                <meta name="twitter:image" content={`${SITE_URL}${project?.img}`} />
+                <meta name="twitter:creator" content="@abdalkaderdev" />
                 <script
                     type="application/ld+json"
                     dangerouslySetInnerHTML={{
@@ -186,6 +205,13 @@ const ProjectPage = ({ project }: ProjectPageProps) => {
 
             {/*========= Project Lifecycle Integration ==========*/}
             <ProjectLifecycle projectSlug={project.slug} />
+
+            {/*========= Share Buttons ==========*/}
+            <ShareButtons 
+              projectTitle={project.title}
+              projectSlug={project.slug}
+              projectDescription={project.overview}
+            />
 
             {/*========= Book Call Section ==========*/}
             <BookCallSection />

@@ -125,12 +125,40 @@ export const technicalMilestones: TechnicalMilestone[] = [
     tags: ['Restaurant Tech', 'Mobile', 'QR Code', 'UX']
   },
   {
-    id: 'milestone-2024-12-real-estate',
-    title: 'Real Estate Platform Development',
+    id: 'milestone-2024-11-jegr-jalal',
+    title: 'Jegr Jalal Company - Corporate Website',
+    date: '2024-11-25',
+    year: 2024,
+    month: 11,
+    description: 'Developed professional corporate website showcasing company services, projects, and corporate information with modern design.',
+    category: 'project',
+    technologies: ['Next.js', 'TypeScript', 'SCSS'],
+    links: [
+      {
+        type: 'portfolio',
+        title: 'Jegr Jalal Company Project',
+        url: 'https://abdalkader.dev/projects/jegr-jalal-company',
+        description: 'View the corporate website project'
+      },
+      {
+        type: 'docs',
+        title: 'Jegr Jalal Documentation',
+        url: 'https://docs.abdalkader.dev/projects/jegr-jalal-company',
+        description: 'Corporate website implementation details'
+      }
+    ],
+    color: '#f44e00',
+    icon: '🏢',
+    impact: 'Established professional online presence for the company',
+    tags: ['Corporate', 'Web Development', 'Next.js']
+  },
+  {
+    id: 'milestone-2024-12-headquarter',
+    title: 'Headquarter Iraq Real Estate - Comprehensive Platform',
     date: '2024-12-05',
     year: 2024,
     month: 12,
-    description: 'Developed comprehensive real estate platforms (Headquarter Iraq, Hamilton Iraq) serving as digital hubs for property transactions across Iraq.',
+    description: 'Developed comprehensive real estate platform serving as digital hub for property transactions across Iraq with advanced search and filtering capabilities.',
     category: 'project',
     technologies: ['Next.js', 'TypeScript', 'Real Estate', 'Search', 'Performance'],
     links: [
@@ -141,6 +169,62 @@ export const technicalMilestones: TechnicalMilestone[] = [
         description: 'Comprehensive real estate platform'
       },
       {
+        type: 'docs',
+        title: 'Headquarter Real Estate Docs',
+        url: 'https://docs.abdalkader.dev/projects/headquarter-iraq-real-estate',
+        description: 'Architecture and implementation details'
+      }
+    ],
+    color: '#3b82f6',
+    icon: '🏢',
+    impact: 'Established leading real estate platform in Iraq, facilitating numerous property transactions',
+    tags: ['Real Estate', 'Full Stack', 'Performance', 'SEO']
+  },
+  {
+    id: 'milestone-2024-12-innovations',
+    title: 'Innovations Architecture Department',
+    date: '2024-12-10',
+    year: 2024,
+    month: 12,
+    description: 'Created specialized architecture division website showcasing cutting-edge design projects and modern architectural solutions.',
+    category: 'project',
+    technologies: ['Next.js', 'TypeScript', 'Design Systems'],
+    links: [
+      {
+        type: 'portfolio',
+        title: 'Innovations Architecture Department',
+        url: 'https://abdalkader.dev/projects/innovations-architecture-department',
+        description: 'Architecture portfolio website'
+      },
+      {
+        type: 'docs',
+        title: 'Innovations Architecture Docs',
+        url: 'https://docs.abdalkader.dev/projects/innovations-architecture-department',
+        description: 'Architecture website implementation'
+      },
+      {
+        type: 'storybook',
+        title: 'Architecture Components',
+        url: 'https://storybook.abdalkader.dev/?path=/story/components-architecture',
+        description: 'Architecture portfolio components'
+      }
+    ],
+    color: '#8b5cf6',
+    icon: '🏛️',
+    impact: 'Established strong digital presence for architectural division, facilitating new client inquiries',
+    tags: ['Architecture', 'Portfolio', 'Design', 'Visual Storytelling']
+  },
+  {
+    id: 'milestone-2024-12-hamilton',
+    title: 'Hamilton Iraq Real Estate - Modern Platform',
+    date: '2024-12-15',
+    year: 2024,
+    month: 12,
+    description: 'Developed modern real estate platform showcasing properties across Iraq with intuitive user experience and responsive design.',
+    category: 'project',
+    technologies: ['Next.js', 'TypeScript', 'SEO'],
+    links: [
+      {
         type: 'portfolio',
         title: 'Hamilton Iraq Real Estate',
         url: 'https://abdalkader.dev/projects/hamilton-iraq-real-estate',
@@ -148,15 +232,15 @@ export const technicalMilestones: TechnicalMilestone[] = [
       },
       {
         type: 'docs',
-        title: 'Real Estate Platform Docs',
-        url: 'https://docs.abdalkader.dev/projects/headquarter-iraq-real-estate',
-        description: 'Architecture and implementation details'
+        title: 'Hamilton Real Estate Docs',
+        url: 'https://docs.abdalkader.dev/projects/hamilton-iraq-real-estate',
+        description: 'Real estate platform documentation'
       }
     ],
     color: '#3b82f6',
     icon: '🏢',
-    impact: 'Established leading real estate platforms in Iraq, facilitating numerous property transactions',
-    tags: ['Real Estate', 'Full Stack', 'Performance', 'SEO']
+    impact: 'Established trusted real estate platform with growing user base in Iraq',
+    tags: ['Real Estate', 'Modern Web', 'SEO', 'User Experience']
   },
   {
     id: 'milestone-2025-01-quantum-animation',

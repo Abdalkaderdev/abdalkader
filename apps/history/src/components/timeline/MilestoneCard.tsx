@@ -1,5 +1,6 @@
 'use client';
 
+import { forwardRef } from 'react';
 import { motion } from 'framer-motion';
 import { TechnicalMilestone } from '@/lib/data/milestones';
 import { Card, Badge, Button } from '@abdalkader/ui';
@@ -12,16 +13,19 @@ interface MilestoneCardProps {
   position: 'left' | 'right';
 }
 
-export function MilestoneCard({ milestone, index, onClick, position }: MilestoneCardProps) {
-  const isLeft = position === 'left';
-  
-  return (
-    <motion.div
-      initial={{ opacity: 0, x: isLeft ? -50 : 50 }}
-      animate={{ opacity: 1, x: 0 }}
-      transition={{ delay: index * 0.1 }}
-      className={`relative flex items-center ${isLeft ? 'md:flex-row' : 'md:flex-row-reverse'} flex-col`}
-    >
+export const MilestoneCard = forwardRef<HTMLDivElement, MilestoneCardProps>(
+  ({ milestone, index, onClick, position }, ref) => {
+    const isLeft = position === 'left';
+    
+    return (
+      <motion.div
+        ref={ref}
+        data-milestone-id={milestone.id}
+        initial={{ opacity: 0, x: isLeft ? -50 : 50 }}
+        animate={{ opacity: 1, x: 0 }}
+        transition={{ delay: index * 0.1 }}
+        className={`relative flex items-center ${isLeft ? 'md:flex-row' : 'md:flex-row-reverse'} flex-col milestone-card`}
+      >
       {/* Timeline Dot */}
       <div className="absolute left-8 md:left-1/2 transform -translate-x-1/2 w-4 h-4 rounded-full bg-orange-500 border-4 border-black z-10 shadow-lg" />
 
@@ -105,6 +109,9 @@ export function MilestoneCard({ milestone, index, onClick, position }: Milestone
         </Card>
       </div>
     </motion.div>
-  );
-}
+    );
+  }
+);
+
+MilestoneCard.displayName = 'MilestoneCard';
 

@@ -1,6 +1,7 @@
 import AboutDetailsSection from "@/components/AboutPage/AboutDetailsSection";
 import AboutHeroSection from "@/components/AboutPage/AboutHeroSection";
 import BookCallSection from "@/components/HomePage/BookCallSection";
+import EnhancedSkillsSection from "@/components/HomePage/EnhancedSkillsSection";
 import Head from "next/head";
 import { buildCanonical } from "@/utils/seo";
 
@@ -15,6 +16,7 @@ export default function AboutPage() {
             </Head>
             <AboutHeroSection />
             <AboutDetailsSection />
+            <EnhancedSkillsSection />
             <BookCallSection />
         </>
     );

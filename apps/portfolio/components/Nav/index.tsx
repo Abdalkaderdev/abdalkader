@@ -175,7 +175,10 @@ export default function Nav() {
                     // Close when clicking outside the list (backdrop)
                     if (e.target === navigationMenuRef.current) setMenuOpen(false);
                 }}
-                style={{ visibility: menuOpen ? 'visible' : 'hidden' }}
+                style={{ 
+                    visibility: menuOpen ? 'visible' : 'hidden',
+                    pointerEvents: menuOpen ? 'auto' : 'none'
+                }}
             >
                 <h2 id="site-navigation-menu-heading" style={{ position: 'absolute', left: '-9999px' }}>
                     Main navigation

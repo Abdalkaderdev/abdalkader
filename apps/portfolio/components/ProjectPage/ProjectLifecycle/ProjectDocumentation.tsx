@@ -1,5 +1,6 @@
 import React from 'react';
-import { UnifiedProject } from '@/lib/projectRegistry';
+import { UnifiedProject } from '../../../../../packages/ui/src/lib/projectRegistry';
+import { trackCrossDomainLink } from '@/lib/analytics';
 import styles from './ProjectLifecycle.module.scss';
 import { BookOpen, ExternalLink, FileText, Code, GraduationCap, Book } from 'lucide-react';
 
@@ -63,25 +64,21 @@ export function ProjectDocumentation({ project }: ProjectDocumentationProps) {
          {sections.map((doc, index: number) => (
            <a
              key={index}
-             // eslint-disable-next-line @typescript-eslint/no-explicit-any
-             href={(doc as any).url}
+             href={doc.url}
              target="_blank"
              rel="noopener noreferrer"
              className={styles.docCard}
+             onClick={() => trackCrossDomainLink('portfolio', 'docs', 'docs', project.slug, { doc_type: doc.type, doc_title: doc.title })}
            >
              <div className={styles.docHeader}>
-               {/* eslint-disable-next-line @typescript-eslint/no-explicit-any */}
-               {getDocIcon((doc as any).type)}
+               {getDocIcon(doc.type)}
                <div className={styles.docTitleSection}>
-                 {/* eslint-disable-next-line @typescript-eslint/no-explicit-any */}
-                 <h4>{(doc as any).title}</h4>
-                 {/* eslint-disable-next-line @typescript-eslint/no-explicit-any */}
-                 <span className={styles.docType}>{getDocTypeLabel((doc as any).type)}</span>
+                 <h4>{doc.title}</h4>
+                 <span className={styles.docType}>{getDocTypeLabel(doc.type)}</span>
                </div>
              </div>
              <div className={styles.docFooter}>
-               {/* eslint-disable-next-line @typescript-eslint/no-explicit-any */}
-               <span className={styles.docPath}>{(doc as any).section}</span>
+               <span className={styles.docPath}>{doc.section}</span>
                <ExternalLink className={styles.externalIcon} />
              </div>
            </a>

@@ -27,6 +27,20 @@ export * from './Switch';
 // Utility Components
 export * from './Badge';
 
+// State Components
+export * from './EmptyState';
+export * from './ErrorState';
+export * from './LoadingState';
+
+// Data Components
+export * from './DataTable';
+
+// Form Components
+export * from './MultiStepForm';
+
+// Layout Components
+export * from './Layout';
+
 // AI Components
 export * from './ChatMessage';
 export * from './ChatInterface';

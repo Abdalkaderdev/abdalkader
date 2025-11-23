@@ -1,7 +1,5 @@
 import Footer from "@/components/Footer";
 import Nav from "@/components/Nav";
-import { GlobalNavigation } from "@/components/GlobalNavigation/GlobalNavigation";
-import { GlobalFooter } from "@/components/GlobalFooter/GlobalFooter";
 import SmoothScrolling from "@/components/SmoothScrolling";
 import "@/styles/globals.scss";  // Ensure this is your global SCSS import
 import type { AppProps } from "next/app";
@@ -200,7 +198,6 @@ export default function App({ Component, pageProps }: AppProps) {
                         }}
                     >
                         <SmoothScrolling>
-                            <GlobalNavigation />
                             <Nav />
                             <motion.main
                                 key="main-content"
@@ -212,7 +209,6 @@ export default function App({ Component, pageProps }: AppProps) {
                             >
                                 <Component {...pageProps} />
                             </motion.main>
-                            <GlobalFooter />
                             <Footer />
                         </SmoothScrolling>
                     </ErrorBoundary>

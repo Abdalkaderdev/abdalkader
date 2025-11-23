@@ -1,0 +1,257 @@
+import { Meta } from '@storybook/react';
+import { Button, Input, Modal, Tabs } from '@abdalkader/ui';
+
+<Meta title="Documentation/Accessibility" />
+
+# Accessibility Guidelines
+
+## Overview
+
+All components in the design system are built with accessibility in mind, following WCAG 2.1 AA standards and best practices.
+
+## Keyboard Navigation
+
+### Tab Order
+
+All interactive elements should be accessible via keyboard navigation:
+
+- **Tab**: Move forward through interactive elements
+- **Shift + Tab**: Move backward through interactive elements
+- **Enter/Space**: Activate buttons and links
+- **Arrow Keys**: Navigate within components (tabs, menus, etc.)
+- **Escape**: Close modals, dropdowns, and popovers
+
+### Focus Management
+
+```tsx
+// Focus should be visible on all interactive elements
+.button:focus {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+// Skip links for keyboard users
+.skip-link {
+  position: absolute;
+  top: -40px;
+  left: 0;
+  background: var(--color-primary);
+  color: var(--color-text);
+  padding: 8px;
+  z-index: 100;
+}
+
+.skip-link:focus {
+  top: 0;
+}
+```
+
+## ARIA Attributes
+
+### Required Attributes
+
+- **aria-label**: For icon-only buttons
+- **aria-describedby**: For additional context
+- **aria-expanded**: For collapsible components
+- **aria-hidden**: For decorative elements
+- **role**: For custom components
+
+### Examples
+
+```tsx
+// Icon button with aria-label
+<Button aria-label="Close dialog" onClick={handleClose}>
+  <CloseIcon />
+</Button>
+
+// Modal with proper ARIA
+<Modal
+  isOpen={isOpen}
+  onClose={handleClose}
+  aria-labelledby="modal-title"
+  aria-describedby="modal-description"
+>
+  <h2 id="modal-title">Confirm Action</h2>
+  <p id="modal-description">Are you sure you want to proceed?</p>
+</Modal>
+
+// Tabs with ARIA
+<Tabs aria-label="Settings tabs">
+  <TabPanel id="general" aria-labelledby="tab-general">
+    General settings
+  </TabPanel>
+</Tabs>
+```
+
+## Color Contrast
+
+### Requirements
+
+- **Text**: Minimum 4.5:1 contrast ratio (WCAG AA)
+- **Large Text**: Minimum 3:1 contrast ratio
+- **Interactive Elements**: Minimum 3:1 contrast ratio
+
+### Testing
+
+```tsx
+// Use tools to verify contrast
+// - WebAIM Contrast Checker
+// - axe DevTools
+// - Lighthouse
+
+// Example: Primary button
+.button-primary {
+  background: var(--color-primary); // #f44e00
+  color: var(--color-text); // #f8f8f8
+  // Contrast ratio: 4.5:1 ✓
+}
+```
+
+## Screen Reader Support
+
+### Semantic HTML
+
+Always use semantic HTML elements:
+
+```tsx
+// Good
+<button onClick={handleClick}>Submit</button>
+<nav aria-label="Main navigation">...</nav>
+<main>...</main>
+
+// Bad
+<div onClick={handleClick}>Submit</div>
+<div>...</div>
+```
+
+### Live Regions
+
+For dynamic content updates:
+
+```tsx
+<div aria-live="polite" aria-atomic="true">
+  {statusMessage}
+</div>
+
+// Status updates
+<div role="status" aria-live="polite">
+  Form submitted successfully
+</div>
+```
+
+## Form Accessibility
+
+### Labels
+
+All form inputs must have labels:
+
+```tsx
+// Explicit label
+<label htmlFor="email">Email Address</label>
+<Input id="email" type="email" />
+
+// Implicit label
+<label>
+  Email Address
+  <Input type="email" />
+</label>
+
+// aria-label for icon inputs
+<Input
+  type="search"
+  aria-label="Search products"
+  placeholder="Search..."
+/>
+```
+
+### Error Messages
+
+```tsx
+<Input
+  id="email"
+  type="email"
+  aria-invalid={hasError}
+  aria-describedby="email-error"
+/>
+{hasError && (
+  <div id="email-error" role="alert">
+    Please enter a valid email address
+  </div>
+)}
+```
+
+## Component-Specific Guidelines
+
+### Buttons
+
+- Always provide accessible text
+- Use `aria-label` for icon-only buttons
+- Indicate loading state with `aria-busy`
+
+```tsx
+<Button aria-label="Save changes" loading={isSaving} aria-busy={isSaving}>
+  Save
+</Button>
+```
+
+### Modals
+
+- Trap focus within modal
+- Return focus to trigger on close
+- Provide close button with aria-label
+
+```tsx
+<Modal
+  isOpen={isOpen}
+  onClose={handleClose}
+  aria-labelledby="modal-title"
+>
+  <Button aria-label="Close modal" onClick={handleClose}>
+    ×
+  </Button>
+</Modal>
+```
+
+### Data Tables
+
+- Use proper table structure
+- Provide column headers
+- Support keyboard navigation
+
+```tsx
+<table>
+  <thead>
+    <tr>
+      <th scope="col">Name</th>
+      <th scope="col">Email</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>John Doe</td>
+      <td>john@example.com</td>
+    </tr>
+  </tbody>
+</table>
+```
+
+## Testing Checklist
+
+- [ ] All interactive elements are keyboard accessible
+- [ ] Focus indicators are visible
+- [ ] Color contrast meets WCAG AA standards
+- [ ] ARIA attributes are properly implemented
+- [ ] Screen reader testing completed
+- [ ] Form labels are associated with inputs
+- [ ] Error messages are announced
+- [ ] Skip links are present
+- [ ] Alt text for images
+- [ ] Semantic HTML used throughout
+
+## Resources
+
+- [WCAG 2.1 Guidelines](https://www.w3.org/WAI/WCAG21/quickref/)
+- [ARIA Authoring Practices](https://www.w3.org/WAI/ARIA/apg/)
+- [WebAIM Contrast Checker](https://webaim.org/resources/contrastchecker/)
+- [axe DevTools](https://www.deque.com/axe/devtools/)
+

@@ -4,10 +4,11 @@ import { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { TechnicalMilestone, getAllYears, getMilestonesByYear } from '@/lib/data/milestones';
+import { TechnicalMilestone, getAllYears, getMilestonesByYear, getMilestoneById } from '@/lib/data/milestones';
 import { MilestoneCard } from './MilestoneCard';
 import { MilestoneDetail } from './MilestoneDetail';
 import { Card, Button, Tabs, Badge } from '@abdalkader/ui';
+import { useSearchParams } from 'next/navigation';
 import { 
   Calendar, 
   Filter, 
@@ -28,14 +29,43 @@ interface UnifiedTimelineProps {
 }
 
 export function UnifiedTimeline({ onMilestoneSelect }: UnifiedTimelineProps) {
+  const searchParams = useSearchParams();
   const [selectedYear, setSelectedYear] = useState<number | null>(null);
   const [selectedMilestone, setSelectedMilestone] = useState<TechnicalMilestone | null>(null);
   const [filterCategory, setFilterCategory] = useState<string>('all');
   const [searchQuery, setSearchQuery] = useState('');
   const [viewMode, setViewMode] = useState<'timeline' | 'grid'>('timeline');
   const timelineRef = useRef<HTMLDivElement>(null);
+  const milestoneCardRefs = useRef<Map<string, HTMLDivElement>>(new Map());
   const years = getAllYears();
   const currentYear = new Date().getFullYear();
+
+  // Handle URL parameters for milestone filtering
+  useEffect(() => {
+    const milestoneId = searchParams?.get('milestone');
+    if (milestoneId) {
+      const milestone = getMilestoneById(milestoneId);
+      if (milestone) {
+        setSelectedMilestone(milestone);
+        setSelectedYear(milestone.year);
+        setFilterCategory('all'); // Show all to make the milestone visible
+        
+        // Scroll to milestone after a short delay
+        setTimeout(() => {
+          const cardElement = milestoneCardRefs.current.get(milestoneId);
+          if (cardElement) {
+            cardElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            // Highlight the milestone
+            cardElement.style.transform = 'scale(1.05)';
+            cardElement.style.transition = 'transform 0.3s ease';
+            setTimeout(() => {
+              cardElement.style.transform = 'scale(1)';
+            }, 2000);
+          }
+        }, 500);
+      }
+    }
+  }, [searchParams]);
 
   // Get filtered milestones
   const getFilteredMilestones = (): TechnicalMilestone[] => {
@@ -218,15 +248,23 @@ export function UnifiedTimeline({ onMilestoneSelect }: UnifiedTimelineProps) {
             <div className="absolute left-8 md:left-1/2 top-0 bottom-0 w-0.5 bg-gradient-to-b from-orange-500 via-orange-400 to-orange-500 opacity-30" />
 
             <div className="space-y-8">
-              {filteredMilestones.map((milestone, index) => (
-                <MilestoneCard
-                  key={milestone.id}
-                  milestone={milestone}
-                  index={index}
-                  onClick={() => handleMilestoneClick(milestone)}
-                  position={index % 2 === 0 ? 'left' : 'right'}
-                />
-              ))}
+              {filteredMilestones.map((milestone, index) => {
+                const cardRef = (el: HTMLDivElement | null) => {
+                  if (el) {
+                    milestoneCardRefs.current.set(milestone.id, el);
+                  }
+                };
+                return (
+                  <MilestoneCard
+                    key={milestone.id}
+                    ref={cardRef}
+                    milestone={milestone}
+                    index={index}
+                    onClick={() => handleMilestoneClick(milestone)}
+                    position={index % 2 === 0 ? 'left' : 'right'}
+                  />
+                );
+              })}
             </div>
 
             {filteredMilestones.length === 0 && (

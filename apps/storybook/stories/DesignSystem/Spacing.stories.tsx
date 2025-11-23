@@ -2,147 +2,8 @@ import type { Meta, StoryObj } from '@storybook/react';
 import React from 'react';
 import { spacing, colors } from '@abdalkader/ui/src/tokens/designTokens';
 
-const meta: Meta<typeof SpacingSystem> = {
-  title: 'Design System/Spacing',
-  component: SpacingSystem,
-  parameters: {
-    layout: 'fullscreen',
-    docs: {
-      description: {
-        component: `
-# Spacing System Documentation
-
-The Abdalkader portfolio uses an 8-point grid system with mathematical spacing ratios. All spacing values are designed to create visual harmony and consistent rhythm throughout the interface.
-
-## Design Principles
-
-### 8-Point Grid System
-- **Base Unit**: 8px (0.5rem) - the fundamental building block
-- **Scale**: Based on powers of 2 for visual harmony
-- **Mathematical Consistency**: All values are multiples of 4px
-- **Token**: \`spacing.base\` or \`--spacing-base\`
-
-### Scale Categories
-
-#### Micro Spacing (4px - 12px)
-- **xs (4px / 0.25rem)**: Micro details, tight spacing, icon padding
-- **sm (8px / 0.5rem)**: Button internal spacing, small gaps
-- **Token**: \`spacing.xs\`, \`spacing.sm\` or \`--spacing-xs\`, \`--spacing-sm\`
-
-#### Component Spacing (16px - 32px)
-- **md (16px / 1rem)**: Component padding, small margins, standard gaps
-- **lg (24px / 1.5rem)**: Card spacing, medium margins, section gaps
-- **xl (32px / 2rem)**: Section padding, large margins, major gaps
-- **Token**: \`spacing.md\`, \`spacing.lg\`, \`spacing.xl\` or \`--spacing-md\`, \`--spacing-lg\`, \`--spacing-xl\`
-
-#### Layout Spacing (48px - 128px)
-- **2xl (48px / 3rem)**: Component groups, section breaks, major margins
-- **3xl (64px / 4rem)**: Page sections, hero spacing, large breaks
-- **4xl (96px / 6rem)**: Major sections, hero areas, dramatic spacing
-- **5xl (128px / 8rem)**: Page layout, full sections, maximum spacing
-- **Token**: \`spacing['2xl']\`, \`spacing['3xl']\`, etc. or \`--spacing-2xl\`, \`--spacing-3xl\`, etc.
-
-#### Hero Spacing (192px+)
-- **6xl (192px / 12rem)**: Hero sections, dramatic spacing, full-page breaks
-- **Token**: \`spacing['6xl']\` or \`--spacing-6xl\`
-
-## Usage Guidelines
-
-### When to Use Each Spacing Value
-
-#### Padding (Internal Spacing)
-- **xs/sm**: Icon padding, button internal spacing
-- **md**: Standard component padding
-- **lg**: Card padding, form field padding
-- **xl**: Section internal padding
-
-#### Margins (External Spacing)
-- **sm/md**: Component margins, small gaps between elements
-- **lg**: Card margins, medium section spacing
-- **xl/2xl**: Section margins, major breaks
-- **3xl/4xl**: Page-level spacing, hero sections
-
-#### Gaps (Layout Spacing)
-- **sm/md**: Grid gaps, flex gaps, list item spacing
-- **lg**: Card grid gaps, component group spacing
-- **xl/2xl**: Section gaps, major layout spacing
-
-### Best Practices
-- ✅ **Always use tokens** from the spacing scale
-- ✅ **Maintain consistency** within components
-- ✅ **Use larger spacing** for section breaks
-- ✅ **Consider responsive behavior** for mobile devices
-- ✅ **Use semantic spacing** (margin vs padding appropriately)
-- ❌ **Don't use arbitrary values** outside the scale
-- ❌ **Don't mix different spacing patterns** in the same component
-- ❌ **Don't ignore responsive multipliers**
-
-## Responsive Behavior
-
-### Spacing Multipliers
-- **Mobile (≤600px)**: 0.75x scale - tighter spacing for small screens
-- **Tablet (601-840px)**: 0.9x scale - medium spacing
-- **Desktop (841-1200px)**: 1x scale - standard spacing
-- **Large (≥1201px)**: 1.2x scale - enhanced spacing for large screens
-
-### Implementation
-\`\`\`css
-/* Responsive spacing using multipliers */
-.section {
-  padding: var(--spacing-3xl);
-}
-
-@media (max-width: 600px) {
-  .section {
-    padding: calc(var(--spacing-3xl) * 0.75);
-  }
-}
-
-@media (min-width: 1200px) {
-  .section {
-    padding: calc(var(--spacing-3xl) * 1.2);
-  }
-}
-\`\`\`
-
-## Layout Spacing
-
-### Section Spacing
-- **Section**: 8rem (128px) - standard section spacing
-- **Section Mobile**: 4rem (64px) - reduced for mobile
-- **Token**: \`spacing.layout.section\` or \`--layout-section\`
-
-### Container Spacing
-- **Container**: 2rem (32px) - container padding
-- **Container Mobile**: 1rem (16px) - reduced for mobile
-- **Token**: \`spacing.layout.container\` or \`--layout-container\`
-        `
-      }
-    }
-  },
-  tags: ['autodocs'],
-  argTypes: {
-    showGrid: {
-      control: 'boolean',
-      description: 'Show visual grid overlay'
-    },
-    showCode: {
-      control: 'boolean',
-      description: 'Show implementation code'
-    },
-    variant: {
-      control: 'select',
-      options: ['scale', 'usage', 'responsive'],
-      description: 'Spacing view variant'
-    }
-  }
-};
-
-export default meta;
-type Story = StoryObj<typeof SpacingSystem>;
-
-// Spacing system component
-const SpacingSystem = ({ showGrid = true, showCode = true, variant = 'scale' }: any) => {
+// Spacing system component (declared first for meta reference)
+function SpacingSystem({ showGrid = true, showCode = true, variant = 'scale' }: any) {
   const spacingScale = [
     { 
       name: 'xs', 
@@ -600,7 +461,146 @@ ${spacingItem.cssVar}: ${spacingItem.rem};
       </div>
     </div>
   );
+}
+
+const meta: Meta<typeof SpacingSystem> = {
+  title: 'Design System/Spacing',
+  component: SpacingSystem,
+  parameters: {
+    layout: 'fullscreen',
+    docs: {
+      description: {
+        component: `
+# Spacing System Documentation
+
+The Abdalkader portfolio uses an 8-point grid system with mathematical spacing ratios. All spacing values are designed to create visual harmony and consistent rhythm throughout the interface.
+
+## Design Principles
+
+### 8-Point Grid System
+- **Base Unit**: 8px (0.5rem) - the fundamental building block
+- **Scale**: Based on powers of 2 for visual harmony
+- **Mathematical Consistency**: All values are multiples of 4px
+- **Token**: \`spacing.base\` or \`--spacing-base\`
+
+### Scale Categories
+
+#### Micro Spacing (4px - 12px)
+- **xs (4px / 0.25rem)**: Micro details, tight spacing, icon padding
+- **sm (8px / 0.5rem)**: Button internal spacing, small gaps
+- **Token**: \`spacing.xs\`, \`spacing.sm\` or \`--spacing-xs\`, \`--spacing-sm\`
+
+#### Component Spacing (16px - 32px)
+- **md (16px / 1rem)**: Component padding, small margins, standard gaps
+- **lg (24px / 1.5rem)**: Card spacing, medium margins, section gaps
+- **xl (32px / 2rem)**: Section padding, large margins, major gaps
+- **Token**: \`spacing.md\`, \`spacing.lg\`, \`spacing.xl\` or \`--spacing-md\`, \`--spacing-lg\`, \`--spacing-xl\`
+
+#### Layout Spacing (48px - 128px)
+- **2xl (48px / 3rem)**: Component groups, section breaks, major margins
+- **3xl (64px / 4rem)**: Page sections, hero spacing, large breaks
+- **4xl (96px / 6rem)**: Major sections, hero areas, dramatic spacing
+- **5xl (128px / 8rem)**: Page layout, full sections, maximum spacing
+- **Token**: \`spacing['2xl']\`, \`spacing['3xl']\`, etc. or \`--spacing-2xl\`, \`--spacing-3xl\`, etc.
+
+#### Hero Spacing (192px+)
+- **6xl (192px / 12rem)**: Hero sections, dramatic spacing, full-page breaks
+- **Token**: \`spacing['6xl']\` or \`--spacing-6xl\`
+
+## Usage Guidelines
+
+### When to Use Each Spacing Value
+
+#### Padding (Internal Spacing)
+- **xs/sm**: Icon padding, button internal spacing
+- **md**: Standard component padding
+- **lg**: Card padding, form field padding
+- **xl**: Section internal padding
+
+#### Margins (External Spacing)
+- **sm/md**: Component margins, small gaps between elements
+- **lg**: Card margins, medium section spacing
+- **xl/2xl**: Section margins, major breaks
+- **3xl/4xl**: Page-level spacing, hero sections
+
+#### Gaps (Layout Spacing)
+- **sm/md**: Grid gaps, flex gaps, list item spacing
+- **lg**: Card grid gaps, component group spacing
+- **xl/2xl**: Section gaps, major layout spacing
+
+### Best Practices
+- ✅ **Always use tokens** from the spacing scale
+- ✅ **Maintain consistency** within components
+- ✅ **Use larger spacing** for section breaks
+- ✅ **Consider responsive behavior** for mobile devices
+- ✅ **Use semantic spacing** (margin vs padding appropriately)
+- ❌ **Don't use arbitrary values** outside the scale
+- ❌ **Don't mix different spacing patterns** in the same component
+- ❌ **Don't ignore responsive multipliers**
+
+## Responsive Behavior
+
+### Spacing Multipliers
+- **Mobile (≤600px)**: 0.75x scale - tighter spacing for small screens
+- **Tablet (601-840px)**: 0.9x scale - medium spacing
+- **Desktop (841-1200px)**: 1x scale - standard spacing
+- **Large (≥1201px)**: 1.2x scale - enhanced spacing for large screens
+
+### Implementation
+\`\`\`css
+/* Responsive spacing using multipliers */
+.section {
+  padding: var(--spacing-3xl);
+}
+
+@media (max-width: 600px) {
+  .section {
+    padding: calc(var(--spacing-3xl) * 0.75);
+  }
+}
+
+@media (min-width: 1200px) {
+  .section {
+    padding: calc(var(--spacing-3xl) * 1.2);
+  }
+}
+\`\`\`
+
+## Layout Spacing
+
+### Section Spacing
+- **Section**: 8rem (128px) - standard section spacing
+- **Section Mobile**: 4rem (64px) - reduced for mobile
+- **Token**: \`spacing.layout.section\` or \`--layout-section\`
+
+### Container Spacing
+- **Container**: 2rem (32px) - container padding
+- **Container Mobile**: 1rem (16px) - reduced for mobile
+- **Token**: \`spacing.layout.container\` or \`--layout-container\`
+        `
+      }
+    }
+  },
+  tags: ['autodocs'],
+  argTypes: {
+    showGrid: {
+      control: 'boolean',
+      description: 'Show visual grid overlay'
+    },
+    showCode: {
+      control: 'boolean',
+      description: 'Show implementation code'
+    },
+    variant: {
+      control: 'select',
+      options: ['scale', 'usage', 'responsive'],
+      description: 'Spacing view variant'
+    }
+  }
 };
+
+export default meta;
+type Story = StoryObj<typeof SpacingSystem>;
 
 export const Default: Story = {
   args: {

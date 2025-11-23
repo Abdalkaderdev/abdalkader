@@ -120,7 +120,7 @@ export const PROJECT_REGISTRY: Record<string, UnifiedProject> = {
           type: 'release',
         },
       ],
-      url: 'https://history.abdalkader.dev?milestone=milestone-2025-01-quantum-animation',
+      url: 'https://history.abdalkader.dev?milestone=milestone-2025-01-quantum-animation&view=unified-timeline',
     },
     storybook: {
       components: [
@@ -135,7 +135,7 @@ export const PROJECT_REGISTRY: Record<string, UnifiedProject> = {
           description: '3D particle system components',
         },
       ],
-      url: 'https://storybook.abdalkader.dev',
+      url: 'https://storybook.abdalkader.dev/?path=/story/design-system-animations',
     },
     docs: {
       sections: [
@@ -206,7 +206,7 @@ export const PROJECT_REGISTRY: Record<string, UnifiedProject> = {
           type: 'release',
         },
       ],
-      url: 'https://history.abdalkader.dev?milestone=milestone-2024-11-apple-tv',
+      url: 'https://history.abdalkader.dev?milestone=milestone-2024-11-apple-tv&view=unified-timeline',
     },
     storybook: {
       components: [
@@ -221,7 +221,7 @@ export const PROJECT_REGISTRY: Record<string, UnifiedProject> = {
           description: 'Card and grid layout components',
         },
       ],
-      url: 'https://storybook.abdalkader.dev',
+      url: 'https://storybook.abdalkader.dev/?path=/story/design-system-animations',
     },
     docs: {
       sections: [
@@ -278,7 +278,7 @@ export const PROJECT_REGISTRY: Record<string, UnifiedProject> = {
           type: 'release',
         },
       ],
-      url: 'https://history.abdalkader.dev?milestone=milestone-2024-11-virtualview',
+      url: 'https://history.abdalkader.dev?milestone=milestone-2024-11-virtualview&view=unified-timeline',
     },
     storybook: {
       components: [
@@ -293,7 +293,7 @@ export const PROJECT_REGISTRY: Record<string, UnifiedProject> = {
           description: 'Virtual reality navigation controls',
         },
       ],
-      url: 'https://storybook.abdalkader.dev',
+      url: 'https://storybook.abdalkader.dev/?path=/story/design-system-animations',
     },
     docs: {
       sections: [
@@ -349,7 +349,7 @@ export const PROJECT_REGISTRY: Record<string, UnifiedProject> = {
           type: 'release',
         },
       ],
-      url: 'https://history.abdalkader.dev?milestone=milestone-2024-12-doner-qr',
+      url: 'https://history.abdalkader.dev?milestone=milestone-2024-12-doner-qr&view=unified-timeline',
     },
     storybook: {
       components: [
@@ -364,7 +364,7 @@ export const PROJECT_REGISTRY: Record<string, UnifiedProject> = {
           description: 'Restaurant menu display components',
         },
       ],
-      url: 'https://storybook.abdalkader.dev',
+      url: 'https://storybook.abdalkader.dev/?path=/story/components-qr',
     },
     docs: {
       sections: [
@@ -393,6 +393,246 @@ export const PROJECT_REGISTRY: Record<string, UnifiedProject> = {
     startDate: '2024-11-25',
     lastUpdated: '2024-12-01',
     status: 'completed',
+  },
+  
+  'jegr-jalal-company': {
+    id: 'jegr-jalal-company',
+    slug: 'jegr-jalal-company',
+    title: 'Jegr Jalal Company',
+    description: 'Professional corporate website for Jegr Jalal Company',
+    portfolio: {
+      url: 'https://abdalkader.dev/projects/jegr-jalal-company',
+      slug: 'jegr-jalal-company',
+    },
+    history: {
+      milestoneId: 'milestone-2024-11-jegr-jalal',
+      timelineEvents: [
+        {
+          id: 'jegr-1',
+          date: '2024-11-20',
+          title: 'Project Initiation',
+          description: 'Started corporate website development',
+          type: 'milestone',
+        },
+        {
+          id: 'jegr-2',
+          date: '2024-11-25',
+          title: 'Launch',
+          description: 'Launched Jegr Jalal Company website',
+          type: 'release',
+        },
+      ],
+      url: 'https://history.abdalkader.dev?milestone=milestone-2024-11-jegr-jalal&view=unified-timeline',
+    },
+    storybook: {
+      components: [
+        {
+          name: 'Corporate Components',
+          storybookPath: 'components-corporate',
+          description: 'Corporate website components',
+        },
+      ],
+      url: 'https://storybook.abdalkader.dev/?path=/story/components-corporate',
+    },
+    docs: {
+      sections: [
+        {
+          section: 'projects/jegr-jalal-company',
+          url: 'https://docs.abdalkader.dev/projects/jegr-jalal-company',
+          title: 'Jegr Jalal Company Documentation',
+          type: 'overview',
+        },
+      ],
+      baseUrl: 'https://docs.abdalkader.dev',
+    },
+    blog: {
+      posts: [],
+    },
+    technologies: ['Next.js', 'TypeScript', 'SCSS'],
+    category: ['Web Development', 'Corporate Website'],
+    startDate: '2024-11-20',
+    lastUpdated: '2024-11-25',
+    status: 'completed',
+  },
+  
+  'headquarter-iraq-real-estate': {
+    id: 'headquarter-iraq-real-estate',
+    slug: 'headquarter-iraq-real-estate',
+    title: 'Headquarter Iraq Real Estate',
+    description: 'Comprehensive real estate platform for property transactions across Iraq',
+    portfolio: {
+      url: 'https://abdalkader.dev/projects/headquarter-iraq-real-estate',
+      slug: 'headquarter-iraq-real-estate',
+    },
+    history: {
+      milestoneId: 'milestone-2024-12-headquarter',
+      timelineEvents: [
+        {
+          id: 'headquarter-1',
+          date: '2024-11-20',
+          title: 'Project Initiation',
+          description: 'Started comprehensive real estate platform development',
+          type: 'milestone',
+        },
+        {
+          id: 'headquarter-2',
+          date: '2024-12-05',
+          title: 'Launch',
+          description: 'Launched Headquarter Iraq Real Estate platform',
+          type: 'release',
+        },
+      ],
+      url: 'https://history.abdalkader.dev?milestone=milestone-2024-12-headquarter&view=unified-timeline',
+    },
+    storybook: {
+      components: [
+        {
+          name: 'Real Estate Components',
+          storybookPath: 'components-real-estate',
+          description: 'Property listing and search components',
+        },
+      ],
+      url: 'https://storybook.abdalkader.dev/?path=/story/components-real-estate',
+    },
+    docs: {
+      sections: [
+        {
+          section: 'projects/headquarter-iraq-real-estate',
+          url: 'https://docs.abdalkader.dev/projects/headquarter-iraq-real-estate',
+          title: 'Headquarter Iraq Real Estate Documentation',
+          type: 'overview',
+        },
+      ],
+      baseUrl: 'https://docs.abdalkader.dev',
+    },
+    blog: {
+      posts: [],
+    },
+    technologies: ['Next.js', 'TypeScript', 'Performance'],
+    category: ['Web Development', 'Real Estate'],
+    startDate: '2024-11-20',
+    lastUpdated: '2024-12-05',
+    status: 'active',
+  },
+  
+  'innovations-architecture-department': {
+    id: 'innovations-architecture-department',
+    slug: 'innovations-architecture-department',
+    title: 'Innovations Architecture Department',
+    description: 'Specialized architecture division showcasing cutting-edge design projects',
+    portfolio: {
+      url: 'https://abdalkader.dev/projects/innovations-architecture-department',
+      slug: 'innovations-architecture-department',
+    },
+    history: {
+      milestoneId: 'milestone-2024-12-innovations',
+      timelineEvents: [
+        {
+          id: 'innovations-1',
+          date: '2024-12-05',
+          title: 'Project Initiation',
+          description: 'Started architecture department website development',
+          type: 'milestone',
+        },
+        {
+          id: 'innovations-2',
+          date: '2024-12-10',
+          title: 'Launch',
+          description: 'Launched Innovations Architecture Department website',
+          type: 'release',
+        },
+      ],
+      url: 'https://history.abdalkader.dev?milestone=milestone-2024-12-innovations&view=unified-timeline',
+    },
+    storybook: {
+      components: [
+        {
+          name: 'Architecture Components',
+          storybookPath: 'components-architecture',
+          description: 'Architecture portfolio and gallery components',
+        },
+      ],
+      url: 'https://storybook.abdalkader.dev/?path=/story/components-architecture',
+    },
+    docs: {
+      sections: [
+        {
+          section: 'projects/innovations-architecture-department',
+          url: 'https://docs.abdalkader.dev/projects/innovations-architecture-department',
+          title: 'Innovations Architecture Documentation',
+          type: 'overview',
+        },
+      ],
+      baseUrl: 'https://docs.abdalkader.dev',
+    },
+    blog: {
+      posts: [],
+    },
+    technologies: ['Next.js', 'TypeScript', 'Design Systems'],
+    category: ['Web Development', 'Architecture'],
+    startDate: '2024-12-05',
+    lastUpdated: '2024-12-10',
+    status: 'active',
+  },
+  
+  'hamilton-iraq-real-estate': {
+    id: 'hamilton-iraq-real-estate',
+    slug: 'hamilton-iraq-real-estate',
+    title: 'Hamilton Iraq Real Estate',
+    description: 'Modern real estate platform showcasing properties across Iraq',
+    portfolio: {
+      url: 'https://abdalkader.dev/projects/hamilton-iraq-real-estate',
+      slug: 'hamilton-iraq-real-estate',
+    },
+    history: {
+      milestoneId: 'milestone-2024-12-hamilton',
+      timelineEvents: [
+        {
+          id: 'hamilton-1',
+          date: '2024-12-10',
+          title: 'Project Initiation',
+          description: 'Started Hamilton Iraq Real Estate platform development',
+          type: 'milestone',
+        },
+        {
+          id: 'hamilton-2',
+          date: '2024-12-15',
+          title: 'Launch',
+          description: 'Launched Hamilton Iraq Real Estate platform',
+          type: 'release',
+        },
+      ],
+      url: 'https://history.abdalkader.dev?milestone=milestone-2024-12-hamilton&view=unified-timeline',
+    },
+    storybook: {
+      components: [
+        {
+          name: 'Real Estate Components',
+          storybookPath: 'components-real-estate',
+          description: 'Property listing and search components',
+        },
+      ],
+      url: 'https://storybook.abdalkader.dev/?path=/story/components-real-estate',
+    },
+    docs: {
+      sections: [
+        {
+          section: 'projects/hamilton-iraq-real-estate',
+          url: 'https://docs.abdalkader.dev/projects/hamilton-iraq-real-estate',
+          title: 'Hamilton Iraq Real Estate Documentation',
+          type: 'overview',
+        },
+      ],
+      baseUrl: 'https://docs.abdalkader.dev',
+    },
+    blog: {
+      posts: [],
+    },
+    technologies: ['Next.js', 'TypeScript', 'SEO'],
+    category: ['Web Development', 'Real Estate'],
+    startDate: '2024-12-10',
+    lastUpdated: '2024-12-15',
+    status: 'active',
   },
 };
 

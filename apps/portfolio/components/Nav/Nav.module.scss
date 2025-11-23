@@ -93,6 +93,13 @@
     padding: 9rem 0 3rem 0;
     clip-path: inset(0% 0% 100% 0%);
     visibility: hidden;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    
+    // When menu is open (controlled by inline style)
+    &[style*="visible"] {
+        opacity: 1;
+    }
 
     ul {
         display: flex;

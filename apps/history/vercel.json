@@ -1,8 +1,8 @@
 {
   "buildCommand": "cd ../.. && bash install-pnpm.sh && pnpm turbo run build --filter=@abdalkader/history",
-  "outputDirectory": "apps/history/.next",
+  "outputDirectory": ".next",
   "framework": "nextjs",
-  "installCommand": "bash ../../install-pnpm.sh",
+  "installCommand": "corepack enable && corepack prepare pnpm@8.15.1 --activate && pnpm install",
   "env": {
     "NODE_ENV": "production"
   },

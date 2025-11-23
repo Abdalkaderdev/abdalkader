@@ -47,6 +47,13 @@
                 align-items: flex-start;
                 gap: 1rem;
 
+                h3 {
+                    @include font-1;
+                    margin-bottom: 0.5rem;
+                    text-transform: uppercase;
+                    letter-spacing: 0.05rem;
+                }
+
                 a {
                     @include font-2_75;
                     transition: color $transition;

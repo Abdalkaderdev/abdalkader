@@ -1,5 +1,6 @@
 import React from 'react';
-import { UnifiedProject } from '@/lib/projectRegistry';
+import { UnifiedProject } from '../../../../../packages/ui/src/lib/projectRegistry';
+import { trackCrossDomainLink } from '@/lib/analytics';
 import styles from './ProjectLifecycle.module.scss';
 import { Code, ExternalLink, Package } from 'lucide-react';
 
@@ -35,25 +36,22 @@ export function ProjectComponents({ project }: ProjectComponentsProps) {
          {components.map((component, index: number) => (
            <a
              key={index}
-             // eslint-disable-next-line @typescript-eslint/no-explicit-any
-             href={`${project.storybook.url || 'https://storybook.abdalkader.dev'}?path=/story/${(component as any).storybookPath}`}
+             href={`https://storybook.abdalkader.dev/?path=/story/${component.storybookPath}`}
              target="_blank"
              rel="noopener noreferrer"
              className={styles.componentCard}
+             onClick={() => trackCrossDomainLink('portfolio', 'storybook', 'storybook', project.slug, { component: component.name })}
            >
              <div className={styles.componentHeader}>
                <Code className={styles.componentIcon} />
                {/* eslint-disable-next-line @typescript-eslint/no-explicit-any */}
-               <h4>{(component as any).name}</h4>
+               <h4>{component.name}</h4>
              </div>
-             {/* eslint-disable-next-line @typescript-eslint/no-explicit-any */}
-             {(component as any).description && (
-               // eslint-disable-next-line @typescript-eslint/no-explicit-any
-               <p className={styles.componentDescription}>{(component as any).description}</p>
+             {component.description && (
+               <p className={styles.componentDescription}>{component.description}</p>
              )}
              <div className={styles.componentFooter}>
-               {/* eslint-disable-next-line @typescript-eslint/no-explicit-any */}
-               <span className={styles.componentPath}>{(component as any).storybookPath}</span>
+               <span className={styles.componentPath}>{component.storybookPath}</span>
                <ExternalLink className={styles.externalIcon} />
              </div>
            </a>

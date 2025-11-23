@@ -1,5 +1,6 @@
 import React from 'react';
-import { UnifiedProject } from '@/lib/projectRegistry';
+import { UnifiedProject } from '../../../../../packages/ui/src/lib/projectRegistry';
+import { trackCrossDomainLink } from '@/lib/analytics';
 import styles from './ProjectLifecycle.module.scss';
 import { FileText, ExternalLink, Calendar } from 'lucide-react';
 
@@ -46,6 +47,7 @@ export function ProjectBlogPosts({ project }: ProjectBlogPostsProps) {
              target="_blank"
              rel="noopener noreferrer"
              className={styles.blogCard}
+             onClick={() => trackCrossDomainLink('portfolio', 'blog', 'blog', project.slug, { post_slug: blogPost.slug, post_title: blogPost.title })}
            >
              <div className={styles.blogHeader}>
                <FileText className={styles.blogIcon} />

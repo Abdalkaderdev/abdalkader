@@ -1,9 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { getProjectBySlug } from '../../../../../packages/ui/src/lib/projectRegistry';
 import { ProjectTimeline } from './ProjectTimeline';
 import { ProjectComponents } from './ProjectComponents';
 import { ProjectDocumentation } from './ProjectDocumentation';
 import { ProjectBlogPosts } from './ProjectBlogPosts';
+import { trackCrossDomainLink, trackProjectLifecycleInteraction } from '@/lib/analytics';
 import styles from './ProjectLifecycle.module.scss';
 import { 
   Code, 
@@ -11,7 +12,8 @@ import {
   FileText, 
   ExternalLink,
   History,
-  Sparkles
+  Sparkles,
+  Loader2
 } from 'lucide-react';
 
 interface ProjectLifecycleProps {
@@ -20,13 +22,55 @@ interface ProjectLifecycleProps {
 
 export function ProjectLifecycle({ projectSlug }: ProjectLifecycleProps) {
   const [activeTab, setActiveTab] = useState<'timeline' | 'components' | 'docs' | 'blog'>('timeline');
+  const [isLoading, setIsLoading] = useState(true);
   const project = getProjectBySlug(projectSlug);
+
+  useEffect(() => {
+    // Simulate loading for better UX
+    const timer = setTimeout(() => {
+      setIsLoading(false);
+    }, 300);
+    return () => clearTimeout(timer);
+  }, [projectSlug]);
+
+  useEffect(() => {
+    if (project && !isLoading) {
+      trackProjectLifecycleInteraction(projectSlug, activeTab, 'view');
+    }
+  }, [activeTab, project, projectSlug, isLoading]);
+
+  const handleTabChange = (tab: 'timeline' | 'components' | 'docs' | 'blog') => {
+    setActiveTab(tab);
+    if (project) {
+      trackProjectLifecycleInteraction(projectSlug, tab, 'click');
+    }
+  };
+
+  const handleCrossDomainClick = (linkType: 'history' | 'storybook' | 'docs' | 'blog', url: string) => {
+    if (project) {
+      trackCrossDomainLink('portfolio', linkType, linkType, projectSlug, { url });
+    }
+  };
 
   if (!project) {
     return (
       <div className={styles.notFound}>
         <p>Project lifecycle information not available for this project.</p>
+        <p className={styles.notFoundSubtext}>
+          This project may not be fully integrated into the ecosystem yet.
+        </p>
       </div>
+    );
+  }
+
+  if (isLoading) {
+    return (
+      <section className={styles.projectLifecycle}>
+        <div className={styles.loadingState}>
+          <Loader2 className={styles.loadingIcon} />
+          <p>Loading project lifecycle...</p>
+        </div>
+      </section>
     );
   }
 
@@ -57,7 +101,7 @@ export function ProjectLifecycle({ projectSlug }: ProjectLifecycleProps) {
             <button
               key={tab.id}
               className={`${styles.tab} ${activeTab === tab.id ? styles.active : ''}`}
-              onClick={() => setActiveTab(tab.id)}
+              onClick={() => handleTabChange(tab.id)}
             >
               <Icon className={styles.tabIcon} />
               <span>{tab.label}</span>
@@ -98,18 +142,22 @@ export function ProjectLifecycle({ projectSlug }: ProjectLifecycleProps) {
               target="_blank" 
               rel="noopener noreferrer"
               className={styles.quickLink}
+              onClick={() => handleCrossDomainClick('history', project.history.url || '')}
             >
               <History className={styles.linkIcon} />
               <span>View on Timeline</span>
               <ExternalLink className={styles.externalIcon} />
             </a>
           )}
-          {project.storybook.url && (
+          {project.storybook.components.length > 0 && (
             <a 
-              href={project.storybook.url} 
+              href={project.storybook.components[0]?.storybookPath 
+                ? `https://storybook.abdalkader.dev/?path=/story/${project.storybook.components[0].storybookPath}`
+                : project.storybook.url || 'https://storybook.abdalkader.dev'} 
               target="_blank" 
               rel="noopener noreferrer"
               className={styles.quickLink}
+              onClick={() => handleCrossDomainClick('storybook', project.storybook.url || '')}
             >
               <Code className={styles.linkIcon} />
               <span>Browse Components</span>
@@ -122,6 +170,7 @@ export function ProjectLifecycle({ projectSlug }: ProjectLifecycleProps) {
               target="_blank" 
               rel="noopener noreferrer"
               className={styles.quickLink}
+              onClick={() => handleCrossDomainClick('docs', `${project.docs.baseUrl}/projects/${project.slug}`)}
             >
               <BookOpen className={styles.linkIcon} />
               <span>View Documentation</span>

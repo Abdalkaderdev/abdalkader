@@ -1,5 +1,6 @@
 import React from 'react';
-import { UnifiedProject } from '@/lib/projectRegistry';
+import { UnifiedProject } from '../../../../../packages/ui/src/lib/projectRegistry';
+import { trackCrossDomainLink } from '@/lib/analytics';
 import styles from './ProjectLifecycle.module.scss';
 import { Calendar, CheckCircle, Code, Rocket, Sparkles } from 'lucide-react';
 
@@ -88,6 +89,7 @@ export function ProjectTimeline({ project }: ProjectTimelineProps) {
             target="_blank" 
             rel="noopener noreferrer"
             className={styles.viewFullTimeline}
+            onClick={() => trackCrossDomainLink('portfolio', 'history', 'history', project.slug, { milestone_id: project.history.milestoneId })}
           >
             View Full Development Timeline on History
           </a>

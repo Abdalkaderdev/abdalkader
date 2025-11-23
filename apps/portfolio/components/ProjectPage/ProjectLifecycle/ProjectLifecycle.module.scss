@@ -6,6 +6,44 @@
   border: 1px solid rgba(244, 78, 0, 0.2);
 }
 
+.loadingState {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 4rem 2rem;
+  gap: 1rem;
+  color: #787878;
+}
+
+.loadingIcon {
+  width: 3rem;
+  height: 3rem;
+  color: #f44e00;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.notFound {
+  padding: 3rem 2rem;
+  text-align: center;
+  color: #787878;
+}
+
+.notFoundSubtext {
+  margin-top: 0.5rem;
+  font-size: 0.875rem;
+  color: #555;
+}
+
 .header {
   margin-bottom: 2rem;
 }
