@@ -1,7 +1,24 @@
 import type { Preview } from '@storybook/react';
+import React from 'react';
 import '../src/styles/portfolio-theme.css';
+// @ts-ignore - Direct import
+import { GlobalNavigation } from '../src/components/GlobalNavigation/GlobalNavigation';
+// @ts-ignore - CSS import
+import '../../packages/ui/src/components/GlobalNavigationHub/GlobalNavigationHub.css';
+// @ts-ignore - CSS import
+import '../../packages/ui/src/components/GlobalFooter/GlobalFooter.css';
 
 const preview: Preview = {
+  decorators: [
+    (Story) => (
+      <>
+        <GlobalNavigation />
+        <div style={{ paddingTop: '80px' }}>
+          <Story />
+        </div>
+      </>
+    ),
+  ],
   parameters: {
     actions: { argTypesRegex: '^on[A-Z].*' },
     controls: {

@@ -1,0 +1,183 @@
+/* ============================================
+   SWITCH COMPONENT STYLES
+   ============================================ */
+
+.portfolio-switch-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.portfolio-switch-wrapper--with-label {
+  justify-content: space-between;
+  width: 100%;
+}
+
+.portfolio-switch-label {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--text-primary, #f8f8f8);
+  cursor: pointer;
+  user-select: none;
+  transition: color 0.2s ease;
+}
+
+.portfolio-switch-label:hover {
+  color: var(--text-secondary, #787878);
+}
+
+.portfolio-switch {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  outline: none;
+  transition: all 0.3s ease;
+}
+
+.portfolio-switch:focus {
+  outline: 2px solid var(--primary-color, #f44e00);
+  outline-offset: 2px;
+}
+
+/* Size variants */
+.portfolio-switch--sm {
+  width: 32px;
+  height: 20px;
+}
+
+.portfolio-switch--md {
+  width: 44px;
+  height: 28px;
+}
+
+.portfolio-switch--lg {
+  width: 56px;
+  height: 36px;
+}
+
+/* Switch track */
+.portfolio-switch-track {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: var(--border-color, #374151);
+  border-radius: 9999px;
+  transition: background 0.3s ease;
+  overflow: hidden;
+}
+
+.portfolio-switch:not(.portfolio-switch--disabled) .portfolio-switch-track {
+  background: linear-gradient(90deg, #374151 0%, #4b5563 100%);
+}
+
+.portfolio-switch[aria-checked="true"] .portfolio-switch-track {
+  background: var(--primary-color, #f44e00);
+}
+
+/* Switch thumb */
+.portfolio-switch-thumb {
+  position: relative;
+  width: 16px;
+  height: 16px;
+  background: white;
+  border-radius: 50%;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  z-index: 2;
+  transition: box-shadow 0.3s ease;
+}
+
+.portfolio-switch--sm .portfolio-switch-thumb {
+  width: 12px;
+  height: 12px;
+}
+
+.portfolio-switch--lg .portfolio-switch-thumb {
+  width: 20px;
+  height: 20px;
+}
+
+.portfolio-switch:hover:not(.portfolio-switch--disabled) .portfolio-switch-thumb {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+/* Switch indicator (glow effect) */
+.portfolio-switch-indicator {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 8px;
+  height: 8px;
+  background: white;
+  border-radius: 50%;
+  opacity: 0;
+}
+
+.portfolio-switch--sm .portfolio-switch-indicator {
+  width: 6px;
+  height: 6px;
+}
+
+.portfolio-switch--lg .portfolio-switch-indicator {
+  width: 10px;
+  height: 10px;
+}
+
+/* Disabled state */
+.portfolio-switch--disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+.portfolio-switch--disabled .portfolio-switch-track {
+  background: var(--border-color, #374151);
+}
+
+.portfolio-switch--disabled .portfolio-switch-thumb {
+  background: #9ca3af;
+}
+
+/* Dark mode adjustments */
+[data-theme="dark"] .portfolio-switch-track {
+  background: #374151;
+}
+
+[data-theme="light"] .portfolio-switch-track {
+  background: #d1d5db;
+}
+
+[data-theme="light"] .portfolio-switch-thumb {
+  background: white;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Reduced motion */
+[data-reduced-motion="true"] .portfolio-switch,
+[data-reduced-motion="true"] .portfolio-switch-track,
+[data-reduced-motion="true"] .portfolio-switch-thumb,
+[data-reduced-motion="true"] .portfolio-switch-indicator {
+  transition: none;
+}
+
+/* Focus states for accessibility */
+.portfolio-switch:focus-visible {
+  outline: 2px solid var(--primary-color, #f44e00);
+  outline-offset: 2px;
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .portfolio-switch-track {
+    border: 2px solid currentColor;
+  }
+  
+  .portfolio-switch-thumb {
+    border: 1px solid currentColor;
+  }
+}

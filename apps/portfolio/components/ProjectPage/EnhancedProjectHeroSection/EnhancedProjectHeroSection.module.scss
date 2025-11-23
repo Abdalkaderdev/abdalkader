@@ -1,0 +1,360 @@
+/* ============================================
+   ENHANCED PROJECT HERO SECTION STYLES
+   ============================================ */
+
+.enhancedProjectHero {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  background: linear-gradient(135deg, #000 0%, #0a0a0a 50%, #1a1a1a 100%);
+  overflow: hidden;
+
+  /* Animated Background Elements */
+  .backgroundElements {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    pointer-events: none;
+  }
+
+  .floatingElement {
+    position: absolute;
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(244, 78, 0, 0.1) 0%, transparent 70%);
+    filter: blur(40px);
+    animation: float 20s infinite ease-in-out;
+    animation-delay: var(--delay);
+
+    &:nth-child(1) {
+      top: 10%;
+      left: 10%;
+    }
+
+    &:nth-child(2) {
+      top: 60%;
+      right: 10%;
+    }
+
+    &:nth-child(3) {
+      bottom: 10%;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+  }
+
+  @keyframes float {
+    0%, 100% {
+      transform: translateY(0) translateX(0) scale(1);
+    }
+    25% {
+      transform: translateY(-30px) translateX(20px) scale(1.1);
+    }
+    50% {
+      transform: translateY(20px) translateX(-30px) scale(0.9);
+    }
+    75% {
+      transform: translateY(-20px) translateX(30px) scale(1.05);
+    }
+  }
+
+  /* Content Container */
+  .content {
+    text-align: center;
+    z-index: 1;
+    position: relative;
+    max-width: 1200px;
+    padding: 0 2rem;
+  }
+
+  /* Main Heading */
+  .headingContainer {
+    margin-bottom: 3rem;
+
+    h1 {
+      font-size: clamp(4rem, 10vw, 8rem);
+      font-weight: 700;
+      color: #f8f8f8;
+      text-transform: uppercase;
+      letter-spacing: 0.05rem;
+      line-height: 0.9;
+      margin: 0;
+
+      span {
+        display: inline-block;
+        will-change: transform;
+      }
+    }
+  }
+
+  /* Animated Text */
+  .animatedTextContainer {
+    margin-bottom: 3rem;
+  }
+
+  .animatedText {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+    font-size: clamp(1.5rem, 4vw, 2.5rem);
+    font-weight: 600;
+    color: #787878;
+
+    .animated-word {
+      display: inline-block;
+      color: #787878;
+      transition: all 0.3s ease;
+      animation-delay: var(--delay);
+      will-change: transform, color;
+
+      &:hover {
+        color: #f44e00;
+        transform: scale(1.1);
+      }
+    }
+  }
+
+  .animatedTextSubtext {
+    font-size: 1.2rem;
+    color: #f44e00;
+    font-weight: 500;
+    letter-spacing: 0.05rem;
+    text-transform: uppercase;
+  }
+
+  /* Subtitle */
+  .subtitleContainer {
+    max-width: 800px;
+    margin: 0 auto 3rem;
+    
+    p {
+      font-size: 1.1rem;
+      line-height: 1.6;
+      color: #787878;
+      margin: 0;
+      font-weight: 400;
+    }
+  }
+
+  /* Technology Tags */
+  .techTagsContainer {
+    margin-bottom: 4rem;
+  }
+
+  .techTags {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+
+    .tech-tag {
+      display: inline-block;
+      padding: 0.5rem 1rem;
+      background: rgba(244, 78, 0, 0.1);
+      color: #f44e00;
+      border: 1px solid rgba(244, 78, 0, 0.3);
+      border-radius: 20px;
+      font-size: 0.9rem;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.05rem;
+      transition: all 0.3s ease;
+      animation-delay: var(--delay);
+
+      &:hover {
+        background: rgba(244, 78, 0, 0.2);
+        border-color: #f44e00;
+        transform: translateY(-2px);
+      }
+    }
+  }
+
+  /* Scroll Indicator */
+  .scrollIndicator {
+    position: absolute;
+    bottom: 3rem;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    opacity: 0.7;
+    transition: opacity 0.3s ease;
+
+    &:hover {
+      opacity: 1;
+    }
+  }
+
+  .scrollLine {
+    width: 2px;
+    height: 40px;
+    background: linear-gradient(to bottom, #f44e00, transparent);
+    animation: scrollPulse 2s infinite ease-in-out;
+  }
+
+  @keyframes scrollPulse {
+    0%, 100% {
+      opacity: 0.3;
+      transform: translateY(0);
+    }
+    50% {
+      opacity: 1;
+      transform: translateY(10px);
+    }
+  }
+
+  .scrollText {
+    font-size: 0.8rem;
+    color: #787878;
+    text-transform: uppercase;
+    letter-spacing: 0.1rem;
+    writing-mode: vertical-rl;
+    text-orientation: mixed;
+  }
+
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .enhancedProjectHero {
+      min-height: 80vh;
+      padding: 2rem 0;
+    }
+
+    .content {
+      padding: 0 1rem;
+    }
+
+    .headingContainer {
+      margin-bottom: 2rem;
+    }
+
+    .animatedTextContainer {
+      margin-bottom: 2rem;
+    }
+
+    .animatedText {
+      gap: 0.5rem;
+      font-size: 1.5rem;
+    }
+
+    .animatedTextSubtext {
+      font-size: 1rem;
+    }
+
+    .subtitleContainer {
+      margin-bottom: 2rem;
+
+      p {
+        font-size: 1rem;
+      }
+    }
+
+    .techTagsContainer {
+      margin-bottom: 2rem;
+    }
+
+    .techTags {
+      gap: 0.5rem;
+
+      .tech-tag {
+        padding: 0.4rem 0.8rem;
+        font-size: 0.8rem;
+      }
+    }
+
+    .scrollIndicator {
+      bottom: 2rem;
+    }
+
+    .floatingElement {
+      width: 200px;
+      height: 200px;
+    }
+  }
+
+  /* Reduced Motion */
+  @media (prefers-reduced-motion: reduce) {
+    .floatingElement {
+      animation: none;
+    }
+
+    .animated-word {
+      animation: none;
+    }
+
+    .tech-tag {
+      animation: none;
+    }
+
+    .scrollLine {
+      animation: none;
+    }
+  }
+
+  /* High Contrast Mode */
+  @media (prefers-contrast: high) {
+    .enhancedProjectHero {
+      background: #000;
+    }
+
+    .headingContainer h1 {
+      color: #fff;
+    }
+
+    .animatedText .animated-word {
+      color: #fff;
+    }
+
+    .tech-tag {
+      background: #fff;
+      color: #000;
+      border: 2px solid #fff;
+    }
+
+    .scrollText {
+      color: #fff;
+    }
+  }
+
+  /* Print Styles */
+  @media print {
+    .enhancedProjectHero {
+      min-height: auto;
+      padding: 2rem 0;
+      background: white;
+    }
+
+    .floatingElement {
+      display: none;
+    }
+
+    .headingContainer h1 {
+      color: black;
+    }
+
+    .animatedText .animated-word {
+      color: black;
+    }
+
+    .subtitleContainer p {
+      color: black;
+    }
+
+    .tech-tag {
+      background: black;
+      color: white;
+    }
+
+    .scrollIndicator {
+      display: none;
+    }
+  }
+}

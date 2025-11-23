@@ -1,0 +1,239 @@
+---
+title: 'API Playground'
+description: 'Interactive API playground to test endpoints directly in your browser'
+---
+
+# API Playground
+
+Test API endpoints directly in your browser with our interactive playground. No setup required - just enter your API key and start making requests.
+
+<Info>
+  The playground uses the OpenAPI specification to provide an interactive interface for all available endpoints.
+</Info>
+
+## Getting Started
+
+1. **Get Your API Key**: If you don't have one, get it from the [API Dashboard](https://abdalkader.dev/api/dashboard)
+2. **Enter Your API Key**: Use the authentication section below
+3. **Select an Endpoint**: Choose from the available endpoints
+4. **Fill in Parameters**: Enter request parameters and body
+5. **Make Request**: Click "Send Request" to test the endpoint
+6. **View Response**: See the response in real-time
+
+## Available Endpoints
+
+### Health Check
+
+Test the health status endpoint (no authentication required):
+
+<ApiMethod endpoint="/health" method="GET">
+  <Param name="No parameters required" />
+</ApiMethod>
+
+### Performance Metrics
+
+Submit performance metrics (authentication required):
+
+<ApiMethod endpoint="/performance" method="POST">
+  <Param name="name" type="string" required>
+    Name of the performance metric
+  </Param>
+  <Param name="value" type="number" required>
+    Metric value in milliseconds
+  </Param>
+  <Param name="timestamp" type="number" required>
+    Unix timestamp in milliseconds
+  </Param>
+  <Param name="url" type="string" required>
+    URL where metric was collected
+  </Param>
+  <Param name="userAgent" type="string" required>
+    User agent string
+  </Param>
+</ApiMethod>
+
+### Error Reporting
+
+Report errors for tracking (authentication required):
+
+<ApiMethod endpoint="/errors" method="POST">
+  <Param name="message" type="string" required>
+    Error message
+  </Param>
+  <Param name="stack" type="string">
+    Error stack trace
+  </Param>
+  <Param name="url" type="string" required>
+    URL where error occurred
+  </Param>
+  <Param name="userAgent" type="string" required>
+    User agent string
+  </Param>
+  <Param name="timestamp" type="number" required>
+    Unix timestamp in milliseconds
+  </Param>
+  <Param name="sessionId" type="string" required>
+    Session ID
+  </Param>
+  <Param name="environment" type="string" required>
+    Environment (production, staging, development)
+  </Param>
+</ApiMethod>
+
+## Example Requests
+
+### Health Check
+
+```bash
+curl https://abdalkader.dev/api/health
+```
+
+**Response:**
+```json
+{
+  "status": "healthy",
+  "timestamp": "2024-01-15T10:30:00.000Z",
+  "environment": "production",
+  "version": "1.0.0",
+  "uptime": 86400,
+  "checks": {
+    "memory_usage": 45
+  }
+}
+```
+
+### Submit Performance Metric
+
+```bash
+curl -X POST https://staging.abdalkader.dev/api/performance \
+  -H "Content-Type: application/json" \
+  -H "X-API-Key: your-api-key-here" \
+  -d '{
+    "name": "page_load_time",
+    "value": 1250,
+    "timestamp": 1705312200000,
+    "url": "https://abdalkader.dev",
+    "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64)"
+  }'
+```
+
+**Response:**
+```json
+{
+  "success": true
+}
+```
+
+### Report Error
+
+```bash
+curl -X POST https://staging.abdalkader.dev/api/errors \
+  -H "Content-Type: application/json" \
+  -H "X-API-Key: your-api-key-here" \
+  -d '{
+    "message": "Failed to load resource",
+    "stack": "Error: Failed to load resource\n    at fetchResource (app.js:123:45)",
+    "url": "https://abdalkader.dev",
+    "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64)",
+    "timestamp": 1705312200000,
+    "sessionId": "sess_abc123",
+    "environment": "production"
+  }'
+```
+
+**Response:**
+```json
+{
+  "success": true,
+  "errorId": "err_1705312200000_abc123xyz"
+}
+```
+
+## Tips for Using the Playground
+
+### 1. Test Different Environments
+
+You can test against different environments by changing the base URL:
+- Production: `https://abdalkader.dev/api`
+- Staging: `https://staging.abdalkader.dev/api`
+- Local: `http://localhost:3000/api`
+
+### 2. View Request/Response Details
+
+The playground shows:
+- **Request Headers**: All headers sent with the request
+- **Request Body**: The JSON payload (for POST requests)
+- **Response Status**: HTTP status code
+- **Response Headers**: Headers returned by the server
+- **Response Body**: The JSON response
+
+### 3. Copy Code Samples
+
+After making a request, you can copy the code sample in your preferred language:
+- JavaScript (fetch)
+- Python (requests)
+- cURL
+
+### 4. Test Error Scenarios
+
+Try different scenarios:
+- Invalid API keys
+- Missing required fields
+- Invalid data types
+- Rate limit scenarios
+
+## Authentication
+
+Most endpoints require authentication. Enter your API key in the authentication section:
+
+1. Click on the authentication icon
+2. Select "API Key" method
+3. Enter your API key
+4. The key will be included in all requests automatically
+
+<Warning>
+  Never share your API key publicly. The playground stores your key locally in your browser, but be careful when sharing screenshots or recordings.
+</Warning>
+
+## Rate Limiting
+
+Be aware of rate limits when testing:
+- Health endpoint: 1000 requests/minute
+- Performance endpoint: 100 requests/minute
+- Errors endpoint: 50 requests/minute
+
+If you hit a rate limit, you'll see a `429 Too Many Requests` response.
+
+## Troubleshooting
+
+### CORS Errors
+
+If you encounter CORS errors, make sure you're using the correct base URL and that CORS is enabled for your domain.
+
+### Authentication Errors
+
+If you get `401 Unauthorized`:
+- Verify your API key is correct
+- Check that the `X-API-Key` header is being sent
+- Ensure your API key hasn't expired or been revoked
+
+### 404 Not Found
+
+Some endpoints are only available in specific environments:
+- Performance and Error endpoints are only available in staging
+- Make sure you're using the correct environment URL
+
+## Next Steps
+
+<CardGroup cols={3}>
+  <Card title="API Reference" icon="book" href="/api/endpoints">
+    Explore detailed endpoint documentation
+  </Card>
+  <Card title="Code Samples" icon="code" href="/api/code-samples">
+    See complete code examples
+  </Card>
+  <Card title="Authentication" icon="lock" href="/api/authentication">
+    Learn about authentication methods
+  </Card>
+</CardGroup>
+

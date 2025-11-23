@@ -1,0 +1,346 @@
+---
+title: Interactive Component Demo
+description: Live demos of our UI components with code examples
+---
+
+import { Button, Card, Input, Select, Modal, Tooltip, Tabs, Progress, Skeleton, Spinner } from '@abdalkader/ui';
+import { useState } from 'react';
+
+# Interactive Component Demo
+
+This page showcases our UI components with live demos and code examples.
+
+export const QuickStart = () => (
+  <div style={{display: 'flex', gap: '1rem', marginBottom: '2rem'}}>
+    <Button variant="primary">Get Started</Button>
+    <Button variant="secondary">Learn More</Button>
+    <Button variant="ghost">View Docs</Button>
+  </div>
+);
+
+<QuickStart />
+
+## Button Components
+
+Our buttons come in three variants with smooth animations and accessibility features.
+
+```jsx
+import { Button } from '@abdalkader/ui';
+
+<Button variant="primary">Primary Button</Button>
+<Button variant="secondary">Secondary Button</Button>
+<Button variant="ghost">Ghost Button</Button>
+```
+
+export const ButtonDemo = () => {
+  const [isLoading, setIsLoading] = useState(false);
+  
+  const handleClick = () => {
+    setIsLoading(true);
+    setTimeout(() => setIsLoading(false), 2000);
+  };
+
+  return (
+    <div style={{display: 'flex', gap: '1rem', flexWrap: 'wrap'}}>
+      <Button variant="primary">Primary</Button>
+      <Button variant="secondary">Secondary</Button>
+      <Button variant="ghost">Ghost</Button>
+      <Button loading>Loading</Button>
+      <Button onClick={handleClick} disabled={isLoading}>
+        Click Me
+      </Button>
+    </div>
+  );
+};
+
+<ButtonDemo />
+
+## Form Components
+
+Interactive form components with validation and accessibility features.
+
+export const FormDemo = () => {
+  const [email, setEmail] = useState('');
+  const [selectValue, setSelectValue] = useState('');
+
+  const options = [
+    { value: '1', label: 'Option 1' },
+    { value: '2', label: 'Option 2' },
+    { value: '3', label: 'Option 3' },
+  ];
+
+  return (
+    <div style={{display: 'flex', flexDirection: 'column', gap: '1rem', maxWidth: '400px'}}>
+      <Input
+        placeholder="Enter your email"
+        value={email}
+        onChange={setEmail}
+        label="Email Address"
+        type="email"
+      />
+      <Select
+        options={options}
+        value={selectValue}
+        onChange={setSelectValue}
+        placeholder="Choose an option"
+        label="Select Option"
+      />
+      <Button variant="primary">Submit</Button>
+    </div>
+  );
+};
+
+<FormDemo />
+
+```jsx
+import { Input, Select, Button } from '@abdalkader/ui';
+
+const FormExample = () => {
+  const [email, setEmail] = useState('');
+  const [selectValue, setSelectValue] = useState('');
+
+  return (
+    <div>
+      <Input
+        placeholder="Enter your email"
+        value={email}
+        onChange={setEmail}
+        label="Email Address"
+        type="email"
+      />
+      <Select
+        options={options}
+        value={selectValue}
+        onChange={setSelectValue}
+        placeholder="Choose an option"
+        label="Select Option"
+      />
+      <Button variant="primary">Submit</Button>
+    </div>
+  );
+};
+```
+
+## Loading States
+
+Comprehensive loading states for better user experience.
+
+export const LoadingDemo = () => {
+  const [isLoading, setIsLoading] = useState(true);
+  const [progress, setProgress] = useState(0);
+
+  React.useEffect(() => {
+    const timer = setInterval(() => {
+      setProgress(prev => {
+        if (prev >= 100) {
+          setIsLoading(false);
+          return 100;
+        }
+        return prev + 10;
+      });
+    }, 500);
+
+    return () => clearInterval(timer);
+  }, []);
+
+  return (
+    <div style={{display: 'flex', flexDirection: 'column', gap: '2rem'}}>
+      <div>
+        <h4>Skeleton Loaders</h4>
+        <div style={{display: 'flex', flexDirection: 'column', gap: '1rem'}}>
+          <Skeleton variant="text" lines={3} />
+          <div style={{display: 'flex', gap: '1rem', alignItems: 'center'}}>
+            <Skeleton variant="circular" width={40} height={40} />
+            <Skeleton variant="text" lines={2} width="60%" />
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <h4>Spinners</h4>
+        <div style={{display: 'flex', gap: '1rem', alignItems: 'center'}}>
+          <Spinner size="sm" />
+          <Spinner size="md" />
+          <Spinner size="lg" />
+          <Spinner variant="dots" />
+          <Spinner variant="pulse" />
+        </div>
+      </div>
+
+      <div>
+        <h4>Progress Indicators</h4>
+        <div style={{display: 'flex', flexDirection: 'column', gap: '1rem'}}>
+          <Progress value={progress} showLabel />
+          <Progress value={75} variant="striped" />
+          <Progress value={50} variant="animated" />
+        </div>
+      </div>
+    </div>
+  );
+};
+
+<LoadingDemo />
+
+```jsx
+import { Skeleton, Spinner, Progress } from '@abdalkader/ui';
+
+// Skeleton loaders
+<Skeleton variant="text" lines={3} />
+<Skeleton variant="circular" width={40} height={40} />
+<Skeleton variant="rectangular" width="100%" height={100} />
+
+// Spinners
+<Spinner size="sm" />
+<Spinner size="md" />
+<Spinner size="lg" />
+<Spinner variant="dots" />
+<Spinner variant="pulse" />
+
+// Progress bars
+<Progress value={75} showLabel />
+<Progress value={60} variant="striped" />
+<Progress value={90} variant="animated" />
+```
+
+## Interactive Components
+
+Modals, tooltips, and tabs for rich interactions.
+
+export const InteractiveDemo = () => {
+  const [modalOpen, setModalOpen] = useState(false);
+  const [activeTab, setActiveTab] = useState('1');
+
+  const tabItems = [
+    { id: '1', label: 'Overview', content: 'Overview content with rich features.' },
+    { id: '2', label: 'Features', content: 'Advanced features and capabilities.' },
+    { id: '3', label: 'Documentation', content: 'Comprehensive documentation.' },
+  ];
+
+  return (
+    <div style={{display: 'flex', flexDirection: 'column', gap: '2rem'}}>
+      <div>
+        <h4>Tooltip</h4>
+        <Tooltip content="This is a helpful tooltip" position="top">
+          <Button>Hover for Tooltip</Button>
+        </Tooltip>
+      </div>
+
+      <div>
+        <h4>Modal</h4>
+        <Button onClick={() => setModalOpen(true)}>Open Modal</Button>
+      </div>
+
+      <div>
+        <h4>Tabs</h4>
+        <Tabs
+          items={tabItems}
+          activeTab={activeTab}
+          onChange={setActiveTab}
+          variant="default"
+        />
+      </div>
+
+      <Modal isOpen={modalOpen} onClose={() => setModalOpen(false)} title="Demo Modal">
+        <p>This is a demo modal showcasing our modal component.</p>
+        <Button onClick={() => setModalOpen(false)}>Close</Button>
+      </Modal>
+    </div>
+  );
+};
+
+<InteractiveDemo />
+
+```jsx
+import { Tooltip, Modal, Tabs, useModal } from '@abdalkader/ui';
+
+// Tooltip
+<Tooltip content="Helpful information" position="top">
+  <Button>Hover me</Button>
+</Tooltip>
+
+// Modal
+const modal = useModal();
+<Modal isOpen={modal.isOpen} onClose={modal.close} title="Modal Title">
+  <p>Modal content here</p>
+  <Button onClick={modal.close}>Close</Button>
+</Modal>
+
+// Tabs
+const tabItems = [
+  { id: '1', label: 'Tab 1', content: 'Content 1' },
+  { id: '2', label: 'Tab 2', content: 'Content 2' },
+];
+
+<Tabs
+  items={tabItems}
+  activeTab={activeTab}
+  onChange={setActiveTab}
+/>;
+```
+
+## Card Components
+
+Flexible card components for content organization.
+
+export const CardDemo = () => {
+  return (
+    <div style={{display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '1.5rem'}}>
+      <Card>
+        <h3>Feature Card</h3>
+        <p>This is a feature card with hover effects and animations.</p>
+        <Button variant="primary">Learn More</Button>
+      </Card>
+
+      <Card>
+        <h3>Project Card</h3>
+        <p>Showcase your projects with interactive cards and links.</p>
+        <Button variant="secondary">View Project</Button>
+      </Card>
+
+      <Card>
+        <h3>Service Card</h3>
+        <p>Present your services with professional card layouts.</p>
+        <Button variant="ghost">Get Started</Button>
+      </Card>
+    </div>
+  );
+};
+
+<CardDemo />
+
+```jsx
+import { Card, Button } from '@abdalkader/ui';
+
+<Card>
+  <h3>Card Title</h3>
+  <p>Card content with rich formatting.</p>
+  <Button variant="primary">Action</Button>
+</Card>
+```
+
+## Best Practices
+
+### Accessibility
+- All components include proper ARIA labels
+- Keyboard navigation support
+- Screen reader compatibility
+- Focus management
+
+### Performance
+- Optimized animations with CSS transforms
+- Lazy loading for heavy components
+- Efficient state management
+- Bundle size optimization
+
+### Theming
+- CSS custom properties for easy customization
+- Dark/light mode support
+- Consistent design tokens
+- Responsive design patterns
+
+## Next Steps
+
+- Explore individual component documentation
+- Check out the API reference
+- View implementation examples
+- Customize themes and styles

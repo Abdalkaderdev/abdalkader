@@ -26,18 +26,6 @@
     {
       "name": "Programming Museum",
       "url": "https://history.abdalkader.dev"
-    },
-    {
-      "name": "AI Therapy",
-      "url": "https://therapy.abdalkader.dev"
-    },
-    {
-      "name": "Neuro Interface",
-      "url": "https://neuro.abdalkader.dev"
-    },
-    {
-      "name": "Quantum Lab",
-      "url": "https://quantumanim.abdalkader.dev"
     }
   ],
   "topbarCtaButton": {
@@ -98,9 +86,29 @@
     {
       "group": "API Reference",
       "pages": [
-        "api/design-tokens",
-        "api/component-props",
-        "api/utilities"
+        "api/overview",
+        "api/quickstart",
+        "api/authentication",
+        "api/playground",
+        "api/code-samples",
+        "api/rate-limiting",
+        "api/error-handling",
+        {
+          "group": "Endpoints",
+          "pages": [
+            "api/endpoints/health",
+            "api/endpoints/performance",
+            "api/endpoints/errors"
+          ]
+        },
+        {
+          "group": "Design System API",
+          "pages": [
+            "api/design-tokens",
+            "api/component-props",
+            "api/utilities"
+          ]
+        }
       ]
     }
   ],
@@ -118,5 +126,28 @@
     "thumbsRating": true,
     "suggestEdit": true,
     "raiseIssue": true
+  },
+  "api": {
+    "baseUrl": "https://abdalkader.dev/api",
+    "auth": {
+      "method": "apiKey",
+      "name": "X-API-Key"
+    },
+    "playground": {
+      "enabled": true,
+      "showRequest": true,
+      "showResponse": true
+    }
+  },
+  "openapi": "api/openapi.yaml",
+  "modeToggle": {
+    "default": "light",
+    "isHidden": false
+  },
+  "search": {
+    "enabled": true
+  },
+  "version": {
+    "default": "1.0.0"
   }
 }

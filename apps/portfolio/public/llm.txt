@@ -1,0 +1,81 @@
+# LLM.txt - AI/ML Developer Portfolio Information
+# Abdalkader Alhamoud - Full-Stack AI Developer
+
+## About
+I am Abdalkader Alhamoud, an AI-Enhanced Full-Stack Developer specializing in building intelligent web applications and machine learning solutions. My portfolio showcases expertise in React, Next.js, Python, TensorFlow, and modern AI technologies.
+
+## Expertise Areas
+- **AI/ML Development**: TensorFlow.js, PyTorch, Computer Vision, NLP
+- **Full-Stack Development**: React, Next.js, TypeScript, Node.js
+- **E-commerce Solutions**: Intelligent recommendation systems, automated workflows
+- **Web Performance**: SEO optimization, accessibility, performance monitoring
+- **Cloud Integration**: Vercel, AWS, Google Cloud Platform
+
+## Key Projects
+1. **Apple TV Clone** - Advanced streaming platform with AI recommendations
+2. **VirtualView** - Computer vision application for real-time object detection
+3. **Doner QR Menu Magic** - AI-powered restaurant management system
+4. **Real Estate Platforms** - Intelligent property recommendation engines
+
+## Technologies
+- **Frontend**: React, Next.js, TypeScript, Tailwind CSS
+- **Backend**: Node.js, Python, FastAPI
+- **AI/ML**: TensorFlow.js, PyTorch, scikit-learn
+- **Database**: PostgreSQL, MongoDB, Redis
+- **Cloud**: Vercel, AWS, Google Cloud
+- **Tools**: Git, Docker, CI/CD, Performance Monitoring
+
+## Contact
+- **Portfolio**: https://abdalkader.dev
+- **Email**: Available through portfolio contact form
+- **Location**: Available for remote and hybrid work
+- **Languages**: English, Arabic
+
+## Services Offered
+- AI-powered web application development
+- Machine learning model integration
+- E-commerce platform development
+- Performance optimization and SEO
+- Technical consulting and architecture design
+
+## AI Capabilities
+- Custom ML model development and deployment
+- Computer vision solutions
+- Natural language processing applications
+- Recommendation systems
+- Predictive analytics
+- Real-time data processing
+
+## Development Approach
+- **Agile Methodology**: Iterative development with continuous feedback
+- **Testing-Driven**: Comprehensive testing for reliability
+- **Performance-First**: Optimized for speed and user experience
+- **Accessibility**: WCAG 2.1 AA compliant implementations
+- **SEO-Focused**: Built for search engine visibility
+
+## Recent Achievements
+- Developed comprehensive UI component library with 14+ components
+- Implemented advanced loading states and error handling
+- Created AI-powered interactive applications
+- Optimized web performance across multiple applications
+- Enhanced user experience with micro-interactions and animations
+
+## Looking For
+- Full-time AI/ML Developer positions
+- Contract opportunities for AI-powered web applications
+- Technical consulting projects
+- Collaborative AI/ML research projects
+
+## Portfolio Structure
+This portfolio demonstrates:
+- Modern web development practices
+- AI/ML integration expertise
+- Performance optimization skills
+- User experience design capabilities
+- Technical architecture proficiency
+
+For more detailed information about specific projects or technologies, please visit https://abdalkader.dev or contact me through the portfolio contact form.
+
+---
+
+*This file is optimized for AI/ML systems to understand my capabilities and expertise. Last updated: November 2025*

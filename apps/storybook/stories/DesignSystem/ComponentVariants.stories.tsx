@@ -1,0 +1,525 @@
+import type { Meta, StoryObj } from '@storybook/react';
+import React from 'react';
+import { colors, spacing, typography } from '@abdalkader/ui/src/tokens/designTokens';
+
+// Component variants showcase
+const ComponentVariants = ({ component = 'button', showStates = true, showCode = true }: any) => {
+  const renderButtonVariants = () => {
+    const sizes = ['xs', 'sm', 'md', 'lg', 'xl'];
+    const colors = ['primary', 'secondary', 'neutral', 'ghost'];
+    const styles = ['solid', 'outline', 'ghost', 'gradient'];
+
+    return (
+      <div style={{ display: 'grid', gap: '3rem' }}>
+        {/* Size Variants */}
+        <div style={{ background: '#1a1a1a', padding: '2rem', borderRadius: '8px', border: '1px solid #252525' }}>
+          <h3 style={{ color: '#f44e00', marginBottom: '1.5rem' }}>Size Variants</h3>
+          <div style={{ display: 'flex', gap: '1rem', alignItems: 'center', flexWrap: 'wrap' }}>
+            {sizes.map((size) => (
+              <div key={size} style={{ textAlign: 'center' }}>
+                <button style={{
+                  padding: size === 'xs' ? '4px 8px' : size === 'sm' ? '8px 12px' : size === 'md' ? '12px 20px' : size === 'lg' ? '16px 24px' : '20px 32px',
+                  background: '#f44e00',
+                  color: '#f8f8f8',
+                  border: 'none',
+                  borderRadius: '4px',
+                  fontSize: size === 'xs' ? '0.75rem' : size === 'sm' ? '0.875rem' : size === 'md' ? '1rem' : size === 'lg' ? '1.125rem' : '1.25rem',
+                  textTransform: 'uppercase',
+                  letterSpacing: '0.05rem',
+                  fontWeight: '500',
+                  marginBottom: '0.5rem'
+                }}>
+                  {size.toUpperCase()}
+                </button>
+                <div style={{ fontSize: '0.8rem', color: '#787878' }}>{size}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Color Variants */}
+        <div style={{ background: '#1a1a1a', padding: '2rem', borderRadius: '8px', border: '1px solid #252525' }}>
+          <h3 style={{ color: '#f44e00', marginBottom: '1.5rem' }}>Color Variants</h3>
+          <div style={{ display: 'flex', gap: '1rem', alignItems: 'center', flexWrap: 'wrap' }}>
+            {colors.map((color) => (
+              <div key={color} style={{ textAlign: 'center' }}>
+                <button style={{
+                  padding: '12px 20px',
+                  background: color === 'primary' ? '#f44e00' : color === 'secondary' ? '#fa7300' : color === 'neutral' ? '#787878' : 'transparent',
+                  color: color === 'ghost' ? '#f8f8f8' : '#f8f8f8',
+                  border: color === 'ghost' ? '1px solid #787878' : 'none',
+                  borderRadius: '4px',
+                  fontSize: '1rem',
+                  textTransform: 'uppercase',
+                  letterSpacing: '0.05rem',
+                  fontWeight: '500',
+                  marginBottom: '0.5rem'
+                }}>
+                  {color.toUpperCase()}
+                </button>
+                <div style={{ fontSize: '0.8rem', color: '#787878' }}>{color}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Style Variants */}
+        <div style={{ background: '#1a1a1a', padding: '2rem', borderRadius: '8px', border: '1px solid #252525' }}>
+          <h3 style={{ color: '#f44e00', marginBottom: '1.5rem' }}>Style Variants</h3>
+          <div style={{ display: 'flex', gap: '1rem', alignItems: 'center', flexWrap: 'wrap' }}>
+            {styles.map((style) => (
+              <div key={style} style={{ textAlign: 'center' }}>
+                <button style={{
+                  padding: '12px 20px',
+                  background: style === 'solid' ? '#f44e00' : style === 'outline' ? 'transparent' : style === 'ghost' ? 'transparent' : 'linear-gradient(135deg, #f44e00 0%, #fa7300 100%)',
+                  color: style === 'outline' || style === 'ghost' ? '#f8f8f8' : '#f8f8f8',
+                  border: style === 'outline' ? '1px solid #f44e00' : style === 'ghost' ? '1px solid #787878' : 'none',
+                  borderRadius: '4px',
+                  fontSize: '1rem',
+                  textTransform: 'uppercase',
+                  letterSpacing: '0.05rem',
+                  fontWeight: '500',
+                  marginBottom: '0.5rem'
+                }}>
+                  {style.toUpperCase()}
+                </button>
+                <div style={{ fontSize: '0.8rem', color: '#787878' }}>{style}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* State Variants */}
+        {showStates && (
+          <div style={{ background: '#1a1a1a', padding: '2rem', borderRadius: '8px', border: '1px solid #252525' }}>
+            <h3 style={{ color: '#f44e00', marginBottom: '1.5rem' }}>State Variants</h3>
+            <div style={{ display: 'flex', gap: '1rem', alignItems: 'center', flexWrap: 'wrap' }}>
+              {['default', 'hover', 'focus', 'active', 'disabled'].map((state) => (
+                <div key={state} style={{ textAlign: 'center' }}>
+                  <button style={{
+                    padding: '12px 20px',
+                    background: state === 'hover' ? '#fa7300' : state === 'focus' ? '#f44e00' : state === 'active' ? '#d44400' : '#f44e00',
+                    color: '#f8f8f8',
+                    border: 'none',
+                    borderRadius: '4px',
+                    fontSize: '1rem',
+                    textTransform: 'uppercase',
+                    letterSpacing: '0.05rem',
+                    fontWeight: '500',
+                    opacity: state === 'disabled' ? 0.5 : 1,
+                    cursor: state === 'disabled' ? 'not-allowed' : 'pointer',
+                    marginBottom: '0.5rem',
+                    boxShadow: state === 'focus' ? '0 0 0 2px rgba(244, 78, 0, 0.3)' : 'none'
+                  }}>
+                    {state.toUpperCase()}
+                  </button>
+                  <div style={{ fontSize: '0.8rem', color: '#787878' }}>{state}</div>
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
+      </div>
+    );
+  };
+
+  const renderCardVariants = () => {
+    return (
+      <div style={{ display: 'grid', gap: '3rem' }}>
+        {/* Card Size Variants */}
+        <div style={{ background: '#1a1a1a', padding: '2rem', borderRadius: '8px', border: '1px solid #252525' }}>
+          <h3 style={{ color: '#f44e00', marginBottom: '1.5rem' }}>Card Size Variants</h3>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '1rem' }}>
+            <div style={{ padding: '1rem', background: '#2a2a2a', borderRadius: '8px', border: '1px solid #252525' }}>
+              <h4 style={{ color: '#f8f8f8', margin: '0 0 0.5rem 0', fontSize: '0.875rem' }}>Small Card</h4>
+              <p style={{ color: '#787878', margin: '0', fontSize: '0.75rem' }}>Compact card for minimal content</p>
+            </div>
+            <div style={{ padding: '1.5rem', background: '#2a2a2a', borderRadius: '12px', border: '1px solid #252525' }}>
+              <h4 style={{ color: '#f8f8f8', margin: '0 0 0.5rem 0', fontSize: '1rem' }}>Medium Card</h4>
+              <p style={{ color: '#787878', margin: '0', fontSize: '0.875rem' }}>Standard card for regular content</p>
+            </div>
+            <div style={{ padding: '2rem', background: '#2a2a2a', borderRadius: '16px', border: '1px solid #252525' }}>
+              <h4 style={{ color: '#f8f8f8', margin: '0 0 0.5rem 0', fontSize: '1.125rem' }}>Large Card</h4>
+              <p style={{ color: '#787878', margin: '0', fontSize: '1rem' }}>Spacious card for detailed content</p>
+            </div>
+          </div>
+        </div>
+
+        {/* Card Style Variants */}
+        <div style={{ background: '#1a1a1a', padding: '2rem', borderRadius: '8px', border: '1px solid #252525' }}>
+          <h3 style={{ color: '#f44e00', marginBottom: '1.5rem' }}>Card Style Variants</h3>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '1rem' }}>
+            <div style={{ padding: '1.5rem', background: '#2a2a2a', borderRadius: '8px', border: '1px solid #252525' }}>
+              <h4 style={{ color: '#f8f8f8', margin: '0 0 0.5rem 0' }}>Default</h4>
+              <p style={{ color: '#787878', margin: '0' }}>Standard card style</p>
+            </div>
+            <div style={{ padding: '1.5rem', background: 'linear-gradient(135deg, #2a2a2a 0%, #1a1a1a 100%)', borderRadius: '8px', border: '1px solid #f44e00' }}>
+              <h4 style={{ color: '#f44e00', margin: '0 0 0.5rem 0' }}>Accent</h4>
+              <p style={{ color: '#787878', margin: '0' }}>Card with accent border</p>
+            </div>
+            <div style={{ padding: '1.5rem', background: 'transparent', borderRadius: '8px', border: '2px solid #252525' }}>
+              <h4 style={{ color: '#f8f8f8', margin: '0 0 0.5rem 0' }}>Outline</h4>
+              <p style={{ color: '#787878', margin: '0' }}>Transparent card with border</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  };
+
+  const renderBadgeVariants = () => {
+    return (
+      <div style={{ display: 'grid', gap: '3rem' }}>
+        {/* Badge Size Variants */}
+        <div style={{ background: '#1a1a1a', padding: '2rem', borderRadius: '8px', border: '1px solid #252525' }}>
+          <h3 style={{ color: '#f44e00', marginBottom: '1.5rem' }}>Badge Size Variants</h3>
+          <div style={{ display: 'flex', gap: '1rem', alignItems: 'center', flexWrap: 'wrap' }}>
+            {['sm', 'md', 'lg'].map((size) => (
+              <div key={size} style={{ textAlign: 'center' }}>
+                <span style={{
+                  padding: size === 'sm' ? '4px 8px' : size === 'md' ? '6px 12px' : '8px 16px',
+                  background: '#f44e00',
+                  color: '#f8f8f8',
+                  borderRadius: '12px',
+                  fontSize: size === 'sm' ? '0.75rem' : size === 'md' ? '0.875rem' : '1rem',
+                  textTransform: 'uppercase',
+                  letterSpacing: '0.05rem',
+                  fontWeight: '500',
+                  display: 'inline-block',
+                  marginBottom: '0.5rem'
+                }}>
+                  {size.toUpperCase()}
+                </span>
+                <div style={{ fontSize: '0.8rem', color: '#787878' }}>{size}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Badge Color Variants */}
+        <div style={{ background: '#1a1a1a', padding: '2rem', borderRadius: '8px', border: '1px solid #252525' }}>
+          <h3 style={{ color: '#f44e00', marginBottom: '1.5rem' }}>Badge Color Variants</h3>
+          <div style={{ display: 'flex', gap: '1rem', alignItems: 'center', flexWrap: 'wrap' }}>
+            {['primary', 'secondary', 'neutral', 'success', 'warning'].map((color) => (
+              <div key={color} style={{ textAlign: 'center' }}>
+                <span style={{
+                  padding: '6px 12px',
+                  background: color === 'primary' ? '#f44e00' : color === 'secondary' ? '#fa7300' : color === 'neutral' ? '#787878' : color === 'success' ? '#00c896' : '#ffc107',
+                  color: '#f8f8f8',
+                  borderRadius: '12px',
+                  fontSize: '0.875rem',
+                  textTransform: 'uppercase',
+                  letterSpacing: '0.05rem',
+                  fontWeight: '500',
+                  display: 'inline-block',
+                  marginBottom: '0.5rem'
+                }}>
+                  {color}
+                </span>
+                <div style={{ fontSize: '0.8rem', color: '#787878' }}>{color}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    );
+  };
+
+  const renderInputVariants = () => {
+    return (
+      <div style={{ display: 'grid', gap: '3rem' }}>
+        {/* Input Size Variants */}
+        <div style={{ background: '#1a1a1a', padding: '2rem', borderRadius: '8px', border: '1px solid #252525' }}>
+          <h3 style={{ color: '#f44e00', marginBottom: '1.5rem' }}>Input Size Variants</h3>
+          <div style={{ display: 'grid', gap: '1rem' }}>
+            {['sm', 'md', 'lg'].map((size) => (
+              <div key={size}>
+                <input
+                  type="text"
+                  placeholder={`${size.toUpperCase()} Input`}
+                  style={{
+                    width: '100%',
+                    padding: size === 'sm' ? '8px 12px' : size === 'md' ? '12px 16px' : '16px 20px',
+                    fontSize: size === 'sm' ? '0.875rem' : size === 'md' ? '1rem' : '1.125rem',
+                    background: '#2a2a2a',
+                    border: '1px solid #252525',
+                    borderRadius: '4px',
+                    color: '#f8f8f8',
+                    outline: 'none'
+                  }}
+                />
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Input State Variants */}
+        <div style={{ background: '#1a1a1a', padding: '2rem', borderRadius: '8px', border: '1px solid #252525' }}>
+          <h3 style={{ color: '#f44e00', marginBottom: '1.5rem' }}>Input State Variants</h3>
+          <div style={{ display: 'grid', gap: '1rem' }}>
+            <input
+              type="text"
+              placeholder="Default Input"
+              style={{
+                width: '100%',
+                padding: '12px 16px',
+                fontSize: '1rem',
+                background: '#2a2a2a',
+                border: '1px solid #252525',
+                borderRadius: '4px',
+                color: '#f8f8f8',
+                outline: 'none'
+              }}
+            />
+            <input
+              type="text"
+              placeholder="Focus Input"
+              style={{
+                width: '100%',
+                padding: '12px 16px',
+                fontSize: '1rem',
+                background: '#2a2a2a',
+                border: '2px solid #f44e00',
+                borderRadius: '4px',
+                color: '#f8f8f8',
+                outline: 'none'
+              }}
+            />
+            <input
+              type="text"
+              placeholder="Error Input"
+              style={{
+                width: '100%',
+                padding: '12px 16px',
+                fontSize: '1rem',
+                background: '#2a2a2a',
+                border: '2px solid #ff4444',
+                borderRadius: '4px',
+                color: '#f8f8f8',
+                outline: 'none'
+              }}
+            />
+          </div>
+        </div>
+      </div>
+    );
+  };
+
+  const renderComponent = () => {
+    switch (component) {
+      case 'button':
+        return renderButtonVariants();
+      case 'card':
+        return renderCardVariants();
+      case 'badge':
+        return renderBadgeVariants();
+      case 'input':
+        return renderInputVariants();
+      default:
+        return renderButtonVariants();
+    }
+  };
+
+  return (
+    <div style={{ padding: '2rem', background: colors.background, color: colors.text, minHeight: '100vh' }}>
+      <div style={{ maxWidth: '1400px', margin: '0 auto' }}>
+        <h1 style={{ fontSize: '2rem', marginBottom: '0.5rem', color: colors.text }}>
+          {component.charAt(0).toUpperCase() + component.slice(1)} Variants
+        </h1>
+        <p style={{ margin: '0 0 2rem 0', color: colors.textSecondary, fontSize: '1rem' }}>
+          Complete variant system with size, color, style, and state variations
+        </p>
+        
+        {renderComponent()}
+        
+        {showCode && (
+          <div style={{ marginTop: '3rem', padding: '2rem', background: colors.backgroundTertiary, borderRadius: '8px', border: `1px solid ${colors.border}` }}>
+            <h2 style={{ color: colors.text, marginBottom: '1.5rem', fontSize: '1.5rem' }}>Implementation Guidelines</h2>
+            <div style={{ display: 'grid', gap: '1.5rem' }}>
+              <div>
+                <h3 style={{ color: colors.primary, marginBottom: '0.75rem', fontSize: '1.1rem' }}>TypeScript Interface</h3>
+                <pre style={{ background: colors.background, padding: '1rem', borderRadius: '4px', overflow: 'auto', fontSize: '0.85rem', fontFamily: typography.fonts.mono, color: colors.textSecondary, lineHeight: '1.6' }}>
+{`// Component Variant System
+interface ComponentProps {
+  size?: 'xs' | 'sm' | 'md' | 'lg' | 'xl';
+  color?: 'primary' | 'secondary' | 'neutral' | 'ghost';
+  style?: 'solid' | 'outline' | 'ghost' | 'gradient';
+  state?: 'default' | 'hover' | 'focus' | 'active' | 'disabled';
+}`}
+                </pre>
+              </div>
+              
+              <div>
+                <h3 style={{ color: colors.primary, marginBottom: '0.75rem', fontSize: '1.1rem' }}>CSS Implementation</h3>
+                <pre style={{ background: colors.background, padding: '1rem', borderRadius: '4px', overflow: 'auto', fontSize: '0.85rem', fontFamily: typography.fonts.mono, color: colors.textSecondary, lineHeight: '1.6' }}>
+{`// Using design tokens
+.button {
+  padding: var(--spacing-md) var(--spacing-lg);
+  border-radius: var(--border-radius-md);
+  font-weight: var(--font-weight-medium);
+  text-transform: uppercase;
+  letter-spacing: var(--letter-spacing-normal);
+  transition: var(--transition-normal);
+
+  &--primary { 
+    background: var(--color-primary); 
+    color: var(--color-text);
+  }
+  
+  &:hover { 
+    background: var(--color-secondary);
+    transform: translateY(-1px);
+  }
+  
+  &:focus { 
+    outline: 2px solid var(--color-primary);
+    outline-offset: 2px;
+  }
+}`}
+                </pre>
+              </div>
+              
+              <div>
+                <h3 style={{ color: colors.primary, marginBottom: '0.75rem', fontSize: '1.1rem' }}>Usage Guidelines</h3>
+                <ul style={{ margin: '0', padding: '0 0 0 1.25rem', color: colors.textSecondary, fontSize: '0.9rem', lineHeight: '1.8' }}>
+                  <li>Use size variants to create visual hierarchy</li>
+                  <li>Use color variants to indicate importance and actions</li>
+                  <li>Use style variants for different contexts</li>
+                  <li>Maintain consistency across similar components</li>
+                  <li>Test all variants at different screen sizes</li>
+                  <li>Always use design tokens from centralized source</li>
+                  <li>Follow the variant pattern: Size → Color → Style → State</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        )}
+    </div>
+  );
+};
+
+const meta: Meta<typeof ComponentVariants> = {
+  title: 'Design System/Component Variants',
+  component: ComponentVariants,
+  parameters: {
+    layout: 'fullscreen',
+    docs: {
+      description: {
+        component: `
+# Component Variants Documentation
+
+The Abdalkader portfolio component system provides consistent variants for all UI elements. Each component follows the same variant structure: size, color, state, and style variations.
+
+## Variant System
+
+### Size Variants
+- **xs**: Extra small (mobile, tight spaces)
+- **sm**: Small (compact interfaces)
+- **md**: Medium (default size)
+- **lg**: Large (important elements)
+- **xl**: Extra large (hero elements)
+
+### Color Variants
+- **primary**: Brand orange (#f44e00)
+- **secondary**: Light orange (#fa7300)
+- **neutral**: Grey tones (#787878)
+- **ghost**: Transparent with borders
+- **gradient**: Orange gradient effects
+
+### State Variants
+- **default**: Normal state
+- **hover**: Mouse hover state
+- **focus**: Keyboard focus state
+- **active**: Active/pressed state
+- **disabled**: Disabled state
+
+### Style Variants
+- **solid**: Filled background
+- **outline**: Border only
+- **ghost**: Transparent background
+- **link**: Text-only button
+- **gradient**: Gradient background
+
+## Usage Guidelines
+- Use size variants to create visual hierarchy
+- Use color variants to indicate importance and actions
+- Use style variants for different contexts
+- Maintain consistency across similar components
+- Test all variants at different screen sizes
+        `
+      }
+    }
+  },
+  tags: ['autodocs'],
+  argTypes: {
+    component: {
+      control: 'select',
+      options: ['button', 'card', 'badge', 'input'],
+      description: 'Component to display variants for'
+    },
+    showStates: {
+      control: 'boolean',
+      description: 'Show interactive states (hover, focus, etc.)'
+    },
+    showCode: {
+      control: 'boolean',
+      description: 'Show implementation code'
+    }
+  }
+};
+
+export default meta;
+type Story = StoryObj<typeof ComponentVariants>;
+
+export const Default: Story = {
+  args: {
+    component: 'button',
+    showStates: true,
+    showCode: true
+  }
+};
+
+export const Cards: Story = {
+  args: {
+    component: 'card',
+    showStates: false,
+    showCode: true
+  },
+  parameters: {
+    docs: {
+      description: {
+        story: 'Card component variants with different sizes and styles'
+      }
+    }
+  }
+};
+
+export const Badges: Story = {
+  args: {
+    component: 'badge',
+    showStates: false,
+    showCode: true
+  },
+  parameters: {
+    docs: {
+      description: {
+        story: 'Badge component variants for labels and tags'
+      }
+    }
+  }
+};
+
+export const Inputs: Story = {
+  args: {
+    component: 'input',
+    showStates: true,
+    showCode: true
+  },
+  parameters: {
+    docs: {
+      description: {
+        story: 'Input component variants with different sizes and states'
+      }
+    }
+  }
+};

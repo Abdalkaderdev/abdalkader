@@ -1,0 +1,164 @@
+---
+title: 'API Overview'
+description: 'Comprehensive REST API documentation for Abdalkader services'
+---
+
+# API Overview
+
+Welcome to the **Abdalkader API** documentation. This comprehensive guide will help you integrate with our REST API to access portfolio services, monitoring endpoints, and analytics.
+
+<CardGroup cols={2}>
+  <Card title="Quick Start" icon="rocket" href="/api/quickstart">
+    Get started with the API in minutes
+  </Card>
+  <Card title="Authentication" icon="lock" href="/api/authentication">
+    Learn how to authenticate your requests
+  </Card>
+  <Card title="Interactive Playground" icon="code" href="/api/playground">
+    Test endpoints directly in your browser
+  </Card>
+  <Card title="Code Samples" icon="file-code" href="/api/code-samples">
+    Ready-to-use code examples
+  </Card>
+</CardGroup>
+
+## What is the Abdalkader API?
+
+The Abdalkader API is a RESTful API that provides programmatic access to:
+
+- **Health Monitoring**: Check system status and health metrics
+- **Performance Tracking**: Submit and analyze performance metrics
+- **Error Reporting**: Report and track errors for debugging
+- **Analytics**: Access analytics and usage data
+
+## Base URLs
+
+The API is available at different base URLs depending on your environment:
+
+| Environment | Base URL | Description |
+|------------|----------|-------------|
+| **Production** | `https://abdalkader.dev/api` | Live production API |
+| **Staging** | `https://staging.abdalkader.dev/api` | Staging environment for testing |
+| **Local** | `http://localhost:3000/api` | Local development server |
+
+## API Versioning
+
+The current API version is **v1.0.0**. All endpoints are versioned and backward compatible within the same major version.
+
+```http
+GET /api/v1/health
+```
+
+## Response Format
+
+All API responses are returned in JSON format with the following structure:
+
+### Success Response
+
+```json
+{
+  "success": true,
+  "data": { ... },
+  "message": "Optional success message"
+}
+```
+
+### Error Response
+
+```json
+{
+  "success": false,
+  "error": {
+    "code": "ERROR_CODE",
+    "message": "Human-readable error message",
+    "details": { ... }
+  }
+}
+```
+
+## HTTP Status Codes
+
+The API uses standard HTTP status codes:
+
+| Code | Meaning | Description |
+|------|---------|-------------|
+| `200` | OK | Request succeeded |
+| `201` | Created | Resource created successfully |
+| `400` | Bad Request | Invalid request parameters |
+| `401` | Unauthorized | Authentication required or failed |
+| `403` | Forbidden | Insufficient permissions |
+| `404` | Not Found | Resource not found |
+| `405` | Method Not Allowed | HTTP method not supported |
+| `429` | Too Many Requests | Rate limit exceeded |
+| `500` | Internal Server Error | Server error |
+| `503` | Service Unavailable | Service temporarily unavailable |
+
+## Authentication
+
+Most endpoints require authentication using an API key. See the [Authentication Guide](/api/authentication) for detailed instructions.
+
+<Warning>
+  Keep your API keys secure. Never expose them in client-side code or public repositories.
+</Warning>
+
+## Rate Limiting
+
+API requests are rate-limited to ensure fair usage. See [Rate Limiting](/api/rate-limiting) for details on limits and best practices.
+
+## Interactive API Playground
+
+Test API endpoints directly in your browser using our interactive playground:
+
+<Card title="Try the API Playground" icon="play" href="/api/playground">
+  Explore endpoints, test requests, and see responses in real-time
+</Card>
+
+## Code Examples
+
+We provide code samples in multiple languages:
+
+- **JavaScript/TypeScript**: Using `fetch` and `axios`
+- **Python**: Using `requests` and `httpx`
+- **cURL**: Command-line examples
+
+See [Code Samples](/api/code-samples) for complete examples.
+
+## SDKs and Libraries
+
+While we don't provide official SDKs yet, our API is designed to work with any HTTP client. Popular options include:
+
+- **JavaScript**: `fetch`, `axios`, `node-fetch`
+- **Python**: `requests`, `httpx`
+- **Go**: `net/http`
+- **Ruby**: `net/http`, `httparty`
+
+## Support
+
+Need help? We're here for you:
+
+- **Email**: hello@abdalkader.dev
+- **Documentation**: Browse the full API reference
+- **Issues**: Report bugs or request features
+
+## Changelog
+
+### v1.0.0 (2024-01-15)
+- Initial API release
+- Health check endpoint
+- Performance metrics endpoint
+- Error reporting endpoint
+
+## Next Steps
+
+<CardGroup cols={3}>
+  <Card title="Quick Start Guide" icon="book" href="/api/quickstart">
+    Get started in 5 minutes
+  </Card>
+  <Card title="Authentication" icon="key" href="/api/authentication">
+    Set up API authentication
+  </Card>
+  <Card title="Endpoints" icon="server" href="/api/endpoints">
+    Explore all available endpoints
+  </Card>
+</CardGroup>
+

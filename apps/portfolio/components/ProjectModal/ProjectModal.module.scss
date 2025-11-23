@@ -60,23 +60,76 @@
     line-height: 1.6;
 }
 
+/* Enhanced Business Context Sections */
+.section {
+    margin-top: 1.5rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid $borderColor;
+
+    h4 {
+        color: $primaryColor;
+        font-size: 1.1rem;
+        font-weight: 600;
+        margin: 0 0 0.75rem 0;
+        text-transform: uppercase;
+        letter-spacing: 0.05rem;
+    }
+
+    p {
+        color: $textGrey;
+        line-height: 1.6;
+        margin: 0 0 1rem 0;
+    }
+}
+
+.metrics {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin-bottom: 1rem;
+
+    .metric {
+        background: rgba($primaryColor, 0.1);
+        color: $primaryColor;
+        padding: 0.5rem 0.75rem;
+        border-radius: 8px;
+        font-size: 0.9rem;
+        font-weight: 500;
+        border: 1px solid rgba($primaryColor, 0.3);
+    }
+}
+
+.feedback {
+    font-style: italic;
+    color: $textLight !important;
+    border-left: 3px solid $primaryColor;
+    padding-left: 1rem;
+    margin: 1rem 0 !important;
+}
+
 .actions {
     display: flex;
     gap: 0.75rem;
-    margin-top: 1.25rem;
+    margin-top: 2rem;
+    flex-wrap: wrap;
 
     .copy {
-        @include font0_7;
+        margin-left: auto;
         background: transparent;
-        color: $white;
         border: 1px solid $borderColor;
+        color: $textGrey;
+        padding: 0.6rem 1.2rem;
         border-radius: 6px;
-        padding: 0.5rem 0.8rem;
         cursor: pointer;
+        transition: all 0.2s ease;
+
+        &:hover {
+            border-color: $primaryColor;
+            color: $primaryColor;
+        }
     }
 }
 
 @keyframes in {
     to { transform: translateY(0); opacity: 1; }
 }
-

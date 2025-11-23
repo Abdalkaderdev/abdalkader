@@ -1,0 +1,358 @@
+---
+title: 'Error Handling'
+description: 'Best practices for handling API errors and responses'
+---
+
+# Error Handling
+
+Learn how to properly handle errors and edge cases when working with the Abdalkader API.
+
+## Error Response Format
+
+All error responses follow a consistent format:
+
+```json
+{
+  "success": false,
+  "error": {
+    "code": "ERROR_CODE",
+    "message": "Human-readable error message",
+    "details": {
+      "field": "Additional error details"
+    }
+  }
+}
+```
+
+## HTTP Status Codes
+
+The API uses standard HTTP status codes to indicate different types of errors:
+
+| Status Code | Meaning | Description |
+|-------------|---------|-------------|
+| `400` | Bad Request | Invalid request parameters or body |
+| `401` | Unauthorized | Missing or invalid authentication |
+| `403` | Forbidden | Insufficient permissions |
+| `404` | Not Found | Resource or endpoint not found |
+| `405` | Method Not Allowed | HTTP method not supported |
+| `429` | Too Many Requests | Rate limit exceeded |
+| `500` | Internal Server Error | Server-side error |
+| `503` | Service Unavailable | Service temporarily unavailable |
+
+## Common Error Codes
+
+### Authentication Errors
+
+#### UNAUTHORIZED
+```json
+{
+  "success": false,
+  "error": {
+    "code": "UNAUTHORIZED",
+    "message": "Invalid or missing API key"
+  }
+}
+```
+
+**Causes:**
+- Missing `X-API-Key` header
+- Invalid API key format
+- Expired or revoked API key
+
+**Solution:**
+- Verify your API key is correct
+- Check that the header is being sent
+- Generate a new API key if needed
+
+#### INVALID_KEY
+```json
+{
+  "success": false,
+  "error": {
+    "code": "INVALID_KEY",
+    "message": "API key format is incorrect"
+  }
+}
+```
+
+### Validation Errors
+
+#### VALIDATION_ERROR
+```json
+{
+  "success": false,
+  "error": {
+    "code": "VALIDATION_ERROR",
+    "message": "Invalid request data",
+    "details": {
+      "field": "value",
+      "errors": [
+        "value is required",
+        "value must be a number"
+      ]
+    }
+  }
+}
+```
+
+**Causes:**
+- Missing required fields
+- Invalid data types
+- Values outside allowed ranges
+
+**Solution:**
+- Check the API documentation for required fields
+- Verify data types match the schema
+- Validate input before sending requests
+
+### Rate Limiting Errors
+
+#### RATE_LIMIT_EXCEEDED
+```json
+{
+  "success": false,
+  "error": {
+    "code": "RATE_LIMIT_EXCEEDED",
+    "message": "Rate limit exceeded. Please try again later.",
+    "retryAfter": 60
+  }
+}
+```
+
+**Solution:**
+- Implement exponential backoff
+- Wait for the `retryAfter` period (in seconds)
+- Consider reducing request frequency
+
+## Error Handling Examples
+
+### JavaScript/TypeScript
+
+```typescript
+class APIError extends Error {
+  constructor(
+    public code: string,
+    public message: string,
+    public statusCode: number,
+    public details?: unknown
+  ) {
+    super(message);
+    this.name = 'APIError';
+  }
+}
+
+async function handleRequest<T>(
+  url: string,
+  options: RequestInit = {}
+): Promise<T> {
+  const response = await fetch(url, options);
+  const data = await response.json();
+
+  if (!response.ok) {
+    const error = data.error || {};
+    throw new APIError(
+      error.code || 'UNKNOWN_ERROR',
+      error.message || 'Request failed',
+      response.status,
+      error.details
+    );
+  }
+
+  return data;
+}
+
+// Usage with try-catch
+try {
+  const health = await handleRequest('https://abdalkader.dev/api/health');
+  console.log('Health:', health);
+} catch (error) {
+  if (error instanceof APIError) {
+    switch (error.code) {
+      case 'UNAUTHORIZED':
+        console.error('Authentication failed. Check your API key.');
+        break;
+      case 'RATE_LIMIT_EXCEEDED':
+        console.error('Rate limit exceeded. Please wait before retrying.');
+        break;
+      default:
+        console.error('API Error:', error.message);
+    }
+  } else {
+    console.error('Unexpected error:', error);
+  }
+}
+```
+
+### Python
+
+```python
+import requests
+from typing import Dict, Any, Optional
+
+class APIError(Exception):
+    def __init__(
+        self,
+        code: str,
+        message: str,
+        status_code: int,
+        details: Optional[Dict[str, Any]] = None
+    ):
+        self.code = code
+        self.message = message
+        self.status_code = status_code
+        self.details = details
+        super().__init__(self.message)
+
+def handle_request(
+    url: str,
+    method: str = 'GET',
+    headers: Optional[Dict[str, str]] = None,
+    json: Optional[Dict[str, Any]] = None
+) -> Dict[str, Any]:
+    try:
+        response = requests.request(
+            method=method,
+            url=url,
+            headers=headers,
+            json=json
+        )
+        data = response.json()
+
+        if not response.ok:
+            error = data.get('error', {})
+            raise APIError(
+                error.get('code', 'UNKNOWN_ERROR'),
+                error.get('message', 'Request failed'),
+                response.status_code,
+                error.get('details')
+            )
+
+        return data
+    except requests.exceptions.RequestException as e:
+        raise APIError('NETWORK_ERROR', str(e), 0)
+
+# Usage
+try:
+    health = handle_request('https://abdalkader.dev/api/health')
+    print('Health:', health)
+except APIError as e:
+    if e.code == 'UNAUTHORIZED':
+        print('Authentication failed. Check your API key.')
+    elif e.code == 'RATE_LIMIT_EXCEEDED':
+        print('Rate limit exceeded. Please wait before retrying.')
+    else:
+        print(f'API Error: {e.message}')
+except Exception as e:
+    print(f'Unexpected error: {e}')
+```
+
+## Retry Logic
+
+Implement retry logic for transient errors:
+
+```javascript
+async function requestWithRetry(
+  url: string,
+  options: RequestInit = {},
+  maxRetries = 3
+): Promise<Response> {
+  for (let attempt = 0; attempt < maxRetries; attempt++) {
+    try {
+      const response = await fetch(url, options);
+      
+      // Retry on 5xx errors or rate limits
+      if (response.status === 429 || response.status >= 500) {
+        if (attempt < maxRetries - 1) {
+          const retryAfter = response.headers.get('Retry-After') || 
+                           Math.pow(2, attempt);
+          await new Promise(resolve => 
+            setTimeout(resolve, retryAfter * 1000)
+          );
+          continue;
+        }
+      }
+      
+      return response;
+    } catch (error) {
+      if (attempt === maxRetries - 1) throw error;
+      await new Promise(resolve => 
+        setTimeout(resolve, Math.pow(2, attempt) * 1000)
+      );
+    }
+  }
+  
+  throw new Error('Max retries exceeded');
+}
+```
+
+## Best Practices
+
+### 1. Always Check Response Status
+
+```javascript
+const response = await fetch(url, options);
+
+if (!response.ok) {
+  const error = await response.json();
+  // Handle error
+}
+```
+
+### 2. Provide User-Friendly Messages
+
+```javascript
+function getUserFriendlyMessage(errorCode: string): string {
+  const messages: Record<string, string> = {
+    'UNAUTHORIZED': 'Please check your API key and try again.',
+    'RATE_LIMIT_EXCEEDED': 'Too many requests. Please wait a moment.',
+    'VALIDATION_ERROR': 'Please check your input and try again.',
+    'NOT_FOUND': 'The requested resource was not found.',
+  };
+  
+  return messages[errorCode] || 'An error occurred. Please try again.';
+}
+```
+
+### 3. Log Errors for Debugging
+
+```javascript
+async function logError(error: APIError, context: Record<string, unknown>) {
+  // Log to your error tracking service
+  console.error('API Error:', {
+    code: error.code,
+    message: error.message,
+    statusCode: error.statusCode,
+    context,
+    timestamp: new Date().toISOString()
+  });
+}
+```
+
+### 4. Handle Network Errors
+
+```javascript
+try {
+  const response = await fetch(url, options);
+  // Handle response
+} catch (error) {
+  if (error instanceof TypeError) {
+    // Network error (no internet, CORS, etc.)
+    console.error('Network error:', error.message);
+  } else {
+    // Other errors
+    console.error('Unexpected error:', error);
+  }
+}
+```
+
+## Next Steps
+
+<CardGroup cols={2}>
+  <Card title="API Reference" icon="book" href="/api/endpoints">
+    Explore all available endpoints
+  </Card>
+  <Card title="Rate Limiting" icon="clock" href="/api/rate-limiting">
+    Learn about rate limits and handling
+  </Card>
+</CardGroup>
+

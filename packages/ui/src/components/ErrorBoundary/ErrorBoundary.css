@@ -1,0 +1,249 @@
+/**
+ * Enhanced Error Boundary Styles
+ * Senior Frontend Developer - UI Specialist
+ */
+
+/* Main error boundary container */
+.portfolio-error-boundary {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  background: rgba(0, 0, 0, 0.95);
+  color: var(--color-text-light);
+}
+
+.portfolio-error-boundary-content {
+  max-width: 500px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+/* Error icon */
+.portfolio-error-boundary-icon {
+  color: var(--color-primary);
+  opacity: 0.8;
+}
+
+/* Error title */
+.portfolio-error-boundary-title {
+  font-size: 2rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05rem;
+  margin: 0;
+  color: var(--color-text-light);
+}
+
+/* Error message */
+.portfolio-error-boundary-message {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--color-text-grey);
+  margin: 0;
+}
+
+/* Error details (development only) */
+.portfolio-error-boundary-details {
+  width: 100%;
+  text-align: left;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  padding: 1rem;
+  cursor: pointer;
+}
+
+.portfolio-error-boundary-details summary {
+  color: var(--color-primary);
+  font-weight: 500;
+  cursor: pointer;
+  padding: 0.5rem 0;
+}
+
+.portfolio-error-boundary-details[open] summary {
+  margin-bottom: 1rem;
+}
+
+.portfolio-error-boundary-stack {
+  background: rgba(0, 0, 0, 0.5);
+  border: 1px solid var(--color-border);
+  border-radius: 4px;
+  padding: 1rem;
+  font-family: 'Courier New', monospace;
+  font-size: 0.875rem;
+  color: var(--color-text-grey);
+  overflow-x: auto;
+  white-space: pre-wrap;
+  word-break: break-all;
+}
+
+/* Action buttons */
+.portfolio-error-boundary-actions {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.portfolio-error-boundary-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 4px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.05rem;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.19, 1, 0.22, 1);
+  text-decoration: none;
+}
+
+.portfolio-error-boundary-button--primary {
+  background: var(--color-primary);
+  color: var(--color-background);
+}
+
+.portfolio-error-boundary-button--primary:hover {
+  background: var(--color-secondary);
+  transform: translateY(-2px);
+}
+
+.portfolio-error-boundary-button--secondary {
+  background: transparent;
+  color: var(--color-text-light);
+  border: 1px solid var(--color-border);
+}
+
+.portfolio-error-boundary-button--secondary:hover {
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+  transform: translateY(-2px);
+}
+
+.portfolio-error-boundary-button:focus-visible {
+  outline: 2px dashed var(--color-primary);
+  outline-offset: 2px;
+}
+
+/* Error fallback component */
+.portfolio-error-fallback {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  padding: 2rem;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  color: var(--color-text-light);
+  text-align: center;
+}
+
+.portfolio-error-fallback h3 {
+  margin: 0;
+  font-size: 1.25rem;
+  color: var(--color-primary);
+}
+
+.portfolio-error-fallback p {
+  margin: 0;
+  color: var(--color-text-grey);
+  font-size: 0.875rem;
+}
+
+.portfolio-error-fallback button {
+  padding: 0.5rem 1rem;
+  background: var(--color-primary);
+  color: var(--color-background);
+  border: none;
+  border-radius: 4px;
+  font-size: 0.875rem;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+.portfolio-error-fallback button:hover {
+  background: var(--color-secondary);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .portfolio-error-boundary {
+    padding: 1rem;
+  }
+
+  .portfolio-error-boundary-content {
+    gap: 1rem;
+  }
+
+  .portfolio-error-boundary-title {
+    font-size: 1.5rem;
+  }
+
+  .portfolio-error-boundary-message {
+    font-size: 0.875rem;
+  }
+
+  .portfolio-error-boundary-actions {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .portfolio-error-boundary-button {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .portfolio-error-boundary-stack {
+    font-size: 0.75rem;
+  }
+}
+
+/* Animation for error boundary */
+@keyframes error-shake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-5px); }
+  75% { transform: translateX(5px); }
+}
+
+.portfolio-error-boundary-icon {
+  animation: error-shake 0.5s ease-in-out;
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+  .portfolio-error-boundary {
+    background: rgba(0, 0, 0, 0.98);
+  }
+
+  .portfolio-error-boundary-details {
+    background: rgba(255, 255, 255, 0.02);
+  }
+
+  .portfolio-error-boundary-stack {
+    background: rgba(0, 0, 0, 0.8);
+  }
+}
+
+/* Accessibility */
+@media (prefers-reduced-motion: reduce) {
+  .portfolio-error-boundary-icon {
+    animation: none;
+  }
+
+  .portfolio-error-boundary-button {
+    transition: none;
+  }
+
+  .portfolio-error-boundary-button:hover {
+    transform: none;
+  }
+}

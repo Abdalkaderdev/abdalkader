@@ -4,6 +4,7 @@ import { projects } from '@/data/projectsData'; // Import the data from the new 
 import styles from './ProjectPage.module.scss';
 import Button from '@/components/Button';
 import BookCallSection from '@/components/HomePage/BookCallSection';
+import { ProjectLifecycle } from '@/components/ProjectPage/ProjectLifecycle';
 import Head from 'next/head';
 import { gsap } from '@/libs/gsap';
 import { useEffect, useRef } from 'react';
@@ -182,6 +183,9 @@ const ProjectPage = ({ project }: ProjectPageProps) => {
                     </div>
                 </div>
             </section>
+
+            {/*========= Project Lifecycle Integration ==========*/}
+            <ProjectLifecycle projectSlug={project.slug} />
 
             {/*========= Book Call Section ==========*/}
             <BookCallSection />

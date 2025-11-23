@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="<%= config.language %>">
+<head>
+    <%- partial('common/head', {theme: theme}) %>
+    <link rel="stylesheet" href="/css/portfolio-ui-integration.css">
+</head>
+<body class="is-<%= body_class %>">
+    <div id="loading" class="loading-skeleton" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #000; z-index: 9999; display: none;">
+        <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); text-align: center;">
+            <div class="loading-skeleton" style="width: 200px; height: 40px; margin: 0 auto 1rem;"></div>
+            <div class="loading-skeleton" style="width: 300px; height: 20px; margin: 0 auto;"></div>
+        </div>
+    </div>
+
+    <div id="wrap">
+        <%- partial('common/header', {theme: theme}) %>
+        
+        <div class="container">
+            <div class="row">
+                <% if (is_home()) { %>
+                    <%- partial('common/widget', {widget: theme.widgets}) %>
+                <% } else if (is_post()) { %>
+                    <div class="col-lg-8">
+                        <%- partial('article/article', {article: page, index: false}) %>
+                    </div>
+                    <div class="col-lg-4">
+                        <%- partial('common/widget', {widget: theme.widgets}) %>
+                    </div>
+                <% } else if (is_page()) { %>
+                    <div class="col-lg-8">
+                        <%- partial('common/widget', {widget: theme.widgets}) %>
+                    </div>
+                    <div class="col-lg-4">
+                        <%- partial('common/widget', {widget: theme.widgets}) %>
+                    </div>
+                <% } else { %>
+                    <div class="col-lg-8">
+                        <%- partial('archive', {posts: page.posts}) %>
+                    </div>
+                    <div class="col-lg-4">
+                        <%- partial('common/widget', {widget: theme.widgets}) %>
+                    </div>
+                <% } %>
+            </div>
+        </div>
+
+        <%- partial('common/footer', {theme: theme}) %>
+    </div>
+
+    <%- partial('common/scripts', {theme: theme}) %>
+    
+    <!-- Portfolio UI Integration Script -->
+    <script>
+        // Enhanced loading states
+        document.addEventListener('DOMContentLoaded', function() {
+            // Simulate content loading
+            setTimeout(function() {
+                document.getElementById('loading').style.display = 'none';
+            }, 500);
+        });
+
+        // Enhanced search functionality
+        const searchInput = document.querySelector('.search-input');
+        if (searchInput) {
+            searchInput.addEventListener('input', function(e) {
+                const value = e.target.value;
+                if (value.length > 2) {
+                    // Show loading indicator
+                    e.target.style.backgroundImage = 'url(/images/loading-spinner.gif)';
+                    e.target.style.backgroundRepeat = 'no-repeat';
+                    e.target.style.backgroundPosition = 'right 10px center';
+                    
+                    // Simulate search delay
+                    setTimeout(function() {
+                        e.target.style.backgroundImage = 'none';
+                    }, 800);
+                }
+            });
+        }
+
+        // Enhanced button interactions
+        document.querySelectorAll('.btn').forEach(function(button) {
+            button.addEventListener('click', function(e) {
+                // Add ripple effect
+                const ripple = document.createElement('span');
+                ripple.style.position = 'absolute';
+                ripple.style.borderRadius = '50%';
+                ripple.style.background = 'rgba(255, 255, 255, 0.5)';
+                ripple.style.width = ripple.style.height = '40px';
+                ripple.style.top = (e.clientY - e.target.offsetTop - 20) + 'px';
+                ripple.style.left = (e.clientX - e.target.offsetLeft - 20) + 'px';
+                ripple.style.animation = 'ripple 0.6s ease-out';
+                ripple.style.pointerEvents = 'none';
+                
+                e.target.style.position = 'relative';
+                e.target.style.overflow = 'hidden';
+                e.target.appendChild(ripple);
+                
+                setTimeout(function() {
+                    ripple.remove();
+                }, 600);
+            });
+        });
+
+        // Add ripple animation
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes ripple {
+                to {
+                    transform: scale(4);
+                    opacity: 0;
+                }
+            }
+        `;
+        document.head.appendChild(style);
+    </script>
+</body>
+</html>

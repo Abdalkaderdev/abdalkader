@@ -1,0 +1,312 @@
+---
+title: 'Performance Metrics'
+description: 'Submit performance metrics for monitoring and analysis'
+api: '/api/performance'
+method: 'POST'
+---
+
+# Performance Metrics
+
+Submit performance metrics for monitoring and analysis. This endpoint accepts various types of performance data including page load times, API response times, and custom metrics.
+
+<Warning>
+  This endpoint is only available in the staging environment.
+</Warning>
+
+## Endpoint
+
+```
+POST /api/performance
+```
+
+## Authentication
+
+<ParamField header="X-API-Key" type="string" required>
+  Your API key for authentication.
+</ParamField>
+
+## Request
+
+### Headers
+
+| Header | Type | Required | Description |
+|--------|------|----------|-------------|
+| `Content-Type` | string | Yes | Must be `application/json` |
+| `X-API-Key` | string | Yes | Your API key |
+
+### Request Body
+
+<ParamField body="name" type="string" required>
+  Name of the performance metric. Examples:
+  - `page_load_time`
+  - `api_response_time`
+  - `resource_load_time`
+  - `first_contentful_paint`
+  - `largest_contentful_paint`
+</ParamField>
+
+<ParamField body="value" type="number" required>
+  Metric value, usually in milliseconds.
+</ParamField>
+
+<ParamField body="timestamp" type="number" required>
+  Unix timestamp in milliseconds when the metric was collected.
+</ParamField>
+
+<ParamField body="url" type="string" required>
+  URL where the metric was collected.
+</ParamField>
+
+<ParamField body="userAgent" type="string" required>
+  User agent string of the client.
+</ParamField>
+
+<ParamField body="page" type="string">
+  Page path (for page load metrics).
+</ParamField>
+
+<ParamField body="loadType" type="string">
+  Type of page load. Possible values:
+  - `navigation`: Initial page load
+  - `reload`: Page reload
+  - `back_forward`: Back/forward navigation
+  - `prerender`: Prerendered page
+</ParamField>
+
+<ParamField body="endpoint" type="string">
+  API endpoint path (for API metrics).
+</ParamField>
+
+<ParamField body="method" type="string">
+  HTTP method (for API metrics). Possible values: `GET`, `POST`, `PUT`, `DELETE`, `PATCH`.
+</ParamField>
+
+### Example Request
+
+<Tabs>
+  <Tab title="JavaScript">
+    ```javascript
+    const API_KEY = 'your-api-key-here';
+    
+    const metric = {
+      name: 'page_load_time',
+      value: 1250,
+      timestamp: Date.now(),
+      url: 'https://abdalkader.dev',
+      userAgent: navigator.userAgent,
+      page: '/',
+      loadType: 'navigation'
+    };
+    
+    const response = await fetch('https://staging.abdalkader.dev/api/performance', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'X-API-Key': API_KEY
+      },
+      body: JSON.stringify(metric)
+    });
+    
+    const data = await response.json();
+    console.log(data);
+    ```
+  </Tab>
+  <Tab title="Python">
+    ```python
+    import requests
+    import time
+
+    API_KEY = 'your-api-key-here'
+    
+    metric = {
+        'name': 'page_load_time',
+        'value': 1250,
+        'timestamp': int(time.time() * 1000),
+        'url': 'https://abdalkader.dev',
+        'userAgent': 'MyApp/1.0',
+        'page': '/',
+        'loadType': 'navigation'
+    }
+    
+    response = requests.post(
+        'https://staging.abdalkader.dev/api/performance',
+        headers={
+            'Content-Type': 'application/json',
+            'X-API-Key': API_KEY
+        },
+        json=metric
+    )
+    
+    data = response.json()
+    print(data)
+    ```
+  </Tab>
+  <Tab title="cURL">
+    ```bash
+    curl -X POST https://staging.abdalkader.dev/api/performance \
+      -H "Content-Type: application/json" \
+      -H "X-API-Key: your-api-key-here" \
+      -d '{
+        "name": "page_load_time",
+        "value": 1250,
+        "timestamp": 1705312200000,
+        "url": "https://abdalkader.dev",
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64)",
+        "page": "/",
+        "loadType": "navigation"
+      }'
+    ```
+  </Tab>
+</Tabs>
+
+## Response
+
+### Success Response (200 OK)
+
+```json
+{
+  "success": true
+}
+```
+
+### Response Schema
+
+<ParamField body="success" type="boolean" required>
+  Whether the metric was submitted successfully.
+</ParamField>
+
+<ParamField body="message" type="string">
+  Optional success message.
+</ParamField>
+
+### Error Responses
+
+#### 400 Bad Request
+
+Invalid metric data:
+
+```json
+{
+  "success": false,
+  "message": "Invalid metric data"
+}
+```
+
+#### 404 Not Found
+
+Not available in this environment:
+
+```json
+{
+  "success": false,
+  "message": "Performance monitoring not available in this environment"
+}
+```
+
+#### 405 Method Not Allowed
+
+Wrong HTTP method:
+
+```json
+{
+  "success": false,
+  "message": "Method not allowed"
+}
+```
+
+## Use Cases
+
+### Track Page Load Times
+
+```javascript
+window.addEventListener('load', () => {
+  const loadTime = performance.timing.loadEventEnd - performance.timing.navigationStart;
+  
+  fetch('https://staging.abdalkader.dev/api/performance', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'X-API-Key': API_KEY
+    },
+    body: JSON.stringify({
+      name: 'page_load_time',
+      value: loadTime,
+      timestamp: Date.now(),
+      url: window.location.href,
+      userAgent: navigator.userAgent,
+      page: window.location.pathname,
+      loadType: 'navigation'
+    })
+  });
+});
+```
+
+### Track API Response Times
+
+```javascript
+async function trackAPICall(endpoint, method, duration) {
+  await fetch('https://staging.abdalkader.dev/api/performance', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'X-API-Key': API_KEY
+    },
+    body: JSON.stringify({
+      name: 'api_response_time',
+      value: duration,
+      timestamp: Date.now(),
+      url: window.location.href,
+      userAgent: navigator.userAgent,
+      endpoint: endpoint,
+      method: method
+    })
+  });
+}
+
+// Wrap API calls
+const startTime = performance.now();
+const response = await fetch('/api/data');
+const duration = performance.now() - startTime;
+await trackAPICall('/api/data', 'GET', duration);
+```
+
+### Track Web Vitals
+
+```javascript
+// Track Largest Contentful Paint
+new PerformanceObserver((list) => {
+  const entries = list.getEntries();
+  const lastEntry = entries[entries.length - 1];
+  
+  fetch('https://staging.abdalkader.dev/api/performance', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'X-API-Key': API_KEY
+    },
+    body: JSON.stringify({
+      name: 'largest_contentful_paint',
+      value: lastEntry.renderTime || lastEntry.loadTime,
+      timestamp: Date.now(),
+      url: window.location.href,
+      userAgent: navigator.userAgent
+    })
+  });
+}).observe({ entryTypes: ['largest-contentful-paint'] });
+```
+
+## Rate Limiting
+
+This endpoint has a rate limit of 100 requests per minute per API key.
+
+## Related Endpoints
+
+<CardGroup cols={2}>
+  <Card title="Health Check" icon="heartbeat" href="/api/endpoints/health">
+    Check system health status
+  </Card>
+  <Card title="Error Reporting" icon="exclamation-triangle" href="/api/endpoints/errors">
+    Report errors for tracking
+  </Card>
+</CardGroup>
+

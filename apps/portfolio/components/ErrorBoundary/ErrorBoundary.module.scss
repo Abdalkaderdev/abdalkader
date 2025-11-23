@@ -1,0 +1,109 @@
+@import "@/styles/variables.scss";
+
+.errorContainer {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: $black;
+  padding: 2rem;
+}
+
+.errorContent {
+  max-width: 600px;
+  text-align: center;
+
+  h1 {
+    @include font-2_75;
+    margin-bottom: 1rem;
+    color: $primary;
+  }
+
+  p {
+    font-size: 1rem;
+    color: $textGrey;
+    margin-bottom: 2rem;
+    line-height: 1.6;
+  }
+}
+
+.errorDetails {
+  background: rgba(45, 45, 45, 0.5);
+  border: 1px solid $borderColor;
+  border-radius: 8px;
+  padding: 1rem;
+  margin: 2rem 0;
+  text-align: left;
+
+  summary {
+    cursor: pointer;
+    color: $primary;
+    font-weight: 500;
+    user-select: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  pre {
+    background: $black;
+    color: $white;
+    padding: 1rem;
+    border-radius: 4px;
+    overflow-x: auto;
+    font-size: 0.75rem;
+    margin-top: 1rem;
+    line-height: 1.4;
+  }
+}
+
+.actions {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+
+  @media (max-width: 600px) {
+    flex-direction: column;
+  }
+}
+
+.primaryBtn,
+.secondaryBtn {
+  @include font-1;
+  padding: 0.75rem 1.5rem;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all $transition;
+  text-decoration: none;
+  display: inline-block;
+  border: none;
+}
+
+.primaryBtn {
+  background: $primary;
+  color: $black;
+
+  &:hover {
+    background: #fa7300;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba($primary, 0.3);
+  }
+
+  &:active {
+    transform: translateY(0);
+  }
+}
+
+.secondaryBtn {
+  background: transparent;
+  color: $white;
+  border: 1px solid $borderColor;
+
+  &:hover {
+    border-color: $primary;
+    color: $primary;
+  }
+}

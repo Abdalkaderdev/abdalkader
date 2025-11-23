@@ -1,5 +1,7 @@
 import Footer from "@/components/Footer";
 import Nav from "@/components/Nav";
+import { GlobalNavigation } from "@/components/GlobalNavigation/GlobalNavigation";
+import { GlobalFooter } from "@/components/GlobalFooter/GlobalFooter";
 import SmoothScrolling from "@/components/SmoothScrolling";
 import "@/styles/globals.scss";  // Ensure this is your global SCSS import
 import type { AppProps } from "next/app";
@@ -17,7 +19,7 @@ import { getEnvironment } from "@/src/utils/environment";
 import Plausible from "@/components/Analytics/Plausible";
 import '@abdalkader/ui/dist/styles.css';
 import StagingDashboard from "@/components/StagingDashboard";
-import { ErrorBoundary } from "@/utils/errorTracking";
+import { ErrorBoundary } from "@abdalkader/ui";
 import { initPerformanceMonitoring, reportWebVitals } from "@/utils/performanceMonitoring";
 import StagingBanner from "@/src/components/StagingBanner";
 import StagingTools from "@/src/components/StagingTools";
@@ -182,8 +184,22 @@ export default function App({ Component, pageProps }: AppProps) {
                         transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
                     />)}
 
-                    <ErrorBoundary>
+                    <ErrorBoundary
+                        customMessage="Something went wrong with the portfolio. Please try refreshing the page."
+                        showRetry={true}
+                        showHome={true}
+                        onError={(error: Error, errorInfo: any) => {
+                            // Log to existing error tracking system
+                            if (typeof window !== 'undefined' && 'gtag' in window) {
+                                (window as any).gtag('event', 'exception', {
+                                    description: error.message,
+                                    fatal: false,
+                                });
+                            }
+                        }}
+                    >
                         <SmoothScrolling>
+                            <GlobalNavigation />
                             <Nav />
                             <motion.main
                                 key="main-content"
@@ -195,6 +211,7 @@ export default function App({ Component, pageProps }: AppProps) {
                             >
                                 <Component {...pageProps} />
                             </motion.main>
+                            <GlobalFooter />
                             <Footer />
                         </SmoothScrolling>
                     </ErrorBoundary>

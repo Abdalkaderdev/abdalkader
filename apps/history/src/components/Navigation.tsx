@@ -12,7 +12,8 @@ interface NavigationProps {
 }
 
 const navigationItems = [
-  { id: 'timeline', label: 'Timeline', icon: History },
+  { id: 'unified-timeline', label: 'My Journey', icon: History },
+  { id: 'timeline', label: 'Language Timeline', icon: History },
   { id: 'playground', label: 'Playground', icon: Code },
   { id: 'family-tree', label: 'Family Tree', icon: GitBranch },
   { id: 'paradigms', label: 'Paradigms', icon: Layers },

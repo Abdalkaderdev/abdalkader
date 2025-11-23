@@ -6,9 +6,11 @@ import { useEffect, useRef, useState } from 'react';
 import { useRouter } from 'next/router';
 import { gsap } from '@/libs/gsap';
 import ProjectModal from '@/components/ProjectModal';
+import { Skeleton } from '@abdalkader/ui';
 
 export default function ProjectsSection() {
     const [openSlug, setOpenSlug] = useState<string | null>(null);
+    const [isLoading, setIsLoading] = useState(true);
     const cardRefs = useRef<HTMLElement[]>([]);
     const router = useRouter();
 
@@ -19,6 +21,11 @@ export default function ProjectsSection() {
     };
 
     useEffect(() => {
+        // Simulate loading
+        const loadingTimer = setTimeout(() => {
+            setIsLoading(false);
+        }, 1500);
+
         // Card entrance
         gsap.from(cardRefs.current, {
             opacity: 0,
@@ -26,7 +33,7 @@ export default function ProjectsSection() {
             duration: 1.0,
             stagger: 0.08,
             ease: "power3.out",
-            delay: 0.4,
+            delay: isLoading ? 2.0 : 0.4,
         });
 
         // Title/category reveal per card
@@ -70,7 +77,11 @@ export default function ProjectsSection() {
                 );
             }
         });
-    }, [])
+
+        return () => {
+            clearTimeout(loadingTimer);
+        };
+    }, [isLoading])
 
     // Sync modal with URL (?project=slug)
     useEffect(() => {
@@ -98,7 +109,26 @@ export default function ProjectsSection() {
     return (
         <section className={styles.ProjectsSection}>
             <div className={styles.wrapper}>
-                {projects.map((project) => (
+                {isLoading ? (
+                    // Show skeleton loaders while loading
+                    Array.from({ length: projects.length }).map((_, index) => (
+                        <div key={`skeleton-${index}`} className={`${styles.projectCard} ${styles.textOnly}`}>
+                            <div className={styles.projectDetails}>
+                                <div className={styles.title}>
+                                    <Skeleton variant="text" lines={1} />
+                                </div>
+                                <div className={styles.category}>
+                                    <Skeleton variant="text" lines={1} width="60%" />
+                                </div>
+                            </div>
+                            <div className={styles.quickActions}>
+                                <Skeleton variant="text" lines={1} width="80px" />
+                            </div>
+                        </div>
+                    ))
+                ) : (
+                    // Show actual projects when loaded
+                    projects.map((project) => (
                     <div key={project.slug} className={`${styles.projectCard} ${styles.textOnly}`} ref={addToRefs}>
                         <Link href={`/projects/${project.slug}`} className={styles.cardLink}>
                             <div className={styles.projectDetails}>
@@ -126,7 +156,8 @@ export default function ProjectsSection() {
                             slug={project.slug}
                         />
                     </div>
-                ))}
+                ))
+                )}
             </div>
         </section>
     );

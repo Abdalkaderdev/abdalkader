@@ -1,0 +1,301 @@
+---
+title: 'Rate Limiting'
+description: 'Understand API rate limits and how to handle them'
+---
+
+# Rate Limiting
+
+The Abdalkader API implements rate limiting to ensure fair usage and maintain service quality for all users.
+
+## Rate Limit Overview
+
+Rate limits are applied per API key and are reset on a rolling window basis. Different endpoints have different rate limits based on their usage patterns.
+
+## Rate Limits by Endpoint
+
+| Endpoint | Rate Limit | Window |
+|----------|------------|--------|
+| `/api/health` | 1000 requests | 1 minute |
+| `/api/performance` | 100 requests | 1 minute |
+| `/api/errors` | 50 requests | 1 minute |
+
+## Rate Limit Headers
+
+Every API response includes rate limit information in the response headers:
+
+```
+X-RateLimit-Limit: 100
+X-RateLimit-Remaining: 95
+X-RateLimit-Reset: 1705312800
+```
+
+### Header Descriptions
+
+<ParamField header="X-RateLimit-Limit" type="number">
+  The maximum number of requests allowed in the current window.
+</ParamField>
+
+<ParamField header="X-RateLimit-Remaining" type="number">
+  The number of requests remaining in the current window.
+</ParamField>
+
+<ParamField header="X-RateLimit-Reset" type="number">
+  Unix timestamp (seconds) when the rate limit window resets.
+</ParamField>
+
+## Handling Rate Limits
+
+When you exceed the rate limit, you'll receive a `429 Too Many Requests` response:
+
+```json
+{
+  "success": false,
+  "error": {
+    "code": "RATE_LIMIT_EXCEEDED",
+    "message": "Rate limit exceeded. Please try again later.",
+    "retryAfter": 60
+  }
+}
+```
+
+### Retry Logic
+
+Implement exponential backoff when you hit rate limits:
+
+<Tabs>
+  <Tab title="JavaScript">
+    ```javascript
+    async function requestWithRetry(url, options, maxRetries = 3) {
+      for (let attempt = 0; attempt < maxRetries; attempt++) {
+        const response = await fetch(url, options);
+        
+        if (response.status === 429) {
+          const error = await response.json();
+          const retryAfter = error.error?.retryAfter || Math.pow(2, attempt);
+          
+          console.log(`Rate limited. Retrying after ${retryAfter} seconds...`);
+          await new Promise(resolve => setTimeout(resolve, retryAfter * 1000));
+          continue;
+        }
+        
+        return response;
+      }
+      
+      throw new Error('Max retries exceeded');
+    }
+    ```
+  </Tab>
+  <Tab title="Python">
+    ```python
+    import time
+    import requests
+
+    def request_with_retry(url, options, max_retries=3):
+        for attempt in range(max_retries):
+            response = requests.request(**options)
+            
+            if response.status_code == 429:
+                error = response.json()
+                retry_after = error.get('error', {}).get('retryAfter', 2 ** attempt)
+                
+                print(f'Rate limited. Retrying after {retry_after} seconds...')
+                time.sleep(retry_after)
+                continue
+            
+            return response
+        
+        raise Exception('Max retries exceeded')
+    ```
+  </Tab>
+</Tabs>
+
+## Best Practices
+
+### 1. Monitor Rate Limit Headers
+
+Always check rate limit headers to avoid hitting limits:
+
+```javascript
+async function makeRequest(url, options) {
+  const response = await fetch(url, options);
+  
+  const limit = parseInt(response.headers.get('X-RateLimit-Limit'));
+  const remaining = parseInt(response.headers.get('X-RateLimit-Remaining'));
+  
+  if (remaining < 10) {
+    console.warn(`Warning: Only ${remaining} requests remaining`);
+  }
+  
+  return response;
+}
+```
+
+### 2. Implement Request Queuing
+
+For high-volume applications, implement request queuing:
+
+```javascript
+class RateLimitedQueue {
+  constructor(maxConcurrent = 5) {
+    this.queue = [];
+    this.running = 0;
+    this.maxConcurrent = maxConcurrent;
+  }
+
+  async add(requestFn) {
+    return new Promise((resolve, reject) => {
+      this.queue.push({ requestFn, resolve, reject });
+      this.process();
+    });
+  }
+
+  async process() {
+    if (this.running >= this.maxConcurrent || this.queue.length === 0) {
+      return;
+    }
+
+    this.running++;
+    const { requestFn, resolve, reject } = this.queue.shift();
+
+    try {
+      const result = await requestFn();
+      resolve(result);
+    } catch (error) {
+      reject(error);
+    } finally {
+      this.running--;
+      this.process();
+    }
+  }
+}
+
+// Usage
+const queue = new RateLimitedQueue(5);
+
+for (let i = 0; i < 100; i++) {
+  queue.add(() => fetch('https://abdalkader.dev/api/health'));
+}
+```
+
+### 3. Batch Requests When Possible
+
+Instead of making many individual requests, batch them when the API supports it:
+
+```javascript
+// Instead of this:
+for (const metric of metrics) {
+  await submitMetric(metric);
+}
+
+// Do this (if batching is supported):
+await submitMetrics(metrics);
+```
+
+### 4. Cache Responses
+
+Cache responses when appropriate to reduce API calls:
+
+```javascript
+const cache = new Map();
+
+async function getHealth(useCache = true) {
+  const cacheKey = 'health';
+  
+  if (useCache && cache.has(cacheKey)) {
+    const cached = cache.get(cacheKey);
+    if (Date.now() - cached.timestamp < 60000) { // 1 minute cache
+      return cached.data;
+    }
+  }
+  
+  const response = await fetch('https://abdalkader.dev/api/health');
+  const data = await response.json();
+  
+  cache.set(cacheKey, {
+    data,
+    timestamp: Date.now()
+  });
+  
+  return data;
+}
+```
+
+## Rate Limit Exceeded Response
+
+When you exceed the rate limit:
+
+**Status Code**: `429 Too Many Requests`
+
+**Response Body**:
+```json
+{
+  "success": false,
+  "error": {
+    "code": "RATE_LIMIT_EXCEEDED",
+    "message": "Rate limit exceeded. Please try again later.",
+    "retryAfter": 60
+  }
+}
+```
+
+## Increasing Rate Limits
+
+If you need higher rate limits for your use case:
+
+1. **Contact Support**: Email hello@abdalkader.dev with your use case
+2. **Provide Details**: Explain why you need higher limits
+3. **Usage Information**: Share your expected request volume
+
+We're happy to work with you to find the right solution.
+
+## Monitoring Your Usage
+
+Track your API usage to stay within limits:
+
+```javascript
+class UsageTracker {
+  constructor() {
+    this.requests = [];
+  }
+
+  trackRequest(endpoint) {
+    this.requests.push({
+      endpoint,
+      timestamp: Date.now()
+    });
+    
+    // Clean up old requests (older than 1 minute)
+    const oneMinuteAgo = Date.now() - 60000;
+    this.requests = this.requests.filter(r => r.timestamp > oneMinuteAgo);
+  }
+
+  getUsage(endpoint) {
+    const oneMinuteAgo = Date.now() - 60000;
+    return this.requests.filter(
+      r => r.endpoint === endpoint && r.timestamp > oneMinuteAgo
+    ).length;
+  }
+
+  getRemaining(endpoint, limit) {
+    return limit - this.getUsage(endpoint);
+  }
+}
+
+// Usage
+const tracker = new UsageTracker();
+tracker.trackRequest('/api/performance');
+const remaining = tracker.getRemaining('/api/performance', 100);
+console.log(`${remaining} requests remaining`);
+```
+
+## Next Steps
+
+<CardGroup cols={2}>
+  <Card title="API Reference" icon="book" href="/api/endpoints">
+    Explore all available endpoints
+  </Card>
+  <Card title="Error Handling" icon="exclamation-triangle" href="/api/error-handling">
+    Learn about error handling best practices
+  </Card>
+</CardGroup>
+

@@ -3,12 +3,13 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev --turbopack",
+    "dev": "next dev",
     "build": "next build",
     "start": "next start",
     "lint": "eslint"
   },
   "dependencies": {
+    "@abdalkader/ui": "file:../../packages/ui",
     "@gsap/react": "^2.1.2",
     "@monaco-editor/react": "^4.7.0",
     "d3": "^7.9.0",

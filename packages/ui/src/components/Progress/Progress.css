@@ -1,0 +1,282 @@
+/**
+ * Enhanced Progress Bar Styles
+ * Senior Frontend Developer - UI Specialist
+ */
+
+/* Linear Progress */
+.portfolio-progress {
+  position: relative;
+  width: 100%;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+/* Size variants */
+.portfolio-progress--sm {
+  height: 4px;
+}
+
+.portfolio-progress--md {
+  height: 8px;
+}
+
+.portfolio-progress--lg {
+  height: 12px;
+}
+
+/* Progress bar */
+.portfolio-progress-bar {
+  height: 100%;
+  background: currentColor;
+  border-radius: 4px;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Color variants */
+.portfolio-progress--primary {
+  color: var(--color-primary);
+}
+
+.portfolio-progress--secondary {
+  color: var(--color-secondary);
+}
+
+.portfolio-progress--success {
+  color: #10b981;
+}
+
+.portfolio-progress--warning {
+  color: #f59e0b;
+}
+
+.portfolio-progress--error {
+  color: #ef4444;
+}
+
+/* Striped variant */
+.portfolio-progress--striped .portfolio-progress-bar {
+  background-image: linear-gradient(
+    45deg,
+    rgba(255, 255, 255, 0.15) 25%,
+    transparent 25%,
+    transparent 50%,
+    rgba(255, 255, 255, 0.15) 50%,
+    rgba(255, 255, 255, 0.15) 75%,
+    transparent 75%,
+    transparent
+  );
+  background-size: 1rem 1rem;
+}
+
+/* Animated variant */
+.portfolio-progress--animated .portfolio-progress-bar {
+  background-image: linear-gradient(
+    45deg,
+    rgba(255, 255, 255, 0.15) 25%,
+    transparent 25%,
+    transparent 50%,
+    rgba(255, 255, 255, 0.15) 50%,
+    rgba(255, 255, 255, 0.15) 75%,
+    transparent 75%,
+    transparent
+  );
+  background-size: 1rem 1rem;
+  animation: progress-stripes 1s linear infinite;
+}
+
+@keyframes progress-stripes {
+  from { background-position: 1rem 0; }
+  to { background-position: 0 0; }
+}
+
+/* Indeterminate variant */
+.portfolio-progress--indeterminate .portfolio-progress-bar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 30%;
+  background: currentColor;
+  animation: progress-indeterminate 2s infinite;
+}
+
+@keyframes progress-indeterminate {
+  0% { left: -30%; }
+  100% { left: 100%; }
+}
+
+/* Progress label */
+.portfolio-progress-label {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: var(--color-text-light);
+  font-size: 0.75rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.05rem;
+  z-index: 1;
+}
+
+/* Circular Progress */
+.portfolio-circular-progress {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.portfolio-circular-progress-svg {
+  transform: rotate(-90deg);
+}
+
+.portfolio-circular-progress-label {
+  position: absolute;
+  color: var(--color-text-light);
+  font-size: 0.75rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.05rem;
+}
+
+/* Size variants for circular */
+.portfolio-circular-progress--sm .portfolio-circular-progress-label {
+  font-size: 0.625rem;
+}
+
+.portfolio-circular-progress--md .portfolio-circular-progress-label {
+  font-size: 0.75rem;
+}
+
+.portfolio-circular-progress--lg .portfolio-circular-progress-label {
+  font-size: 0.875rem;
+}
+
+/* Progress Steps */
+.portfolio-progress-steps {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  width: 100%;
+}
+
+.portfolio-progress-step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  flex: 1;
+  position: relative;
+}
+
+.portfolio-progress-step-indicator {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.1);
+  border: 2px solid var(--color-border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--color-text-grey);
+  transition: all 0.3s cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+.portfolio-progress-step--active .portfolio-progress-step-indicator {
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+  background: rgba(244, 78, 0, 0.1);
+}
+
+.portfolio-progress-step--completed .portfolio-progress-step-indicator {
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+  background: var(--color-primary);
+}
+
+.portfolio-progress-step-number {
+  line-height: 1;
+}
+
+.portfolio-progress-step-check {
+  font-size: 0.75rem;
+  line-height: 1;
+}
+
+.portfolio-progress-step-label {
+  font-size: 0.75rem;
+  color: var(--color-text-grey);
+  text-align: center;
+  line-height: 1.2;
+  transition: color 0.3s cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+.portfolio-progress-step--active .portfolio-progress-step-label,
+.portfolio-progress-step--completed .portfolio-progress-step-label {
+  color: var(--color-text-light);
+}
+
+.portfolio-progress-step-connector {
+  position: absolute;
+  top: 16px;
+  left: 50%;
+  width: calc(100% - 2rem);
+  height: 2px;
+  background: var(--color-border);
+  z-index: -1;
+}
+
+.portfolio-progress-step-connector--completed {
+  background: var(--color-primary);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .portfolio-progress-steps {
+    gap: 0.5rem;
+  }
+
+  .portfolio-progress-step-indicator {
+    width: 28px;
+    height: 28px;
+    font-size: 0.75rem;
+  }
+
+  .portfolio-progress-step-label {
+    font-size: 0.625rem;
+  }
+
+  .portfolio-progress-step-connector {
+    top: 14px;
+    width: calc(100% - 1.5rem);
+  }
+}
+
+/* Accessibility */
+@media (prefers-reduced-motion: reduce) {
+  .portfolio-progress--animated .portfolio-progress-bar,
+  .portfolio-progress--indeterminate .portfolio-progress-bar {
+    animation: none;
+  }
+
+  .portfolio-progress-bar {
+    transition: width 0.3s ease;
+  }
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+  .portfolio-progress {
+    background: rgba(255, 255, 255, 0.05);
+  }
+
+  .portfolio-progress-step-indicator {
+    background: rgba(255, 255, 255, 0.05);
+    border-color: var(--color-border);
+  }
+}

@@ -39,21 +39,6 @@
       "outputs": [".next/**", "!.next/cache/**"],
       "cache": true
     },
-    "@abdalkader/therapy#build": {
-      "dependsOn": ["^build"],
-      "outputs": [".next/**", "!.next/cache/**"],
-      "cache": true
-    },
-    "@abdalkader/neuro#build": {
-      "dependsOn": ["^build"],
-      "outputs": [".next/**", "!.next/cache/**"],
-      "cache": true
-    },
-    "@abdalkader/quantumanim#build": {
-      "dependsOn": ["^build"],
-      "outputs": [".next/**", "!.next/cache/**"],
-      "cache": true
-    },
     "dev": {
       "cache": false,
       "persistent": true

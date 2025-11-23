@@ -1,0 +1,210 @@
+/**
+ * Enhanced Modal/Dialog Styles
+ * Senior Frontend Developer - UI Specialist
+ */
+
+/* Backdrop */
+.portfolio-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(4px);
+  z-index: 999;
+}
+
+/* Modal container */
+.portfolio-modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: rgba(20, 20, 20, 0.95);
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(10px);
+  z-index: 1000;
+  max-height: 90vh;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Sizes */
+.portfolio-modal--sm {
+  width: 90%;
+  max-width: 400px;
+}
+
+.portfolio-modal--md {
+  width: 90%;
+  max-width: 600px;
+}
+
+.portfolio-modal--lg {
+  width: 90%;
+  max-width: 800px;
+}
+
+.portfolio-modal--xl {
+  width: 90%;
+  max-width: 1000px;
+}
+
+/* Header */
+.portfolio-modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.5rem;
+  border-bottom: 1px solid var(--color-border);
+  gap: 1rem;
+}
+
+.portfolio-modal-title {
+  margin: 0;
+  font-size: 1.5rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05rem;
+  color: var(--color-text-light);
+  flex: 1;
+}
+
+/* Close button */
+.portfolio-modal-close {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  background: transparent;
+  border: 1px solid var(--color-border);
+  border-radius: 4px;
+  color: var(--color-text-light);
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.19, 1, 0.22, 1);
+  flex-shrink: 0;
+}
+
+.portfolio-modal-close:hover {
+  background: rgba(244, 78, 0, 0.1);
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+}
+
+.portfolio-modal-close:focus-visible {
+  outline: 2px dashed var(--color-primary);
+  outline-offset: 2px;
+}
+
+/* Content */
+.portfolio-modal-content {
+  padding: 1.5rem;
+  flex: 1;
+  overflow-y: auto;
+  color: var(--color-text-light);
+  line-height: 1.6;
+}
+
+.portfolio-modal-content > *:first-child {
+  margin-top: 0;
+}
+
+.portfolio-modal-content > *:last-child {
+  margin-bottom: 0;
+}
+
+/* Footer */
+.portfolio-modal-footer {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 1rem;
+  padding: 1.5rem;
+  border-top: 1px solid var(--color-border);
+  flex-shrink: 0;
+}
+
+/* Scrollbar styling */
+.portfolio-modal::-webkit-scrollbar {
+  width: 6px;
+}
+
+.portfolio-modal::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.portfolio-modal::-webkit-scrollbar-thumb {
+  background: var(--color-primary);
+  border-radius: 3px;
+}
+
+.portfolio-modal::-webkit-scrollbar-thumb:hover {
+  background: var(--color-primary-light);
+}
+
+.portfolio-modal-content::-webkit-scrollbar {
+  width: 6px;
+}
+
+.portfolio-modal-content::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.portfolio-modal-content::-webkit-scrollbar-thumb {
+  background: var(--color-primary);
+  border-radius: 3px;
+}
+
+.portfolio-modal-content::-webkit-scrollbar-thumb:hover {
+  background: var(--color-primary-light);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .portfolio-modal {
+    max-height: 95vh;
+  }
+
+  .portfolio-modal--sm,
+  .portfolio-modal--md,
+  .portfolio-modal--lg,
+  .portfolio-modal--xl {
+    width: 95%;
+    max-width: none;
+  }
+
+  .portfolio-modal-header {
+    padding: 1rem;
+  }
+
+  .portfolio-modal-content {
+    padding: 1rem;
+  }
+
+  .portfolio-modal-footer {
+    padding: 1rem;
+    flex-direction: column-reverse;
+  }
+
+  .portfolio-modal-title {
+    font-size: 1.25rem;
+  }
+}
+
+/* Animation for content inside modal */
+.portfolio-modal-content > * {
+  animation: modalContentFade 0.4s ease-out forwards;
+}
+
+@keyframes modalContentFade {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

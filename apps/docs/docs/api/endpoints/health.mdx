@@ -1,0 +1,195 @@
+---
+title: 'Health Check'
+description: 'Check the health status of the API and system'
+api: '/api/health'
+method: 'GET'
+---
+
+# Health Check
+
+Check the health status of the API and system. This endpoint provides information about system status, uptime, memory usage, and environment details.
+
+<Info>
+  This endpoint does not require authentication.
+</Info>
+
+## Endpoint
+
+```
+GET /api/health
+```
+
+## Request
+
+### Headers
+
+No special headers required.
+
+### Parameters
+
+No parameters required.
+
+### Example Request
+
+<Tabs>
+  <Tab title="JavaScript">
+    ```javascript
+    const response = await fetch('https://abdalkader.dev/api/health');
+    const data = await response.json();
+    console.log(data);
+    ```
+  </Tab>
+  <Tab title="Python">
+    ```python
+    import requests
+
+    response = requests.get('https://abdalkader.dev/api/health')
+    data = response.json()
+    print(data)
+    ```
+  </Tab>
+  <Tab title="cURL">
+    ```bash
+    curl https://abdalkader.dev/api/health
+    ```
+  </Tab>
+</Tabs>
+
+## Response
+
+### Success Response (200 OK)
+
+```json
+{
+  "status": "healthy",
+  "timestamp": "2024-01-15T10:30:00.000Z",
+  "environment": "production",
+  "version": "1.0.0",
+  "uptime": 86400,
+  "checks": {
+    "memory_usage": 45
+  }
+}
+```
+
+### Response Schema
+
+<ParamField body="status" type="string" required>
+  Overall health status of the system. Possible values:
+  - `healthy`: System is operating normally
+  - `unhealthy`: System has issues
+</ParamField>
+
+<ParamField body="timestamp" type="string" required>
+  ISO 8601 timestamp of when the health check was performed.
+</ParamField>
+
+<ParamField body="environment" type="string" required>
+  Current environment. Possible values:
+  - `production`
+  - `staging`
+  - `development`
+</ParamField>
+
+<ParamField body="version" type="string">
+  API version string.
+</ParamField>
+
+<ParamField body="uptime" type="number" required>
+  System uptime in seconds.
+</ParamField>
+
+<ParamField body="checks" type="object" required>
+  Detailed health check results. Contains:
+  
+  - `database` (string, optional): Database health status (`healthy` or `unhealthy`)
+  - `external_apis` (string, optional): External API health status
+  - `memory_usage` (number, optional): Memory usage percentage (0-100)
+  - `disk_space` (number, optional): Available disk space percentage (0-100)
+</ParamField>
+
+### Error Response (503 Service Unavailable)
+
+When the system is unhealthy:
+
+```json
+{
+  "status": "unhealthy",
+  "timestamp": "2024-01-15T10:30:00.000Z",
+  "environment": "production",
+  "uptime": 86400,
+  "checks": {}
+}
+```
+
+## Use Cases
+
+### Periodic Health Monitoring
+
+Monitor system health at regular intervals:
+
+```javascript
+async function monitorHealth() {
+  const response = await fetch('https://abdalkader.dev/api/health');
+  const data = await response.json();
+  
+  if (data.status === 'healthy') {
+    console.log('✅ System is healthy');
+    console.log(`Uptime: ${data.uptime} seconds`);
+    console.log(`Memory usage: ${data.checks.memory_usage}%`);
+  } else {
+    console.error('❌ System health check failed');
+    // Send alert or notification
+  }
+}
+
+// Check every 5 minutes
+setInterval(monitorHealth, 5 * 60 * 1000);
+```
+
+### Health Check Before Operations
+
+Verify system health before performing critical operations:
+
+```javascript
+async function performOperation() {
+  // Check health first
+  const healthResponse = await fetch('https://abdalkader.dev/api/health');
+  const health = await healthResponse.json();
+  
+  if (health.status !== 'healthy') {
+    throw new Error('System is not healthy. Operation cancelled.');
+  }
+  
+  // Proceed with operation
+  // ...
+}
+```
+
+### Load Balancer Health Checks
+
+Use this endpoint for load balancer health checks:
+
+```nginx
+# Nginx configuration
+location /api/health {
+    proxy_pass http://backend/api/health;
+    access_log off;
+}
+```
+
+## Rate Limiting
+
+This endpoint has relaxed rate limiting (1000 requests per minute) since it's commonly used for monitoring.
+
+## Related Endpoints
+
+<CardGroup cols={2}>
+  <Card title="Performance Metrics" icon="chart-line" href="/api/endpoints/performance">
+    Submit performance metrics
+  </Card>
+  <Card title="Error Reporting" icon="exclamation-triangle" href="/api/endpoints/errors">
+    Report errors for tracking
+  </Card>
+</CardGroup>
+

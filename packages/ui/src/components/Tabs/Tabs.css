@@ -1,0 +1,181 @@
+/**
+ * Enhanced Tabs Styles
+ * Senior Frontend Developer - UI Specialist
+ */
+
+.portfolio-tabs {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+/* Tab list */
+.portfolio-tabs-list {
+  display: flex;
+  gap: 0.5rem;
+  border-bottom: 1px solid var(--color-border);
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Tab trigger button */
+.portfolio-tabs-trigger {
+  position: relative;
+  padding: 1rem 1.5rem;
+  background: transparent;
+  border: none;
+  color: var(--color-text-grey);
+  font-size: 1rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.05rem;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.19, 1, 0.22, 1);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.portfolio-tabs-trigger:hover:not(:disabled) {
+  color: var(--color-text-light);
+}
+
+.portfolio-tabs-trigger:focus-visible {
+  outline: 2px dashed var(--color-primary);
+  outline-offset: -2px;
+}
+
+.portfolio-tabs-trigger--active {
+  color: var(--color-primary);
+}
+
+.portfolio-tabs-trigger--disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+/* Icon */
+.portfolio-tabs-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2em;
+}
+
+/* Label */
+.portfolio-tabs-label {
+  display: inline-block;
+}
+
+/* Indicator */
+.portfolio-tabs-indicator {
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: var(--color-primary);
+}
+
+/* Variant: Pills */
+.portfolio-tabs--pills .portfolio-tabs-list {
+  border-bottom: none;
+  gap: 1rem;
+}
+
+.portfolio-tabs--pills .portfolio-tabs-trigger {
+  padding: 0.75rem 1.25rem;
+  border-radius: 20px;
+  border: 1px solid var(--color-border);
+  background: transparent;
+}
+
+.portfolio-tabs--pills .portfolio-tabs-trigger:hover:not(:disabled) {
+  border-color: var(--color-primary);
+}
+
+.portfolio-tabs--pills .portfolio-tabs-trigger--active {
+  background: var(--color-primary);
+  border-color: var(--color-primary);
+  color: var(--color-background);
+}
+
+.portfolio-tabs--pills .portfolio-tabs-indicator {
+  display: none;
+}
+
+/* Variant: Underline */
+.portfolio-tabs--underline .portfolio-tabs-list {
+  border-bottom: 2px solid var(--color-border);
+}
+
+.portfolio-tabs--underline .portfolio-tabs-trigger {
+  padding: 1rem 1.5rem;
+  border-bottom: 2px solid transparent;
+  margin-bottom: -2px;
+}
+
+.portfolio-tabs--underline .portfolio-tabs-trigger--active {
+  border-bottom-color: var(--color-primary);
+}
+
+.portfolio-tabs--underline .portfolio-tabs-indicator {
+  display: none;
+}
+
+/* Content */
+.portfolio-tabs-content {
+  padding: 1rem 0;
+  color: var(--color-text-light);
+  line-height: 1.6;
+}
+
+.portfolio-tabs-content > *:first-child {
+  margin-top: 0;
+}
+
+.portfolio-tabs-content > *:last-child {
+  margin-bottom: 0;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .portfolio-tabs-list {
+    gap: 0.25rem;
+  }
+
+  .portfolio-tabs-trigger {
+    padding: 0.75rem 1rem;
+    font-size: 0.875rem;
+  }
+
+  .portfolio-tabs--pills .portfolio-tabs-trigger {
+    padding: 0.5rem 1rem;
+  }
+
+  .portfolio-tabs-content {
+    padding: 0.75rem 0;
+  }
+}
+
+/* Scrollbar styling */
+.portfolio-tabs-list::-webkit-scrollbar {
+  height: 4px;
+}
+
+.portfolio-tabs-list::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.portfolio-tabs-list::-webkit-scrollbar-thumb {
+  background: var(--color-primary);
+  border-radius: 2px;
+}
+
+.portfolio-tabs-list::-webkit-scrollbar-thumb:hover {
+  background: var(--color-primary-light);
+}

@@ -1,0 +1,265 @@
+/**
+ * AILoadingState Component Styles
+ * Accessible and responsive loading states for AI operations
+ */
+
+.ai-loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  min-height: 120px;
+}
+
+.ai-loading__content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  text-align: center;
+  max-width: 400px;
+}
+
+/* Spinner */
+.ai-loading__spinner {
+  width: 3rem;
+  height: 3rem;
+  position: relative;
+}
+
+.ai-loading--small .ai-loading__spinner {
+  width: 2rem;
+  height: 2rem;
+}
+
+.ai-loading--large .ai-loading__spinner {
+  width: 4rem;
+  height: 4rem;
+}
+
+.ai-loading__spinner-ring {
+  width: 100%;
+  height: 100%;
+  border: 3px solid rgba(244, 78, 0, 0.2);
+  border-top-color: var(--color-primary, #f44e00);
+  border-radius: 50%;
+}
+
+/* Dots */
+.ai-loading__dots {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.ai-loading__dot {
+  width: 0.75rem;
+  height: 0.75rem;
+  border-radius: 50%;
+  background: var(--color-primary, #f44e00);
+}
+
+.ai-loading--small .ai-loading__dot {
+  width: 0.5rem;
+  height: 0.5rem;
+}
+
+.ai-loading--large .ai-loading__dot {
+  width: 1rem;
+  height: 1rem;
+}
+
+/* Pulse */
+.ai-loading__pulse {
+  width: 3rem;
+  height: 3rem;
+  position: relative;
+}
+
+.ai-loading--small .ai-loading__pulse {
+  width: 2rem;
+  height: 2rem;
+}
+
+.ai-loading--large .ai-loading__pulse {
+  width: 4rem;
+  height: 4rem;
+}
+
+.ai-loading__pulse-circle {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background: var(--color-primary, #f44e00);
+}
+
+/* Skeleton */
+.ai-loading__skeleton {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  width: 100%;
+  max-width: 300px;
+}
+
+.ai-loading__skeleton-line {
+  height: 1rem;
+  background: linear-gradient(
+    90deg,
+    rgba(0, 0, 0, 0.1) 0%,
+    rgba(0, 0, 0, 0.15) 50%,
+    rgba(0, 0, 0, 0.1) 100%
+  );
+  background-size: 200% 100%;
+  border-radius: 0.25rem;
+  animation: skeletonLoading 1.5s ease-in-out infinite;
+}
+
+.ai-loading__skeleton-line--short {
+  width: 60%;
+}
+
+.ai-loading__skeleton-line--medium {
+  width: 80%;
+}
+
+.ai-loading__skeleton-line--long {
+  width: 100%;
+}
+
+/* Progress */
+.ai-loading__progress-container {
+  width: 100%;
+  max-width: 300px;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.ai-loading__progress-bar {
+  flex: 1;
+  height: 0.5rem;
+  background: rgba(0, 0, 0, 0.1);
+  border-radius: 0.25rem;
+  overflow: hidden;
+}
+
+.ai-loading__progress-fill {
+  height: 100%;
+  background: var(--color-primary, #f44e00);
+  border-radius: 0.25rem;
+  transition: width 0.3s ease;
+}
+
+.ai-loading__progress-text {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--color-text-dark, #131313);
+  min-width: 3rem;
+  text-align: right;
+}
+
+/* Info */
+.ai-loading__info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  width: 100%;
+}
+
+.ai-loading__model-name {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--color-primary, #f44e00);
+  padding: 0.25rem 0.75rem;
+  background: rgba(244, 78, 0, 0.1);
+  border-radius: 0.5rem;
+  display: inline-block;
+  align-self: center;
+}
+
+.ai-loading__stage {
+  font-size: 0.875rem;
+  color: var(--color-text-grey, #787878);
+  font-weight: 500;
+}
+
+.ai-loading__message {
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--color-text-dark, #131313);
+}
+
+.ai-loading--small .ai-loading__message {
+  font-size: 0.875rem;
+}
+
+.ai-loading--large .ai-loading__message {
+  font-size: 1.125rem;
+}
+
+.ai-loading__estimated-time {
+  font-size: 0.75rem;
+  color: var(--color-text-grey, #787878);
+}
+
+/* Animations */
+@keyframes skeletonLoading {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 600px) {
+  .ai-loading {
+    padding: 1.5rem;
+    min-height: 100px;
+  }
+
+  .ai-loading__content {
+    gap: 0.75rem;
+  }
+
+  .ai-loading__progress-container {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .ai-loading__progress-text {
+    text-align: center;
+  }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .ai-loading__spinner-ring {
+    border-width: 4px;
+  }
+
+  .ai-loading__progress-bar {
+    border: 1px solid currentColor;
+  }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  .ai-loading__spinner-ring,
+  .ai-loading__dot,
+  .ai-loading__pulse-circle {
+    animation: none;
+  }
+
+  .ai-loading__skeleton-line {
+    animation: none;
+    background: rgba(0, 0, 0, 0.1);
+  }
+
+  .ai-loading__progress-fill {
+    transition: none;
+  }
+}
+

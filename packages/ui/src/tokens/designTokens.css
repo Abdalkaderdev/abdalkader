@@ -1,0 +1,394 @@
+/**
+ * Abdalkader Portfolio Design Tokens - CSS Variables
+ * 
+ * This file contains all design tokens as CSS custom properties
+ * for easy integration across the monorepo applications.
+ */
+
+/* ============================================
+   COLOR TOKENS
+   ============================================ */
+
+:root {
+  /* Primary brand colors */
+  --color-primary: #f44e00;
+  --color-secondary: #fa7300;
+  
+  /* Neutral colors */
+  --color-background: #000000;
+  --color-background-secondary: #0a0a0a;
+  --color-background-tertiary: #1a1a1a;
+  
+  /* Text colors */
+  --color-text: #f8f8f8;
+  --color-text-secondary: #787878;
+  --color-text-tertiary: #131313;
+  
+  /* UI colors */
+  --color-border: #252525;
+  --color-navigation: #2d2d2d59;
+  
+  /* Semantic colors */
+  --color-success: #00c896;
+  --color-warning: #ffc107;
+  --color-error: #ff4444;
+  --color-info: #2196f3;
+  
+  /* Gradient definitions */
+  --gradient-primary: linear-gradient(135deg, #f44e00 0%, #fa7300 100%);
+  --gradient-background: linear-gradient(135deg, #000 0%, #0a0a0a 50%, #1a1a1a 100%);
+  --gradient-text: linear-gradient(to bottom, #f44e00, #fa7300);
+}
+
+/* ============================================
+   TYPOGRAPHY TOKENS
+   ============================================ */
+
+:root {
+  /* Font families */
+  --font-primary: "PP Neue Montreal", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-mono: "SF Mono", Monaco, "Cascadia Code", "Roboto Mono", Consolas, monospace;
+  --font-fallback: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  
+  /* Font sizes (responsive with clamp) */
+  --font-size-display: clamp(3.2rem, 8vw, 6rem);
+  --font-size-h1: clamp(2.2rem, 5vw, 4.5rem);
+  --font-size-h2: clamp(1.2rem, 3vw, 1.8rem);
+  --font-size-h3: clamp(1rem, 2.5vw, 1.25rem);
+  --font-size-h4: clamp(0.875rem, 2vw, 1rem);
+  --font-size-body-large: clamp(1rem, 2.5vw, 1.2rem);
+  --font-size-body: clamp(0.9rem, 2vw, 1rem);
+  --font-size-body-small: clamp(0.8rem, 1.8vw, 0.9rem);
+  --font-size-caption: clamp(0.7rem, 1.5vw, 0.8rem);
+  --font-size-micro: clamp(0.625rem, 1.2vw, 0.7rem);
+  
+  /* Font weights */
+  --font-weight-light: 300;
+  --font-weight-normal: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+  
+  /* Line heights */
+  --line-height-tight: 0.9;
+  --line-height-normal: 1;
+  --line-height-relaxed: 1.4;
+  --line-height-loose: 1.6;
+  
+  /* Letter spacing */
+  --letter-spacing-tight: 0.025rem;
+  --letter-spacing-normal: 0.05rem;
+  --letter-spacing-wide: 0.08rem;
+  --letter-spacing-wider: 0.1rem;
+}
+
+/* ============================================
+   SPACING TOKENS
+   ============================================ */
+
+:root {
+  /* Base unit is 8px (0.5rem) */
+  --spacing-base: 0.5rem;
+  
+  /* Spacing scale based on powers of 2 */
+  --spacing-xs: 0.25rem;   /* 4px */
+  --spacing-sm: 0.5rem;    /* 8px */
+  --spacing-md: 1rem;     /* 16px */
+  --spacing-lg: 1.5rem;   /* 24px */
+  --spacing-xl: 2rem;     /* 32px */
+  --spacing-2xl: 3rem;    /* 48px */
+  --spacing-3xl: 4rem;    /* 64px */
+  --spacing-4xl: 6rem;    /* 96px */
+  --spacing-5xl: 8rem;    /* 128px */
+  --spacing-6xl: 12rem;   /* 192px */
+  
+  /* Component-specific spacing */
+  --component-padding-xs: 0.5rem;
+  --component-padding-sm: 0.75rem;
+  --component-padding-md: 1rem;
+  --component-padding-lg: 1.5rem;
+  --component-padding-xl: 2rem;
+  
+  /* Layout spacing */
+  --layout-section: 8rem;
+  --layout-section-mobile: 4rem;
+  --layout-container: 2rem;
+  --layout-container-mobile: 1rem;
+}
+
+/* ============================================
+   BORDER RADIUS TOKENS
+   ============================================ */
+
+:root {
+  --border-radius-none: 0;
+  --border-radius-sm: 0.25rem;   /* 4px */
+  --border-radius-md: 0.5rem;    /* 8px */
+  --border-radius-lg: 0.75rem;   /* 12px */
+  --border-radius-xl: 1rem;      /* 16px */
+  --border-radius-2xl: 1.5rem;   /* 24px */
+  --border-radius-full: 9999px;
+}
+
+/* ============================================
+   SHADOW TOKENS
+   ============================================ */
+
+:root {
+  --shadow-none: none;
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1);
+  --shadow-xl: 0 20px 25px rgba(0, 0, 0, 0.1);
+  --shadow-glow: 0 0 20px rgba(244, 78, 0, 0.3);
+  --shadow-glow-secondary: 0 0 20px rgba(250, 115, 0, 0.3);
+}
+
+/* ============================================
+   ANIMATION TOKENS
+   ============================================ */
+
+:root {
+  /* Durations */
+  --animation-duration-fast: 0.15s;
+  --animation-duration-normal: 0.3s;
+  --animation-duration-slow: 0.8s;
+  --animation-duration-slower: 1.2s;
+  
+  /* Easing functions */
+  --animation-ease: cubic-bezier(0.19, 1, 0.22, 1);
+  --animation-ease-in: cubic-bezier(0.4, 0, 1, 1);
+  --animation-ease-out: cubic-bezier(0, 0, 0.2, 1);
+  --animation-ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);
+  --animation-bounce: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  
+  /* Transitions */
+  --transition-fast: all 0.15s cubic-bezier(0.19, 1, 0.22, 1);
+  --transition-normal: all 0.3s cubic-bezier(0.19, 1, 0.22, 1);
+  --transition-slow: all 0.8s cubic-bezier(0.19, 1, 0.22, 1);
+  --transition-colors: color 0.3s cubic-bezier(0.19, 1, 0.22, 1);
+  --transition-transform: transform 0.3s cubic-bezier(0.19, 1, 0.22, 1);
+  --transition-opacity: opacity 0.3s cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+/* ============================================
+   BREAKPOINT TOKENS
+   ============================================ */
+
+:root {
+  /* Breakpoint values for reference */
+  --breakpoint-xs: 0px;
+  --breakpoint-sm: 600px;
+  --breakpoint-md: 840px;
+  --breakpoint-lg: 1200px;
+  --breakpoint-xl: 1440px;
+  --breakpoint-2xl: 1920px;
+}
+
+/* ============================================
+   Z-INDEX TOKENS
+   ============================================ */
+
+:root {
+  --z-index-hide: -1;
+  --z-index-auto: auto;
+  --z-index-base: 0;
+  --z-index-docked: 10;
+  --z-index-dropdown: 1000;
+  --z-index-sticky: 1100;
+  --z-index-banner: 1200;
+  --z-index-overlay: 1300;
+  --z-index-modal: 1400;
+  --z-index-popover: 1500;
+  --z-index-skip-link: 1600;
+  --z-index-toast: 1700;
+  --z-index-tooltip: 1800;
+}
+
+/* ============================================
+   COMPONENT-SPECIFIC TOKENS
+   ============================================ */
+
+:root {
+  /* Button tokens */
+  --button-border-radius: var(--border-radius-md);
+  --button-font-weight: var(--font-weight-medium);
+  --button-text-transform: uppercase;
+  --button-letter-spacing: var(--letter-spacing-normal);
+  --button-transition: var(--transition-normal);
+  
+  /* Button size tokens */
+  --button-xs-padding: 0.25rem 0.5rem;
+  --button-xs-font-size: var(--font-size-micro);
+  
+  --button-sm-padding: 0.5rem 0.75rem;
+  --button-sm-font-size: var(--font-size-body-small);
+  
+  --button-md-padding: 0.75rem 1.25rem;
+  --button-md-font-size: var(--font-size-body);
+  
+  --button-lg-padding: 1rem 1.5rem;
+  --button-lg-font-size: var(--font-size-body-large);
+  
+  --button-xl-padding: 1.25rem 2rem;
+  --button-xl-font-size: var(--font-size-h4);
+  
+  /* Card tokens */
+  --card-padding: var(--spacing-lg);
+  --card-border-radius: var(--border-radius-lg);
+  --card-background: var(--color-background-tertiary);
+  --card-border: 1px solid var(--color-border);
+  --card-transition: var(--transition-normal);
+  --card-shadow: var(--shadow-md);
+  
+  /* Input tokens */
+  --input-padding: var(--spacing-md);
+  --input-border-radius: var(--border-radius-md);
+  --input-background: var(--color-background-tertiary);
+  --input-border: 1px solid var(--color-border);
+  --input-font-size: var(--font-size-body);
+  --input-transition: var(--transition-normal);
+  --input-focus-border: var(--color-primary);
+  --input-error-border: var(--color-error);
+  
+  /* Badge tokens */
+  --badge-padding: 0.25rem 0.5rem;
+  --badge-border-radius: var(--border-radius-full);
+  --badge-font-size: var(--font-size-micro);
+  --badge-font-weight: var(--font-weight-medium);
+  --badge-text-transform: uppercase;
+  --badge-letter-spacing: var(--letter-spacing-wide);
+}
+
+/* ============================================
+   RESPONSIVE MULTIPLIERS
+   ============================================ */
+
+/* Mobile spacing adjustments */
+@media (max-width: 599px) {
+  :root {
+    --spacing-multiplier: 0.75;
+    --font-size-multiplier: 0.9;
+  }
+}
+
+/* Tablet spacing adjustments */
+@media (min-width: 600px) and (max-width: 839px) {
+  :root {
+    --spacing-multiplier: 0.9;
+    --font-size-multiplier: 0.95;
+  }
+}
+
+/* Desktop spacing adjustments */
+@media (min-width: 840px) {
+  :root {
+    --spacing-multiplier: 1;
+    --font-size-multiplier: 1;
+  }
+}
+
+/* Large desktop spacing adjustments */
+@media (min-width: 1200px) {
+  :root {
+    --spacing-multiplier: 1.2;
+    --font-size-multiplier: 1.1;
+  }
+}
+
+/* ============================================
+   PREFERENCES SUPPORT
+   ============================================ */
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --animation-duration-fast: 0s;
+    --animation-duration-normal: 0s;
+    --animation-duration-slow: 0s;
+    --animation-duration-slower: 0s;
+    
+    --transition-fast: none;
+    --transition-normal: none;
+    --transition-slow: none;
+    --transition-colors: none;
+    --transition-transform: none;
+    --transition-opacity: none;
+  }
+}
+
+/* High contrast support */
+@media (prefers-contrast: high) {
+  :root {
+    --color-primary: #ff6600;
+    --color-secondary: #ff8800;
+    --color-text: #ffffff;
+    --color-text-secondary: #cccccc;
+    --color-border: #666666;
+  }
+}
+
+/* Dark mode support (for completeness) */
+@media (prefers-color-scheme: light) {
+  :root {
+    --color-background: #ffffff;
+    --color-background-secondary: #f8f8f8;
+    --color-background-tertiary: #f0f0f0;
+    --color-text: #131313;
+    --color-text-secondary: #666666;
+    --color-text-tertiary: #f8f8f8;
+    --color-border: #e0e0e0;
+  }
+}
+
+/* ============================================
+   UTILITY CLASSES
+   ============================================ */
+
+/* Text utilities */
+.text-gradient {
+  background: var(--gradient-text);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.text-primary { color: var(--color-primary); }
+.text-secondary { color: var(--color-secondary); }
+.text-muted { color: var(--color-text-secondary); }
+
+/* Background utilities */
+.bg-primary { background-color: var(--color-primary); }
+.bg-secondary { background-color: var(--color-secondary); }
+.bg-background { background-color: var(--color-background); }
+.bg-tertiary { background-color: var(--color-background-tertiary); }
+
+/* Border utilities */
+.border-primary { border-color: var(--color-primary); }
+.border-secondary { border-color: var(--color-secondary); }
+.border-muted { border-color: var(--color-border); }
+
+/* Shadow utilities */
+.shadow-sm { box-shadow: var(--shadow-sm); }
+.shadow-md { box-shadow: var(--shadow-md); }
+.shadow-lg { box-shadow: var(--shadow-lg); }
+.shadow-glow { box-shadow: var(--shadow-glow); }
+
+/* Transition utilities */
+.transition-fast { transition: var(--transition-fast); }
+.transition-normal { transition: var(--transition-normal); }
+.transition-slow { transition: var(--transition-slow); }
+
+/* Focus utilities */
+.focus-outline:focus {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+/* Reduced motion utilities */
+@media (prefers-reduced-motion: reduce) {
+  .motion-safe {
+    animation: none !important;
+    transition: none !important;
+  }
+}

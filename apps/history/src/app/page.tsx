@@ -3,6 +3,10 @@
 import { useState, useEffect } from 'react';
 import { Language } from '@/lib/types/language';
 import { HistoricalTimeline } from '@/components/timeline/HistoricalTimeline';
+import { UnifiedTimeline } from '@/components/timeline/UnifiedTimeline';
+import { ProgrammingLanguageTimeline } from '@/components/timeline/ProgrammingLanguageTimeline';
+import { AnimatedLanguageFamilyTree } from '@/components/visualization/AnimatedLanguageFamilyTree';
+import { ParadigmEvolutionVisualization } from '@/components/visualization/ParadigmEvolutionVisualization';
 import { CodePlayground } from '@/components/code/CodePlayground';
 import { EnhancedLanguageFamilyTree } from '@/components/visualization/EnhancedLanguageFamilyTree';
 import { AIAssistant } from '@/components/ai/AIAssistant';
@@ -25,16 +29,39 @@ import { ParadigmTheater } from '@/components/exhibition/ParadigmTheater';
 import { AITutorStudio } from '@/components/exhibition/AITutorStudio';
 import { useGSAP, usePortfolioAnimations } from '@/hooks/useAnimations';
 import languagesData from '@/lib/data/languages.json';
+// UI Components Integration
+import { 
+  Button, 
+  Card, 
+  Skeleton, 
+  Spinner, 
+  Progress, 
+  CircularProgress,
+  ErrorBoundary,
+  Tabs,
+  Modal,
+  useModal,
+  ThemeProvider,
+  ThemeToggleButton
+} from '@abdalkader/ui';
 
 export default function Home() {
   const [languages, setLanguages] = useState<Language[]>([]);
-  const [activeSection, setActiveSection] = useState<'timeline' | 'playground' | 'family-tree' | 'paradigms' | 'ai' | 'ai-enhanced' | 'exhibitions' | 'ecosystem'>('timeline');
+  const [isLoading, setIsLoading] = useState(true);
+  const [activeSection, setActiveSection] = useState<'unified-timeline' | 'timeline' | 'playground' | 'family-tree' | 'animated-family-tree' | 'paradigm-evolution' | 'paradigms' | 'ai' | 'ai-enhanced' | 'exhibitions' | 'ecosystem'>('unified-timeline');
   const [exhibitionSection, setExhibitionSection] = useState<ExhibitionSection>('pioneers-hall');
   const [selectedLanguage, setSelectedLanguage] = useState<Language | null>(null);
   const { staggerCards } = usePortfolioAnimations();
+  const modal = useModal();
 
   useEffect(() => {
-    setLanguages(languagesData as Language[]);
+    // Simulate loading for better UX
+    const loadingTimer = setTimeout(() => {
+      setLanguages(languagesData as Language[]);
+      setIsLoading(false);
+    }, 1500);
+
+    return () => clearTimeout(loadingTimer);
   }, []);
 
   // GSAP animations for page load
@@ -57,7 +84,7 @@ export default function Home() {
   };
 
   const handleBackToHome = () => {
-    setActiveSection('timeline');
+    setActiveSection('unified-timeline');
   };
 
   const renderExhibitionSection = () => {
@@ -81,6 +108,12 @@ export default function Home() {
 
   const renderActiveSection = () => {
     switch (activeSection) {
+      case 'unified-timeline':
+        return (
+          <SectionTransition delay={0.2}>
+            <ProgrammingLanguageTimeline />
+          </SectionTransition>
+        );
       case 'timeline':
         return (
           <SectionTransition delay={0.2}>
@@ -107,6 +140,18 @@ export default function Home() {
               languages={languages}
               onLanguageSelect={handleLanguageSelect}
             />
+          </SectionTransition>
+        );
+      case 'animated-family-tree':
+        return (
+          <SectionTransition delay={0.2}>
+            <AnimatedLanguageFamilyTree />
+          </SectionTransition>
+        );
+      case 'paradigm-evolution':
+        return (
+          <SectionTransition delay={0.2}>
+            <ParadigmEvolutionVisualization />
           </SectionTransition>
         );
       case 'paradigms':
@@ -155,35 +200,100 @@ export default function Home() {
   };
 
   return (
-    <EcosystemAuthProvider>
-      <CrossDomainProvider>
-        <PageTransition>
-          <div className="min-h-screen bg-gradient-to-br from-black via-gray-900 to-black dark:from-black dark:via-gray-900 dark:to-black light:from-white light:via-gray-50 light:to-gray-100">
-            {/* Portfolio Style Header */}
-            <PortfolioHeader 
-              appName="Programming Museum"
-              appDescription="Explore the evolution of programming languages from 1843 to present"
-              currentApp="Programming Museum"
-            />
-            
-            <main className="container mx-auto px-4 py-8 pt-32">
-              {activeSection === 'timeline' && (
-                <SectionTransition delay={0}>
-                  <Hero
-                    title="Programming Language History Museum"
-                    subtitle="Explore the evolution of programming languages from 1843 to present"
-                    onExplore={() => setActiveSection('timeline')}
-                  />
-                </SectionTransition>
-              )}
+    <ThemeProvider>
+      <ErrorBoundary
+        customMessage="Something went wrong with the Programming Museum. Please try refreshing the page."
+        showRetry={true}
+        showHome={true}
+      >
+        <EcosystemAuthProvider>
+          <CrossDomainProvider>
+            <PageTransition>
+              <div className="min-h-screen bg-gradient-to-br from-black via-gray-900 to-black dark:from-black dark:via-gray-900 dark:to-black light:from-white light:via-gray-50 light:to-gray-100">
+              {/* Portfolio Style Header */}
+              <PortfolioHeader 
+                appName="Programming Museum"
+                appDescription="Explore the evolution of programming languages from 1843 to present"
+                currentApp="Programming Museum"
+              />
               
-              <StaggerContainer className="w-full" staggerDelay={0.1}>
-                {renderActiveSection()}
-              </StaggerContainer>
-            </main>
+              <main className="container mx-auto px-4 py-8 pt-32">
+                {activeSection === 'timeline' && (
+                  <SectionTransition delay={0}>
+                    {isLoading ? (
+                      <div className="text-center py-20">
+                        <CircularProgress size="lg" value={75} showLabel />
+                        <div className="mt-4">
+                          <Skeleton variant="text" lines={2} />
+                        </div>
+                      </div>
+                    ) : (
+                      <Hero
+                        title="Programming Language History Museum"
+                        subtitle="Explore the evolution of programming languages from 1843 to present"
+                        onExplore={() => setActiveSection('timeline')}
+                      />
+                    )}
+                  </SectionTransition>
+                )}
+                
+                <StaggerContainer className="w-full" staggerDelay={0.1}>
+                  {renderActiveSection()}
+                </StaggerContainer>
+
+                {/* Enhanced Navigation with UI Components */}
+                <div className="fixed bottom-8 right-8 z-50">
+                  <Button 
+                    variant="primary" 
+                    onClick={modal.open}
+                    className="shadow-lg"
+                  >
+                    Quick Tour
+                  </Button>
+                </div>
+              </main>
+            </div>
+          </PageTransition>
+        </CrossDomainProvider>
+      </EcosystemAuthProvider>
+      
+      {/* Quick Tour Modal */}
+      <Modal 
+        isOpen={modal.isOpen} 
+        onClose={modal.close} 
+        title="Programming Museum Quick Tour"
+      >
+        <div className="space-y-4">
+          <p>Discover the evolution of programming languages through interactive timelines, code playgrounds, and AI-powered insights.</p>
+          
+          <div className="grid grid-cols-2 gap-4">
+            <Card>
+              <h3 className="font-semibold mb-2">📚 Historical Timeline</h3>
+              <p className="text-sm text-gray-600">Explore languages from Ada Lovelace to modern AI</p>
+            </Card>
+            <Card>
+              <h3 className="font-semibold mb-2">💻 Code Playground</h3>
+              <p className="text-sm text-gray-600">Try code examples from different eras</p>
+            </Card>
+            <Card>
+              <h3 className="font-semibold mb-2">🤖 AI Assistant</h3>
+              <p className="text-sm text-gray-600">Chat with our AI about programming history</p>
+            </Card>
+            <Card>
+              <h3 className="font-semibold mb-2">🎭 Exhibitions</h3>
+              <p className="text-sm text-gray-600">Interactive museum-style galleries</p>
+            </Card>
           </div>
-        </PageTransition>
-      </CrossDomainProvider>
-    </EcosystemAuthProvider>
+          
+          <div className="flex justify-end mt-6">
+            <Button onClick={modal.close}>Start Exploring</Button>
+          </div>
+        </div>
+      </Modal>
+    </ErrorBoundary>
+    
+    {/* Theme Toggle Button */}
+    <ThemeToggleButton />
+  </ThemeProvider>
   );
 }

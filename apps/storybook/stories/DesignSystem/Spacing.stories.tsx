@@ -1,0 +1,656 @@
+import type { Meta, StoryObj } from '@storybook/react';
+import React from 'react';
+import { spacing, colors } from '@abdalkader/ui/src/tokens/designTokens';
+
+const meta: Meta<typeof SpacingSystem> = {
+  title: 'Design System/Spacing',
+  component: SpacingSystem,
+  parameters: {
+    layout: 'fullscreen',
+    docs: {
+      description: {
+        component: `
+# Spacing System Documentation
+
+The Abdalkader portfolio uses an 8-point grid system with mathematical spacing ratios. All spacing values are designed to create visual harmony and consistent rhythm throughout the interface.
+
+## Design Principles
+
+### 8-Point Grid System
+- **Base Unit**: 8px (0.5rem) - the fundamental building block
+- **Scale**: Based on powers of 2 for visual harmony
+- **Mathematical Consistency**: All values are multiples of 4px
+- **Token**: \`spacing.base\` or \`--spacing-base\`
+
+### Scale Categories
+
+#### Micro Spacing (4px - 12px)
+- **xs (4px / 0.25rem)**: Micro details, tight spacing, icon padding
+- **sm (8px / 0.5rem)**: Button internal spacing, small gaps
+- **Token**: \`spacing.xs\`, \`spacing.sm\` or \`--spacing-xs\`, \`--spacing-sm\`
+
+#### Component Spacing (16px - 32px)
+- **md (16px / 1rem)**: Component padding, small margins, standard gaps
+- **lg (24px / 1.5rem)**: Card spacing, medium margins, section gaps
+- **xl (32px / 2rem)**: Section padding, large margins, major gaps
+- **Token**: \`spacing.md\`, \`spacing.lg\`, \`spacing.xl\` or \`--spacing-md\`, \`--spacing-lg\`, \`--spacing-xl\`
+
+#### Layout Spacing (48px - 128px)
+- **2xl (48px / 3rem)**: Component groups, section breaks, major margins
+- **3xl (64px / 4rem)**: Page sections, hero spacing, large breaks
+- **4xl (96px / 6rem)**: Major sections, hero areas, dramatic spacing
+- **5xl (128px / 8rem)**: Page layout, full sections, maximum spacing
+- **Token**: \`spacing['2xl']\`, \`spacing['3xl']\`, etc. or \`--spacing-2xl\`, \`--spacing-3xl\`, etc.
+
+#### Hero Spacing (192px+)
+- **6xl (192px / 12rem)**: Hero sections, dramatic spacing, full-page breaks
+- **Token**: \`spacing['6xl']\` or \`--spacing-6xl\`
+
+## Usage Guidelines
+
+### When to Use Each Spacing Value
+
+#### Padding (Internal Spacing)
+- **xs/sm**: Icon padding, button internal spacing
+- **md**: Standard component padding
+- **lg**: Card padding, form field padding
+- **xl**: Section internal padding
+
+#### Margins (External Spacing)
+- **sm/md**: Component margins, small gaps between elements
+- **lg**: Card margins, medium section spacing
+- **xl/2xl**: Section margins, major breaks
+- **3xl/4xl**: Page-level spacing, hero sections
+
+#### Gaps (Layout Spacing)
+- **sm/md**: Grid gaps, flex gaps, list item spacing
+- **lg**: Card grid gaps, component group spacing
+- **xl/2xl**: Section gaps, major layout spacing
+
+### Best Practices
+- ✅ **Always use tokens** from the spacing scale
+- ✅ **Maintain consistency** within components
+- ✅ **Use larger spacing** for section breaks
+- ✅ **Consider responsive behavior** for mobile devices
+- ✅ **Use semantic spacing** (margin vs padding appropriately)
+- ❌ **Don't use arbitrary values** outside the scale
+- ❌ **Don't mix different spacing patterns** in the same component
+- ❌ **Don't ignore responsive multipliers**
+
+## Responsive Behavior
+
+### Spacing Multipliers
+- **Mobile (≤600px)**: 0.75x scale - tighter spacing for small screens
+- **Tablet (601-840px)**: 0.9x scale - medium spacing
+- **Desktop (841-1200px)**: 1x scale - standard spacing
+- **Large (≥1201px)**: 1.2x scale - enhanced spacing for large screens
+
+### Implementation
+\`\`\`css
+/* Responsive spacing using multipliers */
+.section {
+  padding: var(--spacing-3xl);
+}
+
+@media (max-width: 600px) {
+  .section {
+    padding: calc(var(--spacing-3xl) * 0.75);
+  }
+}
+
+@media (min-width: 1200px) {
+  .section {
+    padding: calc(var(--spacing-3xl) * 1.2);
+  }
+}
+\`\`\`
+
+## Layout Spacing
+
+### Section Spacing
+- **Section**: 8rem (128px) - standard section spacing
+- **Section Mobile**: 4rem (64px) - reduced for mobile
+- **Token**: \`spacing.layout.section\` or \`--layout-section\`
+
+### Container Spacing
+- **Container**: 2rem (32px) - container padding
+- **Container Mobile**: 1rem (16px) - reduced for mobile
+- **Token**: \`spacing.layout.container\` or \`--layout-container\`
+        `
+      }
+    }
+  },
+  tags: ['autodocs'],
+  argTypes: {
+    showGrid: {
+      control: 'boolean',
+      description: 'Show visual grid overlay'
+    },
+    showCode: {
+      control: 'boolean',
+      description: 'Show implementation code'
+    },
+    variant: {
+      control: 'select',
+      options: ['scale', 'usage', 'responsive'],
+      description: 'Spacing view variant'
+    }
+  }
+};
+
+export default meta;
+type Story = StoryObj<typeof SpacingSystem>;
+
+// Spacing system component
+const SpacingSystem = ({ showGrid = true, showCode = true, variant = 'scale' }: any) => {
+  const spacingScale = [
+    { 
+      name: 'xs', 
+      value: '4px', 
+      rem: spacing.xs, 
+      token: 'spacing.xs',
+      cssVar: '--spacing-xs',
+      usage: 'Micro details, tight spacing, icon padding',
+      do: ['Icon padding', 'Tight gaps', 'Micro adjustments'],
+      dont: ['Component padding', 'Section spacing', 'Large gaps']
+    },
+    { 
+      name: 'sm', 
+      value: '8px', 
+      rem: spacing.sm, 
+      token: 'spacing.sm',
+      cssVar: '--spacing-sm',
+      usage: 'Button internal spacing, small gaps, base unit',
+      do: ['Button padding', 'Small gaps', 'Base spacing'],
+      dont: ['Component padding', 'Section margins']
+    },
+    { 
+      name: 'md', 
+      value: '16px', 
+      rem: spacing.md, 
+      token: 'spacing.md',
+      cssVar: '--spacing-md',
+      usage: 'Component padding, small margins, standard gaps',
+      do: ['Component padding', 'Standard gaps', 'Small margins'],
+      dont: ['Section spacing', 'Hero spacing']
+    },
+    { 
+      name: 'lg', 
+      value: '24px', 
+      rem: spacing.lg, 
+      token: 'spacing.lg',
+      cssVar: '--spacing-lg',
+      usage: 'Card spacing, medium margins, component groups',
+      do: ['Card padding', 'Medium margins', 'Component groups'],
+      dont: ['Micro spacing', 'Hero sections']
+    },
+    { 
+      name: 'xl', 
+      value: '32px', 
+      rem: spacing.xl, 
+      token: 'spacing.xl',
+      cssVar: '--spacing-xl',
+      usage: 'Section padding, large margins, major gaps',
+      do: ['Section padding', 'Large margins', 'Major gaps'],
+      dont: ['Component padding', 'Micro spacing']
+    },
+    { 
+      name: '2xl', 
+      value: '48px', 
+      rem: spacing['2xl'], 
+      token: 'spacing["2xl"]',
+      cssVar: '--spacing-2xl',
+      usage: 'Component groups, section breaks, major spacing',
+      do: ['Section breaks', 'Component groups', 'Major spacing'],
+      dont: ['Component padding', 'Tight spacing']
+    },
+    { 
+      name: '3xl', 
+      value: '64px', 
+      rem: spacing['3xl'], 
+      token: 'spacing["3xl"]',
+      cssVar: '--spacing-3xl',
+      usage: 'Page sections, hero spacing, large breaks',
+      do: ['Page sections', 'Hero spacing', 'Large breaks'],
+      dont: ['Component spacing', 'Tight gaps']
+    },
+    { 
+      name: '4xl', 
+      value: '96px', 
+      rem: spacing['4xl'], 
+      token: 'spacing["4xl"]',
+      cssVar: '--spacing-4xl',
+      usage: 'Major sections, hero areas, dramatic spacing',
+      do: ['Major sections', 'Hero areas', 'Dramatic spacing'],
+      dont: ['Component spacing', 'Standard sections']
+    },
+    { 
+      name: '5xl', 
+      value: '128px', 
+      rem: spacing['5xl'], 
+      token: 'spacing["5xl"]',
+      cssVar: '--spacing-5xl',
+      usage: 'Page layout, full sections, maximum spacing',
+      do: ['Page layout', 'Full sections', 'Maximum spacing'],
+      dont: ['Component spacing', 'Standard sections']
+    },
+    { 
+      name: '6xl', 
+      value: '192px', 
+      rem: spacing['6xl'], 
+      token: 'spacing["6xl"]',
+      cssVar: '--spacing-6xl',
+      usage: 'Hero sections, dramatic spacing, full-page breaks',
+      do: ['Hero sections', 'Dramatic spacing', 'Full-page breaks'],
+      dont: ['Component spacing', 'Standard sections']
+    }
+  ];
+
+  const usageExamples = [
+    {
+      title: 'Button Spacing',
+      description: 'Internal padding and margins',
+      example: (
+        <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
+          <button style={{ 
+            padding: '8px 16px', 
+            background: '#f44e00', 
+            color: '#f8f8f8', 
+            border: 'none', 
+            borderRadius: '4px',
+            textTransform: 'uppercase',
+            letterSpacing: '0.05rem'
+          }}>
+            Button
+          </button>
+          <button style={{ 
+            padding: '16px 32px', 
+            background: '#fa7300', 
+            color: '#f8f8f8', 
+            border: 'none', 
+            borderRadius: '4px',
+            textTransform: 'uppercase',
+            letterSpacing: '0.05rem'
+          }}>
+            Large Button
+          </button>
+        </div>
+      ),
+      spacing: ['padding: 8px 16px', 'gap: 16px', 'padding: 16px 32px']
+    },
+    {
+      title: 'Card Layout',
+      description: 'Component spacing and margins',
+      example: (
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
+          <div style={{ 
+            padding: '24px', 
+            background: '#1a1a1a', 
+            border: '1px solid #252525',
+            borderRadius: '8px'
+          }}>
+            <h4 style={{ margin: '0 0 16px 0', color: '#f8f8f8' }}>Card Title</h4>
+            <p style={{ margin: '0', color: '#787878' }}>Card content with proper spacing</p>
+          </div>
+          <div style={{ 
+            padding: '24px', 
+            background: '#1a1a1a', 
+            border: '1px solid #252525',
+            borderRadius: '8px'
+          }}>
+            <h4 style={{ margin: '0 0 16px 0', color: '#f8f8f8' }}>Another Card</h4>
+            <p style={{ margin: '0', color: '#787878' }}>Consistent spacing between cards</p>
+          </div>
+        </div>
+      ),
+      spacing: ['gap: 24px', 'padding: 24px', 'margin-bottom: 16px']
+    },
+    {
+      title: 'Section Layout',
+      description: 'Page-level spacing',
+      example: (
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '64px' }}>
+          <div style={{ 
+            padding: '48px 24px', 
+            background: '#1a1a1a', 
+            border: '1px solid #252525',
+            borderRadius: '8px',
+            textAlign: 'center'
+          }}>
+            <h3 style={{ margin: '0 0 24px 0', color: '#f44e00' }}>Section Title</h3>
+            <p style={{ margin: '0', color: '#787878' }}>Large section with generous spacing</p>
+          </div>
+          <div style={{ 
+            padding: '48px 24px', 
+            background: '#1a1a1a', 
+            border: '1px solid #252525',
+            borderRadius: '8px',
+            textAlign: 'center'
+          }}>
+            <h3 style={{ margin: '0 0 24px 0', color: '#f44e00' }}>Next Section</h3>
+            <p style={{ margin: '0', color: '#787878' }}>Consistent rhythm between sections</p>
+          </div>
+        </div>
+      ),
+      spacing: ['gap: 64px', 'padding: 48px 24px', 'margin-bottom: 24px']
+    }
+  ];
+
+  const responsiveBreakpoints = [
+    { name: 'Mobile', max: '600px', scale: '0.75x', description: 'Tight spacing for small screens' },
+    { name: 'Tablet', max: '840px', scale: '0.9x', description: 'Medium spacing for tablets' },
+    { name: 'Desktop', max: '1200px', scale: '1x', description: 'Standard spacing for desktop' },
+    { name: 'Large', min: '1200px', scale: '1.2x', description: 'Enhanced spacing for large screens' }
+  ];
+
+  if (variant === 'usage') {
+    return (
+      <div style={{ padding: '2rem', background: '#000', color: '#f8f8f8', minHeight: '100vh' }}>
+        <h1 style={{ fontSize: '2rem', marginBottom: '2rem', color: '#f8f8f8' }}>
+          Spacing Usage Examples
+        </h1>
+        
+        <div style={{ display: 'grid', gap: '3rem' }}>
+          {usageExamples.map((example, index) => (
+            <div key={index} style={{ 
+              background: '#1a1a1a', 
+              borderRadius: '8px', 
+              padding: '2rem', 
+              border: '1px solid #252525' 
+            }}>
+              <h2 style={{ color: '#f44e00', marginBottom: '0.5rem' }}>{example.title}</h2>
+              <p style={{ color: '#787878', marginBottom: '1.5rem' }}>{example.description}</p>
+              
+              <div style={{ 
+                background: '#000', 
+                padding: '2rem', 
+                borderRadius: '8px', 
+                marginBottom: '1.5rem',
+                border: '1px solid #333'
+              }}>
+                {example.example}
+              </div>
+              
+              {showCode && (
+                <div>
+                  <h4 style={{ color: '#f44e00', marginBottom: '0.5rem' }}>Spacing Used:</h4>
+                  <pre style={{ background: '#000', padding: '1rem', borderRadius: '4px', overflow: 'auto', fontSize: '0.9rem' }}>
+{example.spacing.map(spacing => `${spacing}`).join('\n')}
+                  </pre>
+                </div>
+              )}
+            </div>
+          ))}
+        </div>
+      </div>
+    );
+  }
+
+  if (variant === 'responsive') {
+    return (
+      <div style={{ padding: '2rem', background: '#000', color: '#f8f8f8', minHeight: '100vh' }}>
+        <h1 style={{ fontSize: '2rem', marginBottom: '2rem', color: '#f8f8f8' }}>
+          Responsive Spacing
+        </h1>
+        
+        <div style={{ display: 'grid', gap: '2rem' }}>
+          {responsiveBreakpoints.map((breakpoint, index) => (
+            <div key={index} style={{ 
+              background: '#1a1a1a', 
+              borderRadius: '8px', 
+              padding: '2rem', 
+              border: '1px solid #252525' 
+            }}>
+              <h2 style={{ color: '#f44e00', marginBottom: '0.5rem' }}>
+                {breakpoint.name} ({breakpoint.scale})
+              </h2>
+              <p style={{ color: '#787878', marginBottom: '1rem' }}>
+                {breakpoint.description} {breakpoint.max && `Max: ${breakpoint.max}`} {breakpoint.min && `Min: ${breakpoint.min}`}
+              </p>
+              
+              <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
+                {spacingScale.slice(0, 6).map((spacing) => (
+                  <div key={spacing.name} style={{ textAlign: 'center' }}>
+                    <div style={{ 
+                      width: `${parseInt(spacing.value) * (parseFloat(breakpoint.scale))}px`,
+                      height: `${parseInt(spacing.value) * (parseFloat(breakpoint.scale))}px`,
+                      background: '#f44e00',
+                      borderRadius: '4px',
+                      marginBottom: '0.5rem'
+                    }} />
+                    <div style={{ fontSize: '0.8rem', color: '#787878' }}>
+                      {spacing.name}
+                    </div>
+                    <div style={{ fontSize: '0.7rem', color: '#787878' }}>
+                      {Math.round(parseInt(spacing.value) * parseFloat(breakpoint.scale))}px
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          ))}
+        </div>
+        
+        {showCode && (
+          <div style={{ marginTop: '3rem', padding: '2rem', background: '#1a1a1a', borderRadius: '8px', border: '1px solid #252525' }}>
+            <h2 style={{ color: '#f8f8f8', marginBottom: '1rem' }}>Responsive Implementation</h2>
+            <pre style={{ background: '#000', padding: '1rem', borderRadius: '4px', overflow: 'auto', fontSize: '0.9rem' }}>
+{`// SCSS Mixin for Responsive Spacing
+@mixin responsive-spacing($property, $base-size) {
+  #{$property}: $base-size;
+  
+  @media (max-width: 600px) {
+    #{$property}: $base-size * 0.75;
+  }
+  
+  @media (max-width: 840px) {
+    #{$property}: $base-size * 0.9;
+  }
+  
+  @media (min-width: 1200px) {
+    #{$property}: $base-size * 1.2;
+  }
+}
+
+// Usage
+.section {
+  @include responsive-spacing(padding, 64px);
+  @include responsive-spacing(margin-bottom, 48px);
+}`}
+            </pre>
+          </div>
+        )}
+      </div>
+    );
+  }
+
+  return (
+    <div style={{ padding: '2rem', background: colors.background, color: colors.text, minHeight: '100vh' }}>
+      <div style={{ maxWidth: '1400px', margin: '0 auto' }}>
+        <h1 style={{ fontSize: '2rem', marginBottom: '0.5rem', color: colors.text }}>
+          Spacing Scale
+        </h1>
+        <p style={{ margin: '0 0 2rem 0', color: colors.textSecondary, fontSize: '1rem' }}>
+          8-point grid system with mathematical spacing ratios and usage guidelines
+        </p>
+        
+        {showGrid && (
+          <div style={{ 
+            position: 'fixed', 
+            top: 0, 
+            left: 0, 
+            right: 0, 
+            bottom: 0, 
+            pointerEvents: 'none',
+            zIndex: 1000,
+            backgroundImage: `
+              repeating-linear-gradient(0deg, rgba(244, 78, 0, 0.1) 0px, transparent 1px, transparent 8px, rgba(244, 78, 0, 0.1) 8px),
+              repeating-linear-gradient(90deg, rgba(244, 78, 0, 0.1) 0px, transparent 1px, transparent 8px, rgba(244, 78, 0, 0.1) 8px)
+            `,
+            backgroundSize: '8px 8px'
+          }} />
+        )}
+        
+        <div style={{ display: 'grid', gap: '1.5rem' }}>
+          {spacingScale.map((spacingItem) => (
+            <div key={spacingItem.name} style={{ 
+              background: colors.backgroundTertiary, 
+              borderRadius: '8px', 
+              padding: '1.5rem', 
+              border: `1px solid ${colors.border}`,
+              display: 'flex',
+              alignItems: 'center',
+              gap: '2rem'
+            }}>
+              <div style={{ minWidth: '120px', textAlign: 'center' }}>
+                <div style={{ 
+                  width: spacingItem.value, 
+                  height: spacingItem.value, 
+                  background: colors.primary, 
+                  borderRadius: '4px',
+                  marginBottom: '0.5rem'
+                }} />
+                <div style={{ fontSize: '0.8rem', color: colors.text, fontWeight: '600' }}>
+                  {spacingItem.name}
+                </div>
+              </div>
+              
+              <div style={{ flex: 1 }}>
+                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '1.5rem', marginBottom: '1rem' }}>
+                  <div>
+                    <h4 style={{ color: colors.primary, margin: '0 0 0.5rem 0', fontSize: '0.9rem', fontWeight: '500' }}>Values</h4>
+                    <ul style={{ margin: '0', padding: '0', listStyle: 'none', color: colors.textSecondary, fontSize: '0.85rem', lineHeight: '1.6' }}>
+                      <li>PX: {spacingItem.value}</li>
+                      <li>REM: {spacingItem.rem}</li>
+                      <li>Token: {spacingItem.token}</li>
+                    </ul>
+                  </div>
+                  
+                  <div>
+                    <h4 style={{ color: colors.primary, margin: '0 0 0.5rem 0', fontSize: '0.9rem', fontWeight: '500' }}>Usage</h4>
+                    <p style={{ margin: '0 0 0.5rem 0', color: colors.textSecondary, fontSize: '0.85rem', lineHeight: '1.5' }}>
+                      {spacingItem.usage}
+                    </p>
+                    <div>
+                      <p style={{ margin: '0 0 0.25rem 0', color: colors.text, fontSize: '0.75rem', fontWeight: '500' }}>
+                        ✅ Do:
+                      </p>
+                      <ul style={{ margin: '0 0 0.5rem 0', padding: '0 0 0 1rem', color: colors.textSecondary, fontSize: '0.75rem', lineHeight: '1.4' }}>
+                        {spacingItem.do.map((item, idx) => (
+                          <li key={idx}>{item}</li>
+                        ))}
+                      </ul>
+                      <p style={{ margin: '0 0 0.25rem 0', color: colors.text, fontSize: '0.75rem', fontWeight: '500' }}>
+                        ❌ Don't:
+                      </p>
+                      <ul style={{ margin: '0', padding: '0 0 0 1rem', color: colors.textSecondary, fontSize: '0.75rem', lineHeight: '1.4' }}>
+                        {spacingItem.dont.map((item, idx) => (
+                          <li key={idx}>{item}</li>
+                        ))}
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+                
+                {showCode && (
+                  <div style={{ marginTop: '1rem', paddingTop: '1rem', borderTop: `1px solid ${colors.border}` }}>
+                    <h4 style={{ color: colors.primary, margin: '0 0 0.5rem 0', fontSize: '0.85rem', fontWeight: '500' }}>Implementation</h4>
+                    <pre style={{ background: colors.background, padding: '0.75rem', borderRadius: '4px', overflow: 'auto', fontSize: '0.75rem', margin: '0', fontFamily: 'monospace', color: colors.textSecondary, lineHeight: '1.5' }}>
+{`// TypeScript Token
+${spacingItem.token}
+
+// CSS Custom Property
+${spacingItem.cssVar}: ${spacingItem.rem};
+
+// Usage
+.element {
+  padding: var(${spacingItem.cssVar});
+  margin: var(${spacingItem.cssVar});
+  gap: var(${spacingItem.cssVar});
+}`}
+                    </pre>
+                  </div>
+                )}
+              </div>
+            </div>
+          ))}
+        </div>
+      
+      <div style={{ marginTop: '3rem', padding: '2rem', background: '#1a1a1a', borderRadius: '8px', border: '1px solid #252525' }}>
+        <h2 style={{ color: '#f8f8f8', marginBottom: '1rem' }}>Spacing System Guidelines</h2>
+        <div style={{ color: '#787878', lineHeight: '1.6' }}>
+          <h3 style={{ color: '#f44e00', marginBottom: '0.5rem' }}>Best Practices</h3>
+          <ul style={{ margin: '0 0 1rem 0', padding: '0 0 0 1rem' }}>
+            <li>Always use values from the spacing scale</li>
+            <li>Maintain consistent spacing within components</li>
+            <li>Use larger spacing for section breaks</li>
+            <li>Consider responsive behavior for mobile devices</li>
+            <li>Use semantic spacing (margin vs padding appropriately)</li>
+          </ul>
+          
+          <h3 style={{ color: '#f44e00', marginBottom: '0.5rem' }}>Implementation Tips</h3>
+          <ul style={{ margin: '0 0 1rem 0', padding: '0 0 0 1rem' }}>
+            <li>Create CSS custom properties for easy theming</li>
+            <li>Use SCSS mixins for responsive spacing</li>
+            <li>Establish spacing patterns for common layouts</li>
+            <li>Test spacing at all viewport sizes</li>
+            <li>Document spacing decisions in component comments</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export const Default: Story = {
+  args: {
+    showGrid: true,
+    showCode: true,
+    variant: 'scale'
+  }
+};
+
+export const Usage: Story = {
+  args: {
+    showGrid: false,
+    showCode: true,
+    variant: 'usage'
+  },
+  parameters: {
+    docs: {
+      description: {
+        story: 'Real-world usage examples of the spacing system'
+      }
+    }
+  }
+};
+
+export const Responsive: Story = {
+  args: {
+    showGrid: false,
+    showCode: true,
+    variant: 'responsive'
+  },
+  parameters: {
+    docs: {
+      description: {
+        story: 'How spacing adapts across different screen sizes'
+      }
+    }
+  }
+};
+
+export const WithoutGrid: Story = {
+  args: {
+    showGrid: false,
+    showCode: true,
+    variant: 'scale'
+  },
+  parameters: {
+    docs: {
+      description: {
+        story: 'Clean spacing scale view without grid overlay'
+      }
+    }
+  }
+};

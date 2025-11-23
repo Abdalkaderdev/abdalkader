@@ -1,0 +1,160 @@
+/**
+ * Enhanced Accordion Styles
+ * Senior Frontend Developer - UI Specialist
+ */
+
+.portfolio-accordion {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  width: 100%;
+}
+
+/* Accordion item */
+.portfolio-accordion-item {
+  border: 1px solid var(--color-border);
+  border-radius: 4px;
+  overflow: hidden;
+  transition: all 0.3s cubic-bezier(0.19, 1, 0.22, 1);
+  background: rgba(45, 45, 45, 0.3);
+}
+
+.portfolio-accordion-item:hover:not(.portfolio-accordion-item--disabled) {
+  border-color: var(--color-primary);
+  background: rgba(45, 45, 45, 0.5);
+}
+
+.portfolio-accordion-item--open {
+  border-color: var(--color-primary);
+  background: rgba(45, 45, 45, 0.5);
+  box-shadow: 0 4px 12px rgba(244, 78, 0, 0.1);
+}
+
+.portfolio-accordion-item--disabled {
+  opacity: 0.6;
+  pointer-events: none;
+}
+
+/* Header */
+.portfolio-accordion-header {
+  width: 100%;
+  padding: 1rem 1.5rem;
+  background: transparent;
+  border: none;
+  color: var(--color-text-light);
+  font-size: 1rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.05rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  transition: all 0.3s cubic-bezier(0.19, 1, 0.22, 1);
+  text-align: left;
+}
+
+.portfolio-accordion-header:hover:not(:disabled) {
+  color: var(--color-primary);
+}
+
+.portfolio-accordion-header:focus-visible {
+  outline: 2px dashed var(--color-primary);
+  outline-offset: -2px;
+}
+
+.portfolio-accordion-header:disabled {
+  cursor: not-allowed;
+}
+
+/* Header content */
+.portfolio-accordion-header-content {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex: 1;
+  min-width: 0;
+}
+
+/* Icon */
+.portfolio-accordion-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2em;
+  flex-shrink: 0;
+}
+
+/* Title */
+.portfolio-accordion-title {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* Chevron */
+.portfolio-accordion-chevron {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-text-grey);
+  flex-shrink: 0;
+  transition: color 0.3s;
+}
+
+.portfolio-accordion-item:hover:not(.portfolio-accordion-item--disabled) .portfolio-accordion-chevron {
+  color: var(--color-primary);
+}
+
+/* Content */
+.portfolio-accordion-content {
+  overflow: hidden;
+  border-top: 1px solid var(--color-border);
+}
+
+.portfolio-accordion-content-inner {
+  padding: 1rem 1.5rem;
+  color: var(--color-text-light);
+  line-height: 1.6;
+}
+
+.portfolio-accordion-content-inner > *:first-child {
+  margin-top: 0;
+}
+
+.portfolio-accordion-content-inner > *:last-child {
+  margin-bottom: 0;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .portfolio-accordion-header {
+    padding: 0.75rem 1rem;
+    font-size: 0.95rem;
+  }
+
+  .portfolio-accordion-content-inner {
+    padding: 0.75rem 1rem;
+  }
+
+  .portfolio-accordion-title {
+    font-size: 0.95rem;
+  }
+}
+
+/* Animation for content */
+.portfolio-accordion-content-inner {
+  animation: accordionContentFade 0.3s ease-out forwards;
+}
+
+@keyframes accordionContentFade {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
