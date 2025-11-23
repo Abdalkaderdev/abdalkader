@@ -1,11 +1,9 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
-  "buildCommand": "cd apps/blog && npm install && npm run build",
-  "installCommand": null,
+  "installCommand": "corepack enable && corepack prepare pnpm@8.15.0 --activate && pnpm install",
+  "buildCommand": "pnpm turbo run build --filter=@abdalkader/blog",
   "outputDirectory": "apps/blog/public",
   "framework": null,
-  "trailingSlash": true,
-  "cleanUrls": true,
   "headers": [
     {
       "source": "/(.*)",

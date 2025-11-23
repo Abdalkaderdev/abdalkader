@@ -4,6 +4,14 @@
   "buildCommand": "pnpm turbo run build --filter=@abdalkader/portfolio",
   "outputDirectory": "apps/portfolio/.next",
   "framework": "nextjs",
+  "branches": [
+    {
+      "name": "blog",
+      "buildCommand": "pnpm turbo run build --filter=@abdalkader/blog",
+      "outputDirectory": "apps/blog/public",
+      "framework": null
+    }
+  ],
   "env": {
     "NODE_ENV": "production",
     "NEXT_PUBLIC_ENVIRONMENT": "@vercel/git-branch-name",
