@@ -81,11 +81,11 @@ const preview: Preview = {
       },
     },
     backgrounds: {
-      default: 'dark',
+      default: 'portfolio',
       values: [
-        { name: 'light', value: '#ffffff' },
+        { name: 'portfolio', value: '#000000' },
         { name: 'dark', value: '#000000' },
-        { name: 'portfolio', value: '#0a0a0a' },
+        { name: 'light', value: '#ffffff' },
       ],
     },
   },

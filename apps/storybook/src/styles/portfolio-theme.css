@@ -4,7 +4,7 @@
  */
 
 /* Import the centralized design system */
-@import url('../../node_modules/@abdalkader/ui/dist/styles.css');
+@import url('../../../../packages/ui/dist/styles.css');
 
 /* Import UI/UX enhancements */
 @import url('./design-system-tokens.css');
@@ -438,4 +438,54 @@ html,
 .sb-show-main .is-light {
   background: var(--background-color) !important;
   color: var(--text-primary) !important;
+}
+
+/* Storybook specific background overrides */
+.sb-show-main,
+.sb-main,
+.sb-content,
+.sb-root,
+.story,
+.storybook-wrapper,
+#root,
+[data-storybook-escaped],
+[storybook-escaped="true"] {
+  background: #000 !important;
+  background-color: #000 !important;
+}
+
+/* Storybook preview area */
+.sb-show-main .sb-preview,
+.sb-show-main .sb-preview-main,
+.sb-show-main .sb-preview-block {
+  background: #000 !important;
+  background-color: #000 !important;
+}
+
+/* Storybook docs area */
+.sbdocs,
+.sbdocs-content,
+.sbdocs-preview {
+  background: #000 !important;
+  background-color: #000 !important;
+}
+
+/* Canvas background */
+#storybook-root,
+#storybook-docs,
+.storybook-story,
+.storydocs-container {
+  background: #000 !important;
+  background-color: #000 !important;
+}
+
+/* Override any inline styles that set white background */
+[style*="background: white"],
+[style*="background: #fff"],
+[style*="background: #ffffff"],
+[style*="background-color: white"],
+[style*="background-color: #fff"],
+[style*="background-color: #ffffff"] {
+  background: #000 !important;
+  background-color: #000 !important;
 }
