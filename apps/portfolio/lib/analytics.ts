@@ -5,8 +5,7 @@
 
 export interface AnalyticsEvent {
   name: string;
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  properties?: Record<string, any>;
+  properties?: Record<string, unknown>;
 }
 
 /**
@@ -157,7 +156,7 @@ export const trackCrossDomainLink = (
   to: string,
   linkType: 'history' | 'storybook' | 'docs' | 'blog',
   projectSlug?: string,
-  additionalData?: Record<string, any>
+  additionalData?: Record<string, unknown>
 ) => {
   trackEvent({
     name: 'cross_domain_link',
@@ -190,8 +189,6 @@ export const trackProjectLifecycleInteraction = (
 };
 
 declare global {
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  function gtag(command: string, action: string, properties?: Record<string, any>): void;
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  function plausible(eventName: string, options?: { props?: Record<string, any> }): void;
+  function gtag(command: string, action: string, properties?: Record<string, unknown>): void;
+  function plausible(eventName: string, options?: { props?: Record<string, unknown> }): void;
 }
