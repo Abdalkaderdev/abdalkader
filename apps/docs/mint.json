@@ -117,6 +117,61 @@
     "website": "https://abdalkader.dev",
     "linkedin": "https://www.linkedin.com/in/abdalkaderdev"
   },
+  "footer": {
+    "links": [
+      {
+        "label": "Product",
+        "items": [
+          {
+            "label": "Portfolio",
+            "url": "https://abdalkader.dev"
+          },
+          {
+            "label": "Components",
+            "url": "https://storybook.abdalkader.dev"
+          },
+          {
+            "label": "Blog",
+            "url": "https://blog.abdalkader.dev"
+          }
+        ]
+      },
+      {
+        "label": "Resources",
+        "items": [
+          {
+            "label": "Documentation",
+            "url": "https://docs.abdalkader.dev"
+          },
+          {
+            "label": "API Reference",
+            "url": "https://docs.abdalkader.dev/api"
+          },
+          {
+            "label": "Design System",
+            "url": "https://docs.abdalkader.dev/design-system"
+          }
+        ]
+      },
+      {
+        "label": "Company",
+        "items": [
+          {
+            "label": "GitHub",
+            "url": "https://github.com/Abdalkaderdev"
+          },
+          {
+            "label": "LinkedIn",
+            "url": "https://www.linkedin.com/in/abdalkaderdev"
+          },
+          {
+            "label": "Contact",
+            "url": "mailto:hello@abdalkader.dev"
+          }
+        ]
+      }
+    ]
+  },
   "analytics": {
     "ga4": {
       "measurementId": "G-XXXXXXXXXX"
