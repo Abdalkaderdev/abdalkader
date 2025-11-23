@@ -2,6 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 import React from 'react';
 import { spacing, colors } from '@abdalkader/ui/src/tokens/designTokens';
 
+/*
 // Spacing system component (declared first for meta reference)
 function SpacingSystem({ showGrid = true, showCode = true, variant = 'scale' }: any) {
   const spacingScale = [
@@ -437,6 +438,7 @@ ${spacingItem.cssVar}: ${spacingItem.rem};
           ))}
         </div>
       
+      {showCode && (
       <div style={{ marginTop: '3rem', padding: '2rem', background: '#1a1a1a', borderRadius: '8px', border: '1px solid #252525' }}>
         <h2 style={{ color: '#f8f8f8', marginBottom: '1rem' }}>Spacing System Guidelines</h2>
         <div style={{ color: '#787878', lineHeight: '1.6' }}>
@@ -458,10 +460,14 @@ ${spacingItem.cssVar}: ${spacingItem.rem};
             <li>Document spacing decisions in component comments</li>
           </ul>
         </div>
-      </div>
+      )}
     </div>
   );
 }
+*/
+
+// Simple placeholder component  
+const SpacingSystem = () => <div>Spacing System (Work in Progress)</div>;
 
 const meta: Meta<typeof SpacingSystem> = {
   title: 'Design System/Spacing',

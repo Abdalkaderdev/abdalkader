@@ -15,25 +15,25 @@ const CrossAppNavigation: React.FC<CrossAppNavigationProps> = ({
       name: 'Portfolio', 
       url: 'https://abdalkader.dev', 
       description: 'Main portfolio website',
-      icon: '🏠'
+      icon: ''
     },
     { 
       name: 'Blog', 
       url: 'https://blog.abdalkader.dev', 
       description: 'Technical blog and articles',
-      icon: '📝'
+      icon: ''
     },
     { 
       name: 'Docs', 
       url: 'https://docs.abdalkader.dev', 
       description: 'Project documentation',
-      icon: '📚'
+      icon: ''
     },
     { 
       name: 'Components', 
       url: 'https://storybook.abdalkader.dev', 
       description: 'Component library',
-      icon: '🧩'
+      icon: ''
     },
   ];
 

@@ -2,6 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 import React from 'react';
 import { colors, spacing, typography } from '@abdalkader/ui/src/tokens/designTokens';
 
+/*
 // Component variants showcase
 const ComponentVariants = ({ component = 'button', showStates = true, showCode = true }: any) => {
   const renderButtonVariants = () => {
@@ -397,6 +398,10 @@ interface ComponentProps {
     </div>
   );
 };
+*/
+
+// Simple placeholder component
+const ComponentVariants = () => <div>Component Variants (Work in Progress)</div>;
 
 const meta: Meta<typeof ComponentVariants> = {
   title: 'Design System/Component Variants',
