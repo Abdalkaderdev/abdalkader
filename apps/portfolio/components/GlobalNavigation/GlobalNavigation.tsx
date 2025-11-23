@@ -2,11 +2,11 @@
 
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
-// @ts-ignore - Direct import from source until package is built
+// @ts-expect-error - Direct import from source until package is built
 import { GlobalNavigationHub } from '../../../../packages/ui/src/components/GlobalNavigationHub/GlobalNavigationHub';
-// @ts-ignore
+// @ts-expect-error
 import type { RelatedContent } from '../../../../packages/ui/src/components/GlobalNavigationHub/GlobalNavigationHub';
-// @ts-ignore
+// @ts-expect-error
 import { getCurrentSiteContext, getContextRelatedContent } from '../../../../packages/ui/src/lib/navigationContext';
 
 export function GlobalNavigation() {

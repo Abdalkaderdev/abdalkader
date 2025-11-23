@@ -1,13 +1,12 @@
 import React, { useState } from 'react';
-// @ts-ignore - Direct import from source until package is built
-import { getProjectBySlug, UnifiedProject } from '../../../../../packages/ui/src/lib/projectRegistry';
+// @ts-expect-error - Direct import from source until package is built
+import { getProjectBySlug } from '../../../../../packages/ui/src/lib/projectRegistry';
 import { ProjectTimeline } from './ProjectTimeline';
 import { ProjectComponents } from './ProjectComponents';
 import { ProjectDocumentation } from './ProjectDocumentation';
 import { ProjectBlogPosts } from './ProjectBlogPosts';
 import styles from './ProjectLifecycle.module.scss';
 import { 
-  Calendar, 
   Code, 
   BookOpen, 
   FileText, 

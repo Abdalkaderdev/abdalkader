@@ -1,9 +1,9 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-// @ts-ignore - Direct import from source until package is built
+// @ts-expect-error - Direct import from source until package is built
 import { GlobalFooter as UIGlobalFooter } from '../../../../packages/ui/src/components/GlobalFooter/GlobalFooter';
-// @ts-ignore
+// @ts-expect-error
 import { getCurrentSiteContext } from '../../../../packages/ui/src/lib/navigationContext';
 
 export function GlobalFooter() {

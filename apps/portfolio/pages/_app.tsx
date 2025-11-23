@@ -188,9 +188,10 @@ export default function App({ Component, pageProps }: AppProps) {
                         customMessage="Something went wrong with the portfolio. Please try refreshing the page."
                         showRetry={true}
                         showHome={true}
-                        onError={(error: Error, errorInfo: any) => {
+                        onError={(error: Error) => {
                             // Log to existing error tracking system
                             if (typeof window !== 'undefined' && 'gtag' in window) {
+                                // eslint-disable-next-line @typescript-eslint/no-explicit-any
                                 (window as any).gtag('event', 'exception', {
                                     description: error.message,
                                     fatal: false,

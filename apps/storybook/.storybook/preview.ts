@@ -1,22 +1,20 @@
 import type { Preview } from '@storybook/react';
 import React from 'react';
 import '../src/styles/portfolio-theme.css';
-// @ts-ignore - Direct import
+// @ts-expect-error - Direct import
 import { GlobalNavigation } from '../src/components/GlobalNavigation/GlobalNavigation';
-// @ts-ignore - CSS import
+// @ts-expect-error - CSS import
 import '../../packages/ui/src/components/GlobalNavigationHub/GlobalNavigationHub.css';
-// @ts-ignore - CSS import
+// @ts-expect-error - CSS import
 import '../../packages/ui/src/components/GlobalFooter/GlobalFooter.css';
 
 const preview: Preview = {
   decorators: [
-    (Story) => (
-      <>
-        <GlobalNavigation />
-        <div style={{ paddingTop: '80px' }}>
-          <Story />
-        </div>
-      </>
+    (Story: any) => React.createElement(React.Fragment, null,
+      React.createElement(GlobalNavigation),
+      React.createElement('div', { style: { paddingTop: '80px' } },
+        React.createElement(Story)
+      )
     ),
   ],
   parameters: {

@@ -61,7 +61,7 @@ export class ErrorBoundary extends React.Component<Props, State> {
                 href="/"
                 className={styles.secondaryBtn}
               >
-                Go Home
+                Go to Home
               </a>
             </div>
           </div>

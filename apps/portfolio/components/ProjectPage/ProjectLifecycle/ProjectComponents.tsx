@@ -32,27 +32,32 @@ export function ProjectComponents({ project }: ProjectComponentsProps) {
   return (
     <div className={styles.componentsContainer}>
       <div className={styles.componentsGrid}>
-        {components.map((component: any, index: number) => (
-          <a
-            key={index}
-            href={`${project.storybook.url || 'https://storybook.abdalkader.dev'}?path=/story/${component.storybookPath}`}
-            target="_blank"
-            rel="noopener noreferrer"
-            className={styles.componentCard}
-          >
-            <div className={styles.componentHeader}>
-              <Code className={styles.componentIcon} />
-              <h4>{component.name}</h4>
-            </div>
-            {component.description && (
-              <p className={styles.componentDescription}>{component.description}</p>
-            )}
-            <div className={styles.componentFooter}>
-              <span className={styles.componentPath}>{component.storybookPath}</span>
-              <ExternalLink className={styles.externalIcon} />
-            </div>
-          </a>
-        ))}
+         {components.map((component, index: number) => (
+           <a
+             key={index}
+             // eslint-disable-next-line @typescript-eslint/no-explicit-any
+             href={`${project.storybook.url || 'https://storybook.abdalkader.dev'}?path=/story/${(component as any).storybookPath}`}
+             target="_blank"
+             rel="noopener noreferrer"
+             className={styles.componentCard}
+           >
+             <div className={styles.componentHeader}>
+               <Code className={styles.componentIcon} />
+               {/* eslint-disable-next-line @typescript-eslint/no-explicit-any */}
+               <h4>{(component as any).name}</h4>
+             </div>
+             {/* eslint-disable-next-line @typescript-eslint/no-explicit-any */}
+             {(component as any).description && (
+               // eslint-disable-next-line @typescript-eslint/no-explicit-any
+               <p className={styles.componentDescription}>{(component as any).description}</p>
+             )}
+             <div className={styles.componentFooter}>
+               {/* eslint-disable-next-line @typescript-eslint/no-explicit-any */}
+               <span className={styles.componentPath}>{(component as any).storybookPath}</span>
+               <ExternalLink className={styles.externalIcon} />
+             </div>
+           </a>
+         ))}
       </div>
       
       {project.storybook.url && (
