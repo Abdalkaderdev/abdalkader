@@ -109,16 +109,55 @@
     },
     "links": [
       {
-        "label": "Portfolio",
-        "href": "https://abdalkader.dev"
+        "label": "Product",
+        "items": [
+          {
+            "label": "Portfolio",
+            "href": "https://abdalkader.dev"
+          },
+          {
+            "label": "Blog",
+            "href": "https://blog.abdalkader.dev"
+          },
+          {
+            "label": "Components",
+            "href": "https://storybook.abdalkader.dev"
+          }
+        ]
       },
       {
-        "label": "Blog",
-        "href": "https://blog.abdalkader.dev"
+        "label": "Resources",
+        "items": [
+          {
+            "label": "Documentation",
+            "href": "https://docs.abdalkader.dev"
+          },
+          {
+            "label": "API Reference",
+            "href": "https://docs.abdalkader.dev/api"
+          },
+          {
+            "label": "Design System",
+            "href": "https://docs.abdalkader.dev/design-system"
+          }
+        ]
       },
       {
-        "label": "Components",
-        "href": "https://storybook.abdalkader.dev"
+        "label": "Company",
+        "items": [
+          {
+            "label": "GitHub",
+            "href": "https://github.com/Abdalkaderdev"
+          },
+          {
+            "label": "LinkedIn",
+            "href": "https://www.linkedin.com/in/abdalkaderdev"
+          },
+          {
+            "label": "Contact",
+            "href": "mailto:hello@abdalkader.dev"
+          }
+        ]
       }
     ]
   },
