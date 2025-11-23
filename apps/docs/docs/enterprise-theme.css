@@ -1,0 +1,478 @@
+/**
+ * Enterprise-Grade Documentation Theme
+ * Transforms docs.abdalkader.dev into a world-class documentation platform
+ * Inspired by Stripe, Vercel, and Linear documentation systems
+ */
+
+/* ===================================
+   FONT SYSTEM & TYPOGRAPHY
+   =================================== */
+
+/* Enhanced font loading with fallbacks */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+
+@font-face {
+  font-family: 'PPNeueMontreal-Regular';
+  src: url('/fonts/PPNeueMontreal-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'PPNeueMontreal-Medium';
+  src: url('/fonts/PPNeueMontreal-Medium.woff2') format('woff2');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'PPNeueMontreal-Bold';
+  src: url('/fonts/PPNeueMontreal-Bold.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Typography scale - inspired by Vercel's system */
+:root {
+  /* Brand Colors - Portfolio exact match */
+  --brand-primary: #f44e00;
+  --brand-primary-light: #fa7300;
+  --brand-primary-dark: #e64500;
+  --brand-primary-dim: rgba(244, 78, 0, 0.1);
+  --brand-primary-dim-hover: rgba(244, 78, 0, 0.15);
+  
+  /* Neutral palette */
+  --neutral-50: #fafafa;
+  --neutral-100: #f5f5f5;
+  --neutral-200: #e5e5e5;
+  --neutral-300: #d4d4d4;
+  --neutral-400: #a3a3a3;
+  --neutral-500: #737373;
+  --neutral-600: #525252;
+  --neutral-700: #404040;
+  --neutral-800: #262626;
+  --neutral-900: #171717;
+  --neutral-950: #0a0a0a;
+  
+  /* Dark mode specific */
+  --dark-bg-primary: #000000;
+  --dark-bg-secondary: #111111;
+  --dark-bg-tertiary: #1a1a1a;
+  --dark-border: #2a2a2a;
+  --dark-text-primary: #f8f8f8;
+  --dark-text-secondary: #787878;
+  --dark-text-tertiary: #525252;
+  
+  /* Light mode specific */
+  --light-bg-primary: #ffffff;
+  --light-bg-secondary: #fafafa;
+  --light-bg-tertiary: #f5f5f5;
+  --light-border: #e5e5e5;
+  --light-text-primary: #171717;
+  --light-text-secondary: #525252;
+  --light-text-tertiary: #737373;
+  
+  /* Typography scale */
+  --font-family-brand: 'PPNeueMontreal-Regular', 'Inter', system-ui, -apple-system, sans-serif;
+  --font-family-brand-medium: 'PPNeueMontreal-Medium', 'Inter', system-ui, -apple-system, sans-serif;
+  --font-family-brand-bold: 'PPNeueMontreal-Bold', 'Inter', system-ui, -apple-system, sans-serif;
+  --font-family-mono: 'JetBrains Mono', 'Fira Code', 'SF Mono', Monaco, Consolas, monospace;
+  
+  /* Font sizes - fluid typography */
+  --text-xs: 0.75rem;     /* 12px */
+  --text-sm: 0.875rem;    /* 14px */
+  --text-base: 1rem;      /* 16px */
+  --text-lg: 1.125rem;    /* 18px */
+  --text-xl: 1.25rem;     /* 20px */
+  --text-2xl: 1.5rem;     /* 24px */
+  --text-3xl: 1.875rem;   /* 30px */
+  --text-4xl: 2.25rem;    /* 36px */
+  --text-5xl: 3rem;       /* 48px */
+  --text-6xl: 3.75rem;    /* 60px */
+  
+  /* Line heights */
+  --leading-tight: 1.25;
+  --leading-normal: 1.5;
+  --leading-relaxed: 1.75;
+  
+  /* Spacing scale */
+  --space-1: 0.25rem;   /* 4px */
+  --space-2: 0.5rem;    /* 8px */
+  --space-3: 0.75rem;   /* 12px */
+  --space-4: 1rem;      /* 16px */
+  --space-5: 1.25rem;   /* 20px */
+  --space-6: 1.5rem;    /* 24px */
+  --space-8: 2rem;      /* 32px */
+  --space-10: 2.5rem;   /* 40px */
+  --space-12: 3rem;     /* 48px */
+  --space-16: 4rem;     /* 64px */
+  --space-20: 5rem;     /* 80px */
+  --space-24: 6rem;     /* 96px */
+  --space-32: 8rem;     /* 128px */
+  
+  /* Border radius */
+  --radius-sm: 0.125rem;  /* 2px */
+  --radius-md: 0.375rem;  /* 6px */
+  --radius-lg: 0.5rem;    /* 8px */
+  --radius-xl: 0.75rem;   /* 12px */
+  --radius-2xl: 1rem;     /* 16px */
+  --radius-3xl: 1.5rem;   /* 24px */
+  --radius-full: 9999px;
+  
+  /* Shadows - inspired by Vercel's shadow system */
+  --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+  --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+  --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+  --shadow-2xl: 0 25px 50px -12px rgb(0 0 0 / 0.25);
+  --shadow-glow: 0 0 20px rgb(244 78 0 / 0.3);
+  
+  /* Transitions - portfolio exact match */
+  --transition-fast: 0.3s cubic-bezier(0.19, 1, 0.22, 1);
+  --transition-base: 0.8s cubic-bezier(0.19, 1, 0.22, 1);
+  --transition-slow: 1.2s cubic-bezier(0.19, 1, 0.22, 1);
+  
+  /* Z-index scale */
+  --z-dropdown: 1000;
+  --z-sticky: 1020;
+  --z-fixed: 1030;
+  --z-modal-backdrop: 1040;
+  --z-modal: 1050;
+  --z-popover: 1060;
+  --z-tooltip: 1070;
+  --z-toast: 1080;
+}
+
+/* ===================================
+   MINTLIFY THEME OVERRIDES
+   =================================== */
+
+/* Dark mode theme */
+[data-theme='dark'] {
+  --mint-bg-primary: var(--dark-bg-primary) !important;
+  --mint-bg-secondary: var(--dark-bg-secondary) !important;
+  --mint-bg-tertiary: var(--dark-bg-tertiary) !important;
+  --mint-border: var(--dark-border) !important;
+  --mint-text-primary: var(--dark-text-primary) !important;
+  --mint-text-secondary: var(--dark-text-secondary) !important;
+  --mint-text-tertiary: var(--dark-text-tertiary) !important;
+  --mint-primary: var(--brand-primary) !important;
+  --mint-primary-light: var(--brand-primary-light) !important;
+  --mint-primary-dark: var(--brand-primary-dark) !important;
+  --mint-font-family: var(--font-family-brand) !important;
+  --mint-font-family-heading: var(--font-family-brand-medium) !important;
+}
+
+/* Light mode theme */
+[data-theme='light'] {
+  --mint-bg-primary: var(--light-bg-primary) !important;
+  --mint-bg-secondary: var(--light-bg-secondary) !important;
+  --mint-bg-tertiary: var(--light-bg-tertiary) !important;
+  --mint-border: var(--light-border) !important;
+  --mint-text-primary: var(--light-text-primary) !important;
+  --mint-text-secondary: var(--light-text-secondary) !important;
+  --mint-text-tertiary: var(--light-text-tertiary) !important;
+  --mint-primary: var(--brand-primary) !important;
+  --mint-primary-light: var(--brand-primary-light) !important;
+  --mint-primary-dark: var(--brand-primary-dark) !important;
+  --mint-font-family: var(--font-family-brand) !important;
+  --mint-font-family-heading: var(--font-family-brand-medium) !important;
+}
+
+/* ===================================
+   ENHANCED COMPONENTS
+   =================================== */
+
+/* Enterprise-grade cards */
+.mint-card {
+  background: var(--mint-bg-secondary) !important;
+  border: 1px solid var(--mint-border) !important;
+  border-radius: var(--radius-xl) !important;
+  box-shadow: var(--shadow-sm) !important;
+  transition: all var(--transition-fast) !important;
+  overflow: hidden !important;
+}
+
+.mint-card:hover {
+  border-color: var(--brand-primary-dim) !important;
+  box-shadow: var(--shadow-lg) !important;
+  transform: translateY(-2px) !important;
+}
+
+/* Enhanced code blocks */
+.mint-code {
+  background: var(--mint-bg-tertiary) !important;
+  border: 1px solid var(--mint-border) !important;
+  border-radius: var(--radius-lg) !important;
+  font-family: var(--font-family-mono) !important;
+  font-size: var(--text-sm) !important;
+  line-height: var(--leading-normal) !important;
+  padding: var(--space-3) var(--space-4) !important;
+  position: relative !important;
+}
+
+/* Enhanced inline code */
+.mint-code-inline {
+  background: var(--brand-primary-dim) !important;
+  color: var(--brand-primary) !important;
+  border-radius: var(--radius-sm) !important;
+  font-family: var(--font-family-mono) !important;
+  font-size: 0.875em !important;
+  padding: 2px 6px !important;
+  font-weight: 500 !important;
+}
+
+/* Enhanced buttons */
+.mint-btn {
+  border-radius: var(--radius-lg) !important;
+  font-weight: 500 !important;
+  transition: all var(--transition-fast) !important;
+  font-family: var(--font-family-brand-medium) !important;
+}
+
+.mint-btn-primary {
+  background: var(--brand-primary) !important;
+  border-color: var(--brand-primary) !important;
+  color: white !important;
+  box-shadow: var(--shadow-sm) !important;
+}
+
+.mint-btn-primary:hover {
+  background: var(--brand-primary-light) !important;
+  border-color: var(--brand-primary-light) !important;
+  box-shadow: var(--shadow-md) !important;
+  transform: translateY(-1px) !important;
+}
+
+/* Enhanced navigation */
+.mint-sidebar {
+  border-right: 1px solid var(--mint-border) !important;
+  background: var(--mint-bg-primary) !important;
+}
+
+.mint-sidebar-item {
+  border-radius: var(--radius-md) !important;
+  margin: 2px 0 !important;
+  transition: all var(--transition-fast) !important;
+}
+
+.mint-sidebar-item:hover {
+  background: var(--brand-primary-dim) !important;
+}
+
+.mint-sidebar-item.active {
+  background: var(--brand-primary) !important;
+  color: white !important;
+  font-weight: 500 !important;
+}
+
+/* Enhanced headers */
+.mint-h1 {
+  font-family: var(--font-family-brand-bold) !important;
+  font-size: var(--text-4xl) !important;
+  font-weight: 700 !important;
+  line-height: var(--leading-tight) !important;
+  letter-spacing: -0.025em !important;
+  margin-bottom: var(--space-6) !important;
+}
+
+.mint-h2 {
+  font-family: var(--font-family-brand-bold) !important;
+  font-size: var(--text-3xl) !important;
+  font-weight: 600 !important;
+  line-height: var(--leading-tight) !important;
+  letter-spacing: -0.025em !important;
+  margin-top: var(--space-12) !important;
+  margin-bottom: var(--space-4) !important;
+}
+
+.mint-h3 {
+  font-family: var(--font-family-brand-medium) !important;
+  font-size: var(--text-2xl) !important;
+  font-weight: 600 !important;
+  line-height: var(--leading-tight) !important;
+  margin-top: var(--space-8) !important;
+  margin-bottom: var(--space-3) !important;
+}
+
+/* ===================================
+   CUSTOM ENTERPRISE COMPONENTS
+   =================================== */
+
+/* Hero section styling */
+.enterprise-hero {
+  background: linear-gradient(135deg, var(--mint-bg-primary) 0%, var(--mint-bg-secondary) 100%) !important;
+  border: 1px solid var(--mint-border) !important;
+  border-radius: var(--radius-2xl) !important;
+  padding: var(--space-12) !important;
+  margin-bottom: var(--space-12) !important;
+  text-align: center !important;
+  position: relative !important;
+  overflow: hidden !important;
+}
+
+.enterprise-hero::before {
+  content: '' !important;
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  height: 2px !important;
+  background: linear-gradient(90deg, var(--brand-primary) 0%, var(--brand-primary-light) 50%, var(--brand-primary) 100%) !important;
+  animation: shimmer 2s ease-in-out infinite !important;
+}
+
+@keyframes shimmer {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+/* Feature grid */
+.enterprise-feature-grid {
+  display: grid !important;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)) !important;
+  gap: var(--space-6) !important;
+  margin: var(--space-12) 0 !important;
+}
+
+.enterprise-feature-card {
+  background: var(--mint-bg-secondary) !important;
+  border: 1px solid var(--mint-border) !important;
+  border-radius: var(--radius-xl) !important;
+  padding: var(--space-6) !important;
+  transition: all var(--transition-fast) !important;
+  position: relative !important;
+}
+
+.enterprise-feature-card:hover {
+  border-color: var(--brand-primary) !important;
+  box-shadow: var(--shadow-lg) !important;
+  transform: translateY(-4px) !important;
+}
+
+.enterprise-feature-card::before {
+  content: '' !important;
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  height: 3px !important;
+  background: var(--brand-primary) !important;
+  border-radius: var(--radius-xl) var(--radius-xl) 0 0 !important;
+  opacity: 0 !important;
+  transition: opacity var(--transition-fast) !important;
+}
+
+.enterprise-feature-card:hover::before {
+  opacity: 1 !important;
+}
+
+/* Call-to-action sections */
+.enterprise-cta {
+  background: linear-gradient(135deg, var(--brand-primary-dim) 0%, var(--brand-primary-dim-hover) 100%) !important;
+  border: 1px solid var(--brand-primary) !important;
+  border-radius: var(--radius-2xl) !important;
+  padding: var(--space-8) var(--space-12) !important;
+  margin: var(--space-16) 0 !important;
+  text-align: center !important;
+}
+
+/* Enhanced code examples */
+.enterprise-code-example {
+  background: var(--mint-bg-tertiary) !important;
+  border: 1px solid var(--mint-border) !important;
+  border-radius: var(--radius-xl) !important;
+  overflow: hidden !important;
+  margin: var(--space-6) 0 !important;
+}
+
+.enterprise-code-example-header {
+  background: var(--mint-bg-secondary) !important;
+  border-bottom: 1px solid var(--mint-border) !important;
+  padding: var(--space-3) var(--space-4) !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+}
+
+.enterprise-code-example-title {
+  font-family: var(--font-family-brand-medium) !important;
+  font-size: var(--text-sm) !important;
+  color: var(--mint-text-secondary) !important;
+}
+
+/* Copy button styling */
+.copy-button {
+  background: var(--brand-primary-dim) !important;
+  border: 1px solid var(--brand-primary) !important;
+  border-radius: var(--radius-md) !important;
+  color: var(--brand-primary) !important;
+  font-size: var(--text-xs) !important;
+  font-family: var(--font-family-brand-medium) !important;
+  padding: var(--space-2) var(--space-3) !important;
+  cursor: pointer !important;
+  transition: all var(--transition-fast) !important;
+}
+
+.copy-button:hover {
+  background: var(--brand-primary) !important;
+  color: white !important;
+}
+
+/* ===================================
+   RESPONSIVE DESIGN
+   =================================== */
+
+@media (max-width: 768px) {
+  :root {
+    --space-12: 2rem;
+    --space-16: 3rem;
+    --space-20: 4rem;
+    --text-4xl: 2rem;
+    --text-3xl: 1.75rem;
+  }
+  
+  .enterprise-hero {
+    padding: var(--space-8) !important;
+  }
+  
+  .enterprise-feature-grid {
+    grid-template-columns: 1fr !important;
+    gap: var(--space-4) !important;
+  }
+}
+
+/* ===================================
+   ACCESSIBILITY & MOTION
+   =================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Focus styles for accessibility */
+.mint-btn:focus-visible,
+.mint-sidebar-item:focus-visible,
+.copy-button:focus-visible {
+  outline: 2px solid var(--brand-primary) !important;
+  outline-offset: 2px !important;
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .mint-card,
+  .enterprise-feature-card {
+    border-width: 2px !important;
+  }
+  
+  .mint-btn-primary {
+    border: 2px solid currentColor !important;
+  }
+}
