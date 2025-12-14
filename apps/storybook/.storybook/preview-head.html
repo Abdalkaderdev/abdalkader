@@ -1,0 +1,137 @@
+<style>
+  /* Load portfolio fonts for preview */
+  @font-face {
+    font-family: 'PPNeueMontreal-Regular';
+    src: url('/fonts/PPNeueMontreal-Regular.woff2') format('woff2');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+  }
+
+  @font-face {
+    font-family: 'PPNeueMontreal-Medium';
+    src: url('/fonts/PPNeueMontreal-Medium.woff2') format('woff2');
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+  }
+
+  /* Portfolio design system CSS variables */
+  :root {
+    /* Colors - EXACT portfolio values */
+    --color-primary: #f44e00;
+    --color-primary-light: #fa7300;
+    --color-primary-gradient: linear-gradient(to bottom, #f44e00, #fa7300);
+    --color-white: #f8f8f8;
+    --color-black: #000;
+    --color-text-dark: #131313;
+    --color-text-grey: #787878;
+    --color-navigation: rgba(45, 45, 45, 0.35);
+    --color-border: rgb(37, 37, 37);
+    --color-bg-primary: #000;
+    --color-bg-secondary: #0a0a0a;
+    --color-text-primary: #f8f8f8;
+    --color-text-secondary: #787878;
+
+    /* Animation - EXACT portfolio values */
+    --transition-smooth: 0.8s cubic-bezier(0.19, 1, 0.22, 1);
+    --transition-fast: 0.3s ease-in-out;
+    --easing-smooth: cubic-bezier(0.19, 1, 0.22, 1);
+  }
+
+  /* Global body styling */
+  body,
+  #storybook-root,
+  #storybook-docs {
+    background: var(--color-bg-primary) !important;
+    color: var(--color-white) !important;
+    font-family: 'PPNeueMontreal-Regular', -apple-system, BlinkMacSystemFont, sans-serif !important;
+    -webkit-font-smoothing: antialiased !important;
+    -moz-osx-font-smoothing: grayscale !important;
+  }
+
+  /* Selection styling */
+  ::selection {
+    color: var(--color-black) !important;
+    background-color: var(--color-primary) !important;
+  }
+
+  /* Scrollbar styling */
+  ::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: var(--color-primary);
+    border-radius: 5px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--color-primary-light);
+  }
+
+  /* Focus styles */
+  *:focus-visible {
+    outline: 2px dashed var(--color-primary) !important;
+    outline-offset: 3px !important;
+  }
+
+  /* Docs page styling */
+  .sbdocs {
+    background: var(--color-bg-primary) !important;
+    color: var(--color-white) !important;
+  }
+
+  .sbdocs-wrapper {
+    background: var(--color-bg-primary) !important;
+  }
+
+  .sbdocs-content {
+    background: var(--color-bg-primary) !important;
+    max-width: 1200px !important;
+  }
+
+  .sbdocs h1,
+  .sbdocs h2,
+  .sbdocs h3,
+  .sbdocs h4,
+  .sbdocs h5,
+  .sbdocs h6 {
+    color: var(--color-white) !important;
+    font-family: 'PPNeueMontreal-Medium', sans-serif !important;
+  }
+
+  .sbdocs p,
+  .sbdocs li {
+    color: var(--color-text-secondary) !important;
+  }
+
+  .sbdocs a {
+    color: var(--color-primary) !important;
+  }
+
+  .sbdocs a:hover {
+    color: var(--color-primary-light) !important;
+  }
+
+  .sbdocs code {
+    background: var(--color-bg-secondary) !important;
+    color: var(--color-primary) !important;
+    border: 1px solid var(--color-border) !important;
+  }
+
+  .sbdocs pre {
+    background: var(--color-bg-secondary) !important;
+    border: 1px solid var(--color-border) !important;
+  }
+
+  /* Story canvas */
+  .sb-show-main {
+    background: var(--color-bg-primary) !important;
+  }
+</style>

@@ -43,5 +43,5 @@ export interface AIExplanation {
   model: string;
   timestamp: number;
   languageId: string;
-  type: 'history' | 'code' | 'comparison' | 'paradigm' | 'question';
+  type: 'history' | 'code' | 'comparison' | 'paradigm' | 'question' | 'era';
 }

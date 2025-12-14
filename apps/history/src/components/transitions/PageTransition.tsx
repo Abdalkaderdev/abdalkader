@@ -28,8 +28,8 @@ const pageVariants = {
 };
 
 const pageTransition = {
-  type: 'tween',
-  ease: [0.19, 1, 0.22, 1],
+  type: 'tween' as const,
+  ease: [0.19, 1, 0.22, 1] as const,
   duration: 0.8,
 };
 
@@ -49,8 +49,8 @@ const overlayVariants = {
 };
 
 const overlayTransition = {
-  type: 'tween',
-  ease: [0.19, 1, 0.22, 1],
+  type: 'tween' as const,
+  ease: [0.19, 1, 0.22, 1] as const,
   duration: 0.6,
 };
 

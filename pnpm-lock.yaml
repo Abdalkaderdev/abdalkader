@@ -119,8 +119,8 @@ importers:
   apps/history:
     dependencies:
       '@abdalkader/ui':
-        specifier: file:../../packages/ui
-        version: file:packages/ui(postcss@8.5.6)(react-dom@18.3.1)(react@18.3.1)
+        specifier: workspace:*
+        version: link:../../packages/ui
       '@gsap/react':
         specifier: ^2.1.2
         version: 2.1.2(gsap@3.13.0)(react@18.3.1)

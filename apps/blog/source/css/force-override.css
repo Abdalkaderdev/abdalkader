@@ -1,61 +1,99 @@
-/* Force brand colors - highest specificity */
+/* Force brand colors - highest specificity - EXACT PORTFOLIO VALUES */
 
 html, body {
-  background-color: #0d0d0d !important;
-  color: #e5e2df !important;
+  background-color: #000 !important;
+  color: #f8f8f8 !important;
 }
 
 * {
-  color: #e5e2df !important;
+  color: #f8f8f8 !important;
 }
 
 /* All containers */
 .container, .content, .section, .card, .widget, .box, .article, .navbar, .footer {
-  background-color: #0d0d0d !important;
-  color: #e5e2df !important;
+  background-color: #000 !important;
+  color: #f8f8f8 !important;
 }
 
 .card, .widget, .box {
-  background-color: #121212 !important;
-  border: 1px solid #242424 !important;
+  background-color: #0a0a0a !important;
+  border: 1px solid rgb(37, 37, 37) !important;
 }
 
-/* All links and accents */
+/* All links and accents - EXACT PORTFOLIO ORANGE */
 a, .tag, .button, .btn, .is-primary, .has-text-primary, .is-link, .has-text-link {
-  color: #ff7a25 !important;
+  color: #f44e00 !important;
 }
 
 .tag, .button, .btn, .is-primary {
-  background-color: #ff7a25 !important;
-  color: #ffffff !important;
+  background-color: #f44e00 !important;
+  color: #000 !important;
 }
 
 /* Override any yellow/info colors */
 .is-info, .has-background-info, .is-warning, .has-background-warning {
-  background-color: #ff7a25 !important;
-  color: #ffffff !important;
+  background-color: #f44e00 !important;
+  color: #000 !important;
 }
 
 .has-text-info, .has-text-warning {
-  color: #ff7a25 !important;
+  color: #f44e00 !important;
 }
 
 /* Navigation */
 .navbar, .navbar-menu, .navbar-brand, .navbar-item {
-  background-color: #121212 !important;
-  color: #e5e2df !important;
+  background-color: #0a0a0a !important;
+  color: #f8f8f8 !important;
 }
 
 .navbar-item:hover {
-  color: #ff7a25 !important;
+  color: #f44e00 !important;
+  text-shadow: 0 0 20px rgba(244, 78, 0, 0.5) !important;
 }
 
 /* Headings */
 h1, h2, h3, h4, h5, h6 {
-  color: #e5e2df !important;
+  color: #f8f8f8 !important;
 }
 
 /* Meta text */
 .article-meta, .post-meta, .text-muted, .muted, small {
-  color: #888888 !important;
+  color: #787878 !important;
+}
+
+/* Hover effects */
+.card:hover, .widget:hover, .article:hover, .box:hover {
+  border-color: #f44e00 !important;
+  box-shadow: 0 0 30px rgba(244, 78, 0, 0.2) !important;
+}
+
+.button:hover, .btn:hover, .tag:hover {
+  background-color: #fa7300 !important;
+  box-shadow: 0 0 30px rgba(244, 78, 0, 0.5) !important;
+}
+
+a:hover {
+  color: #fa7300 !important;
+  text-shadow: 0 0 15px rgba(244, 78, 0, 0.4) !important;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar-thumb {
+  background: #f44e00 !important;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #fa7300 !important;
+}
+
+/* Selection */
+::selection {
+  background-color: #f44e00 !important;
+  color: #000 !important;
+}
+
+/* Focus states */
+:focus-visible {
+  outline: 2px dashed #f44e00 !important;
+  outline-offset: 3px !important;
 }

@@ -80,7 +80,10 @@ class AnalyticsManager {
 
   constructor() {
     this.sessionId = this.generateSessionId();
-    this.initialize();
+    // Only initialize on client side
+    if (typeof window !== 'undefined') {
+      this.initialize();
+    }
   }
 
   private generateSessionId(): string {
@@ -171,6 +174,9 @@ class AnalyticsManager {
   }
 
   public trackEvent(type: AnalyticsEvent['type'], data: Record<string, any> = {}): void {
+    // Skip on server side
+    if (typeof window === 'undefined') return;
+
     const event: AnalyticsEvent = {
       id: `event_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`,
       type,

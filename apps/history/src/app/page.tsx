@@ -1,5 +1,8 @@
 'use client';
 
+// Force dynamic rendering to avoid SSR issues with window-dependent code
+export const dynamic = 'force-dynamic';
+
 import { useState, useEffect } from 'react';
 import { Language } from '@/lib/types/language';
 import { HistoricalTimeline } from '@/components/timeline/HistoricalTimeline';

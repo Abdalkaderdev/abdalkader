@@ -51,11 +51,13 @@ export const EnhancedLanguageFamilyTree: React.FC<EnhancedLanguageFamilyTreeProp
 
     // Group languages by paradigm
     const paradigmGroups = languages.reduce((acc, lang) => {
-      const paradigm = lang.paradigm || 'Unknown';
-      if (!acc[paradigm]) {
-        acc[paradigm] = [];
-      }
-      acc[paradigm].push(lang);
+      const paradigms = lang.paradigm || ['Unknown'];
+      paradigms.forEach(paradigm => {
+        if (!acc[paradigm]) {
+          acc[paradigm] = [];
+        }
+        acc[paradigm].push(lang);
+      });
       return acc;
     }, {} as Record<string, Language[]>);
 
@@ -70,7 +72,7 @@ export const EnhancedLanguageFamilyTree: React.FC<EnhancedLanguageFamilyTreeProp
         id: lang.id,
         name: lang.name,
         year: lang.year,
-        paradigm: lang.paradigm || 'Unknown',
+        paradigm: lang.paradigm?.[0] || 'Unknown',
         creator: lang.creator || 'Unknown',
       })),
     }));

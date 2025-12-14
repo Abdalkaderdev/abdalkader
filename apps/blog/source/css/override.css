@@ -1,4 +1,4 @@
-/* Force override Icarus default styles */
+/* Force override Icarus default styles - Portfolio Color System */
 
 /* Override body and html */
 html, body {
@@ -13,23 +13,24 @@ html, body {
 
 /* Override background colors */
 .navbar, .card, .widget, .article {
-  background-color: #111111 !important;
+  background-color: #0a0a0a !important;
   border-color: rgb(37, 37, 37) !important;
 }
 
-/* Override primary colors */
-.button, .tag, .pagination .current, a:hover {
-  background-color: #ff6b35 !important;
+/* Override primary colors - EXACT PORTFOLIO ORANGE */
+.button, .tag, .pagination .current {
+  background-color: #f44e00 !important;
   color: #000 !important;
 }
 
 /* Override links */
 a {
-  color: #ff6b35 !important;
+  color: #f44e00 !important;
 }
 
 a:hover {
-  color: #ff8c42 !important;
+  color: #fa7300 !important;
+  text-shadow: 0 0 15px rgba(244, 78, 0, 0.4) !important;
 }
 
 /* Override navbar */
@@ -40,19 +41,27 @@ a:hover {
 
 /* Override sidebar */
 .widget-title {
-  background-color: #111111 !important;
+  background-color: #0a0a0a !important;
   color: #f8f8f8 !important;
 }
 
 /* Override code blocks */
 pre, code {
-  background-color: #1a1a1a !important;
+  background-color: #0a0a0a !important;
+  color: #f8f8f8 !important;
+}
+
+code {
+  color: #f44e00 !important;
+}
+
+pre code {
   color: #f8f8f8 !important;
 }
 
 /* Override footer */
 .footer {
-  background-color: #111111 !important;
+  background-color: #0a0a0a !important;
   color: #787878 !important;
 }
 
@@ -71,18 +80,53 @@ pre, code {
   color: #787878 !important;
 }
 
-/* Override borders and gradients */
+/* Override borders and gradients - EXACT PORTFOLIO GRADIENT */
 .card::before, .article::before, .widget::before {
-  background: linear-gradient(90deg, #ff6b35, #ff8c42) !important;
+  background: linear-gradient(to bottom, #f44e00, #fa7300) !important;
 }
 
 /* Override scrollbar */
 ::-webkit-scrollbar-thumb {
-  background: #ff6b35 !important;
+  background: #f44e00 !important;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #fa7300 !important;
 }
 
 /* Override selection */
 ::selection {
-  background-color: #ff6b35 !important;
+  background-color: #f44e00 !important;
   color: #000 !important;
+}
+
+/* Card and widget hover effects */
+.card:hover, .widget:hover, .article:hover {
+  border-color: #f44e00 !important;
+  box-shadow: 0 0 30px rgba(244, 78, 0, 0.2) !important;
+}
+
+/* Button hover effects */
+.button:hover, .btn:hover {
+  background-color: #fa7300 !important;
+  box-shadow: 0 0 30px rgba(244, 78, 0, 0.5) !important;
+  transform: translateY(-2px) !important;
+}
+
+/* Tag hover effects */
+.tag:hover {
+  background-color: #fa7300 !important;
+  box-shadow: 0 0 20px rgba(244, 78, 0, 0.5) !important;
+}
+
+/* Focus states */
+a:focus-visible, button:focus-visible, input:focus-visible {
+  outline: 2px dashed #f44e00 !important;
+  outline-offset: 3px !important;
+}
+
+/* Input focus */
+input:focus, textarea:focus, select:focus {
+  border-color: #f44e00 !important;
+  box-shadow: 0 0 20px rgba(244, 78, 0, 0.3) !important;
 }

@@ -150,13 +150,13 @@ export function AnimatedLanguageFamilyTree() {
       .append('path')
       .attr('class', 'link')
       .attr('d', d => {
-        const source = d.source as TreeNode;
-        const target = d.target as TreeNode;
-        return `M ${source.y + 150} ${source.x + 100} L ${target.y + 150} ${target.x + 100}`;
+        const source = d.source as unknown as TreeNode;
+        const target = d.target as unknown as TreeNode;
+        return `M ${(source.y ?? 0) + 150} ${(source.x ?? 0) + 100} L ${(target.y ?? 0) + 150} ${(target.x ?? 0) + 100}`;
       })
       .attr('fill', 'none')
       .attr('stroke', (d: any) => {
-        const target = d.target as TreeNode;
+        const target = d.target as unknown as TreeNode;
         return target.data.color || '#64748b';
       })
       .attr('stroke-width', 2)
@@ -184,7 +184,7 @@ export function AnimatedLanguageFamilyTree() {
       .enter()
       .append('g')
       .attr('class', 'node')
-      .attr('transform', d => `translate(${(d as TreeNode).y + 150},${(d as TreeNode).x + 100})`)
+      .attr('transform', d => `translate(${((d as unknown as TreeNode).y ?? 0) + 150},${((d as unknown as TreeNode).x ?? 0) + 100})`)
       .style('cursor', 'pointer')
       .style('opacity', 0);
 
@@ -380,7 +380,7 @@ export function AnimatedLanguageFamilyTree() {
               exit={{ opacity: 0, y: 10 }}
               className="fixed bottom-8 left-1/2 transform -translate-x-1/2 z-40 pointer-events-none"
             >
-              <Card className="max-w-md bg-gray-900 border-2" style={{ borderColor: hoveredLanguage.color }}>
+              <div className="max-w-md bg-gray-900 border-2 rounded-lg" style={{ borderColor: hoveredLanguage.color }}>
                 <div className="p-4">
                   <h3 className="text-xl font-bold mb-2" style={{ color: hoveredLanguage.color }}>
                     {hoveredLanguage.name}
@@ -394,7 +394,7 @@ export function AnimatedLanguageFamilyTree() {
                     ))}
                   </div>
                 </div>
-              </Card>
+              </div>
             </motion.div>
           )}
         </AnimatePresence>
