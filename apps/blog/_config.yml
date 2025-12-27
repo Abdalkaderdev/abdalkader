@@ -122,10 +122,11 @@ related_posts:
     isExcerpt: false
 
 # Algolia Search
+# NOTE: Admin API key should be set via ALGOLIA_ADMIN_API_KEY environment variable
+# The search-only apiKey is safe to include as it only allows search operations
 algolia:
   applicationID: '12WCJTIDSP'
   apiKey: 'd5276da306cd5167cb2f806ab031b302'
-  adminApiKey: 'ac2a2b4373dd07c932ababda28e97898'
   indexName: 'abdalkader-blog'
   chunkSize: 5000
   fields:

@@ -4,6 +4,7 @@ import Button from '@/components/Button';
 import { splitText } from '@/utils/textUtils';
 import { useEffect, useRef } from 'react';
 import { gsap } from '@/libs/gsap';
+import { isReducedMotion } from '@/utils/motion';
 
 export default function BookCallSection() {
 
@@ -13,6 +14,11 @@ export default function BookCallSection() {
     const btnWrapperRef = useRef<HTMLDivElement | null>(null);
 
     useEffect(() => {
+        // Skip animations for users who prefer reduced motion
+        if (isReducedMotion()) {
+            return;
+        }
+
         const ctx = gsap.context(() => {
             // Create a timeline for the text div animation
             const tl = gsap.timeline({

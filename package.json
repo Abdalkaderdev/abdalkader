@@ -12,9 +12,11 @@
     "build:history": "turbo run build --filter=@abdalkader/history",
     "build:ui": "turbo run build --filter=@abdalkader/ui",
     "lint": "turbo run lint",
+    "lint:security": "node scripts/security-scan.js",
     "test": "turbo run test",
     "typecheck": "turbo run typecheck",
-    "clean": "turbo run clean && rm -rf node_modules"
+    "clean": "turbo run clean && rm -rf node_modules",
+    "precommit": "pnpm lint:security && pnpm lint"
   },
   "devDependencies": {
     "next": "14.2.25",

@@ -38,11 +38,11 @@ const FOOTER_LINKS = {
 };
 
 const ECOSYSTEM_SITES = [
-  { name: 'Portfolio', url: 'https://abdalkader.dev', icon: '👨‍💻' },
-  { name: 'Storybook', url: 'https://storybook.abdalkader.dev', icon: '📚' },
-  { name: 'Documentation', url: 'https://docs.abdalkader.dev', icon: '📖' },
-  { name: 'Blog', url: 'https://blog.abdalkader.dev', icon: '✍️' },
-  { name: 'Programming Museum', url: 'https://history.abdalkader.dev', icon: '🏛️' },
+  { name: 'Portfolio', url: 'https://abdalkader.dev' },
+  { name: 'Storybook', url: 'https://storybook.abdalkader.dev' },
+  { name: 'Documentation', url: 'https://docs.abdalkader.dev' },
+  { name: 'Blog', url: 'https://blog.abdalkader.dev' },
+  { name: 'Programming Museum', url: 'https://history.abdalkader.dev' },
 ];
 
 const SOCIAL_LINKS = [
@@ -96,7 +96,6 @@ export function GlobalFooter({ currentSite, className = '' }: GlobalFooterProps)
                     rel="noopener noreferrer"
                     className="global-footer-link"
                   >
-                    <span className="global-footer-link-icon-text">{site.icon}</span>
                     {site.name}
                     <ExternalLink className="global-footer-link-icon" />
                   </a>

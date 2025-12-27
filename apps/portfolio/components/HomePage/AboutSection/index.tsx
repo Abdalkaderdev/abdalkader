@@ -1,5 +1,6 @@
 import { useEffect, useRef } from "react";
 import { gsap } from "@/libs/gsap";
+import { isReducedMotion } from "@/utils/motion";
 import styles from "./AboutSection.module.scss";
 import Button from "@/components/Button";
 import Tag from "@/components/Tag";
@@ -10,6 +11,17 @@ export default function AboutSection() {
     const btnWrapperRef = useRef<HTMLDivElement | null>(null);
 
     useEffect(() => {
+        // Respect reduced motion preference
+        if (isReducedMotion()) {
+            // Just show everything without animation
+            const aboutText = aboutTextRef.current;
+            if (aboutText) {
+                const letters = aboutText.querySelectorAll(".letter");
+                gsap.set(letters, { opacity: 1 });
+            }
+            return;
+        }
+
         const aboutText = aboutTextRef.current;
         const tagline = taglineRef.current;
         const buttonWrapper = btnWrapperRef.current;

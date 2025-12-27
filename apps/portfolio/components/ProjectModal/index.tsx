@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef, useCallback } from 'react';
 import ReactDOM from 'react-dom';
 import styles from './ProjectModal.module.scss';
 import { isReducedMotion } from '@/utils/motion';
@@ -25,21 +25,68 @@ type ProjectModalProps = {
     };
 };
 
+// Focus trap utility
+const FOCUSABLE_SELECTORS = 'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])';
+
 export default function ProjectModal({ isOpen, onClose, project }: ProjectModalProps) {
     const { title, category, overview, live, github, slug, problemSolved, technicalChallenge, resultsAchieved } = project;
     const [copied, setCopied] = useState(false);
+    const modalRef = useRef<HTMLDivElement>(null);
+    const previousActiveElement = useRef<Element | null>(null);
+
+    // Focus trap handler
+    const handleTabKey = useCallback((e: KeyboardEvent) => {
+        if (!modalRef.current) return;
+
+        const focusableElements = modalRef.current.querySelectorAll(FOCUSABLE_SELECTORS);
+        const firstElement = focusableElements[0] as HTMLElement;
+        const lastElement = focusableElements[focusableElements.length - 1] as HTMLElement;
+
+        if (e.shiftKey) {
+            if (document.activeElement === firstElement) {
+                e.preventDefault();
+                lastElement?.focus();
+            }
+        } else {
+            if (document.activeElement === lastElement) {
+                e.preventDefault();
+                firstElement?.focus();
+            }
+        }
+    }, []);
+
     useEffect(() => {
         if (!isOpen) return;
+
+        // Store the currently focused element to restore later
+        previousActiveElement.current = document.activeElement;
+
         const handleKeyDown = (e: KeyboardEvent) => {
             if (e.key === 'Escape') onClose();
+            if (e.key === 'Tab') handleTabKey(e);
         };
+
         document.addEventListener('keydown', handleKeyDown);
         document.body.style.overflow = 'hidden';
+
+        // Focus the first focusable element in the modal
+        const timer = setTimeout(() => {
+            if (modalRef.current) {
+                const firstFocusable = modalRef.current.querySelector(FOCUSABLE_SELECTORS) as HTMLElement;
+                firstFocusable?.focus();
+            }
+        }, 50);
+
         return () => {
             document.removeEventListener('keydown', handleKeyDown);
             document.body.style.overflow = '';
+            clearTimeout(timer);
+            // Restore focus to the previously focused element
+            if (previousActiveElement.current instanceof HTMLElement) {
+                previousActiveElement.current.focus();
+            }
         };
-    }, [isOpen, onClose]);
+    }, [isOpen, onClose, handleTabKey]);
 
     if (!isOpen) return null;
     const root = typeof window !== 'undefined' ? document.body : null;
@@ -60,12 +107,16 @@ export default function ProjectModal({ isOpen, onClose, project }: ProjectModalP
     const content = (
         <div className={styles.backdrop} onClick={onClose}>
             <div
+                ref={modalRef}
                 className={styles.modal}
                 onClick={(e) => e.stopPropagation()}
                 style={isReducedMotion() ? { transition: 'none' } : undefined}
+                role="dialog"
+                aria-modal="true"
+                aria-labelledby="modal-title"
             >
                 <div className={styles.header}>
-                    <h3>{title}</h3>
+                    <h3 id="modal-title">{title}</h3>
                     <button className={styles.close} onClick={onClose} aria-label="Close">×</button>
                 </div>
                 <div className={styles.meta}>

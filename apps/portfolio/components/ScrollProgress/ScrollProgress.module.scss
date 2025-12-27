@@ -1,0 +1,30 @@
+@import '../../styles/variables.scss';
+
+.progressContainer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  z-index: 9999;
+  background: rgba(255, 255, 255, 0.1);
+  pointer-events: none;
+}
+
+.progressBar {
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    $primary 0%,
+    lighten($primary, 10%) 50%,
+    $primary 100%
+  );
+  transform-origin: 0%;
+  box-shadow: 0 0 10px rgba($primary, 0.5);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .progressContainer {
+    display: none;
+  }
+}

@@ -2,6 +2,7 @@ import { useEffect, useRef } from 'react';
 import ServiceCard from './card';
 import styles from './ServiceSection.module.scss';
 import { gsap, ScrollTrigger } from '@/libs/gsap';
+import { isReducedMotion } from '@/utils/motion';
 import Tag from '@/components/Tag';
 import Button from '@/components/Button';
 import { splitText } from '@/utils/textUtils';
@@ -60,6 +61,11 @@ export default function ServiceSection() {
     const btnWrapperRef = useRef<HTMLDivElement | null>(null);
 
     useEffect(() => {
+        // Skip animations for users who prefer reduced motion
+        if (isReducedMotion()) {
+            return;
+        }
+
         // Heading animation timeline
         const headingTimeline = gsap.timeline({
             scrollTrigger: {

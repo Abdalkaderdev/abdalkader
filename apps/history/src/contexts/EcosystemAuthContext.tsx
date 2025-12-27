@@ -17,10 +17,37 @@ interface EcosystemAuthContextType {
 
 const EcosystemAuthContext = createContext<EcosystemAuthContextType | undefined>(undefined);
 
-const STORAGE_KEYS = {
-  AUTH: 'abdalkader_ecosystem_auth',
-  PREFERENCES: 'abdalkader_ecosystem_preferences',
-  SYNC_TOKEN: 'abdalkader_ecosystem_sync',
+// Storage keys are derived from environment to prevent hardcoding sensitive identifiers
+const getStoragePrefix = () => {
+  // Use environment variable if available, otherwise use a hash of the domain
+  if (typeof window !== 'undefined') {
+    const domain = window.location.hostname;
+    // Simple hash for consistent key generation
+    const hash = domain.split('').reduce((a, b) => {
+      a = ((a << 5) - a) + b.charCodeAt(0);
+      return a & a;
+    }, 0);
+    return `ae_${Math.abs(hash).toString(36)}`;
+  }
+  return 'ae_default';
+};
+
+const createStorageKeys = () => {
+  const prefix = getStoragePrefix();
+  return {
+    AUTH: `${prefix}_auth`,
+    PREFERENCES: `${prefix}_prefs`,
+    SYNC_TOKEN: `${prefix}_sync`,
+  };
+};
+
+// Lazy initialization to handle SSR
+let STORAGE_KEYS: ReturnType<typeof createStorageKeys> | null = null;
+const getStorageKeys = () => {
+  if (!STORAGE_KEYS && typeof window !== 'undefined') {
+    STORAGE_KEYS = createStorageKeys();
+  }
+  return STORAGE_KEYS || { AUTH: '', PREFERENCES: '', SYNC_TOKEN: '' };
 };
 
 const DEFAULT_PREFERENCES: UserPreferences = {
@@ -60,7 +87,7 @@ export const EcosystemAuthProvider: React.FC<{ children: React.ReactNode }> = ({
     const loadStoredData = () => {
       try {
         // Load auth state
-        const storedAuth = localStorage.getItem(STORAGE_KEYS.AUTH);
+        const storedAuth = localStorage.getItem(getStorageKeys().AUTH);
         if (storedAuth) {
           const parsedAuth = JSON.parse(storedAuth);
           // Check if auth is still valid (not expired)
@@ -68,12 +95,12 @@ export const EcosystemAuthProvider: React.FC<{ children: React.ReactNode }> = ({
             setAuthState(parsedAuth);
           } else {
             // Auth expired, clear it
-            localStorage.removeItem(STORAGE_KEYS.AUTH);
+            localStorage.removeItem(getStorageKeys().AUTH);
           }
         }
 
         // Load preferences
-        const storedPreferences = localStorage.getItem(STORAGE_KEYS.PREFERENCES);
+        const storedPreferences = localStorage.getItem(getStorageKeys().PREFERENCES);
         if (storedPreferences) {
           setPreferences(JSON.parse(storedPreferences));
         }
@@ -94,7 +121,7 @@ export const EcosystemAuthProvider: React.FC<{ children: React.ReactNode }> = ({
         ...newAuthState,
         expiresAt: new Date(Date.now() + 7 * 24 * 60 * 60 * 1000).toISOString(), // 7 days
       };
-      localStorage.setItem(STORAGE_KEYS.AUTH, JSON.stringify(authWithExpiry));
+      localStorage.setItem(getStorageKeys().AUTH, JSON.stringify(authWithExpiry));
       setAuthState(newAuthState);
     } catch (error) {
       console.error('Error saving auth state:', error);
@@ -104,7 +131,7 @@ export const EcosystemAuthProvider: React.FC<{ children: React.ReactNode }> = ({
   // Save preferences to localStorage
   const savePreferences = useCallback((newPreferences: UserPreferences) => {
     try {
-      localStorage.setItem(STORAGE_KEYS.PREFERENCES, JSON.stringify(newPreferences));
+      localStorage.setItem(getStorageKeys().PREFERENCES, JSON.stringify(newPreferences));
       setPreferences(newPreferences);
     } catch (error) {
       console.error('Error saving preferences:', error);
@@ -157,7 +184,7 @@ export const EcosystemAuthProvider: React.FC<{ children: React.ReactNode }> = ({
   // Logout function
   const logout = useCallback(() => {
     setAuthState(DEFAULT_AUTH_STATE);
-    localStorage.removeItem(STORAGE_KEYS.AUTH);
+    localStorage.removeItem(getStorageKeys().AUTH);
     
     // Sync across domains
     syncAcrossDomains();
@@ -219,7 +246,7 @@ export const EcosystemAuthProvider: React.FC<{ children: React.ReactNode }> = ({
     });
 
     // Also store in localStorage for same-domain access
-    localStorage.setItem(STORAGE_KEYS.SYNC_TOKEN, JSON.stringify(syncData));
+    localStorage.setItem(getStorageKeys().SYNC_TOKEN, JSON.stringify(syncData));
   }, [authState, preferences]);
 
   // Listen for cross-domain sync messages

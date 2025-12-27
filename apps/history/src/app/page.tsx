@@ -1,37 +1,67 @@
 'use client';
 
-// Force dynamic rendering to avoid SSR issues with window-dependent code
-export const dynamic = 'force-dynamic';
-
-import { useState, useEffect } from 'react';
+import { useState, useEffect, lazy, Suspense } from 'react';
+import dynamic from 'next/dynamic';
 import { Language } from '@/lib/types/language';
-import { HistoricalTimeline } from '@/components/timeline/HistoricalTimeline';
-import { UnifiedTimeline } from '@/components/timeline/UnifiedTimeline';
 import { ProgrammingLanguageTimeline } from '@/components/timeline/ProgrammingLanguageTimeline';
-import { AnimatedLanguageFamilyTree } from '@/components/visualization/AnimatedLanguageFamilyTree';
-import { ParadigmEvolutionVisualization } from '@/components/visualization/ParadigmEvolutionVisualization';
-import { CodePlayground } from '@/components/code/CodePlayground';
-import { EnhancedLanguageFamilyTree } from '@/components/visualization/EnhancedLanguageFamilyTree';
-import { AIAssistant } from '@/components/ai/AIAssistant';
-import { EnhancedAIIntegration } from '@/components/ai/EnhancedAIIntegration';
-import { UnifiedHeader } from '@/components/ecosystem/UnifiedHeader';
-import { EcosystemMap } from '@/components/ecosystem/EcosystemMap';
 import { CrossDomainProvider } from '@/components/ecosystem/CrossDomainProvider';
 import { EcosystemAuthProvider } from '@/contexts/EcosystemAuthContext';
-import { Navigation } from '@/components/Navigation';
 import PortfolioHeader from '@/components/shared/PortfolioHeader';
 import { Hero } from '@/components/Hero';
-import { ParadigmExplorer } from '@/components/ParadigmExplorer';
-import { PageTransition, SectionTransition, StaggerContainer, StaggerItem } from '@/components/transitions/PageTransition';
+import { PageTransition, SectionTransition, StaggerContainer } from '@/components/transitions/PageTransition';
 import { ExhibitionLayout, ExhibitionSection } from '@/components/exhibition/ExhibitionLayout';
-import { PioneersHall } from '@/components/exhibition/PioneersHall';
-import { RevolutionWing } from '@/components/exhibition/RevolutionWing';
-import { InternetAgeGallery } from '@/components/exhibition/InternetAgeGallery';
-import { ModernEraPavilion } from '@/components/exhibition/ModernEraPavilion';
-import { ParadigmTheater } from '@/components/exhibition/ParadigmTheater';
-import { AITutorStudio } from '@/components/exhibition/AITutorStudio';
 import { useGSAP, usePortfolioAnimations } from '@/hooks/useAnimations';
 import languagesData from '@/lib/data/languages.json';
+
+// Lazy load heavy components for better initial load performance
+const HistoricalTimeline = dynamic(() => import('@/components/timeline/HistoricalTimeline').then(m => ({ default: m.HistoricalTimeline })), {
+  loading: () => <LoadingPlaceholder text="Loading Timeline..." />,
+});
+const AnimatedLanguageFamilyTree = dynamic(() => import('@/components/visualization/AnimatedLanguageFamilyTree').then(m => ({ default: m.AnimatedLanguageFamilyTree })), {
+  loading: () => <LoadingPlaceholder text="Loading Family Tree..." />,
+});
+const ParadigmEvolutionVisualization = dynamic(() => import('@/components/visualization/ParadigmEvolutionVisualization').then(m => ({ default: m.ParadigmEvolutionVisualization })), {
+  loading: () => <LoadingPlaceholder text="Loading Visualization..." />,
+});
+const CodePlayground = dynamic(() => import('@/components/code/CodePlayground').then(m => ({ default: m.CodePlayground })), {
+  loading: () => <LoadingPlaceholder text="Loading Playground..." />,
+  ssr: false, // Monaco editor doesn't work with SSR
+});
+const EnhancedLanguageFamilyTree = dynamic(() => import('@/components/visualization/EnhancedLanguageFamilyTree').then(m => ({ default: m.EnhancedLanguageFamilyTree })), {
+  loading: () => <LoadingPlaceholder text="Loading Family Tree..." />,
+});
+const AIAssistant = dynamic(() => import('@/components/ai/AIAssistant').then(m => ({ default: m.AIAssistant })), {
+  loading: () => <LoadingPlaceholder text="Loading AI Assistant..." />,
+});
+const EnhancedAIIntegration = dynamic(() => import('@/components/ai/EnhancedAIIntegration').then(m => ({ default: m.EnhancedAIIntegration })), {
+  loading: () => <LoadingPlaceholder text="Loading AI Features..." />,
+});
+const EcosystemMap = dynamic(() => import('@/components/ecosystem/EcosystemMap').then(m => ({ default: m.EcosystemMap })), {
+  loading: () => <LoadingPlaceholder text="Loading Ecosystem..." />,
+});
+const ParadigmExplorer = dynamic(() => import('@/components/ParadigmExplorer').then(m => ({ default: m.ParadigmExplorer })), {
+  loading: () => <LoadingPlaceholder text="Loading Paradigms..." />,
+});
+
+// Exhibition components - lazy loaded
+const PioneersHall = dynamic(() => import('@/components/exhibition/PioneersHall').then(m => ({ default: m.PioneersHall })));
+const RevolutionWing = dynamic(() => import('@/components/exhibition/RevolutionWing').then(m => ({ default: m.RevolutionWing })));
+const InternetAgeGallery = dynamic(() => import('@/components/exhibition/InternetAgeGallery').then(m => ({ default: m.InternetAgeGallery })));
+const ModernEraPavilion = dynamic(() => import('@/components/exhibition/ModernEraPavilion').then(m => ({ default: m.ModernEraPavilion })));
+const ParadigmTheater = dynamic(() => import('@/components/exhibition/ParadigmTheater').then(m => ({ default: m.ParadigmTheater })));
+const AITutorStudio = dynamic(() => import('@/components/exhibition/AITutorStudio').then(m => ({ default: m.AITutorStudio })));
+
+// Loading placeholder component
+function LoadingPlaceholder({ text = 'Loading...' }: { text?: string }) {
+  return (
+    <div className="flex items-center justify-center min-h-[400px] w-full">
+      <div className="text-center">
+        <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-orange-500 mx-auto mb-4"></div>
+        <p className="text-gray-400">{text}</p>
+      </div>
+    </div>
+  );
+}
 // UI Components Integration
 import { 
   Button, 

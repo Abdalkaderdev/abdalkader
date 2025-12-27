@@ -1,6 +1,7 @@
 import { useEffect, useRef } from 'react';
 import Image from 'next/image';
 import { gsap } from '@/libs/gsap';
+import { isReducedMotion } from '@/utils/motion';
 import styles from './DribbleSection.module.scss';
 import Tag from '@/components/Tag';
 import Button from '@/components/Button';
@@ -20,6 +21,11 @@ export default function InstagramSection() {
     const btnWrapperRef = useRef<HTMLDivElement | null>(null);
 
     useEffect(() => {
+        // Skip animations if user prefers reduced motion
+        if (isReducedMotion()) {
+            return;
+        }
+
         const ctx = gsap.context(() => {
             // Images animation
             rowsRef.current.forEach((row, index) => {

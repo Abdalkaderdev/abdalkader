@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { useRouter } from "next/router";
 import { gsap } from "@/libs/gsap";
+import { isReducedMotion } from "@/utils/motion";
 import { CircularProgress } from "@abdalkader/ui";
 
 export default function Loader() {
@@ -9,6 +10,16 @@ export default function Loader() {
     const [progress, setProgress] = useState(0);
 
     useEffect(() => {
+        // Skip animations for users who prefer reduced motion
+        if (isReducedMotion()) {
+            setProgress(100);
+            if (percentageRef.current) {
+                percentageRef.current.textContent = '100';
+            }
+            document.querySelector(".intro")?.classList.add("hidden");
+            return;
+        }
+
         const counter = { count: 0 };
 
         const tl = gsap.timeline({

@@ -189,8 +189,8 @@ search:
     type: algolia
     # Algolia application ID
     application_id: '12WCJTIDSP'
-    # Algolia search-only API key
-    api_key: 'd5276da306cd5167cb2f806ab031b302'
+    # Algolia search-only API key (safe to expose - read-only)
+    api_key: ${ALGOLIA_SEARCH_API_KEY}
     # Algolia index name
     index_name: 'abdalkader-blog'
 # Comment plugin configurations

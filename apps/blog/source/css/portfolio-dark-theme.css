@@ -1,0 +1,280 @@
+/**
+ * Portfolio Dark Theme - Consolidated
+ * Unified dark theme overrides for Icarus blog matching abdalkader.dev
+ *
+ * This file consolidates: force-colors.css, force-override.css,
+ * force-dark-theme.css, theme-override.css, override.css
+ */
+
+/* ===========================
+   CSS Variables (inherit from design-system)
+   =========================== */
+:root {
+  --blog-bg: #000;
+  --blog-bg-card: #0a0a0a;
+  --blog-text: #f8f8f8;
+  --blog-text-muted: #787878;
+  --blog-primary: #f44e00;
+  --blog-primary-light: #fa7300;
+  --blog-border: rgb(37, 37, 37);
+  --blog-nav-bg: rgba(45, 45, 45, 0.35);
+}
+
+/* ===========================
+   Base Styles
+   =========================== */
+html, body {
+  background-color: var(--blog-bg) !important;
+  color: var(--blog-text) !important;
+}
+
+/* ===========================
+   Typography
+   =========================== */
+h1, h2, h3, h4, h5, h6 {
+  color: var(--blog-text) !important;
+}
+
+p, span, div, li, td, th {
+  color: var(--blog-text) !important;
+}
+
+.text-muted, .muted, .article-meta, .post-meta, small {
+  color: var(--blog-text-muted) !important;
+}
+
+/* ===========================
+   Links
+   =========================== */
+a {
+  color: var(--blog-primary) !important;
+  transition: color 0.3s ease, text-shadow 0.3s ease;
+}
+
+a:hover {
+  color: var(--blog-primary-light) !important;
+  text-shadow: 0 0 15px rgba(244, 78, 0, 0.4);
+}
+
+/* ===========================
+   Navigation
+   =========================== */
+.navbar, .navbar-menu, .navbar-brand {
+  background-color: var(--blog-nav-bg) !important;
+  backdrop-filter: blur(10px);
+}
+
+.navbar-item, .navbar-link {
+  color: var(--blog-text) !important;
+}
+
+.navbar-item:hover, .navbar-link:hover {
+  color: var(--blog-primary) !important;
+  background-color: transparent !important;
+  text-shadow: 0 0 20px rgba(244, 78, 0, 0.5);
+}
+
+/* ===========================
+   Cards & Widgets
+   =========================== */
+.card, .widget, .box, .article {
+  background-color: var(--blog-bg-card) !important;
+  border: 1px solid var(--blog-border) !important;
+  color: var(--blog-text) !important;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover, .widget:hover, .box:hover, .article:hover {
+  border-color: var(--blog-primary) !important;
+  box-shadow: 0 0 30px rgba(244, 78, 0, 0.2) !important;
+}
+
+.card-header, .widget-title {
+  background-color: var(--blog-bg-card) !important;
+  color: var(--blog-text) !important;
+  border-bottom: 1px solid var(--blog-border) !important;
+}
+
+/* ===========================
+   Buttons & Tags
+   =========================== */
+.button, .btn, .tag, .label {
+  background-color: var(--blog-primary) !important;
+  color: var(--blog-bg) !important;
+  border: none !important;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+.button:hover, .btn:hover, .tag:hover, .label:hover {
+  background-color: var(--blog-primary-light) !important;
+  box-shadow: 0 0 30px rgba(244, 78, 0, 0.5) !important;
+  transform: translateY(-2px);
+}
+
+/* ===========================
+   Code Blocks
+   =========================== */
+pre, code {
+  background-color: var(--blog-bg-card) !important;
+  color: var(--blog-text) !important;
+  border: 1px solid var(--blog-border) !important;
+}
+
+code {
+  color: var(--blog-primary) !important;
+}
+
+pre code {
+  color: var(--blog-text) !important;
+  background: none !important;
+  border: none !important;
+}
+
+/* ===========================
+   Footer & Sidebar
+   =========================== */
+.footer {
+  background-color: var(--blog-bg-card) !important;
+  color: var(--blog-text-muted) !important;
+  border-top: 1px solid var(--blog-border) !important;
+}
+
+.sidebar, .aside {
+  background-color: var(--blog-bg) !important;
+}
+
+/* ===========================
+   Content Areas
+   =========================== */
+.content, .container, .section, .main-content, .content-wrap {
+  background-color: var(--blog-bg) !important;
+  color: var(--blog-text) !important;
+}
+
+/* ===========================
+   Forms
+   =========================== */
+input, textarea, select {
+  background-color: var(--blog-bg-card) !important;
+  color: var(--blog-text) !important;
+  border: 1px solid var(--blog-border) !important;
+}
+
+input:focus, textarea:focus, select:focus {
+  border-color: var(--blog-primary) !important;
+  box-shadow: 0 0 20px rgba(244, 78, 0, 0.3) !important;
+  outline: none;
+}
+
+/* ===========================
+   Pagination
+   =========================== */
+.pagination .page-number, .pagination .current, .pagination-link {
+  background-color: var(--blog-bg-card) !important;
+  color: var(--blog-text) !important;
+  border: 1px solid var(--blog-border) !important;
+}
+
+.pagination .page-number:hover, .pagination-link:hover {
+  background-color: var(--blog-primary) !important;
+  color: var(--blog-bg) !important;
+}
+
+.pagination .current {
+  background-color: var(--blog-primary) !important;
+  color: var(--blog-bg) !important;
+}
+
+/* ===========================
+   Tables
+   =========================== */
+table {
+  background-color: var(--blog-bg-card) !important;
+}
+
+table th, table td {
+  background-color: var(--blog-bg-card) !important;
+  color: var(--blog-text) !important;
+  border: 1px solid var(--blog-border) !important;
+}
+
+/* ===========================
+   Bulma/Framework Overrides
+   =========================== */
+.is-primary, .has-background-primary {
+  background-color: var(--blog-primary) !important;
+}
+
+.has-text-primary {
+  color: var(--blog-primary) !important;
+}
+
+.is-info, .has-background-info, .is-warning, .has-background-warning {
+  background-color: var(--blog-primary) !important;
+  color: var(--blog-bg) !important;
+}
+
+.has-background-dark, .is-dark {
+  background-color: var(--blog-bg-card) !important;
+}
+
+.has-text-white, .has-text-light {
+  color: var(--blog-text) !important;
+}
+
+.is-white, .has-background-white {
+  background-color: var(--blog-bg) !important;
+}
+
+/* ===========================
+   Icarus Theme Specific
+   =========================== */
+.icarus, .icarus .main {
+  background-color: var(--blog-bg) !important;
+  color: var(--blog-text) !important;
+}
+
+/* ===========================
+   UI Enhancements
+   =========================== */
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--blog-primary);
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--blog-primary-light);
+}
+
+/* Selection */
+::selection {
+  background-color: var(--blog-primary) !important;
+  color: var(--blog-bg) !important;
+}
+
+/* Focus states */
+:focus-visible {
+  outline: 2px dashed var(--blog-primary) !important;
+  outline-offset: 3px !important;
+}
+
+/* ===========================
+   Reduced Motion Support
+   =========================== */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

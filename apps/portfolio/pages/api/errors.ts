@@ -71,87 +71,15 @@ export default function handler(
     // Log error with structured format
     console.error('[Error Report]', JSON.stringify(logData, null, 2));
 
-    // In a real application, you would:
-    // 1. Send to error tracking service (e.g., Sentry, Bugsnag, Rollbar)
-    // 2. Store in database for analysis
-    // 3. Send notifications for critical errors
-    // 4. Create tickets for new error types
-
-    // Example integrations:
-    // await sendToSentry(errorReport);
-    // await storeInDatabase(errorReport);
-    // await sendSlackNotification(errorReport);
-
     res.status(200).json({
       success: true,
       errorId,
     });
 
-  } catch (error) {
-    console.error('Failed to process error report:', error);
-    
+  } catch {
     res.status(500).json({
       success: false,
       message: 'Internal server error',
     });
   }
-}
-
-// Example function to send errors to Sentry
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-async function sendToSentry(_errorReport: ErrorReport): Promise<void> {
-  // This is where you would integrate with Sentry
-  // const Sentry = require('@sentry/node');
-  // 
-  // Sentry.withScope((scope) => {
-  //   scope.setTag('environment', errorReport.environment);
-  //   scope.setTag('sessionId', errorReport.sessionId);
-  //   scope.setUser({ id: errorReport.userId });
-  //   scope.setContext('additionalContext', errorReport.additionalContext);
-  //   
-  //   const error = new Error(errorReport.message);
-  //   if (errorReport.stack) {
-  //     error.stack = errorReport.stack;
-  //   }
-  //   
-  //   Sentry.captureException(error);
-  // });
-}
-
-// Example function to store in database
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-async function storeInDatabase(_errorReport: ErrorReport): Promise<void> {
-  // This is where you would store the error in your database
-  // const db = getDatabase();
-  // await db.collection('errors').add({
-  //   ...errorReport,
-  //   createdAt: new Date(),
-  //   resolved: false,
-  // });
-}
-
-// Example function to send Slack notification
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-async function sendSlackNotification(_errorReport: ErrorReport): Promise<void> {
-  // This is where you would send notifications for critical errors
-  // const isNewError = await checkIfNewErrorType(errorReport.message);
-  // const isCritical = errorReport.additionalContext?.type === 'critical';
-  // 
-  // if (isNewError || isCritical) {
-  //   await fetch(process.env.SLACK_WEBHOOK_URL, {
-  //     method: 'POST',
-  //     headers: { 'Content-Type': 'application/json' },
-  //     body: JSON.stringify({
-  //       text: `🚨 New error in staging: ${errorReport.message}`,
-  //       attachments: [{
-  //         color: 'danger',
-  //         fields: [
-  //           { title: 'URL', value: errorReport.url, short: true },
-  //           { title: 'Session', value: errorReport.sessionId, short: true },
-  //           { title: 'Environment', value: errorReport.environment, short: true },
-  //         ]
-  //       }]
-  //     })
-  //   });
-  // }
 }

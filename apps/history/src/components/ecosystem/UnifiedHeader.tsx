@@ -92,7 +92,6 @@ export const UnifiedHeader: React.FC<UnifiedHeaderProps> = ({
     if (searchQuery.trim()) {
       // In a real implementation, this would search across all domains
       announceToScreenReader(`Searching for: ${searchQuery}`);
-      console.log('Search query:', searchQuery);
     }
   };
 

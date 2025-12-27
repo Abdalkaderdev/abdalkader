@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState, useMemo, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
@@ -30,24 +30,26 @@ export function HistoricalTimeline({ languages, onLanguageSelect }: HistoricalTi
   const { executeAIRequest, isLoading, error } = useGroqAI();
   const reducedMotion = useReducedMotion();
 
-  // Group languages by decade
-  const languagesByDecade = languages.reduce((acc, language) => {
-    const decade = Math.floor(language.year / 10) * 10;
-    if (!acc[decade]) {
-      acc[decade] = [];
-    }
-    acc[decade].push(language);
-    return acc;
-  }, {} as Record<number, Language[]>);
+  // Memoize grouped languages by decade
+  const languagesByDecade = useMemo(() => {
+    return languages.reduce((acc, language) => {
+      const decade = Math.floor(language.year / 10) * 10;
+      if (!acc[decade]) {
+        acc[decade] = [];
+      }
+      acc[decade].push(language);
+      return acc;
+    }, {} as Record<number, Language[]>);
+  }, [languages]);
 
-  // Define eras
-  const eras = [
+  // Memoize era definitions (static data)
+  const eras = useMemo(() => [
     { name: 'Pre-Computer Age', start: 1840, end: 1950, color: '#8B4513' },
     { name: 'Mainframe Era', start: 1950, end: 1970, color: '#4169E1' },
     { name: 'Unix Era', start: 1970, end: 1990, color: '#0000FF' },
     { name: 'Web Era', start: 1990, end: 2010, color: '#F7DF1E' },
     { name: 'Modern Era', start: 2010, end: 2030, color: '#00ADD8' },
-  ];
+  ], []);
 
   useEffect(() => {
     if (timelineRef.current) {
@@ -77,10 +79,10 @@ export function HistoricalTimeline({ languages, onLanguageSelect }: HistoricalTi
     }
   }, [languages]);
 
-  const handleLanguageClick = async (language: Language) => {
+  const handleLanguageClick = useCallback(async (language: Language) => {
     setSelectedLanguage(language);
     onLanguageSelect(language);
-    
+
     // Get AI explanation
     const explanation = await executeAIRequest(
       explainLanguageHistory,
@@ -89,25 +91,25 @@ export function HistoricalTimeline({ languages, onLanguageSelect }: HistoricalTi
       language.name,
       language.year
     );
-    
+
     if (explanation) {
       setAiExplanation(explanation.content);
     }
-  };
+  }, [onLanguageSelect, executeAIRequest]);
 
-  const handleEraSelect = (era: Era) => {
+  const handleEraSelect = useCallback((era: Era) => {
     setSelectedEra(era);
     setViewMode('timeline');
-  };
+  }, []);
 
-  const handleLanguageFromEra = (languageName: string) => {
+  const handleLanguageFromEra = useCallback((languageName: string) => {
     const language = languages.find(l => l.name === languageName);
     if (language) {
       handleLanguageClick(language);
     }
-  };
+  }, [languages, handleLanguageClick]);
 
-  const handleAIExplain = async (content: string) => {
+  const handleAIExplain = useCallback(async (content: string) => {
     const explanation = await executeAIRequest(
       explainLanguageHistory,
       'era',
@@ -115,11 +117,11 @@ export function HistoricalTimeline({ languages, onLanguageSelect }: HistoricalTi
       content,
       0
     );
-    
+
     if (explanation) {
       setAiExplanation(explanation.content);
     }
-  };
+  }, [executeAIRequest]);
 
   return (
     <div className="relative">

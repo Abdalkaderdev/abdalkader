@@ -60,44 +60,14 @@ export default function handler(
       ),
     });
 
-    // In a real application, you would:
-    // 1. Send to monitoring service (e.g., DataDog, New Relic, custom analytics)
-    // 2. Store in database for analysis
-    // 3. Trigger alerts for performance regressions
-
-    // Example: Send to external monitoring service
-    // await sendToMonitoringService(metric);
-
     res.status(200).json({
       success: true,
     });
 
-  } catch (error) {
-    console.error('Failed to process performance metric:', error);
-    
+  } catch {
     res.status(500).json({
       success: false,
       message: 'Internal server error',
     });
   }
-}
-
-// Example function to send metrics to external service
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-async function sendToMonitoringService(_metric: PerformanceMetric): Promise<void> {
-  // This is where you would integrate with your monitoring service
-  // Examples:
-  
-  // DataDog
-  // await datadogClient.increment('portfolio.performance', 1, [`metric:${metric.name}`]);
-  
-  // New Relic
-  // newrelic.recordMetric(`Custom/Performance/${metric.name}`, metric.value);
-  
-  // Custom Analytics
-  // await fetch('https://analytics.yourdomain.com/metrics', {
-  //   method: 'POST',
-  //   headers: { 'Content-Type': 'application/json' },
-  //   body: JSON.stringify(metric)
-  // });
 }

@@ -1,0 +1,220 @@
+// =============================================================================
+// MICRO-INTERACTIONS
+// Subtle animations that enhance user experience
+// =============================================================================
+
+// -----------------------------------------------------------------------------
+// Button Interactions
+// -----------------------------------------------------------------------------
+
+@mixin button-hover {
+  transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1),
+              box-shadow 0.2s ease,
+              background-color 0.2s ease;
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  }
+
+  &:active {
+    transform: translateY(0) scale(0.98);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+}
+
+@mixin button-ripple {
+  position: relative;
+  overflow: hidden;
+
+  &::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    transition: width 0.4s ease, height 0.4s ease, opacity 0.4s ease;
+    opacity: 0;
+  }
+
+  &:active::after {
+    width: 200%;
+    height: 200%;
+    opacity: 1;
+    transition: width 0s, height 0s, opacity 0s;
+  }
+}
+
+// -----------------------------------------------------------------------------
+// Link Interactions
+// -----------------------------------------------------------------------------
+
+@mixin link-underline {
+  position: relative;
+  text-decoration: none;
+
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: currentColor;
+    transition: width 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  }
+
+  &:hover::after {
+    width: 100%;
+  }
+}
+
+@mixin link-slide {
+  position: relative;
+  overflow: hidden;
+
+  &::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: currentColor;
+    transform: translateX(-101%);
+    transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  }
+
+  &:hover::before {
+    transform: translateX(0);
+  }
+}
+
+// -----------------------------------------------------------------------------
+// Card Interactions
+// -----------------------------------------------------------------------------
+
+@mixin card-lift {
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1),
+              box-shadow 0.3s ease;
+
+  &:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+  }
+}
+
+@mixin card-tilt {
+  transition: transform 0.3s ease;
+  transform-style: preserve-3d;
+  perspective: 1000px;
+
+  &:hover {
+    transform: rotateX(2deg) rotateY(-2deg) translateY(-4px);
+  }
+}
+
+@mixin card-glow($color: #f44e00) {
+  transition: box-shadow 0.3s ease;
+
+  &:hover {
+    box-shadow: 0 0 30px rgba($color, 0.3),
+                0 10px 30px rgba(0, 0, 0, 0.2);
+  }
+}
+
+// -----------------------------------------------------------------------------
+// Focus Interactions
+// -----------------------------------------------------------------------------
+
+@mixin focus-ring($color: #f44e00) {
+  &:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba($color, 0.4);
+  }
+
+  &:focus:not(:focus-visible) {
+    box-shadow: none;
+  }
+
+  &:focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba($color, 0.4);
+  }
+}
+
+@mixin focus-glow($color: #f44e00) {
+  transition: box-shadow 0.2s ease;
+
+  &:focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 2px rgba($color, 0.8),
+                0 0 20px rgba($color, 0.4);
+  }
+}
+
+// -----------------------------------------------------------------------------
+// Icon Interactions
+// -----------------------------------------------------------------------------
+
+@mixin icon-bounce {
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+
+  &:hover {
+    transform: scale(1.1);
+  }
+
+  &:active {
+    transform: scale(0.95);
+  }
+}
+
+@mixin icon-rotate {
+  transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+
+  &:hover {
+    transform: rotate(15deg);
+  }
+}
+
+// -----------------------------------------------------------------------------
+// Loading Interactions
+// -----------------------------------------------------------------------------
+
+@mixin skeleton-shimmer {
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0.05) 0%,
+    rgba(255, 255, 255, 0.1) 50%,
+    rgba(255, 255, 255, 0.05) 100%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+// -----------------------------------------------------------------------------
+// Reduced Motion Overrides
+// -----------------------------------------------------------------------------
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

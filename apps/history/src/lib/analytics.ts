@@ -250,11 +250,7 @@ class AnalyticsManager {
 
   private async sendEvent(event: AnalyticsEvent): Promise<void> {
     try {
-      // In a real implementation, this would send to your analytics service
-      // For now, we'll just log it
-      console.log('Analytics Event:', event);
-      
-      // Simulate API call
+      // Send event to analytics service
       await fetch('/api/analytics', {
         method: 'POST',
         headers: {
@@ -262,8 +258,8 @@ class AnalyticsManager {
         },
         body: JSON.stringify(event),
       });
-    } catch (error) {
-      console.error('Failed to send analytics event:', error);
+    } catch {
+      // Silently fail for analytics - non-critical
     }
   }
 
@@ -284,8 +280,8 @@ class AnalyticsManager {
       });
 
       this.events = [];
-    } catch (error) {
-      console.error('Failed to flush analytics events:', error);
+    } catch {
+      // Silently fail for analytics - non-critical
     }
   }
 
@@ -293,8 +289,7 @@ class AnalyticsManager {
     try {
       const response = await fetch('/api/analytics/ecosystem');
       return await response.json();
-    } catch (error) {
-      console.error('Failed to get ecosystem analytics:', error);
+    } catch {
       return {
         totalVisitors: 0,
         totalPageViews: 0,

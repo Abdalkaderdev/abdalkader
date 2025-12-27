@@ -1,7 +1,10 @@
 import React from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useTheme, ColorScheme, Theme } from '../../contexts/ThemeContext';
-import { Button, Card, Modal, Select } from '../index';
+// Direct imports to avoid circular dependency through ../index
+import { Button } from '../Button/Button';
+import { Card } from '../Card/Card';
+import { Modal } from '../Modal/Modal';
 import { Switch } from '../Switch/Switch';
 import { Settings, Palette, Moon, Sun, Monitor } from 'lucide-react';
 
