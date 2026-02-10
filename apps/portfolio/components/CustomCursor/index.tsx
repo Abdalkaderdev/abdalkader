@@ -163,16 +163,12 @@ export default function CustomCursor() {
         ref={cursorRef}
         className={`${styles.cursor} ${cursorState.isHovering ? styles.hovering : ''} ${
           cursorState.isClicking ? styles.clicking : ''
-        } ${styles[cursorState.cursorType]}`}
+        }`}
         style={{
           x: cursorXSpring,
           y: cursorYSpring,
           opacity: isVisible ? 1 : 0,
         }}
-        animate={{
-          scale: cursorState.isHovering ? 2.5 : cursorState.isClicking ? 0.8 : 1,
-        }}
-        transition={{ duration: 0.15, ease: 'easeOut' }}
       />
 
       {/* Cursor ring/outline */}
@@ -183,10 +179,6 @@ export default function CustomCursor() {
           y: cursorYSpring,
           opacity: isVisible ? 1 : 0,
         }}
-        animate={{
-          scale: cursorState.isHovering ? 1.5 : cursorState.isClicking ? 0.9 : 1,
-        }}
-        transition={{ duration: 0.2, ease: 'easeOut' }}
       />
 
       {/* Hover text label */}

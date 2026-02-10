@@ -167,7 +167,7 @@ export default function ProjectSection() {
                 </div>
                 <div className={styles.headingWrapper}>
                     <h1 ref={headingRef}>
-                        {splitText("A look into my latest projects")}
+                        {splitText("Selected works & experiments")}
                     </h1>
                     <div ref={btnWrapperRef}>
                         <Button text="All Projects" href="/projects" />
