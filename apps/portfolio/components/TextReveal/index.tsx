@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useRef, useState } from 'react';
-import { motion, useInView, useAnimation, Variants } from 'framer-motion';
+import { motion, useInView, Variants } from 'framer-motion';
 import styles from './TextReveal.module.scss';
 
 // Text scramble effect hook
@@ -63,7 +63,6 @@ export function CharacterReveal({
   className = '',
   delay = 0,
   duration = 0.05,
-  as: Component = 'span',
 }: TextRevealProps) {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: '-10%' });
@@ -122,7 +121,6 @@ export function WordReveal({
   className = '',
   delay = 0,
   duration = 0.1,
-  as: Component = 'span',
 }: TextRevealProps) {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: '-10%' });
