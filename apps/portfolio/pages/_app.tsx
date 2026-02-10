@@ -1,11 +1,11 @@
 import Footer from "@/components/Footer";
 import Nav from "@/components/Nav";
 import SmoothScrolling from "@/components/SmoothScrolling";
-import CustomCursor from "@/components/CustomCursor";
+// CustomCursor removed per user preference
 import "@/styles/globals.scss";  // Ensure this is your global SCSS import
 import type { AppProps } from "next/app";
 import { AnimatePresence, motion } from "framer-motion";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, useCallback } from "react";
 import { useRouter } from "next/router";
 import Head from "next/head";
 import Loader from "@/components/Loader";
@@ -23,12 +23,27 @@ import { initPerformanceMonitoring, reportWebVitals } from "@/utils/performanceM
 import StagingBanner from "@/src/components/StagingBanner";
 import StagingTools from "@/src/components/StagingTools";
 import { initializeStagingEnvironment } from "@/src/config/staging";
+import WelcomeModal from "@/components/WelcomeModal";
+import MusicPlayer from "@/components/MusicPlayer";
 
 export default function App({ Component, pageProps }: AppProps) {
     const router = useRouter();
     const scrollPositions = useRef<{ [key: string]: number }>({});
     const [showStagingDashboard, setShowStagingDashboard] = useState(false);
+    const [musicEnabled, setMusicEnabled] = useState(false);
     const isStaging = getEnvironment() === 'staging';
+
+    // Check for existing music preference on mount
+    useEffect(() => {
+        const savedPref = localStorage.getItem('portfolio-music-enabled');
+        if (savedPref === 'true') {
+            setMusicEnabled(true);
+        }
+    }, []);
+
+    const handleMusicToggle = useCallback((enabled: boolean) => {
+        setMusicEnabled(enabled);
+    }, []);
     
     const prefersReducedMotion = useMemo(() => {
         if (typeof window === 'undefined' || !window.matchMedia) return false;
@@ -231,8 +246,11 @@ export default function App({ Component, pageProps }: AppProps) {
                 </motion.div>
             </AnimatePresence>
 
-            {/* Custom cursor effect - only on desktop */}
-            <CustomCursor />
+            {/* Custom cursor removed per user preference */}
+
+            {/* Spiritual Enhancement Components */}
+            <WelcomeModal onMusicToggle={handleMusicToggle} />
+            <MusicPlayer isEnabled={musicEnabled} />
         </>
     );
 }

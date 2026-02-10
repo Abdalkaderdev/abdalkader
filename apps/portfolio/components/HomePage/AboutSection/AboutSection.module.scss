@@ -52,5 +52,15 @@
         .btnSpace {
             @include mT3;
         }
+
+        .signpostWrapper {
+            margin-top: 3rem;
+            opacity: 0.9;
+
+            @media (max-width: 600px) {
+                margin-top: 2rem;
+                transform: scale(0.9);
+            }
+        }
     }
 }

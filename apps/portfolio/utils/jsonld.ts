@@ -106,7 +106,7 @@ export function contactPointJsonLd() {
     contactPoint: [{
       '@type': 'ContactPoint',
       contactType: 'customer support',
-      email: 'hello@example.com',
+      email: 'hello@abdalkader.dev',
       availableLanguage: ['en'],
     }],
   };

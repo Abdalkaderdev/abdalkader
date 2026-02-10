@@ -1,3 +1,5 @@
+@import "@/styles/variables.scss";
+
 /* ============================================
    ENHANCED PROJECT HERO SECTION STYLES
    ============================================ */
@@ -10,6 +12,28 @@
   position: relative;
   background: linear-gradient(135deg, #000 0%, #0a0a0a 50%, #1a1a1a 100%);
   overflow: hidden;
+
+  /* Cross Watermark */
+  .crossWatermark {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 0.03;
+    color: $softGold;
+    pointer-events: none;
+    z-index: 0;
+
+    svg {
+      width: 400px;
+      height: 400px;
+
+      @media (max-width: 768px) {
+        width: 250px;
+        height: 250px;
+      }
+    }
+  }
 
   /* Animated Background Elements */
   .backgroundElements {
@@ -26,40 +50,28 @@
     width: 300px;
     height: 300px;
     border-radius: 50%;
-    background: radial-gradient(circle, rgba(244, 78, 0, 0.1) 0%, transparent 70%);
-    filter: blur(40px);
-    animation: float 20s infinite ease-in-out;
+    background: radial-gradient(circle, rgba(244, 78, 0, 0.08) 0%, transparent 70%);
+    filter: blur(60px);
+    animation: float 25s infinite ease-in-out;
     animation-delay: var(--delay);
 
     &:nth-child(1) {
-      top: 10%;
-      left: 10%;
+      top: 15%;
+      left: 15%;
     }
 
     &:nth-child(2) {
-      top: 60%;
-      right: 10%;
-    }
-
-    &:nth-child(3) {
-      bottom: 10%;
-      left: 50%;
-      transform: translateX(-50%);
+      bottom: 15%;
+      right: 15%;
     }
   }
 
   @keyframes float {
     0%, 100% {
-      transform: translateY(0) translateX(0) scale(1);
-    }
-    25% {
-      transform: translateY(-30px) translateX(20px) scale(1.1);
+      transform: translateY(0) translateX(0);
     }
     50% {
-      transform: translateY(20px) translateX(-30px) scale(0.9);
-    }
-    75% {
-      transform: translateY(-20px) translateX(30px) scale(1.05);
+      transform: translateY(-30px) translateX(20px);
     }
   }
 
@@ -68,20 +80,20 @@
     text-align: center;
     z-index: 1;
     position: relative;
-    max-width: 1200px;
+    max-width: 1000px;
     padding: 0 2rem;
   }
 
   /* Main Heading */
   .headingContainer {
-    margin-bottom: 3rem;
+    margin-bottom: 2rem;
 
     h1 {
-      font-size: clamp(4rem, 10vw, 8rem);
+      font-size: clamp(4rem, 12vw, 10rem);
       font-weight: 700;
-      color: #f8f8f8;
+      color: $white;
       text-transform: uppercase;
-      letter-spacing: 0.05rem;
+      letter-spacing: 0.02em;
       line-height: 0.9;
       margin: 0;
 
@@ -92,87 +104,54 @@
     }
   }
 
-  /* Animated Text */
+  /* Animated Text - Clean horizontal flow */
   .animatedTextContainer {
-    margin-bottom: 3rem;
+    margin-bottom: 1.5rem;
   }
 
   .animatedText {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 1rem;
-    margin-bottom: 1rem;
-    font-size: clamp(1.5rem, 4vw, 2.5rem);
-    font-weight: 600;
-    color: #787878;
+    align-items: center;
+    gap: 0;
+    font-size: clamp(1rem, 2.5vw, 1.4rem);
+    font-weight: 400;
+    color: $textGrey;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
 
     .animated-word {
-      display: inline-block;
-      color: #787878;
-      transition: all 0.3s ease;
-      animation-delay: var(--delay);
-      will-change: transform, color;
+      display: inline-flex;
+      align-items: center;
+      transition: color 0.3s ease;
+      will-change: transform, opacity;
 
       &:hover {
-        color: #f44e00;
-        transform: scale(1.1);
+        color: $primary;
       }
     }
   }
 
-  .animatedTextSubtext {
-    font-size: 1.2rem;
-    color: #f44e00;
-    font-weight: 500;
-    letter-spacing: 0.05rem;
-    text-transform: uppercase;
+  .separator {
+    margin: 0 0.8rem;
+    color: $gold;
+    opacity: 0.6;
+    font-size: 0.6em;
   }
 
   /* Subtitle */
   .subtitleContainer {
-    max-width: 800px;
-    margin: 0 auto 3rem;
-    
-    p {
-      font-size: 1.1rem;
-      line-height: 1.6;
-      color: #787878;
-      margin: 0;
-      font-weight: 400;
-    }
-  }
-
-  /* Technology Tags */
-  .techTagsContainer {
     margin-bottom: 4rem;
-  }
 
-  .techTags {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 1rem;
-
-    .tech-tag {
-      display: inline-block;
-      padding: 0.5rem 1rem;
-      background: rgba(244, 78, 0, 0.1);
-      color: #f44e00;
-      border: 1px solid rgba(244, 78, 0, 0.3);
-      border-radius: 20px;
-      font-size: 0.9rem;
-      font-weight: 500;
-      text-transform: uppercase;
-      letter-spacing: 0.05rem;
-      transition: all 0.3s ease;
-      animation-delay: var(--delay);
-
-      &:hover {
-        background: rgba(244, 78, 0, 0.2);
-        border-color: #f44e00;
-        transform: translateY(-2px);
-      }
+    p {
+      font-size: 1rem;
+      color: $softGold;
+      font-style: italic;
+      font-weight: 300;
+      letter-spacing: 0.03em;
+      margin: 0;
+      opacity: 0.8;
     }
   }
 
@@ -185,8 +164,8 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 1rem;
-    opacity: 0.7;
+    gap: 0.75rem;
+    opacity: 0.6;
     transition: opacity 0.3s ease;
 
     &:hover {
@@ -195,78 +174,60 @@
   }
 
   .scrollLine {
-    width: 2px;
-    height: 40px;
-    background: linear-gradient(to bottom, #f44e00, transparent);
+    width: 1px;
+    height: 50px;
+    background: linear-gradient(to bottom, $primary, transparent);
     animation: scrollPulse 2s infinite ease-in-out;
   }
 
   @keyframes scrollPulse {
     0%, 100% {
-      opacity: 0.3;
-      transform: translateY(0);
+      opacity: 0.4;
+      transform: scaleY(1);
     }
     50% {
       opacity: 1;
-      transform: translateY(10px);
+      transform: scaleY(1.1);
     }
   }
 
   .scrollText {
-    font-size: 0.8rem;
-    color: #787878;
+    font-size: 0.65rem;
+    color: $textGrey;
     text-transform: uppercase;
-    letter-spacing: 0.1rem;
-    writing-mode: vertical-rl;
-    text-orientation: mixed;
+    letter-spacing: 0.2em;
   }
 
   /* Responsive Design */
   @media (max-width: 768px) {
-    .enhancedProjectHero {
-      min-height: 80vh;
-      padding: 2rem 0;
-    }
+    min-height: 85vh;
 
     .content {
-      padding: 0 1rem;
+      padding: 0 1.5rem;
     }
 
     .headingContainer {
-      margin-bottom: 2rem;
+      margin-bottom: 1.5rem;
     }
 
     .animatedTextContainer {
-      margin-bottom: 2rem;
+      margin-bottom: 1rem;
     }
 
     .animatedText {
-      gap: 0.5rem;
-      font-size: 1.5rem;
+      gap: 0;
+      font-size: 0.9rem;
     }
 
-    .animatedTextSubtext {
-      font-size: 1rem;
+    .separator {
+      margin: 0 0.5rem;
     }
 
     .subtitleContainer {
-      margin-bottom: 2rem;
+      margin-bottom: 3rem;
 
       p {
-        font-size: 1rem;
-      }
-    }
-
-    .techTagsContainer {
-      margin-bottom: 2rem;
-    }
-
-    .techTags {
-      gap: 0.5rem;
-
-      .tech-tag {
-        padding: 0.4rem 0.8rem;
-        font-size: 0.8rem;
+        font-size: 0.9rem;
       }
     }
 
@@ -278,19 +239,12 @@
       width: 200px;
       height: 200px;
     }
+
   }
 
   /* Reduced Motion */
   @media (prefers-reduced-motion: reduce) {
     .floatingElement {
-      animation: none;
-    }
-
-    .animated-word {
-      animation: none;
-    }
-
-    .tech-tag {
       animation: none;
     }
 
@@ -301,9 +255,7 @@
 
   /* High Contrast Mode */
   @media (prefers-contrast: high) {
-    .enhancedProjectHero {
-      background: #000;
-    }
+    background: #000;
 
     .headingContainer h1 {
       color: #fff;
@@ -313,48 +265,27 @@
       color: #fff;
     }
 
-    .tech-tag {
-      background: #fff;
-      color: #000;
-      border: 2px solid #fff;
-    }
-
-    .scrollText {
+    .subtitleContainer p {
       color: #fff;
     }
   }
 
   /* Print Styles */
   @media print {
-    .enhancedProjectHero {
-      min-height: auto;
-      padding: 2rem 0;
-      background: white;
-    }
+    min-height: auto;
+    padding: 2rem 0;
+    background: white;
 
-    .floatingElement {
-      display: none;
-    }
-
-    .headingContainer h1 {
-      color: black;
-    }
-
-    .animatedText .animated-word {
-      color: black;
-    }
-
-    .subtitleContainer p {
-      color: black;
-    }
-
-    .tech-tag {
-      background: black;
-      color: white;
-    }
-
+    .floatingElement,
+    .crossWatermark,
     .scrollIndicator {
       display: none;
+    }
+
+    .headingContainer h1,
+    .animatedText .animated-word,
+    .subtitleContainer p {
+      color: black;
     }
   }
 }

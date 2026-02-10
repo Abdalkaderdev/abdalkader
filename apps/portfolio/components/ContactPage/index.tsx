@@ -4,6 +4,7 @@ import { splitText } from '@/utils/textUtils';
 import { gsap } from '@/libs/gsap';
 import Link from 'next/link';
 import { isReducedMotion } from '@/utils/motion';
+import MiniSignpost from "@/components/MiniSignpost";
 
 export default function ContactSection() {
     const bannerHeadingRef = useRef<HTMLDivElement | null>(null);
@@ -60,6 +61,10 @@ export default function ContactSection() {
                     <Link href="https://github.com/abdalkaderdev" target="_blank" rel="noopener noreferrer">GitHub</Link>
                     <Link href="https://linkedin.com/in/abdalkaderdev" target="_blank" rel="noopener noreferrer">LinkedIn</Link>
                     <Link href="https://www.instagram.com/abdalkader.dev" target="_blank" rel="noopener noreferrer">Instagram</Link>
+                </div>
+                {/* Encouraging verse */}
+                <div className={styles.signpostWrapper}>
+                    <MiniSignpost category="love" direction="left" />
                 </div>
             </section>
         </>

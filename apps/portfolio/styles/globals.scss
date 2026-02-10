@@ -28,16 +28,7 @@ body {
     transition: none !important;
 }
 
-/*=============== Custom Cursor - Hide Default ===============*/
-@media (min-width: 1025px) and (hover: hover) {
-    body:not(.touch-device) {
-        cursor: none !important;
-
-        a, button, [role="button"], input, textarea, select {
-            cursor: none !important;
-        }
-    }
-}
+/* Custom cursor removed per user preference */
 
 /* Skip link for keyboard users */
 .skip-link {
@@ -438,6 +429,29 @@ $fonts: (
     overflow: hidden;
     pointer-events: none;
     z-index: 5000000;
+
+    .loader-cross-container {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .loader-cross {
+        filter: drop-shadow(0 0 8px rgba(245, 245, 220, 0.3));
+        transition: filter 0.5s ease;
+
+        &.complete {
+            filter: drop-shadow(0 0 25px rgba(245, 245, 220, 0.9));
+        }
+
+        line {
+            fill: none;
+        }
+    }
 
     .counter {
         position: absolute;

@@ -4,6 +4,7 @@ import styles from './HeroSection.module.scss';
 import ImageTrailEffect from "@/components/HomePage/ImageTrail";
 import { LineReveal, ScrambleText } from "@/components/TextReveal";
 import PillBadge from "@/components/PillBadge";
+import BibleVerse from "@/components/BibleVerse";
 
 export default function HeroSection() {
     const marqueeRef = useRef<HTMLDivElement | null>(null);
@@ -57,6 +58,7 @@ export default function HeroSection() {
                     <br />
                     <LineReveal delay={0.4} duration={0.8}>& AI Engineer</LineReveal>
                 </h1>
+                <BibleVerse className={styles.bibleVerse} />
             </div>
         </section>
     );

@@ -36,6 +36,16 @@
                     @include mT2;
                 }
             }
+
+            .godIsGreater {
+                margin-top: 2.5rem;
+                opacity: 0.9;
+                transition: opacity $transition;
+
+                &:hover {
+                    opacity: 1;
+                }
+            }
         }
 
         .image {

@@ -18,10 +18,18 @@
         @include font-1;
         font-family: PPmedium;
         transition: color $transition, text-shadow $transition;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.4rem;
 
         &:hover {
             color: $primary;
             text-shadow: 0 0 6px rgba($primary, 0.6);
+
+            .crossIcon {
+                color: $gold;
+                text-shadow: 0 0 8px rgba($gold, 0.6);
+            }
         }
 
         &:active {
@@ -36,6 +44,13 @@
         @media (max-width: 600px) {
             display: none;
         }
+    }
+
+    .crossIcon {
+        font-size: 0.9em;
+        color: $softGold;
+        transition: color $transition, text-shadow $transition;
+        opacity: 0.9;
     }
 
     .menu_Toggle {

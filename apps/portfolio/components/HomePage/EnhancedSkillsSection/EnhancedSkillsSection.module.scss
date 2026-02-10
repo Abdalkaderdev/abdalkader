@@ -240,15 +240,10 @@
   }
 }
 
-/* Animation States */
+/* Animation States - Skill items are visible by default
+   GSAP handles individual element animations (text, bars) */
 .skillItem {
-  opacity: 0;
-  transform: translateY(20px);
-
-  &.animated {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  /* Items are visible by default - GSAP animates internal elements */
 }
 
 /* Accessibility */

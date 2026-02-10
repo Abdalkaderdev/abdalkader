@@ -47,11 +47,17 @@
         .emailLink {
             color: $white;
             text-decoration: none;
-            
+
             &:hover {
                 color: $primary;
                 text-decoration: underline;
             }
         }
+    }
+
+    .signpostWrapper {
+        margin-top: 3rem;
+        display: flex;
+        justify-content: center;
     }
 }

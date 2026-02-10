@@ -1,4 +1,8 @@
+'use client';
+
 import { MagneticLink } from '@/components/MagneticLink';
+import MiniSignpost from '@/components/MiniSignpost';
+import RootedInChrist from '@/components/RootedInChrist';
 import styles from './Footer.module.scss';
 
 // Navigation links
@@ -80,6 +84,19 @@ const Footer: React.FC = () => {
                     </div>
                 </div>
                 <div className={styles.border} />
+                <div className={styles.spiritualSection}>
+                    <div className={styles.signpostWrapper}>
+                        <MiniSignpost
+                            category="peace"
+                            direction="right"
+                            rotateInterval={10000}
+                            className={styles.footerSignpost}
+                        />
+                    </div>
+                    <div className={styles.rootedWrapper}>
+                        <RootedInChrist className={styles.footerRooted} />
+                    </div>
+                </div>
                 <div className={styles.copyrights}>
                     <div className={styles.col}>
                         <p>Building the future, one project at a time.</p>

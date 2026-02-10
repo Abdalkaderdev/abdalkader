@@ -71,6 +71,51 @@
             background: $borderColor;
         }
 
+        /* Spiritual Elements Section */
+        .spiritualSection {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 2rem 0;
+            gap: 2rem;
+        }
+
+        .signpostWrapper {
+            flex: 1;
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            opacity: 0.85;
+            transition: opacity $transition;
+
+            &:hover {
+                opacity: 1;
+            }
+
+            .footerSignpost {
+                transform: scale(0.85);
+                transform-origin: center;
+            }
+        }
+
+        .rootedWrapper {
+            flex: 1;
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            opacity: 0.85;
+            transition: opacity $transition;
+
+            &:hover {
+                opacity: 1;
+            }
+
+            .footerRooted {
+                transform: scale(1);
+                transform-origin: center;
+            }
+        }
+
         /* Footer Bottom */
         .copyrights {
             display: flex;
@@ -107,6 +152,28 @@
             .wrapper {
                 flex-direction: column;
                 gap: 4rem;
+            }
+
+            .spiritualSection {
+                flex-direction: column;
+                gap: 1.5rem;
+                padding: 1.5rem 0;
+            }
+
+            .signpostWrapper {
+                justify-content: center;
+
+                .footerSignpost {
+                    transform: scale(0.75);
+                }
+            }
+
+            .rootedWrapper {
+                justify-content: center;
+
+                .footerRooted {
+                    transform: scale(0.85);
+                }
             }
 
             .copyrights {

@@ -1,0 +1,159 @@
+@import "@/styles/variables.scss";
+
+.container {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    margin-top: 2rem;
+}
+
+.svg {
+    width: 200px;
+    height: auto;
+    color: $gold;
+    transition: color 0.3s ease, transform 0.3s ease;
+
+    &:hover {
+        color: $softGold;
+        transform: scale(1.02);
+    }
+}
+
+// Cross styles
+.cross {
+    opacity: 1;
+}
+
+.crossLine {
+    opacity: 0.95;
+}
+
+// Reference text (Romans 8:28)
+.reference {
+    font-family: 'Georgia', 'Times New Roman', serif;
+    font-size: 12px;
+    font-weight: 400;
+    fill: currentColor;
+    opacity: 0.85;
+    letter-spacing: 0.02em;
+}
+
+// G > ^ v symbols
+.symbols {
+    opacity: 1;
+}
+
+.symbol {
+    transition: opacity 0.3s ease;
+}
+
+// Message text along the cross - diagonal cursive
+.messageText {
+    font-family: 'Brush Script MT', 'Segoe Script', cursive;
+    font-size: 11px;
+    font-weight: 400;
+    fill: currentColor;
+    opacity: 0.85;
+    font-style: italic;
+    letter-spacing: 0.02em;
+}
+
+// ========================================
+// RESPONSIVE DESIGN
+// ========================================
+
+// Large Desktop (1440px+)
+@media (min-width: 1440px) {
+    .container {
+        margin-top: 2.5rem;
+    }
+
+    .svg {
+        width: 220px;
+    }
+
+    .reference {
+        font-size: 13px;
+    }
+
+    .messageText {
+        font-size: 12px;
+    }
+}
+
+// Desktop (1024px - 1439px)
+@media (min-width: 1024px) and (max-width: 1439px) {
+    .svg {
+        width: 200px;
+    }
+
+    .messageText {
+        font-size: 11px;
+    }
+}
+
+// Tablet (768px - 1023px)
+@media (min-width: 768px) and (max-width: 1023px) {
+    .container {
+        margin-top: 1.5rem;
+    }
+
+    .svg {
+        width: 180px;
+    }
+
+    .reference {
+        font-size: 11px;
+    }
+
+    .messageText {
+        font-size: 10px;
+    }
+}
+
+// Mobile Large (480px - 767px)
+@media (min-width: 480px) and (max-width: 767px) {
+    .container {
+        margin-top: 1.5rem;
+        justify-content: center;
+    }
+
+    .svg {
+        width: 160px;
+    }
+
+    .reference {
+        font-size: 10px;
+    }
+
+    .messageText {
+        font-size: 9px;
+    }
+}
+
+// Mobile (< 480px)
+@media (max-width: 479px) {
+    .container {
+        margin-top: 1rem;
+        justify-content: center;
+    }
+
+    .svg {
+        width: 140px;
+    }
+
+    .reference {
+        font-size: 9px;
+    }
+
+    .messageText {
+        font-size: 8px;
+    }
+}
+
+// Reduced motion preference
+@media (prefers-reduced-motion: reduce) {
+    .svg {
+        transition: none;
+    }
+}

@@ -1,0 +1,824 @@
+@import "@/styles/variables.scss";
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400&display=swap');
+
+.lordsPrayer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    padding: 8rem 2rem 4rem;
+    background: linear-gradient(180deg, #0a0a0a 0%, #111 50%, #0a0a0a 100%);
+    color: $softGold;
+    position: relative;
+    overflow-x: hidden;
+}
+
+// Ambient glow effects
+.ambientGlow {
+    position: absolute;
+    top: 10%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 400px;
+    height: 400px;
+    background: radial-gradient(circle, rgba($gold, 0.08) 0%, transparent 70%);
+    pointer-events: none;
+    z-index: 0;
+}
+
+.ambientGlow2 {
+    position: absolute;
+    bottom: 20%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 300px;
+    height: 300px;
+    background: radial-gradient(circle, rgba($primary, 0.05) 0%, transparent 70%);
+    pointer-events: none;
+    z-index: 0;
+}
+
+.prayerContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    z-index: 1;
+}
+
+.cross {
+    font-size: 1.8rem;
+    color: $gold;
+    margin-bottom: 1.5rem;
+    text-shadow: 0 0 30px rgba($gold, 0.5);
+}
+
+.prayerTitle {
+    font-family: 'Josefin Sans', sans-serif;
+    font-weight: 300;
+    font-size: clamp(0.75rem, 1.5vw, 0.9rem);
+    text-transform: uppercase;
+    letter-spacing: 0.3em;
+    color: rgba($softGold, 0.6);
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+.prayerText {
+    font-family: 'Josefin Sans', sans-serif;
+    font-weight: 300;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    line-height: 1.9;
+    max-width: 420px;
+    position: relative;
+    z-index: 1;
+
+    p {
+        margin: 0;
+        padding: 0.12em 0;
+        font-size: clamp(0.8rem, 2vw, 0.95rem);
+        color: $softGold;
+        text-shadow: 0 0 20px rgba($softGold, 0.1);
+    }
+}
+
+.ending {
+    margin-top: 1.5rem !important;
+    font-weight: 400 !important;
+    letter-spacing: 0.35em !important;
+    color: $gold !important;
+    text-shadow: 0 0 25px rgba($gold, 0.3) !important;
+}
+
+// Navigation
+.navigation {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    margin-top: 3rem;
+    position: relative;
+    z-index: 1;
+}
+
+.navButton {
+    background: transparent;
+    border: 1px solid rgba($softGold, 0.3);
+    color: $softGold;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &:hover {
+        background: rgba($gold, 0.1);
+        border-color: $gold;
+        color: $gold;
+        box-shadow: 0 0 20px rgba($gold, 0.2);
+    }
+
+    &:focus-visible {
+        outline: 2px solid $gold;
+        outline-offset: 2px;
+    }
+}
+
+.prayerIndicators {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.indicator {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: rgba($softGold, 0.3);
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    padding: 0;
+
+    &:hover {
+        background: rgba($gold, 0.5);
+        transform: scale(1.2);
+    }
+
+    &.active {
+        background: $gold;
+        box-shadow: 0 0 10px rgba($gold, 0.5);
+        transform: scale(1.2);
+    }
+
+    &:focus-visible {
+        outline: 2px solid $gold;
+        outline-offset: 2px;
+    }
+}
+
+// Category Filter
+.categoryFilter {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.5rem;
+    margin-bottom: 2.5rem;
+    max-width: 800px;
+    position: relative;
+    z-index: 1;
+}
+
+.categoryButton {
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 0.65rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 0.5rem 1rem;
+    background: transparent;
+    border: 1px solid rgba($softGold, 0.2);
+    color: rgba($softGold, 0.6);
+    border-radius: 20px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+
+    &:hover {
+        border-color: rgba($gold, 0.5);
+        color: $gold;
+    }
+
+    &.active {
+        background: rgba($gold, 0.15);
+        border-color: $gold;
+        color: $gold;
+        box-shadow: 0 0 15px rgba($gold, 0.2);
+    }
+
+    &:focus-visible {
+        outline: 2px solid $gold;
+        outline-offset: 2px;
+    }
+}
+
+.categoryBadge {
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 0.6rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: $primary;
+    margin-bottom: 0.5rem;
+    opacity: 0.8;
+}
+
+.prayerCount {
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 0.75rem;
+    letter-spacing: 0.1em;
+    color: rgba($softGold, 0.5);
+    min-width: 60px;
+    text-align: center;
+}
+
+.instructions {
+    margin-top: 2rem;
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 0.7rem;
+    letter-spacing: 0.15em;
+    color: rgba($softGold, 0.4);
+    text-transform: uppercase;
+    text-align: center;
+}
+
+// Light background variant (optional)
+.lightBackground {
+    background: #faf9f6;
+
+    .ambientGlow,
+    .ambientGlow2 {
+        display: none;
+    }
+
+    .cross {
+        color: $black;
+        text-shadow: none;
+    }
+
+    .prayerTitle {
+        color: rgba($black, 0.5);
+    }
+
+    .prayerText p {
+        color: $black;
+        text-shadow: none;
+    }
+
+    .ending {
+        color: $black !important;
+        text-shadow: none !important;
+    }
+
+    .navButton {
+        border-color: rgba($black, 0.3);
+        color: $black;
+
+        &:hover {
+            background: rgba($black, 0.05);
+            border-color: $black;
+        }
+    }
+
+    .indicator {
+        background: rgba($black, 0.3);
+
+        &:hover {
+            background: rgba($black, 0.5);
+        }
+
+        &.active {
+            background: $black;
+            box-shadow: none;
+        }
+    }
+
+    .instructions {
+        color: rgba($black, 0.4);
+    }
+}
+
+// Music Toggle
+.musicToggleContainer {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    z-index: 100;
+}
+
+.musicToggle {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1.25rem;
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba($softGold, 0.2);
+    border-radius: 30px;
+    color: rgba($softGold, 0.7);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-family: 'Josefin Sans', sans-serif;
+
+    &:hover {
+        background: rgba(0, 0, 0, 0.8);
+        border-color: rgba($gold, 0.5);
+        color: $gold;
+        box-shadow: 0 0 20px rgba($gold, 0.2);
+    }
+
+    &.active {
+        background: rgba($gold, 0.15);
+        border-color: $gold;
+        color: $gold;
+        box-shadow: 0 0 25px rgba($gold, 0.3);
+
+        .musicIcon {
+            animation: pulse 1.5s ease-in-out infinite;
+        }
+    }
+
+    &:focus-visible {
+        outline: 2px solid $gold;
+        outline-offset: 2px;
+    }
+}
+
+.musicIcon {
+    font-size: 1.1rem;
+}
+
+.musicLabel {
+    font-size: 0.7rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+}
+
+@keyframes pulse {
+    0%, 100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.5;
+    }
+}
+
+// Tablet breakpoint
+@media (max-width: 1024px) {
+    .lordsPrayer {
+        padding: 6rem 2rem 3rem;
+    }
+
+    .ambientGlow {
+        width: 300px;
+        height: 300px;
+    }
+
+    .ambientGlow2 {
+        width: 220px;
+        height: 220px;
+    }
+
+    .categoryFilter {
+        max-width: 600px;
+        gap: 0.4rem;
+    }
+
+    .categoryButton {
+        padding: 0.45rem 0.9rem;
+        font-size: 0.6rem;
+    }
+
+    .prayerText {
+        max-width: 380px;
+    }
+}
+
+// Large mobile / small tablet breakpoint
+@media (max-width: 768px) {
+    .lordsPrayer {
+        padding: 5rem 1.5rem 3rem;
+    }
+
+    .ambientGlow {
+        width: 250px;
+        height: 250px;
+        top: 5%;
+    }
+
+    .ambientGlow2 {
+        width: 180px;
+        height: 180px;
+    }
+
+    .categoryFilter {
+        max-width: 100%;
+        padding: 0 0.5rem;
+        gap: 0.35rem;
+        margin-bottom: 2rem;
+    }
+
+    .categoryButton {
+        padding: 0.4rem 0.75rem;
+        font-size: 0.55rem;
+        letter-spacing: 0.08em;
+        border-radius: 16px;
+    }
+
+    .cross {
+        font-size: 1.5rem;
+        margin-bottom: 1rem;
+    }
+
+    .prayerTitle {
+        margin-bottom: 1.5rem;
+    }
+
+    .prayerText {
+        max-width: 340px;
+        letter-spacing: 0.1em;
+        line-height: 1.85;
+
+        p {
+            font-size: clamp(0.75rem, 2.5vw, 0.9rem);
+        }
+    }
+
+    .navigation {
+        margin-top: 2.5rem;
+        gap: 1.25rem;
+    }
+
+    .navButton {
+        width: 44px;
+        height: 44px;
+        font-size: 1.1rem;
+        // Touch-friendly tap target
+        min-width: 44px;
+        min-height: 44px;
+    }
+
+    .prayerCount {
+        font-size: 0.7rem;
+        min-width: 55px;
+    }
+
+    .instructions {
+        margin-top: 1.5rem;
+        font-size: 0.65rem;
+        padding: 0 1rem;
+    }
+
+    .musicToggleContainer {
+        bottom: 1.5rem;
+        right: 1.5rem;
+    }
+
+    .musicToggle {
+        padding: 0.65rem 1.1rem;
+        // Touch-friendly tap target
+        min-height: 44px;
+    }
+}
+
+// Mobile breakpoint
+@media (max-width: 600px) {
+    .lordsPrayer {
+        padding: 4rem 1rem 2.5rem;
+        min-height: 100dvh; // Use dynamic viewport height for mobile browsers
+    }
+
+    .ambientGlow {
+        width: 200px;
+        height: 200px;
+        top: 3%;
+    }
+
+    .ambientGlow2 {
+        width: 150px;
+        height: 150px;
+        bottom: 15%;
+    }
+
+    .categoryFilter {
+        max-width: 100%;
+        padding: 0;
+        gap: 0.3rem;
+        margin-bottom: 1.5rem;
+        // Allow horizontal scrolling on very small screens as fallback
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+        -ms-overflow-style: none;
+
+        &::-webkit-scrollbar {
+            display: none;
+        }
+
+        // Ensure wrapping works properly
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .categoryButton {
+        padding: 0.35rem 0.65rem;
+        font-size: 0.5rem;
+        letter-spacing: 0.06em;
+        border-radius: 14px;
+        white-space: nowrap;
+        // Touch-friendly minimum size
+        min-height: 32px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .cross {
+        font-size: 1.3rem;
+        margin-bottom: 0.75rem;
+    }
+
+    .categoryBadge {
+        font-size: 0.55rem;
+        letter-spacing: 0.15em;
+    }
+
+    .prayerTitle {
+        font-size: clamp(0.65rem, 1.2vw, 0.8rem);
+        letter-spacing: 0.25em;
+        margin-bottom: 1.25rem;
+    }
+
+    .prayerText {
+        max-width: 300px;
+        letter-spacing: 0.08em;
+        line-height: 1.8;
+        padding: 0 0.5rem;
+
+        p {
+            padding: 0.1em 0;
+            font-size: clamp(0.7rem, 2.8vw, 0.85rem);
+        }
+    }
+
+    .ending {
+        margin-top: 1rem !important;
+        letter-spacing: 0.3em !important;
+    }
+
+    .navigation {
+        margin-top: 2rem;
+        gap: 1rem;
+    }
+
+    .navButton {
+        width: 48px;
+        height: 48px;
+        font-size: 1.2rem;
+        // Ensure touch-friendly tap target (minimum 44px)
+        min-width: 48px;
+        min-height: 48px;
+
+        // Active state feedback for touch
+        &:active {
+            transform: scale(0.95);
+            background: rgba($gold, 0.15);
+        }
+    }
+
+    .prayerCount {
+        font-size: 0.65rem;
+        min-width: 50px;
+    }
+
+    .indicator {
+        width: 10px;
+        height: 10px;
+        // Touch-friendly tap target
+        min-width: 24px;
+        min-height: 24px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+
+        &::before {
+            content: '';
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: inherit;
+        }
+    }
+
+    .instructions {
+        margin-top: 1.25rem;
+        font-size: 0.6rem;
+        letter-spacing: 0.12em;
+        padding: 0 0.75rem;
+        line-height: 1.5;
+    }
+
+    .musicToggleContainer {
+        bottom: 1rem;
+        right: 1rem;
+    }
+
+    .musicToggle {
+        padding: 0.55rem 0.9rem;
+        border-radius: 25px;
+        // Touch-friendly tap target
+        min-height: 44px;
+        min-width: 44px;
+
+        &:active {
+            transform: scale(0.97);
+        }
+    }
+
+    .musicLabel {
+        font-size: 0.55rem;
+    }
+
+    .musicIcon {
+        font-size: 1rem;
+    }
+}
+
+// Small mobile breakpoint
+@media (max-width: 375px) {
+    .lordsPrayer {
+        padding: 3.5rem 0.75rem 2rem;
+    }
+
+    .categoryFilter {
+        gap: 0.25rem;
+    }
+
+    .categoryButton {
+        padding: 0.3rem 0.55rem;
+        font-size: 0.45rem;
+        letter-spacing: 0.05em;
+        border-radius: 12px;
+    }
+
+    .cross {
+        font-size: 1.1rem;
+    }
+
+    .categoryBadge {
+        font-size: 0.5rem;
+    }
+
+    .prayerTitle {
+        font-size: 0.6rem;
+        letter-spacing: 0.2em;
+    }
+
+    .prayerText {
+        max-width: 280px;
+        letter-spacing: 0.06em;
+        line-height: 1.75;
+
+        p {
+            font-size: 0.68rem;
+        }
+    }
+
+    .ending {
+        letter-spacing: 0.25em !important;
+    }
+
+    .navButton {
+        width: 44px;
+        height: 44px;
+    }
+
+    .prayerCount {
+        font-size: 0.6rem;
+    }
+
+    .instructions {
+        font-size: 0.55rem;
+    }
+
+    .musicToggleContainer {
+        bottom: 0.75rem;
+        right: 0.75rem;
+    }
+
+    .musicToggle {
+        padding: 0.5rem 0.8rem;
+        gap: 0.4rem;
+    }
+
+    .musicLabel {
+        font-size: 0.5rem;
+    }
+}
+
+// Landscape mode on mobile
+@media (max-width: 900px) and (orientation: landscape) {
+    .lordsPrayer {
+        padding: 3rem 2rem 2rem;
+        min-height: auto;
+    }
+
+    .ambientGlow,
+    .ambientGlow2 {
+        opacity: 0.5;
+    }
+
+    .categoryFilter {
+        margin-bottom: 1rem;
+    }
+
+    .categoryButton {
+        padding: 0.3rem 0.6rem;
+        font-size: 0.5rem;
+    }
+
+    .cross {
+        margin-bottom: 0.5rem;
+    }
+
+    .prayerTitle {
+        margin-bottom: 0.75rem;
+    }
+
+    .prayerText {
+        max-width: 500px;
+        line-height: 1.6;
+
+        p {
+            padding: 0.08em 0;
+        }
+    }
+
+    .ending {
+        margin-top: 0.75rem !important;
+    }
+
+    .navigation {
+        margin-top: 1.5rem;
+    }
+
+    .instructions {
+        margin-top: 1rem;
+    }
+
+    .musicToggleContainer {
+        bottom: 1rem;
+        right: 1rem;
+    }
+}
+
+// Very tall screens (e.g., modern smartphones)
+@media (min-height: 800px) and (max-width: 600px) {
+    .lordsPrayer {
+        padding-top: 5rem;
+        padding-bottom: 3rem;
+    }
+
+    .categoryFilter {
+        margin-bottom: 2rem;
+    }
+
+    .prayerText {
+        line-height: 2;
+    }
+
+    .navigation {
+        margin-top: 2.5rem;
+    }
+
+    .instructions {
+        margin-top: 2rem;
+    }
+}
+
+// Accessibility: Reduced motion preference
+@media (prefers-reduced-motion: reduce) {
+    .musicIcon {
+        animation: none !important;
+    }
+
+    .navButton,
+    .categoryButton,
+    .musicToggle,
+    .indicator {
+        transition: none;
+    }
+}
+
+// High contrast mode support
+@media (prefers-contrast: high) {
+    .categoryButton {
+        border-width: 2px;
+
+        &.active {
+            border-width: 2px;
+        }
+    }
+
+    .navButton {
+        border-width: 2px;
+    }
+
+    .prayerText p {
+        text-shadow: none;
+    }
+}

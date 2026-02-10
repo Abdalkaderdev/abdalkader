@@ -1,0 +1,160 @@
+@import "@/styles/variables.scss";
+
+.musicPlayer {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+
+    @media (max-width: 600px) {
+        bottom: 1.5rem;
+        right: 1.5rem;
+    }
+}
+
+.volumeControl {
+    background: rgba(20, 20, 20, 0.9);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba($white, 0.1);
+    border-radius: 20px;
+    padding: 0.5rem 1rem;
+}
+
+.volumeSlider {
+    width: 80px;
+    height: 4px;
+    -webkit-appearance: none;
+    appearance: none;
+    background: rgba($white, 0.2);
+    border-radius: 2px;
+    cursor: pointer;
+
+    &::-webkit-slider-thumb {
+        -webkit-appearance: none;
+        appearance: none;
+        width: 14px;
+        height: 14px;
+        background: $gold;
+        border-radius: 50%;
+        cursor: pointer;
+        transition: transform 0.2s ease;
+
+        &:hover {
+            transform: scale(1.2);
+        }
+    }
+
+    &::-moz-range-thumb {
+        width: 14px;
+        height: 14px;
+        background: $gold;
+        border-radius: 50%;
+        border: none;
+        cursor: pointer;
+        transition: transform 0.2s ease;
+
+        &:hover {
+            transform: scale(1.2);
+        }
+    }
+
+    &:focus-visible {
+        outline: 2px solid $gold;
+        outline-offset: 3px;
+    }
+}
+
+.playButton {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: rgba(20, 20, 20, 0.9);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba($softGold, 0.2);
+    color: $softGold;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+
+    &:hover:not(:disabled) {
+        border-color: $gold;
+        box-shadow: 0 0 20px rgba($gold, 0.2);
+        transform: scale(1.05);
+    }
+
+    &:active:not(:disabled) {
+        transform: scale(0.98);
+    }
+
+    &:focus-visible {
+        outline: 2px solid $gold;
+        outline-offset: 3px;
+    }
+
+    &:disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+    }
+
+    &.playing {
+        border-color: $gold;
+
+        .musicNote {
+            animation: bounce 1s ease-in-out infinite;
+        }
+    }
+
+    @media (max-width: 600px) {
+        width: 44px;
+        height: 44px;
+    }
+}
+
+.playIcon,
+.pauseIcon,
+.loadingIcon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.loadingIcon {
+    font-size: 1rem;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.musicNote {
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    font-size: 0.75rem;
+    color: $gold;
+    opacity: 0.8;
+}
+
+@keyframes bounce {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-3px);
+    }
+}

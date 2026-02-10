@@ -9,6 +9,7 @@ const links = [
     { name: 'Home', path: '/' },
     { name: 'About me', path: '/about' },
     { name: 'Projects', path: '/projects' },
+    { name: 'Guidance', path: '/guidance' },
     { name: 'Contact', path: '/contact' },
 ];
 
@@ -145,6 +146,7 @@ export default function Nav() {
                     showUnderline={false}
                     magneticStrength={0.2}
                 >
+                    <span className={styles.crossIcon}>&#10013;</span>
                     Abdalkader Alhamoud
                 </MagneticLink>
                 <button
