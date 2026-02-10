@@ -1,0 +1,108 @@
+@import "@/styles/variables.scss";
+
+// Note: Global cursor hiding styles are in globals.scss
+
+.cursor {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 12px;
+  height: 12px;
+  background: $primary;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 99999;
+  transform: translate(-50%, -50%);
+  mix-blend-mode: difference;
+  will-change: transform;
+
+  &.hovering {
+    background: $white;
+    mix-blend-mode: difference;
+  }
+
+  &.clicking {
+    background: $primary;
+  }
+
+  // Cursor type variations
+  &.link {
+    &.hovering {
+      background: $primary;
+      mix-blend-mode: normal;
+    }
+  }
+
+  &.project {
+    &.hovering {
+      width: 80px;
+      height: 80px;
+      background: rgba($primary, 0.9);
+      backdrop-filter: blur(4px);
+    }
+  }
+
+  &.button {
+    &.hovering {
+      background: $white;
+    }
+  }
+
+  &.text {
+    &.hovering {
+      width: 4px;
+      height: 24px;
+      border-radius: 2px;
+      background: $primary;
+      mix-blend-mode: normal;
+    }
+  }
+}
+
+.cursorRing {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 40px;
+  height: 40px;
+  border: 1px solid rgba($primary, 0.5);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 99998;
+  transform: translate(-50%, -50%);
+  will-change: transform;
+  transition: border-color 0.3s ease;
+
+  &.hovering {
+    border-color: rgba($primary, 0.8);
+    border-width: 2px;
+  }
+}
+
+.cursorLabel {
+  position: fixed;
+  top: 0;
+  left: 0;
+  transform: translate(20px, -50%);
+  background: $primary;
+  color: $black;
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  pointer-events: none;
+  z-index: 99999;
+  white-space: nowrap;
+  will-change: transform;
+}
+
+// Disable on mobile
+@media (max-width: 1024px), (hover: none) {
+  .cursor,
+  .cursorRing,
+  .cursorLabel {
+    display: none !important;
+  }
+}

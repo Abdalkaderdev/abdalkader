@@ -1,6 +1,7 @@
 import Footer from "@/components/Footer";
 import Nav from "@/components/Nav";
 import SmoothScrolling from "@/components/SmoothScrolling";
+import CustomCursor from "@/components/CustomCursor";
 import "@/styles/globals.scss";  // Ensure this is your global SCSS import
 import type { AppProps } from "next/app";
 import { AnimatePresence, motion } from "framer-motion";
@@ -217,11 +218,11 @@ export default function App({ Component, pageProps }: AppProps) {
                     {isStaging && (
                         <>
                             <StagingBanner />
-                            <StagingDashboard 
+                            <StagingDashboard
                                 isVisible={showStagingDashboard}
                                 onToggle={() => setShowStagingDashboard(!showStagingDashboard)}
                             />
-                            <StagingTools 
+                            <StagingTools
                                 isVisible={showStagingDashboard}
                                 onToggle={() => setShowStagingDashboard(!showStagingDashboard)}
                             />
@@ -229,6 +230,9 @@ export default function App({ Component, pageProps }: AppProps) {
                     )}
                 </motion.div>
             </AnimatePresence>
+
+            {/* Custom cursor effect - only on desktop */}
+            <CustomCursor />
         </>
     );
 }

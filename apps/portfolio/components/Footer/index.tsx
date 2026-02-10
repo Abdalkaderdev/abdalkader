@@ -1,4 +1,4 @@
-import Link from 'next/link';
+import { MagneticLink } from '@/components/MagneticLink';
 import styles from './Footer.module.scss';
 
 // Navigation links
@@ -32,38 +32,50 @@ const Footer: React.FC = () => {
                 <div className={styles.wrapper}>
                     <div className={styles.col}>
                         <p>Erbil, Iraq</p>
-                        <Link href="mailto:hello@abdalkader.dev">hello@abdalkader.dev</Link>
+                        <MagneticLink
+                            href="mailto:hello@abdalkader.dev"
+                            magneticStrength={0.2}
+                            showScale={false}
+                        >
+                            hello@abdalkader.dev
+                        </MagneticLink>
                     </div>
                     <div className={styles.linksCol}>
                         <h3>Navigation</h3>
                         {navigationLinks.map(({ text, href }) => (
-                            <Link key={text} href={href}>{text}</Link>
+                            <MagneticLink
+                                key={text}
+                                href={href}
+                                magneticStrength={0.2}
+                            >
+                                {text}
+                            </MagneticLink>
                         ))}
                     </div>
                     <div className={styles.linksCol}>
                         <h3>Ecosystem</h3>
                         {ecosystemLinks.map(({ text, href }) => (
-                            <a
+                            <MagneticLink
                                 key={text}
                                 href={href}
-                                target="_blank"
-                                rel="noopener noreferrer"
+                                external
+                                magneticStrength={0.2}
                             >
                                 {text}
-                            </a>
+                            </MagneticLink>
                         ))}
                     </div>
                     <div className={styles.linksCol}>
                         <h3>Connect</h3>
                         {socialLinks.map(({ text, href }) => (
-                            <a
+                            <MagneticLink
                                 key={text}
                                 href={href}
-                                target="_blank"
-                                rel="noopener noreferrer"
+                                external
+                                magneticStrength={0.2}
                             >
                                 {text}
-                            </a>
+                            </MagneticLink>
                         ))}
                     </div>
                 </div>

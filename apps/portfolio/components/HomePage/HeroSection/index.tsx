@@ -2,6 +2,8 @@ import { useEffect, useRef } from "react";
 import { gsap } from "@/libs/gsap";
 import styles from './HeroSection.module.scss';
 import ImageTrailEffect from "@/components/HomePage/ImageTrail";
+import { LineReveal, ScrambleText } from "@/components/TextReveal";
+import PillBadge from "@/components/PillBadge";
 
 export default function HeroSection() {
     const marqueeRef = useRef<HTMLDivElement | null>(null);
@@ -46,9 +48,16 @@ export default function HeroSection() {
                     Abdalkader Alhamoud - Abdalkader Alhamoud - Abdalkader Alhamoud - Abdalkader Alhamoud -</span>
                 </div>
             </div>
-            <h1 className={styles.tagline}>
-                Web Developer & AI Engineer
-            </h1>
+            <div className={styles.heroContent}>
+                <PillBadge variant="glass" size="sm">
+                    <ScrambleText delay={0.5} speed={40}>Available for Projects</ScrambleText>
+                </PillBadge>
+                <h1 className={styles.tagline}>
+                    <LineReveal delay={0.2} duration={0.8}>Web Developer</LineReveal>
+                    <br />
+                    <LineReveal delay={0.4} duration={0.8}>& AI Engineer</LineReveal>
+                </h1>
+            </div>
         </section>
     );
 }

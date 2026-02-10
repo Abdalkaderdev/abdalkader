@@ -1,0 +1,72 @@
+@import "@/styles/variables.scss";
+
+.magneticLink {
+    display: inline-block;
+    position: relative;
+    cursor: pointer;
+    will-change: transform;
+
+    // Focus styles for accessibility
+    &:focus-visible {
+        outline: 2px dashed $primary;
+        outline-offset: 3px;
+    }
+}
+
+.content {
+    display: inline-block;
+    position: relative;
+}
+
+// Scale effect on hover
+.withScale {
+    .content {
+        transition: transform $transition;
+    }
+
+    &:hover .content {
+        transform: scale(1.05);
+    }
+
+    // Respect reduced motion
+    @media (prefers-reduced-motion: reduce) {
+        .content {
+            transition: none;
+        }
+
+        &:hover .content {
+            transform: none;
+        }
+    }
+}
+
+// Underline reveal animation
+.withUnderline {
+    .underline {
+        position: absolute;
+        bottom: -2px;
+        left: 0;
+        width: 100%;
+        height: 1px;
+        background: $primary;
+        transform: scaleX(0);
+        transform-origin: left center;
+        transition: transform $transition;
+    }
+
+    &:hover .underline {
+        transform: scaleX(1);
+    }
+
+    // Respect reduced motion
+    @media (prefers-reduced-motion: reduce) {
+        .underline {
+            transition: none;
+            transform: scaleX(0);
+        }
+
+        &:hover .underline {
+            transform: scaleX(1);
+        }
+    }
+}

@@ -1,7 +1,8 @@
 import { useState, useRef, useEffect } from 'react';
 import Link from 'next/link';
-import { useRouter } from 'next/router'; // Import useRouter
+import { useRouter } from 'next/router';
 import { gsap } from '@/libs/gsap';
+import { MagneticLink } from '@/components/MagneticLink';
 import styles from './Nav.module.scss';
 
 // Define your links and paths
@@ -26,7 +27,7 @@ export default function Nav() {
     const linksRef = useRef<HTMLUListElement>(null);
     const firstLinkRef = useRef<HTMLAnchorElement>(null);
     const previousFocusRef = useRef<HTMLElement | null>(null);
-    const router = useRouter(); // Get the router instance
+    const router = useRouter();
 
     // Menu Animation
     useEffect(() => {
@@ -45,33 +46,33 @@ export default function Nav() {
                     autoAlpha: 1,
                 })
                 .fromTo(
-                    links ? Array.from(links).map(link => link.firstChild) : [], // Safely handle undefined
-                    { y: '-100%' }, // Start from below and invisible
+                    links ? Array.from(links).map(link => link.firstChild) : [],
+                    { y: '-100%' },
                     {
-                        y: '0%', // Move to original position
+                        y: '0%',
                         duration: 0.8,
                         stagger: 0.05,
                         ease: 'power4.inOut',
                     },
-                    '-=0.3' // Start the link animation 0.5 seconds earlier
+                    '-=0.3'
                 );
         } else {
             // Close menu animation
             timeline
                 .to(
-                    links ? Array.from(links).map(link => link.firstChild) : [], // Safely handle undefined
+                    links ? Array.from(links).map(link => link.firstChild) : [],
                     {
-                        y: '-100%', // Move up
+                        y: '-100%',
                         duration: 0.8,
                         stagger: 0.05,
                         ease: 'power4.inOut',
                     }
                 )
                 .to(navigationMenuRef.current, {
-                    clipPath: 'inset(0% 0% 100% 0%)', // Hide menu
+                    clipPath: 'inset(0% 0% 100% 0%)',
                     duration: 0.8,
                     ease: 'power4.inOut',
-                }, '-=0.3'); // Start the menu hiding 0.5 seconds after link animation starts
+                }, '-=0.3');
         }
 
         // Cleanup function to kill the timeline on unmount
@@ -124,7 +125,7 @@ export default function Nav() {
     // Close menu on route change
     useEffect(() => {
         const handleRouteChange = () => {
-            setMenuOpen(false); // Close the menu when navigating to a new page
+            setMenuOpen(false);
         };
 
         // Listen for route changes
@@ -139,9 +140,14 @@ export default function Nav() {
     return (
         <>
             <nav className={styles.nav}>
-                <Link href='/' className={styles.logo}>
-                    <span>Abdalkader Alhamoud</span>
-                </Link>
+                <MagneticLink
+                    href="/"
+                    className={styles.logo}
+                    showUnderline={false}
+                    magneticStrength={0.2}
+                >
+                    Abdalkader Alhamoud
+                </MagneticLink>
                 <button
                     type="button"
                     className={styles.menu_Toggle}
@@ -161,9 +167,13 @@ export default function Nav() {
                     <div className={styles.bar}></div>
                     <span>{menuOpen ? 'CLOSE' : 'MENU'}</span>
                 </button>
-                <Link href='/contact' className={styles.link}>
-                    <span>Contact</span>
-                </Link>
+                <MagneticLink
+                    href="/contact"
+                    className={styles.link}
+                    magneticStrength={0.25}
+                >
+                    Contact
+                </MagneticLink>
             </nav>
             <div
                 ref={navigationMenuRef}
@@ -175,7 +185,7 @@ export default function Nav() {
                     // Close when clicking outside the list (backdrop)
                     if (e.target === navigationMenuRef.current) setMenuOpen(false);
                 }}
-                style={{ 
+                style={{
                     visibility: menuOpen ? 'visible' : 'hidden',
                     pointerEvents: menuOpen ? 'auto' : 'none'
                 }}
@@ -186,19 +196,27 @@ export default function Nav() {
                 <ul id="site-navigation-menu" ref={linksRef}>
                     {links.map(({ name, path }, index) => (
                         <li key={name}>
-                            <Link href={path} ref={index === 0 ? firstLinkRef : undefined}>{name}</Link>
+                            <MagneticLink
+                                href={path}
+                                ref={index === 0 ? firstLinkRef : undefined}
+                                magneticStrength={0.15}
+                                showScale={true}
+                            >
+                                {name}
+                            </MagneticLink>
                         </li>
                     ))}
                     <li className={styles.divider}></li>
                     {crossAppLinks.map(({ name, path, external }) => (
                         <li key={name}>
-                            <a 
-                                href={path} 
-                                target={external ? "_blank" : "_self"}
-                                rel={external ? "noopener noreferrer" : undefined}
+                            <MagneticLink
+                                href={path}
+                                external={external}
+                                magneticStrength={0.15}
+                                showScale={true}
                             >
                                 {name}
-                            </a>
+                            </MagneticLink>
                         </li>
                     ))}
                 </ul>

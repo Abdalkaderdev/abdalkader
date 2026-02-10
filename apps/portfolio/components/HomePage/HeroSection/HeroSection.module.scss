@@ -13,6 +13,14 @@
         height: 90vh;
     }
 
+    .heroContent {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 1.5rem;
+        z-index: 1;
+    }
+
     .tagline {
         @include font-1;
         max-width: 21rem;

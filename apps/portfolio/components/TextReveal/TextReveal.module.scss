@@ -1,0 +1,84 @@
+@import "@/styles/variables.scss";
+
+// Character Reveal
+.characterReveal {
+  display: inline-block;
+  overflow: hidden;
+}
+
+.char {
+  display: inline-block;
+  will-change: transform, opacity;
+}
+
+// Word Reveal
+.wordReveal {
+  display: inline-flex;
+  flex-wrap: wrap;
+  perspective: 1000px;
+}
+
+.wordWrapper {
+  display: inline-block;
+  overflow: hidden;
+}
+
+.word {
+  display: inline-block;
+  transform-origin: bottom center;
+  will-change: transform, opacity;
+}
+
+// Line Reveal
+.lineReveal {
+  display: inline-block;
+  overflow: hidden;
+  vertical-align: bottom;
+}
+
+.lineText {
+  display: inline-block;
+  will-change: transform;
+}
+
+// Scramble Text
+.scrambleText {
+  display: inline-block;
+  font-family: inherit;
+  font-variant-numeric: tabular-nums;
+}
+
+// Gradient Reveal
+.gradientReveal {
+  display: inline-block;
+}
+
+.gradientText {
+  display: inline-block;
+  background: linear-gradient(
+    90deg,
+    $white 0%,
+    $white 50%,
+    transparent 50%,
+    transparent 100%
+  );
+  background-size: 200% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  will-change: background-position;
+
+  // Fallback for browsers that don't support background-clip
+  @supports not (-webkit-background-clip: text) {
+    color: $white;
+    background: none;
+  }
+}
+
+// Highlighted text variant with gradient
+.highlightedText {
+  background: linear-gradient(90deg, $primary 0%, #fa7300 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}

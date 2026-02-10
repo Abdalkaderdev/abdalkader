@@ -6,6 +6,7 @@ import { isReducedMotion } from '@/utils/motion';
 import Tag from '@/components/Tag';
 import Button from '@/components/Button';
 import { splitText } from '@/utils/textUtils';
+import GlassCard from '@/components/GlassCard';
 
 // Animation and layout constants
 const CARD_POSITIONS = [13, 37.7, 62.4, 87];
@@ -203,7 +204,13 @@ export default function ServiceSection() {
             {/* Services cards for small devices */}
             <div className={styles.mobileWrapper}>
                 {services.map((service) => (
-                    <div className={styles.card} key={service.numbering}>
+                    <GlassCard
+                        key={service.numbering}
+                        variant="default"
+                        hoverEffect
+                        glowOnHover
+                        className={styles.card}
+                    >
                         <h3 className={styles.title}>{service.title}</h3>
                         <ul>
                             {service.listItems.map((item, index) => (
@@ -211,7 +218,7 @@ export default function ServiceSection() {
                             ))}
                         </ul>
                         <h2 className={styles.numbering}>{service.numbering}</h2>
-                    </div>
+                    </GlassCard>
                 ))}
             </div>
         </section>

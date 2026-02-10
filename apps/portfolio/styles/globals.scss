@@ -28,6 +28,17 @@ body {
     transition: none !important;
 }
 
+/*=============== Custom Cursor - Hide Default ===============*/
+@media (min-width: 1025px) and (hover: hover) {
+    body:not(.touch-device) {
+        cursor: none !important;
+
+        a, button, [role="button"], input, textarea, select {
+            cursor: none !important;
+        }
+    }
+}
+
 /* Skip link for keyboard users */
 .skip-link {
     position: absolute;
@@ -192,6 +203,227 @@ $fonts: (
     @media (max-width: 600px) {
         width: 80vw;
     }
+}
+
+/*=============== Glassmorphism Utilities ===============*/
+.glass-card {
+  position: relative;
+  padding: 1.5rem;
+  border-radius: 16px;
+  background: rgba($black, 0.4);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba($white, 0.1);
+  color: $white;
+  transition: all $transition;
+
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    padding: 1px;
+    background: linear-gradient(
+      135deg,
+      rgba($white, 0.2) 0%,
+      rgba($white, 0.05) 50%,
+      rgba($primary, 0.1) 100%
+    );
+    -webkit-mask:
+      linear-gradient(#fff 0 0) content-box,
+      linear-gradient(#fff 0 0);
+    mask:
+      linear-gradient(#fff 0 0) content-box,
+      linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    pointer-events: none;
+  }
+
+  &:hover {
+    background: rgba($black, 0.5);
+    border-color: rgba($white, 0.2);
+    box-shadow:
+      0 8px 32px rgba($black, 0.3),
+      0 0 0 1px rgba($white, 0.1);
+  }
+
+  // Variant modifiers
+  &--primary {
+    background: rgba($primary, 0.1);
+    border-color: rgba($primary, 0.3);
+
+    &::before {
+      background: linear-gradient(
+        135deg,
+        rgba($primary, 0.4) 0%,
+        rgba($primary, 0.1) 50%,
+        rgba($white, 0.05) 100%
+      );
+    }
+
+    &:hover {
+      background: rgba($primary, 0.15);
+      border-color: rgba($primary, 0.5);
+      box-shadow:
+        0 8px 32px rgba($primary, 0.2),
+        0 0 40px rgba($primary, 0.15);
+    }
+  }
+
+  &--dark {
+    background: rgba($black, 0.7);
+    border-color: rgba($white, 0.05);
+
+    &:hover {
+      background: rgba($black, 0.8);
+      border-color: rgba($white, 0.1);
+      box-shadow: 0 16px 48px rgba($black, 0.5);
+    }
+  }
+
+  @media (max-width: 600px) {
+    padding: 1rem;
+    border-radius: 12px;
+  }
+}
+
+.glass-panel {
+  position: relative;
+  padding: 2rem;
+  border-radius: 20px;
+  background: rgba($black, 0.3);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba($white, 0.08);
+  color: $white;
+  transition: all $transition;
+
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    padding: 1px;
+    background: linear-gradient(
+      180deg,
+      rgba($white, 0.15) 0%,
+      rgba($white, 0.02) 100%
+    );
+    -webkit-mask:
+      linear-gradient(#fff 0 0) content-box,
+      linear-gradient(#fff 0 0);
+    mask:
+      linear-gradient(#fff 0 0) content-box,
+      linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    pointer-events: none;
+  }
+
+  // Variant modifiers
+  &--primary {
+    background: rgba($primary, 0.08);
+    border-color: rgba($primary, 0.2);
+
+    &::before {
+      background: linear-gradient(
+        180deg,
+        rgba($primary, 0.3) 0%,
+        rgba($primary, 0.05) 100%
+      );
+    }
+  }
+
+  &--dark {
+    background: rgba($black, 0.6);
+    border-color: rgba($white, 0.03);
+  }
+
+  @media (max-width: 840px) {
+    padding: 1.5rem;
+    border-radius: 16px;
+  }
+
+  @media (max-width: 600px) {
+    padding: 1rem;
+    border-radius: 12px;
+  }
+}
+
+.glass-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  border-radius: 12px;
+  background: rgba($primary, 0.15);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba($primary, 0.3);
+  color: $white;
+  font-size: 0.875rem;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-decoration: none;
+
+  &:hover {
+    background: rgba($primary, 0.25);
+    border-color: rgba($primary, 0.5);
+    box-shadow:
+      0 4px 20px rgba($primary, 0.25),
+      0 0 30px rgba($primary, 0.1);
+    transform: translateY(-2px);
+  }
+
+  &:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 10px rgba($primary, 0.2);
+  }
+
+  &:focus-visible {
+    outline: 2px solid $primary;
+    outline-offset: 2px;
+  }
+
+  // Variant modifiers
+  &--default {
+    background: rgba($white, 0.1);
+    border-color: rgba($white, 0.2);
+
+    &:hover {
+      background: rgba($white, 0.15);
+      border-color: rgba($white, 0.3);
+      box-shadow: 0 4px 20px rgba($white, 0.1);
+    }
+  }
+
+  &--dark {
+    background: rgba($black, 0.5);
+    border-color: rgba($white, 0.1);
+
+    &:hover {
+      background: rgba($black, 0.6);
+      border-color: rgba($white, 0.2);
+      box-shadow: 0 8px 32px rgba($black, 0.4);
+    }
+  }
+
+  &--sm {
+    padding: 0.5rem 1rem;
+    font-size: 0.75rem;
+    border-radius: 8px;
+  }
+
+  &--lg {
+    padding: 1rem 2rem;
+    font-size: 1rem;
+    border-radius: 14px;
+  }
 }
 
 /*====== Loading Intro Animation ======*/
