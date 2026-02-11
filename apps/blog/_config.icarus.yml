@@ -103,9 +103,7 @@ head:
     # Custom CSS files
     css:
         - /css/portfolio-theme.css
-        - /css/override.css
-        - /css/force-override.css
-        - /css/force-dark-theme.css
+        - /css/portfolio-dark-theme.css
         - /css/theme-toggle.css
         - /css/social-share.css
         - /css/code-theme.css

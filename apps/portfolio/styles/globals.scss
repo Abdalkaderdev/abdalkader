@@ -161,6 +161,168 @@ ul {
     pointer-events: none; // Prevent interaction during the animation
 }
 
+// Shared cross loader styles (used in both intro loader and page transitions)
+.loading-wide {
+    width: 150px;
+    height: 150px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+
+    @media (max-width: 480px) {
+        width: 120px;
+        height: 120px;
+    }
+}
+
+.color {
+    background-color: rgba(0, 0, 0, 0.85);
+}
+
+// Vertical bar of cross
+.l1 {
+    width: 15px;
+    height: 65px;
+    position: absolute;
+    animation: move-h 1.2s infinite cubic-bezier(0.65, 0.05, 0.36, 1);
+
+    @media (max-width: 480px) {
+        width: 12px;
+        height: 52px;
+    }
+}
+
+// Horizontal bar of cross
+.l2 {
+    width: 15px;
+    height: 60px;
+    position: absolute;
+    transform: rotate(90deg);
+    animation: move-v 1.2s infinite cubic-bezier(0.65, 0.05, 0.36, 1);
+
+    @media (max-width: 480px) {
+        width: 12px;
+        height: 48px;
+    }
+}
+
+// Decorative elements
+.e1 {
+    width: 1px;
+    height: 40px;
+    opacity: 0.3;
+    position: absolute;
+    top: 0;
+    left: 8%;
+}
+
+.e2 {
+    width: 60px;
+    height: 1px;
+    opacity: 0.8;
+    position: absolute;
+    top: 8%;
+    left: 0;
+}
+
+.e3 {
+    position: absolute;
+    top: 10%;
+    left: 12%;
+    font-family: 'Georgia', serif;
+    font-weight: 900;
+    font-size: 18px;
+    color: rgba(0, 0, 0, 0.85);
+}
+
+.e4 {
+    width: 1px;
+    height: 40px;
+    opacity: 0.3;
+    position: absolute;
+    top: 90%;
+    right: 10%;
+}
+
+.e5 {
+    width: 40px;
+    height: 1px;
+    opacity: 0.3;
+    position: absolute;
+    top: 100%;
+    right: 0;
+}
+
+.e6 {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    font-family: 'Georgia', serif;
+    font-size: 32px;
+    color: rgba(0, 0, 0, 0.85);
+}
+
+.e7 {
+    width: 1px;
+    height: 20px;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    transform: rotate(45deg);
+    animation: height 1s infinite cubic-bezier(0.65, 0.05, 0.36, 1);
+}
+
+.e8 {
+    width: 20px;
+    height: 1px;
+    position: absolute;
+    bottom: 50%;
+    left: 0;
+    animation: width 1.5s infinite cubic-bezier(0.65, 0.05, 0.36, 1);
+}
+
+// Animation classes
+.animation-effect-light {
+    animation: effect 0.2s 0.1s infinite linear;
+}
+
+.animation-effect-light-d {
+    animation: effect 0.3s 0.2s infinite linear;
+}
+
+.animation-effect-rot {
+    animation: rot 0.8s infinite cubic-bezier(0.65, 0.05, 0.36, 1);
+}
+
+.animation-effect-scale {
+    animation: scale 0.8s infinite cubic-bezier(0.65, 0.05, 0.36, 1);
+}
+
+// Cross for page transitions
+.page-cross-loader {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+// Zoom out animation for page transition cross
+.slide-out .page-cross-loader {
+    animation: crossZoomOut 0.6s ease-out forwards;
+}
+
+@keyframes crossZoomOut {
+    0% {
+        transform: translate(-50%, -50%) scale(1);
+        opacity: 1;
+    }
+    100% {
+        transform: translate(-50%, -50%) scale(2.5);
+        opacity: 0;
+    }
+}
+
 /*=============== Fonts ===============*/
 $fonts: (
     PPmedium: "PPNeueMontreal-Medium",

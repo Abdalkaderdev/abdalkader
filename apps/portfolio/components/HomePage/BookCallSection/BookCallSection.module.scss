@@ -1,7 +1,7 @@
 @import '@/styles/variables.scss';
 
 .BookCall {
-    @include paddingArround;
+    @include paddingAround;
     height: 100vh;
     background: url(/images/overlay.webp);
     background-size: cover;
@@ -13,7 +13,7 @@
     }
 
     .container {
-        @include paddingArround;
+        @include paddingAround;
         background: $navigationColor;
         backdrop-filter: blur(50px);
         width: 100%;

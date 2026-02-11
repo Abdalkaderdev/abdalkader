@@ -192,21 +192,28 @@ export default function ProjectSection() {
                         <div className={styles.quickActions}>
                             <button className={styles.quickView} onClick={() => openModal(project.slug)}>Quick View</button>
                         </div>
-                        <ProjectModal
-                            isOpen={openSlug === project.slug}
-                            onClose={closeModal}
-                            project={{
-                                title: project.title,
-                                category: project.category,
-                                overview: project.overview,
-                                live: project.live,
-                                github: project.github,
-                                slug: project.slug,
-                            }}
-                        />
                     </div>
                 ))}
             </div>
+
+            {/* Single modal instance - more efficient than rendering one per project */}
+            {(() => {
+                const selectedProject = projects.find(p => p.slug === openSlug);
+                return selectedProject ? (
+                    <ProjectModal
+                        isOpen={!!selectedProject}
+                        onClose={closeModal}
+                        project={{
+                            title: selectedProject.title,
+                            category: selectedProject.category,
+                            overview: selectedProject.overview,
+                            live: selectedProject.live,
+                            github: selectedProject.github,
+                            slug: selectedProject.slug,
+                        }}
+                    />
+                ) : null;
+            })()}
         </section>
     );
 }

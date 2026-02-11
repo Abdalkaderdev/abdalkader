@@ -19,7 +19,7 @@ const ServiceCard = forwardRef<HTMLDivElement, ServiceCardProps>(
                                 src="/images/serviceCard.png"
                                 width={500}
                                 height={500}
-                                alt='card'
+                                alt={`${title} service card - Decorative background`}
                             />
                         </div>
                         {/* Card details */}

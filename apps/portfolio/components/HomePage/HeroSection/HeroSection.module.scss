@@ -1,7 +1,7 @@
 @import "@/styles/variables.scss";
 
 .hero {
-    @include paddingArround;
+    @include paddingAround;
     height: 100vh;
     display: flex;
     flex-direction: column;

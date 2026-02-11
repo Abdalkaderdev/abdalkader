@@ -1,6 +1,5 @@
 $transition: 0.8s cubic-bezier(0.19, 1, 0.22, 1);
 $primary: #f44e00;
-$primaryColor: #f44e00;
 $white: #f8f8f8;
 $black: #000;
 $textDark: #131313;
@@ -14,6 +13,13 @@ $gold: #d4af37;
 $softGold: #f5f5dc;
 $holyWhite: #fafafa;
 
+// Breakpoints
+$bp-xl: 1440px;
+$bp-lg: 1080px;
+$bp-md: 840px;
+$bp-sm: 600px;
+$bp-xs: 480px;
+
 @mixin section {
     position: relative;
     padding-left: 2rem;
@@ -25,7 +31,7 @@ $holyWhite: #fafafa;
     }
 }
 
-@mixin paddingArround {
+@mixin paddingAround {
     padding: 2rem;
 
     @media (max-width: 600px) {

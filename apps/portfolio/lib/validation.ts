@@ -135,10 +135,8 @@ export interface ValidationResult {
  * Validate form data
  */
 export const validateForm = (
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  data: Record<string, any>,
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  rules: Record<string, ((value: any) => boolean | string)[]>
+  data: Record<string, unknown>,
+  rules: Record<string, ((value: unknown) => boolean | string)[]>
 ): ValidationResult => {
   const errors: Record<string, string> = {};
 
@@ -164,8 +162,7 @@ export const validateForm = (
  * Common validation rules
  */
 export const validationRules = {
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  required: (value: any) => isRequired(value) || 'This field is required',
+  required: (value: unknown) => isRequired(value as string | null | undefined) || 'This field is required',
   email: (value: string) => isValidEmail(value) || 'Invalid email address',
   url: (value: string) => isValidUrl(value) || 'Invalid URL',
   phone: (value: string) => isValidPhone(value) || 'Invalid phone number',

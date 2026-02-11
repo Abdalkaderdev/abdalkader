@@ -50,7 +50,7 @@
                 gap: 1rem;
                 justify-content: space-between;
                 flex-wrap: wrap;
-                @include paddingArround;
+                @include paddingAround;
 
                 .title {
                     overflow: hidden;

@@ -23,26 +23,22 @@ import { initPerformanceMonitoring, reportWebVitals } from "@/utils/performanceM
 import StagingBanner from "@/src/components/StagingBanner";
 import StagingTools from "@/src/components/StagingTools";
 import { initializeStagingEnvironment } from "@/src/config/staging";
-import WelcomeModal from "@/components/WelcomeModal";
-import MusicPlayer from "@/components/MusicPlayer";
+import dynamic from "next/dynamic";
+
+// Dynamically import heavy components that don't need to load immediately
+const WelcomeModal = dynamic(() => import("@/components/WelcomeModal"), { ssr: false });
+const MusicPlayer = dynamic(() => import("@/components/MusicPlayer"), { ssr: false });
 
 export default function App({ Component, pageProps }: AppProps) {
     const router = useRouter();
     const scrollPositions = useRef<{ [key: string]: number }>({});
     const [showStagingDashboard, setShowStagingDashboard] = useState(false);
-    const [musicEnabled, setMusicEnabled] = useState(false);
     const isStaging = getEnvironment() === 'staging';
 
-    // Check for existing music preference on mount
-    useEffect(() => {
-        const savedPref = localStorage.getItem('portfolio-music-enabled');
-        if (savedPref === 'true') {
-            setMusicEnabled(true);
-        }
-    }, []);
+    const [isMusicEnabled, setIsMusicEnabled] = useState(false);
 
     const handleMusicToggle = useCallback((enabled: boolean) => {
-        setMusicEnabled(enabled);
+        setIsMusicEnabled(enabled);
     }, []);
     
     const prefersReducedMotion = useMemo(() => {
@@ -114,62 +110,6 @@ export default function App({ Component, pageProps }: AppProps) {
                 <meta name="viewport" content="width=device-width, initial-scale=1" />
                 <meta name="robots" content="index, follow" />
                 <meta name="keywords" content="AI developer, machine learning engineer, full-stack developer, React developer, Python developer, TensorFlow.js, AI integration, ML applications, intelligent web apps, AI specialist, e-commerce development" />
-
-                {/* JSON-LD: Person */}
-                <script
-                    type="application/ld+json"
-                    dangerouslySetInnerHTML={{
-                        __html: JSON.stringify({
-                            '@context': 'https://schema.org',
-                            '@type': 'Person',
-                            name: 'Abdalkader Alhamoud',
-                            url: 'https://abdalkader.dev/',
-                            jobTitle: 'AI & Full-Stack Developer',
-                            knowsAbout: [
-                                'Machine Learning',
-                                'Deep Learning',
-                                'Neural Networks',
-                                'Computer Vision',
-                                'Natural Language Processing',
-                                'TensorFlow',
-                                'PyTorch',
-                                'Python',
-                                'React',
-                                'Next.js',
-                                'TypeScript',
-                                'Full-Stack Development',
-                                'E-commerce',
-                                'API Development',
-                                'Data Science',
-                                'AI Model Deployment'
-                            ],
-                            sameAs: [
-                                'https://github.com/abdalkaderdev',
-                                'https://www.linkedin.com/in/abdalkaderdev',
-                                'https://www.instagram.com/abdalkader.dev'
-                            ]
-                        })
-                    }}
-                />
-
-                {/* JSON-LD: WebSite */}
-                <script
-                    type="application/ld+json"
-                    dangerouslySetInnerHTML={{
-                        __html: JSON.stringify({
-                            '@context': 'https://schema.org',
-                            '@type': 'WebSite',
-                            name: 'Abdalkader - AI/ML & Full-Stack Developer Portfolio',
-                            url: 'https://abdalkader.dev/',
-                            description: 'Portfolio of Abdalkader Alhamoud, an AI-Enhanced Full-Stack Developer specializing in building intelligent web applications and ML experiments.',
-                            potentialAction: {
-                                '@type': 'SearchAction',
-                                target: 'https://abdalkader.dev/?q={search_term_string}',
-                                'query-input': 'required name=search_term_string'
-                            }
-                        })
-                    }}
-                />
             </Head>
 
             <Loader />
@@ -177,26 +117,56 @@ export default function App({ Component, pageProps }: AppProps) {
             <JsonLd data={[personJsonLd(), websiteJsonLd()]} />
             <AnimatePresence mode="wait">
                 <motion.div key={router.asPath} className={`${ppRegular.variable} ${ppMedium.variable}`}>
-                    {/* Slide-in animation */}
+                    {/* Slide-in animation with cross */}
                     {!prefersReducedMotion && (
                     <motion.div
                         className="slide-in"
                         initial={{ scaleY: 0 }}
                         animate={{ scaleY: 0 }}
                         exit={{ scaleY: 1 }}
-                        transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
+                        transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
                         onAnimationComplete={() => { if (typeof window !== 'undefined') { window.scrollTo(0, 0); } }}
-                    />)}
+                    >
+                        <div className="page-cross-loader">
+                            <div className="loading-wide">
+                                <div className="l1 color" />
+                                <div className="l2 color" />
+                                <div className="e1 color animation-effect-light" />
+                                <div className="e2 color animation-effect-light-d" />
+                                <div className="e3 animation-effect-rot">✝</div>
+                                <div className="e4 color animation-effect-light" />
+                                <div className="e5 color animation-effect-light-d" />
+                                <div className="e6 animation-effect-scale">✦</div>
+                                <div className="e7 color" />
+                                <div className="e8 color" />
+                            </div>
+                        </div>
+                    </motion.div>)}
 
-                    {/* Slide-out animation */}
+                    {/* Slide-out animation with cross */}
                     {!prefersReducedMotion && (
                     <motion.div
                         className="slide-out"
                         initial={{ scaleY: 1 }}
                         animate={{ scaleY: 0 }}
                         exit={{ scaleY: 0 }}
-                        transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
-                    />)}
+                        transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+                    >
+                        <div className="page-cross-loader">
+                            <div className="loading-wide">
+                                <div className="l1 color" />
+                                <div className="l2 color" />
+                                <div className="e1 color animation-effect-light" />
+                                <div className="e2 color animation-effect-light-d" />
+                                <div className="e3 animation-effect-rot">✝</div>
+                                <div className="e4 color animation-effect-light" />
+                                <div className="e5 color animation-effect-light-d" />
+                                <div className="e6 animation-effect-scale">✦</div>
+                                <div className="e7 color" />
+                                <div className="e8 color" />
+                            </div>
+                        </div>
+                    </motion.div>)}
 
                     <ErrorBoundary
                         customMessage="Something went wrong with the portfolio. Please try refreshing the page."
@@ -250,7 +220,7 @@ export default function App({ Component, pageProps }: AppProps) {
 
             {/* Spiritual Enhancement Components */}
             <WelcomeModal onMusicToggle={handleMusicToggle} />
-            <MusicPlayer isEnabled={true} />
+            <MusicPlayer isEnabled={isMusicEnabled} />
         </>
     );
 }

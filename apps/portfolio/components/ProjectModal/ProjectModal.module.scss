@@ -67,7 +67,7 @@
     border-top: 1px solid $borderColor;
 
     h4 {
-        color: $primaryColor;
+        color: $primary;
         font-size: 1.1rem;
         font-weight: 600;
         margin: 0 0 0.75rem 0;
@@ -89,20 +89,20 @@
     margin-bottom: 1rem;
 
     .metric {
-        background: rgba($primaryColor, 0.1);
-        color: $primaryColor;
+        background: rgba($primary, 0.1);
+        color: $primary;
         padding: 0.5rem 0.75rem;
         border-radius: 8px;
         font-size: 0.9rem;
         font-weight: 500;
-        border: 1px solid rgba($primaryColor, 0.3);
+        border: 1px solid rgba($primary, 0.3);
     }
 }
 
 .feedback {
     font-style: italic;
     color: $textLight !important;
-    border-left: 3px solid $primaryColor;
+    border-left: 3px solid $primary;
     padding-left: 1rem;
     margin: 1rem 0 !important;
 }
@@ -124,8 +124,8 @@
         transition: all 0.2s ease;
 
         &:hover {
-            border-color: $primaryColor;
-            color: $primaryColor;
+            border-color: $primary;
+            color: $primary;
         }
     }
 }

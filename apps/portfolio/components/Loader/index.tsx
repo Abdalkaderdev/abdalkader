@@ -36,39 +36,39 @@ export default function Loader() {
                     audioRef.current.play().catch(() => {});
                 }
 
-                // Fade out sequence - cross scales UP big, then screen slides up
+                // Fade out sequence - cross scales UP big, then screen slides up (faster)
                 gsap.timeline()
                     .to(".counter span", {
                         y: "-110%",
-                        duration: 0.8,
+                        duration: 0.4,
                         ease: "power4.inOut",
                     })
                     .to(".cross-loader", {
                         scale: 1.5,
-                        duration: 0.6,
+                        duration: 0.3,
                         ease: "power2.out",
-                    }, "-=0.5")
+                    }, "-=0.3")
                     .to(".cross-loader", {
                         scale: 3,
                         opacity: 0,
-                        duration: 1.2,
+                        duration: 0.5,
                         ease: "power2.inOut",
                     })
                     .to(".intro", {
                         y: "-100%",
-                        duration: 1.2,
+                        duration: 0.6,
                         ease: "power4.inOut",
                         onComplete: () => {
                             document.querySelector(".intro")?.classList.add("hidden");
                         },
-                    }, "-=0.8");
+                    }, "-=0.3");
             },
         });
 
         // Animate counter - slower and more immersive
         tl.to(counter, {
             count: 100,
-            duration: 4,
+            duration: 2,
             ease: "power1.out",
         }, 0);
 

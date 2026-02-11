@@ -84,8 +84,8 @@ class PerformanceMonitor {
         }
 
         // Track resource loading
-        const resources = performance.getEntriesByType('resource');
-        const totalResourceSize = resources.reduce((total, resource: any) => {
+        const resources = performance.getEntriesByType('resource') as PerformanceResourceTiming[];
+        const totalResourceSize = resources.reduce((total, resource: PerformanceResourceTiming) => {
           return total + (resource.transferSize || 0);
         }, 0);
 

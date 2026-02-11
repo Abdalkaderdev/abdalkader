@@ -24,6 +24,13 @@ interface ErrorBoundaryInfo {
   errorBoundary?: string;
 }
 
+interface Breadcrumb {
+  message: string;
+  category: string;
+  timestamp: number;
+  data?: Record<string, unknown>;
+}
+
 class ErrorTracker {
   private isEnabled: boolean;
   private endpoint: string;
@@ -217,10 +224,10 @@ class ErrorTracker {
   /**
    * Get current session breadcrumbs
    */
-  getBreadcrumbs(): any[] {
+  getBreadcrumbs(): Breadcrumb[] {
     if (typeof window === 'undefined') return [];
-    
-    return JSON.parse(sessionStorage.getItem('error-tracker-breadcrumbs') || '[]');
+
+    return JSON.parse(sessionStorage.getItem('error-tracker-breadcrumbs') || '[]') as Breadcrumb[];
   }
 }
 

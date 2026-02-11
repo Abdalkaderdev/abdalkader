@@ -1,10 +1,10 @@
 @import "@/styles/variables.scss";
 
-// Gold theme colors matching the site
-$sign-light: rgba($gold, 0.95);
-$sign-medium: rgba($gold, 0.8);
-$sign-dark: rgba($gold, 0.6);
-$sign-grain: rgba(0, 0, 0, 0.15);
+// White/cream colors to match footer items
+$sign-light: rgba(255, 255, 255, 0.95);
+$sign-medium: rgba(255, 255, 255, 0.8);
+$sign-dark: rgba(255, 255, 255, 0.6);
+$sign-grain: rgba(0, 0, 0, 0.08);
 $text-color: #0a0a0a;
 
 .miniSignpost {

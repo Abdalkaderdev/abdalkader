@@ -17,7 +17,7 @@
     }
 
     .projectDetails {
-        @include paddingArround;
+        @include paddingAround;
         position: absolute;
         left: 0;
         bottom: 0;
@@ -73,7 +73,7 @@
         .wrapper {
             background: linear-gradient(to bottom, $primary, #fa7300);
             border-radius: 10px;
-            @include paddingArround;
+            @include paddingAround;
             margin-bottom: 1rem;
 
             h2 {

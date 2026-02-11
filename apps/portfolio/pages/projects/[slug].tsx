@@ -102,13 +102,13 @@ const ProjectPage = ({ project }: ProjectPageProps) => {
                             '@context': 'https://schema.org',
                             '@type': 'CreativeWork',
                             name: project.title,
-                            url: `https://abdalkader-alhamoud.vercel.app/projects/${project.slug}`,
+                            url: `${SITE_URL}/projects/${project.slug}`,
                             image: project.img,
                             datePublished: project.date,
                             author: {
                                 '@type': 'Person',
                                 name: 'Abdalkader Alhamoud',
-                                url: 'https://abdalkader-alhamoud.vercel.app/'
+                                url: SITE_URL
                             },
                             about: project.overview,
                             keywords: project.category.join(', ')
@@ -121,7 +121,7 @@ const ProjectPage = ({ project }: ProjectPageProps) => {
                 breadcrumbsJsonLd([
                     { name: 'Home', item: SITE_URL },
                     { name: 'Projects', item: `${SITE_URL}/projects` },
-                    { name: project.title, item: `${SITE_URL}/projects/${project.title}` },
+                    { name: project.title, item: `${SITE_URL}/projects/${project.slug}` },
                 ]),
             ]} />
             {/*========= Header ==========*/}
@@ -142,7 +142,7 @@ const ProjectPage = ({ project }: ProjectPageProps) => {
                     <h1>AI-Powered {project.title}</h1>
                     <div className={styles.category}>
                         {project.category.map((cat, idx) => (
-                            <h5 key={idx}>{cat}</h5>
+                            <span key={idx}>{cat}</span>
                         ))}
                     </div>
                 </div>

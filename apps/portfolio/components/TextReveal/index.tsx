@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useRef, useState } from 'react';
-import { motion, useInView, Variants } from 'framer-motion';
+import { motion, useInView, Variants, useReducedMotion } from 'framer-motion';
 import styles from './TextReveal.module.scss';
 
 // Text scramble effect hook
@@ -66,6 +66,7 @@ export function CharacterReveal({
 }: TextRevealProps) {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: '-10%' });
+  const prefersReducedMotion = useReducedMotion();
 
   const containerVariants: Variants = {
     hidden: {},
@@ -91,6 +92,15 @@ export function CharacterReveal({
       },
     },
   };
+
+  // Skip animations and just show the text when user prefers reduced motion
+  if (prefersReducedMotion) {
+    return (
+      <span ref={ref} className={`${styles.characterReveal} ${className}`}>
+        {children}
+      </span>
+    );
+  }
 
   return (
     <motion.span
@@ -124,6 +134,7 @@ export function WordReveal({
 }: TextRevealProps) {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: '-10%' });
+  const prefersReducedMotion = useReducedMotion();
 
   const containerVariants: Variants = {
     hidden: {},
@@ -151,6 +162,15 @@ export function WordReveal({
       },
     },
   };
+
+  // Skip animations and just show the text when user prefers reduced motion
+  if (prefersReducedMotion) {
+    return (
+      <span ref={ref} className={`${styles.wordReveal} ${className}`}>
+        {children}
+      </span>
+    );
+  }
 
   return (
     <motion.span

@@ -12,6 +12,7 @@ import { PageTransition, SectionTransition, StaggerContainer } from '@/component
 import { ExhibitionLayout, ExhibitionSection } from '@/components/exhibition/ExhibitionLayout';
 import { useGSAP, usePortfolioAnimations } from '@/hooks/useAnimations';
 import languagesData from '@/lib/data/languages.json';
+import { ErrorBoundary as VisualizationErrorBoundary } from '@/components/ErrorBoundary';
 
 // Lazy load heavy components for better initial load performance
 const HistoricalTimeline = dynamic(() => import('@/components/timeline/HistoricalTimeline').then(m => ({ default: m.HistoricalTimeline })), {
@@ -150,10 +151,17 @@ export default function Home() {
       case 'timeline':
         return (
           <SectionTransition delay={0.2}>
-            <HistoricalTimeline
-              languages={languages}
-              onLanguageSelect={handleLanguageSelect}
-            />
+            <VisualizationErrorBoundary
+              componentName="Historical Timeline"
+              customMessage="The Historical Timeline couldn't be loaded. Please try refreshing the page."
+              showRetry={true}
+              showHome={false}
+            >
+              <HistoricalTimeline
+                languages={languages}
+                onLanguageSelect={handleLanguageSelect}
+              />
+            </VisualizationErrorBoundary>
           </SectionTransition>
         );
       case 'playground':
@@ -169,22 +177,43 @@ export default function Home() {
       case 'family-tree':
         return (
           <SectionTransition delay={0.2}>
-            <EnhancedLanguageFamilyTree
-              languages={languages}
-              onLanguageSelect={handleLanguageSelect}
-            />
+            <VisualizationErrorBoundary
+              componentName="Language Family Tree"
+              customMessage="The Language Family Tree visualization encountered an error. This may be due to browser compatibility issues with D3. Please try refreshing or use a different browser."
+              showRetry={true}
+              showHome={false}
+            >
+              <EnhancedLanguageFamilyTree
+                languages={languages}
+                onLanguageSelect={handleLanguageSelect}
+              />
+            </VisualizationErrorBoundary>
           </SectionTransition>
         );
       case 'animated-family-tree':
         return (
           <SectionTransition delay={0.2}>
-            <AnimatedLanguageFamilyTree />
+            <VisualizationErrorBoundary
+              componentName="Animated Family Tree"
+              customMessage="The Animated Family Tree visualization encountered an error. This interactive D3 component requires a modern browser. Please try refreshing or switching browsers."
+              showRetry={true}
+              showHome={false}
+            >
+              <AnimatedLanguageFamilyTree />
+            </VisualizationErrorBoundary>
           </SectionTransition>
         );
       case 'paradigm-evolution':
         return (
           <SectionTransition delay={0.2}>
-            <ParadigmEvolutionVisualization />
+            <VisualizationErrorBoundary
+              componentName="Paradigm Evolution Visualization"
+              customMessage="The Paradigm Evolution visualization encountered an error. Please try refreshing the page or check your browser compatibility."
+              showRetry={true}
+              showHome={false}
+            >
+              <ParadigmEvolutionVisualization />
+            </VisualizationErrorBoundary>
           </SectionTransition>
         );
       case 'paradigms':
@@ -214,7 +243,14 @@ export default function Home() {
       case 'ecosystem':
         return (
           <SectionTransition delay={0.2}>
-            <EcosystemMap showStats showInactive />
+            <VisualizationErrorBoundary
+              componentName="Ecosystem Map"
+              customMessage="The Ecosystem Map visualization couldn't be loaded. Please try refreshing the page."
+              showRetry={true}
+              showHome={false}
+            >
+              <EcosystemMap showStats showInactive />
+            </VisualizationErrorBoundary>
           </SectionTransition>
         );
       case 'exhibitions':

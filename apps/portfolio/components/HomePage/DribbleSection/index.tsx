@@ -106,8 +106,8 @@ export default function InstagramSection() {
                         }}
                         key={index}
                     >
-                        <Image src={`/images/dribble${index * 2 + 1}.jpeg`} width={500} height={500} alt='dribble' />
-                        <Image src={`/images/dribble${index * 2 + 2}.jpeg`} width={500} height={500} alt='dribble' />
+                        <Image src={`/images/dribble${index * 2 + 1}.jpeg`} width={500} height={500} alt={`Portfolio showcase design ${index * 2 + 1} - Creative web development work`} />
+                        <Image src={`/images/dribble${index * 2 + 2}.jpeg`} width={500} height={500} alt={`Portfolio showcase design ${index * 2 + 2} - Creative web development work`} />
                     </div>
                 ))}
             </div>

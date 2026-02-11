@@ -1,6 +1,9 @@
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect, useCallback, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import styles from './WelcomeModal.module.scss';
+
+// Focus trap utility
+const FOCUSABLE_SELECTORS = 'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])';
 
 interface WelcomeModalProps {
     onMusicToggle: (enabled: boolean) => void;
@@ -12,6 +15,29 @@ const MUSIC_PREF_KEY = 'portfolio-music-enabled';
 export default function WelcomeModal({ onMusicToggle }: WelcomeModalProps) {
     const [isOpen, setIsOpen] = useState(false);
     const [musicEnabled, setMusicEnabled] = useState(false);
+    const modalRef = useRef<HTMLDivElement>(null);
+    const previousActiveElement = useRef<Element | null>(null);
+
+    // Focus trap handler
+    const handleTabKey = useCallback((e: KeyboardEvent) => {
+        if (!modalRef.current) return;
+
+        const focusableElements = modalRef.current.querySelectorAll(FOCUSABLE_SELECTORS);
+        const firstElement = focusableElements[0] as HTMLElement;
+        const lastElement = focusableElements[focusableElements.length - 1] as HTMLElement;
+
+        if (e.shiftKey) {
+            if (document.activeElement === firstElement) {
+                e.preventDefault();
+                lastElement?.focus();
+            }
+        } else {
+            if (document.activeElement === lastElement) {
+                e.preventDefault();
+                firstElement?.focus();
+            }
+        }
+    }, []);
 
     useEffect(() => {
         // Check if user has visited before
@@ -22,6 +48,39 @@ export default function WelcomeModal({ onMusicToggle }: WelcomeModalProps) {
             return () => clearTimeout(timer);
         }
     }, []);
+
+    // Focus trap effect
+    useEffect(() => {
+        if (!isOpen) return;
+
+        // Store the currently focused element to restore later
+        previousActiveElement.current = document.activeElement;
+
+        const handleKeyDown = (e: KeyboardEvent) => {
+            if (e.key === 'Tab') handleTabKey(e);
+        };
+
+        document.addEventListener('keydown', handleKeyDown);
+        document.body.style.overflow = 'hidden';
+
+        // Focus the first focusable element in the modal
+        const timer = setTimeout(() => {
+            if (modalRef.current) {
+                const firstFocusable = modalRef.current.querySelector(FOCUSABLE_SELECTORS) as HTMLElement;
+                firstFocusable?.focus();
+            }
+        }, 50);
+
+        return () => {
+            document.removeEventListener('keydown', handleKeyDown);
+            document.body.style.overflow = '';
+            clearTimeout(timer);
+            // Restore focus to the previously focused element
+            if (previousActiveElement.current instanceof HTMLElement) {
+                previousActiveElement.current.focus();
+            }
+        };
+    }, [isOpen, handleTabKey]);
 
     const handleMusicToggle = useCallback(() => {
         setMusicEnabled(prev => !prev);
@@ -51,6 +110,7 @@ export default function WelcomeModal({ onMusicToggle }: WelcomeModalProps) {
                     transition={{ duration: 0.4 }}
                 >
                     <motion.div
+                        ref={modalRef}
                         className={styles.modal}
                         initial={{ opacity: 0, scale: 0.9, y: 20 }}
                         animate={{ opacity: 1, scale: 1, y: 0 }}

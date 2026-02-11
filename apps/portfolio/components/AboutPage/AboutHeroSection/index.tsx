@@ -3,6 +3,7 @@ import styles from './AboutHeroSection.module.scss';
 import { splitText } from '@/utils/textUtils';
 import { useRef, useEffect } from 'react';
 import { gsap } from '@/libs/gsap';
+import { isReducedMotion } from '@/utils/motion';
 
 export default function AboutHeroSection() {
     const bannerHeadingRef = useRef<HTMLDivElement | null>(null);
@@ -11,6 +12,11 @@ export default function AboutHeroSection() {
     const imageRef = useRef<HTMLDivElement | null>(null);
 
     useEffect(() => {
+        // Skip GSAP animations when user prefers reduced motion
+        if (isReducedMotion()) {
+            return;
+        }
+
         const tl = gsap.timeline();
 
         // Animate the banner heading
