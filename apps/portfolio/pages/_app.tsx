@@ -250,7 +250,7 @@ export default function App({ Component, pageProps }: AppProps) {
 
             {/* Spiritual Enhancement Components */}
             <WelcomeModal onMusicToggle={handleMusicToggle} />
-            <MusicPlayer isEnabled={musicEnabled} />
+            <MusicPlayer isEnabled={true} />
         </>
     );
 }

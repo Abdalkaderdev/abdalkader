@@ -3,7 +3,6 @@ import styles from './AboutHeroSection.module.scss';
 import { splitText } from '@/utils/textUtils';
 import { useRef, useEffect } from 'react';
 import { gsap } from '@/libs/gsap';
-import GodIsGreater from '@/components/GodIsGreater';
 
 export default function AboutHeroSection() {
     const bannerHeadingRef = useRef<HTMLDivElement | null>(null);
@@ -65,7 +64,6 @@ export default function AboutHeroSection() {
                     <h2 ref={heading2Ref}>
                         {splitText("Enthusiastic about crafting seamless experiences that combine ideas, visuals, design, and development.")}
                     </h2>
-                    <GodIsGreater className={styles.godIsGreater} />
                 </div>
 
                 <div className={styles.image} ref={imageRef}>

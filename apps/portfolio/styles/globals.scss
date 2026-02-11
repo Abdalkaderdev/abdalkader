@@ -422,7 +422,7 @@ $fonts: (
     position: fixed;
     top: 0;
     left: 0;
-    background: linear-gradient(to top, $primary, #fa7300);
+    background: linear-gradient(135deg, $primary 0%, #fa7300 50%, #ff8c00 100%);
     color: $black;
     width: 100%;
     height: 100%;
@@ -430,27 +430,169 @@ $fonts: (
     pointer-events: none;
     z-index: 5000000;
 
-    .loader-cross-container {
+    // Main container
+    .loader-main {
         position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        display: flex;
-        align-items: center;
-        justify-content: center;
+        inset: 0;
+        pointer-events: none;
     }
 
-    .loader-cross {
-        filter: drop-shadow(0 0 8px rgba(245, 245, 220, 0.3));
-        transition: filter 0.5s ease;
+    // Animated Cross Loader
+    .cross-loader {
+        position: absolute;
+        top: 50%;
+        left: 45%;
+        transform: translate(-50%, -50%);
+        transition: transform 0.5s ease, opacity 0.5s ease;
+
+        @media (max-width: 768px) {
+            left: 40%;
+        }
+
+        @media (max-width: 480px) {
+            left: 35%;
+        }
 
         &.complete {
-            filter: drop-shadow(0 0 25px rgba(245, 245, 220, 0.9));
+            filter: drop-shadow(0 0 20px rgba(255, 255, 255, 0.8));
         }
+    }
 
-        line {
-            fill: none;
+    .loading-wide {
+        width: 150px;
+        height: 150px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+
+        @media (max-width: 480px) {
+            width: 120px;
+            height: 120px;
         }
+    }
+
+    .color {
+        background-color: rgba(0, 0, 0, 0.85);
+    }
+
+    // Vertical bar of cross
+    .l1 {
+        width: 15px;
+        height: 65px;
+        position: absolute;
+        animation: move-h 1.2s infinite cubic-bezier(0.65, 0.05, 0.36, 1);
+
+        @media (max-width: 480px) {
+            width: 12px;
+            height: 52px;
+        }
+    }
+
+    // Horizontal bar of cross
+    .l2 {
+        width: 15px;
+        height: 60px;
+        position: absolute;
+        transform: rotate(90deg);
+        animation: move-v 1.2s infinite cubic-bezier(0.65, 0.05, 0.36, 1);
+
+        @media (max-width: 480px) {
+            width: 12px;
+            height: 48px;
+        }
+    }
+
+    // Decorative elements
+    .e1 {
+        width: 1px;
+        height: 40px;
+        opacity: 0.3;
+        position: absolute;
+        top: 0;
+        left: 8%;
+    }
+
+    .e2 {
+        width: 60px;
+        height: 1px;
+        opacity: 0.8;
+        position: absolute;
+        top: 8%;
+        left: 0;
+    }
+
+    .e3 {
+        position: absolute;
+        top: 10%;
+        left: 12%;
+        font-family: 'Georgia', serif;
+        font-weight: 900;
+        font-size: 18px;
+        color: rgba(0, 0, 0, 0.85);
+    }
+
+    .e4 {
+        width: 1px;
+        height: 40px;
+        opacity: 0.3;
+        position: absolute;
+        top: 90%;
+        right: 10%;
+    }
+
+    .e5 {
+        width: 40px;
+        height: 1px;
+        opacity: 0.3;
+        position: absolute;
+        top: 100%;
+        right: 0;
+    }
+
+    .e6 {
+        position: absolute;
+        top: 100%;
+        right: 0;
+        font-family: 'Georgia', serif;
+        font-size: 32px;
+        color: rgba(0, 0, 0, 0.85);
+    }
+
+    .e7 {
+        width: 1px;
+        height: 20px;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        transform: rotate(45deg);
+        animation: height 1s infinite cubic-bezier(0.65, 0.05, 0.36, 1);
+    }
+
+    .e8 {
+        width: 20px;
+        height: 1px;
+        position: absolute;
+        bottom: 50%;
+        left: 0;
+        animation: width 1.5s infinite cubic-bezier(0.65, 0.05, 0.36, 1);
+    }
+
+    // Animation classes
+    .animation-effect-light {
+        animation: effect 0.2s 0.1s infinite linear;
+    }
+
+    .animation-effect-light-d {
+        animation: effect 0.3s 0.2s infinite linear;
+    }
+
+    .animation-effect-rot {
+        animation: rot 0.8s infinite cubic-bezier(0.65, 0.05, 0.36, 1);
+    }
+
+    .animation-effect-scale {
+        animation: scale 0.8s infinite cubic-bezier(0.65, 0.05, 0.36, 1);
     }
 
     .counter {
@@ -460,18 +602,180 @@ $fonts: (
         overflow: hidden;
 
         span {
-            font-size: 40vw;
-            letter-spacing: -3vw;
-            line-height: 0.7;
+            font-size: 35vw;
+            letter-spacing: -2vw;
+            line-height: 0.75;
             display: block;
-            font-weight: lighter;
-            @media (max-width: 600px) {
-                font-size: 60vw;
+            font-weight: 100;
+            color: rgba(0, 0, 0, 0.85);
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+
+            @media (max-width: 768px) {
+                font-size: 45vw;
             }
+
+            @media (max-width: 480px) {
+                font-size: 55vw;
+                letter-spacing: -3vw;
+            }
+        }
+    }
+
+    .loader-message {
+        position: absolute;
+        bottom: 2rem;
+        left: 2rem;
+        font-family: 'Georgia', 'Times New Roman', serif;
+        font-style: italic;
+        font-size: 1rem;
+        color: rgba(0, 0, 0, 0.5);
+        letter-spacing: 0.1em;
+        opacity: 0;
+        animation: fadeInMessage 2s ease-out 1s forwards;
+
+        @media (max-width: 768px) {
+            font-size: 0.85rem;
+            bottom: 1.5rem;
+            left: 1.5rem;
+        }
+
+        @media (max-width: 480px) {
+            font-size: 0.75rem;
+            bottom: 1rem;
+            left: 1rem;
         }
     }
 
     &.hidden {
         display: none;
+    }
+}
+
+// Loader animations - Cross loader
+@keyframes move-h {
+    0% {
+        top: 0;
+        opacity: 0;
+    }
+    25% {
+        opacity: 1;
+    }
+    50% {
+        top: 30%;
+        opacity: 1;
+    }
+    75% {
+        opacity: 1;
+    }
+    100% {
+        top: 100%;
+        opacity: 0;
+    }
+}
+
+@keyframes move-v {
+    0% {
+        left: 0;
+        opacity: 0;
+    }
+    25% {
+        opacity: 1;
+    }
+    50% {
+        left: 45%;
+        opacity: 1;
+    }
+    75% {
+        opacity: 1;
+    }
+    100% {
+        left: 100%;
+        opacity: 0;
+    }
+}
+
+@keyframes effect {
+    0% {
+        opacity: 0;
+    }
+    50% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+
+@keyframes rot {
+    0% {
+        transform: rotate(0deg);
+    }
+    50% {
+        transform: rotate(180deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes scale {
+    0% {
+        scale: 1;
+    }
+    50% {
+        scale: 1.9;
+    }
+    100% {
+        scale: 1;
+    }
+}
+
+@keyframes height {
+    0% {
+        bottom: 0%;
+        left: 0%;
+        height: 0px;
+    }
+    25% {
+        height: 90px;
+    }
+    50% {
+        bottom: 100%;
+        left: 100%;
+        height: 90px;
+    }
+    75% {
+        height: 0px;
+    }
+    100% {
+        bottom: 0%;
+        left: 0%;
+        height: 0px;
+    }
+}
+
+@keyframes width {
+    0% {
+        left: 0%;
+        width: 0px;
+    }
+    50% {
+        left: 100%;
+        width: 90px;
+    }
+    100% {
+        left: 0%;
+        width: 0px;
+    }
+}
+
+@keyframes fadeInMessage {
+    0% {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
     }
 }

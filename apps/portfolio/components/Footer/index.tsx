@@ -1,7 +1,6 @@
 'use client';
 
 import { MagneticLink } from '@/components/MagneticLink';
-import MiniSignpost from '@/components/MiniSignpost';
 import RootedInChrist from '@/components/RootedInChrist';
 import styles from './Footer.module.scss';
 
@@ -25,7 +24,6 @@ const ecosystemLinks = [
 const socialLinks = [
     { text: 'GitHub', href: 'https://github.com/abdalkaderdev' },
     { text: 'LinkedIn', href: 'https://www.linkedin.com/in/abdalkaderdev' },
-    { text: 'Twitter', href: 'https://twitter.com/abdalkaderdev' },
     { text: 'Instagram', href: 'https://www.instagram.com/abdalkader.dev' },
 ];
 
@@ -85,14 +83,6 @@ const Footer: React.FC = () => {
                 </div>
                 <div className={styles.border} />
                 <div className={styles.spiritualSection}>
-                    <div className={styles.signpostWrapper}>
-                        <MiniSignpost
-                            category="peace"
-                            direction="right"
-                            rotateInterval={10000}
-                            className={styles.footerSignpost}
-                        />
-                    </div>
                     <div className={styles.rootedWrapper}>
                         <RootedInChrist className={styles.footerRooted} />
                     </div>

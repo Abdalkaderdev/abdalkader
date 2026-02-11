@@ -1,12 +1,10 @@
 import { useEffect, useRef, useState } from "react";
-import { useRouter } from "next/router";
 import { gsap } from "@/libs/gsap";
 import { isReducedMotion } from "@/utils/motion";
 
 export default function Loader() {
-    const crossRef = useRef<SVGSVGElement>(null);
     const percentageRef = useRef<HTMLSpanElement>(null);
-    const router = useRouter();
+    const audioRef = useRef<HTMLAudioElement>(null);
     const [isComplete, setIsComplete] = useState(false);
 
     useEffect(() => {
@@ -18,25 +16,6 @@ export default function Loader() {
             document.querySelector(".intro")?.classList.add("hidden");
             return;
         }
-
-        const verticalLine = crossRef.current?.querySelector('.cross-vertical') as SVGLineElement;
-        const horizontalLine = crossRef.current?.querySelector('.cross-horizontal') as SVGLineElement;
-
-        if (!verticalLine || !horizontalLine) return;
-
-        // Calculate path lengths
-        const verticalLength = verticalLine.getTotalLength();
-        const horizontalLength = horizontalLine.getTotalLength();
-
-        // Set initial state - lines hidden
-        gsap.set(verticalLine, {
-            strokeDasharray: verticalLength,
-            strokeDashoffset: verticalLength,
-        });
-        gsap.set(horizontalLine, {
-            strokeDasharray: horizontalLength,
-            strokeDashoffset: horizontalLength,
-        });
 
         const counter = { count: 0 };
 
@@ -50,56 +29,48 @@ export default function Loader() {
             },
             onComplete: () => {
                 setIsComplete(true);
-                // Add glow effect when complete
-                gsap.to(crossRef.current, {
-                    filter: "drop-shadow(0 0 25px rgba(245, 245, 220, 0.9))",
-                    duration: 0.5,
-                });
 
-                // Fade out sequence
+                // Play the whoosh sound effect
+                if (audioRef.current) {
+                    audioRef.current.volume = 0.4;
+                    audioRef.current.play().catch(() => {});
+                }
+
+                // Fade out sequence - cross scales UP big, then screen slides up
                 gsap.timeline()
                     .to(".counter span", {
                         y: "-110%",
-                        duration: 1.2,
-                        ease: "power4.inOut",
-                    })
-                    .to(crossRef.current, {
-                        scale: 1.2,
-                        opacity: 0,
                         duration: 0.8,
                         ease: "power4.inOut",
-                    }, "-=0.8")
+                    })
+                    .to(".cross-loader", {
+                        scale: 1.5,
+                        duration: 0.6,
+                        ease: "power2.out",
+                    }, "-=0.5")
+                    .to(".cross-loader", {
+                        scale: 3,
+                        opacity: 0,
+                        duration: 1.2,
+                        ease: "power2.inOut",
+                    })
                     .to(".intro", {
                         y: "-100%",
-                        duration: 1.5,
+                        duration: 1.2,
                         ease: "power4.inOut",
                         onComplete: () => {
                             document.querySelector(".intro")?.classList.add("hidden");
                         },
-                    }, "-=0.5");
+                    }, "-=0.8");
             },
         });
 
-        // Animate counter and cross simultaneously
+        // Animate counter - slower and more immersive
         tl.to(counter, {
             count: 100,
-            duration: 6,
+            duration: 4,
             ease: "power1.out",
         }, 0);
-
-        // Draw vertical line synced with counter
-        tl.to(verticalLine, {
-            strokeDashoffset: 0,
-            duration: 4,
-            ease: "power1.inOut",
-        }, 0.5);
-
-        // Draw horizontal line
-        tl.to(horizontalLine, {
-            strokeDashoffset: 0,
-            duration: 3,
-            ease: "power1.inOut",
-        }, 2);
 
         const handlePageLoad = () => {
             tl.play();
@@ -107,65 +78,53 @@ export default function Loader() {
 
         // Check if page is already loaded, otherwise wait for load event
         if (document.readyState === 'complete') {
-            // Small delay to ensure DOM is fully ready
             setTimeout(() => tl.play(), 50);
         } else {
             window.addEventListener("load", handlePageLoad);
         }
-
-        // Store ref value for cleanup
-        const crossElement = crossRef.current;
 
         return () => {
             window.removeEventListener("load", handlePageLoad);
             tl.kill();
             gsap.killTweensOf(".intro");
             gsap.killTweensOf(".counter span");
-            if (crossElement) {
-                gsap.killTweensOf(crossElement);
-            }
+            gsap.killTweensOf(".cross-loader");
         };
-    }, [router.events]);
+    }, []);
 
     return (
         <section className="intro">
-            {/* Centered Cross */}
-            <div className="loader-cross-container">
-                <svg
-                    ref={crossRef}
-                    className={`loader-cross ${isComplete ? 'complete' : ''}`}
-                    viewBox="0 0 100 100"
-                    width="150"
-                    height="150"
-                >
-                    {/* Vertical line of the cross */}
-                    <line
-                        className="cross-vertical"
-                        x1="50"
-                        y1="10"
-                        x2="50"
-                        y2="90"
-                        stroke="#f5f5dc"
-                        strokeWidth="2.5"
-                        strokeLinecap="round"
-                    />
-                    {/* Horizontal line of the cross */}
-                    <line
-                        className="cross-horizontal"
-                        x1="20"
-                        y1="35"
-                        x2="80"
-                        y2="35"
-                        stroke="#f5f5dc"
-                        strokeWidth="2.5"
-                        strokeLinecap="round"
-                    />
-                </svg>
+            {/* Sound effect for cross scale */}
+            <audio ref={audioRef} src="/audio/whoosh.mp3" preload="auto" />
+
+            {/* Animated Cross Loader */}
+            <div className="loader-main">
+                <div className={`cross-loader ${isComplete ? 'complete' : ''}`}>
+                    <div className="loading-wide">
+                        {/* Main cross bars */}
+                        <div className="l1 color" />
+                        <div className="l2 color" />
+                        {/* Decorative elements */}
+                        <div className="e1 color animation-effect-light" />
+                        <div className="e2 color animation-effect-light-d" />
+                        <div className="e3 animation-effect-rot">✝</div>
+                        <div className="e4 color animation-effect-light" />
+                        <div className="e5 color animation-effect-light-d" />
+                        <div className="e6 animation-effect-scale">✦</div>
+                        <div className="e7 color" />
+                        <div className="e8 color" />
+                    </div>
+                </div>
+
+                {/* Counter */}
+                <div className="counter">
+                    <span ref={percentageRef}>0</span>
+                </div>
             </div>
 
-            {/* Counter in bottom-right (original position) */}
-            <div className="counter">
-                <span ref={percentageRef}>0</span>
+            {/* Subtle message at bottom */}
+            <div className="loader-message">
+                <span>Crafted with faith</span>
             </div>
         </section>
     );

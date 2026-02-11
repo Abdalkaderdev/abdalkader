@@ -6,124 +6,10 @@
     justify-content: center;
 }
 
-.rootedSvg {
+.rootedImage {
     width: 180px;
     height: auto;
-    color: $gold;
-    transition: color 0.3s ease, transform 0.3s ease;
-
-    &:hover {
-        color: $softGold;
-        transform: scale(1.02);
-    }
-}
-
-// ========================================
-// CROSS STYLES
-// ========================================
-
-.cross {
-    opacity: 1;
-}
-
-.crossTop {
-    opacity: 1;
-    // Rough brushstroke appearance
-}
-
-.crossVertical {
-    opacity: 0.95;
-}
-
-.crossHorizontal {
-    opacity: 0.95;
-}
-
-// ========================================
-// TEXT STYLES
-// ========================================
-
-.rootedTextGroup {
-    // Container for the ROOTED letters
-}
-
-.rootedLetter {
-    font-family: 'Times New Roman', Georgia, 'Palatino Linotype', serif;
-    font-size: 36px;
-    font-weight: 700;
-    letter-spacing: 0.02em;
-    fill: currentColor;
-    // Slightly bolder for professional look
-}
-
-.inChristText {
-    font-family: 'Times New Roman', Georgia, 'Palatino Linotype', serif;
-    font-size: 18px;
-    font-weight: 400;
-    letter-spacing: 0.25em;
-    fill: currentColor;
-    opacity: 0.95;
-    text-transform: uppercase;
-}
-
-// ========================================
-// ROOT STYLES
-// ========================================
-
-.roots {
-    opacity: 0.9;
-}
-
-.rootMain {
-    stroke-linecap: round;
-    stroke-linejoin: round;
-}
-
-.rootPrimary {
-    stroke-linecap: round;
-    stroke-linejoin: round;
-}
-
-.rootSecondary {
-    stroke-linecap: round;
-    stroke-linejoin: round;
-    opacity: 0.85;
-}
-
-.rootTendril {
-    stroke-linecap: round;
-    opacity: 0.7;
-}
-
-.rootFine {
-    stroke-linecap: round;
-    opacity: 0.5;
-}
-
-// Subtle animation for roots
-@keyframes rootSway {
-    0%, 100% {
-        transform: translateX(0);
-    }
-    50% {
-        transform: translateX(0.5px);
-    }
-}
-
-.rootTendril {
-    animation: rootSway 5s ease-in-out infinite;
-
-    &:nth-child(odd) {
-        animation-delay: -2.5s;
-    }
-}
-
-.rootFine {
-    animation: rootSway 6s ease-in-out infinite;
-
-    &:nth-child(even) {
-        animation-delay: -3s;
-    }
+    object-fit: contain;
 }
 
 // ========================================
@@ -132,87 +18,36 @@
 
 // Large Desktop (1440px+)
 @media (min-width: 1440px) {
-    .rootedSvg {
-        width: 160px;
-    }
-
-    .rootedLetter {
-        font-size: 38px;
-    }
-
-    .inChristText {
-        font-size: 19px;
+    .rootedImage {
+        width: 200px;
     }
 }
 
 // Desktop (1024px - 1439px)
 @media (min-width: 1024px) and (max-width: 1439px) {
-    .rootedSvg {
-        width: 140px;
-    }
-
-    .rootedLetter {
-        font-size: 34px;
-    }
-
-    .inChristText {
-        font-size: 17px;
+    .rootedImage {
+        width: 170px;
     }
 }
 
 // Tablet (768px - 1023px)
 @media (min-width: 768px) and (max-width: 1023px) {
-    .rootedSvg {
-        width: 120px;
-    }
-
-    .rootedLetter {
-        font-size: 30px;
-    }
-
-    .inChristText {
-        font-size: 15px;
+    .rootedImage {
+        width: 150px;
     }
 }
 
 // Mobile Large (480px - 767px)
 @media (min-width: 480px) and (max-width: 767px) {
-    .rootedSvg {
-        width: 100px;
-    }
-
-    .rootedLetter {
-        font-size: 26px;
-    }
-
-    .inChristText {
-        font-size: 13px;
+    .rootedImage {
+        width: 130px;
     }
 }
 
 // Mobile (< 480px)
 @media (max-width: 479px) {
-    .rootedSvg {
-        width: 90px;
-    }
-
-    .rootedLetter {
-        font-size: 24px;
-    }
-
-    .inChristText {
-        font-size: 12px;
+    .rootedImage {
+        width: 110px;
     }
 }
 
-// Reduced motion preference
-@media (prefers-reduced-motion: reduce) {
-    .rootTendril,
-    .rootFine {
-        animation: none;
-    }
-
-    .rootedSvg {
-        transition: none;
-    }
-}

@@ -15,6 +15,9 @@ export default function ImageTrail() {
         if (prefersReducedMotion) {
             return; // Do not initialize trail effect
         }
+
+        let imageTrailEffect = null;
+
         const getCursorPos = (ev) => {
             const nx = ev.clientX;
             const ny = ev.clientY;
@@ -91,7 +94,7 @@ export default function ImageTrail() {
             }
         }
 
-        let imageTrailEffect = new ImageTrailEffect(trailRef.current);
+        imageTrailEffect = new ImageTrailEffect(trailRef.current);
 
         return () => {
             window.removeEventListener("mousemove", getCursorPos);
