@@ -106,23 +106,19 @@ Format the response as a structured learning path with clear milestones.`;
 
       const response = await executeAIRequest(
         async (prompt: string) => {
-          const { groqClient } = await import('@/lib/groq/groqClient');
-          const response = await groqClient.chat.completions.create({
-            messages: [
-              { 
-                role: 'system', 
-                content: 'You are an expert programming educator and career advisor. Create personalized, practical learning paths that help people achieve their programming goals efficiently.' 
-              },
-              { role: 'user', content: prompt }
-            ],
-            model: 'llama3-8b-8192',
-            temperature: 0.7,
-            max_tokens: 1024
+          const { secureAIClient } = await import('@/lib/groq/groqClient');
+          const aiResponse = await secureAIClient.chat({
+            message: prompt,
+            context: 'You are an expert programming educator and career advisor. Create personalized, practical learning paths that help people achieve their programming goals efficiently.',
           });
-          
+
+          if (!aiResponse.success) {
+            throw new Error(aiResponse.error || 'AI request failed');
+          }
+
           return {
-            content: response.choices[0]?.message?.content || 'No response generated',
-            model: 'llama3-8b-8192'
+            content: aiResponse.response || 'No response generated',
+            model: aiResponse.model || 'llama3-8b-8192'
           };
         },
         'question',

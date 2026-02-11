@@ -96,11 +96,30 @@ export const EnhancedLanguageFamilyTree: React.FC<EnhancedLanguageFamilyTreeProp
       .force('center', d3.forceCenter(width / 2, height / 2))
       .force('collision', d3.forceCollide().radius(40));
 
+    // Flatten the tree data for simulation first
+    const flattenTree = (node: TreeNode): TreeNode[] => {
+      const result = [node];
+      if (node.children) {
+        node.children.forEach(child => {
+          child.parent = node;
+          result.push(...flattenTree(child));
+        });
+      }
+      return result;
+    };
+
+    const allNodes = flattenTree(treeData);
+
+    // Create links between parent and children
+    const linkData = allNodes
+      .filter(d => d.parent)
+      .map(d => ({ source: d.parent!.id, target: d.id }));
+
     // Create links
     const links = svg.append('g')
       .attr('class', 'links')
       .selectAll('line')
-      .data([])
+      .data(linkData)
       .enter()
       .append('line')
       .attr('stroke', '#f44e00')
@@ -111,7 +130,7 @@ export const EnhancedLanguageFamilyTree: React.FC<EnhancedLanguageFamilyTreeProp
     const nodes = svg.append('g')
       .attr('class', 'nodes')
       .selectAll('g')
-      .data([])
+      .data(allNodes)
       .enter()
       .append('g')
       .attr('class', 'node')
@@ -182,28 +201,8 @@ export const EnhancedLanguageFamilyTree: React.FC<EnhancedLanguageFamilyTreeProp
         }
       });
 
-    // Flatten the tree data for simulation
-    const flattenTree = (node: TreeNode): TreeNode[] => {
-      const result = [node];
-      if (node.children) {
-        node.children.forEach(child => {
-          result.push(...flattenTree(child));
-        });
-      }
-      return result;
-    };
-
-    const allNodes = flattenTree(treeData);
-    
     // Update simulation with data
     simulation.nodes(allNodes);
-    
-    // Create links between parent and children
-    const linkData = allNodes
-      .filter(d => d.parent)
-      .map(d => ({ source: d.parent!.id, target: d.id }));
-
-    links.data(linkData);
 
     // Update positions on tick
     simulation.on('tick', () => {

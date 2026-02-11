@@ -75,8 +75,8 @@ import {
   Tabs,
   Modal,
   useModal,
-  ThemeToggleButton
 } from '@abdalkader/ui';
+import ThemeToggle from '@/components/ThemeToggle';
 
 export default function Home() {
   const [languages, setLanguages] = useState<Language[]>([]);
@@ -359,7 +359,7 @@ export default function Home() {
       </Modal>
 
       {/* Theme Toggle Button */}
-      <ThemeToggleButton />
+      <ThemeToggle />
     </ErrorBoundary>
   );
 }

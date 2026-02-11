@@ -77,21 +77,20 @@ export const EnhancedAIChat: React.FC<EnhancedAIChatProps> = ({
     try {
       const response = await executeAIRequest(
         async (prompt: string) => {
-          const { groqClient } = await import('@/lib/groq/groqClient');
-          const response = await groqClient.chat.completions.create({
-            messages: [
-              { role: 'system', content: `You are an expert programming language historian and educator. Context: ${context}. Provide detailed, accurate, and engaging responses about programming languages, their history, paradigms, and evolution.` },
-              ...messages.map(msg => ({ role: msg.role === 'ai' ? 'assistant' as const : msg.role as 'user', content: msg.content })),
-              { role: 'user', content: inputValue }
-            ],
-            model: 'llama3-8b-8192',
-            temperature: 0.7,
-            max_tokens: 1024
+          const { secureAIClient } = await import('@/lib/groq/groqClient');
+          const conversationHistory = messages.map(msg => `${msg.role === 'ai' ? 'Assistant' : 'User'}: ${msg.content}`).join('\n');
+          const aiResponse = await secureAIClient.chat({
+            message: inputValue,
+            context: `You are an expert programming language historian and educator. Context: ${context}. Provide detailed, accurate, and engaging responses about programming languages, their history, paradigms, and evolution.\n\nPrevious conversation:\n${conversationHistory}`,
           });
-          
+
+          if (!aiResponse.success) {
+            throw new Error(aiResponse.error || 'AI request failed');
+          }
+
           return {
-            content: response.choices[0]?.message?.content || 'No response generated',
-            model: 'llama3-8b-8192'
+            content: aiResponse.response || 'No response generated',
+            model: aiResponse.model || 'llama3-8b-8192'
           };
         },
         'question',

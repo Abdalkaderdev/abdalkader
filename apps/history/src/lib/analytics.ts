@@ -55,6 +55,7 @@ export interface EcosystemAnalytics {
     visitors: number;
     pageViews: number;
     bounceRate: number;
+    growth?: number;
   }>;
   userJourney: Array<{
     userId: string;
@@ -155,8 +156,9 @@ class AnalyticsManager {
       case 'navigation':
         const navEntry = entry as PerformanceNavigationTiming;
         metrics.ttfb = navEntry.responseStart - navEntry.requestStart;
-        metrics.domLoad = navEntry.domContentLoadedEventEnd - navEntry.navigationStart;
-        metrics.windowLoad = navEntry.loadEventEnd - navEntry.navigationStart;
+        // Use startTime instead of deprecated navigationStart
+        metrics.domLoad = navEntry.domContentLoadedEventEnd - navEntry.startTime;
+        metrics.windowLoad = navEntry.loadEventEnd - navEntry.startTime;
         break;
     }
 

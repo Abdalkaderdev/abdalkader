@@ -107,23 +107,19 @@ export const VoiceToAI: React.FC<VoiceToAIProps> = ({
       // For now, we'll simulate with a text prompt
       const response = await executeAIRequest(
         async (prompt: string) => {
-          const { groqClient } = await import('@/lib/groq/groqClient');
-          const response = await groqClient.chat.completions.create({
-            messages: [
-              { 
-                role: 'system', 
-                content: 'You are an expert programming language historian. Respond to voice questions about programming languages, their history, and evolution. Keep responses conversational and engaging.' 
-              },
-              { role: 'user', content: 'User asked a question about programming languages via voice.' }
-            ],
-            model: 'llama3-8b-8192',
-            temperature: 0.7,
-            max_tokens: 1024
+          const { secureAIClient } = await import('@/lib/groq/groqClient');
+          const aiResponse = await secureAIClient.chat({
+            message: 'User asked a question about programming languages via voice.',
+            context: 'You are an expert programming language historian. Respond to voice questions about programming languages, their history, and evolution. Keep responses conversational and engaging.',
           });
-          
+
+          if (!aiResponse.success) {
+            throw new Error(aiResponse.error || 'AI request failed');
+          }
+
           return {
-            content: response.choices[0]?.message?.content || 'No response generated',
-            model: 'llama3-8b-8192'
+            content: aiResponse.response || 'No response generated',
+            model: aiResponse.model || 'llama3-8b-8192'
           };
         },
         'question',

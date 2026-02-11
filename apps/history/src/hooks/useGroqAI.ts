@@ -29,7 +29,9 @@ export function useGroqAI(options: UseGroqAIOptions = {}) {
       const newCache = new Map(prev);
       if (newCache.size >= maxCacheSize) {
         const firstKey = newCache.keys().next().value;
-        newCache.delete(firstKey);
+        if (firstKey) {
+          newCache.delete(firstKey);
+        }
       }
       newCache.set(key, response);
       return newCache;

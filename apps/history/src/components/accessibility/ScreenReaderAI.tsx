@@ -61,24 +61,22 @@ export const ScreenReaderAI: React.FC<ScreenReaderAIProps> = ({
 
     try {
       const response = await executeAIRequest(
-        async (prompt: string) => {
-          const { groqClient } = await import('@/lib/groq/groqClient');
-          const response = await groqClient.chat.completions.create({
-            messages: [
-              { 
-                role: 'system', 
-                content: `You are an expert programming language historian and educator. Provide detailed, accurate, and engaging responses about programming languages, their history, and evolution. Context: ${context}. Make your responses clear and well-structured for screen readers.` 
-              },
-              { role: 'user', content: prompt }
-            ],
-            model: 'llama3-8b-8192',
-            temperature: 0.7,
-            max_tokens: 1024
+        async (userPrompt: string) => {
+          const { secureAIClient } = await import('@/lib/groq/groqClient');
+          const systemContext = `You are an expert programming language historian and educator. Provide detailed, accurate, and engaging responses about programming languages, their history, and evolution. Context: ${context}. Make your responses clear and well-structured for screen readers.`;
+
+          const aiResponse = await secureAIClient.chat({
+            message: userPrompt,
+            context: systemContext,
           });
-          
+
+          if (!aiResponse.success) {
+            throw new Error(aiResponse.error || 'AI request failed');
+          }
+
           return {
-            content: response.choices[0]?.message?.content || 'No response generated',
-            model: 'llama3-8b-8192'
+            content: aiResponse.response || 'No response generated',
+            model: aiResponse.model || 'llama3-8b-8192'
           };
         },
         'question',
