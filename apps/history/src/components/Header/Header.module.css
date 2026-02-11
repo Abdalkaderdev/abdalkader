@@ -140,3 +140,57 @@
   background: rgba(244, 78, 0, 0.3);
   margin: 1rem 0;
 }
+
+/* ===== RESPONSIVE STYLES ===== */
+@media (max-width: 840px) {
+  .nav {
+    padding: 1.2rem 1.5rem;
+  }
+
+  .navigationMenu a {
+    font-size: 2.2rem;
+  }
+
+  .bar {
+    width: 100px;
+  }
+
+  .menu_Toggle:hover .bar {
+    width: 120px;
+  }
+}
+
+@media (max-width: 600px) {
+  .nav {
+    padding: 1rem;
+  }
+
+  .navigationMenu {
+    width: calc(100% - 16px);
+    left: 8px;
+    top: 8px;
+    padding: 7rem 0 2rem 0;
+  }
+
+  .navigationMenu a {
+    font-size: 1.8rem;
+  }
+
+  .navigationMenu ul {
+    gap: 0.6rem;
+  }
+
+  .bar {
+    width: 80px;
+    height: 4px;
+  }
+
+  .menu_Toggle:hover .bar {
+    width: 100px;
+  }
+
+  .divider {
+    width: 80px;
+    margin: 0.8rem 0;
+  }
+}

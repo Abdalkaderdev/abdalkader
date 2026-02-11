@@ -191,6 +191,10 @@ export function LanguageFamilyTree({ languages, onLanguageSelect }: LanguageFami
 
     node.call(drag as any);
 
+    // CRITICAL: Clean up simulation on unmount to prevent memory leaks
+    return () => {
+      simulation.stop();
+    };
   }, [languages, onLanguageSelect]);
 
   const handleLanguageClick = async (language: Language) => {

@@ -29,7 +29,7 @@
   --color-white: #f8f8f8;
   --color-black: #000;
   --color-text-dark: #131313;
-  --color-text-grey: #787878;
+  --color-text-grey: #a0a0a0;
   --color-navigation: #2d2d2d59;
   --color-border: rgb(37, 37, 37);
   
@@ -37,7 +37,7 @@
   --color-bg-primary: #000;
   --color-bg-secondary: #0a0a0a;
   --color-text-primary: #f8f8f8;
-  --color-text-secondary: #787878;
+  --color-text-secondary: #a0a0a0;
   --color-accent: #f44e00;
 
   /* ===== TYPOGRAPHY - EXACT PORTFOLIO VALUES ===== */
@@ -355,7 +355,7 @@
     transition: var(--transition-smooth);
     background: linear-gradient(135deg, rgba(244, 78, 0, 0.2), rgba(250, 115, 0, 0.1));
     border: 2px solid var(--color-primary);
-    animation: portfolioGlow 2s ease-in-out infinite;
+    animation: portfolioGlow 4s ease-in-out infinite;
   }
   
   /* Gradient Text */
@@ -430,12 +430,13 @@
     }
   }
 
+  /* Gentler glow animation - reduced intensity to avoid seizure risk */
   @keyframes portfolioGlow {
     0%, 100% {
-      box-shadow: 0 0 5px rgba(244, 78, 0, 0.2);
+      box-shadow: 0 0 8px rgba(244, 78, 0, 0.15);
     }
     50% {
-      box-shadow: 0 0 20px rgba(244, 78, 0, 0.4);
+      box-shadow: 0 0 12px rgba(244, 78, 0, 0.25);
     }
   }
 
@@ -462,7 +463,7 @@
   }
 
   .portfolio-animate-glow {
-    animation: portfolioGlow 2s ease-in-out infinite;
+    animation: portfolioGlow 4s ease-in-out infinite;
   }
 
   .portfolio-animate-pulse {

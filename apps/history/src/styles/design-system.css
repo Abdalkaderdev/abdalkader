@@ -1,73 +1,17 @@
 /* ============================================
    ABDALKADER DESIGN SYSTEM - HISTORY APP
+   Extended styles that complement globals.css
    ============================================ */
 
-:root {
-  /* Colors */
-  --color-primary: #f44e00;
-  --color-primary-light: #fa7300;
-  --color-background: #000;
-  --color-text-light: #f8f8f8;
-  --color-text-dark: #131313;
-  --color-text-grey: #787878;
-  --color-navigation: rgba(45, 45, 45, 0.35);
-  --color-border: rgb(37, 37, 37);
-  
-  /* Typography */
-  --font-family-primary: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
-  --font-size-4xl: 4.5rem;
-  --font-size-3xl: 2.75rem;
-  --font-size-2xl: 1.8rem;
-  --font-size-lg: 1rem;
-  --font-size-sm: 0.7rem;
-  --line-height-tight: 0.9;
-  --line-height-normal: 1;
-  --letter-spacing-normal: 0.05rem;
-  --letter-spacing-wide: 0.1rem;
-  
-  /* Animations */
-  --transition-primary: 0.8s cubic-bezier(0.19, 1, 0.22, 1);
-  --transition-secondary: 0.3s cubic-bezier(0.19, 1, 0.22, 1);
-  --easing-smooth: cubic-bezier(0.19, 1, 0.22, 1);
-  
-  /* Spacing */
-  --spacing-xs: 0.5rem;
-  --spacing-sm: 1rem;
-  --spacing-md: 2rem;
-  --spacing-lg: 3rem;
-  --spacing-xl: 8rem;
-  --spacing-2xl: 10rem;
-}
-
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-html,
-body {
-  width: 100%;
-  height: 100%;
-}
-
-body {
-  font-family: var(--font-family-primary);
-  overflow-x: clip;
-  background: var(--color-background);
-  color: var(--color-text-light);
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  backface-visibility: hidden;
-  touch-action: manipulation;
-}
+/* NOTE: Core CSS custom properties are defined in globals.css
+   This file contains additional component styles specific to the history app */
 
 /* ============================================
-   TYPOGRAPHY
+   TYPOGRAPHY - Extended styles
    ============================================ */
 
 h1 {
-  font-size: var(--font-size-4xl);
+  font-size: var(--text-hero);
   line-height: var(--line-height-tight);
   font-weight: 300;
   text-transform: uppercase;
@@ -75,30 +19,30 @@ h1 {
 }
 
 h2 {
-  font-size: var(--font-size-3xl);
+  font-size: var(--text-large);
   line-height: var(--line-height-tight);
   font-weight: 300;
   text-transform: uppercase;
 }
 
 h3 {
-  font-size: var(--font-size-2xl);
+  font-size: var(--text-medium);
   line-height: var(--line-height-tight);
   font-weight: 300;
   text-transform: uppercase;
-  letter-spacing: var(--letter-spacing-normal);
+  letter-spacing: 0.05rem;
 }
 
 p {
-  font-size: var(--font-size-lg);
+  font-size: var(--text-base);
   line-height: 1.6;
-  color: var(--color-text-light);
+  color: var(--color-text-primary);
 }
 
 a {
   color: inherit;
   text-decoration: none;
-  transition: color var(--transition-secondary);
+  transition: color var(--transition-fast);
 }
 
 a:hover {
@@ -106,20 +50,15 @@ a:hover {
 }
 
 /* ============================================
-   FOCUS & ACCESSIBILITY
+   ACCESSIBILITY - Skip link
    ============================================ */
-
-:focus-visible {
-  outline: 2px dashed var(--color-primary);
-  outline-offset: 3px;
-}
 
 .skip-link {
   position: absolute;
   top: -40px;
   left: 0;
   background: var(--color-primary);
-  color: var(--color-background);
+  color: var(--color-bg-primary);
   padding: 8px 12px;
   z-index: 10000;
   transition: top 0.2s ease;
@@ -130,7 +69,7 @@ a:hover {
 }
 
 /* ============================================
-   BUTTONS
+   BUTTONS - Extended styles
    ============================================ */
 
 .btn {
@@ -138,20 +77,20 @@ a:hover {
   align-items: center;
   justify-content: center;
   padding: 0.75rem 1.5rem;
-  font-size: var(--font-size-sm);
+  font-size: var(--text-small);
   font-weight: 500;
   text-transform: uppercase;
-  letter-spacing: var(--letter-spacing-normal);
+  letter-spacing: 0.05rem;
   border: none;
-  border-radius: 4px;
+  border-radius: var(--border-radius-sm);
   cursor: pointer;
-  transition: all var(--transition-secondary);
+  transition: all var(--transition-fast);
   text-decoration: none;
 }
 
 .btn-primary {
   background: var(--color-primary);
-  color: var(--color-background);
+  color: var(--color-bg-primary);
 }
 
 .btn-primary:hover {
@@ -166,7 +105,7 @@ a:hover {
 
 .btn-secondary {
   background: transparent;
-  color: var(--color-text-light);
+  color: var(--color-text-primary);
   border: 1px solid var(--color-border);
 }
 
@@ -176,16 +115,16 @@ a:hover {
 }
 
 /* ============================================
-   CARDS
+   CARDS - Extended styles
    ============================================ */
 
 .card {
   background: rgba(45, 45, 45, 0.5);
   border: 1px solid var(--color-border);
-  border-radius: 8px;
-  padding: var(--spacing-md);
-  transition: all var(--transition-secondary);
-  backdrop-filter: blur(10px);
+  border-radius: var(--border-radius);
+  padding: var(--space-lg);
+  transition: all var(--transition-fast);
+  backdrop-filter: var(--backdrop-blur);
 }
 
 .card:hover {
@@ -195,20 +134,20 @@ a:hover {
 }
 
 /* ============================================
-   FORMS
+   FORMS - Extended styles
    ============================================ */
 
 input,
 textarea,
 select {
-  font-family: var(--font-family-primary);
-  font-size: var(--font-size-lg);
+  font-family: var(--font-primary);
+  font-size: var(--text-base);
   background: rgba(45, 45, 45, 0.5);
   border: 1px solid var(--color-border);
-  border-radius: 4px;
+  border-radius: var(--border-radius-sm);
   padding: 0.75rem 1rem;
-  color: var(--color-text-light);
-  transition: all var(--transition-secondary);
+  color: var(--color-text-primary);
+  transition: all var(--transition-fast);
 }
 
 input:focus,
@@ -225,41 +164,11 @@ textarea::placeholder {
 }
 
 /* ============================================
-   SCROLLBAR
-   ============================================ */
-
-::-webkit-scrollbar {
-  width: 10px;
-}
-
-::-webkit-scrollbar-track {
-  background: transparent;
-}
-
-::-webkit-scrollbar-thumb {
-  background: var(--color-primary);
-  border-radius: 5px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: var(--color-primary-light);
-}
-
-/* ============================================
-   SELECTION
-   ============================================ */
-
-::selection {
-  background: var(--color-primary);
-  color: var(--color-background);
-}
-
-/* ============================================
-   UTILITIES
+   UTILITIES - Extended styles
    ============================================ */
 
 .gradient-text {
-  background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-light) 100%);
+  background: var(--color-primary-gradient);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -279,39 +188,30 @@ textarea::placeholder {
   justify-content: center;
 }
 
-.container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 var(--spacing-md);
-}
-
 /* ============================================
-   RESPONSIVE
+   RESPONSIVE - Extended breakpoints
    ============================================ */
 
-@media (max-width: 1080px) {
-  :root {
-    --font-size-4xl: 3.2rem;
-    --font-size-3xl: 2.2rem;
-    --font-size-2xl: 1.2rem;
+@media (max-width: 840px) {
+  h1 {
+    font-size: var(--text-hero-md);
+  }
+
+  h2 {
+    font-size: var(--text-large-md);
+  }
+
+  h3 {
+    font-size: var(--text-medium-md);
   }
 }
 
 @media (max-width: 600px) {
-  :root {
-    --font-size-4xl: 2.5rem;
-    --font-size-3xl: 1.8rem;
-    --spacing-md: 1rem;
-    --spacing-lg: 2rem;
-    --spacing-xl: 5rem;
-    --spacing-2xl: 6rem;
+  h1 {
+    font-size: var(--text-hero-sm);
   }
 
-  body {
-    overflow-x: hidden;
-  }
-
-  .container {
-    padding: 0 var(--spacing-sm);
+  h2 {
+    font-size: var(--text-large-sm);
   }
 }

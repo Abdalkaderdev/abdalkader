@@ -133,10 +133,10 @@
 }
 
 .bigText {
-  font-size: 14.8vw;
-  letter-spacing: -1vw;
+  font-size: clamp(2rem, 8vw, 6rem);
+  letter-spacing: -0.02em;
   text-transform: uppercase;
-  line-height: 0.75;
+  line-height: 0.9;
   font-weight: 300;
   background: linear-gradient(135deg, #f44e00 0%, #fa7300 100%);
   -webkit-background-clip: text;
@@ -145,4 +145,11 @@
   margin: 0;
   padding: 0 2rem;
   text-align: center;
+}
+
+@media (max-width: 600px) {
+  .bigText {
+    font-size: clamp(1.5rem, 10vw, 3rem);
+    padding: 0 1rem;
+  }
 }

@@ -64,18 +64,17 @@ function LoadingPlaceholder({ text = 'Loading...' }: { text?: string }) {
   );
 }
 // UI Components Integration
-import { 
-  Button, 
-  Card, 
-  Skeleton, 
-  Spinner, 
-  Progress, 
+import {
+  Button,
+  Card,
+  Skeleton,
+  Spinner,
+  Progress,
   CircularProgress,
   ErrorBoundary,
   Tabs,
   Modal,
   useModal,
-  ThemeProvider,
   ThemeToggleButton
 } from '@abdalkader/ui';
 
@@ -269,16 +268,15 @@ export default function Home() {
   };
 
   return (
-    <ThemeProvider>
-      <ErrorBoundary
-        customMessage="Something went wrong with the Programming Museum. Please try refreshing the page."
-        showRetry={true}
-        showHome={true}
-      >
-        <EcosystemAuthProvider>
-          <CrossDomainProvider>
-            <PageTransition>
-              <div className="min-h-screen bg-gradient-to-br from-black via-gray-900 to-black dark:from-black dark:via-gray-900 dark:to-black light:from-white light:via-gray-50 light:to-gray-100">
+    <ErrorBoundary
+      customMessage="Something went wrong with the Programming Museum. Please try refreshing the page."
+      showRetry={true}
+      showHome={true}
+    >
+      <EcosystemAuthProvider>
+        <CrossDomainProvider>
+          <PageTransition>
+            <div className="min-h-screen bg-gradient-to-br from-black via-gray-900 to-black dark:from-black dark:via-gray-900 dark:to-black light:from-white light:via-gray-50 light:to-gray-100">
               {/* Portfolio Style Header */}
               <PortfolioHeader 
                 appName="Programming Museum"
@@ -327,14 +325,14 @@ export default function Home() {
       </EcosystemAuthProvider>
       
       {/* Quick Tour Modal */}
-      <Modal 
-        isOpen={modal.isOpen} 
-        onClose={modal.close} 
+      <Modal
+        isOpen={modal.isOpen}
+        onClose={modal.close}
         title="Programming Museum Quick Tour"
       >
         <div className="space-y-4">
           <p>Discover the evolution of programming languages through interactive timelines, code playgrounds, and AI-powered insights.</p>
-          
+
           <div className="grid grid-cols-2 gap-4">
             <Card>
               <h3 className="font-semibold mb-2">📚 Historical Timeline</h3>
@@ -353,16 +351,15 @@ export default function Home() {
               <p className="text-sm text-gray-600">Interactive museum-style galleries</p>
             </Card>
           </div>
-          
+
           <div className="flex justify-end mt-6">
             <Button onClick={modal.close}>Start Exploring</Button>
           </div>
         </div>
       </Modal>
+
+      {/* Theme Toggle Button */}
+      <ThemeToggleButton />
     </ErrorBoundary>
-    
-    {/* Theme Toggle Button */}
-    <ThemeToggleButton />
-  </ThemeProvider>
   );
 }
