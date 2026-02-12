@@ -1,5 +1,5 @@
 import AboutSection from "@/components/HomePage/AboutSection";
-import BookCallSection from "@/components/HomePage/BookCallSection";
+import CoffeeSection from "@/components/CoffeeSection";
 import InstagramSection from "@/components/HomePage/DribbleSection";
 import HeroSection from "@/components/HomePage/HeroSection";
 import ProjectSection from "@/components/HomePage/ProjectSection";
@@ -21,8 +21,8 @@ export default function HomePage() {
             <AboutSection />
             <ProjectSection />
             <ServiceSection />
-                            <InstagramSection />
-            <BookCallSection />
+            <InstagramSection />
+            <CoffeeSection />
         </>
     );
 }

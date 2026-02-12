@@ -10,15 +10,13 @@ const links = [
     { name: 'About me', path: '/about' },
     { name: 'Projects', path: '/projects' },
     { name: 'Guidance', path: '/guidance' },
+    { name: 'Prayer', path: '/prayer' },
     { name: 'Contact', path: '/contact' },
 ];
 
 // Cross-app navigation links
 const crossAppLinks = [
-    { name: 'Blog', path: 'https://blog.abdalkader.dev', external: true },
     { name: 'Docs', path: 'https://docs.abdalkader.dev', external: true },
-    { name: 'Components', path: 'https://storybook.abdalkader.dev', external: true },
-    { name: 'Programming Museum', path: 'https://history.abdalkader.dev', external: true },
 ];
 
 export default function Nav() {

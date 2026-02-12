@@ -46,9 +46,19 @@ const skillsCategories = [
 ];
 const experiences = [
     {
-        position: "Chief Technology Officer (Co-Founder)",
-        company: "at Key Spare",
-        period: "Mar 2025 - Present"
+        position: "Full Stack AI Engineer",
+        company: "at SoapBox Super App",
+        period: "2024 - Present"
+    },
+    {
+        position: "Full Stack Software Engineer",
+        company: "at DiscipleOne (Nonprofit) & VIA App",
+        period: "2024 - Present"
+    },
+    {
+        position: "Full Stack Software Developer",
+        company: "at ParsaLink",
+        period: "2024 - Present"
     },
     {
         position: "IT Specialist",

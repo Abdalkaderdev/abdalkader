@@ -64,7 +64,7 @@ export default function ContactSection() {
                 </div>
                 {/* Encouraging verse */}
                 <div className={styles.signpostWrapper}>
-                    <MiniSignpost category="love" direction="left" />
+                    <MiniSignpost category="love" />
                 </div>
             </section>
         </>

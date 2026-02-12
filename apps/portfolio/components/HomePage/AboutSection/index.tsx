@@ -88,7 +88,7 @@ export default function AboutSection() {
 
                 {/* Encouraging verse signpost */}
                 <div className={styles.signpostWrapper}>
-                    <MiniSignpost category="hope" direction="right" />
+                    <MiniSignpost category="hope" />
                 </div>
             </div>
         </section>

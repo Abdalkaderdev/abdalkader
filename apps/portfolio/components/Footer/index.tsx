@@ -9,15 +9,14 @@ const navigationLinks = [
     { text: 'Home', href: '/' },
     { text: 'About', href: '/about' },
     { text: 'Projects', href: '/projects' },
+    { text: 'Guidance', href: '/guidance' },
+    { text: 'Prayer', href: '/prayer' },
     { text: 'Contact', href: '/contact' },
 ];
 
 // Ecosystem apps
 const ecosystemLinks = [
-    { text: 'Blog', href: 'https://blog.abdalkader.dev' },
     { text: 'Documentation', href: 'https://docs.abdalkader.dev' },
-    { text: 'Components', href: 'https://storybook.abdalkader.dev' },
-    { text: 'Programming Museum', href: 'https://history.abdalkader.dev' },
 ];
 
 // Social links

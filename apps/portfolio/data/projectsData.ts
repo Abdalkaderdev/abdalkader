@@ -30,10 +30,166 @@ export interface Project {
 export const projects: Project[] = [
   {
     // For Post
+    title: "SoapBox Super App",
+    slug: "soapbox-super-app",
+    category: ["Full Stack Development", "AI Engineering", "SaaS Platform"],
+    img: "/images/dribble1.jpeg",
+    badges: ["React", "Node.js", "AI/ML", "TypeScript", "Cloud Infrastructure"],
+    owner: "SoapBox",
+    date: "2024 - Present",
+    services: "Full Stack AI Engineering",
+    duration: "Ongoing",
+    budget: "Enterprise",
+    live: "https://soapboxsuperapp.com/",
+    overview:
+      "SoapBox is a comprehensive faith community platform founded in 2023 that helps churches and faith communities connect, communicate, and grow together through digital tools. The platform serves as a centralized hub for religious organizations to manage communications, community engagement, and spiritual activities with AI-powered features.",
+    objective:
+      "As Full Stack AI Engineer, my role involves building and maintaining the core platform infrastructure, implementing AI-powered content creation tools, developing multi-channel communication systems (email, SMS, push notifications), and creating scalable solutions for multi-campus church management. The platform needed to serve both small churches (under 100 members) and large multi-campus organizations.",
+    process:
+      "Development focuses on creating robust backend systems for member management, event coordination, and volunteer tracking. I implement AI features for content generation and engagement optimization, build real-time communication infrastructure, and ensure the platform scales efficiently across different church sizes. Special attention is given to data privacy and security for sensitive community information.",
+    impact:
+      "SoapBox has become a trusted platform for faith communities, offering features like daily devotionals, prayer walls, Bible study resources, event management with room booking, volunteer coordination, attendance tracking, and AI-powered content creation. The tiered pricing model ensures accessibility for churches of all sizes.",
+    problemSolved:
+      "Churches struggled with fragmented communication tools and manual administrative tasks. SoapBox consolidates community management, communication, and spiritual growth tools into one AI-enhanced platform.",
+    technicalChallenge:
+      "Building scalable AI features for content generation while maintaining real-time communication across email, SMS, and push notifications. Implementing multi-tenant architecture for multi-campus support with centralized administration.",
+    resultsAchieved: {
+      metrics: [
+        "Serving hundreds of faith communities",
+        "AI-powered content creation",
+        "Multi-channel communication system",
+        "Multi-campus support architecture",
+        "Real-time attendance tracking"
+      ],
+      businessImpact: "Enabling churches to modernize their communication and community engagement while maintaining authentic spiritual connections.",
+      userFeedback: "Churches appreciate the comprehensive toolset that reduces administrative burden and enhances community engagement."
+    },
+    technologyFilter: "AI",
+    thumbnailVariant: "gradient",
+  },
+  {
+    // For Post
+    title: "DiscipleOne Platform",
+    slug: "discipleone-platform",
+    category: ["Full Stack Development", "Nonprofit", "Church Technology"],
+    img: "/images/dribble2.jpeg",
+    badges: ["React", "Node.js", "TypeScript", "Cloud Services", "Mobile"],
+    owner: "DiscipleOne (501c3 Nonprofit)",
+    date: "2024 - Present",
+    services: "Full Stack Software Engineering",
+    duration: "Ongoing",
+    budget: "Nonprofit",
+    live: "https://discipleone.life/",
+    overview:
+      "DiscipleOne is a 501(c)(3) nonprofit organization dedicated to equipping churches and believers to grow lifelong disciples of Jesus through relational, measurable, and sustainable approaches. The platform provides free discipleship tools and church dashboards that enable pastors to monitor and support congregational spiritual development.",
+    objective:
+      "As Full Stack Software Engineer, I develop and maintain the core platform infrastructure, church leadership dashboards, and integration systems. The goal is to create technology that makes discipleship accessible to every believer while providing churches with visibility into spiritual growth metrics.",
+    process:
+      "Development focuses on creating intuitive interfaces for church leaders, building analytics dashboards for tracking spiritual engagement, and ensuring all tools remain 100% free for believers. I work on the partner network systems and training resource delivery platforms.",
+    impact:
+      "DiscipleOne now serves 50+ partner churches in beta, engages over 1,000 active users, and has facilitated 10,000+ completed quiet times—all while maintaining 100% free access. The platform emphasizes local church-centered ministry rather than top-down spiritual formation.",
+    problemSolved:
+      "Churches lacked affordable, integrated tools for tracking and supporting discipleship growth. Many existing solutions were expensive or focused on top-down approaches rather than relational discipleship.",
+    technicalChallenge:
+      "Building scalable infrastructure that can serve growing church networks while maintaining free access. Creating meaningful analytics that measure spiritual engagement without reducing faith to mere metrics.",
+    resultsAchieved: {
+      metrics: [
+        "50+ partner churches in beta",
+        "1,000+ active users",
+        "10,000+ completed quiet times",
+        "100% free access maintained",
+        "Church leadership dashboards"
+      ],
+      businessImpact: "Democratizing access to discipleship tools and enabling churches to focus on relational spiritual formation.",
+      userFeedback: "Churches value the free access model and the focus on sustainable, relational discipleship over programmatic approaches."
+    },
+    technologyFilter: "Full Stack",
+    thumbnailVariant: "minimal",
+  },
+  {
+    // For Post
+    title: "VIA Discipleship App",
+    slug: "via-discipleship-app",
+    category: ["Mobile Development", "Full Stack", "Spiritual Technology"],
+    img: "/images/dribble3.jpeg",
+    badges: ["React Native", "Node.js", "TypeScript", "iOS", "Android"],
+    owner: "DiscipleOne (501c3 Nonprofit)",
+    date: "2024 - Present",
+    services: "Full Stack Software Engineering",
+    duration: "Ongoing",
+    budget: "Nonprofit",
+    live: "https://viaapp.life/",
+    overview:
+      "VIA is a free companion app for spiritual growth designed to help Christians deepen their faith through structured practices and community engagement. Available on iOS, Android, and web with full synchronization, the app operates on the principle that discipleship happens in relationship.",
+    objective:
+      "As Full Stack Software Engineer, I build and maintain the cross-platform mobile application, backend services, and synchronization systems. The app needed to provide daily quiet time guidance, Bible study tools, prayer journaling, and a unique disciple partner matching system.",
+    process:
+      "Development involves creating intuitive mobile interfaces for daily devotionals and Scripture meditation, building robust prayer tracking and journaling features, and implementing the disciple partner matching algorithm. Focus on cross-platform consistency ensures seamless experience across iOS, Android, and web.",
+    impact:
+      "VIA helps believers establish Scripture-centered habits while fostering spiritual growth through meaningful partnerships. The app remains completely free with no premium tiers, ensuring accessibility for all believers regardless of financial situation.",
+    problemSolved:
+      "Many Christians struggle with consistent spiritual practices and lack accountability partners. VIA provides structured guidance and connects believers with disciple partners for mutual encouragement.",
+    technicalChallenge:
+      "Building a cross-platform app with real-time synchronization, implementing intelligent partner matching, and ensuring the app performs well offline for users with limited connectivity.",
+    resultsAchieved: {
+      metrics: [
+        "Cross-platform (iOS, Android, Web)",
+        "Real-time sync across devices",
+        "Disciple partner matching system",
+        "Prayer journal with answered prayer tracking",
+        "100% free, no premium tiers"
+      ],
+      businessImpact: "Making discipleship tools accessible to every believer and fostering meaningful spiritual accountability relationships.",
+      userFeedback: "Users appreciate the focus on relational discipleship and the completely free access model."
+    },
+    technologyFilter: "Full Stack",
+    thumbnailVariant: "gradient",
+  },
+  {
+    // For Post
+    title: "ParsaLink AI CRM",
+    slug: "parsalink-ai-crm",
+    category: ["Full Stack Development", "AI Engineering", "SaaS"],
+    img: "/images/dribble4.jpeg",
+    badges: ["React", "Node.js", "AI/ML", "TypeScript", "CRM"],
+    owner: "ParsaLink",
+    date: "2024 - Present",
+    services: "Full Stack Software Development",
+    duration: "Ongoing",
+    budget: "Enterprise",
+    live: "https://parsalink.io/",
+    overview:
+      "ParsaLink is an AI-powered customer relationship management (CRM) platform designed to eliminate manual work in sales and marketing processes. The system combines traditional CRM functionality with advanced AI capabilities to help businesses streamline lead generation, automate follow-ups, and close deals faster.",
+    objective:
+      "As Full Stack Software Developer, I build and maintain the core CRM infrastructure, AI integration systems, and user-facing features. The platform needed to provide AI lead capture, personalized email generation, sales analytics, and a knowledge hub that learns about each business.",
+    process:
+      "Development focuses on creating intelligent chatbots for lead qualification, building AI systems for personalized email generation in multiple languages, implementing natural language analytics queries, and developing the knowledge hub that applies learned company information across all interactions.",
+    impact:
+      "ParsaLink enables teams to qualify leads automatically, generate personalized follow-ups in the company's voice, and get instant sales insights without manual spreadsheet work. The platform reduces the typical CRM learning curve with AI-assisted setup.",
+    problemSolved:
+      "Traditional CRMs require extensive manual data entry and have steep learning curves. Sales teams spend too much time on administrative tasks instead of building relationships and closing deals.",
+    technicalChallenge:
+      "Implementing AI systems that generate truly personalized content in multiple languages while maintaining each company's unique voice. Building conversational analytics that provide accurate insights from natural language queries.",
+    resultsAchieved: {
+      metrics: [
+        "AI-powered lead capture chatbot",
+        "Multi-language email generation",
+        "Natural language sales analytics",
+        "Knowledge hub for company context",
+        "Minutes-to-setup onboarding"
+      ],
+      businessImpact: "Reducing manual CRM work and enabling sales teams to focus on relationship building and closing deals.",
+      userFeedback: "Users appreciate the AI automation and the elimination of repetitive data entry tasks."
+    },
+    technologyFilter: "AI",
+    thumbnailVariant: "data-viz",
+  },
+  {
+    // For Post
     title: "Quantum Animation System",
     slug: "quantum-animation-system",
     category: ["Web Development", "Interactive Animation", "Physics Simulation"],
-    img: "/images/quantum-animation.png",
+    img: "/images/dribble5.jpeg",
     badges: ["Next.js 15", "TypeScript", "Three.js", "Framer Motion", "GSAP"],
     owner: "Quantum Animation Lab",
     date: "Jan 15, 2025",

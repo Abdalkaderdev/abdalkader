@@ -1,5 +1,5 @@
 import ContactSection from '@/components/ContactPage';
-import BookCallSection from '@/components/HomePage/BookCallSection';
+import CoffeeSection from '@/components/CoffeeSection';
 import Head from 'next/head';
 import { buildCanonical } from '@/utils/seo';
 import JsonLd from '@/components/SEO/JsonLd';
@@ -22,7 +22,7 @@ export default function ContactPage() {
                 ])
             ]} />
             <ContactSection />
-            <BookCallSection />
+            <CoffeeSection />
         </>
     )
 }

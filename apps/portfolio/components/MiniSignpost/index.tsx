@@ -58,15 +58,13 @@ interface MiniSignpostProps {
     autoRotate?: boolean;
     rotateInterval?: number;
     className?: string;
-    direction?: 'left' | 'right';
 }
 
 export default function MiniSignpost({
     category = 'general',
     autoRotate = true,
-    rotateInterval = 8000,
+    rotateInterval = 20000, // 20 seconds - give users time to read
     className = '',
-    direction = 'right'
 }: MiniSignpostProps) {
     const verses = encouragingVerses[category] || encouragingVerses.general;
     const [currentIndex, setCurrentIndex] = useState(0);
@@ -83,42 +81,25 @@ export default function MiniSignpost({
     }, [autoRotate, rotateInterval, verses.length]);
 
     return (
-        <div className={`${styles.miniSignpost} ${styles[direction]} ${className}`}>
-            {/* Mini Post */}
-            <div className={styles.post} />
+        <div className={`${styles.miniSignpost} ${className}`}>
+            {/* Small cross accent */}
+            <div className={styles.crossAccent}>✝</div>
 
-            {/* Sign */}
+            {/* Verse card */}
             <AnimatePresence mode="wait">
                 <motion.div
                     key={currentIndex}
-                    className={styles.sign}
-                    initial={{ opacity: 0, x: direction === 'right' ? -20 : 20, rotate: 0 }}
-                    animate={{ opacity: 1, x: 0, rotate: direction === 'right' ? -3 : 3 }}
-                    exit={{ opacity: 0, x: direction === 'right' ? 20 : -20 }}
-                    transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+                    className={styles.verseCard}
+                    initial={{ opacity: 0, y: 8 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -8 }}
+                    transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
                 >
-                    <div className={styles.signBoard}>
-                        <div className={styles.signPoint} />
-                        <div className={styles.content}>
-                            <span className={styles.verseText}>{currentVerse.text}</span>
-                            <span className={styles.reference}>{currentVerse.reference}</span>
-                        </div>
-                        <div className={styles.woodGrain} />
-                    </div>
+                    <span className={styles.verseText}>{currentVerse.text}</span>
+                    <span className={styles.reference}>{currentVerse.reference}</span>
                 </motion.div>
             </AnimatePresence>
 
-            {/* Dots indicator */}
-            <div className={styles.dots}>
-                {verses.map((_, index) => (
-                    <button
-                        key={index}
-                        className={`${styles.dot} ${index === currentIndex ? styles.active : ''}`}
-                        onClick={() => setCurrentIndex(index)}
-                        aria-label={`Verse ${index + 1}`}
-                    />
-                ))}
-            </div>
         </div>
     );
 }

@@ -9,12 +9,26 @@ interface WelcomeModalProps {
     onMusicToggle: (enabled: boolean) => void;
 }
 
-const STORAGE_KEY = 'portfolio-welcomed';
 const MUSIC_PREF_KEY = 'portfolio-music-enabled';
+
+// Bible verses for the welcome modal
+const VERSES = [
+    { text: "The Lord bless you and keep you", reference: "Numbers 6:24" },
+    { text: "I can do all things through Christ who strengthens me", reference: "Philippians 4:13" },
+    { text: "For I know the plans I have for you, declares the Lord", reference: "Jeremiah 29:11" },
+    { text: "Trust in the Lord with all your heart", reference: "Proverbs 3:5" },
+    { text: "Be strong and courageous. Do not be afraid", reference: "Joshua 1:9" },
+    { text: "The Lord is my shepherd, I shall not want", reference: "Psalm 23:1" },
+    { text: "God is our refuge and strength, an ever-present help", reference: "Psalm 46:1" },
+    { text: "Let your light shine before others", reference: "Matthew 5:16" },
+    { text: "With God all things are possible", reference: "Matthew 19:26" },
+    { text: "Peace I leave with you; my peace I give you", reference: "John 14:27" },
+];
 
 export default function WelcomeModal({ onMusicToggle }: WelcomeModalProps) {
     const [isOpen, setIsOpen] = useState(false);
     const [musicEnabled, setMusicEnabled] = useState(false);
+    const [verse, setVerse] = useState(VERSES[0]);
     const modalRef = useRef<HTMLDivElement>(null);
     const previousActiveElement = useRef<Element | null>(null);
 
@@ -40,13 +54,13 @@ export default function WelcomeModal({ onMusicToggle }: WelcomeModalProps) {
     }, []);
 
     useEffect(() => {
-        // Check if user has visited before
-        const hasVisited = localStorage.getItem(STORAGE_KEY);
-        if (!hasVisited) {
-            // Small delay for better UX after page load
-            const timer = setTimeout(() => setIsOpen(true), 1500);
-            return () => clearTimeout(timer);
-        }
+        // Show modal on every visit with a small delay for better UX
+        const timer = setTimeout(() => {
+            // Pick a random verse
+            setVerse(VERSES[Math.floor(Math.random() * VERSES.length)]);
+            setIsOpen(true);
+        }, 1500);
+        return () => clearTimeout(timer);
     }, []);
 
     // Focus trap effect
@@ -87,7 +101,6 @@ export default function WelcomeModal({ onMusicToggle }: WelcomeModalProps) {
     }, []);
 
     const handleEnter = useCallback(() => {
-        localStorage.setItem(STORAGE_KEY, 'true');
         localStorage.setItem(MUSIC_PREF_KEY, musicEnabled ? 'true' : 'false');
         onMusicToggle(musicEnabled);
         setIsOpen(false);
@@ -121,12 +134,9 @@ export default function WelcomeModal({ onMusicToggle }: WelcomeModalProps) {
                         aria-labelledby="welcome-title"
                         onKeyDown={handleKeyDown}
                     >
-                        {/* Cross Icon */}
+                        {/* Cross Icon - White elegant cross */}
                         <div className={styles.crossIcon} aria-hidden="true">
-                            <svg viewBox="0 0 100 100" width="40" height="40">
-                                <line x1="50" y1="15" x2="50" y2="85" stroke="currentColor" strokeWidth="2" />
-                                <line x1="25" y1="38" x2="75" y2="38" stroke="currentColor" strokeWidth="2" />
-                            </svg>
+                            ✝
                         </div>
 
                         <h2 id="welcome-title" className={styles.title}>Welcome</h2>
@@ -163,7 +173,7 @@ export default function WelcomeModal({ onMusicToggle }: WelcomeModalProps) {
                         </button>
 
                         <p className={styles.verse}>
-                            &ldquo;The Lord bless you and keep you&rdquo; &mdash; Numbers 6:24
+                            &ldquo;{verse.text}&rdquo; &mdash; {verse.reference}
                         </p>
                     </motion.div>
                 </motion.div>

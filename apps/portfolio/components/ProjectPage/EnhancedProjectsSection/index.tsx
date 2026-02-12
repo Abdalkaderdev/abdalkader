@@ -1,10 +1,10 @@
 import Link from 'next/link';
-import Image from 'next/image';
 import styles from './EnhancedProjectsSection.module.scss';
 import { projects } from '@/data/projectsData';
 import { useEffect, useRef } from 'react';
 import { gsap } from '@/libs/gsap';
 import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
+import MatrixCodeAnimation from '@/components/MatrixCodeAnimation';
 
 if (typeof window !== 'undefined') {
     gsap.registerPlugin(ScrollTrigger);
@@ -14,9 +14,9 @@ interface ProjectCardProps {
     title: string;
     category: string;
     year: string;
-    image: string;
     slug: string;
     index: number;
+    colorVariant: 'orange' | 'gold' | 'blue' | 'green';
 }
 
 // Magnetic Button Component
@@ -66,16 +66,16 @@ function MagneticButton({ children, href }: { children: React.ReactNode; href: s
 }
 
 // Project Card Component
-function ProjectCard({ title, category, year, image, slug, index }: ProjectCardProps) {
+function ProjectCard({ title, category, year, slug, index, colorVariant }: ProjectCardProps) {
     const cardRef = useRef<HTMLDivElement>(null);
-    const imageRef = useRef<HTMLDivElement>(null);
+    const animationRef = useRef<HTMLDivElement>(null);
     const contentRef = useRef<HTMLDivElement>(null);
 
     useEffect(() => {
         const card = cardRef.current;
-        const imageContainer = imageRef.current;
+        const animationContainer = animationRef.current;
         const content = contentRef.current;
-        if (!card || !imageContainer || !content) return;
+        if (!card || !animationContainer || !content) return;
 
         const ctx = gsap.context(() => {
             // Sticky stacking effect
@@ -88,7 +88,7 @@ function ProjectCard({ title, category, year, image, slug, index }: ProjectCardP
             });
 
             // Clip-path reveal animation
-            gsap.fromTo(imageContainer,
+            gsap.fromTo(animationContainer,
                 { clipPath: 'inset(25% 25% 25% 25%)' },
                 {
                     clipPath: 'inset(0% 0% 0% 0%)',
@@ -98,21 +98,6 @@ function ProjectCard({ title, category, year, image, slug, index }: ProjectCardP
                         start: 'top 80%',
                         end: 'top 20%',
                         scrub: 1,
-                    }
-                }
-            );
-
-            // Image parallax & scale
-            gsap.fromTo(imageContainer.querySelector('img'),
-                { scale: 1.15 },
-                {
-                    scale: 1,
-                    ease: 'none',
-                    scrollTrigger: {
-                        trigger: card,
-                        start: 'top bottom',
-                        end: 'bottom top',
-                        scrub: true,
                     }
                 }
             );
@@ -163,19 +148,18 @@ function ProjectCard({ title, category, year, image, slug, index }: ProjectCardP
                     </div>
                 </div>
 
-                {/* Center: Image */}
-                <div ref={imageRef} className={styles.imageContainer}>
-                    <Image
-                        src={image}
-                        alt={title}
-                        fill
-                        className={styles.image}
+                {/* Center: Matrix Animation */}
+                <div ref={animationRef} className={styles.imageContainer}>
+                    <MatrixCodeAnimation
+                        variant={colorVariant}
+                        speed="normal"
+                        density="normal"
+                        text={title}
                     />
                 </div>
 
-                {/* Right: Title & CTA */}
+                {/* Right: CTA */}
                 <div ref={contentRef} className={styles.content}>
-                    <h2 className={styles.title}>{title}</h2>
                     <MagneticButton href={`/projects/${slug}`}>
                         <span>VIEW PROJECT</span>
                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
@@ -233,27 +217,30 @@ export default function EnhancedProjectsSection() {
                 </p>
             </div>
 
-            {/* Project Cards */}
-            <div className={styles.projectsContainer}>
-                {displayProjects.map((project, index) => (
-                    <ProjectCard
-                        key={project.slug}
-                        title={project.title.toUpperCase()}
-                        category={project.category?.[0] || 'Development'}
-                        year="2024"
-                        image={project.img}
-                        slug={project.slug}
-                        index={index}
-                    />
-                ))}
-            </div>
-
-            {/* Footer CTA */}
+            {/* Footer CTA - Sticky, projects scroll over it */}
             <div className={styles.sectionFooter}>
                 <Link href="/projects" className={styles.viewAllBtn}>
                     <span>VIEW ALL PROJECTS</span>
                     <div className={styles.btnLine} />
                 </Link>
+            </div>
+
+            {/* Project Cards */}
+            <div className={styles.projectsContainer}>
+                {displayProjects.map((project, index) => {
+                    const colorVariants: Array<'orange' | 'gold' | 'blue' | 'green'> = ['orange', 'gold', 'blue', 'green'];
+                    return (
+                        <ProjectCard
+                            key={project.slug}
+                            title={project.title.toUpperCase()}
+                            category={project.category?.[0] || 'Development'}
+                            year="2024"
+                            slug={project.slug}
+                            index={index}
+                            colorVariant={colorVariants[index % colorVariants.length]}
+                        />
+                    );
+                })}
             </div>
         </section>
     );

@@ -262,8 +262,9 @@ $mono-font: 'JetBrains Mono', 'SF Mono', 'Consolas', monospace;
     display: flex;
     justify-content: center;
     padding: 8rem 4rem;
-    position: relative;
-    z-index: 20;
+    position: sticky;
+    top: 0;
+    z-index: 5;
     background: $deep-black;
 
     @media (max-width: $bp-md) {

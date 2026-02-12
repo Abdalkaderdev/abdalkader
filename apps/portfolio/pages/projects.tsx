@@ -1,4 +1,4 @@
-import BookCallSection from "@/components/HomePage/BookCallSection";
+import CoffeeSection from "@/components/CoffeeSection";
 import EnhancedProjectHeroSection from "@/components/ProjectPage/EnhancedProjectHeroSection";
 import EnhancedProjectsSection from "@/components/ProjectPage/EnhancedProjectsSection";
 import Head from "next/head";
@@ -15,7 +15,7 @@ export default function ProjectPage() {
             </Head>
             <EnhancedProjectHeroSection />
             <EnhancedProjectsSection />
-            <BookCallSection />
+            <CoffeeSection />
         </>
     );
 }

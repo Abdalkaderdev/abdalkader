@@ -1,15 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { getProjectBySlug } from '../../../../../packages/ui/src/lib/projectRegistry';
 import { ProjectTimeline } from './ProjectTimeline';
-import { ProjectComponents } from './ProjectComponents';
 import { ProjectDocumentation } from './ProjectDocumentation';
-import { ProjectBlogPosts } from './ProjectBlogPosts';
 import { trackCrossDomainLink, trackProjectLifecycleInteraction } from '@/lib/analytics';
 import styles from './ProjectLifecycle.module.scss';
-import { 
-  Code, 
-  BookOpen, 
-  FileText, 
+import {
+  BookOpen,
   ExternalLink,
   History,
   Sparkles,
@@ -21,7 +17,7 @@ interface ProjectLifecycleProps {
 }
 
 export function ProjectLifecycle({ projectSlug }: ProjectLifecycleProps) {
-  const [activeTab, setActiveTab] = useState<'timeline' | 'components' | 'docs' | 'blog'>('timeline');
+  const [activeTab, setActiveTab] = useState<'timeline' | 'docs'>('timeline');
   const [isLoading, setIsLoading] = useState(true);
   const project = getProjectBySlug(projectSlug);
 
@@ -39,14 +35,14 @@ export function ProjectLifecycle({ projectSlug }: ProjectLifecycleProps) {
     }
   }, [activeTab, project, projectSlug, isLoading]);
 
-  const handleTabChange = (tab: 'timeline' | 'components' | 'docs' | 'blog') => {
+  const handleTabChange = (tab: 'timeline' | 'docs') => {
     setActiveTab(tab);
     if (project) {
       trackProjectLifecycleInteraction(projectSlug, tab, 'click');
     }
   };
 
-  const handleCrossDomainClick = (linkType: 'history' | 'storybook' | 'docs' | 'blog', url: string) => {
+  const handleCrossDomainClick = (linkType: 'docs', url: string) => {
     if (project) {
       trackCrossDomainLink('portfolio', linkType, linkType, projectSlug, { url });
     }
@@ -76,9 +72,7 @@ export function ProjectLifecycle({ projectSlug }: ProjectLifecycleProps) {
 
   const tabs = [
     { id: 'timeline' as const, label: 'Development Timeline', icon: History, count: project.history.timelineEvents?.length || 0 },
-    { id: 'components' as const, label: 'Storybook Components', icon: Code, count: project.storybook.components.length },
     { id: 'docs' as const, label: 'Documentation', icon: BookOpen, count: project.docs.sections.length },
-    { id: 'blog' as const, label: 'Blog Posts', icon: FileText, count: project.blog.posts.length },
   ];
 
   return (
@@ -118,17 +112,9 @@ export function ProjectLifecycle({ projectSlug }: ProjectLifecycleProps) {
         {activeTab === 'timeline' && (
           <ProjectTimeline project={project} />
         )}
-        
-        {activeTab === 'components' && (
-          <ProjectComponents project={project} />
-        )}
-        
+
         {activeTab === 'docs' && (
           <ProjectDocumentation project={project} />
-        )}
-        
-        {activeTab === 'blog' && (
-          <ProjectBlogPosts project={project} />
         )}
       </div>
 
@@ -136,38 +122,10 @@ export function ProjectLifecycle({ projectSlug }: ProjectLifecycleProps) {
       <div className={styles.quickLinks}>
         <h3>Quick Links</h3>
         <div className={styles.linksGrid}>
-          {project.history.url && (
-            <a 
-              href={project.history.url} 
-              target="_blank" 
-              rel="noopener noreferrer"
-              className={styles.quickLink}
-              onClick={() => handleCrossDomainClick('history', project.history.url || '')}
-            >
-              <History className={styles.linkIcon} />
-              <span>View on Timeline</span>
-              <ExternalLink className={styles.externalIcon} />
-            </a>
-          )}
-          {project.storybook.components.length > 0 && (
-            <a 
-              href={project.storybook.components[0]?.storybookPath 
-                ? `https://storybook.abdalkader.dev/?path=/story/${project.storybook.components[0].storybookPath}`
-                : project.storybook.url || 'https://storybook.abdalkader.dev'} 
-              target="_blank" 
-              rel="noopener noreferrer"
-              className={styles.quickLink}
-              onClick={() => handleCrossDomainClick('storybook', project.storybook.url || '')}
-            >
-              <Code className={styles.linkIcon} />
-              <span>Browse Components</span>
-              <ExternalLink className={styles.externalIcon} />
-            </a>
-          )}
           {project.docs.baseUrl && (
-            <a 
-              href={`${project.docs.baseUrl}/projects/${project.slug}`} 
-              target="_blank" 
+            <a
+              href={`${project.docs.baseUrl}/projects/${project.slug}`}
+              target="_blank"
               rel="noopener noreferrer"
               className={styles.quickLink}
               onClick={() => handleCrossDomainClick('docs', `${project.docs.baseUrl}/projects/${project.slug}`)}

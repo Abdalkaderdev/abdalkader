@@ -9,29 +9,54 @@ interface MatrixCodeAnimationProps {
 }
 
 const COLORS = {
-    orange: { primary: '#ff6b35', secondary: '#ff8c5a', dim: 'rgba(255, 107, 53, 0.3)' },
-    gold: { primary: '#d4af37', secondary: '#f5d76e', dim: 'rgba(212, 175, 55, 0.3)' },
-    blue: { primary: '#3b82f6', secondary: '#60a5fa', dim: 'rgba(59, 130, 246, 0.3)' },
-    green: { primary: '#22c55e', secondary: '#4ade80', dim: 'rgba(34, 197, 94, 0.3)' },
+    orange: { primary: '#ff6b35', secondary: '#ffffff', dim: '#331507' },
+    gold: { primary: '#d4af37', secondary: '#ffffff', dim: '#2a220b' },
+    blue: { primary: '#3b82f6', secondary: '#ffffff', dim: '#0c1929' },
+    green: { primary: '#22c55e', secondary: '#ffffff', dim: '#052e16' },
 };
 
-// Code snippets that will fall
+// Code snippets for Matrix rain - real programming content
 const CODE_SNIPPETS = [
-    'const', 'let', 'var', 'function', 'return', 'if', 'else', 'for', 'while',
-    'class', 'import', 'export', 'async', 'await', 'Promise', 'useState',
-    'useEffect', 'React', 'Next.js', 'TypeScript', '=> {', '};', '()', '[]',
-    '<div>', '</>', 'props', 'state', 'render', 'fetch', 'API', 'JSON',
-    'true', 'false', 'null', 'npm', 'yarn', 'git', 'push', 'commit',
-    '===', '!==', '&&', '||', '=>', '...', '{}', 'map()', 'filter()',
-    '.tsx', '.ts', '.js', 'node', 'build', 'deploy', 'test', 'lint',
-    'interface', 'type', 'string', 'number', 'boolean', 'void', 'any',
-    'onClick', 'onChange', 'onSubmit', 'event', 'target', 'value',
-    'GSAP', 'Framer', 'CSS', 'SCSS', 'flex', 'grid', 'animate',
-    'http://', 'https://', 'localhost', ':3000', 'vercel', 'deploy',
-    'SELECT', 'FROM', 'WHERE', 'INSERT', 'UPDATE', 'DELETE', 'JOIN',
+    // Functions & Methods
+    'getData()', 'fetch()', 'render()', 'init()', 'parse()',
+    'async', 'await', 'return', 'export', 'import',
+    'console.log()', 'setTimeout()', 'Promise.all()',
+    // API & HTTP
+    'POST /api', 'GET /users', 'PUT /data', 'DELETE',
+    'res.json()', 'req.body', 'status: 200', 'headers',
+    'Authorization', 'Bearer token', 'Content-Type',
+    // React & Hooks
+    'useState()', 'useEffect()', 'useRef()', 'useMemo()',
+    '<Component />', 'props', 'children', 'onClick',
+    'className', 'setState()', 'dispatch()', 'reducer',
+    // TypeScript
+    'interface', 'type', ': string', ': number', ': boolean',
+    'extends', 'implements', 'generic<T>', 'readonly',
+    // Variables & Keywords
+    'const data =', 'let result', 'function()', '=>',
+    'if (true)', 'else {', 'for (i++)', 'while',
+    'try {', 'catch (e)', 'finally', 'throw new',
+    // Objects & Arrays
+    '{ key: val }', '[ ...arr ]', 'map()', 'filter()',
+    'reduce()', 'forEach()', 'find()', 'includes()',
+    // Database
+    'SELECT *', 'FROM users', 'WHERE id', 'JOIN',
+    'INSERT INTO', 'UPDATE SET', 'CREATE TABLE',
+    'mongoose', 'prisma', 'query()', 'mutation',
+    // Modern JS
+    'async/await', 'Promise', 'Observable', 'subscribe',
+    'import from', 'export default', 'module.exports',
+    '?.optional', '??=', '...spread', 'destructure',
+    // DevOps & Config
+    'npm install', 'yarn add', 'docker run', 'git push',
+    'env.PORT', 'process.env', 'config.json', 'package',
+    // Numbers & Symbols
+    '0x1F4A9', '127.0.0.1', ':3000', 'localhost',
+    '===', '!==', '&&', '||', '++', '--', '**',
+    'null', 'undefined', 'NaN', 'true', 'false',
 ];
 
-// Text scramble hook
+// Text scramble hook for project name
 function useTextScramble(finalText: string, duration: number = 2000) {
     const [displayText, setDisplayText] = useState('');
     const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789@#$%&*<>/';
@@ -94,90 +119,133 @@ export default function MatrixCodeAnimation({
             const rect = container.getBoundingClientRect();
             canvas.width = rect.width;
             canvas.height = rect.height;
+            initGrid();
         };
-        resizeCanvas();
 
         const colors = COLORS[variant];
-        const fontSize = 12;
-        const columnWidth = density === 'sparse' ? 80 : density === 'dense' ? 50 : 65;
-        const columns = Math.floor(canvas.width / columnWidth);
+        // Font size for code text
+        const fontSize = density === 'sparse' ? 14 : density === 'dense' ? 10 : 12;
+        const lineHeight = fontSize * 1.4;
 
-        // Track each column's state
-        interface ColumnState {
-            y: number;
-            speed: number;
-            snippet: string;
-            charIndex: number;
+        // Calculate column width based on average code snippet length
+        const avgSnippetWidth = 12; // Average characters per snippet
+        const columnWidth = fontSize * 0.6 * avgSnippetWidth;
+
+        // Each row has a code snippet and brightness
+        interface CodeLine {
+            code: string;
+            brightness: number;
         }
 
-        const columnStates: ColumnState[] = Array(columns).fill(null).map(() => ({
-            y: Math.random() * -500,
-            speed: Math.random() * 1.5 + 0.8,
-            snippet: CODE_SNIPPETS[Math.floor(Math.random() * CODE_SNIPPETS.length)],
-            charIndex: 0
-        }));
+        interface Column {
+            lines: CodeLine[];
+            headY: number;
+            speed: number;
+            delay: number;
+        }
 
-        // Speed multiplier
+        let columns: Column[] = [];
+        let numCols = 0;
+        let numRows = 0;
+
+        const getRandomSnippet = () => CODE_SNIPPETS[Math.floor(Math.random() * CODE_SNIPPETS.length)];
+
+        const initGrid = () => {
+            numCols = Math.max(3, Math.floor(canvas.width / columnWidth));
+            numRows = Math.floor(canvas.height / lineHeight) + 5;
+
+            columns = [];
+            for (let c = 0; c < numCols; c++) {
+                const lines: CodeLine[] = [];
+                for (let r = 0; r < numRows; r++) {
+                    lines.push({
+                        code: getRandomSnippet(),
+                        brightness: 0
+                    });
+                }
+                columns.push({
+                    lines,
+                    headY: Math.random() * -canvas.height * 0.5,
+                    speed: Math.random() * 1.2 + 0.8,
+                    delay: Math.random() * 80
+                });
+            }
+        };
+
+        resizeCanvas();
+
         const speedMultiplier = speed === 'slow' ? 0.5 : speed === 'fast' ? 1.5 : 1;
 
         let animationId: number;
-        let lastTime = 0;
-        const frameInterval = 50 / speedMultiplier;
 
-        const draw = (currentTime: number) => {
-            if (currentTime - lastTime < frameInterval) {
-                animationId = requestAnimationFrame(draw);
-                return;
-            }
-            lastTime = currentTime;
-
-            // Fade effect
-            ctx.fillStyle = 'rgba(10, 10, 10, 0.06)';
+        const draw = () => {
+            // Clear with solid black
+            ctx.fillStyle = '#0a0a0a';
             ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-            ctx.font = `${fontSize}px 'JetBrains Mono', 'SF Mono', monospace`;
+            ctx.font = `${fontSize}px "JetBrains Mono", "Fira Code", "Consolas", monospace`;
+            ctx.textAlign = 'left';
+            ctx.textBaseline = 'top';
 
-            for (let i = 0; i < columnStates.length; i++) {
-                const col = columnStates[i];
-                const x = i * columnWidth + 10;
+            for (let c = 0; c < columns.length; c++) {
+                const col = columns[c];
+                const x = c * columnWidth + 10;
 
-                // Draw the current snippet character by character going down
-                for (let j = 0; j < col.snippet.length; j++) {
-                    const charY = col.y + (j * fontSize * 1.2);
+                if (col.delay > 0) {
+                    col.delay--;
+                    continue;
+                }
 
-                    if (charY > 0 && charY < canvas.height) {
-                        const isHead = j === col.snippet.length - 1;
-                        const opacity = 1 - (j / (col.snippet.length + 5));
+                col.headY += col.speed * speedMultiplier;
+                const headRow = Math.floor(col.headY / lineHeight);
 
-                        if (isHead) {
-                            ctx.fillStyle = colors.secondary;
-                            ctx.shadowColor = colors.primary;
-                            ctx.shadowBlur = 10;
+                for (let r = 0; r < col.lines.length; r++) {
+                    const line = col.lines[r];
+                    const y = r * lineHeight;
+
+                    // Randomly change code snippet (less frequently)
+                    if (Math.random() < 0.005) {
+                        line.code = getRandomSnippet();
+                    }
+
+                    const distFromHead = headRow - r;
+
+                    if (distFromHead < 0) {
+                        line.brightness = 0;
+                    } else if (distFromHead === 0) {
+                        line.brightness = 1.2;
+                    } else if (distFromHead < 15) {
+                        line.brightness = Math.max(0, 1 - (distFromHead / 15));
+                    } else {
+                        line.brightness = Math.max(0, 0.2 - (distFromHead - 15) * 0.008);
+                    }
+
+                    if (line.brightness > 0) {
+                        if (line.brightness >= 1.2) {
+                            ctx.fillStyle = '#ffffff';
+                        } else if (line.brightness > 0.6) {
+                            ctx.fillStyle = colors.primary;
                         } else {
-                            ctx.shadowBlur = 0;
-                            ctx.fillStyle = `rgba(${
-                                variant === 'orange' ? '255, 107, 53' :
-                                variant === 'gold' ? '212, 175, 55' :
-                                variant === 'blue' ? '59, 130, 246' : '34, 197, 94'
-                            }, ${Math.max(0.2, opacity * 0.7)})`;
+                            const red = parseInt(colors.primary.slice(1, 3), 16);
+                            const green = parseInt(colors.primary.slice(3, 5), 16);
+                            const blue = parseInt(colors.primary.slice(5, 7), 16);
+                            ctx.fillStyle = `rgba(${red}, ${green}, ${blue}, ${Math.max(0.3, line.brightness)})`;
                         }
-
-                        ctx.fillText(col.snippet[j], x, charY);
+                        ctx.fillText(line.code, x, y);
                     }
                 }
 
-                // Move column down
-                col.y += col.speed * 2;
-
-                // Reset when off screen
-                if (col.y > canvas.height + 100) {
-                    col.y = Math.random() * -200 - 50;
-                    col.speed = Math.random() * 1.5 + 0.8;
-                    col.snippet = CODE_SNIPPETS[Math.floor(Math.random() * CODE_SNIPPETS.length)];
+                if (col.headY > canvas.height + lineHeight * 20) {
+                    col.headY = -Math.random() * 150 - 50;
+                    col.speed = Math.random() * 1.2 + 0.8;
+                    for (let r = 0; r < col.lines.length; r++) {
+                        if (Math.random() < 0.4) {
+                            col.lines[r].code = getRandomSnippet();
+                        }
+                    }
                 }
             }
 
-            ctx.shadowBlur = 0;
             animationId = requestAnimationFrame(draw);
         };
 
