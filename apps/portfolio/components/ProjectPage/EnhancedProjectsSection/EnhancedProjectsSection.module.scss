@@ -1,456 +1,293 @@
+@import "@/styles/variables.scss";
+
 /* ============================================
-   ENHANCED PROJECTS SECTION STYLES
+   ENHANCED PROJECTS SECTION - Clean, Image-Focused Design
+   Inspired by Joffrey Spitzer portfolio
    ============================================ */
 
 .EnhancedProjectsSection {
-  padding: 8rem 0;
-  position: relative;
-  background: linear-gradient(135deg, #000 0%, #0a0a0a 100%);
+    padding: 4rem 0 8rem;
+    position: relative;
+    background: $black;
 
-  .wrapper {
-    max-width: 1400px;
-    margin: 0 auto;
-    padding: 0 2rem;
-  }
+    .wrapper {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 2rem;
+
+        @media (max-width: $bp-sm) {
+            padding: 0 1rem;
+        }
+    }
 }
 
-/* Filter Section */
+/* Filter Section - Minimal & Clean */
 .filterSection {
-  margin-bottom: 4rem;
-  text-align: center;
+    margin-bottom: 3rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
 
-  h2 {
-    font-size: 2.75rem;
-    font-weight: 600;
-    color: #f8f8f8;
-    margin-bottom: 2rem;
-    text-transform: uppercase;
-    letter-spacing: 0.05rem;
-  }
+    @media (max-width: $bp-sm) {
+        gap: 1rem;
+    }
+}
 
-  .filterButtons {
+.filterButtons {
     display: flex;
     justify-content: center;
-    gap: 1rem;
-    margin-bottom: 2rem;
+    gap: 0.5rem;
     flex-wrap: wrap;
+}
 
-    .filterButton {
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-      padding: 0.75rem 1.5rem;
-      border-radius: 8px;
-      font-weight: 500;
-      text-transform: uppercase;
-      letter-spacing: 0.05rem;
-      transition: all 0.3s ease;
-      background: transparent;
-      color: #f8f8f8;
-      border: 2px solid #374151;
-
-      &:hover {
-        background: #f44e00;
-        border-color: #f44e00;
-        transform: translateY(-2px);
-      }
-
-      &.active {
-        background: #f44e00;
-        border-color: #f44e00;
-      }
-    }
-  }
-
-  .resultsCount {
-    color: #787878;
-    font-size: 0.9rem;
+.filterButton {
+    padding: 0.6rem 1.25rem;
+    background: transparent;
+    border: 1px solid rgba($white, 0.15);
+    border-radius: 100px;
+    color: $textGrey;
+    font-size: 0.8rem;
+    font-weight: 500;
     text-transform: uppercase;
-    letter-spacing: 0.05rem;
-  }
-}
+    letter-spacing: 0.08em;
+    cursor: pointer;
+    transition: all 0.3s ease;
 
-/* Projects Grid */
-.projectsGrid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-  gap: 3rem;
-  margin-bottom: 4rem;
-
-  @media (max-width: 768px) {
-    grid-template-columns: 1fr;
-    gap: 2rem;
-  }
-}
-
-/* Project Card */
-.projectCard {
-  background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
-  border: 1px solid #374151;
-  border-radius: 16px;
-  overflow: hidden;
-  transition: all 0.3s ease;
-  position: relative;
-
-  &:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 20px 40px rgba(244, 78, 0, 0.1);
-    border-color: #f44e00;
-
-    .thumbnail .thumbnailImage {
-      transform: scale(1.05);
+    &:hover {
+        color: $white;
+        border-color: rgba($white, 0.3);
     }
 
-    .thumbnailOverlay {
-      opacity: 1;
+    &.active {
+        background: $primary;
+        border-color: $primary;
+        color: $white;
     }
-  }
-
-  .cardLink {
-    text-decoration: none;
-    color: inherit;
-    display: block;
-  }
-
-  .quickActions {
-    padding: 1.5rem;
-    border-top: 1px solid #374151;
-    text-align: center;
-
-    button {
-      padding: 0.5rem 1rem;
-      font-size: 0.9rem;
-      border-radius: 6px;
-      background: transparent;
-      color: #f44e00;
-      border: 1px solid #f44e00;
-      transition: all 0.3s ease;
-
-      &:hover {
-        background: #f44e00;
-        color: white;
-      }
-    }
-  }
 }
 
-/* Thumbnail Variants */
-.thumbnail {
-  position: relative;
-  height: 250px;
-  overflow: hidden;
-  border-radius: 16px 16px 0 0;
+.filterMeta {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+}
 
-  .thumbnailImage {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: transform 0.3s ease;
-  }
+.resultsCount {
+    color: $textGrey;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+}
 
-  .thumbnailOverlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: linear-gradient(135deg, rgba(244, 78, 0, 0.8) 0%, rgba(250, 115, 0, 0.6) 100%);
+/* View Toggle */
+.viewToggle {
+    display: flex;
+    gap: 0.25rem;
+    background: rgba($white, 0.05);
+    padding: 0.25rem;
+    border-radius: 8px;
+}
+
+.viewButton {
     display: flex;
     align-items: center;
     justify-content: center;
-    opacity: 0;
-    transition: opacity 0.3s ease;
+    width: 32px;
+    height: 32px;
+    background: transparent;
+    border: none;
+    border-radius: 6px;
+    color: $textGrey;
+    cursor: pointer;
+    transition: all 0.2s ease;
 
-    .technologyBadge {
-      background: rgba(0, 0, 0, 0.8);
-      color: white;
-      padding: 0.5rem 1rem;
-      border-radius: 20px;
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 0.05rem;
+    &:hover {
+        color: $white;
     }
-  }
-}
 
-/* Thumbnail Style Variants */
-.defaultThumbnail {
-  .thumbnailImage {
-    filter: contrast(1.1) brightness(0.9);
-  }
-}
-
-.gradientThumbnail {
-  background: linear-gradient(135deg, #f44e00 0%, #fa7300 100%);
-  
-  .thumbnailImage {
-    mix-blend-mode: overlay;
-    opacity: 0.8;
-  }
-}
-
-.thumbnail3d {
-  .thumbnailImage {
-    filter: perspective(1000px) rotateX(5deg);
-    transform-style: preserve-3d;
-  }
-}
-
-.minimalThumbnail {
-  .thumbnailImage {
-    filter: grayscale(0.2) contrast(1.2);
-  }
-}
-
-.dataVizThumbnail {
-  background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%);
-  
-  .thumbnailImage {
-    filter: hue-rotate(20deg) saturate(1.2);
-  }
-}
-
-/* Project Details */
-.projectDetails {
-  padding: 2rem;
-
-  .title {
-    margin-bottom: 1rem;
-
-    h3 {
-      font-size: 1.5rem;
-      font-weight: 600;
-      color: #f8f8f8;
-      margin: 0;
-      text-transform: uppercase;
-      letter-spacing: 0.05rem;
+    &.active {
+        background: rgba($white, 0.1);
+        color: $white;
     }
-  }
-
-  .category {
-    margin-bottom: 1.5rem;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.5rem;
-
-    span {
-      background: rgba(244, 78, 0, 0.1);
-      color: #f44e00;
-      padding: 0.25rem 0.75rem;
-      border-radius: 12px;
-      font-size: 0.8rem;
-      font-weight: 500;
-      text-transform: uppercase;
-      letter-spacing: 0.05rem;
-      border: 1px solid rgba(244, 78, 0, 0.3);
-    }
-  }
 }
 
-/* Business Context */
-.businessContext {
-  display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
+/* Projects Grid - 2 Column Fixed */
+.projectsGrid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
 
-  h4 {
-    font-size: 1rem;
-    font-weight: 600;
-    color: #f44e00;
-    margin: 0 0 0.5rem 0;
-    text-transform: uppercase;
-    letter-spacing: 0.05rem;
-  }
-
-  p {
-    color: #787878;
-    font-size: 0.9rem;
-    line-height: 1.5;
-    margin: 0;
-  }
-
-  .problemSolved,
-  .technicalChallenge {
-    p {
-      display: -webkit-box;
-      -webkit-line-clamp: 3;
-      -webkit-box-orient: vertical;
-      overflow: hidden;
-      /* Fallback for browsers that don't support -webkit-line-clamp */
-      line-clamp: 3;
-      -webkit-line-clamp: 3;
-      display: -webkit-box;
-      -webkit-box-orient: vertical;
-      overflow: hidden;
+    @media (max-width: $bp-md) {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
     }
-  }
 
-  .resultsAchieved {
-    .metrics {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.5rem;
-      margin-bottom: 1rem;
+    /* List View Mode */
+    &.listView {
+        grid-template-columns: 1fr;
+        gap: 1rem;
 
-      .metric {
-        background: rgba(244, 78, 0, 0.1);
-        color: #f44e00;
-        padding: 0.5rem 0.75rem;
-        border-radius: 8px;
-        font-size: 0.8rem;
-        font-weight: 600;
-        text-transform: uppercase;
-        letter-spacing: 0.05rem;
-        border: 1px solid rgba(244, 78, 0, 0.3);
+        .projectCard {
+            .cardLink {
+                display: flex;
+                flex-direction: row;
+                align-items: stretch;
+            }
 
-        .metricValue {
-          color: #f8f8f8;
+            .imageWrapper {
+                width: 200px;
+                min-width: 200px;
+                aspect-ratio: auto;
+                height: 140px;
+                border-radius: 10px 0 0 10px;
+            }
+
+            .cardContent {
+                flex: 1;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                padding: 1rem 1.5rem;
+                border-radius: 0 10px 10px 0;
+                background: rgba($white, 0.02);
+            }
+
+            &:hover {
+                transform: translateX(8px);
+            }
         }
-      }
-    }
 
-    .businessImpact {
-      display: -webkit-box;
-      -webkit-line-clamp: 2;
-      -webkit-box-orient: vertical;
-      overflow: hidden;
-      /* Fallback for browsers that don't support -webkit-line-clamp */
-      line-clamp: 2;
-      -webkit-line-clamp: 2;
-      display: -webkit-box;
-      -webkit-box-orient: vertical;
-      overflow: hidden;
+        @media (max-width: $bp-sm) {
+            .projectCard {
+                .cardLink {
+                    flex-direction: column;
+                }
+
+                .imageWrapper {
+                    width: 100%;
+                    min-width: auto;
+                    height: auto;
+                    aspect-ratio: 16/9;
+                    border-radius: 10px 10px 0 0;
+                }
+
+                .cardContent {
+                    border-radius: 0 0 10px 10px;
+                }
+
+                &:hover {
+                    transform: translateY(-4px);
+                }
+            }
+        }
     }
-  }
+}
+
+/* Project Card - Clean & Image-Focused */
+.projectCard {
+    position: relative;
+    border-radius: 12px;
+    overflow: hidden;
+    background: #111;
+    transition: transform 0.3s ease;
+
+    &:hover {
+        transform: translateY(-4px);
+
+        .projectImage {
+            opacity: 0.5;
+            transform: scale(1.02);
+        }
+
+        .projectTitle {
+            color: $primary;
+        }
+    }
+}
+
+.cardLink {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+}
+
+.imageWrapper {
+    position: relative;
+    aspect-ratio: 4/3;
+    overflow: hidden;
+    background: #0a0a0a;
+}
+
+.projectImage {
+    object-fit: cover;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.cardContent {
+    padding: 1.25rem 1.5rem;
+    background: linear-gradient(to bottom, rgba(#111, 0.8), #111);
+}
+
+.projectTitle {
+    font-size: 1.15rem;
+    font-weight: 500;
+    color: $white;
+    margin: 0 0 0.4rem 0;
+    transition: color 0.3s ease;
+    line-height: 1.3;
+}
+
+.projectCategory {
+    font-size: 0.75rem;
+    color: $textGrey;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
 }
 
 /* No Results */
 .noResults {
-  text-align: center;
-  padding: 4rem 2rem;
-  color: #787878;
+    text-align: center;
+    padding: 4rem 2rem;
+    color: $textGrey;
 
-  h3 {
-    color: #f8f8f8;
-    font-size: 1.5rem;
-    margin-bottom: 1rem;
-  }
-
-  p {
-    margin-bottom: 2rem;
-  }
-
-  button {
-    background: #f44e00;
-    color: white;
-    border: none;
-    padding: 0.75rem 2rem;
-    border-radius: 8px;
-    font-weight: 500;
-    text-transform: uppercase;
-    letter-spacing: 0.05rem;
-    transition: all 0.3s ease;
-
-    &:hover {
-      background: #fa7300;
-      transform: translateY(-2px);
-    }
-  }
-}
-
-/* Responsive Design */
-@media (max-width: 768px) {
-  .EnhancedProjectsSection {
-    padding: 4rem 0;
-
-    .wrapper {
-      padding: 0 1rem;
-    }
-  }
-
-  .filterSection {
-    margin-bottom: 2rem;
-
-    h2 {
-      font-size: 2rem;
-    }
-
-    .filterButtons {
-      justify-content: center;
-      gap: 0.5rem;
-
-      .filterButton {
-        padding: 0.5rem 1rem;
-        font-size: 0.9rem;
-      }
-    }
-  }
-
-  .projectsGrid {
-    gap: 2rem;
-  }
-
-  .projectCard {
-    .projectDetails {
-      padding: 1.5rem;
-
-      .title h3 {
+    h3 {
+        color: $white;
         font-size: 1.25rem;
-      }
+        font-weight: 500;
+        margin-bottom: 0.75rem;
     }
 
-    .businessContext {
-      gap: 1rem;
+    p {
+        margin-bottom: 1.5rem;
+        font-size: 0.9rem;
+    }
 
-      .resultsAchieved .metrics {
-        gap: 0.25rem;
+    button {
+        background: $primary;
+        color: white;
+        border: none;
+        padding: 0.75rem 1.5rem;
+        border-radius: 100px;
+        font-size: 0.8rem;
+        font-weight: 500;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        cursor: pointer;
+        transition: all 0.3s ease;
 
-        .metric {
-          font-size: 0.7rem;
-          padding: 0.4rem 0.6rem;
+        &:hover {
+            background: lighten($primary, 5%);
+            transform: translateY(-2px);
         }
-      }
     }
-  }
-}
-
-/* Loading States */
-.projectCard.loading {
-  .thumbnail {
-    background: linear-gradient(90deg, #1a1a1a 25%, #2a2a2a 50%, #1a1a1a 75%);
-    background-size: 200% 100%;
-    animation: loading 1.5s infinite;
-  }
-
-  .projectDetails {
-    .title,
-    .category,
-    .businessContext {
-      background: linear-gradient(90deg, #1a1a1a 25%, #2a2a2a 50%, #1a1a1a 75%);
-      background-size: 200% 100%;
-      animation: loading 1.5s infinite;
-      border-radius: 4px;
-      height: 20px;
-      margin-bottom: 1rem;
-    }
-  }
-}
-
-@keyframes loading {
-  0% { background-position: 200% 0; }
-  100% { background-position: -200% 0; }
 }
 
 /* Accessibility */
 @media (prefers-reduced-motion: reduce) {
-  .projectCard,
-  .thumbnail img,
-  .thumbnailOverlay,
-  .filterButton {
-    transition: none;
-  }
-
-  @keyframes loading {
-    0%, 100% { background-position: 0 0; }
-  }
+    .projectCard,
+    .projectImage,
+    .filterButton,
+    .viewButton {
+        transition: none;
+    }
 }
