@@ -28,7 +28,7 @@
     top: 0;
     left: 50%;
     transform: translateX(-50%);
-    width: 120px;
+    width: 240px;
     height: 100%;
     z-index: 5;
     filter: drop-shadow(0 0 40px rgba(255, 255, 255, 0.3))
@@ -70,10 +70,10 @@
 
 .crossHorizontal {
     position: absolute;
-    top: 18%;
+    top: 20%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 100px;
+    width: 220px;
     height: 16px;
     background: linear-gradient(90deg,
         rgba(255, 255, 255, 0.6) 0%,
@@ -205,7 +205,7 @@
     }
 
     .crossTop {
-        width: 90px;
+        width: 200px;
     }
 
     .crossVertical {
@@ -213,7 +213,7 @@
     }
 
     .crossHorizontal {
-        width: 80px;
+        width: 180px;
         height: 14px;
     }
 
@@ -247,7 +247,7 @@
     }
 
     .crossTop {
-        width: 70px;
+        width: 160px;
     }
 
     .crossVertical {
@@ -255,7 +255,7 @@
     }
 
     .crossHorizontal {
-        width: 60px;
+        width: 140px;
         height: 12px;
     }
 
