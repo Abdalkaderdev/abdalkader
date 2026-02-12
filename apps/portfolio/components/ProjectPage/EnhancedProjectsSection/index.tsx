@@ -2,7 +2,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import styles from './EnhancedProjectsSection.module.scss';
 import { projects } from '@/data/projectsData';
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef } from 'react';
 import { gsap } from '@/libs/gsap';
 import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
 
