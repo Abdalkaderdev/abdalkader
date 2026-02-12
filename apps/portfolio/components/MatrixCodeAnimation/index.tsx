@@ -15,12 +15,26 @@ const COLORS = {
     green: { primary: '#22c55e', secondary: '#4ade80', dim: 'rgba(34, 197, 94, 0.3)' },
 };
 
-const CODE_CHARS = '01アイウエオカキクケコ<>{}[]=/\\|;:!@#$%^&*';
+// Code snippets that will fall
+const CODE_SNIPPETS = [
+    'const', 'let', 'var', 'function', 'return', 'if', 'else', 'for', 'while',
+    'class', 'import', 'export', 'async', 'await', 'Promise', 'useState',
+    'useEffect', 'React', 'Next.js', 'TypeScript', '=> {', '};', '()', '[]',
+    '<div>', '</>', 'props', 'state', 'render', 'fetch', 'API', 'JSON',
+    'true', 'false', 'null', 'npm', 'yarn', 'git', 'push', 'commit',
+    '===', '!==', '&&', '||', '=>', '...', '{}', 'map()', 'filter()',
+    '.tsx', '.ts', '.js', 'node', 'build', 'deploy', 'test', 'lint',
+    'interface', 'type', 'string', 'number', 'boolean', 'void', 'any',
+    'onClick', 'onChange', 'onSubmit', 'event', 'target', 'value',
+    'GSAP', 'Framer', 'CSS', 'SCSS', 'flex', 'grid', 'animate',
+    'http://', 'https://', 'localhost', ':3000', 'vercel', 'deploy',
+    'SELECT', 'FROM', 'WHERE', 'INSERT', 'UPDATE', 'DELETE', 'JOIN',
+];
 
 // Text scramble hook
 function useTextScramble(finalText: string, duration: number = 2000) {
     const [displayText, setDisplayText] = useState('');
-    const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789@#$%&*';
+    const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789@#$%&*<>/';
 
     useEffect(() => {
         if (!finalText) return;
@@ -84,20 +98,31 @@ export default function MatrixCodeAnimation({
         resizeCanvas();
 
         const colors = COLORS[variant];
-        const fontSize = 14;
-        const columnWidth = density === 'sparse' ? 30 : density === 'dense' ? 18 : 24;
+        const fontSize = 12;
+        const columnWidth = density === 'sparse' ? 80 : density === 'dense' ? 50 : 65;
         const columns = Math.floor(canvas.width / columnWidth);
 
-        // Track y position for each column
-        const drops: number[] = Array(columns).fill(0).map(() => Math.random() * -100);
-        const speeds: number[] = Array(columns).fill(0).map(() => Math.random() * 0.8 + 0.4);
+        // Track each column's state
+        interface ColumnState {
+            y: number;
+            speed: number;
+            snippet: string;
+            charIndex: number;
+        }
+
+        const columnStates: ColumnState[] = Array(columns).fill(null).map(() => ({
+            y: Math.random() * -500,
+            speed: Math.random() * 1.5 + 0.8,
+            snippet: CODE_SNIPPETS[Math.floor(Math.random() * CODE_SNIPPETS.length)],
+            charIndex: 0
+        }));
 
         // Speed multiplier
         const speedMultiplier = speed === 'slow' ? 0.5 : speed === 'fast' ? 1.5 : 1;
 
         let animationId: number;
         let lastTime = 0;
-        const frameInterval = 45 / speedMultiplier;
+        const frameInterval = 50 / speedMultiplier;
 
         const draw = (currentTime: number) => {
             if (currentTime - lastTime < frameInterval) {
@@ -107,46 +132,52 @@ export default function MatrixCodeAnimation({
             lastTime = currentTime;
 
             // Fade effect
-            ctx.fillStyle = 'rgba(10, 10, 10, 0.08)';
+            ctx.fillStyle = 'rgba(10, 10, 10, 0.06)';
             ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-            ctx.font = `${fontSize}px 'JetBrains Mono', monospace`;
+            ctx.font = `${fontSize}px 'JetBrains Mono', 'SF Mono', monospace`;
 
-            for (let i = 0; i < drops.length; i++) {
-                const x = i * columnWidth + columnWidth / 2;
-                const y = drops[i] * fontSize;
+            for (let i = 0; i < columnStates.length; i++) {
+                const col = columnStates[i];
+                const x = i * columnWidth + 10;
 
-                // Draw trailing characters
-                for (let j = 0; j < 12; j++) {
-                    const trailY = y - (j * fontSize);
-                    if (trailY > 0 && trailY < canvas.height) {
-                        const opacity = 1 - (j / 12);
-                        const char = CODE_CHARS[Math.floor(Math.random() * CODE_CHARS.length)];
+                // Draw the current snippet character by character going down
+                for (let j = 0; j < col.snippet.length; j++) {
+                    const charY = col.y + (j * fontSize * 1.2);
 
-                        if (j === 0) {
-                            // Head character - brightest
+                    if (charY > 0 && charY < canvas.height) {
+                        const isHead = j === col.snippet.length - 1;
+                        const opacity = 1 - (j / (col.snippet.length + 5));
+
+                        if (isHead) {
                             ctx.fillStyle = colors.secondary;
+                            ctx.shadowColor = colors.primary;
+                            ctx.shadowBlur = 10;
                         } else {
+                            ctx.shadowBlur = 0;
                             ctx.fillStyle = `rgba(${
                                 variant === 'orange' ? '255, 107, 53' :
                                 variant === 'gold' ? '212, 175, 55' :
                                 variant === 'blue' ? '59, 130, 246' : '34, 197, 94'
-                            }, ${opacity * 0.6})`;
+                            }, ${Math.max(0.2, opacity * 0.7)})`;
                         }
-                        ctx.fillText(char, x, trailY);
+
+                        ctx.fillText(col.snippet[j], x, charY);
                     }
                 }
 
-                // Move drop down
-                drops[i] += speeds[i];
+                // Move column down
+                col.y += col.speed * 2;
 
-                // Reset when reaching bottom
-                if (y > canvas.height + 100) {
-                    drops[i] = Math.random() * -20;
-                    speeds[i] = Math.random() * 0.8 + 0.4;
+                // Reset when off screen
+                if (col.y > canvas.height + 100) {
+                    col.y = Math.random() * -200 - 50;
+                    col.speed = Math.random() * 1.5 + 0.8;
+                    col.snippet = CODE_SNIPPETS[Math.floor(Math.random() * CODE_SNIPPETS.length)];
                 }
             }
 
+            ctx.shadowBlur = 0;
             animationId = requestAnimationFrame(draw);
         };
 
