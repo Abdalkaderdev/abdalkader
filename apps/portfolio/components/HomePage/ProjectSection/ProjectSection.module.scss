@@ -1,254 +1,322 @@
 @import "@/styles/variables.scss";
 
-.projects {
-    @include section;
+/* ============================================
+   HOME PAGE PROJECTS - Blueprint Technical Aesthetic
+   Inspired by Joffrey Spitzer
+   ============================================ */
 
-    .heading {
-        border-bottom: 1px solid $borderColor;
-        padding-bottom: 2rem;
+// Color Palette
+$deep-black: #0a0a0a;
+$off-white: #f5f5f5;
+$muted-gray: #666;
+$grid-line: rgba(255, 255, 255, 0.06);
+$accent: #ff6b35;
 
-        .headingWrapper {
-            @include mT2;
-            width: 100%;
-            display: flex;
-            flex-direction: row;
-            justify-content: space-between;
-            align-items: flex-end;
-            flex-wrap: wrap;
-            gap: 2rem;
+// Typography
+$mono-font: 'JetBrains Mono', 'SF Mono', 'Consolas', monospace;
 
-            h1 {
-                @include font-4_5;
-                max-width: 50rem;
-                width: 100%;
-            }
+.workSection {
+    background: $deep-black;
+    color: $off-white;
+    min-height: 100vh;
+    position: relative;
+    overflow: hidden;
+}
+
+/* ==========================================
+   HEADER
+   ========================================== */
+
+.header {
+    min-height: 50vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 4rem;
+    position: relative;
+
+    @media (max-width: $bp-md) {
+        padding: 2rem;
+        min-height: 40vh;
+    }
+}
+
+.headerMeta {
+    display: flex;
+    gap: 3rem;
+    margin-bottom: 2rem;
+
+    span {
+        font-family: $mono-font;
+        font-size: 0.75rem;
+        letter-spacing: 0.15em;
+        color: $muted-gray;
+    }
+}
+
+.headerTitle {
+    font-size: clamp(4rem, 15vw, 12rem);
+    font-weight: 800;
+    letter-spacing: -0.04em;
+    line-height: 0.85;
+    margin: 0;
+    text-transform: uppercase;
+}
+
+.headerSub {
+    font-family: $mono-font;
+    font-size: 0.85rem;
+    color: $muted-gray;
+    margin-top: 2rem;
+    letter-spacing: 0.05em;
+}
+
+/* ==========================================
+   PROJECT CARDS - Sticky Stacking
+   ========================================== */
+
+.projectsContainer {
+    position: relative;
+}
+
+.projectCard {
+    min-height: 100vh;
+    width: 100%;
+    position: relative;
+    background: $deep-black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+/* Blueprint Grid Lines */
+.gridLines {
+    position: absolute;
+    inset: 0;
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    pointer-events: none;
+    z-index: 1;
+}
+
+.gridLine {
+    border-right: 1px solid $grid-line;
+
+    &:last-child {
+        border-right: none;
+    }
+}
+
+/* Card Inner Layout */
+.cardInner {
+    display: grid;
+    grid-template-columns: 200px 1fr 300px;
+    gap: 3rem;
+    width: 100%;
+    max-width: 1600px;
+    padding: 4rem;
+    position: relative;
+    z-index: 2;
+
+    @media (max-width: $bp-lg) {
+        grid-template-columns: 150px 1fr 200px;
+        gap: 2rem;
+        padding: 2rem;
+    }
+
+    @media (max-width: $bp-md) {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+}
+
+/* Metadata Column */
+.metadata {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    padding-top: 2rem;
+
+    @media (max-width: $bp-md) {
+        flex-direction: row;
+        gap: 3rem;
+        padding-top: 0;
+    }
+}
+
+.metaItem {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.metaLabel {
+    font-family: $mono-font;
+    font-size: 0.65rem;
+    letter-spacing: 0.2em;
+    color: $muted-gray;
+}
+
+.metaValue {
+    font-family: $mono-font;
+    font-size: 0.8rem;
+    letter-spacing: 0.1em;
+    color: $off-white;
+}
+
+/* Image Container - Clip Path Reveal */
+.imageContainer {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16/10;
+    overflow: hidden;
+    background: rgba(255, 255, 255, 0.02);
+
+    @media (max-width: $bp-md) {
+        aspect-ratio: 4/3;
+    }
+}
+
+.image {
+    object-fit: cover;
+    transition: transform 0.1s linear;
+}
+
+/* Content Column */
+.content {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding-bottom: 2rem;
+
+    @media (max-width: $bp-md) {
+        padding-bottom: 0;
+    }
+}
+
+.title {
+    font-size: clamp(1.5rem, 4vw, 3rem);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    line-height: 1.1;
+    margin: 0 0 2rem 0;
+
+    @media (max-width: $bp-md) {
+        font-size: 1.5rem;
+    }
+}
+
+/* Magnetic Button */
+.magneticBtn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-family: $mono-font;
+    font-size: 0.75rem;
+    letter-spacing: 0.15em;
+    color: $off-white;
+    text-decoration: none;
+    padding: 1rem 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    transition: border-color 0.3s ease;
+    will-change: transform;
+
+    &:hover {
+        border-color: $accent;
+
+        svg {
+            transform: translate(3px, -3px);
         }
     }
 
-    .wrapper {
-        @include mT4;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
+    svg {
+        transition: transform 0.3s ease;
+    }
+}
 
-        .projectCard {
-            position: sticky;
-            top: 10vh;
-            width: 65vw;
-            height: calc(60vh);
-            border-radius: 15px;
-            overflow: hidden;
-            background: #121212;
-            border: 1px solid $borderColor;
+/* Large Index Number */
+.indexNumber {
+    position: absolute;
+    right: 4rem;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: clamp(8rem, 20vw, 20rem);
+    font-weight: 900;
+    color: rgba(255, 255, 255, 0.02);
+    line-height: 1;
+    pointer-events: none;
+    z-index: 0;
 
-            @media (max-width: 840px) {
-                width: 100%;
-            }
+    @media (max-width: $bp-md) {
+        right: 1rem;
+        font-size: 6rem;
+    }
+}
 
-            // no image; text-only card
-            color: $white;
+/* ==========================================
+   SECTION FOOTER
+   ========================================== */
 
-            .projectDetails {
-                position: absolute;
-                inset: 0;
-                width: 100%;
-                height: 100%;
-                @include paddingAround;
-                pointer-events: none;
-                z-index: 2;
+.sectionFooter {
+    display: flex;
+    justify-content: center;
+    padding: 8rem 4rem;
+    position: relative;
+    z-index: 20;
+    background: $deep-black;
 
-                .title {
-                    position: absolute;
-                    top: 50%;
-                    left: 50%;
-                    transform: translate(-50%, -50%);
-                    text-align: center;
-                    width: 100%;
-                    overflow: hidden;
+    @media (max-width: $bp-md) {
+        padding: 4rem 2rem;
+    }
+}
 
-                    h3 {
-                        @include font-1_8;
-                        transform: translateY(-100%);
-                        transition: transform $transition;
-                        color: $primary;
-                    }
-                }
+.viewAllBtn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    font-family: $mono-font;
+    font-size: 0.8rem;
+    letter-spacing: 0.2em;
+    color: $off-white;
+    text-decoration: none;
+    transition: color 0.3s ease;
 
-                .category {
-                    position: absolute;
-                    right: 1rem;
-                    bottom: 1rem;
-                    display: flex;
-                    gap: 0.5rem;
+    &:hover {
+        color: $accent;
 
-                    h5 {
-                        @include font0_7;
-                        width: fit-content;
-                        padding: 0.8rem 1rem;
-                        background: #3030302c;
-                        backdrop-filter: blur(10px);
-                        border-radius: 5px;
-                        display: inline-block;
-                        overflow: hidden;
-                        transform: translateY(-50%);
-                        opacity: 0;
-                        transition: all $transition;
-
-                        &:nth-child(2) {
-                            transition-delay: 0.1s;
-                        }
-                    }
-                }
-
-                .badges {
-                    position: absolute;
-                    top: 0.75rem;
-                    left: 0.75rem;
-                    display: flex;
-                    gap: 0.5rem;
-                    flex-wrap: wrap;
-                    pointer-events: auto;
-
-                    .badge {
-                        @include font0_7;
-                        width: fit-content;
-                        padding: 0.6rem 0.9rem;
-                        background: rgba(244, 78, 0, 0.18);
-                        backdrop-filter: blur(10px);
-                        border-radius: 999px;
-                        border: 1px solid rgba(244, 78, 0, 0.35);
-                        display: inline-flex;
-                        align-items: center;
-                        transform: translateY(-20%);
-                        opacity: 0;
-                        transition: transform $transition, opacity $transition, background $transition, box-shadow $transition;
-
-                        &:hover {
-                            transform: translateY(-4px);
-                            background: rgba(244, 78, 0, 0.28);
-                            box-shadow: 0 6px 16px rgba(0,0,0,.25);
-                        }
-                    }
-                }
-
-                @media (max-width: 600px) {
-                    padding: 2rem 1rem;
-                    .title {
-                        left: 50%;
-                        transform: translate(-50%, -50%);
-                        h3 { @include font-1; }
-                    }
-                    .category { gap: 0.5rem; }
-                    .badges { gap: 0.4rem; }
-                }
-            }
-
-            &:hover {
-
-                .projectDetails {
-                    .title {
-                        h3 {
-                            transform: translateY(0);
-                        }
-                    }
-
-                    .category {
-                        h5 {
-                            opacity: 1;
-                            transform: translateY(0);
-                        }
-                    }
-
-                    .badges {
-                        .badge {
-                            opacity: 1;
-                            transform: translateY(0);
-                        }
-                    }
-                }
-            }
+        .btnLine {
+            width: 100px;
+            background: $accent;
         }
+    }
+}
 
-        // Text-only variant
-        .textOnly {
-            background: linear-gradient(180deg, #111 0%, #0b0b0b 100%);
-            border: 1px solid $borderColor;
-            display: flex;
-            align-items: flex-end;
-            justify-content: space-between;
-            transition: transform $transition, border-color $transition, box-shadow $transition;
+.btnLine {
+    width: 60px;
+    height: 1px;
+    background: rgba(255, 255, 255, 0.3);
+    transition: all 0.4s ease;
+}
 
-            &::after {
-                content: "→";
-                position: absolute;
-                right: 1.5rem;
-                bottom: 1.5rem;
-                font-size: 1.2rem;
-                color: $primary;
-                opacity: 0;
-                transform: translateX(-6px);
-                transition: opacity $transition, transform $transition;
-            }
+/* ==========================================
+   ACCESSIBILITY
+   ========================================== */
 
-            .projectDetails {
-                position: relative;
-                top: auto;
-                width: 100%;
-                display: flex;
-                justify-content: space-between;
-                align-items: flex-end;
-                gap: 1rem;
+@media (prefers-reduced-motion: reduce) {
+    .magneticBtn,
+    .image,
+    .viewAllBtn,
+    .btnLine {
+        transition: none;
+    }
 
-                .title h3 {
-                    font-weight: 600;
-                    letter-spacing: 0.06rem;
-                    @include gradientText;
-                }
+    .imageContainer {
+        clip-path: none !important;
+    }
 
-                .category h5 {
-                    background: rgba(244, 78, 0, 0.08);
-                    border: 1px solid $primary;
-                    color: $white;
-                }
-            }
-
-            &:hover {
-                .projectDetails {
-                    .title h3 { transform: translateY(0); }
-                    .category h5 { opacity: 1; transform: translateY(0); }
-                }
-                transform: translateY(-4px);
-                border-color: rgba(255,255,255,0.08);
-                box-shadow: 0 10px 30px rgba(0,0,0,0.35);
-                &::after {
-                    opacity: 1;
-                    transform: translateX(0);
-                }
-            }
-
-            .quickActions {
-                position: absolute;
-                right: 1rem;
-                top: 1rem;
-                display: flex;
-                gap: 0.5rem;
-
-                .quickView {
-                    @include font0_7;
-                    background: $primary;
-                    color: $black;
-                    border: none;
-                    border-radius: 6px;
-                    padding: 0.5rem 0.8rem;
-                    cursor: pointer;
-                }
-            }
-
-            .cardLink {
-                display: block;
-                width: 100%;
-                height: 100%;
-            }
-        }
+    .image {
+        transform: none !important;
     }
 }

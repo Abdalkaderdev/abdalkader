@@ -1,219 +1,268 @@
-import { useEffect, useRef, useState } from 'react';
-import { useRouter } from 'next/router';
-import { gsap, ScrollTrigger } from '@/libs/gsap';
-import { splitText } from '@/utils/textUtils';
-import styles from './ProjectSection.module.scss';
 import Link from 'next/link';
-import Button from '@/components/Button';
-import Tag from '@/components/Tag';
+import Image from 'next/image';
+import styles from './ProjectSection.module.scss';
 import { projects } from '@/data/projectsData';
+import { useEffect, useRef } from 'react';
+import { gsap } from '@/libs/gsap';
+import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
 import { isReducedMotion } from '@/utils/motion';
-import ProjectModal from '@/components/ProjectModal';
 
-export default function ProjectSection() {
-    const [openSlug, setOpenSlug] = useState<string | null>(null);
-    const cardRefs = useRef<HTMLElement[]>([]);
-    const router = useRouter();
-    const headingRef = useRef<HTMLDivElement | null>(null);
-    const taglineRef = useRef<HTMLDivElement | null>(null);
-    const btnWrapperRef = useRef<HTMLDivElement | null>(null);
+if (typeof window !== 'undefined') {
+    gsap.registerPlugin(ScrollTrigger);
+}
+
+interface ProjectCardProps {
+    title: string;
+    category: string;
+    year: string;
+    image: string;
+    slug: string;
+    index: number;
+}
+
+// Magnetic Button Component
+function MagneticButton({ children, href }: { children: React.ReactNode; href: string }) {
+    const btnRef = useRef<HTMLAnchorElement>(null);
 
     useEffect(() => {
-        if (isReducedMotion()) return; // Respect user preference
-        // Create a timeline for the heading wrapper animations
-        const tl = gsap.timeline({
-            scrollTrigger: {
-                trigger: `.${styles.projects} .${styles.heading}`,
-                start: 'top 70%',
-                onEnter: () => tl.play(),
-            },
-        });
+        if (isReducedMotion()) return;
 
-        // Animation sequence
-        if (taglineRef.current) {
-            tl.from(taglineRef.current, { y: 50, opacity: 0, duration: .8 }, 0);
-        }
+        const btn = btnRef.current;
+        if (!btn) return;
 
-        if (headingRef.current) {
-            const headingSpans = headingRef.current.querySelectorAll('span span');
-            tl.from(headingSpans, { y: "110%", duration: .6, stagger: 0.01 }, 0.4);
-        }
+        const handleMouseMove = (e: MouseEvent) => {
+            const rect = btn.getBoundingClientRect();
+            const x = e.clientX - rect.left - rect.width / 2;
+            const y = e.clientY - rect.top - rect.height / 2;
 
-        if (btnWrapperRef.current) {
-            tl.from(btnWrapperRef.current, { y: 50, opacity: 0, duration: 0.8 }, 0.8);
-        }
+            gsap.to(btn, {
+                x: x * 0.3,
+                y: y * 0.3,
+                duration: 0.3,
+                ease: 'power2.out'
+            });
+        };
 
-        // Project Card Animation
-        cardRefs.current.forEach((card, i) => {
-            if (i < cardRefs.current.length - 1) {
-                gsap.to(card, {
-                    scale: 0.8,
-                    opacity: 0,
-                    scrollTrigger: {
-                        trigger: cardRefs.current[i + 1],
-                        start: 'top center',
-                        end: 'top top',
-                        scrub: 1,
-                    },
-                });
-            }
+        const handleMouseLeave = () => {
+            gsap.to(btn, {
+                x: 0,
+                y: 0,
+                duration: 0.5,
+                ease: 'elastic.out(1, 0.3)'
+            });
+        };
 
-            // Animate badges into place when each card enters
-            if (card) {
-                const badges = card.querySelectorAll(`.${styles.badges} .${styles.badge}`);
-                if (badges.length) {
-                    gsap.fromTo(
-                        badges,
-                        { opacity: 0, y: -10 },
-                        {
-                            opacity: 1,
-                            y: 0,
-                            duration: 0.4,
-                            stagger: 0.06,
-                            ease: 'power2.out',
-                            scrollTrigger: {
-                                trigger: card,
-                                start: 'top 80%',
-                                toggleActions: 'play none none reverse',
-                            },
-                        }
-                    );
-                }
+        btn.addEventListener('mousemove', handleMouseMove);
+        btn.addEventListener('mouseleave', handleMouseLeave);
 
-                // Title reveal
-                const title = card.querySelector(`.${styles.title} h3`);
-                if (title) {
-                    gsap.fromTo(
-                        title,
-                        { y: 20, opacity: 0 },
-                        {
-                            y: 0,
-                            opacity: 1,
-                            duration: 0.6,
-                            ease: 'power2.out',
-                            scrollTrigger: {
-                                trigger: card,
-                                start: 'top 85%',
-                                toggleActions: 'play none none reverse',
-                            },
-                        }
-                    );
-                }
-
-                // Categories reveal
-                const cats = card.querySelectorAll(`.${styles.category} h5`);
-                if (cats.length) {
-                    gsap.fromTo(
-                        cats,
-                        { y: 10, opacity: 0 },
-                        {
-                            y: 0,
-                            opacity: 1,
-                            duration: 0.4,
-                            stagger: 0.06,
-                            ease: 'power2.out',
-                            scrollTrigger: {
-                                trigger: card,
-                                start: 'top 80%',
-                                toggleActions: 'play none none reverse',
-                            },
-                        }
-                    );
-                }
-            }
-        });
-
-        // Cleanup on unmount
         return () => {
-            ScrollTrigger.getAll().forEach(trigger => trigger.kill());
+            btn.removeEventListener('mousemove', handleMouseMove);
+            btn.removeEventListener('mouseleave', handleMouseLeave);
         };
     }, []);
 
-    // Sync modal with URL (?project=slug)
+    return (
+        <Link href={href} ref={btnRef} className={styles.magneticBtn}>
+            {children}
+        </Link>
+    );
+}
+
+// Project Card Component
+function ProjectCard({ title, category, year, image, slug, index }: ProjectCardProps) {
+    const cardRef = useRef<HTMLDivElement>(null);
+    const imageRef = useRef<HTMLDivElement>(null);
+    const contentRef = useRef<HTMLDivElement>(null);
+
     useEffect(() => {
-        const qp = router.query.project;
-        if (typeof qp === 'string') {
-            setOpenSlug(qp);
-        } else if (!qp) {
-            setOpenSlug(null);
-        }
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [router.query.project]);
+        if (isReducedMotion()) return;
 
-    const openModal = (slug: string) => {
-        setOpenSlug(slug);
-        router.push({ pathname: router.pathname, query: { ...router.query, project: slug } }, undefined, { shallow: true });
-    };
+        const card = cardRef.current;
+        const imageContainer = imageRef.current;
+        const content = contentRef.current;
+        if (!card || !imageContainer || !content) return;
 
-    const closeModal = () => {
-        setOpenSlug(null);
-        const rest = { ...router.query } as Record<string, string | string[]>;
-        delete rest.project;
-        router.push({ pathname: router.pathname, query: rest }, undefined, { shallow: true });
-    };
+        const ctx = gsap.context(() => {
+            // Sticky stacking effect
+            ScrollTrigger.create({
+                trigger: card,
+                start: 'top top',
+                end: 'bottom top',
+                pin: true,
+                pinSpacing: false,
+            });
 
-    const addToRefs = (el: HTMLElement | null) => {
-        if (el && !cardRefs.current.includes(el)) {
-            cardRefs.current.push(el);
-        }
-    };
+            // Clip-path reveal animation
+            gsap.fromTo(imageContainer,
+                { clipPath: 'inset(25% 25% 25% 25%)' },
+                {
+                    clipPath: 'inset(0% 0% 0% 0%)',
+                    ease: 'power3.out',
+                    scrollTrigger: {
+                        trigger: card,
+                        start: 'top 80%',
+                        end: 'top 20%',
+                        scrub: 1,
+                    }
+                }
+            );
+
+            // Image parallax & scale
+            gsap.fromTo(imageContainer.querySelector('img'),
+                { scale: 1.15 },
+                {
+                    scale: 1,
+                    ease: 'none',
+                    scrollTrigger: {
+                        trigger: card,
+                        start: 'top bottom',
+                        end: 'bottom top',
+                        scrub: true,
+                    }
+                }
+            );
+
+            // Content fade in
+            gsap.fromTo(content,
+                { opacity: 0, y: 60 },
+                {
+                    opacity: 1,
+                    y: 0,
+                    duration: 1,
+                    ease: 'power3.out',
+                    scrollTrigger: {
+                        trigger: card,
+                        start: 'top 70%',
+                        toggleActions: 'play none none reverse'
+                    }
+                }
+            );
+        }, card);
+
+        return () => ctx.revert();
+    }, []);
 
     return (
-        <section className={styles.projects}>
-            {/* heading */}
-            <div className={styles.heading}>
-                <div ref={taglineRef}>
-                    <Tag text='Creations' />
-                </div>
-                <div className={styles.headingWrapper}>
-                    <h1 ref={headingRef}>
-                        {splitText("Selected works & experiments")}
-                    </h1>
-                    <div ref={btnWrapperRef}>
-                        <Button text="All Projects" href="/projects" />
-                    </div>
-                </div>
-            </div>
-
-            {/* projects wrapper */}
-            <div className={styles.wrapper}>
-                {projects.map((project) => (
-                    <div key={project.slug} className={`${styles.projectCard} ${styles.textOnly}`} ref={addToRefs}>
-                        <Link href={`/projects/${project.slug}`} className={styles.cardLink}>
-                            <div className={styles.projectDetails}>
-                                <div className={styles.title}>
-                                    <h3>{project.title}</h3>
-                                </div>
-                                <div className={styles.category}>
-                                    {project.category.map((cat, j) => <h5 key={j}>{cat}</h5>)}
-                                </div>
-                            </div>
-                        </Link>
-                        <div className={styles.quickActions}>
-                            <button className={styles.quickView} onClick={() => openModal(project.slug)}>Quick View</button>
-                        </div>
-                    </div>
+        <div ref={cardRef} className={styles.projectCard} style={{ zIndex: 10 + index }}>
+            {/* Blueprint Grid Lines */}
+            <div className={styles.gridLines}>
+                {[...Array(13)].map((_, i) => (
+                    <div key={i} className={styles.gridLine} />
                 ))}
             </div>
 
-            {/* Single modal instance - more efficient than rendering one per project */}
-            {(() => {
-                const selectedProject = projects.find(p => p.slug === openSlug);
-                return selectedProject ? (
-                    <ProjectModal
-                        isOpen={!!selectedProject}
-                        onClose={closeModal}
-                        project={{
-                            title: selectedProject.title,
-                            category: selectedProject.category,
-                            overview: selectedProject.overview,
-                            live: selectedProject.live,
-                            github: selectedProject.github,
-                            slug: selectedProject.slug,
-                        }}
+            <div className={styles.cardInner}>
+                {/* Left: Metadata */}
+                <div className={styles.metadata}>
+                    <div className={styles.metaItem}>
+                        <span className={styles.metaLabel}>YEAR</span>
+                        <span className={styles.metaValue}>{year}</span>
+                    </div>
+                    <div className={styles.metaItem}>
+                        <span className={styles.metaLabel}>TYPE</span>
+                        <span className={styles.metaValue}>{category.toUpperCase()}</span>
+                    </div>
+                    <div className={styles.metaItem}>
+                        <span className={styles.metaLabel}>NO.</span>
+                        <span className={styles.metaValue}>{String(index + 1).padStart(2, '0')}</span>
+                    </div>
+                </div>
+
+                {/* Center: Image */}
+                <div ref={imageRef} className={styles.imageContainer}>
+                    <Image
+                        src={image}
+                        alt={title}
+                        fill
+                        className={styles.image}
                     />
-                ) : null;
-            })()}
+                </div>
+
+                {/* Right: Title & CTA */}
+                <div ref={contentRef} className={styles.content}>
+                    <h2 className={styles.title}>{title}</h2>
+                    <MagneticButton href={`/projects/${slug}`}>
+                        <span>VIEW PROJECT</span>
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                            <path d="M7 17L17 7M17 7H7M17 7V17" stroke="currentColor" strokeWidth="2"/>
+                        </svg>
+                    </MagneticButton>
+                </div>
+            </div>
+
+            {/* Index number */}
+            <div className={styles.indexNumber}>{String(index + 1).padStart(2, '0')}</div>
+        </div>
+    );
+}
+
+// Main Projects Section for Home Page
+export default function ProjectSection() {
+    const sectionRef = useRef<HTMLElement>(null);
+    const headerRef = useRef<HTMLDivElement>(null);
+
+    useEffect(() => {
+        if (isReducedMotion()) return;
+
+        const ctx = gsap.context(() => {
+            // Header animation
+            gsap.fromTo(headerRef.current,
+                { opacity: 0, y: 100 },
+                {
+                    opacity: 1,
+                    y: 0,
+                    duration: 1.2,
+                    ease: 'power3.out',
+                    scrollTrigger: {
+                        trigger: headerRef.current,
+                        start: 'top 85%',
+                    }
+                }
+            );
+        }, sectionRef);
+
+        return () => ctx.revert();
+    }, []);
+
+    // Show only first 4 projects on home page
+    const displayProjects = projects.slice(0, 4);
+
+    return (
+        <section ref={sectionRef} className={styles.workSection}>
+            {/* Section Header */}
+            <div ref={headerRef} className={styles.header}>
+                <div className={styles.headerMeta}>
+                    <span>FEATURED WORK</span>
+                    <span>2024 — PRESENT</span>
+                </div>
+                <h1 className={styles.headerTitle}>WORK</h1>
+                <p className={styles.headerSub}>
+                    Selected projects crafted with precision
+                </p>
+            </div>
+
+            {/* Project Cards */}
+            <div className={styles.projectsContainer}>
+                {displayProjects.map((project, index) => (
+                    <ProjectCard
+                        key={project.slug}
+                        title={project.title.toUpperCase()}
+                        category={project.category?.[0] || 'Development'}
+                        year="2024"
+                        image={project.img}
+                        slug={project.slug}
+                        index={index}
+                    />
+                ))}
+            </div>
+
+            {/* Footer CTA */}
+            <div className={styles.sectionFooter}>
+                <Link href="/projects" className={styles.viewAllBtn}>
+                    <span>VIEW ALL PROJECTS</span>
+                    <div className={styles.btnLine} />
+                </Link>
+            </div>
         </section>
     );
 }
