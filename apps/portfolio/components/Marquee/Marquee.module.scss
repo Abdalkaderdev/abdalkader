@@ -1,0 +1,112 @@
+@import "@/styles/variables.scss";
+
+.marquee {
+    width: 100%;
+    overflow: hidden;
+    white-space: nowrap;
+    position: relative;
+
+    // Fade edges
+    &::before,
+    &::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        width: 100px;
+        z-index: 2;
+        pointer-events: none;
+    }
+
+    &::before {
+        left: 0;
+        background: linear-gradient(to right, $black, transparent);
+    }
+
+    &::after {
+        right: 0;
+        background: linear-gradient(to left, $black, transparent);
+    }
+}
+
+.track {
+    display: inline-flex;
+    animation: scroll linear infinite;
+    will-change: transform;
+}
+
+.content {
+    display: inline-flex;
+    align-items: center;
+    padding: 0 1rem;
+}
+
+.separator {
+    margin: 0 2rem;
+    color: $primary;
+    font-size: 0.8em;
+}
+
+// Direction variants
+.left .track {
+    animation-name: scrollLeft;
+}
+
+.right .track {
+    animation-name: scrollRight;
+}
+
+// Pause on hover
+.pauseOnHover:hover .track {
+    animation-play-state: paused;
+}
+
+// Keyframes
+@keyframes scrollLeft {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-50%);
+    }
+}
+
+@keyframes scrollRight {
+    0% {
+        transform: translateX(-50%);
+    }
+    100% {
+        transform: translateX(0);
+    }
+}
+
+// Reduced motion
+@media (prefers-reduced-motion: reduce) {
+    .track {
+        animation: none;
+    }
+}
+
+// === PRESET STYLES ===
+
+// Use these classes on the marquee content
+
+:global(.marquee-text) {
+    font-size: clamp(1rem, 2vw, 1.5rem);
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: $white;
+}
+
+:global(.marquee-text-large) {
+    font-size: clamp(2rem, 5vw, 4rem);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: -0.02em;
+    @include gradientText;
+}
+
+:global(.marquee-text-gradient) {
+    @include gradientText;
+}

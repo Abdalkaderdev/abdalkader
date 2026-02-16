@@ -1,0 +1,146 @@
+@import "@/styles/variables.scss";
+
+.slideButton {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    border: none;
+    text-decoration: none;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+    &:hover {
+        transform: translateY(-2px);
+    }
+
+    &:active {
+        transform: translateY(0);
+    }
+}
+
+// Text wrapper with overflow hidden
+.textWrapper {
+    position: relative;
+    overflow: hidden;
+    display: block;
+}
+
+.textInner {
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.4s cubic-bezier(0.65, 0, 0.35, 1);
+}
+
+.text {
+    display: block;
+    white-space: nowrap;
+}
+
+// Hover effect - slide text up
+.slideButton:hover .textInner {
+    transform: translateY(-100%);
+}
+
+// === VARIANTS ===
+
+.primary {
+    background: $primary;
+    color: $black;
+    border-radius: 50px;
+
+    &:hover {
+        box-shadow: 0 10px 30px rgba($primary, 0.3);
+    }
+}
+
+.secondary {
+    background: $textDark;
+    color: $white;
+    border-radius: 50px;
+    border: 1px solid $borderColor;
+
+    &:hover {
+        border-color: $primary;
+        box-shadow: 0 10px 30px rgba($primary, 0.15);
+    }
+}
+
+.outline {
+    background: transparent;
+    color: $white;
+    border: 1px solid $white;
+    border-radius: 50px;
+
+    &:hover {
+        background: $white;
+        color: $black;
+    }
+}
+
+.gold {
+    background: linear-gradient(135deg, #d4af37 0%, #f5d67a 50%, #d4af37 100%);
+    color: $black;
+    border-radius: 50px;
+
+    &:hover {
+        box-shadow: 0 10px 30px rgba(212, 175, 55, 0.4);
+    }
+}
+
+// === SIZES ===
+
+.sm {
+    padding: 0.6rem 1.2rem;
+    font-size: 0.8rem;
+
+    .textWrapper {
+        height: 1rem;
+    }
+}
+
+.md {
+    padding: 0.8rem 1.8rem;
+    font-size: 0.9rem;
+
+    .textWrapper {
+        height: 1.2rem;
+    }
+}
+
+.lg {
+    padding: 1rem 2.5rem;
+    font-size: 1rem;
+
+    .textWrapper {
+        height: 1.4rem;
+    }
+}
+
+// === STATES ===
+
+.disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    pointer-events: none;
+}
+
+// Focus state for accessibility
+.slideButton:focus-visible {
+    outline: 2px solid $primary;
+    outline-offset: 2px;
+}
+
+// Reduced motion
+@media (prefers-reduced-motion: reduce) {
+    .slideButton,
+    .textInner {
+        transition: none;
+    }
+
+    .slideButton:hover .textInner {
+        transform: none;
+    }
+}
