@@ -25,6 +25,13 @@ interface MarqueeProps {
     separator?: React.ReactNode;
 }
 
+// Export style classes for external use
+export const marqueeStyles = {
+    text: styles.text,
+    textLarge: styles.textLarge,
+    textGradient: styles.textGradient,
+};
+
 export default function Marquee({
     children,
     direction = 'left',

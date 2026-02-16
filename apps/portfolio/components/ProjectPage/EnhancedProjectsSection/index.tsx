@@ -206,10 +206,10 @@ export default function EnhancedProjectsSection() {
 
     return (
         <section ref={sectionRef} className={styles.workSection}>
-            {/* Video Background */}
+            {/* Video Background - Code/Matrix effect */}
             <VideoBackground
-                src="/videos/services-bg.mp4"
-                opacity={0.08}
+                src="/videos/projects-bg.mp4"
+                opacity={0.1}
                 overlay
                 overlayDirection="radial"
             />

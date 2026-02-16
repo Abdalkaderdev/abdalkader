@@ -88,10 +88,9 @@
 }
 
 // === PRESET STYLES ===
+// Local classes that can be applied to marquee content
 
-// Use these classes on the marquee content
-
-:global(.marquee-text) {
+.text {
     font-size: clamp(1rem, 2vw, 1.5rem);
     font-weight: 500;
     text-transform: uppercase;
@@ -99,7 +98,7 @@
     color: $white;
 }
 
-:global(.marquee-text-large) {
+.textLarge {
     font-size: clamp(2rem, 5vw, 4rem);
     font-weight: 700;
     text-transform: uppercase;
@@ -107,6 +106,6 @@
     @include gradientText;
 }
 
-:global(.marquee-text-gradient) {
+.textGradient {
     @include gradientText;
 }

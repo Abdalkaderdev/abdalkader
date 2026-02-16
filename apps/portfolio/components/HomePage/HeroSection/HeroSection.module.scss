@@ -35,6 +35,22 @@
         opacity: 0.9;
     }
 
+    .ctaButtons {
+        display: flex;
+        gap: 1rem;
+        margin-top: 2rem;
+
+        @media (max-width: 500px) {
+            flex-direction: column;
+            width: 100%;
+
+            > * {
+                width: 100%;
+                justify-content: center;
+            }
+        }
+    }
+
     /* Marquee */
     .marquee {
         position: absolute;

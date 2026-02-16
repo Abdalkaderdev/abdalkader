@@ -318,6 +318,9 @@ importers:
       sass:
         specifier: ^1.79.5
         version: 1.93.2
+      three:
+        specifier: ^0.182.0
+        version: 0.182.0
       typescript:
         specifier: ^5
         version: 5.9.3

@@ -6,6 +6,7 @@ import { gsap } from '@/libs/gsap';
 import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
 import { isReducedMotion } from '@/utils/motion';
 import MatrixCodeAnimation from '@/components/MatrixCodeAnimation';
+import VideoBackground from '@/components/VideoBackground';
 
 if (typeof window !== 'undefined') {
     gsap.registerPlugin(ScrollTrigger);
@@ -204,6 +205,14 @@ export default function ProjectSection() {
 
     return (
         <section ref={sectionRef} className={styles.workSection}>
+            {/* Video Background - Code/Matrix effect */}
+            <VideoBackground
+                src="/videos/projects-bg.mp4"
+                opacity={0.12}
+                overlay
+                overlayDirection="radial"
+            />
+
             {/* Section Header */}
             <div ref={headerRef} className={styles.header}>
                 <div className={styles.headerMeta}>
