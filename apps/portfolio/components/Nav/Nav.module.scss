@@ -51,6 +51,9 @@
         color: $softGold;
         transition: color $transition, text-shadow $transition;
         opacity: 0.9;
+        // Prevent emoji rendering on mobile
+        font-family: 'Times New Roman', 'Noto Serif', serif;
+        font-variant-emoji: text;
     }
 
     .menu_Toggle {

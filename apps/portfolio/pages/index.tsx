@@ -24,9 +24,7 @@ export default function HomePage() {
             {/* Marquee Banner */}
             <div style={{ padding: '3rem 0', background: '#0a0a0a', borderTop: '1px solid rgba(255,255,255,0.05)', borderBottom: '1px solid rgba(255,255,255,0.05)' }}>
                 <Marquee speed="slow" direction="left">
-                    <span className={marqueeStyles.text}>AVAILABLE FOR PROJECTS</span>
-                    <span className={marqueeStyles.text}>OPEN TO COLLABORATE</span>
-                    <span className={marqueeStyles.text}>LET&apos;S CREATE TOGETHER</span>
+                    <span className={marqueeStyles.text}>AVAILABLE FOR PROJECTS &nbsp;•&nbsp; OPEN TO COLLABORATE &nbsp;•&nbsp; LET&apos;S CREATE TOGETHER</span>
                 </Marquee>
             </div>
 

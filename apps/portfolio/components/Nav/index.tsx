@@ -144,7 +144,7 @@ export default function Nav() {
                     showUnderline={false}
                     magneticStrength={0.2}
                 >
-                    <span className={styles.crossIcon}>&#10013;</span>
+                    <span className={styles.crossIcon}>&#10013;&#xFE0E;</span>
                     Abdalkader Alhamoud
                 </MagneticLink>
                 <button
