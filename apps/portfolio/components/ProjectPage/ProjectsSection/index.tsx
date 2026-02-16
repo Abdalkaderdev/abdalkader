@@ -7,6 +7,7 @@ import { useRouter } from 'next/router';
 import { gsap } from '@/libs/gsap';
 import ProjectModal from '@/components/ProjectModal';
 import { Skeleton } from '@abdalkader/ui';
+import VideoBackground from '@/components/VideoBackground';
 
 export default function ProjectsSection() {
     const [openSlug, setOpenSlug] = useState<string | null>(null);
@@ -108,6 +109,14 @@ export default function ProjectsSection() {
 
     return (
         <section className={styles.ProjectsSection}>
+            {/* Video Background */}
+            <VideoBackground
+                src="/videos/services-bg.mp4"
+                opacity={0.1}
+                overlay
+                overlayDirection="radial"
+            />
+
             <div className={styles.wrapper}>
                 {isLoading ? (
                     // Show skeleton loaders while loading

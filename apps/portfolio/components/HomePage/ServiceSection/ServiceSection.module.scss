@@ -2,6 +2,8 @@
 
 .services {
     @include section;
+    position: relative;
+    overflow: hidden;
 
     /* Heading */
     .heading {

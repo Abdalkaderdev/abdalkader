@@ -1,0 +1,161 @@
+@import "@/styles/variables.scss";
+
+// ==========================================================================
+// Embossed Text Component
+// ==========================================================================
+
+.embossedText {
+    display: inline-block;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: $white;
+
+    // =======================================================================
+    // Size Variants
+    // =======================================================================
+
+    &.sm {
+        font-size: 0.7rem;
+        letter-spacing: 0.08em;
+    }
+
+    &.md {
+        font-size: 1rem;
+        letter-spacing: 0.06em;
+    }
+
+    &.lg {
+        font-size: 1.5rem;
+        letter-spacing: 0.04em;
+    }
+
+    &.xl {
+        font-size: 2.5rem;
+        letter-spacing: 0.02em;
+        font-weight: 700;
+
+        @media (max-width: 600px) {
+            font-size: 1.8rem;
+        }
+    }
+
+    // =======================================================================
+    // Variant: Raised (Embossed)
+    // Text appears to pop out from the surface
+    // =======================================================================
+
+    &.raised {
+        text-shadow:
+            // Highlight above - light catching the top edge
+            0 -1px 0 rgba(255, 255, 255, 0.2),
+            // Shadow below - depth shadow
+            0 1px 2px rgba(0, 0, 0, 0.5),
+            // Subtle outer glow for depth
+            0 2px 4px rgba(0, 0, 0, 0.2);
+    }
+
+    // =======================================================================
+    // Variant: Sunken (Debossed/Engraved)
+    // Text appears pressed into the surface
+    // =======================================================================
+
+    &.sunken {
+        color: rgba($white, 0.7);
+        text-shadow:
+            // Shadow inside/above - makes it look pressed in
+            0 -1px 1px rgba(0, 0, 0, 0.5),
+            // Highlight below - light catching the bottom edge
+            0 1px 0 rgba(255, 255, 255, 0.15);
+    }
+
+    // =======================================================================
+    // Variant: Subtle
+    // Very light emboss effect, good for body text
+    // =======================================================================
+
+    &.subtle {
+        text-shadow:
+            0 -1px 0 rgba(255, 255, 255, 0.08),
+            0 1px 1px rgba(0, 0, 0, 0.25);
+    }
+
+    // =======================================================================
+    // Gradient Text Option
+    // =======================================================================
+
+    &.gradient {
+        background: linear-gradient(to bottom, $primary, #fa7300);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+
+        // Adjust shadows for gradient text
+        &.raised {
+            // Use filter for gradient text since text-shadow doesn't work well
+            filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.4));
+            text-shadow: none;
+        }
+
+        &.sunken {
+            filter: drop-shadow(0 -1px 0 rgba(0, 0, 0, 0.3));
+            text-shadow: none;
+        }
+
+        &.subtle {
+            filter: drop-shadow(0 1px 1px rgba(0, 0, 0, 0.2));
+            text-shadow: none;
+        }
+    }
+}
+
+// ==========================================================================
+// Interactive States (if used in buttons/links)
+// ==========================================================================
+
+a, button {
+    .embossedText {
+        transition: text-shadow $transition, filter $transition;
+
+        &:hover {
+            &.raised {
+                text-shadow:
+                    0 -1px 0 rgba(255, 255, 255, 0.25),
+                    0 1px 3px rgba(0, 0, 0, 0.6),
+                    0 3px 6px rgba(0, 0, 0, 0.25);
+            }
+
+            &.sunken {
+                text-shadow:
+                    0 -1px 2px rgba(0, 0, 0, 0.6),
+                    0 1px 0 rgba(255, 255, 255, 0.2);
+            }
+        }
+    }
+}
+
+// ==========================================================================
+// Responsive
+// ==========================================================================
+
+@media (max-width: 840px) {
+    .embossedText {
+        &.lg {
+            font-size: 1.25rem;
+        }
+
+        &.xl {
+            font-size: 2rem;
+        }
+    }
+}
+
+// ==========================================================================
+// Reduced Motion
+// ==========================================================================
+
+@media (prefers-reduced-motion: reduce) {
+    .embossedText {
+        transition: none;
+    }
+}

@@ -1,0 +1,289 @@
+@import "@/styles/variables.scss";
+@import "@/styles/skeuomorphic.scss";
+
+// ==========================================================================
+// Textured Card Component
+// ==========================================================================
+
+.texturedCard {
+    position: relative;
+    overflow: hidden;
+    transition: all $transition;
+    transform-style: preserve-3d;
+
+    // =======================================================================
+    // Padding Variants
+    // =======================================================================
+
+    &.padding-none {
+        padding: 0;
+    }
+
+    &.padding-sm {
+        padding: 1rem;
+    }
+
+    &.padding-md {
+        padding: 1.5rem;
+    }
+
+    &.padding-lg {
+        padding: 2rem;
+    }
+
+    // =======================================================================
+    // Border Radius Variants
+    // =======================================================================
+
+    &.rounded-sm {
+        border-radius: 8px;
+    }
+
+    &.rounded-md {
+        border-radius: 12px;
+    }
+
+    &.rounded-lg {
+        border-radius: 16px;
+    }
+
+    // =======================================================================
+    // Color Variants
+    // =======================================================================
+
+    &.default {
+        background: linear-gradient(180deg, #1a1a1a 0%, #111 100%);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        color: $white;
+    }
+
+    &.primary {
+        background: linear-gradient(
+            180deg,
+            rgba($primary, 0.15) 0%,
+            rgba($primary, 0.08) 100%
+        );
+        border: 1px solid rgba($primary, 0.3);
+        color: $white;
+    }
+
+    &.dark {
+        background: linear-gradient(180deg, #0f0f0f 0%, #080808 100%);
+        border: 1px solid rgba(255, 255, 255, 0.05);
+        color: $white;
+    }
+
+    &.glass {
+        background: rgba($black, 0.4);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        color: $white;
+    }
+
+    // =======================================================================
+    // Elevation (Shadow) Variants
+    // =======================================================================
+
+    &.elevation-low {
+        box-shadow:
+            0 1px 1px rgba(0, 0, 0, 0.08),
+            0 2px 2px rgba(0, 0, 0, 0.08),
+            0 4px 4px rgba(0, 0, 0, 0.08),
+            inset 0 1px 0 rgba(255, 255, 255, 0.04);
+    }
+
+    &.elevation-medium {
+        box-shadow:
+            0 1px 1px rgba(0, 0, 0, 0.07),
+            0 2px 2px rgba(0, 0, 0, 0.07),
+            0 4px 4px rgba(0, 0, 0, 0.07),
+            0 8px 8px rgba(0, 0, 0, 0.07),
+            0 16px 16px rgba(0, 0, 0, 0.07),
+            inset 0 1px 0 rgba(255, 255, 255, 0.06);
+    }
+
+    &.elevation-high {
+        box-shadow:
+            0 1px 1px rgba(0, 0, 0, 0.06),
+            0 2px 2px rgba(0, 0, 0, 0.06),
+            0 4px 4px rgba(0, 0, 0, 0.06),
+            0 8px 8px rgba(0, 0, 0, 0.06),
+            0 16px 16px rgba(0, 0, 0, 0.06),
+            0 32px 32px rgba(0, 0, 0, 0.06),
+            inset 0 1px 0 rgba(255, 255, 255, 0.08);
+    }
+
+    // =======================================================================
+    // Texture Variants
+    // =======================================================================
+
+    &.texture-noise {
+        .textureOverlay {
+            opacity: 0.04;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+            background-repeat: repeat;
+            mix-blend-mode: overlay;
+        }
+    }
+
+    &.texture-brushed {
+        .textureOverlay {
+            opacity: 0.03;
+            background: repeating-linear-gradient(
+                90deg,
+                transparent,
+                transparent 2px,
+                rgba(255, 255, 255, 0.05) 2px,
+                rgba(255, 255, 255, 0.05) 3px
+            );
+        }
+    }
+
+    &.texture-subtle {
+        .textureOverlay {
+            opacity: 0.02;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+            background-repeat: repeat;
+            mix-blend-mode: overlay;
+        }
+    }
+
+    &.texture-none {
+        .textureOverlay {
+            display: none;
+        }
+    }
+
+    // =======================================================================
+    // Hover Effects
+    // =======================================================================
+
+    &.hoverLift {
+        &:hover {
+            &.elevation-low {
+                box-shadow:
+                    0 2px 2px rgba(0, 0, 0, 0.08),
+                    0 4px 4px rgba(0, 0, 0, 0.08),
+                    0 8px 8px rgba(0, 0, 0, 0.08),
+                    inset 0 1px 0 rgba(255, 255, 255, 0.05);
+            }
+
+            &.elevation-medium {
+                box-shadow:
+                    0 2px 2px rgba(0, 0, 0, 0.07),
+                    0 4px 4px rgba(0, 0, 0, 0.07),
+                    0 8px 8px rgba(0, 0, 0, 0.07),
+                    0 16px 16px rgba(0, 0, 0, 0.07),
+                    0 24px 24px rgba(0, 0, 0, 0.07),
+                    inset 0 1px 0 rgba(255, 255, 255, 0.08);
+            }
+
+            &.elevation-high {
+                box-shadow:
+                    0 2px 2px rgba(0, 0, 0, 0.06),
+                    0 4px 4px rgba(0, 0, 0, 0.06),
+                    0 8px 8px rgba(0, 0, 0, 0.06),
+                    0 16px 16px rgba(0, 0, 0, 0.06),
+                    0 32px 32px rgba(0, 0, 0, 0.06),
+                    0 48px 48px rgba(0, 0, 0, 0.06),
+                    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+            }
+        }
+    }
+
+    // Tilt mode
+    &.tiltEnabled {
+        will-change: transform;
+    }
+}
+
+// ==========================================================================
+// Texture Overlay Layer
+// ==========================================================================
+
+.textureOverlay {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 1;
+    border-radius: inherit;
+}
+
+// ==========================================================================
+// Light Source Highlight
+// ==========================================================================
+
+.lightSource {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 2;
+    border-radius: inherit;
+    background: radial-gradient(
+        ellipse at 20% 10%,
+        rgba(255, 255, 255, 0.08) 0%,
+        transparent 50%
+    );
+    opacity: 0.8;
+    transition: opacity $transition;
+
+    .texturedCard:hover & {
+        opacity: 1;
+    }
+}
+
+// ==========================================================================
+// Content Areas
+// ==========================================================================
+
+.content {
+    position: relative;
+    z-index: 5;
+}
+
+.header {
+    position: relative;
+    z-index: 5;
+    margin-bottom: 1rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.footer {
+    position: relative;
+    z-index: 5;
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+// ==========================================================================
+// Responsive
+// ==========================================================================
+
+@media (max-width: 600px) {
+    .texturedCard {
+        &.padding-lg {
+            padding: 1.5rem;
+        }
+
+        &.rounded-lg {
+            border-radius: 12px;
+        }
+    }
+}
+
+// ==========================================================================
+// Reduced Motion
+// ==========================================================================
+
+@media (prefers-reduced-motion: reduce) {
+    .texturedCard {
+        transition: none;
+
+        &.hoverLift:hover {
+            transform: none;
+        }
+    }
+}

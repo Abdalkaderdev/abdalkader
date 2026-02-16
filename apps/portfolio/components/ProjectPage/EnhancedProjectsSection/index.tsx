@@ -5,6 +5,7 @@ import { useEffect, useRef } from 'react';
 import { gsap } from '@/libs/gsap';
 import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
 import MatrixCodeAnimation from '@/components/MatrixCodeAnimation';
+import VideoBackground from '@/components/VideoBackground';
 
 if (typeof window !== 'undefined') {
     gsap.registerPlugin(ScrollTrigger);
@@ -205,6 +206,14 @@ export default function EnhancedProjectsSection() {
 
     return (
         <section ref={sectionRef} className={styles.workSection}>
+            {/* Video Background */}
+            <VideoBackground
+                src="/videos/services-bg.mp4"
+                opacity={0.08}
+                overlay
+                overlayDirection="radial"
+            />
+
             {/* Section Header */}
             <div ref={headerRef} className={styles.header}>
                 <div className={styles.headerMeta}>

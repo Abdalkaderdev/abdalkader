@@ -13,6 +13,36 @@ $gold: #d4af37;
 $softGold: #f5f5dc;
 $holyWhite: #fafafa;
 
+// Skeuomorphic color helpers
+// Use these for creating 3D depth effects
+$shadow-dark: rgba(0, 0, 0, 0.5);
+$shadow-medium: rgba(0, 0, 0, 0.3);
+$shadow-light: rgba(0, 0, 0, 0.15);
+$highlight-strong: rgba(255, 255, 255, 0.3);
+$highlight-medium: rgba(255, 255, 255, 0.15);
+$highlight-subtle: rgba(255, 255, 255, 0.08);
+
+// Elevation shadow presets
+$elevation-low:
+    0 1px 1px rgba(0, 0, 0, 0.08),
+    0 2px 2px rgba(0, 0, 0, 0.08),
+    0 4px 4px rgba(0, 0, 0, 0.08);
+
+$elevation-medium:
+    0 1px 1px rgba(0, 0, 0, 0.07),
+    0 2px 2px rgba(0, 0, 0, 0.07),
+    0 4px 4px rgba(0, 0, 0, 0.07),
+    0 8px 8px rgba(0, 0, 0, 0.07),
+    0 16px 16px rgba(0, 0, 0, 0.07);
+
+$elevation-high:
+    0 1px 1px rgba(0, 0, 0, 0.06),
+    0 2px 2px rgba(0, 0, 0, 0.06),
+    0 4px 4px rgba(0, 0, 0, 0.06),
+    0 8px 8px rgba(0, 0, 0, 0.06),
+    0 16px 16px rgba(0, 0, 0, 0.06),
+    0 32px 32px rgba(0, 0, 0, 0.06);
+
 // Breakpoints
 $bp-xl: 1440px;
 $bp-lg: 1080px;

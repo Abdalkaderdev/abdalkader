@@ -2,6 +2,7 @@ import { useState, useEffect, useCallback, useRef } from 'react';
 import { gsap } from '@/libs/gsap';
 import styles from './LordsPrayer.module.scss';
 import { isReducedMotion } from '@/utils/motion';
+import VideoBackground from '@/components/VideoBackground';
 
 interface Prayer {
     title: string;
@@ -267,6 +268,14 @@ export default function LordsPrayer() {
 
     return (
         <div ref={containerRef} className={styles.prayerSection}>
+            {/* Video Background */}
+            <VideoBackground
+                src="/videos/prayer-bg.mp4"
+                opacity={0.2}
+                overlay
+                overlayDirection="radial"
+            />
+
             {/* Blueprint Grid Lines */}
             <div className={styles.gridLines}>
                 {[...Array(13)].map((_, i) => (

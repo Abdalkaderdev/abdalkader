@@ -1,0 +1,355 @@
+// ==========================================================================
+// Skeuomorphic Styling Utilities
+// Premium, tactile visual effects for the portfolio
+// ==========================================================================
+
+@import "./variables.scss";
+
+// ==========================================================================
+// Color Helpers
+// ==========================================================================
+
+// Darken and lighten functions for 3D effects
+@function skeu-darken($color, $amount) {
+  @return mix(black, $color, $amount);
+}
+
+@function skeu-lighten($color, $amount) {
+  @return mix(white, $color, $amount);
+}
+
+// ==========================================================================
+// Noise/Grain Overlay
+// Subtle texture that adds depth without images
+// ==========================================================================
+
+@mixin noise-overlay($opacity: 0.03) {
+  position: relative;
+
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    opacity: $opacity;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+    background-repeat: repeat;
+    mix-blend-mode: overlay;
+    z-index: 1;
+    border-radius: inherit;
+  }
+}
+
+// ==========================================================================
+// Multi-Layer Depth Shadows
+// Creates realistic depth with multiple shadow layers
+// ==========================================================================
+
+@mixin shadow-raised($elevation: 'medium') {
+  @if $elevation == 'low' {
+    box-shadow:
+      0 1px 1px rgba(0, 0, 0, 0.08),
+      0 2px 2px rgba(0, 0, 0, 0.08),
+      0 4px 4px rgba(0, 0, 0, 0.08),
+      0 1px 0 rgba(255, 255, 255, 0.04) inset;
+  } @else if $elevation == 'medium' {
+    box-shadow:
+      0 1px 1px rgba(0, 0, 0, 0.07),
+      0 2px 2px rgba(0, 0, 0, 0.07),
+      0 4px 4px rgba(0, 0, 0, 0.07),
+      0 8px 8px rgba(0, 0, 0, 0.07),
+      0 16px 16px rgba(0, 0, 0, 0.07),
+      0 1px 0 rgba(255, 255, 255, 0.06) inset;
+  } @else if $elevation == 'high' {
+    box-shadow:
+      0 1px 1px rgba(0, 0, 0, 0.06),
+      0 2px 2px rgba(0, 0, 0, 0.06),
+      0 4px 4px rgba(0, 0, 0, 0.06),
+      0 8px 8px rgba(0, 0, 0, 0.06),
+      0 16px 16px rgba(0, 0, 0, 0.06),
+      0 32px 32px rgba(0, 0, 0, 0.06),
+      0 1px 0 rgba(255, 255, 255, 0.08) inset;
+  }
+}
+
+// ==========================================================================
+// Pressed/Inset Shadow
+// For active/pressed states
+// ==========================================================================
+
+@mixin shadow-pressed {
+  box-shadow:
+    inset 0 2px 4px rgba(0, 0, 0, 0.3),
+    inset 0 4px 8px rgba(0, 0, 0, 0.2),
+    0 1px 0 rgba(255, 255, 255, 0.05);
+}
+
+// ==========================================================================
+// 3D Pressable Button
+// Creates a realistic 3D button with depth
+// ==========================================================================
+
+@mixin button-3d($color: $primary, $size: 'md') {
+  $light: skeu-lighten($color, 15%);
+  $dark: skeu-darken($color, 25%);
+  $darker: skeu-darken($color, 40%);
+
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  user-select: none;
+  border: none;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+
+  // Gradient background for depth
+  background: linear-gradient(
+    180deg,
+    $light 0%,
+    $color 30%,
+    $dark 100%
+  );
+
+  // Multi-layer shadow for 3D effect
+  box-shadow:
+    // Bottom edge (depth)
+    0 4px 0 $darker,
+    // Ambient shadow
+    0 6px 10px rgba(0, 0, 0, 0.3),
+    0 10px 20px rgba(0, 0, 0, 0.2),
+    // Top highlight
+    inset 0 1px 0 rgba(255, 255, 255, 0.3),
+    // Bottom inner shadow
+    inset 0 -2px 4px rgba(0, 0, 0, 0.15);
+
+  // Size variants
+  @if $size == 'sm' {
+    padding: 0.6rem 1.2rem;
+    font-size: 0.75rem;
+    border-radius: 6px;
+  } @else if $size == 'md' {
+    padding: 0.85rem 1.8rem;
+    font-size: 0.85rem;
+    border-radius: 8px;
+  } @else if $size == 'lg' {
+    padding: 1.1rem 2.4rem;
+    font-size: 0.95rem;
+    border-radius: 10px;
+  }
+
+  // Hover: lift up
+  &:hover:not(:disabled) {
+    transform: translateY(-2px);
+    box-shadow:
+      0 6px 0 $darker,
+      0 8px 14px rgba(0, 0, 0, 0.35),
+      0 14px 28px rgba(0, 0, 0, 0.25),
+      inset 0 1px 0 rgba(255, 255, 255, 0.35),
+      inset 0 -2px 4px rgba(0, 0, 0, 0.15);
+  }
+
+  // Active: press down
+  &:active:not(:disabled) {
+    transform: translateY(3px);
+    box-shadow:
+      0 1px 0 $darker,
+      0 2px 4px rgba(0, 0, 0, 0.3),
+      inset 0 1px 0 rgba(255, 255, 255, 0.1),
+      inset 0 2px 4px rgba(0, 0, 0, 0.2);
+  }
+
+  // Focus state
+  &:focus-visible {
+    outline: 2px solid $white;
+    outline-offset: 3px;
+  }
+
+  // Disabled state
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    filter: grayscale(30%);
+  }
+}
+
+// ==========================================================================
+// Embossed Text (Raised)
+// Text that appears to pop out from the surface
+// ==========================================================================
+
+@mixin text-embossed($light-color: rgba(255, 255, 255, 0.2), $shadow-color: rgba(0, 0, 0, 0.5)) {
+  text-shadow:
+    // Highlight above
+    0 -1px 0 $light-color,
+    // Shadow below
+    0 1px 2px $shadow-color,
+    // Subtle outer glow
+    0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+// ==========================================================================
+// Debossed Text (Sunken/Engraved)
+// Text that appears pressed into the surface
+// ==========================================================================
+
+@mixin text-debossed($shadow-color: rgba(0, 0, 0, 0.5), $highlight-color: rgba(255, 255, 255, 0.15)) {
+  text-shadow:
+    // Shadow inside/above (appears pressed in)
+    0 -1px 1px $shadow-color,
+    // Highlight below (light catching bottom edge)
+    0 1px 0 $highlight-color;
+}
+
+// ==========================================================================
+// Brushed Metal Effect
+// Subtle metallic texture
+// ==========================================================================
+
+@mixin brushed-metal($direction: 'horizontal') {
+  position: relative;
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.05) 0%,
+    rgba(255, 255, 255, 0.02) 50%,
+    rgba(255, 255, 255, 0.05) 100%
+  );
+
+  &::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0.02;
+    border-radius: inherit;
+
+    @if $direction == 'horizontal' {
+      background: repeating-linear-gradient(
+        90deg,
+        transparent,
+        transparent 2px,
+        rgba(255, 255, 255, 0.03) 2px,
+        rgba(255, 255, 255, 0.03) 3px
+      );
+    } @else {
+      background: repeating-linear-gradient(
+        0deg,
+        transparent,
+        transparent 2px,
+        rgba(255, 255, 255, 0.03) 2px,
+        rgba(255, 255, 255, 0.03) 3px
+      );
+    }
+  }
+}
+
+// ==========================================================================
+// Light Source Gradient
+// Creates a gradient highlight simulating a light source
+// ==========================================================================
+
+@mixin light-source($position: 'top-left') {
+  @if $position == 'top-left' {
+    background: radial-gradient(
+      ellipse at 10% 10%,
+      rgba(255, 255, 255, 0.1) 0%,
+      transparent 50%
+    );
+  } @else if $position == 'top-right' {
+    background: radial-gradient(
+      ellipse at 90% 10%,
+      rgba(255, 255, 255, 0.1) 0%,
+      transparent 50%
+    );
+  } @else if $position == 'top-center' {
+    background: radial-gradient(
+      ellipse at 50% 0%,
+      rgba(255, 255, 255, 0.1) 0%,
+      transparent 50%
+    );
+  } @else if $position == 'center' {
+    background: radial-gradient(
+      ellipse at 50% 50%,
+      rgba(255, 255, 255, 0.08) 0%,
+      transparent 60%
+    );
+  }
+}
+
+// ==========================================================================
+// Glass Morphism with Depth
+// Enhanced glass effect with skeuomorphic touches
+// ==========================================================================
+
+@mixin glass-skeuomorphic($blur: 12px, $opacity: 0.4) {
+  background: rgba($black, $opacity);
+  backdrop-filter: blur($blur);
+  -webkit-backdrop-filter: blur($blur);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+
+  @include shadow-raised('medium');
+
+  // Highlight edge
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(
+      90deg,
+      transparent 0%,
+      rgba(255, 255, 255, 0.2) 50%,
+      transparent 100%
+    );
+    border-radius: inherit;
+    pointer-events: none;
+  }
+}
+
+// ==========================================================================
+// Card Bevel Effect
+// Adds a subtle bevel/rim effect to cards
+// ==========================================================================
+
+@mixin card-bevel {
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow:
+    // Top edge highlight
+    inset 0 1px 0 rgba(255, 255, 255, 0.1),
+    // Bottom edge shadow
+    inset 0 -1px 0 rgba(0, 0, 0, 0.2),
+    // Outer shadow
+    0 4px 16px rgba(0, 0, 0, 0.2),
+    0 8px 32px rgba(0, 0, 0, 0.15);
+}
+
+// ==========================================================================
+// Interactive Surface
+// For elements that respond to hover/press
+// ==========================================================================
+
+@mixin interactive-surface($color: $black) {
+  background: linear-gradient(
+    180deg,
+    skeu-lighten($color, 5%) 0%,
+    $color 100%
+  );
+
+  @include shadow-raised('low');
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+
+  &:hover {
+    transform: translateY(-2px);
+    @include shadow-raised('medium');
+  }
+
+  &:active {
+    transform: translateY(0);
+    @include shadow-pressed;
+  }
+}

@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { gsap } from "@/libs/gsap";
 import { isReducedMotion } from "@/utils/motion";
+import VideoBackground from '@/components/VideoBackground';
 
 export default function Loader() {
     const percentageRef = useRef<HTMLSpanElement>(null);
@@ -94,6 +95,13 @@ export default function Loader() {
 
     return (
         <section className="intro">
+            {/* Video Background */}
+            <VideoBackground
+                src="/videos/loader-bg.mp4"
+                opacity={0.3}
+                overlay={false}
+            />
+
             {/* Sound effect for cross scale */}
             <audio ref={audioRef} src="/audio/whoosh.mp3" preload="auto" />
 

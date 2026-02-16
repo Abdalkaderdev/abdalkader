@@ -5,6 +5,7 @@ import ImageTrailEffect from "@/components/HomePage/ImageTrail";
 import { LineReveal, ScrambleText } from "@/components/TextReveal";
 import PillBadge from "@/components/PillBadge";
 import BibleVerse from "@/components/BibleVerse";
+import VideoBackground from '@/components/VideoBackground';
 
 export default function HeroSection() {
     const marqueeRef = useRef<HTMLDivElement | null>(null);
@@ -34,6 +35,13 @@ export default function HeroSection() {
 
     return (
         <section className={styles.hero}>
+            {/* Video Background */}
+            <VideoBackground
+                src="/videos/home-hero-bg.mp4"
+                opacity={0.4}
+                overlay
+                overlayDirection="radial"
+            />
             <ImageTrailEffect />
             <div className={styles.marquee} ref={marqueeRef} aria-hidden="true">
                 <div className={styles.content} ref={marqueeTextRef} aria-hidden="true">

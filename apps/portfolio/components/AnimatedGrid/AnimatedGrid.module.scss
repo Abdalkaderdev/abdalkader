@@ -1,0 +1,142 @@
+@import "@/styles/variables.scss";
+
+// ==========================================================================
+// Animated Grid Component
+// ==========================================================================
+
+.animatedGrid {
+    display: grid;
+    width: 100%;
+
+    // =======================================================================
+    // Column Variants
+    // =======================================================================
+
+    &.columns-1 {
+        grid-template-columns: 1fr;
+    }
+
+    &.columns-2 {
+        grid-template-columns: repeat(2, 1fr);
+
+        @media (max-width: 600px) {
+            grid-template-columns: 1fr;
+        }
+    }
+
+    &.columns-3 {
+        grid-template-columns: repeat(3, 1fr);
+
+        @media (max-width: 840px) {
+            grid-template-columns: repeat(2, 1fr);
+        }
+
+        @media (max-width: 600px) {
+            grid-template-columns: 1fr;
+        }
+    }
+
+    &.columns-4 {
+        grid-template-columns: repeat(4, 1fr);
+
+        @media (max-width: 1080px) {
+            grid-template-columns: repeat(3, 1fr);
+        }
+
+        @media (max-width: 840px) {
+            grid-template-columns: repeat(2, 1fr);
+        }
+
+        @media (max-width: 600px) {
+            grid-template-columns: 1fr;
+        }
+    }
+
+    &.columns-auto {
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    }
+
+    // =======================================================================
+    // Gap Variants
+    // =======================================================================
+
+    &.gap-sm {
+        gap: 0.75rem;
+    }
+
+    &.gap-md {
+        gap: 1rem;
+    }
+
+    &.gap-lg {
+        gap: 1.5rem;
+
+        @media (max-width: 600px) {
+            gap: 1rem;
+        }
+    }
+}
+
+// ==========================================================================
+// Grid Item (motion wrapper)
+// ==========================================================================
+
+.gridItem {
+    width: 100%;
+    will-change: transform, opacity;
+}
+
+// ==========================================================================
+// Grid Item Wrapper (for explicit control)
+// ==========================================================================
+
+.gridItemWrapper {
+    width: 100%;
+
+    // Column spanning
+    &.colSpan-2 {
+        grid-column: span 2;
+
+        @media (max-width: 600px) {
+            grid-column: span 1;
+        }
+    }
+
+    &.colSpan-3 {
+        grid-column: span 3;
+
+        @media (max-width: 840px) {
+            grid-column: span 2;
+        }
+
+        @media (max-width: 600px) {
+            grid-column: span 1;
+        }
+    }
+
+    &.colSpan-4 {
+        grid-column: span 4;
+
+        @media (max-width: 1080px) {
+            grid-column: span 3;
+        }
+
+        @media (max-width: 840px) {
+            grid-column: span 2;
+        }
+
+        @media (max-width: 600px) {
+            grid-column: span 1;
+        }
+    }
+}
+
+// ==========================================================================
+// Reduced Motion
+// ==========================================================================
+
+@media (prefers-reduced-motion: reduce) {
+    .gridItem {
+        will-change: auto;
+    }
+}

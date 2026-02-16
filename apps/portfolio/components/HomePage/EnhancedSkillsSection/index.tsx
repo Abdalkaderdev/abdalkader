@@ -5,6 +5,7 @@ import { gsap, ScrollTrigger } from '@/libs/gsap';
 import Tag from '@/components/Tag';
 import { isReducedMotion } from '@/utils/motion';
 import { skillsCategories, getLevelColor, getLevelPercentage } from '@/data/skillsData';
+import VideoBackground from '@/components/VideoBackground';
 
 // Setup Animation for all text
 const animateText = (ref: React.RefObject<HTMLElement>, startOffset: string = '70%', yValue: string = '115%', stagger: number = 0.003) => {
@@ -111,6 +112,14 @@ export default function EnhancedSkillsSection() {
 
     return (
         <section className={styles.enhancedSkills}>
+            {/* Video Background - Matrix code effect */}
+            <VideoBackground
+                src="/videos/skills-bg.mp4"
+                opacity={0.15}
+                overlay
+                overlayDirection="radial"
+            />
+
             <div className={styles.container}>
                 <div className={styles.heading} ref={headingRef}>
                     {splitText("Technical expertise across the full stack, from AI-powered applications to pixel-perfect interfaces. Each skill represents years of hands-on experience and real-world project implementation.")}

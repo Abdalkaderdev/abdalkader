@@ -1,0 +1,329 @@
+@import "@/styles/variables.scss";
+@import "@/styles/skeuomorphic.scss";
+
+// ==========================================================================
+// Color Variables
+// ==========================================================================
+
+// Primary (Orange)
+$btn-primary: $primary;
+$btn-primary-light: mix(white, $btn-primary, 20%);
+$btn-primary-dark: mix(black, $btn-primary, 25%);
+$btn-primary-darker: mix(black, $btn-primary, 40%);
+
+// Gold
+$btn-gold: $gold;
+$btn-gold-light: mix(white, $btn-gold, 20%);
+$btn-gold-dark: mix(black, $btn-gold, 25%);
+$btn-gold-darker: mix(black, $btn-gold, 40%);
+
+// Dark
+$btn-dark-base: #2a2a2a;
+$btn-dark-light: #3a3a3a;
+$btn-dark-dark: #1a1a1a;
+$btn-dark-darker: #0a0a0a;
+
+// ==========================================================================
+// Base Button Styles
+// ==========================================================================
+
+.skeuomorphicButton {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    cursor: pointer;
+    user-select: none;
+    border: none;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    text-decoration: none;
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+    color: $white;
+
+    // Prevent text selection issues
+    -webkit-tap-highlight-color: transparent;
+
+    // =======================================================================
+    // Size Variants
+    // =======================================================================
+
+    &.sm {
+        padding: 0.6rem 1.2rem;
+        font-size: 0.7rem;
+        border-radius: 6px;
+
+        .iconBefore,
+        .iconAfter {
+            font-size: 0.9rem;
+        }
+    }
+
+    &.md {
+        padding: 0.85rem 1.8rem;
+        font-size: 0.8rem;
+        border-radius: 8px;
+
+        .iconBefore,
+        .iconAfter {
+            font-size: 1rem;
+        }
+    }
+
+    &.lg {
+        padding: 1.1rem 2.4rem;
+        font-size: 0.9rem;
+        border-radius: 10px;
+
+        .iconBefore,
+        .iconAfter {
+            font-size: 1.2rem;
+        }
+    }
+
+    // =======================================================================
+    // Color Variants
+    // =======================================================================
+
+    // Primary (Orange)
+    &.primary {
+        background: linear-gradient(
+            180deg,
+            $btn-primary-light 0%,
+            $btn-primary 30%,
+            $btn-primary-dark 100%
+        );
+        box-shadow:
+            // Bottom edge (3D depth)
+            0 4px 0 $btn-primary-darker,
+            // Ambient shadows
+            0 6px 10px rgba(0, 0, 0, 0.3),
+            0 10px 20px rgba(0, 0, 0, 0.2),
+            // Top highlight
+            inset 0 1px 0 rgba(255, 255, 255, 0.3),
+            // Bottom inner shadow
+            inset 0 -2px 4px rgba(0, 0, 0, 0.15);
+        color: $white;
+
+        &:hover:not(.disabled):not(.loading) {
+            transform: translateY(-2px);
+            box-shadow:
+                0 6px 0 $btn-primary-darker,
+                0 8px 14px rgba(0, 0, 0, 0.35),
+                0 14px 28px rgba($btn-primary, 0.25),
+                inset 0 1px 0 rgba(255, 255, 255, 0.35),
+                inset 0 -2px 4px rgba(0, 0, 0, 0.15);
+        }
+
+        &:active:not(.disabled):not(.loading) {
+            transform: translateY(3px);
+            box-shadow:
+                0 1px 0 $btn-primary-darker,
+                0 2px 4px rgba(0, 0, 0, 0.3),
+                inset 0 1px 0 rgba(255, 255, 255, 0.1),
+                inset 0 2px 4px rgba(0, 0, 0, 0.2);
+        }
+    }
+
+    // Gold
+    &.gold {
+        background: linear-gradient(
+            180deg,
+            $btn-gold-light 0%,
+            $btn-gold 30%,
+            $btn-gold-dark 100%
+        );
+        box-shadow:
+            0 4px 0 $btn-gold-darker,
+            0 6px 10px rgba(0, 0, 0, 0.3),
+            0 10px 20px rgba(0, 0, 0, 0.2),
+            inset 0 1px 0 rgba(255, 255, 255, 0.4),
+            inset 0 -2px 4px rgba(0, 0, 0, 0.15);
+        color: $black;
+
+        &:hover:not(.disabled):not(.loading) {
+            transform: translateY(-2px);
+            box-shadow:
+                0 6px 0 $btn-gold-darker,
+                0 8px 14px rgba(0, 0, 0, 0.35),
+                0 14px 28px rgba($btn-gold, 0.25),
+                inset 0 1px 0 rgba(255, 255, 255, 0.45),
+                inset 0 -2px 4px rgba(0, 0, 0, 0.15);
+        }
+
+        &:active:not(.disabled):not(.loading) {
+            transform: translateY(3px);
+            box-shadow:
+                0 1px 0 $btn-gold-darker,
+                0 2px 4px rgba(0, 0, 0, 0.3),
+                inset 0 1px 0 rgba(255, 255, 255, 0.15),
+                inset 0 2px 4px rgba(0, 0, 0, 0.2);
+        }
+    }
+
+    // Dark
+    &.dark {
+        background: linear-gradient(
+            180deg,
+            $btn-dark-light 0%,
+            $btn-dark-base 30%,
+            $btn-dark-dark 100%
+        );
+        box-shadow:
+            0 4px 0 $btn-dark-darker,
+            0 6px 10px rgba(0, 0, 0, 0.4),
+            0 10px 20px rgba(0, 0, 0, 0.3),
+            inset 0 1px 0 rgba(255, 255, 255, 0.15),
+            inset 0 -2px 4px rgba(0, 0, 0, 0.2);
+        color: $white;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+
+        &:hover:not(.disabled):not(.loading) {
+            transform: translateY(-2px);
+            box-shadow:
+                0 6px 0 $btn-dark-darker,
+                0 8px 14px rgba(0, 0, 0, 0.5),
+                0 14px 28px rgba(0, 0, 0, 0.35),
+                inset 0 1px 0 rgba(255, 255, 255, 0.2),
+                inset 0 -2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        &:active:not(.disabled):not(.loading) {
+            transform: translateY(3px);
+            box-shadow:
+                0 1px 0 $btn-dark-darker,
+                0 2px 4px rgba(0, 0, 0, 0.4),
+                inset 0 1px 0 rgba(255, 255, 255, 0.05),
+                inset 0 2px 4px rgba(0, 0, 0, 0.3);
+        }
+    }
+
+    // =======================================================================
+    // States
+    // =======================================================================
+
+    &.fullWidth {
+        width: 100%;
+    }
+
+    &.disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+        filter: grayscale(30%);
+        transform: none !important;
+    }
+
+    &.loading {
+        cursor: wait;
+    }
+
+    // Focus state
+    &:focus-visible {
+        outline: 2px solid $white;
+        outline-offset: 3px;
+    }
+}
+
+// ==========================================================================
+// Content Layout
+// ==========================================================================
+
+.content {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    transition: opacity 0.2s ease;
+}
+
+.text {
+    white-space: nowrap;
+}
+
+.iconBefore,
+.iconAfter {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+// ==========================================================================
+// Loading Spinner
+// ==========================================================================
+
+.spinner {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    gap: 4px;
+}
+
+.spinnerDot {
+    width: 6px;
+    height: 6px;
+    background: currentColor;
+    border-radius: 50%;
+    animation: spinnerBounce 1.4s infinite ease-in-out both;
+
+    &:nth-child(1) {
+        animation-delay: -0.32s;
+    }
+
+    &:nth-child(2) {
+        animation-delay: -0.16s;
+    }
+
+    &:nth-child(3) {
+        animation-delay: 0s;
+    }
+}
+
+@keyframes spinnerBounce {
+    0%, 80%, 100% {
+        transform: scale(0);
+        opacity: 0.5;
+    }
+    40% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+// ==========================================================================
+// Responsive
+// ==========================================================================
+
+@media (max-width: 600px) {
+    .skeuomorphicButton {
+        &.lg {
+            padding: 0.9rem 2rem;
+            font-size: 0.85rem;
+        }
+    }
+}
+
+// ==========================================================================
+// Reduced Motion
+// ==========================================================================
+
+@media (prefers-reduced-motion: reduce) {
+    .skeuomorphicButton {
+        transition: none;
+
+        &:hover,
+        &:active {
+            transform: none !important;
+        }
+    }
+
+    .spinnerDot {
+        animation: none;
+        opacity: 1;
+        transform: none;
+    }
+}

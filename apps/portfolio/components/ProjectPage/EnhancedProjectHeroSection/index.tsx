@@ -2,6 +2,7 @@ import { useRef, useEffect, useState } from 'react';
 import { gsap } from '@/libs/gsap';
 import styles from './EnhancedProjectHeroSection.module.scss';
 import { isReducedMotion } from '@/utils/motion';
+import VideoBackground from '@/components/VideoBackground';
 
 export default function EnhancedProjectHeroSection() {
     const sectionRef = useRef<HTMLElement | null>(null);
@@ -72,6 +73,14 @@ export default function EnhancedProjectHeroSection() {
 
     return (
         <section className={styles.hero} ref={sectionRef}>
+            {/* Video Background */}
+            <VideoBackground
+                src="/videos/particle-bg.mp4"
+                opacity={0.4}
+                overlay
+                overlayDirection="bottom"
+            />
+
             {/* Background gradient orbs */}
             <div className={styles.bgOrb1} />
             <div className={styles.bgOrb2} />
