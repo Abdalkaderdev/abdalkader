@@ -321,16 +321,17 @@ export default function ProjectShowcase() {
                             ease: 'power2.out',
                         });
 
-                        // Move remaining stack below details
+                        // Move remaining stack below details (near "X more below" indicator)
+                        // Position it closer to the details but not overlapping
                         const remainingCards = cardRefs.current.slice(index + 1);
                         remainingCards.forEach((remainingCard, i) => {
                             if (!remainingCard) return;
                             gsap.to(remainingCard, {
                                 x: isOdd ? `-${stackOffset}`.replace('--', '-') : stackOffset,
-                                y: 180 + i * -8,
-                                rotation: (i - 1) * 3,
-                                scale: 0.45 - i * 0.02,
-                                opacity: 1,
+                                y: '25vh', // Position below details near the "X more below" indicator
+                                rotation: (i - 1) * 2,
+                                scale: 0.35 - i * 0.02, // Smaller scale
+                                opacity: 0.9,
                                 duration: 0.7,
                                 delay: 0.1,
                                 ease: 'power2.out',
@@ -380,10 +381,10 @@ export default function ProjectShowcase() {
                             if (!nextCard) return;
                             gsap.to(nextCard, {
                                 x: isOdd ? `-${stackOffset}`.replace('--', '-') : stackOffset,
-                                y: 180 + i * -8,
-                                rotation: (i - 1) * 3,
-                                scale: 0.45 - i * 0.02,
-                                opacity: 1,
+                                y: '25vh', // Position below details near the "X more below" indicator
+                                rotation: (i - 1) * 2,
+                                scale: 0.35 - i * 0.02,
+                                opacity: 0.9,
                                 duration: 0.5,
                                 ease: 'power2.out',
                             });
