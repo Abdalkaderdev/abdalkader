@@ -125,10 +125,9 @@ export default function ProjectShowcase() {
     const progressRef = useRef<HTMLDivElement>(null);
     const [activeIndex, setActiveIndex] = useState(-1);
     const [flippedCard, setFlippedCard] = useState<number | null>(null);
-    const [isInShowcase, setIsInShowcase] = useState(false);
 
     // Connect Lenis smooth scroll to GSAP ScrollTrigger
-    useLenis(({ scroll }) => {
+    useLenis(() => {
         ScrollTrigger.update();
     });
 
@@ -209,7 +208,6 @@ export default function ProjectShowcase() {
                 start: 'top 80%',
                 end: 'bottom 20%',
                 onEnter: () => {
-                    setIsInShowcase(true);
                     gsap.to(stack, {
                         opacity: 1,
                         y: 0,
@@ -226,7 +224,6 @@ export default function ProjectShowcase() {
                 },
                 onLeave: () => {
                     // Hide stack and progress when scrolling past showcase
-                    setIsInShowcase(false);
                     gsap.to(stack, {
                         opacity: 0,
                         y: -100,
@@ -243,7 +240,6 @@ export default function ProjectShowcase() {
                 },
                 onEnterBack: () => {
                     // Show stack again when scrolling back up
-                    setIsInShowcase(true);
                     setActiveIndex(projectCount - 1);
                     gsap.to(stack, {
                         opacity: 1,
@@ -259,7 +255,6 @@ export default function ProjectShowcase() {
                     }
                 },
                 onLeaveBack: () => {
-                    setIsInShowcase(false);
                     gsap.to(stack, {
                         opacity: 0,
                         y: 200,
@@ -284,10 +279,12 @@ export default function ProjectShowcase() {
 
                 if (!section || !card || !detail) return;
 
-                const isOdd = index % 2 === 0; // 0, 2, 4 go RIGHT; 1, 3, 5 go LEFT
+                // Even indices (0, 2, 4) = card goes RIGHT, details on LEFT
+                // Odd indices (1, 3, 5) = card goes LEFT, details on RIGHT
+                const cardGoesRight = index % 2 === 0;
 
-                // Set initial detail state
-                gsap.set(detail, { opacity: 0, x: isOdd ? 80 : -80 });
+                // Set initial detail state (slides in from opposite side)
+                gsap.set(detail, { opacity: 0, x: cardGoesRight ? 80 : -80 });
 
                 // Create scroll trigger for this section
                 // Card stack is position:fixed so cards naturally stay in viewport
@@ -305,9 +302,9 @@ export default function ProjectShowcase() {
 
                         // Animate the current card to position opposite details
                         gsap.to(card, {
-                            x: isOdd ? cardOffset : `-${cardOffset}`.replace('--', '-'),
+                            x: cardGoesRight ? cardOffset : `-${cardOffset}`,
                             y: 0,
-                            rotation: isOdd ? 6 : -6,
+                            rotation: cardGoesRight ? 6 : -6,
                             scale: 1,
                             opacity: 1,
                             zIndex: 30 + index,
@@ -326,13 +323,14 @@ export default function ProjectShowcase() {
 
                         // Move remaining stack below (near "X more below" indicator)
                         // Stack goes to the same side as the current card but lower
-                        cardRefs.current.slice(index + 1).forEach((remainingCard, i) => {
+                        const remainingCards = cardRefs.current.slice(index + 1);
+                        remainingCards.forEach((remainingCard, i) => {
                             if (!remainingCard) return;
                             gsap.to(remainingCard, {
-                                x: isOdd ? stackOffset : `-${stackOffset}`.replace('--', '-'),
+                                x: cardGoesRight ? stackOffset : `-${stackOffset}`,
                                 y: '30vh', // Position below the active card
                                 rotation: (i - 1) * 2,
-                                scale: 0.35 - i * 0.02,
+                                scale: Math.max(0.25, 0.35 - i * 0.02), // Prevent scale going too small
                                 opacity: 0.8,
                                 zIndex: 20 - i,
                                 duration: 0.7,
@@ -361,9 +359,9 @@ export default function ProjectShowcase() {
 
                         // Bring card back to position
                         gsap.to(card, {
-                            x: isOdd ? cardOffset : `-${cardOffset}`.replace('--', '-'),
+                            x: cardGoesRight ? cardOffset : `-${cardOffset}`,
                             y: 0,
-                            rotation: isOdd ? 6 : -6,
+                            rotation: cardGoesRight ? 6 : -6,
                             scale: 1,
                             opacity: 1,
                             zIndex: 30 + index,
@@ -380,13 +378,14 @@ export default function ProjectShowcase() {
                         });
 
                         // Show remaining cards in stack position
-                        cardRefs.current.slice(index + 1).forEach((nextCard, i) => {
+                        const remainingCards = cardRefs.current.slice(index + 1);
+                        remainingCards.forEach((nextCard, i) => {
                             if (!nextCard) return;
                             gsap.to(nextCard, {
-                                x: isOdd ? stackOffset : `-${stackOffset}`.replace('--', '-'),
+                                x: cardGoesRight ? stackOffset : `-${stackOffset}`,
                                 y: '30vh',
                                 rotation: (i - 1) * 2,
-                                scale: 0.35 - i * 0.02,
+                                scale: Math.max(0.25, 0.35 - i * 0.02),
                                 opacity: 0.8,
                                 zIndex: 20 - i,
                                 duration: 0.6,
@@ -401,7 +400,7 @@ export default function ProjectShowcase() {
                         // Just fade details
                         gsap.to(detail, {
                             opacity: 0,
-                            x: isOdd ? -50 : 50,
+                            x: cardGoesRight ? -50 : 50,
                             duration: 0.4,
                             ease: 'power2.in',
                         });
@@ -421,7 +420,7 @@ export default function ProjectShowcase() {
                         // Hide details
                         gsap.to(detail, {
                             opacity: 0,
-                            x: isOdd ? 80 : -80,
+                            x: cardGoesRight ? 80 : -80,
                             duration: 0.4,
                             ease: 'power2.in',
                         });
@@ -449,9 +448,6 @@ export default function ProjectShowcase() {
 
         return () => ctx.revert();
     }, [resetFlipState, getCardOffset, getStackOffset]);
-
-    const activeProject = activeIndex >= 0 ? SHOWCASE_PROJECTS[activeIndex] : null;
-    const remainingCount = activeIndex >= 0 ? SHOWCASE_PROJECTS.length - activeIndex - 1 : SHOWCASE_PROJECTS.length;
 
     return (
         <section ref={containerRef} className={styles.showcase}>
@@ -529,13 +525,13 @@ export default function ProjectShowcase() {
 
             {/* Project Sections */}
             {SHOWCASE_PROJECTS.map((project, index) => {
-                const isOdd = index % 2 === 0;
+                const cardGoesRight = index % 2 === 0;
 
                 return (
                     <div
                         key={project.number}
                         ref={(el) => { sectionRefs.current[index] = el; }}
-                        className={`${styles.projectSection} ${isOdd ? styles.cardRight : styles.cardLeft}`}
+                        className={`${styles.projectSection} ${cardGoesRight ? styles.cardRight : styles.cardLeft}`}
                     >
                         {/* Project Details */}
                         <div
