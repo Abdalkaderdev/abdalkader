@@ -276,7 +276,7 @@ export default function ProjectShowcase() {
                 },
             });
 
-            // For each section, animate the card leaving the stack
+            // For each section, create scroll trigger (NO pinning - card stack is already fixed)
             SHOWCASE_PROJECTS.forEach((_, index) => {
                 const section = sectionRefs.current[index];
                 const card = cardRefs.current[index];
@@ -290,23 +290,26 @@ export default function ProjectShowcase() {
                 gsap.set(detail, { opacity: 0, x: isOdd ? 80 : -80 });
 
                 // Create scroll trigger for this section
+                // Card stack is position:fixed so cards naturally stay in viewport
+                // We just animate them to left/right positions when section is active
                 ScrollTrigger.create({
                     trigger: section,
                     start: 'top 60%',
                     end: 'bottom 40%',
                     onEnter: () => {
                         setActiveIndex(index);
-                        resetFlipState(); // Reset flip when changing cards
+                        resetFlipState();
 
                         const cardOffset = getCardOffset();
                         const stackOffset = getStackOffset();
 
-                        // Animate the card leaving the stack
+                        // Animate the current card to position opposite details
                         gsap.to(card, {
                             x: isOdd ? cardOffset : `-${cardOffset}`.replace('--', '-'),
                             y: 0,
                             rotation: isOdd ? 6 : -6,
                             scale: 1,
+                            opacity: 1,
                             zIndex: 30 + index,
                             duration: 0.8,
                             ease: 'power3.out',
@@ -321,24 +324,24 @@ export default function ProjectShowcase() {
                             ease: 'power2.out',
                         });
 
-                        // Move remaining stack below details (near "X more below" indicator)
-                        // Position it closer to the details but not overlapping
-                        const remainingCards = cardRefs.current.slice(index + 1);
-                        remainingCards.forEach((remainingCard, i) => {
+                        // Move remaining stack below (near "X more below" indicator)
+                        // Stack goes to the same side as the current card but lower
+                        cardRefs.current.slice(index + 1).forEach((remainingCard, i) => {
                             if (!remainingCard) return;
                             gsap.to(remainingCard, {
-                                x: isOdd ? `-${stackOffset}`.replace('--', '-') : stackOffset,
-                                y: '25vh', // Position below details near the "X more below" indicator
+                                x: isOdd ? stackOffset : `-${stackOffset}`.replace('--', '-'),
+                                y: '30vh', // Position below the active card
                                 rotation: (i - 1) * 2,
-                                scale: 0.35 - i * 0.02, // Smaller scale
-                                opacity: 0.9,
+                                scale: 0.35 - i * 0.02,
+                                opacity: 0.8,
+                                zIndex: 20 - i,
                                 duration: 0.7,
                                 delay: 0.1,
                                 ease: 'power2.out',
                             });
                         });
 
-                        // Completely hide previous cards (not just fade)
+                        // Hide previous cards
                         cardRefs.current.slice(0, index).forEach((prevCard) => {
                             if (!prevCard) return;
                             gsap.to(prevCard, {
@@ -376,23 +379,26 @@ export default function ProjectShowcase() {
                             ease: 'power2.out',
                         });
 
-                        // Bring back cards that were ahead (they should return to stack position)
+                        // Show remaining cards in stack position
                         cardRefs.current.slice(index + 1).forEach((nextCard, i) => {
                             if (!nextCard) return;
                             gsap.to(nextCard, {
-                                x: isOdd ? `-${stackOffset}`.replace('--', '-') : stackOffset,
-                                y: '25vh', // Position below details near the "X more below" indicator
+                                x: isOdd ? stackOffset : `-${stackOffset}`.replace('--', '-'),
+                                y: '30vh',
                                 rotation: (i - 1) * 2,
                                 scale: 0.35 - i * 0.02,
-                                opacity: 0.9,
-                                duration: 0.5,
+                                opacity: 0.8,
+                                zIndex: 20 - i,
+                                duration: 0.6,
                                 ease: 'power2.out',
                             });
                         });
                     },
                     onLeave: () => {
                         resetFlipState();
-                        // Hide details when scrolling to next section
+
+                        // Don't hide current card on leave - it will be hidden when next section activates
+                        // Just fade details
                         gsap.to(detail, {
                             opacity: 0,
                             x: isOdd ? -50 : 50,
@@ -403,18 +409,13 @@ export default function ProjectShowcase() {
                     onLeaveBack: () => {
                         resetFlipState();
                         const isFirstCard = index === 0;
-                        const prevIsOdd = (index - 1) % 2 === 0;
 
-                        // Return this card to stack position
+                        // Hide current card
                         gsap.to(card, {
-                            x: isFirstCard ? index * 6 : (prevIsOdd ? `-${getStackOffset()}`.replace('--', '-') : getStackOffset()),
-                            y: isFirstCard ? index * -10 : 180,
-                            rotation: isFirstCard ? (index - 2) * 4 : 0,
-                            scale: isFirstCard ? 1 - index * 0.03 : 0.45,
-                            opacity: 1,
-                            zIndex: isFirstCard ? projectCount - index : 20,
-                            duration: 0.6,
-                            ease: 'power2.out',
+                            opacity: 0,
+                            scale: 0.8,
+                            duration: 0.4,
+                            ease: 'power2.in',
                         });
 
                         // Hide details
@@ -425,8 +426,8 @@ export default function ProjectShowcase() {
                             ease: 'power2.in',
                         });
 
-                        // If scrolling back from card 1 to before card 0, restore all cards to stack
-                        if (index === 0) {
+                        // If scrolling back to before first section, restore stack
+                        if (isFirstCard) {
                             cardRefs.current.forEach((stackCard, i) => {
                                 if (!stackCard) return;
                                 gsap.to(stackCard, {
