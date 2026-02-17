@@ -18,6 +18,10 @@ export interface VideoBackgroundProps {
     className?: string;
     /** Poster image to show before video loads */
     poster?: string;
+    /** Start time in seconds (default: 0) */
+    startTime?: number;
+    /** End time in seconds (loops back to startTime when reached) */
+    endTime?: number;
 }
 
 /**
@@ -48,6 +52,8 @@ export default function VideoBackground({
     playbackRate = 1,
     className = '',
     poster,
+    startTime,
+    endTime,
 }: VideoBackgroundProps) {
     const videoRef = useRef<HTMLVideoElement>(null);
     const containerRef = useRef<HTMLDivElement>(null);
@@ -75,6 +81,42 @@ export default function VideoBackground({
             videoRef.current.playbackRate = playbackRate;
         }
     }, [playbackRate]);
+
+    // Custom time-based looping (startTime to endTime)
+    useEffect(() => {
+        if (!videoRef.current || prefersReducedMotion) return;
+        if (startTime === undefined && endTime === undefined) return;
+
+        const video = videoRef.current;
+        const loopStart = startTime ?? 0;
+
+        // Set initial start time when video is ready
+        const handleCanPlay = () => {
+            if (video.currentTime < loopStart) {
+                video.currentTime = loopStart;
+            }
+        };
+
+        // Check time and loop back to startTime when endTime is reached
+        const handleTimeUpdate = () => {
+            if (endTime !== undefined && video.currentTime >= endTime) {
+                video.currentTime = loopStart;
+            }
+        };
+
+        video.addEventListener('canplay', handleCanPlay);
+        video.addEventListener('timeupdate', handleTimeUpdate);
+
+        // If video is already loaded, set start time immediately
+        if (video.readyState >= 3 && video.currentTime < loopStart) {
+            video.currentTime = loopStart;
+        }
+
+        return () => {
+            video.removeEventListener('canplay', handleCanPlay);
+            video.removeEventListener('timeupdate', handleTimeUpdate);
+        };
+    }, [startTime, endTime, prefersReducedMotion]);
 
     // Intersection Observer - pause video when not in viewport
     useEffect(() => {

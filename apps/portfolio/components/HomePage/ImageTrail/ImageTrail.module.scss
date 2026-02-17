@@ -6,4 +6,10 @@
 .trail {
     position: relative;
     display: grid;
+
+    /* Trail images - created dynamically */
+    :global(.trail__img) {
+        object-fit: cover;
+        object-position: top center; /* Show head/face, not cropped at forehead */
+    }
 }

@@ -54,6 +54,60 @@ $mono-font: 'JetBrains Mono', 'SF Mono', 'Consolas', monospace;
     }
 }
 
+.metaWords {
+    display: inline-flex;
+    gap: 0.5rem;
+}
+
+/* ==========================================
+   WORD COVER BOXES - Scatter Reveal Animation
+   ========================================== */
+
+.wordWrapper {
+    position: relative;
+    display: inline-block;
+}
+
+.wordText {
+    position: relative;
+    z-index: 1;
+}
+
+.wordCover {
+    position: absolute;
+    inset: -4px -8px;
+    display: block; // Ensure span displays as block
+    background: $primary;
+    border-radius: 4px;
+    z-index: 10001; // Higher than navbar (10000) so boxes fall IN FRONT of it
+    pointer-events: none;
+    box-shadow:
+        0 4px 12px rgba($primary, 0.5),
+        0 0 0 1px rgba(255, 255, 255, 0.15) inset;
+
+    // Slight texture/grain effect
+    &::after {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(
+            135deg,
+            rgba(255, 255, 255, 0.2) 0%,
+            transparent 50%,
+            rgba(0, 0, 0, 0.1) 100%
+        );
+        border-radius: inherit;
+    }
+}
+
+// Big WORK title needs bigger cover
+.bigWord {
+    .wordCover {
+        inset: -12px -20px;
+        border-radius: 8px;
+    }
+}
+
 .headerTitle {
     font-size: clamp(4rem, 15vw, 12rem);
     font-weight: 800;
@@ -176,6 +230,23 @@ $mono-font: 'JetBrains Mono', 'SF Mono', 'Consolas', monospace;
     @media (max-width: $bp-md) {
         aspect-ratio: 4/3;
     }
+}
+
+/* Project Title Overlay */
+.projectTitle {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: clamp(1.5rem, 4vw, 3rem);
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: $off-white;
+    text-shadow: 0 2px 20px rgba(0, 0, 0, 0.8);
+    z-index: 2;
+    background: linear-gradient(135deg, rgba($primary, 0.1) 0%, rgba($gold, 0.05) 100%);
 }
 
 .image {

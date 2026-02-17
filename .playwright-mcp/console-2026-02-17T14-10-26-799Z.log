@@ -1,0 +1,23 @@
+[    1212ms] [ERROR] Failed to load resource: the server responded with a status of 500 (Internal Server Error) @ http://localhost:3000/projects/:0
+[    1669ms] [ERROR] 🚨 Global Error: TypeError: getStaticPaths is not a function
+    at buildStaticPaths (file://C:\Users\max\abdalkader\node_modules\.pnpm\next@14.2.25_react-dom@18.3.1_react@18.3.1_sass@1.93.2\node_modules\next\dist\build\utils.js:788:39)
+    at Object.loadStaticPaths (file://C:\Users\max\abdalkader\node_modules\.pnpm\next@14.2.25_react-dom@18.3.1_react@18.3.1_sass@1.93.2\node_modules\next\dist\server\dev\static-paths-worker.js:63:46)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5) @ webpack-internal:///../../node_modules/.pnpm/next@14.2.25_react-dom@18.3.1_react@18.3.1_sass@1.93.2/node_modules/next/dist/client/components/react-dev-overlay/internal/helpers/hydration-error-info.js:62
+[    1672ms] TypeError: getStaticPaths is not a function
+    at buildStaticPaths (file://C:\Users\max\abdalkader\node_modules\.pnpm\next@14.2.25_react-dom@18.3.1_react@18.3.1_sass@1.93.2\node_modules\next\dist\build\utils.js:788:39)
+    at Object.loadStaticPaths (file://C:\Users\max\abdalkader\node_modules\.pnpm\next@14.2.25_react-dom@18.3.1_react@18.3.1_sass@1.93.2\node_modules\next\dist\server\dev\static-paths-worker.js:63:46)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+[    1680ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3000/favicon.ico:0
+[    1915ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3000/images/icons/icon-192.png:0
+[    1915ms] [WARNING] Error while trying to use the following icon from the Manifest: http://localhost:3000/images/icons/icon-192.png (Download error or resource isn't a valid image) @ http://localhost:3000/projects/:0
+[    2515ms] [ERROR] Failed to load resource: the server responded with a status of 500 (Internal Server Error) @ http://localhost:3000/projects/:0
+[    2779ms] [ERROR] 🚨 Global Error: TypeError: getStaticPaths is not a function
+    at buildStaticPaths (file://C:\Users\max\abdalkader\node_modules\.pnpm\next@14.2.25_react-dom@18.3.1_react@18.3.1_sass@1.93.2\node_modules\next\dist\build\utils.js:788:39)
+    at Object.loadStaticPaths (file://C:\Users\max\abdalkader\node_modules\.pnpm\next@14.2.25_react-dom@18.3.1_react@18.3.1_sass@1.93.2\node_modules\next\dist\server\dev\static-paths-worker.js:63:46)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5) @ webpack-internal:///../../node_modules/.pnpm/next@14.2.25_react-dom@18.3.1_react@18.3.1_sass@1.93.2/node_modules/next/dist/client/components/react-dev-overlay/internal/helpers/hydration-error-info.js:62
+[    2780ms] TypeError: getStaticPaths is not a function
+    at buildStaticPaths (file://C:\Users\max\abdalkader\node_modules\.pnpm\next@14.2.25_react-dom@18.3.1_react@18.3.1_sass@1.93.2\node_modules\next\dist\build\utils.js:788:39)
+    at Object.loadStaticPaths (file://C:\Users\max\abdalkader\node_modules\.pnpm\next@14.2.25_react-dom@18.3.1_react@18.3.1_sass@1.93.2\node_modules\next\dist\server\dev\static-paths-worker.js:63:46)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+[    2795ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3000/images/icons/icon-192.png:0
+[    2796ms] [WARNING] Error while trying to use the following icon from the Manifest: http://localhost:3000/images/icons/icon-192.png (Download error or resource isn't a valid image) @ http://localhost:3000/projects/:0

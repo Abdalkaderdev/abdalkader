@@ -178,6 +178,23 @@ $mono-font: 'JetBrains Mono', 'SF Mono', 'Consolas', monospace;
     }
 }
 
+/* Project Title Overlay */
+.projectTitle {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: clamp(1.5rem, 4vw, 3rem);
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: $off-white;
+    text-shadow: 0 2px 20px rgba(0, 0, 0, 0.8);
+    z-index: 2;
+    background: linear-gradient(135deg, rgba($primary, 0.1) 0%, rgba($gold, 0.05) 100%);
+}
+
 .image {
     object-fit: cover;
     transition: transform 0.1s linear;

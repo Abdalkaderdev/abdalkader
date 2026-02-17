@@ -1,15 +1,35 @@
 import Link from 'next/link';
 import styles from './ProjectSection.module.scss';
 import { projects } from '@/data/projectsData';
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { gsap } from '@/libs/gsap';
 import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
 import { isReducedMotion } from '@/utils/motion';
-import MatrixCodeAnimation from '@/components/MatrixCodeAnimation';
 import VideoBackground from '@/components/VideoBackground';
 
 if (typeof window !== 'undefined') {
     gsap.registerPlugin(ScrollTrigger);
+}
+
+// Word with cover box that scatters on scroll
+interface WordCoverProps {
+    word: string;
+    index: number;
+    onRegisterBox: (el: HTMLSpanElement | null, index: number) => void;
+    className?: string;
+}
+
+function WordCover({ word, index, onRegisterBox, className }: WordCoverProps) {
+    return (
+        <span className={`${styles.wordWrapper} ${className || ''}`}>
+            <span className={styles.wordText}>{word}</span>
+            <span
+                ref={(el) => onRegisterBox(el, index)}
+                className={styles.wordCover}
+                data-word-index={index}
+            />
+        </span>
+    );
 }
 
 interface ProjectCardProps {
@@ -18,7 +38,6 @@ interface ProjectCardProps {
     year: string;
     slug: string;
     index: number;
-    colorVariant: 'orange' | 'gold' | 'blue' | 'green';
 }
 
 // Magnetic Button Component
@@ -70,7 +89,7 @@ function MagneticButton({ children, href }: { children: React.ReactNode; href: s
 }
 
 // Project Card Component
-function ProjectCard({ title, category, year, slug, index, colorVariant }: ProjectCardProps) {
+function ProjectCard({ title, category, year, slug, index }: ProjectCardProps) {
     const cardRef = useRef<HTMLDivElement>(null);
     const animationRef = useRef<HTMLDivElement>(null);
     const contentRef = useRef<HTMLDivElement>(null);
@@ -145,14 +164,14 @@ function ProjectCard({ title, category, year, slug, index, colorVariant }: Proje
                     </div>
                 </div>
 
-                {/* Center: Matrix Animation */}
+                {/* Center: Video Background with Title */}
                 <div ref={animationRef} className={styles.imageContainer}>
-                    <MatrixCodeAnimation
-                        variant={colorVariant}
-                        speed="normal"
-                        density="normal"
-                        text={title}
+                    <VideoBackground
+                        src="/videos/projects-bg.mp4"
+                        opacity={0.8}
+                        overlay={false}
                     />
+                    <div className={styles.projectTitle}>{title}</div>
                 </div>
 
                 {/* Right: CTA */}
@@ -176,25 +195,120 @@ function ProjectCard({ title, category, year, slug, index, colorVariant }: Proje
 export default function ProjectSection() {
     const sectionRef = useRef<HTMLElement>(null);
     const headerRef = useRef<HTMLDivElement>(null);
+    const wordBoxesRef = useRef<(HTMLSpanElement | null)[]>([]);
+    const [boxesVisible, setBoxesVisible] = useState(true);
+
+    // Register word cover boxes
+    const registerBox = (el: HTMLSpanElement | null, index: number) => {
+        wordBoxesRef.current[index] = el;
+    };
 
     useEffect(() => {
-        if (isReducedMotion()) return;
+        if (isReducedMotion()) {
+            setBoxesVisible(false);
+            return;
+        }
 
         const ctx = gsap.context(() => {
-            // Header animation
-            gsap.fromTo(headerRef.current,
-                { opacity: 0, y: 100 },
-                {
-                    opacity: 1,
-                    y: 0,
-                    duration: 1.2,
-                    ease: 'power3.out',
-                    scrollTrigger: {
-                        trigger: headerRef.current,
-                        start: 'top 85%',
-                    }
+            const boxes = wordBoxesRef.current.filter(Boolean) as HTMLSpanElement[];
+
+            if (boxes.length > 0) {
+                const screenBottom = window.innerHeight + 300;
+
+                // Create scroll-driven animations for each box
+                // Boxes drop progressively as you scroll
+
+                // Box 0: FEATURED WORK - drifts LEFT
+                if (boxes[0]) {
+                    gsap.to(boxes[0], {
+                        y: screenBottom,
+                        x: -350,
+                        rotation: -45,
+                        scale: 0.2,
+                        opacity: 0,
+                        ease: 'none',
+                        scrollTrigger: {
+                            trigger: headerRef.current,
+                            start: 'top 90%',
+                            end: 'top 20%',
+                            scrub: 1,
+                        }
+                    });
                 }
-            );
+
+                // Box 1: 2024 — PRESENT - drifts RIGHT
+                if (boxes[1]) {
+                    gsap.to(boxes[1], {
+                        y: screenBottom,
+                        x: 380,
+                        rotation: 50,
+                        scale: 0.2,
+                        opacity: 0,
+                        ease: 'none',
+                        scrollTrigger: {
+                            trigger: headerRef.current,
+                            start: 'top 85%',
+                            end: 'top 15%',
+                            scrub: 1.2,
+                        }
+                    });
+                }
+
+                // Box 2: Big WORK - drifts RIGHT (heavier, slower)
+                if (boxes[2]) {
+                    gsap.to(boxes[2], {
+                        y: screenBottom,
+                        x: 300,
+                        rotation: 35,
+                        scale: 0.15,
+                        opacity: 0,
+                        ease: 'none',
+                        scrollTrigger: {
+                            trigger: headerRef.current,
+                            start: 'top 80%',
+                            end: 'top 10%',
+                            scrub: 1.5,
+                        }
+                    });
+                }
+
+                // Box 3: Selected projects - drifts LEFT
+                if (boxes[3]) {
+                    gsap.to(boxes[3], {
+                        y: screenBottom,
+                        x: -320,
+                        rotation: -40,
+                        scale: 0.2,
+                        opacity: 0,
+                        ease: 'none',
+                        scrollTrigger: {
+                            trigger: headerRef.current,
+                            start: 'top 75%',
+                            end: 'top 5%',
+                            scrub: 1.3,
+                        }
+                    });
+                }
+
+                // Box 4: crafted with precision - drifts RIGHT
+                if (boxes[4]) {
+                    gsap.to(boxes[4], {
+                        y: screenBottom,
+                        x: 360,
+                        rotation: 48,
+                        scale: 0.2,
+                        opacity: 0,
+                        ease: 'none',
+                        scrollTrigger: {
+                            trigger: headerRef.current,
+                            start: 'top 70%',
+                            end: 'top 0%',
+                            scrub: 1.4,
+                            onLeave: () => setBoxesVisible(false),
+                        }
+                    });
+                }
+            }
         }, sectionRef);
 
         return () => ctx.revert();
@@ -213,34 +327,34 @@ export default function ProjectSection() {
                 overlayDirection="radial"
             />
 
-            {/* Section Header */}
+            {/* Section Header with Word Cover Boxes */}
             <div ref={headerRef} className={styles.header}>
                 <div className={styles.headerMeta}>
-                    <span>FEATURED WORK</span>
-                    <span>2024 — PRESENT</span>
+                    <WordCover word="FEATURED WORK" index={0} onRegisterBox={registerBox} />
+                    <WordCover word="2024 — PRESENT" index={1} onRegisterBox={registerBox} />
                 </div>
-                <h1 className={styles.headerTitle}>WORK</h1>
+                <h1 className={styles.headerTitle}>
+                    <WordCover word="WORK" index={2} onRegisterBox={registerBox} className={styles.bigWord} />
+                </h1>
                 <p className={styles.headerSub}>
-                    Selected projects crafted with precision
+                    <WordCover word="Selected projects" index={3} onRegisterBox={registerBox} />
+                    {' '}
+                    <WordCover word="crafted with precision" index={4} onRegisterBox={registerBox} />
                 </p>
             </div>
 
             {/* Project Cards */}
             <div className={styles.projectsContainer}>
-                {displayProjects.map((project, index) => {
-                    const colorVariants: Array<'orange' | 'gold' | 'blue' | 'green'> = ['orange', 'gold', 'blue', 'green'];
-                    return (
-                        <ProjectCard
-                            key={project.slug}
-                            title={project.title.toUpperCase()}
-                            category={project.category?.[0] || 'Development'}
-                            year="2024"
-                            slug={project.slug}
-                            index={index}
-                            colorVariant={colorVariants[index % colorVariants.length]}
-                        />
-                    );
-                })}
+                {displayProjects.map((project, index) => (
+                    <ProjectCard
+                        key={project.slug}
+                        title={project.title.toUpperCase()}
+                        category={project.category?.[0] || 'Development'}
+                        year="2024"
+                        slug={project.slug}
+                        index={index}
+                    />
+                ))}
             </div>
 
             {/* Footer CTA */}

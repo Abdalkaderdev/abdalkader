@@ -4,6 +4,8 @@ import SmoothScrolling from "@/components/SmoothScrolling";
 // CustomCursor removed per user preference
 import "@/styles/globals.scss";  // Ensure this is your global SCSS import
 import type { AppProps } from "next/app";
+import type { NextPage } from "next";
+import type { ReactElement, ReactNode } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { useEffect, useRef, useState, useCallback } from "react";
 import { useRouter } from "next/router";
@@ -24,13 +26,28 @@ import StagingBanner from "@/src/components/StagingBanner";
 import StagingTools from "@/src/components/StagingTools";
 import { initializeStagingEnvironment } from "@/src/config/staging";
 import dynamic from "next/dynamic";
+import { RemoteControlProvider } from "@/contexts/RemoteControlContext";
+// MagneticCursor removed - was causing slowdown
+// import MagneticCursor from "@/components/MagneticCursor";
+
+// Custom page type with optional getLayout
+export type NextPageWithLayout<P = object, IP = P> = NextPage<P, IP> & {
+    getLayout?: (page: ReactElement) => ReactNode;
+};
+
+type AppPropsWithLayout = AppProps & {
+    Component: NextPageWithLayout;
+};
 
 // Dynamically import heavy components that don't need to load immediately
 const WelcomeModal = dynamic(() => import("@/components/WelcomeModal"), { ssr: false });
 const MusicPlayer = dynamic(() => import("@/components/MusicPlayer"), { ssr: false });
 
-export default function App({ Component, pageProps }: AppProps) {
+export default function App({ Component, pageProps }: AppPropsWithLayout) {
     const router = useRouter();
+
+    // Get custom layout or use default
+    const getLayout = Component.getLayout;
     const scrollPositions = useRef<{ [key: string]: number }>({});
     const [showStagingDashboard, setShowStagingDashboard] = useState(false);
     const isStaging = getEnvironment() === 'staging';
@@ -183,20 +200,28 @@ export default function App({ Component, pageProps }: AppProps) {
                             }
                         }}
                     >
-                        <SmoothScrolling>
-                            <Nav />
-                            <motion.main
-                                key="main-content"
-                                id="main"
-                                initial={{ opacity: 1 }}
-                                animate={{ opacity: 1 }}
-                                exit={{ opacity: prefersReducedMotion ? 1 : 0 }}  // Disable fade on exit if reduced motion
-                                transition={{ duration: prefersReducedMotion ? 0 : 0, ease: [0.22, 1, 0.36, 1] }}
-                            >
-                                <Component {...pageProps} />
-                            </motion.main>
-                            <Footer />
-                        </SmoothScrolling>
+                        {getLayout ? (
+                            // Use custom layout (e.g., controller page with no layout)
+                            getLayout(<Component {...pageProps} />)
+                        ) : (
+                            // Default layout with Nav, Footer, etc.
+                            <RemoteControlProvider>
+                                <SmoothScrolling>
+                                    <Nav />
+                                    <motion.main
+                                        key="main-content"
+                                        id="main"
+                                        initial={{ opacity: 1 }}
+                                        animate={{ opacity: 1 }}
+                                        exit={{ opacity: prefersReducedMotion ? 1 : 0 }}  // Disable fade on exit if reduced motion
+                                        transition={{ duration: prefersReducedMotion ? 0 : 0, ease: [0.22, 1, 0.36, 1] }}
+                                    >
+                                        <Component {...pageProps} />
+                                    </motion.main>
+                                    <Footer />
+                                </SmoothScrolling>
+                            </RemoteControlProvider>
+                        )}
                     </ErrorBoundary>
                     
                     {/* Staging Environment Components - Only show in staging environment */}
@@ -216,7 +241,7 @@ export default function App({ Component, pageProps }: AppProps) {
                 </motion.div>
             </AnimatePresence>
 
-            {/* Custom cursor removed per user preference */}
+            {/* Magnetic Cursor removed - was causing slowdown */}
 
             {/* Spiritual Enhancement Components */}
             <WelcomeModal onMusicToggle={handleMusicToggle} />

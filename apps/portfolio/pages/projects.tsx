@@ -1,6 +1,6 @@
 import CoffeeSection from "@/components/CoffeeSection";
 import EnhancedProjectHeroSection from "@/components/ProjectPage/EnhancedProjectHeroSection";
-import EnhancedProjectsSection from "@/components/ProjectPage/EnhancedProjectsSection";
+import ProjectShowcase from "@/components/ProjectPage/ProjectShowcase";
 import Head from "next/head";
 import { buildCanonical } from "@/utils/seo";
 
@@ -14,7 +14,7 @@ export default function ProjectPage() {
                 <link rel="canonical" href={buildCanonical('/projects')} />
             </Head>
             <EnhancedProjectHeroSection />
-            <EnhancedProjectsSection />
+            <ProjectShowcase />
             <CoffeeSection />
         </>
     );

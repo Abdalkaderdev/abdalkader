@@ -1,0 +1,157 @@
+[     806ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3000/images/icons/icon-192.png:0
+[     807ms] [WARNING] Error while trying to use the following icon from the Manifest: http://localhost:3000/images/icons/icon-192.png (Download error or resource isn't a valid image) @ http://localhost:3000/projects/:0
+[  328894ms] [WARNING] Image with src "/images/rooted-in-christ.jpg" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: "auto"' or 'height: "auto"' to maintain the aspect ratio. @ webpack-internal:///../../node_modules/.pnpm/next@14.2.25_react-dom@18.3.1_react@18.3.1_sass@1.93.2/node_modules/next/dist/shared/lib/utils/warn-once.js:15
+[  854846ms] [ERROR] ./components/ProjectPage/ProjectShowcase/index.tsx:5:1
+Module not found: Can't resolve 'lenis/react'
+  3 | import Link from 'next/link';
+  4 | import { gsap, ScrollTrigger } from '@/libs/gsap';
+> 5 | import { useLenis } from 'lenis/react';
+    | ^
+  6 | import styles from './ProjectShowcase.module.scss';
+  7 |
+  8 | interface ShowcaseProject {
+
+https://nextjs.org/docs/messages/module-not-found
+
+Import trace for requested module:
+./pages/projects.tsx @ webpack-internal:///../../node_modules/.pnpm/next@14.2.25_react-dom@18.3.1_react@18.3.1_sass@1.93.2/node_modules/next/dist/client/components/react-dev-overlay/internal/helpers/hydration-error-info.js:62
+[  854937ms] [ERROR] ./components/ProjectPage/ProjectShowcase/index.tsx:5:1
+Module not found: Can't resolve 'lenis/react'
+  3 | import Link from 'next/link';
+  4 | import { gsap, ScrollTrigger } from '@/libs/gsap';
+> 5 | import { useLenis } from 'lenis/react';
+    | ^
+  6 | import styles from './ProjectShowcase.module.scss';
+  7 |
+  8 | interface ShowcaseProject {
+
+https://nextjs.org/docs/messages/module-not-found
+
+Import trace for requested module:
+./pages/projects.tsx @ webpack-internal:///../../node_modules/.pnpm/next@14.2.25_react-dom@18.3.1_react@18.3.1_sass@1.93.2/node_modules/next/dist/client/components/react-dev-overlay/internal/helpers/hydration-error-info.js:62
+[  863038ms] [ERROR] ./components/ProjectPage/ProjectShowcase/index.tsx:5:1
+Module not found: Can't resolve 'lenis/react'
+  3 | import Link from 'next/link';
+  4 | import { gsap, ScrollTrigger } from '@/libs/gsap';
+> 5 | import { useLenis } from 'lenis/react';
+    | ^
+  6 | import styles from './ProjectShowcase.module.scss';
+  7 |
+  8 | interface ShowcaseProject {
+
+https://nextjs.org/docs/messages/module-not-found
+
+Import trace for requested module:
+./pages/projects.tsx @ webpack-internal:///../../node_modules/.pnpm/next@14.2.25_react-dom@18.3.1_react@18.3.1_sass@1.93.2/node_modules/next/dist/client/components/react-dev-overlay/internal/helpers/hydration-error-info.js:62
+[  863113ms] [ERROR] ./components/ProjectPage/ProjectShowcase/index.tsx:5:1
+Module not found: Can't resolve 'lenis/react'
+  3 | import Link from 'next/link';
+  4 | import { gsap, ScrollTrigger } from '@/libs/gsap';
+> 5 | import { useLenis } from 'lenis/react';
+    | ^
+  6 | import styles from './ProjectShowcase.module.scss';
+  7 |
+  8 | interface ShowcaseProject {
+
+https://nextjs.org/docs/messages/module-not-found
+
+Import trace for requested module:
+./pages/projects.tsx @ webpack-internal:///../../node_modules/.pnpm/next@14.2.25_react-dom@18.3.1_react@18.3.1_sass@1.93.2/node_modules/next/dist/client/components/react-dev-overlay/internal/helpers/hydration-error-info.js:62
+[  863165ms] [ERROR] ./components/ProjectPage/ProjectShowcase/index.tsx:5:1
+Module not found: Can't resolve 'lenis/react'
+  3 | import Link from 'next/link';
+  4 | import { gsap, ScrollTrigger } from '@/libs/gsap';
+> 5 | import { useLenis } from 'lenis/react';
+    | ^
+  6 | import styles from './ProjectShowcase.module.scss';
+  7 |
+  8 | interface ShowcaseProject {
+
+https://nextjs.org/docs/messages/module-not-found
+
+Import trace for requested module:
+./pages/projects.tsx @ webpack-internal:///../../node_modules/.pnpm/next@14.2.25_react-dom@18.3.1_react@18.3.1_sass@1.93.2/node_modules/next/dist/client/components/react-dev-overlay/internal/helpers/hydration-error-info.js:62
+[  883081ms] [ERROR] ./components/ProjectPage/ProjectShowcase/index.tsx:5:1
+Module not found: Can't resolve 'lenis/react'
+  3 | import Link from 'next/link';
+  4 | import { gsap, ScrollTrigger } from '@/libs/gsap';
+> 5 | import { useLenis } from 'lenis/react';
+    | ^
+  6 | import styles from './ProjectShowcase.module.scss';
+  7 |
+  8 | interface ShowcaseProject {
+
+https://nextjs.org/docs/messages/module-not-found
+
+Import trace for requested module:
+./pages/projects.tsx @ webpack-internal:///../../node_modules/.pnpm/next@14.2.25_react-dom@18.3.1_react@18.3.1_sass@1.93.2/node_modules/next/dist/client/components/react-dev-overlay/internal/helpers/hydration-error-info.js:62
+[  883306ms] [ERROR] ./components/ProjectPage/ProjectShowcase/index.tsx:5:1
+Module not found: Can't resolve 'lenis/react'
+  3 | import Link from 'next/link';
+  4 | import { gsap, ScrollTrigger } from '@/libs/gsap';
+> 5 | import { useLenis } from 'lenis/react';
+    | ^
+  6 | import styles from './ProjectShowcase.module.scss';
+  7 |
+  8 | interface ShowcaseProject {
+
+https://nextjs.org/docs/messages/module-not-found
+
+Import trace for requested module:
+./pages/projects.tsx @ webpack-internal:///../../node_modules/.pnpm/next@14.2.25_react-dom@18.3.1_react@18.3.1_sass@1.93.2/node_modules/next/dist/client/components/react-dev-overlay/internal/helpers/hydration-error-info.js:62
+[  883455ms] [ERROR] ./components/ProjectPage/ProjectShowcase/index.tsx:5:1
+Module not found: Can't resolve 'lenis/react'
+  3 | import Link from 'next/link';
+  4 | import { gsap, ScrollTrigger } from '@/libs/gsap';
+> 5 | import { useLenis } from 'lenis/react';
+    | ^
+  6 | import styles from './ProjectShowcase.module.scss';
+  7 |
+  8 | interface ShowcaseProject {
+
+https://nextjs.org/docs/messages/module-not-found
+
+Import trace for requested module:
+./pages/projects.tsx @ webpack-internal:///../../node_modules/.pnpm/next@14.2.25_react-dom@18.3.1_react@18.3.1_sass@1.93.2/node_modules/next/dist/client/components/react-dev-overlay/internal/helpers/hydration-error-info.js:62
+[  892724ms] [ERROR] ./components/ProjectPage/ProjectShowcase/index.tsx:5:1
+Module not found: Can't resolve 'lenis/react'
+  3 | import Link from 'next/link';
+  4 | import { gsap, ScrollTrigger } from '@/libs/gsap';
+> 5 | import { useLenis } from 'lenis/react';
+    | ^
+  6 | import styles from './ProjectShowcase.module.scss';
+  7 |
+  8 | interface ShowcaseProject {
+
+https://nextjs.org/docs/messages/module-not-found
+
+Import trace for requested module:
+./pages/projects.tsx @ webpack-internal:///../../node_modules/.pnpm/next@14.2.25_react-dom@18.3.1_react@18.3.1_sass@1.93.2/node_modules/next/dist/client/components/react-dev-overlay/internal/helpers/hydration-error-info.js:62
+[  892841ms] [ERROR] ./components/ProjectPage/ProjectShowcase/index.tsx:5:1
+Module not found: Can't resolve 'lenis/react'
+  3 | import Link from 'next/link';
+  4 | import { gsap, ScrollTrigger } from '@/libs/gsap';
+> 5 | import { useLenis } from 'lenis/react';
+    | ^
+  6 | import styles from './ProjectShowcase.module.scss';
+  7 |
+  8 | interface ShowcaseProject {
+
+https://nextjs.org/docs/messages/module-not-found
+
+Import trace for requested module:
+./pages/projects.tsx @ webpack-internal:///../../node_modules/.pnpm/next@14.2.25_react-dom@18.3.1_react@18.3.1_sass@1.93.2/node_modules/next/dist/client/components/react-dev-overlay/internal/helpers/hydration-error-info.js:62
+[  928263ms] [ERROR] ./components/ProjectPage/ProjectShowcase/index.tsx:5:1
+Module not found: Can't resolve 'lenis/react'
+  3 | import Link from 'next/link';
+  4 | import { gsap, ScrollTrigger } from '@/libs/gsap';
+> 5 | import { useLenis } from 'lenis/react';
+    | ^
+  6 | import styles from './ProjectShowcase.module.scss';
+  7 |
+  8 | interface ShowcaseProject {
+
+https://nextjs.org/docs/messages/module-not-found
+
+Import trace for requested module:
+./pages/projects.tsx @ webpack-internal:///../../node_modules/.pnpm/next@14.2.25_react-dom@18.3.1_react@18.3.1_sass@1.93.2/node_modules/next/dist/client/components/react-dev-overlay/internal/helpers/hydration-error-info.js:62

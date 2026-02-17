@@ -1,0 +1,581 @@
+[     352ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3002/_next/static/webpack/3c8a7bf5341721fb.webpack.hot-update.json:0
+[     427ms] [WARNING] Error while trying to use the following icon from the Manifest: http://localhost:3002/images/icons/icon-192.png (Download error or resource isn't a valid image) @ http://localhost:3002/:0
+[     696ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3002/_next/static/webpack/3c8a7bf5341721fb.webpack.hot-update.json:0
+[     762ms] [WARNING] Error while trying to use the following icon from the Manifest: http://localhost:3002/images/icons/icon-192.png (Download error or resource isn't a valid image) @ http://localhost:3002/:0
+[    1018ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3002/_next/static/webpack/3c8a7bf5341721fb.webpack.hot-update.json:0
+[    1086ms] [WARNING] Error while trying to use the following icon from the Manifest: http://localhost:3002/images/icons/icon-192.png (Download error or resource isn't a valid image) @ http://localhost:3002/:0
+[    1362ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3002/_next/static/webpack/3c8a7bf5341721fb.webpack.hot-update.json:0
+[    1428ms] [WARNING] Error while trying to use the following icon from the Manifest: http://localhost:3002/images/icons/icon-192.png (Download error or resource isn't a valid image) @ http://localhost:3002/:0
+[    1696ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3002/_next/static/webpack/3c8a7bf5341721fb.webpack.hot-update.json:0
+[    1756ms] [WARNING] Error while trying to use the following icon from the Manifest: http://localhost:3002/images/icons/icon-192.png (Download error or resource isn't a valid image) @ http://localhost:3002/:0
+[    2033ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3002/_next/static/webpack/3c8a7bf5341721fb.webpack.hot-update.json:0
+[    2086ms] [WARNING] Error while trying to use the following icon from the Manifest: http://localhost:3002/images/icons/icon-192.png (Download error or resource isn't a valid image) @ http://localhost:3002/:0
+[    2358ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3002/_next/static/webpack/3c8a7bf5341721fb.webpack.hot-update.json:0
+[    2421ms] [WARNING] Error while trying to use the following icon from the Manifest: http://localhost:3002/images/icons/icon-192.png (Download error or resource isn't a valid image) @ http://localhost:3002/:0
+[    2677ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3002/_next/static/webpack/3c8a7bf5341721fb.webpack.hot-update.json:0
+[    2739ms] [WARNING] Error while trying to use the following icon from the Manifest: http://localhost:3002/images/icons/icon-192.png (Download error or resource isn't a valid image) @ http://localhost:3002/:0
+[    3012ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3002/_next/static/webpack/3c8a7bf5341721fb.webpack.hot-update.json:0
+[    3112ms] [WARNING] Error while trying to use the following icon from the Manifest: http://localhost:3002/images/icons/icon-192.png (Download error or resource isn't a valid image) @ http://localhost:3002/:0
+[    3406ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3002/_next/static/webpack/3c8a7bf5341721fb.webpack.hot-update.json:0
+[    3467ms] [WARNING] Error while trying to use the following icon from the Manifest: http://localhost:3002/images/icons/icon-192.png (Download error or resource isn't a valid image) @ http://localhost:3002/:0
+[    3758ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3002/_next/static/webpack/3c8a7bf5341721fb.webpack.hot-update.json:0
+[    3825ms] [WARNING] Error while trying to use the following icon from the Manifest: http://localhost:3002/images/icons/icon-192.png (Download error or resource isn't a valid image) @ http://localhost:3002/:0
+[    4111ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3002/_next/static/webpack/3c8a7bf5341721fb.webpack.hot-update.json:0
+[    4177ms] [WARNING] Error while trying to use the following icon from the Manifest: http://localhost:3002/images/icons/icon-192.png (Download error or resource isn't a valid image) @ http://localhost:3002/:0
+[    4458ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3002/_next/static/webpack/3c8a7bf5341721fb.webpack.hot-update.json:0
+[    4533ms] [WARNING] Error while trying to use the following icon from the Manifest: http://localhost:3002/images/icons/icon-192.png (Download error or resource isn't a valid image) @ http://localhost:3002/:0
+[    4882ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3002/_next/static/webpack/3c8a7bf5341721fb.webpack.hot-update.json:0
+[    4971ms] [WARNING] Error while trying to use the following icon from the Manifest: http://localhost:3002/images/icons/icon-192.png (Download error or resource isn't a valid image) @ http://localhost:3002/:0
+[    5341ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3002/_next/static/webpack/3c8a7bf5341721fb.webpack.hot-update.json:0
+[    5404ms] [WARNING] Error while trying to use the following icon from the Manifest: http://localhost:3002/images/icons/icon-192.png (Download error or resource isn't a valid image) @ http://localhost:3002/:0
+[    5664ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3002/_next/static/webpack/3c8a7bf5341721fb.webpack.hot-update.json:0
+[    5726ms] [WARNING] Error while trying to use the following icon from the Manifest: http://localhost:3002/images/icons/icon-192.png (Download error or resource isn't a valid image) @ http://localhost:3002/:0
+[    5984ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3002/_next/static/webpack/3c8a7bf5341721fb.webpack.hot-update.json:0
+[    6048ms] [WARNING] Error while trying to use the following icon from the Manifest: http://localhost:3002/images/icons/icon-192.png (Download error or resource isn't a valid image) @ http://localhost:3002/:0
+[    6314ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3002/_next/static/webpack/3c8a7bf5341721fb.webpack.hot-update.json:0
+[    6379ms] [WARNING] Error while trying to use the following icon from the Manifest: http://localhost:3002/images/icons/icon-192.png (Download error or resource isn't a valid image) @ http://localhost:3002/:0
+[    6644ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3002/_next/static/webpack/3c8a7bf5341721fb.webpack.hot-update.json:0
+[    6708ms] [WARNING] Error while trying to use the following icon from the Manifest: http://localhost:3002/images/icons/icon-192.png (Download error or resource isn't a valid image) @ http://localhost:3002/:0
+[    6967ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3002/_next/static/webpack/3c8a7bf5341721fb.webpack.hot-update.json:0
+[    7029ms] [WARNING] Error while trying to use the following icon from the Manifest: http://localhost:3002/images/icons/icon-192.png (Download error or resource isn't a valid image) @ http://localhost:3002/:0
+[    7293ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3002/_next/static/webpack/3c8a7bf5341721fb.webpack.hot-update.json:0
+[    7344ms] [WARNING] Error while trying to use the following icon from the Manifest: http://localhost:3002/images/icons/icon-192.png (Download error or resource isn't a valid image) @ http://localhost:3002/:0
+[    7620ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3002/_next/static/webpack/3c8a7bf5341721fb.webpack.hot-update.json:0
+[    7669ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3002/images/icons/icon-192.png:0
+[    7677ms] [WARNING] Error while trying to use the following icon from the Manifest: http://localhost:3002/images/icons/icon-192.png (Download error or resource isn't a valid image) @ http://localhost:3002/:0
+[    7950ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3002/_next/static/webpack/3c8a7bf5341721fb.webpack.hot-update.json:0
+[    8002ms] [WARNING] Error while trying to use the following icon from the Manifest: http://localhost:3002/images/icons/icon-192.png (Download error or resource isn't a valid image) @ http://localhost:3002/:0
+[    8270ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3002/_next/static/webpack/3c8a7bf5341721fb.webpack.hot-update.json:0
+[    8332ms] [WARNING] Error while trying to use the following icon from the Manifest: http://localhost:3002/images/icons/icon-192.png (Download error or resource isn't a valid image) @ http://localhost:3002/:0
+[    8595ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3002/_next/static/webpack/3c8a7bf5341721fb.webpack.hot-update.json:0
+[    8661ms] [WARNING] Error while trying to use the following icon from the Manifest: http://localhost:3002/images/icons/icon-192.png (Download error or resource isn't a valid image) @ http://localhost:3002/:0
+[    9006ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3002/_next/static/webpack/3c8a7bf5341721fb.webpack.hot-update.json:0
+[    9083ms] [WARNING] Error while trying to use the following icon from the Manifest: http://localhost:3002/images/icons/icon-192.png (Download error or resource isn't a valid image) @ http://localhost:3002/:0
+[    9465ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3002/_next/static/webpack/3c8a7bf5341721fb.webpack.hot-update.json:0
+[    9568ms] [WARNING] Error while trying to use the following icon from the Manifest: http://localhost:3002/images/icons/icon-192.png (Download error or resource isn't a valid image) @ http://localhost:3002/:0
+[    9890ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3002/_next/static/webpack/3c8a7bf5341721fb.webpack.hot-update.json:0
+[    9973ms] [WARNING] Error while trying to use the following icon from the Manifest: http://localhost:3002/images/icons/icon-192.png (Download error or resource isn't a valid image) @ http://localhost:3002/:0
+[   10308ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3002/_next/static/webpack/3c8a7bf5341721fb.webpack.hot-update.json:0
+[   10392ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3002/images/icons/icon-192.png:0
+[   10405ms] [WARNING] Error while trying to use the following icon from the Manifest: http://localhost:3002/images/icons/icon-192.png (Download error or resource isn't a valid image) @ http://localhost:3002/:0
+[   10765ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3002/_next/static/webpack/3c8a7bf5341721fb.webpack.hot-update.json:0
+[   10846ms] [WARNING] Error while trying to use the following icon from the Manifest: http://localhost:3002/images/icons/icon-192.png (Download error or resource isn't a valid image) @ http://localhost:3002/:0
+[   11225ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3002/_next/static/webpack/3c8a7bf5341721fb.webpack.hot-update.json:0
+[   11314ms] [WARNING] Error while trying to use the following icon from the Manifest: http://localhost:3002/images/icons/icon-192.png (Download error or resource isn't a valid image) @ http://localhost:3002/:0
+[   11633ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3002/_next/static/webpack/3c8a7bf5341721fb.webpack.hot-update.json:0
+[   11707ms] [WARNING] Error while trying to use the following icon from the Manifest: http://localhost:3002/images/icons/icon-192.png (Download error or resource isn't a valid image) @ http://localhost:3002/:0
+[   12072ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3002/_next/static/webpack/3c8a7bf5341721fb.webpack.hot-update.json:0
+[   12145ms] [WARNING] Error while trying to use the following icon from the Manifest: http://localhost:3002/images/icons/icon-192.png (Download error or resource isn't a valid image) @ http://localhost:3002/:0
+[   12442ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3002/_next/static/webpack/3c8a7bf5341721fb.webpack.hot-update.json:0
+[   12507ms] [WARNING] Error while trying to use the following icon from the Manifest: http://localhost:3002/images/icons/icon-192.png (Download error or resource isn't a valid image) @ http://localhost:3002/:0
+[   12834ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3002/_next/static/webpack/3c8a7bf5341721fb.webpack.hot-update.json:0
+[   12911ms] [WARNING] Error while trying to use the following icon from the Manifest: http://localhost:3002/images/icons/icon-192.png (Download error or resource isn't a valid image) @ http://localhost:3002/:0
+[   13209ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3002/_next/static/webpack/3c8a7bf5341721fb.webpack.hot-update.json:0
+[   13277ms] [WARNING] Error while trying to use the following icon from the Manifest: http://localhost:3002/images/icons/icon-192.png (Download error or resource isn't a valid image) @ http://localhost:3002/:0
+[   13583ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3002/_next/static/webpack/3c8a7bf5341721fb.webpack.hot-update.json:0
+[   13667ms] [WARNING] Error while trying to use the following icon from the Manifest: http://localhost:3002/images/icons/icon-192.png (Download error or resource isn't a valid image) @ http://localhost:3002/:0
+[   13965ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3002/_next/static/webpack/3c8a7bf5341721fb.webpack.hot-update.json:0
+[   14021ms] [WARNING] Error while trying to use the following icon from the Manifest: http://localhost:3002/images/icons/icon-192.png (Download error or resource isn't a valid image) @ http://localhost:3002/:0
+[   14303ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3002/_next/static/webpack/3c8a7bf5341721fb.webpack.hot-update.json:0
+[   14368ms] [WARNING] Error while trying to use the following icon from the Manifest: http://localhost:3002/images/icons/icon-192.png (Download error or resource isn't a valid image) @ http://localhost:3002/:0
+[   14659ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3002/_next/static/webpack/3c8a7bf5341721fb.webpack.hot-update.json:0
+[   14717ms] [WARNING] Error while trying to use the following icon from the Manifest: http://localhost:3002/images/icons/icon-192.png (Download error or resource isn't a valid image) @ http://localhost:3002/:0
+[   14982ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3002/_next/static/webpack/3c8a7bf5341721fb.webpack.hot-update.json:0
+[   15041ms] [WARNING] Error while trying to use the following icon from the Manifest: http://localhost:3002/images/icons/icon-192.png (Download error or resource isn't a valid image) @ http://localhost:3002/:0
+[   15371ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3002/_next/static/webpack/3c8a7bf5341721fb.webpack.hot-update.json:0
+[   15395ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3002/images/icons/icon-192.png:0
+[   15421ms] [WARNING] Error while trying to use the following icon from the Manifest: http://localhost:3002/images/icons/icon-192.png (Download error or resource isn't a valid image) @ http://localhost:3002/:0
+[   15697ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3002/_next/static/webpack/3c8a7bf5341721fb.webpack.hot-update.json:0
+[   15764ms] [WARNING] Error while trying to use the following icon from the Manifest: http://localhost:3002/images/icons/icon-192.png (Download error or resource isn't a valid image) @ http://localhost:3002/:0
+[   16018ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3002/_next/static/webpack/3c8a7bf5341721fb.webpack.hot-update.json:0
+[   16078ms] [WARNING] Error while trying to use the following icon from the Manifest: http://localhost:3002/images/icons/icon-192.png (Download error or resource isn't a valid image) @ http://localhost:3002/:0
+[   16334ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3002/_next/static/webpack/3c8a7bf5341721fb.webpack.hot-update.json:0
+[   16386ms] [WARNING] Error while trying to use the following icon from the Manifest: http://localhost:3002/images/icons/icon-192.png (Download error or resource isn't a valid image) @ http://localhost:3002/:0
+[   16658ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3002/_next/static/webpack/3c8a7bf5341721fb.webpack.hot-update.json:0
+[   16722ms] [WARNING] Error while trying to use the following icon from the Manifest: http://localhost:3002/images/icons/icon-192.png (Download error or resource isn't a valid image) @ http://localhost:3002/:0
+[   16984ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3002/_next/static/webpack/3c8a7bf5341721fb.webpack.hot-update.json:0
+[   17046ms] [WARNING] Error while trying to use the following icon from the Manifest: http://localhost:3002/images/icons/icon-192.png (Download error or resource isn't a valid image) @ http://localhost:3002/:0
+[   17300ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3002/_next/static/webpack/3c8a7bf5341721fb.webpack.hot-update.json:0
+[   17352ms] [WARNING] Error while trying to use the following icon from the Manifest: http://localhost:3002/images/icons/icon-192.png (Download error or resource isn't a valid image) @ http://localhost:3002/:0
+[   17609ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3002/_next/static/webpack/3c8a7bf5341721fb.webpack.hot-update.json:0
+[   17663ms] [WARNING] Error while trying to use the following icon from the Manifest: http://localhost:3002/images/icons/icon-192.png (Download error or resource isn't a valid image) @ http://localhost:3002/:0
+[   17929ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3002/_next/static/webpack/3c8a7bf5341721fb.webpack.hot-update.json:0
+[   17992ms] [WARNING] Error while trying to use the following icon from the Manifest: http://localhost:3002/images/icons/icon-192.png (Download error or resource isn't a valid image) @ http://localhost:3002/:0
+[   18266ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3002/_next/static/webpack/3c8a7bf5341721fb.webpack.hot-update.json:0
+[   18319ms] [WARNING] Error while trying to use the following icon from the Manifest: http://localhost:3002/images/icons/icon-192.png (Download error or resource isn't a valid image) @ http://localhost:3002/:0
+[   18610ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3002/_next/static/webpack/3c8a7bf5341721fb.webpack.hot-update.json:0
+[   18675ms] [WARNING] Error while trying to use the following icon from the Manifest: http://localhost:3002/images/icons/icon-192.png (Download error or resource isn't a valid image) @ http://localhost:3002/:0
+[   18934ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3002/_next/static/webpack/3c8a7bf5341721fb.webpack.hot-update.json:0
+[   18995ms] [WARNING] Error while trying to use the following icon from the Manifest: http://localhost:3002/images/icons/icon-192.png (Download error or resource isn't a valid image) @ http://localhost:3002/:0
+[   19286ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3002/_next/static/webpack/3c8a7bf5341721fb.webpack.hot-update.json:0
+[   19359ms] [WARNING] Error while trying to use the following icon from the Manifest: http://localhost:3002/images/icons/icon-192.png (Download error or resource isn't a valid image) @ http://localhost:3002/:0
+[   19657ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3002/_next/static/webpack/3c8a7bf5341721fb.webpack.hot-update.json:0
+[   19689ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3002/images/icons/icon-192.png:0
+[   19716ms] [WARNING] Error while trying to use the following icon from the Manifest: http://localhost:3002/images/icons/icon-192.png (Download error or resource isn't a valid image) @ http://localhost:3002/:0
+[   20044ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3002/_next/static/webpack/3c8a7bf5341721fb.webpack.hot-update.json:0
+[   20080ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3002/images/icons/icon-192.png:0
+[   20110ms] [WARNING] Error while trying to use the following icon from the Manifest: http://localhost:3002/images/icons/icon-192.png (Download error or resource isn't a valid image) @ http://localhost:3002/:0
+[   20490ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3002/_next/static/webpack/3c8a7bf5341721fb.webpack.hot-update.json:0
+[   20573ms] [WARNING] Error while trying to use the following icon from the Manifest: http://localhost:3002/images/icons/icon-192.png (Download error or resource isn't a valid image) @ http://localhost:3002/:0
+[   20999ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3002/_next/static/webpack/3c8a7bf5341721fb.webpack.hot-update.json:0
+[   21049ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3002/images/icons/icon-192.png:0
+[   21050ms] [WARNING] Error while trying to use the following icon from the Manifest: http://localhost:3002/images/icons/icon-192.png (Download error or resource isn't a valid image) @ http://localhost:3002/:0
+[   21472ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3002/_next/static/webpack/3c8a7bf5341721fb.webpack.hot-update.json:0
+[   21547ms] [WARNING] Error while trying to use the following icon from the Manifest: http://localhost:3002/images/icons/icon-192.png (Download error or resource isn't a valid image) @ http://localhost:3002/:0
+[   21906ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3002/_next/static/webpack/3c8a7bf5341721fb.webpack.hot-update.json:0
+[   21987ms] [WARNING] Error while trying to use the following icon from the Manifest: http://localhost:3002/images/icons/icon-192.png (Download error or resource isn't a valid image) @ http://localhost:3002/:0
+[   22307ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3002/_next/static/webpack/3c8a7bf5341721fb.webpack.hot-update.json:0
+[   22358ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3002/images/icons/icon-192.png:0
+[   22366ms] [WARNING] Error while trying to use the following icon from the Manifest: http://localhost:3002/images/icons/icon-192.png (Download error or resource isn't a valid image) @ http://localhost:3002/:0
+[   22729ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3002/_next/static/webpack/3c8a7bf5341721fb.webpack.hot-update.json:0
+[   22797ms] [WARNING] Error while trying to use the following icon from the Manifest: http://localhost:3002/images/icons/icon-192.png (Download error or resource isn't a valid image) @ http://localhost:3002/:0
+[   23084ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3002/_next/static/webpack/3c8a7bf5341721fb.webpack.hot-update.json:0
+[   23150ms] [WARNING] Error while trying to use the following icon from the Manifest: http://localhost:3002/images/icons/icon-192.png (Download error or resource isn't a valid image) @ http://localhost:3002/:0
+[   23449ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3002/_next/static/webpack/3c8a7bf5341721fb.webpack.hot-update.json:0
+[   23526ms] [WARNING] Error while trying to use the following icon from the Manifest: http://localhost:3002/images/icons/icon-192.png (Download error or resource isn't a valid image) @ http://localhost:3002/:0
+[   23812ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3002/_next/static/webpack/3c8a7bf5341721fb.webpack.hot-update.json:0
+[   23886ms] [WARNING] Error while trying to use the following icon from the Manifest: http://localhost:3002/images/icons/icon-192.png (Download error or resource isn't a valid image) @ http://localhost:3002/:0
+[   24147ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3002/_next/static/webpack/3c8a7bf5341721fb.webpack.hot-update.json:0
+[   24215ms] [WARNING] Error while trying to use the following icon from the Manifest: http://localhost:3002/images/icons/icon-192.png (Download error or resource isn't a valid image) @ http://localhost:3002/:0
+[   24484ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3002/_next/static/webpack/3c8a7bf5341721fb.webpack.hot-update.json:0
+[   24553ms] [WARNING] Error while trying to use the following icon from the Manifest: http://localhost:3002/images/icons/icon-192.png (Download error or resource isn't a valid image) @ http://localhost:3002/:0
+[   24813ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3002/_next/static/webpack/3c8a7bf5341721fb.webpack.hot-update.json:0
+[   24868ms] [WARNING] Error while trying to use the following icon from the Manifest: http://localhost:3002/images/icons/icon-192.png (Download error or resource isn't a valid image) @ http://localhost:3002/:0
+[   25148ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3002/_next/static/webpack/3c8a7bf5341721fb.webpack.hot-update.json:0
+[   25206ms] [WARNING] Error while trying to use the following icon from the Manifest: http://localhost:3002/images/icons/icon-192.png (Download error or resource isn't a valid image) @ http://localhost:3002/:0
+[   25496ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3002/_next/static/webpack/3c8a7bf5341721fb.webpack.hot-update.json:0
+[   25570ms] [WARNING] Error while trying to use the following icon from the Manifest: http://localhost:3002/images/icons/icon-192.png (Download error or resource isn't a valid image) @ http://localhost:3002/:0
+[   25912ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3002/_next/static/webpack/3c8a7bf5341721fb.webpack.hot-update.json:0
+[   25983ms] [WARNING] Error while trying to use the following icon from the Manifest: http://localhost:3002/images/icons/icon-192.png (Download error or resource isn't a valid image) @ http://localhost:3002/:0
+[   26277ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3002/_next/static/webpack/3c8a7bf5341721fb.webpack.hot-update.json:0
+[   26344ms] [WARNING] Error while trying to use the following icon from the Manifest: http://localhost:3002/images/icons/icon-192.png (Download error or resource isn't a valid image) @ http://localhost:3002/:0
+[   26618ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3002/_next/static/webpack/3c8a7bf5341721fb.webpack.hot-update.json:0
+[   26679ms] [WARNING] Error while trying to use the following icon from the Manifest: http://localhost:3002/images/icons/icon-192.png (Download error or resource isn't a valid image) @ http://localhost:3002/:0
+[   26940ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3002/_next/static/webpack/3c8a7bf5341721fb.webpack.hot-update.json:0
+[   27000ms] [WARNING] Error while trying to use the following icon from the Manifest: http://localhost:3002/images/icons/icon-192.png (Download error or resource isn't a valid image) @ http://localhost:3002/:0
+[   27263ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3002/_next/static/webpack/3c8a7bf5341721fb.webpack.hot-update.json:0
+[   27327ms] [WARNING] Error while trying to use the following icon from the Manifest: http://localhost:3002/images/icons/icon-192.png (Download error or resource isn't a valid image) @ http://localhost:3002/:0
+[   27589ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3002/_next/static/webpack/3c8a7bf5341721fb.webpack.hot-update.json:0
+[   27645ms] [WARNING] Error while trying to use the following icon from the Manifest: http://localhost:3002/images/icons/icon-192.png (Download error or resource isn't a valid image) @ http://localhost:3002/:0
+[   27917ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3002/_next/static/webpack/3c8a7bf5341721fb.webpack.hot-update.json:0
+[   27973ms] [WARNING] Error while trying to use the following icon from the Manifest: http://localhost:3002/images/icons/icon-192.png (Download error or resource isn't a valid image) @ http://localhost:3002/:0
+[   28238ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3002/_next/static/webpack/3c8a7bf5341721fb.webpack.hot-update.json:0
+[   28308ms] [WARNING] Error while trying to use the following icon from the Manifest: http://localhost:3002/images/icons/icon-192.png (Download error or resource isn't a valid image) @ http://localhost:3002/:0
+[   28592ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3002/_next/static/webpack/3c8a7bf5341721fb.webpack.hot-update.json:0
+[   28662ms] [WARNING] Error while trying to use the following icon from the Manifest: http://localhost:3002/images/icons/icon-192.png (Download error or resource isn't a valid image) @ http://localhost:3002/:0
+[   28932ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3002/_next/static/webpack/3c8a7bf5341721fb.webpack.hot-update.json:0
+[   28957ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3002/images/icons/icon-192.png:0
+[   28978ms] [WARNING] Error while trying to use the following icon from the Manifest: http://localhost:3002/images/icons/icon-192.png (Download error or resource isn't a valid image) @ http://localhost:3002/:0
+[   29258ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3002/_next/static/webpack/3c8a7bf5341721fb.webpack.hot-update.json:0
+[   29316ms] [WARNING] Error while trying to use the following icon from the Manifest: http://localhost:3002/images/icons/icon-192.png (Download error or resource isn't a valid image) @ http://localhost:3002/:0
+[   29595ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3002/_next/static/webpack/3c8a7bf5341721fb.webpack.hot-update.json:0
+[   29651ms] [WARNING] Error while trying to use the following icon from the Manifest: http://localhost:3002/images/icons/icon-192.png (Download error or resource isn't a valid image) @ http://localhost:3002/:0
+[   29899ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3002/_next/static/webpack/3c8a7bf5341721fb.webpack.hot-update.json:0
+[   29929ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3002/images/icons/icon-192.png:0
+[   29929ms] [WARNING] Error while trying to use the following icon from the Manifest: http://localhost:3002/images/icons/icon-192.png (Download error or resource isn't a valid image) @ http://localhost:3002/:0
+[   30237ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3002/_next/static/webpack/3c8a7bf5341721fb.webpack.hot-update.json:0
+[   30322ms] [WARNING] Error while trying to use the following icon from the Manifest: http://localhost:3002/images/icons/icon-192.png (Download error or resource isn't a valid image) @ http://localhost:3002/:0
+[   30630ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3002/_next/static/webpack/3c8a7bf5341721fb.webpack.hot-update.json:0
+[   30659ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3002/images/icons/icon-192.png:0
+[   30660ms] [WARNING] Error while trying to use the following icon from the Manifest: http://localhost:3002/images/icons/icon-192.png (Download error or resource isn't a valid image) @ http://localhost:3002/:0
+[   31002ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3002/_next/static/webpack/3c8a7bf5341721fb.webpack.hot-update.json:0
+[   31065ms] [WARNING] Error while trying to use the following icon from the Manifest: http://localhost:3002/images/icons/icon-192.png (Download error or resource isn't a valid image) @ http://localhost:3002/:0
+[   31342ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3002/_next/static/webpack/3c8a7bf5341721fb.webpack.hot-update.json:0
+[   31405ms] [WARNING] Error while trying to use the following icon from the Manifest: http://localhost:3002/images/icons/icon-192.png (Download error or resource isn't a valid image) @ http://localhost:3002/:0
+[   31674ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3002/_next/static/webpack/3c8a7bf5341721fb.webpack.hot-update.json:0
+[   31744ms] [WARNING] Error while trying to use the following icon from the Manifest: http://localhost:3002/images/icons/icon-192.png (Download error or resource isn't a valid image) @ http://localhost:3002/:0
+[   32037ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3002/_next/static/webpack/3c8a7bf5341721fb.webpack.hot-update.json:0
+[   32105ms] [WARNING] Error while trying to use the following icon from the Manifest: http://localhost:3002/images/icons/icon-192.png (Download error or resource isn't a valid image) @ http://localhost:3002/:0
+[   32369ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3002/_next/static/webpack/3c8a7bf5341721fb.webpack.hot-update.json:0
+[   32435ms] [WARNING] Error while trying to use the following icon from the Manifest: http://localhost:3002/images/icons/icon-192.png (Download error or resource isn't a valid image) @ http://localhost:3002/:0
+[   32709ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3002/_next/static/webpack/3c8a7bf5341721fb.webpack.hot-update.json:0
+[   32778ms] [WARNING] Error while trying to use the following icon from the Manifest: http://localhost:3002/images/icons/icon-192.png (Download error or resource isn't a valid image) @ http://localhost:3002/:0
+[   33080ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3002/_next/static/webpack/3c8a7bf5341721fb.webpack.hot-update.json:0
+[   33137ms] [WARNING] Error while trying to use the following icon from the Manifest: http://localhost:3002/images/icons/icon-192.png (Download error or resource isn't a valid image) @ http://localhost:3002/:0
+[   33432ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3002/_next/static/webpack/3c8a7bf5341721fb.webpack.hot-update.json:0
+[   33491ms] [WARNING] Error while trying to use the following icon from the Manifest: http://localhost:3002/images/icons/icon-192.png (Download error or resource isn't a valid image) @ http://localhost:3002/:0
+[   33759ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3002/_next/static/webpack/3c8a7bf5341721fb.webpack.hot-update.json:0
+[   33820ms] [WARNING] Error while trying to use the following icon from the Manifest: http://localhost:3002/images/icons/icon-192.png (Download error or resource isn't a valid image) @ http://localhost:3002/:0
+[   34100ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3002/_next/static/webpack/3c8a7bf5341721fb.webpack.hot-update.json:0
+[   34157ms] [WARNING] Error while trying to use the following icon from the Manifest: http://localhost:3002/images/icons/icon-192.png (Download error or resource isn't a valid image) @ http://localhost:3002/:0
+[   34438ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3002/_next/static/webpack/3c8a7bf5341721fb.webpack.hot-update.json:0
+[   34511ms] [WARNING] Error while trying to use the following icon from the Manifest: http://localhost:3002/images/icons/icon-192.png (Download error or resource isn't a valid image) @ http://localhost:3002/:0
+[   34787ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3002/_next/static/webpack/3c8a7bf5341721fb.webpack.hot-update.json:0
+[   34846ms] [WARNING] Error while trying to use the following icon from the Manifest: http://localhost:3002/images/icons/icon-192.png (Download error or resource isn't a valid image) @ http://localhost:3002/:0
+[   35122ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3002/_next/static/webpack/3c8a7bf5341721fb.webpack.hot-update.json:0
+[   35179ms] [WARNING] Error while trying to use the following icon from the Manifest: http://localhost:3002/images/icons/icon-192.png (Download error or resource isn't a valid image) @ http://localhost:3002/:0
+[   35439ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3002/_next/static/webpack/3c8a7bf5341721fb.webpack.hot-update.json:0
+[   35468ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3002/images/icons/icon-192.png:0
+[   35496ms] [WARNING] Error while trying to use the following icon from the Manifest: http://localhost:3002/images/icons/icon-192.png (Download error or resource isn't a valid image) @ http://localhost:3002/:0
+[   35806ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3002/_next/static/webpack/3c8a7bf5341721fb.webpack.hot-update.json:0
+[   35885ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3002/images/icons/icon-192.png:0
+[   35895ms] [WARNING] Error while trying to use the following icon from the Manifest: http://localhost:3002/images/icons/icon-192.png (Download error or resource isn't a valid image) @ http://localhost:3002/:0
+[   36189ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3002/_next/static/webpack/3c8a7bf5341721fb.webpack.hot-update.json:0
+[   36243ms] [WARNING] Error while trying to use the following icon from the Manifest: http://localhost:3002/images/icons/icon-192.png (Download error or resource isn't a valid image) @ http://localhost:3002/:0
+[   36525ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3002/_next/static/webpack/3c8a7bf5341721fb.webpack.hot-update.json:0
+[   36592ms] [WARNING] Error while trying to use the following icon from the Manifest: http://localhost:3002/images/icons/icon-192.png (Download error or resource isn't a valid image) @ http://localhost:3002/:0
+[   36867ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3002/_next/static/webpack/3c8a7bf5341721fb.webpack.hot-update.json:0
+[   36930ms] [WARNING] Error while trying to use the following icon from the Manifest: http://localhost:3002/images/icons/icon-192.png (Download error or resource isn't a valid image) @ http://localhost:3002/:0
+[   37204ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3002/_next/static/webpack/3c8a7bf5341721fb.webpack.hot-update.json:0
+[   37261ms] [WARNING] Error while trying to use the following icon from the Manifest: http://localhost:3002/images/icons/icon-192.png (Download error or resource isn't a valid image) @ http://localhost:3002/:0
+[   37540ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3002/_next/static/webpack/3c8a7bf5341721fb.webpack.hot-update.json:0
+[   37603ms] [WARNING] Error while trying to use the following icon from the Manifest: http://localhost:3002/images/icons/icon-192.png (Download error or resource isn't a valid image) @ http://localhost:3002/:0
+[   37877ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3002/_next/static/webpack/3c8a7bf5341721fb.webpack.hot-update.json:0
+[   37934ms] [WARNING] Error while trying to use the following icon from the Manifest: http://localhost:3002/images/icons/icon-192.png (Download error or resource isn't a valid image) @ http://localhost:3002/:0
+[   38198ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3002/_next/static/webpack/3c8a7bf5341721fb.webpack.hot-update.json:0
+[   38257ms] [WARNING] Error while trying to use the following icon from the Manifest: http://localhost:3002/images/icons/icon-192.png (Download error or resource isn't a valid image) @ http://localhost:3002/:0
+[   38521ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3002/_next/static/webpack/3c8a7bf5341721fb.webpack.hot-update.json:0
+[   38585ms] [WARNING] Error while trying to use the following icon from the Manifest: http://localhost:3002/images/icons/icon-192.png (Download error or resource isn't a valid image) @ http://localhost:3002/:0
+[   38843ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3002/_next/static/webpack/3c8a7bf5341721fb.webpack.hot-update.json:0
+[   38909ms] [WARNING] Error while trying to use the following icon from the Manifest: http://localhost:3002/images/icons/icon-192.png (Download error or resource isn't a valid image) @ http://localhost:3002/:0
+[   39173ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3002/_next/static/webpack/3c8a7bf5341721fb.webpack.hot-update.json:0
+[   39232ms] [WARNING] Error while trying to use the following icon from the Manifest: http://localhost:3002/images/icons/icon-192.png (Download error or resource isn't a valid image) @ http://localhost:3002/:0
+[   39495ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3002/_next/static/webpack/3c8a7bf5341721fb.webpack.hot-update.json:0
+[   39556ms] [WARNING] Error while trying to use the following icon from the Manifest: http://localhost:3002/images/icons/icon-192.png (Download error or resource isn't a valid image) @ http://localhost:3002/:0
+[   39847ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3002/_next/static/webpack/3c8a7bf5341721fb.webpack.hot-update.json:0
+[   39908ms] [WARNING] Error while trying to use the following icon from the Manifest: http://localhost:3002/images/icons/icon-192.png (Download error or resource isn't a valid image) @ http://localhost:3002/:0
+[   40221ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3002/_next/static/webpack/3c8a7bf5341721fb.webpack.hot-update.json:0
+[   40304ms] [WARNING] Error while trying to use the following icon from the Manifest: http://localhost:3002/images/icons/icon-192.png (Download error or resource isn't a valid image) @ http://localhost:3002/:0
+[   40574ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3002/_next/static/webpack/3c8a7bf5341721fb.webpack.hot-update.json:0
+[   40645ms] [WARNING] Error while trying to use the following icon from the Manifest: http://localhost:3002/images/icons/icon-192.png (Download error or resource isn't a valid image) @ http://localhost:3002/:0
+[   40938ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3002/_next/static/webpack/3c8a7bf5341721fb.webpack.hot-update.json:0
+[   40997ms] [WARNING] Error while trying to use the following icon from the Manifest: http://localhost:3002/images/icons/icon-192.png (Download error or resource isn't a valid image) @ http://localhost:3002/:0
+[   41287ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3002/_next/static/webpack/3c8a7bf5341721fb.webpack.hot-update.json:0
+[   41344ms] [WARNING] Error while trying to use the following icon from the Manifest: http://localhost:3002/images/icons/icon-192.png (Download error or resource isn't a valid image) @ http://localhost:3002/:0
+[   41618ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3002/_next/static/webpack/3c8a7bf5341721fb.webpack.hot-update.json:0
+[   41670ms] [WARNING] Error while trying to use the following icon from the Manifest: http://localhost:3002/images/icons/icon-192.png (Download error or resource isn't a valid image) @ http://localhost:3002/:0
+[   41925ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3002/_next/static/webpack/3c8a7bf5341721fb.webpack.hot-update.json:0
+[   41978ms] [WARNING] Error while trying to use the following icon from the Manifest: http://localhost:3002/images/icons/icon-192.png (Download error or resource isn't a valid image) @ http://localhost:3002/:0
+[   42241ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3002/_next/static/webpack/3c8a7bf5341721fb.webpack.hot-update.json:0
+[   42289ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3002/images/icons/icon-192.png:0
+[   42295ms] [WARNING] Error while trying to use the following icon from the Manifest: http://localhost:3002/images/icons/icon-192.png (Download error or resource isn't a valid image) @ http://localhost:3002/:0
+[   42577ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3002/_next/static/webpack/3c8a7bf5341721fb.webpack.hot-update.json:0
+[   42651ms] [WARNING] Error while trying to use the following icon from the Manifest: http://localhost:3002/images/icons/icon-192.png (Download error or resource isn't a valid image) @ http://localhost:3002/:0
+[   42941ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3002/_next/static/webpack/3c8a7bf5341721fb.webpack.hot-update.json:0
+[   43006ms] [WARNING] Error while trying to use the following icon from the Manifest: http://localhost:3002/images/icons/icon-192.png (Download error or resource isn't a valid image) @ http://localhost:3002/:0
+[   43288ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3002/_next/static/webpack/3c8a7bf5341721fb.webpack.hot-update.json:0
+[   43345ms] [WARNING] Error while trying to use the following icon from the Manifest: http://localhost:3002/images/icons/icon-192.png (Download error or resource isn't a valid image) @ http://localhost:3002/:0
+[   43620ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3002/_next/static/webpack/3c8a7bf5341721fb.webpack.hot-update.json:0
+[   43682ms] [WARNING] Error while trying to use the following icon from the Manifest: http://localhost:3002/images/icons/icon-192.png (Download error or resource isn't a valid image) @ http://localhost:3002/:0
+[   43956ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3002/_next/static/webpack/3c8a7bf5341721fb.webpack.hot-update.json:0
+[   44018ms] [WARNING] Error while trying to use the following icon from the Manifest: http://localhost:3002/images/icons/icon-192.png (Download error or resource isn't a valid image) @ http://localhost:3002/:0
+[   44278ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3002/_next/static/webpack/3c8a7bf5341721fb.webpack.hot-update.json:0
+[   44340ms] [WARNING] Error while trying to use the following icon from the Manifest: http://localhost:3002/images/icons/icon-192.png (Download error or resource isn't a valid image) @ http://localhost:3002/:0
+[   44627ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3002/_next/static/webpack/3c8a7bf5341721fb.webpack.hot-update.json:0
+[   44700ms] [WARNING] Error while trying to use the following icon from the Manifest: http://localhost:3002/images/icons/icon-192.png (Download error or resource isn't a valid image) @ http://localhost:3002/:0
+[   45039ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3002/_next/static/webpack/3c8a7bf5341721fb.webpack.hot-update.json:0
+[   45134ms] [WARNING] Error while trying to use the following icon from the Manifest: http://localhost:3002/images/icons/icon-192.png (Download error or resource isn't a valid image) @ http://localhost:3002/:0
+[   45485ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3002/_next/static/webpack/3c8a7bf5341721fb.webpack.hot-update.json:0
+[   45573ms] [WARNING] Error while trying to use the following icon from the Manifest: http://localhost:3002/images/icons/icon-192.png (Download error or resource isn't a valid image) @ http://localhost:3002/:0
+[   45957ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3002/_next/static/webpack/3c8a7bf5341721fb.webpack.hot-update.json:0
+[   46038ms] [WARNING] Error while trying to use the following icon from the Manifest: http://localhost:3002/images/icons/icon-192.png (Download error or resource isn't a valid image) @ http://localhost:3002/:0
+[   46330ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3002/_next/static/webpack/3c8a7bf5341721fb.webpack.hot-update.json:0
+[   46401ms] [WARNING] Error while trying to use the following icon from the Manifest: http://localhost:3002/images/icons/icon-192.png (Download error or resource isn't a valid image) @ http://localhost:3002/:0
+[   46679ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3002/_next/static/webpack/3c8a7bf5341721fb.webpack.hot-update.json:0
+[   46751ms] [WARNING] Error while trying to use the following icon from the Manifest: http://localhost:3002/images/icons/icon-192.png (Download error or resource isn't a valid image) @ http://localhost:3002/:0
+[   47061ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3002/_next/static/webpack/3c8a7bf5341721fb.webpack.hot-update.json:0
+[   47134ms] [WARNING] Error while trying to use the following icon from the Manifest: http://localhost:3002/images/icons/icon-192.png (Download error or resource isn't a valid image) @ http://localhost:3002/:0
+[   47433ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3002/_next/static/webpack/3c8a7bf5341721fb.webpack.hot-update.json:0
+[   47499ms] [WARNING] Error while trying to use the following icon from the Manifest: http://localhost:3002/images/icons/icon-192.png (Download error or resource isn't a valid image) @ http://localhost:3002/:0
+[   47775ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3002/_next/static/webpack/3c8a7bf5341721fb.webpack.hot-update.json:0
+[   47837ms] [WARNING] Error while trying to use the following icon from the Manifest: http://localhost:3002/images/icons/icon-192.png (Download error or resource isn't a valid image) @ http://localhost:3002/:0
+[   48099ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3002/_next/static/webpack/3c8a7bf5341721fb.webpack.hot-update.json:0
+[   48160ms] [WARNING] Error while trying to use the following icon from the Manifest: http://localhost:3002/images/icons/icon-192.png (Download error or resource isn't a valid image) @ http://localhost:3002/:0
+[   48442ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3002/_next/static/webpack/3c8a7bf5341721fb.webpack.hot-update.json:0
+[   48516ms] [WARNING] Error while trying to use the following icon from the Manifest: http://localhost:3002/images/icons/icon-192.png (Download error or resource isn't a valid image) @ http://localhost:3002/:0
+[   48788ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3002/_next/static/webpack/3c8a7bf5341721fb.webpack.hot-update.json:0
+[   48854ms] [WARNING] Error while trying to use the following icon from the Manifest: http://localhost:3002/images/icons/icon-192.png (Download error or resource isn't a valid image) @ http://localhost:3002/:0
+[   49124ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3002/_next/static/webpack/3c8a7bf5341721fb.webpack.hot-update.json:0
+[   49186ms] [WARNING] Error while trying to use the following icon from the Manifest: http://localhost:3002/images/icons/icon-192.png (Download error or resource isn't a valid image) @ http://localhost:3002/:0
+[   49461ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3002/_next/static/webpack/3c8a7bf5341721fb.webpack.hot-update.json:0
+[   49524ms] [WARNING] Error while trying to use the following icon from the Manifest: http://localhost:3002/images/icons/icon-192.png (Download error or resource isn't a valid image) @ http://localhost:3002/:0
+[   49790ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3002/_next/static/webpack/3c8a7bf5341721fb.webpack.hot-update.json:0
+[   49815ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3002/images/icons/icon-192.png:0
+[   49836ms] [WARNING] Error while trying to use the following icon from the Manifest: http://localhost:3002/images/icons/icon-192.png (Download error or resource isn't a valid image) @ http://localhost:3002/:0
+[   50163ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3002/_next/static/webpack/3c8a7bf5341721fb.webpack.hot-update.json:0
+[   50239ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3002/images/icons/icon-192.png:0
+[   50246ms] [WARNING] Error while trying to use the following icon from the Manifest: http://localhost:3002/images/icons/icon-192.png (Download error or resource isn't a valid image) @ http://localhost:3002/:0
+[   50545ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3002/_next/static/webpack/3c8a7bf5341721fb.webpack.hot-update.json:0
+[   50610ms] [WARNING] Error while trying to use the following icon from the Manifest: http://localhost:3002/images/icons/icon-192.png (Download error or resource isn't a valid image) @ http://localhost:3002/:0
+[   50882ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3002/_next/static/webpack/3c8a7bf5341721fb.webpack.hot-update.json:0
+[   50946ms] [WARNING] Error while trying to use the following icon from the Manifest: http://localhost:3002/images/icons/icon-192.png (Download error or resource isn't a valid image) @ http://localhost:3002/:0
+[   51218ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3002/_next/static/webpack/3c8a7bf5341721fb.webpack.hot-update.json:0
+[   51282ms] [WARNING] Error while trying to use the following icon from the Manifest: http://localhost:3002/images/icons/icon-192.png (Download error or resource isn't a valid image) @ http://localhost:3002/:0
+[   51554ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3002/_next/static/webpack/3c8a7bf5341721fb.webpack.hot-update.json:0
+[   51620ms] [WARNING] Error while trying to use the following icon from the Manifest: http://localhost:3002/images/icons/icon-192.png (Download error or resource isn't a valid image) @ http://localhost:3002/:0
+[   51899ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3002/_next/static/webpack/3c8a7bf5341721fb.webpack.hot-update.json:0
+[   51961ms] [WARNING] Error while trying to use the following icon from the Manifest: http://localhost:3002/images/icons/icon-192.png (Download error or resource isn't a valid image) @ http://localhost:3002/:0
+[   52225ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3002/_next/static/webpack/3c8a7bf5341721fb.webpack.hot-update.json:0
+[   52295ms] [WARNING] Error while trying to use the following icon from the Manifest: http://localhost:3002/images/icons/icon-192.png (Download error or resource isn't a valid image) @ http://localhost:3002/:0
+[   52571ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3002/_next/static/webpack/3c8a7bf5341721fb.webpack.hot-update.json:0
+[   52641ms] [WARNING] Error while trying to use the following icon from the Manifest: http://localhost:3002/images/icons/icon-192.png (Download error or resource isn't a valid image) @ http://localhost:3002/:0
+[   52961ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3002/_next/static/webpack/3c8a7bf5341721fb.webpack.hot-update.json:0
+[   53037ms] [WARNING] Error while trying to use the following icon from the Manifest: http://localhost:3002/images/icons/icon-192.png (Download error or resource isn't a valid image) @ http://localhost:3002/:0
+[   53330ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3002/_next/static/webpack/3c8a7bf5341721fb.webpack.hot-update.json:0
+[   53403ms] [WARNING] Error while trying to use the following icon from the Manifest: http://localhost:3002/images/icons/icon-192.png (Download error or resource isn't a valid image) @ http://localhost:3002/:0
+[   53707ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3002/_next/static/webpack/3c8a7bf5341721fb.webpack.hot-update.json:0
+[   53734ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3002/images/icons/icon-192.png:0
+[   53761ms] [WARNING] Error while trying to use the following icon from the Manifest: http://localhost:3002/images/icons/icon-192.png (Download error or resource isn't a valid image) @ http://localhost:3002/:0
+[   54092ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3002/_next/static/webpack/3c8a7bf5341721fb.webpack.hot-update.json:0
+[   54168ms] [WARNING] Error while trying to use the following icon from the Manifest: http://localhost:3002/images/icons/icon-192.png (Download error or resource isn't a valid image) @ http://localhost:3002/:0
+[   54556ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3002/_next/static/webpack/3c8a7bf5341721fb.webpack.hot-update.json:0
+[   54627ms] [WARNING] Error while trying to use the following icon from the Manifest: http://localhost:3002/images/icons/icon-192.png (Download error or resource isn't a valid image) @ http://localhost:3002/:0
+[   54907ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3002/_next/static/webpack/3c8a7bf5341721fb.webpack.hot-update.json:0
+[   54974ms] [WARNING] Error while trying to use the following icon from the Manifest: http://localhost:3002/images/icons/icon-192.png (Download error or resource isn't a valid image) @ http://localhost:3002/:0
+[   55226ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3002/_next/static/webpack/3c8a7bf5341721fb.webpack.hot-update.json:0
+[   55288ms] [WARNING] Error while trying to use the following icon from the Manifest: http://localhost:3002/images/icons/icon-192.png (Download error or resource isn't a valid image) @ http://localhost:3002/:0
+[   55540ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3002/_next/static/webpack/3c8a7bf5341721fb.webpack.hot-update.json:0
+[   55591ms] [WARNING] Error while trying to use the following icon from the Manifest: http://localhost:3002/images/icons/icon-192.png (Download error or resource isn't a valid image) @ http://localhost:3002/:0
+[   55852ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3002/_next/static/webpack/3c8a7bf5341721fb.webpack.hot-update.json:0
+[   55918ms] [WARNING] Error while trying to use the following icon from the Manifest: http://localhost:3002/images/icons/icon-192.png (Download error or resource isn't a valid image) @ http://localhost:3002/:0
+[   56165ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3002/_next/static/webpack/3c8a7bf5341721fb.webpack.hot-update.json:0
+[   56223ms] [WARNING] Error while trying to use the following icon from the Manifest: http://localhost:3002/images/icons/icon-192.png (Download error or resource isn't a valid image) @ http://localhost:3002/:0
+[   56477ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3002/_next/static/webpack/3c8a7bf5341721fb.webpack.hot-update.json:0
+[   56535ms] [WARNING] Error while trying to use the following icon from the Manifest: http://localhost:3002/images/icons/icon-192.png (Download error or resource isn't a valid image) @ http://localhost:3002/:0
+[   56784ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3002/_next/static/webpack/3c8a7bf5341721fb.webpack.hot-update.json:0
+[   56833ms] [WARNING] Error while trying to use the following icon from the Manifest: http://localhost:3002/images/icons/icon-192.png (Download error or resource isn't a valid image) @ http://localhost:3002/:0
+[   57097ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3002/_next/static/webpack/3c8a7bf5341721fb.webpack.hot-update.json:0
+[   57153ms] [WARNING] Error while trying to use the following icon from the Manifest: http://localhost:3002/images/icons/icon-192.png (Download error or resource isn't a valid image) @ http://localhost:3002/:0
+[   57417ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3002/_next/static/webpack/3c8a7bf5341721fb.webpack.hot-update.json:0
+[   57474ms] [WARNING] Error while trying to use the following icon from the Manifest: http://localhost:3002/images/icons/icon-192.png (Download error or resource isn't a valid image) @ http://localhost:3002/:0
+[   57729ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3002/_next/static/webpack/3c8a7bf5341721fb.webpack.hot-update.json:0
+[   57786ms] [WARNING] Error while trying to use the following icon from the Manifest: http://localhost:3002/images/icons/icon-192.png (Download error or resource isn't a valid image) @ http://localhost:3002/:0
+[   58032ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3002/_next/static/webpack/3c8a7bf5341721fb.webpack.hot-update.json:0
+[   58091ms] [WARNING] Error while trying to use the following icon from the Manifest: http://localhost:3002/images/icons/icon-192.png (Download error or resource isn't a valid image) @ http://localhost:3002/:0
+[   58348ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3002/_next/static/webpack/3c8a7bf5341721fb.webpack.hot-update.json:0
+[   58396ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3002/images/icons/icon-192.png:0
+[   58414ms] [WARNING] Error while trying to use the following icon from the Manifest: http://localhost:3002/images/icons/icon-192.png (Download error or resource isn't a valid image) @ http://localhost:3002/:0
+[   58693ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3002/_next/static/webpack/3c8a7bf5341721fb.webpack.hot-update.json:0
+[   58757ms] [WARNING] Error while trying to use the following icon from the Manifest: http://localhost:3002/images/icons/icon-192.png (Download error or resource isn't a valid image) @ http://localhost:3002/:0
+[   59016ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3002/_next/static/webpack/3c8a7bf5341721fb.webpack.hot-update.json:0
+[   59081ms] [WARNING] Error while trying to use the following icon from the Manifest: http://localhost:3002/images/icons/icon-192.png (Download error or resource isn't a valid image) @ http://localhost:3002/:0
+[   59336ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3002/_next/static/webpack/3c8a7bf5341721fb.webpack.hot-update.json:0
+[   59394ms] [WARNING] Error while trying to use the following icon from the Manifest: http://localhost:3002/images/icons/icon-192.png (Download error or resource isn't a valid image) @ http://localhost:3002/:0
+[   59719ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3002/_next/static/webpack/3c8a7bf5341721fb.webpack.hot-update.json:0
+[   59800ms] [WARNING] Error while trying to use the following icon from the Manifest: http://localhost:3002/images/icons/icon-192.png (Download error or resource isn't a valid image) @ http://localhost:3002/:0
+[   60082ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3002/_next/static/webpack/3c8a7bf5341721fb.webpack.hot-update.json:0
+[   60146ms] [WARNING] Error while trying to use the following icon from the Manifest: http://localhost:3002/images/icons/icon-192.png (Download error or resource isn't a valid image) @ http://localhost:3002/:0
+[   60435ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3002/_next/static/webpack/3c8a7bf5341721fb.webpack.hot-update.json:0
+[   60502ms] [WARNING] Error while trying to use the following icon from the Manifest: http://localhost:3002/images/icons/icon-192.png (Download error or resource isn't a valid image) @ http://localhost:3002/:0
+[   60814ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3002/_next/static/webpack/3c8a7bf5341721fb.webpack.hot-update.json:0
+[   60886ms] [WARNING] Error while trying to use the following icon from the Manifest: http://localhost:3002/images/icons/icon-192.png (Download error or resource isn't a valid image) @ http://localhost:3002/:0
+[   61155ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3002/_next/static/webpack/3c8a7bf5341721fb.webpack.hot-update.json:0
+[   61221ms] [WARNING] Error while trying to use the following icon from the Manifest: http://localhost:3002/images/icons/icon-192.png (Download error or resource isn't a valid image) @ http://localhost:3002/:0
+[   61500ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3002/_next/static/webpack/3c8a7bf5341721fb.webpack.hot-update.json:0
+[   61582ms] [WARNING] Error while trying to use the following icon from the Manifest: http://localhost:3002/images/icons/icon-192.png (Download error or resource isn't a valid image) @ http://localhost:3002/:0
+[   61927ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3002/_next/static/webpack/3c8a7bf5341721fb.webpack.hot-update.json:0
+[   61998ms] [WARNING] Error while trying to use the following icon from the Manifest: http://localhost:3002/images/icons/icon-192.png (Download error or resource isn't a valid image) @ http://localhost:3002/:0
+[   62309ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3002/_next/static/webpack/3c8a7bf5341721fb.webpack.hot-update.json:0
+[   62371ms] [WARNING] Error while trying to use the following icon from the Manifest: http://localhost:3002/images/icons/icon-192.png (Download error or resource isn't a valid image) @ http://localhost:3002/:0
+[   62727ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3002/_next/static/webpack/3c8a7bf5341721fb.webpack.hot-update.json:0
+[   62802ms] [WARNING] Error while trying to use the following icon from the Manifest: http://localhost:3002/images/icons/icon-192.png (Download error or resource isn't a valid image) @ http://localhost:3002/:0
+[   63103ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3002/_next/static/webpack/3c8a7bf5341721fb.webpack.hot-update.json:0
+[   63195ms] [WARNING] Error while trying to use the following icon from the Manifest: http://localhost:3002/images/icons/icon-192.png (Download error or resource isn't a valid image) @ http://localhost:3002/:0
+[   63634ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3002/_next/static/webpack/3c8a7bf5341721fb.webpack.hot-update.json:0
+[   63720ms] [WARNING] Error while trying to use the following icon from the Manifest: http://localhost:3002/images/icons/icon-192.png (Download error or resource isn't a valid image) @ http://localhost:3002/:0
+[   64083ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3002/_next/static/webpack/3c8a7bf5341721fb.webpack.hot-update.json:0
+[   64165ms] [WARNING] Error while trying to use the following icon from the Manifest: http://localhost:3002/images/icons/icon-192.png (Download error or resource isn't a valid image) @ http://localhost:3002/:0
+[   64597ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3002/_next/static/webpack/3c8a7bf5341721fb.webpack.hot-update.json:0
+[   64672ms] [WARNING] Error while trying to use the following icon from the Manifest: http://localhost:3002/images/icons/icon-192.png (Download error or resource isn't a valid image) @ http://localhost:3002/:0
+[   65031ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3002/_next/static/webpack/3c8a7bf5341721fb.webpack.hot-update.json:0
+[   65103ms] [WARNING] Error while trying to use the following icon from the Manifest: http://localhost:3002/images/icons/icon-192.png (Download error or resource isn't a valid image) @ http://localhost:3002/:0
+[   65402ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3002/_next/static/webpack/3c8a7bf5341721fb.webpack.hot-update.json:0
+[   65484ms] [WARNING] Error while trying to use the following icon from the Manifest: http://localhost:3002/images/icons/icon-192.png (Download error or resource isn't a valid image) @ http://localhost:3002/:0
+[   65876ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3002/_next/static/webpack/3c8a7bf5341721fb.webpack.hot-update.json:0
+[   65970ms] [WARNING] Error while trying to use the following icon from the Manifest: http://localhost:3002/images/icons/icon-192.png (Download error or resource isn't a valid image) @ http://localhost:3002/:0
+[   66470ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3002/_next/static/webpack/3c8a7bf5341721fb.webpack.hot-update.json:0
+[   66512ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3002/images/icons/icon-192.png:0
+[   66544ms] [WARNING] Error while trying to use the following icon from the Manifest: http://localhost:3002/images/icons/icon-192.png (Download error or resource isn't a valid image) @ http://localhost:3002/:0
+[   66980ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3002/_next/static/webpack/3c8a7bf5341721fb.webpack.hot-update.json:0
+[   67062ms] [WARNING] Error while trying to use the following icon from the Manifest: http://localhost:3002/images/icons/icon-192.png (Download error or resource isn't a valid image) @ http://localhost:3002/:0
+[   67374ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3002/_next/static/webpack/3c8a7bf5341721fb.webpack.hot-update.json:0
+[   67479ms] [WARNING] Error while trying to use the following icon from the Manifest: http://localhost:3002/images/icons/icon-192.png (Download error or resource isn't a valid image) @ http://localhost:3002/:0
+[   67799ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3002/_next/static/webpack/3c8a7bf5341721fb.webpack.hot-update.json:0
+[   67827ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3002/images/icons/icon-192.png:0
+[   67829ms] [WARNING] Error while trying to use the following icon from the Manifest: http://localhost:3002/images/icons/icon-192.png (Download error or resource isn't a valid image) @ http://localhost:3002/:0
+[   68161ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3002/_next/static/webpack/3c8a7bf5341721fb.webpack.hot-update.json:0
+[   68233ms] [WARNING] Error while trying to use the following icon from the Manifest: http://localhost:3002/images/icons/icon-192.png (Download error or resource isn't a valid image) @ http://localhost:3002/:0
+[   68525ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3002/_next/static/webpack/3c8a7bf5341721fb.webpack.hot-update.json:0
+[   68578ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3002/images/icons/icon-192.png:0
+[   68586ms] [WARNING] Error while trying to use the following icon from the Manifest: http://localhost:3002/images/icons/icon-192.png (Download error or resource isn't a valid image) @ http://localhost:3002/:0
+[   68888ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3002/_next/static/webpack/3c8a7bf5341721fb.webpack.hot-update.json:0
+[   68957ms] [WARNING] Error while trying to use the following icon from the Manifest: http://localhost:3002/images/icons/icon-192.png (Download error or resource isn't a valid image) @ http://localhost:3002/:0
+[   69243ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3002/_next/static/webpack/3c8a7bf5341721fb.webpack.hot-update.json:0
+[   69308ms] [WARNING] Error while trying to use the following icon from the Manifest: http://localhost:3002/images/icons/icon-192.png (Download error or resource isn't a valid image) @ http://localhost:3002/:0
+[   69585ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3002/_next/static/webpack/3c8a7bf5341721fb.webpack.hot-update.json:0
+[   69652ms] [WARNING] Error while trying to use the following icon from the Manifest: http://localhost:3002/images/icons/icon-192.png (Download error or resource isn't a valid image) @ http://localhost:3002/:0
+[   69923ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3002/_next/static/webpack/3c8a7bf5341721fb.webpack.hot-update.json:0
+[   69979ms] [WARNING] Error while trying to use the following icon from the Manifest: http://localhost:3002/images/icons/icon-192.png (Download error or resource isn't a valid image) @ http://localhost:3002/:0
+[   70245ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3002/_next/static/webpack/3c8a7bf5341721fb.webpack.hot-update.json:0
+[   70313ms] [WARNING] Error while trying to use the following icon from the Manifest: http://localhost:3002/images/icons/icon-192.png (Download error or resource isn't a valid image) @ http://localhost:3002/:0
+[   70589ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3002/_next/static/webpack/3c8a7bf5341721fb.webpack.hot-update.json:0
+[   70675ms] [WARNING] Error while trying to use the following icon from the Manifest: http://localhost:3002/images/icons/icon-192.png (Download error or resource isn't a valid image) @ http://localhost:3002/:0
+[   70967ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3002/_next/static/webpack/3c8a7bf5341721fb.webpack.hot-update.json:0
+[   71028ms] [WARNING] Error while trying to use the following icon from the Manifest: http://localhost:3002/images/icons/icon-192.png (Download error or resource isn't a valid image) @ http://localhost:3002/:0
+[   71310ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3002/_next/static/webpack/3c8a7bf5341721fb.webpack.hot-update.json:0
+[   71374ms] [WARNING] Error while trying to use the following icon from the Manifest: http://localhost:3002/images/icons/icon-192.png (Download error or resource isn't a valid image) @ http://localhost:3002/:0
+[   71676ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3002/_next/static/webpack/3c8a7bf5341721fb.webpack.hot-update.json:0
+[   71745ms] [WARNING] Error while trying to use the following icon from the Manifest: http://localhost:3002/images/icons/icon-192.png (Download error or resource isn't a valid image) @ http://localhost:3002/:0
+[   72061ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3002/_next/static/webpack/3c8a7bf5341721fb.webpack.hot-update.json:0
+[   72130ms] [WARNING] Error while trying to use the following icon from the Manifest: http://localhost:3002/images/icons/icon-192.png (Download error or resource isn't a valid image) @ http://localhost:3002/:0
+[   72561ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3002/_next/static/webpack/3c8a7bf5341721fb.webpack.hot-update.json:0
+[   72637ms] [WARNING] Error while trying to use the following icon from the Manifest: http://localhost:3002/images/icons/icon-192.png (Download error or resource isn't a valid image) @ http://localhost:3002/:0
+[   72970ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3002/_next/static/webpack/3c8a7bf5341721fb.webpack.hot-update.json:0
+[   73038ms] [WARNING] Error while trying to use the following icon from the Manifest: http://localhost:3002/images/icons/icon-192.png (Download error or resource isn't a valid image) @ http://localhost:3002/:0
+[   73314ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3002/_next/static/webpack/3c8a7bf5341721fb.webpack.hot-update.json:0
+[   73380ms] [WARNING] Error while trying to use the following icon from the Manifest: http://localhost:3002/images/icons/icon-192.png (Download error or resource isn't a valid image) @ http://localhost:3002/:0
+[   73658ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3002/_next/static/webpack/3c8a7bf5341721fb.webpack.hot-update.json:0
+[   73721ms] [WARNING] Error while trying to use the following icon from the Manifest: http://localhost:3002/images/icons/icon-192.png (Download error or resource isn't a valid image) @ http://localhost:3002/:0
+[   73995ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3002/_next/static/webpack/3c8a7bf5341721fb.webpack.hot-update.json:0
+[   74019ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3002/images/icons/icon-192.png:0
+[   74043ms] [WARNING] Error while trying to use the following icon from the Manifest: http://localhost:3002/images/icons/icon-192.png (Download error or resource isn't a valid image) @ http://localhost:3002/:0
+[   74394ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3002/_next/static/webpack/3c8a7bf5341721fb.webpack.hot-update.json:0
+[   74455ms] [WARNING] Error while trying to use the following icon from the Manifest: http://localhost:3002/images/icons/icon-192.png (Download error or resource isn't a valid image) @ http://localhost:3002/:0
+[   74747ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3002/_next/static/webpack/3c8a7bf5341721fb.webpack.hot-update.json:0
+[   74778ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3002/images/icons/icon-192.png:0
+[   74779ms] [WARNING] Error while trying to use the following icon from the Manifest: http://localhost:3002/images/icons/icon-192.png (Download error or resource isn't a valid image) @ http://localhost:3002/:0
+[   75182ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3002/_next/static/webpack/3c8a7bf5341721fb.webpack.hot-update.json:0
+[   75249ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3002/images/icons/icon-192.png:0
+[   75262ms] [WARNING] Error while trying to use the following icon from the Manifest: http://localhost:3002/images/icons/icon-192.png (Download error or resource isn't a valid image) @ http://localhost:3002/:0
+[   75630ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3002/_next/static/webpack/3c8a7bf5341721fb.webpack.hot-update.json:0
+[   75720ms] [WARNING] Error while trying to use the following icon from the Manifest: http://localhost:3002/images/icons/icon-192.png (Download error or resource isn't a valid image) @ http://localhost:3002/:0
+[   76101ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3002/_next/static/webpack/3c8a7bf5341721fb.webpack.hot-update.json:0
+[   76182ms] [WARNING] Error while trying to use the following icon from the Manifest: http://localhost:3002/images/icons/icon-192.png (Download error or resource isn't a valid image) @ http://localhost:3002/:0
+[   76560ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3002/_next/static/webpack/3c8a7bf5341721fb.webpack.hot-update.json:0
+[   76645ms] [WARNING] Error while trying to use the following icon from the Manifest: http://localhost:3002/images/icons/icon-192.png (Download error or resource isn't a valid image) @ http://localhost:3002/:0
+[   77094ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3002/_next/static/webpack/3c8a7bf5341721fb.webpack.hot-update.json:0
+[   77194ms] [WARNING] Error while trying to use the following icon from the Manifest: http://localhost:3002/images/icons/icon-192.png (Download error or resource isn't a valid image) @ http://localhost:3002/:0
+[   77575ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3002/_next/static/webpack/3c8a7bf5341721fb.webpack.hot-update.json:0
+[   77659ms] [WARNING] Error while trying to use the following icon from the Manifest: http://localhost:3002/images/icons/icon-192.png (Download error or resource isn't a valid image) @ http://localhost:3002/:0
+[   78020ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3002/_next/static/webpack/3c8a7bf5341721fb.webpack.hot-update.json:0
+[   78103ms] [WARNING] Error while trying to use the following icon from the Manifest: http://localhost:3002/images/icons/icon-192.png (Download error or resource isn't a valid image) @ http://localhost:3002/:0
+[   78443ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3002/_next/static/webpack/3c8a7bf5341721fb.webpack.hot-update.json:0
+[   78536ms] [WARNING] Error while trying to use the following icon from the Manifest: http://localhost:3002/images/icons/icon-192.png (Download error or resource isn't a valid image) @ http://localhost:3002/:0
+[   78873ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3002/_next/static/webpack/3c8a7bf5341721fb.webpack.hot-update.json:0
+[   78963ms] [WARNING] Error while trying to use the following icon from the Manifest: http://localhost:3002/images/icons/icon-192.png (Download error or resource isn't a valid image) @ http://localhost:3002/:0
+[   79288ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3002/_next/static/webpack/3c8a7bf5341721fb.webpack.hot-update.json:0
+[   79366ms] [WARNING] Error while trying to use the following icon from the Manifest: http://localhost:3002/images/icons/icon-192.png (Download error or resource isn't a valid image) @ http://localhost:3002/:0
+[   79688ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3002/_next/static/webpack/3c8a7bf5341721fb.webpack.hot-update.json:0
+[   79751ms] [WARNING] Error while trying to use the following icon from the Manifest: http://localhost:3002/images/icons/icon-192.png (Download error or resource isn't a valid image) @ http://localhost:3002/:0
+[   80020ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3002/_next/static/webpack/3c8a7bf5341721fb.webpack.hot-update.json:0
+[   80084ms] [WARNING] Error while trying to use the following icon from the Manifest: http://localhost:3002/images/icons/icon-192.png (Download error or resource isn't a valid image) @ http://localhost:3002/:0
+[   80351ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3002/_next/static/webpack/3c8a7bf5341721fb.webpack.hot-update.json:0
+[   80405ms] [WARNING] Error while trying to use the following icon from the Manifest: http://localhost:3002/images/icons/icon-192.png (Download error or resource isn't a valid image) @ http://localhost:3002/:0
+[   80672ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3002/_next/static/webpack/3c8a7bf5341721fb.webpack.hot-update.json:0
+[   80732ms] [WARNING] Error while trying to use the following icon from the Manifest: http://localhost:3002/images/icons/icon-192.png (Download error or resource isn't a valid image) @ http://localhost:3002/:0
+[   81059ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3002/_next/static/webpack/3c8a7bf5341721fb.webpack.hot-update.json:0
+[   81133ms] [WARNING] Error while trying to use the following icon from the Manifest: http://localhost:3002/images/icons/icon-192.png (Download error or resource isn't a valid image) @ http://localhost:3002/:0
+[   81409ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3002/_next/static/webpack/3c8a7bf5341721fb.webpack.hot-update.json:0
+[   81435ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3002/images/icons/icon-192.png:0
+[   81436ms] [WARNING] Error while trying to use the following icon from the Manifest: http://localhost:3002/images/icons/icon-192.png (Download error or resource isn't a valid image) @ http://localhost:3002/:0
+[   81870ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3002/_next/static/webpack/3c8a7bf5341721fb.webpack.hot-update.json:0
+[   81956ms] [WARNING] Error while trying to use the following icon from the Manifest: http://localhost:3002/images/icons/icon-192.png (Download error or resource isn't a valid image) @ http://localhost:3002/:0
+[   82359ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3002/_next/static/webpack/3c8a7bf5341721fb.webpack.hot-update.json:0
+[   82484ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3002/images/icons/icon-192.png:0
+[   82488ms] [WARNING] Error while trying to use the following icon from the Manifest: http://localhost:3002/images/icons/icon-192.png (Download error or resource isn't a valid image) @ http://localhost:3002/:0
+[   82771ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3002/_next/static/webpack/3c8a7bf5341721fb.webpack.hot-update.json:0
+[   82838ms] [WARNING] Error while trying to use the following icon from the Manifest: http://localhost:3002/images/icons/icon-192.png (Download error or resource isn't a valid image) @ http://localhost:3002/:0
+[   83102ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3002/_next/static/webpack/3c8a7bf5341721fb.webpack.hot-update.json:0
+[   83155ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3002/images/icons/icon-192.png:0
+[   83156ms] [WARNING] Error while trying to use the following icon from the Manifest: http://localhost:3002/images/icons/icon-192.png (Download error or resource isn't a valid image) @ http://localhost:3002/:0
+[   83443ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3002/_next/static/webpack/3c8a7bf5341721fb.webpack.hot-update.json:0
+[   83505ms] [WARNING] Error while trying to use the following icon from the Manifest: http://localhost:3002/images/icons/icon-192.png (Download error or resource isn't a valid image) @ http://localhost:3002/:0
+[   83760ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3002/_next/static/webpack/3c8a7bf5341721fb.webpack.hot-update.json:0
+[   83822ms] [WARNING] Error while trying to use the following icon from the Manifest: http://localhost:3002/images/icons/icon-192.png (Download error or resource isn't a valid image) @ http://localhost:3002/:0
+[   84102ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3002/_next/static/webpack/3c8a7bf5341721fb.webpack.hot-update.json:0
+[   84177ms] [WARNING] Error while trying to use the following icon from the Manifest: http://localhost:3002/images/icons/icon-192.png (Download error or resource isn't a valid image) @ http://localhost:3002/:0
+[   84441ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3002/_next/static/webpack/3c8a7bf5341721fb.webpack.hot-update.json:0
+[   84507ms] [WARNING] Error while trying to use the following icon from the Manifest: http://localhost:3002/images/icons/icon-192.png (Download error or resource isn't a valid image) @ http://localhost:3002/:0
+[   84775ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3002/_next/static/webpack/3c8a7bf5341721fb.webpack.hot-update.json:0
+[   84837ms] [WARNING] Error while trying to use the following icon from the Manifest: http://localhost:3002/images/icons/icon-192.png (Download error or resource isn't a valid image) @ http://localhost:3002/:0
+[   85105ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3002/_next/static/webpack/3c8a7bf5341721fb.webpack.hot-update.json:0
+[   85165ms] [WARNING] Error while trying to use the following icon from the Manifest: http://localhost:3002/images/icons/icon-192.png (Download error or resource isn't a valid image) @ http://localhost:3002/:0
+[   85422ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3002/_next/static/webpack/3c8a7bf5341721fb.webpack.hot-update.json:0
+[   85477ms] [WARNING] Error while trying to use the following icon from the Manifest: http://localhost:3002/images/icons/icon-192.png (Download error or resource isn't a valid image) @ http://localhost:3002/:0
+[   85747ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3002/_next/static/webpack/3c8a7bf5341721fb.webpack.hot-update.json:0
+[   85811ms] [WARNING] Error while trying to use the following icon from the Manifest: http://localhost:3002/images/icons/icon-192.png (Download error or resource isn't a valid image) @ http://localhost:3002/:0
+[   86220ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3002/_next/static/webpack/3c8a7bf5341721fb.webpack.hot-update.json:0
+[   86293ms] [WARNING] Error while trying to use the following icon from the Manifest: http://localhost:3002/images/icons/icon-192.png (Download error or resource isn't a valid image) @ http://localhost:3002/:0
+[   86592ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3002/_next/static/webpack/3c8a7bf5341721fb.webpack.hot-update.json:0
+[   86648ms] [WARNING] Error while trying to use the following icon from the Manifest: http://localhost:3002/images/icons/icon-192.png (Download error or resource isn't a valid image) @ http://localhost:3002/:0
+[   86917ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3002/_next/static/webpack/3c8a7bf5341721fb.webpack.hot-update.json:0
+[   86980ms] [WARNING] Error while trying to use the following icon from the Manifest: http://localhost:3002/images/icons/icon-192.png (Download error or resource isn't a valid image) @ http://localhost:3002/:0
+[   87247ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3002/_next/static/webpack/3c8a7bf5341721fb.webpack.hot-update.json:0
+[   87310ms] [WARNING] Error while trying to use the following icon from the Manifest: http://localhost:3002/images/icons/icon-192.png (Download error or resource isn't a valid image) @ http://localhost:3002/:0
+[   87579ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3002/_next/static/webpack/3c8a7bf5341721fb.webpack.hot-update.json:0
+[   87642ms] [WARNING] Error while trying to use the following icon from the Manifest: http://localhost:3002/images/icons/icon-192.png (Download error or resource isn't a valid image) @ http://localhost:3002/:0
+[   87904ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3002/_next/static/webpack/3c8a7bf5341721fb.webpack.hot-update.json:0
+[   87972ms] [WARNING] Error while trying to use the following icon from the Manifest: http://localhost:3002/images/icons/icon-192.png (Download error or resource isn't a valid image) @ http://localhost:3002/:0
+[   88269ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3002/_next/static/webpack/3c8a7bf5341721fb.webpack.hot-update.json:0
+[   88327ms] [WARNING] Error while trying to use the following icon from the Manifest: http://localhost:3002/images/icons/icon-192.png (Download error or resource isn't a valid image) @ http://localhost:3002/:0
+[   88575ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3002/_next/static/webpack/3c8a7bf5341721fb.webpack.hot-update.json:0
+[   88625ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3002/images/icons/icon-192.png:0
+[   88632ms] [WARNING] Error while trying to use the following icon from the Manifest: http://localhost:3002/images/icons/icon-192.png (Download error or resource isn't a valid image) @ http://localhost:3002/:0
+[   88927ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3002/_next/static/webpack/3c8a7bf5341721fb.webpack.hot-update.json:0
+[   89006ms] [WARNING] Error while trying to use the following icon from the Manifest: http://localhost:3002/images/icons/icon-192.png (Download error or resource isn't a valid image) @ http://localhost:3002/:0
+[   89313ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3002/_next/static/webpack/3c8a7bf5341721fb.webpack.hot-update.json:0
+[   89376ms] [WARNING] Error while trying to use the following icon from the Manifest: http://localhost:3002/images/icons/icon-192.png (Download error or resource isn't a valid image) @ http://localhost:3002/:0
+[   89644ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3002/_next/static/webpack/3c8a7bf5341721fb.webpack.hot-update.json:0
+[   89698ms] [WARNING] Error while trying to use the following icon from the Manifest: http://localhost:3002/images/icons/icon-192.png (Download error or resource isn't a valid image) @ http://localhost:3002/:0
+[   89990ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3002/_next/static/webpack/3c8a7bf5341721fb.webpack.hot-update.json:0
+[   90049ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3002/images/icons/icon-192.png:0
+[   90056ms] [WARNING] Error while trying to use the following icon from the Manifest: http://localhost:3002/images/icons/icon-192.png (Download error or resource isn't a valid image) @ http://localhost:3002/:0
+[   90433ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3002/_next/static/webpack/3c8a7bf5341721fb.webpack.hot-update.json:0
+[   90516ms] [WARNING] Error while trying to use the following icon from the Manifest: http://localhost:3002/images/icons/icon-192.png (Download error or resource isn't a valid image) @ http://localhost:3002/:0
+[   90832ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3002/_next/static/webpack/3c8a7bf5341721fb.webpack.hot-update.json:0
+[   90920ms] [WARNING] Error while trying to use the following icon from the Manifest: http://localhost:3002/images/icons/icon-192.png (Download error or resource isn't a valid image) @ http://localhost:3002/:0
+[   91255ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3002/_next/static/webpack/3c8a7bf5341721fb.webpack.hot-update.json:0
+[   91335ms] [WARNING] Error while trying to use the following icon from the Manifest: http://localhost:3002/images/icons/icon-192.png (Download error or resource isn't a valid image) @ http://localhost:3002/:0
+[   91660ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3002/_next/static/webpack/3c8a7bf5341721fb.webpack.hot-update.json:0
+[   91745ms] [WARNING] Error while trying to use the following icon from the Manifest: http://localhost:3002/images/icons/icon-192.png (Download error or resource isn't a valid image) @ http://localhost:3002/:0
+[   92232ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3002/_next/static/webpack/3c8a7bf5341721fb.webpack.hot-update.json:0
+[   92329ms] [WARNING] Error while trying to use the following icon from the Manifest: http://localhost:3002/images/icons/icon-192.png (Download error or resource isn't a valid image) @ http://localhost:3002/:0
+[   92715ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3002/_next/static/webpack/3c8a7bf5341721fb.webpack.hot-update.json:0
+[   92782ms] [WARNING] Error while trying to use the following icon from the Manifest: http://localhost:3002/images/icons/icon-192.png (Download error or resource isn't a valid image) @ http://localhost:3002/:0
+[   93115ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3002/_next/static/webpack/3c8a7bf5341721fb.webpack.hot-update.json:0
+[   93194ms] [WARNING] Error while trying to use the following icon from the Manifest: http://localhost:3002/images/icons/icon-192.png (Download error or resource isn't a valid image) @ http://localhost:3002/:0
+[   93587ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3002/_next/static/webpack/3c8a7bf5341721fb.webpack.hot-update.json:0
+[   93620ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3002/images/icons/icon-192.png:0
+[   93649ms] [WARNING] Error while trying to use the following icon from the Manifest: http://localhost:3002/images/icons/icon-192.png (Download error or resource isn't a valid image) @ http://localhost:3002/:0
+[   94044ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3002/_next/static/webpack/3c8a7bf5341721fb.webpack.hot-update.json:0
+[   94118ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3002/images/icons/icon-192.png:0
+[   94140ms] [WARNING] Error while trying to use the following icon from the Manifest: http://localhost:3002/images/icons/icon-192.png (Download error or resource isn't a valid image) @ http://localhost:3002/:0
+[   94461ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3002/_next/static/webpack/3c8a7bf5341721fb.webpack.hot-update.json:0
+[   94485ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3002/images/icons/icon-192.png:0
+[   94485ms] [WARNING] Error while trying to use the following icon from the Manifest: http://localhost:3002/images/icons/icon-192.png (Download error or resource isn't a valid image) @ http://localhost:3002/:0
+[   94493ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3002/:0
+[   94513ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3002/:0
+[   95531ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3002/:0
+[   96549ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3002/:0
+[   97571ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3002/:0
+[   98601ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3002/:0
+[   99613ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3002/:0
+[  100632ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3002/:0
+[  101650ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3002/:0
+[  102662ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3002/:0
+[  103676ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3002/:0
+[  104697ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3002/:0
+[  105720ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3002/:0
+[  106738ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3002/:0
+[  107757ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3002/:0
+[  108778ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3002/:0
+[  109792ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3002/:0
+[  110814ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3002/:0
+[  111833ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3002/:0
+[  112863ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3002/:0
+[  113883ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3002/:0
+[  114907ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3002/:0
+[  115924ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3002/:0
+[  116953ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3002/:0
+[  117973ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3002/:0
+[  119000ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3002/:0
+[  120018ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3002/:0
+[  121044ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3002/:0
+[  122069ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3002/:0
+[  123085ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3002/:0
+[  124107ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3002/:0
+[  125134ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3002/:0
+[  126151ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3002/:0
+[  127176ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3002/:0
+[  128192ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3002/:0
+[  129214ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3002/:0

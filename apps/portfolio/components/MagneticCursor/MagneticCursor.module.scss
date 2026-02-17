@@ -1,0 +1,71 @@
+@import "@/styles/variables.scss";
+
+.cursor {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 40px;
+    height: 40px;
+    margin-left: -20px;
+    margin-top: -20px;
+    border: 2px solid $primary;
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 99999;
+    mix-blend-mode: difference;
+    transition: background-color 0.2s ease, border-color 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &.hovering {
+        background: rgba($primary, 0.1);
+        border-color: $white;
+    }
+
+    &.clicking {
+        background: rgba($primary, 0.3);
+    }
+
+    // Hide on touch devices
+    @media (hover: none) and (pointer: coarse) {
+        display: none;
+    }
+}
+
+.cursorDot {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 8px;
+    height: 8px;
+    margin-left: -4px;
+    margin-top: -4px;
+    background: $primary;
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 99999;
+    mix-blend-mode: difference;
+
+    // Hide on touch devices
+    @media (hover: none) and (pointer: coarse) {
+        display: none;
+    }
+}
+
+.cursorText {
+    font-family: PPmedium, sans-serif;
+    font-size: 0.6rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: $white;
+    white-space: nowrap;
+    opacity: 0;
+    animation: fadeIn 0.3s ease forwards;
+}
+
+@keyframes fadeIn {
+    to {
+        opacity: 1;
+    }
+}

@@ -1,225 +1,303 @@
-import { useState, useRef, useEffect } from 'react';
+import { useState, useEffect, useRef, useCallback } from 'react';
 import { useRouter } from 'next/router';
-import { gsap } from '@/libs/gsap';
+import Link from 'next/link';
+import gsap from 'gsap';
 import { MagneticLink } from '@/components/MagneticLink';
+import QRCodeSection from './QRCodeSection';
+import { useRemoteControl } from '@/contexts/RemoteControlContext';
 import styles from './Nav.module.scss';
 
 // Define your links and paths
 const links = [
     { name: 'Home', path: '/' },
-    { name: 'About me', path: '/about' },
+    { name: 'About', path: '/about' },
     { name: 'Projects', path: '/projects' },
     { name: 'Guidance', path: '/guidance' },
     { name: 'Prayer', path: '/prayer' },
     { name: 'Contact', path: '/contact' },
 ];
 
-// Cross-app navigation links
-const crossAppLinks = [
-    { name: 'Docs', path: 'https://docs.abdalkader.dev', external: true },
-];
-
 export default function Nav() {
     const [menuOpen, setMenuOpen] = useState(false);
-    const navigationMenuRef = useRef<HTMLDivElement>(null);
-    const linksRef = useRef<HTMLUListElement>(null);
-    const firstLinkRef = useRef<HTMLAnchorElement>(null);
-    const previousFocusRef = useRef<HTMLElement | null>(null);
+    const [isScattering, setIsScattering] = useState(false);
+    const menuItemsRef = useRef<(HTMLLIElement | null)[]>([]);
+    const menuFooterRef = useRef<HTMLDivElement>(null);
+    const qrSectionRef = useRef<HTMLDivElement>(null);
     const router = useRouter();
+    const { setMenuOpen: setRemoteMenuOpen, isPhoneConnected } = useRemoteControl();
 
-    // Menu Animation
-    useEffect(() => {
-        const links = linksRef.current?.children;
+    // Scatter animation on menu close - Anyflow style: gravity + drift + rotation
+    const playScatterAnimation = useCallback(() => {
+        const items = menuItemsRef.current.filter(Boolean) as HTMLLIElement[];
+        const footer = menuFooterRef.current;
+        const menuContainer = document.querySelector(`.${styles.navigationMenu}`) as HTMLElement;
 
-        // Create a GSAP timeline
-        const timeline = gsap.timeline();
+        if (items.length === 0) return;
 
-        if (menuOpen) {
-            // Open menu animation
-            timeline
-                .to(navigationMenuRef.current, {
-                    clipPath: 'inset(0% 0% 0% 0%)',
-                    duration: 0.8,
-                    ease: 'power4.inOut',
-                    autoAlpha: 1,
-                })
-                .fromTo(
-                    links ? Array.from(links).map(link => link.firstChild) : [],
-                    { y: '-100%' },
-                    {
-                        y: '0%',
-                        duration: 0.8,
-                        stagger: 0.05,
-                        ease: 'power4.inOut',
-                    },
-                    '-=0.3'
-                );
-        } else {
-            // Close menu animation
-            timeline
-                .to(
-                    links ? Array.from(links).map(link => link.firstChild) : [],
-                    {
-                        y: '-100%',
-                        duration: 0.8,
-                        stagger: 0.05,
-                        ease: 'power4.inOut',
-                    }
-                )
-                .to(navigationMenuRef.current, {
-                    clipPath: 'inset(0% 0% 100% 0%)',
-                    duration: 0.8,
-                    ease: 'power4.inOut',
-                }, '-=0.3');
+        setIsScattering(true);
+
+        // Screen bottom + extra to ensure items fully exit
+        const screenBottom = window.innerHeight + 200;
+
+        // Make the blurry background card ALSO fall and scatter
+        if (menuContainer) {
+            // First remove blur/backdrop so items show clearly as they scatter
+            gsap.to(menuContainer, {
+                backdropFilter: 'blur(0px)',
+                webkitBackdropFilter: 'blur(0px)',
+                duration: 0.1,
+            });
+
+            // Then make the card itself fall (slightly delayed, falls behind items)
+            gsap.to(menuContainer, {
+                y: screenBottom,
+                x: -150,
+                rotation: -25,
+                scale: 0.4,
+                opacity: 0,
+                duration: 0.85,
+                delay: 0.08,
+                ease: 'power2.in',
+            });
         }
 
-        // Cleanup function to kill the timeline on unmount
-        return () => {
-            timeline.kill();
+        // ═══════════════════════════════════════════════════════════════════════
+        // ANYFLOW SCATTER - One smooth motion: fall + drift + rotate + scale
+        // ═══════════════════════════════════════════════════════════════════════
+        const scatterItem = (
+            el: HTMLElement,
+            delay: number,
+            driftX: number,      // Horizontal drift (negative = left, positive = right)
+            rotation: number,    // Final rotation
+            duration: number = 0.7
+        ) => {
+            gsap.to(el, {
+                y: screenBottom,
+                x: driftX,
+                rotation: rotation,
+                scale: 0.3,
+                opacity: 0,
+                duration: duration,
+                delay: delay,
+                ease: 'power2.in', // Accelerating fall (gravity)
+            });
         };
-    }, [menuOpen]);
 
-    // Accessibility: focus trap, ESC to close, restore focus
+        // Menu items - staggered, alternating left/right
+        // HOME - drift LEFT
+        if (items[0]) scatterItem(items[0], 0, -280, -35, 0.65);
+        // ABOUT - drift RIGHT
+        if (items[1]) scatterItem(items[1], 0.03, 320, 42, 0.68);
+        // PROJECTS - drift LEFT
+        if (items[2]) scatterItem(items[2], 0.06, -350, -48, 0.7);
+        // GUIDANCE - drift RIGHT
+        if (items[3]) scatterItem(items[3], 0.09, 290, 38, 0.65);
+        // PRAYER - drift LEFT
+        if (items[4]) scatterItem(items[4], 0.12, -310, -42, 0.68);
+        // CONTACT - drift RIGHT
+        if (items[5]) scatterItem(items[5], 0.15, 340, 45, 0.7);
+
+        // Footer - drift LEFT
+        if (footer) scatterItem(footer, 0.08, -250, -30, 0.65);
+
+        // QR Section pieces - all drift RIGHT (opposite side)
+        const qrHeader = document.querySelector('[data-scatter="qr-header"]') as HTMLElement;
+        const qrCode = document.querySelector('[data-scatter="qr-code"]') as HTMLElement;
+        const qrSession = document.querySelector('[data-scatter="qr-session"]') as HTMLElement;
+        const qrStatus = document.querySelector('[data-scatter="qr-status"]') as HTMLElement;
+        const qrTimer = document.querySelector('[data-scatter="qr-timer"]') as HTMLElement;
+        const qrInstructions = document.querySelector('[data-scatter="qr-instructions"]') as HTMLElement;
+
+        if (qrHeader) scatterItem(qrHeader, 0.02, 260, 28, 0.62);
+        if (qrCode) scatterItem(qrCode, 0.0, 300, 22, 0.7);  // QR code is heavier, falls first
+        if (qrSession) scatterItem(qrSession, 0.05, 240, 32, 0.65);
+        if (qrStatus) scatterItem(qrStatus, 0.08, 280, 35, 0.68);
+        if (qrTimer) scatterItem(qrTimer, 0.11, 250, 30, 0.65);
+        if (qrInstructions) scatterItem(qrInstructions, 0.14, 220, 38, 0.7);
+
+        // ═══════════════════════════════════════════════════════════════════════
+        // CLEANUP - Close menu immediately, reset elements much later
+        // ═══════════════════════════════════════════════════════════════════════
+        setTimeout(() => {
+            // Close the menu state - CSS will handle hiding
+            setIsScattering(false);
+            setMenuOpen(false);
+        }, 850); // After scatter animation finishes
+
+        // Reset elements much later when menu is definitely hidden
+        setTimeout(() => {
+            const allElements = [
+                ...items,
+                footer,
+                qrHeader,
+                qrCode,
+                qrSession,
+                qrStatus,
+                qrTimer,
+                qrInstructions,
+            ].filter(Boolean);
+
+            allElements.forEach(el => {
+                gsap.set(el, { x: 0, y: 0, rotation: 0, opacity: 1, scale: 1 });
+            });
+
+            // Reset menu container transform (but NOT opacity - let CSS handle that)
+            if (menuContainer) {
+                gsap.set(menuContainer, {
+                    x: 0,
+                    y: 0,
+                    rotation: 0,
+                    scale: 1,
+                    backdropFilter: '',
+                    webkitBackdropFilter: '',
+                    backgroundColor: '',
+                    borderColor: '',
+                    boxShadow: '',
+                });
+            }
+        }, 2000); // Much later - menu is definitely hidden by now
+    }, []);
+
+    const handleMenuToggle = useCallback(() => {
+        if (menuOpen) {
+            // Play scatter animation before closing
+            playScatterAnimation();
+        } else {
+            setMenuOpen(true);
+        }
+        setRemoteMenuOpen(!menuOpen);
+    }, [menuOpen, playScatterAnimation, setRemoteMenuOpen]);
+
+    // Prevent body scroll when menu is open
+    useEffect(() => {
+        if (menuOpen || isScattering) {
+            document.body.style.overflow = 'hidden';
+        } else {
+            document.body.style.overflow = '';
+        }
+        return () => {
+            document.body.style.overflow = '';
+        };
+    }, [menuOpen, isScattering]);
+
+    // Accessibility: ESC to close
     useEffect(() => {
         if (menuOpen) {
-            previousFocusRef.current = (document.activeElement as HTMLElement) || null;
-            // Focus first link when menu opens
-            const firstLink = linksRef.current?.querySelector('a') as HTMLAnchorElement | null;
-            if (firstLink) {
-                firstLink.focus();
-            }
-
             const handleKeyDown = (event: KeyboardEvent) => {
                 if (event.key === 'Escape') {
-                    setMenuOpen(false);
-                    event.stopPropagation();
-                }
-
-                if (event.key === 'Tab') {
-                    const focusable = linksRef.current?.querySelectorAll<HTMLElement>('a');
-                    if (!focusable || focusable.length === 0) return;
-                    const focusArray = Array.from(focusable);
-                    const first = focusArray[0];
-                    const last = focusArray[focusArray.length - 1];
-
-                    if (event.shiftKey && document.activeElement === first) {
-                        last.focus();
-                        event.preventDefault();
-                    } else if (!event.shiftKey && document.activeElement === last) {
-                        first.focus();
-                        event.preventDefault();
-                    }
+                    handleMenuToggle();
                 }
             };
-
             document.addEventListener('keydown', handleKeyDown);
             return () => document.removeEventListener('keydown', handleKeyDown);
-        } else {
-            // Restore focus to the element that triggered the menu
-            previousFocusRef.current?.focus?.();
         }
-    }, [menuOpen]);
+    }, [menuOpen, handleMenuToggle]);
 
     // Close menu on route change
     useEffect(() => {
         const handleRouteChange = () => {
             setMenuOpen(false);
+            setRemoteMenuOpen(false);
         };
-
-        // Listen for route changes
         router.events.on('routeChangeStart', handleRouteChange);
-
-        // Cleanup the event listener on unmount
-        return () => {
-            router.events.off('routeChangeStart', handleRouteChange);
-        };
-    }, [router.events]);
+        return () => router.events.off('routeChangeStart', handleRouteChange);
+    }, [router.events, setRemoteMenuOpen]);
 
     return (
         <>
-            <nav className={styles.nav}>
-                <MagneticLink
-                    href="/"
-                    className={styles.logo}
-                    showUnderline={false}
-                    magneticStrength={0.2}
-                >
-                    <span className={styles.crossIcon}>&#10013;&#xFE0E;</span>
-                    Abdalkader Alhamoud
-                </MagneticLink>
-                <button
-                    type="button"
-                    className={styles.menu_Toggle}
-                    aria-haspopup="true"
-                    aria-expanded={menuOpen}
-                    aria-controls="site-navigation-menu"
-                    onClick={() => {
-                        setMenuOpen(prev => !prev);
-                    }}
-                    onKeyDown={(e) => {
-                        if (e.key === 'Enter' || e.key === ' ') {
-                            e.preventDefault();
-                            setMenuOpen(prev => !prev);
-                        }
-                    }}
-                >
-                    <div className={styles.bar}></div>
-                    <span>{menuOpen ? 'CLOSE' : 'MENU'}</span>
-                </button>
-                <MagneticLink
-                    href="/contact"
-                    className={styles.link}
-                    magneticStrength={0.25}
-                >
-                    Contact
-                </MagneticLink>
-            </nav>
+            {/* Backdrop */}
             <div
-                ref={navigationMenuRef}
-                className={styles.navigationMenu}
+                className={`${styles.backdrop} ${menuOpen || isScattering ? styles.open : ''}`}
+                onClick={handleMenuToggle}
+            />
+
+            {/* Popup Menu - Above navbar */}
+            <div
+                className={`${styles.navigationMenu} ${menuOpen || isScattering ? styles.open : ''}`}
                 role="dialog"
                 aria-modal="true"
                 aria-labelledby="site-navigation-menu-heading"
-                onClick={(e) => {
-                    // Close when clicking outside the list (backdrop)
-                    if (e.target === navigationMenuRef.current) setMenuOpen(false);
-                }}
-                style={{
-                    visibility: menuOpen ? 'visible' : 'hidden',
-                    pointerEvents: menuOpen ? 'auto' : 'none'
-                }}
             >
-                <h2 id="site-navigation-menu-heading" style={{ position: 'absolute', left: '-9999px' }}>
+                <h2 id="site-navigation-menu-heading" className={styles.srOnly}>
                     Main navigation
                 </h2>
-                <ul id="site-navigation-menu" ref={linksRef}>
-                    {links.map(({ name, path }, index) => (
-                        <li key={name}>
-                            <MagneticLink
-                                href={path}
-                                ref={index === 0 ? firstLinkRef : undefined}
-                                magneticStrength={0.15}
-                                showScale={true}
-                            >
-                                {name}
-                            </MagneticLink>
-                        </li>
-                    ))}
-                    <li className={styles.divider}></li>
-                    {crossAppLinks.map(({ name, path, external }) => (
-                        <li key={name}>
-                            <MagneticLink
-                                href={path}
-                                external={external}
-                                magneticStrength={0.15}
-                                showScale={true}
-                            >
-                                {name}
-                            </MagneticLink>
-                        </li>
-                    ))}
-                </ul>
+
+                {/* Two-column layout: Tabs left, QR right */}
+                <div className={styles.menuContent}>
+                    {/* Left side: Navigation tabs */}
+                    <div className={styles.menuLeft}>
+                        <ul id="site-navigation-menu" className={styles.menuList}>
+                            {links.map(({ name, path }, index) => (
+                                <li
+                                    key={name}
+                                    className={styles.menuItem}
+                                    ref={el => { menuItemsRef.current[index] = el; }}
+                                >
+                                    <MagneticLink
+                                        href={path}
+                                        className={styles.menuLink}
+                                        magneticStrength={0.1}
+                                    >
+                                        <span className={styles.linkText}>{name}</span>
+                                    </MagneticLink>
+                                </li>
+                            ))}
+                        </ul>
+                    </div>
+
+                    {/* Right side: QR Code Section */}
+                    <div className={styles.menuRight} ref={qrSectionRef}>
+                        <QRCodeSection isVisible={menuOpen} />
+
+                        {/* Phone connection indicator */}
+                        {isPhoneConnected && (
+                            <div className={styles.phoneConnected}>
+                                <span className={styles.phoneIcon}>📱</span>
+                                <span>Phone Connected</span>
+                            </div>
+                        )}
+                    </div>
+                </div>
+
+                {/* Footer info in menu */}
+                <div className={styles.menuFooter} ref={menuFooterRef}>
+                    <p>Building digital solutions with purpose</p>
+                </div>
             </div>
+
+            {/* Bottom-Center Floating Navigation */}
+            <nav className={styles.nav}>
+                {/* Left: Hamburger Menu */}
+                <button
+                    type="button"
+                    className={styles.menuToggle}
+                    aria-haspopup="true"
+                    aria-expanded={menuOpen}
+                    aria-controls="site-navigation-menu"
+                    onClick={handleMenuToggle}
+                >
+                    <div className={`${styles.hamburger} ${menuOpen ? styles.open : ''}`}>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+                    <span className={styles.menuText}>{menuOpen ? 'Close' : 'Menu'}</span>
+                </button>
+
+                {/* Center: Brand with flip animation */}
+                <Link href="/" className={styles.brand}>
+                    <span className={styles.crossIcon}>&#10013;&#xFE0E;</span>
+                    <span className={styles.brandFlip}>
+                        <span className={styles.brandFront}>Abd</span>
+                        <span className={styles.brandBack}>Abd</span>
+                    </span>
+                </Link>
+
+                {/* Right: Contact CTA */}
+                <Link href="/contact" className={styles.contactBtn}>
+                    Contact
+                </Link>
+            </nav>
         </>
     );
 }

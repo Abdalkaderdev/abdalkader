@@ -1,127 +1,96 @@
 'use client';
 
-import { forwardRef, useRef, ReactNode } from 'react';
-import { useTiltEffect } from '@/hooks/useTiltEffect';
+import { useRef, useEffect, ReactNode } from 'react';
+import { gsap } from '@/libs/gsap';
 import styles from './TiltCard.module.scss';
 
-export interface TiltCardProps {
-    /** Content to render inside the card */
+interface TiltCardProps {
     children: ReactNode;
-    /** Maximum tilt angle in degrees (default: 15) */
-    maxTilt?: number;
-    /** Perspective value in pixels (default: 1000) */
-    perspective?: number;
-    /** Scale on hover (default: 1.02) */
-    scale?: number;
-    /** Enable glare effect that follows cursor (default: false) */
-    glare?: boolean;
-    /** Maximum glare opacity (default: 0.3) */
-    maxGlare?: number;
-    /** Additional CSS class name */
     className?: string;
-    /** Disable the tilt effect */
-    disabled?: boolean;
-    /** Callback when hover starts */
-    onHoverStart?: () => void;
-    /** Callback when hover ends */
-    onHoverEnd?: () => void;
+    intensity?: number;
+    scale?: number;
+    glare?: boolean;
+    perspective?: number;
 }
 
-/**
- * TiltCard - A wrapper component that adds 3D tilt effect on hover.
- *
- * Cards tilt toward the cursor position using GSAP for smooth animations.
- * Includes optional glare effect and respects prefers-reduced-motion.
- * Automatically disabled on touch devices.
- *
- * @example
- * ```tsx
- * <TiltCard maxTilt={15} glare>
- *   <ProjectCard project={project} />
- * </TiltCard>
- * ```
- */
-const TiltCard = forwardRef<HTMLDivElement, TiltCardProps>(
-    (
-        {
-            children,
-            maxTilt = 15,
-            perspective = 1000,
-            scale = 1.02,
-            glare = false,
-            maxGlare = 0.3,
-            className = '',
-            disabled = false,
-            onHoverStart,
-            onHoverEnd,
-        },
-        forwardedRef
-    ) => {
-        const internalRef = useRef<HTMLDivElement>(null);
+export default function TiltCard({
+    children,
+    className = '',
+    intensity = 15,
+    scale = 1.02,
+    glare = true,
+    perspective = 1000,
+}: TiltCardProps) {
+    const cardRef = useRef<HTMLDivElement>(null);
+    const glareRef = useRef<HTMLDivElement>(null);
 
-        // Use forwarded ref if provided, otherwise use internal ref
-        const ref = (forwardedRef as React.RefObject<HTMLDivElement>) || internalRef;
+    useEffect(() => {
+        const card = cardRef.current;
+        const glareEl = glareRef.current;
+        if (!card) return;
 
-        const { onMouseMove, onMouseEnter, onMouseLeave, state } = useTiltEffect(
-            ref,
-            {
-                maxTilt,
-                perspective,
-                scale,
-                glare,
-                maxGlare,
-            }
-        );
+        const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        if (prefersReducedMotion) return;
 
-        // Build class names
-        const cardClasses = [
-            styles.tiltCard,
-            state.isHovering && styles.hovering,
-            state.isTouchDevice && styles.touchDevice,
-            disabled && styles.disabled,
-            className,
-        ]
-            .filter(Boolean)
-            .join(' ');
+        const handleMouseMove = (e: MouseEvent) => {
+            const rect = card.getBoundingClientRect();
+            const centerX = rect.left + rect.width / 2;
+            const centerY = rect.top + rect.height / 2;
+            const mouseX = e.clientX - centerX;
+            const mouseY = e.clientY - centerY;
 
-        const handleMouseEnter = (e: React.MouseEvent<HTMLDivElement>) => {
-            if (!disabled) {
-                onMouseEnter(e);
-                onHoverStart?.();
+            const rotateX = (mouseY / (rect.height / 2)) * -intensity;
+            const rotateY = (mouseX / (rect.width / 2)) * intensity;
+
+            gsap.to(card, {
+                rotateX: rotateX,
+                rotateY: rotateY,
+                scale: scale,
+                duration: 0.3,
+                ease: 'power2.out',
+            });
+
+            if (glareEl && glare) {
+                const glareX = ((e.clientX - rect.left) / rect.width) * 100;
+                const glareY = ((e.clientY - rect.top) / rect.height) * 100;
+                gsap.to(glareEl, {
+                    background: `radial-gradient(circle at ${glareX}% ${glareY}%, rgba(255,255,255,0.25) 0%, transparent 60%)`,
+                    opacity: 1,
+                    duration: 0.3,
+                });
             }
         };
 
         const handleMouseLeave = () => {
-            if (!disabled) {
-                onMouseLeave();
-                onHoverEnd?.();
+            gsap.to(card, {
+                rotateX: 0,
+                rotateY: 0,
+                scale: 1,
+                duration: 0.5,
+                ease: 'elastic.out(1, 0.5)',
+            });
+            if (glareEl) {
+                gsap.to(glareEl, { opacity: 0, duration: 0.3 });
             }
         };
 
-        const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
-            if (!disabled) {
-                onMouseMove(e);
-            }
+        card.addEventListener('mousemove', handleMouseMove);
+        card.addEventListener('mouseleave', handleMouseLeave);
+
+        return () => {
+            card.removeEventListener('mousemove', handleMouseMove);
+            card.removeEventListener('mouseleave', handleMouseLeave);
         };
+    }, [intensity, scale, glare]);
 
-        return (
-            <div className={styles.tiltWrapper} style={{ perspective: `${perspective}px` }}>
-                <div
-                    ref={ref}
-                    className={cardClasses}
-                    onMouseEnter={handleMouseEnter}
-                    onMouseLeave={handleMouseLeave}
-                    onMouseMove={handleMouseMove}
-                >
-                    {children}
-                </div>
-            </div>
-        );
-    }
-);
-
-TiltCard.displayName = 'TiltCard';
-
-export default TiltCard;
-
-export { TiltCard };
+    return (
+        <div
+            ref={cardRef}
+            className={`${styles.tiltCard} ${className}`}
+            style={{ perspective: `${perspective}px` }}
+        >
+            {children}
+            {glare && <div ref={glareRef} className={styles.glare} />}
+        </div>
+    );
+}

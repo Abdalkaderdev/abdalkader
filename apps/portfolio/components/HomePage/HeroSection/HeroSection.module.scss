@@ -23,11 +23,26 @@
     }
 
     .tagline {
-        @include font-1;
-        max-width: 21rem;
-        width: 100%;
+        font-size: clamp(1.8rem, 4vw, 3rem);
+        font-family: PPmedium, sans-serif;
         text-align: center;
         line-height: 1.1;
+        white-space: nowrap;
+
+        @media (max-width: 768px) {
+            font-size: clamp(1.4rem, 5vw, 2rem);
+            white-space: normal;
+        }
+    }
+
+    /* Exploding text animation */
+    .explodingText {
+        display: inline-block;
+    }
+
+    .letter {
+        display: inline-block;
+        will-change: transform, opacity, filter;
     }
 
     .bibleVerse {

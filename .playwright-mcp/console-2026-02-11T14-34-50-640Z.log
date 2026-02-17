@@ -1,0 +1,5 @@
+[      72ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:4001/favicon.ico:0
+[  119215ms] [WARNING] PostHog key or host not configured @ http://localhost:3001/_app/immutable/chunks/DPjVYkL_.js:3
+[  119218ms] [ERROR] 🔍 authenticatedFetch - No token found! @ http://localhost:3001/_app/immutable/chunks/6sQKKSPK.js:0
+[  119300ms] [ERROR] Failed to load resource: the server responded with a status of 401 (Unauthorized) @ http://localhost:8000/api/auth/me/:0
+[  121187ms] [WARNING] PostHog key or host not configured @ http://localhost:3001/_app/immutable/chunks/DPjVYkL_.js:3

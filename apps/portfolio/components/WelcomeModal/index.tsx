@@ -104,6 +104,8 @@ export default function WelcomeModal({ onMusicToggle }: WelcomeModalProps) {
         localStorage.setItem(MUSIC_PREF_KEY, musicEnabled ? 'true' : 'false');
         onMusicToggle(musicEnabled);
         setIsOpen(false);
+        // Dispatch event so Hero knows to start its animation
+        window.dispatchEvent(new CustomEvent('welcomeModalClosed'));
     }, [musicEnabled, onMusicToggle]);
 
     const handleKeyDown = useCallback((e: React.KeyboardEvent) => {

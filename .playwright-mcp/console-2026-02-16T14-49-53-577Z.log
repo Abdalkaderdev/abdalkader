@@ -1,0 +1,45 @@
+[    3978ms] [ERROR] Failed to load resource: the server responded with a status of 500 (Internal Server Error) @ http://localhost:3000/controller/FLYMYT/:0
+[    4465ms] Error: Syntax error: Selector "*" is not pure (pure selectors must contain at least one local class or id)
+
+  239 | 
+  240 | * {
+> 241 |   touch-action: manipulation;
+      |                                                 ^
+  242 | }
+
+    at getCssError (file://C:\Users\max\abdalkader\node_modules\.pnpm\next@14.2.25_react-dom@18.3.1_react@18.3.1_sass@1.93.2\node_modules\next\dist\build\webpack\plugins\wellknown-errors-plugin\parseCss.js:24:16)
+    at getModuleBuildError (file://C:\Users\max\abdalkader\node_modules\.pnpm\next@14.2.25_react-dom@18.3.1_react@18.3.1_sass@1.93.2\node_modules\next\dist\build\webpack\plugins\wellknown-errors-plugin\webpackModuleError.js:116:43)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async (file://C:\Users\max\abdalkader\node_modules\.pnpm\next@14.2.25_react-dom@18.3.1_react@18.3.1_sass@1.93.2\node_modules\next\dist\build\webpack\plugins\wellknown-errors-plugin\index.js:29:49)
+    at async (file://C:\Users\max\abdalkader\node_modules\.pnpm\next@14.2.25_react-dom@18.3.1_react@18.3.1_sass@1.93.2\node_modules\next\dist\build\webpack\plugins\wellknown-errors-plugin\index.js:27:21)
+[    4469ms] [ERROR] ./styles/controller.module.scss:241:1
+Syntax error: Selector "*" is not pure (pure selectors must contain at least one local class or id)
+
+  239 | 
+  240 | * {
+> 241 |   touch-action: manipulation;
+      |                                                 ^
+  242 | } @ webpack-internal:///../../node_modules/.pnpm/next@14.2.25_react-dom@18.3.1_react@18.3.1_sass@1.93.2/node_modules/next/dist/client/components/react-dev-overlay/internal/helpers/hydration-error-info.js:62
+[    4495ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3000/favicon.ico:0
+[    7605ms] [WARNING] The resource http://localhost:3000/_next/static/media/0a955ce484e73536-s.p.woff2 was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally. @ http://localhost:3000/controller/FLYMYT/:0
+[    7605ms] [WARNING] The resource http://localhost:3000/_next/static/media/f9b3b92fcc2d022b-s.p.woff2 was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally. @ http://localhost:3000/controller/FLYMYT/:0
+[   24590ms] [ERROR] ./styles/controller.module.scss:241:1
+Syntax error: Selector "*" is not pure (pure selectors must contain at least one local class or id)
+
+  239 | 
+  240 | * {
+> 241 |   touch-action: manipulation;
+      |                                                 ^
+  242 | } @ webpack-internal:///../../node_modules/.pnpm/next@14.2.25_react-dom@18.3.1_react@18.3.1_sass@1.93.2/node_modules/next/dist/client/components/react-dev-overlay/internal/helpers/hydration-error-info.js:62
+[   25346ms] [ERROR] Failed to load resource: the server responded with a status of 500 (Internal Server Error) @ http://localhost:3000/_next/static/webpack/a84181b09564e104.webpack.hot-update.json:0
+[   25346ms] [WARNING] [Fast Refresh] performing full reload
+
+Fast Refresh will perform a full reload when you edit a file that's imported by modules outside of the React rendering tree.
+You might have a file which exports a React component but also exports a value that is imported by a non-React component file.
+Consider migrating the non-React component export to a separate file and importing it into both files.
+
+It is also possible the parent component of the component you edited is a class component, which disables Fast Refresh.
+Fast Refresh requires at least one parent function component in your React tree. @ webpack-internal:///../../node_modules/.pnpm/next@14.2.25_react-dom@18.3.1_react@18.3.1_sass@1.93.2/node_modules/next/dist/client/components/react-dev-overlay/pages/hot-reloader-client.js:347
+[   26685ms] [WARNING] Image with src "/images/rooted-in-christ.jpg" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: "auto"' or 'height: "auto"' to maintain the aspect ratio. @ webpack-internal:///../../node_modules/.pnpm/next@14.2.25_react-dom@18.3.1_react@18.3.1_sass@1.93.2/node_modules/next/dist/shared/lib/utils/warn-once.js:15
+[   28163ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3000/images/icons/icon-192.png:0
+[   28164ms] [WARNING] Error while trying to use the following icon from the Manifest: http://localhost:3000/images/icons/icon-192.png (Download error or resource isn't a valid image) @ http://localhost:3000/controller/FLYMYT/:0

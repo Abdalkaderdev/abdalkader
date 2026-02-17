@@ -1,0 +1,27 @@
+@import "@/styles/variables.scss";
+
+.scrollVelocity {
+    overflow: hidden;
+    white-space: nowrap;
+    padding: 2rem 0;
+}
+
+.text {
+    display: inline-flex;
+    white-space: nowrap;
+    font-size: clamp(3rem, 10vw, 8rem);
+    font-family: PPmedium, sans-serif;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: -0.02em;
+    color: rgba($white, 0.1);
+
+    span {
+        display: inline-block;
+        padding-right: 0.5em;
+    }
+
+    // Stroke text effect
+    -webkit-text-stroke: 1px rgba($white, 0.2);
+    -webkit-text-fill-color: transparent;
+}

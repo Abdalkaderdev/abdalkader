@@ -1,0 +1,78 @@
+[    1282ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3000/images/icons/icon-192.png:0
+[    1288ms] [WARNING] Error while trying to use the following icon from the Manifest: http://localhost:3000/images/icons/icon-192.png (Download error or resource isn't a valid image) @ http://localhost:3000/projects/:0
+[   11554ms] [WARNING] Image with src "/images/cards/card-black-marble.jpg" was detected as the Largest Contentful Paint (LCP). Please add the "priority" property if this image is above the fold.
+Read more: https://nextjs.org/docs/api-reference/next/image#priority @ webpack-internal:///../../node_modules/.pnpm/next@14.2.25_react-dom@18.3.1_react@18.3.1_sass@1.93.2/node_modules/next/dist/shared/lib/utils/warn-once.js:15
+[   44074ms] [ERROR] ./components/ProjectPage/ProjectShowcase/index.tsx
+Error: 
+  x Unexpected token `section`. Expected jsx identifier
+     ,-[C:\Users\max\abdalkader\apps\portfolio\components\ProjectPage\ProjectShowcase\index.tsx:334:1]
+ 334 |     }, []);
+ 335 | 
+ 336 |     return (
+ 337 |         <section ref={containerRef} className={styles.showcase}>
+     :          ^^^^^^^
+ 338 |             {/* Background */}
+ 339 |             <div className={styles.bgGradient} />
+     `----
+
+Caused by:
+    Syntax Error
+
+Import trace for requested module:
+./components/ProjectPage/ProjectShowcase/index.tsx
+./pages/projects.tsx @ webpack-internal:///../../node_modules/.pnpm/next@14.2.25_react-dom@18.3.1_react@18.3.1_sass@1.93.2/node_modules/next/dist/client/components/react-dev-overlay/internal/helpers/hydration-error-info.js:62
+[   54489ms] [ERROR] ./components/ProjectPage/ProjectShowcase/index.tsx
+Error: 
+  x Unexpected token `section`. Expected jsx identifier
+     ,-[C:\Users\max\abdalkader\apps\portfolio\components\ProjectPage\ProjectShowcase\index.tsx:334:1]
+ 334 |     }, []);
+ 335 | 
+ 336 |     return (
+ 337 |         <section ref={containerRef} className={styles.showcase}>
+     :          ^^^^^^^
+ 338 |             {/* Background */}
+ 339 |             <div className={styles.bgGradient} />
+     `----
+
+Caused by:
+    Syntax Error
+
+Import trace for requested module:
+./components/ProjectPage/ProjectShowcase/index.tsx @ webpack-internal:///../../node_modules/.pnpm/next@14.2.25_react-dom@18.3.1_react@18.3.1_sass@1.93.2/node_modules/next/dist/client/components/react-dev-overlay/internal/helpers/hydration-error-info.js:62
+[   54594ms] [ERROR] ./components/ProjectPage/ProjectShowcase/index.tsx
+Error: 
+  x Unexpected token `section`. Expected jsx identifier
+     ,-[C:\Users\max\abdalkader\apps\portfolio\components\ProjectPage\ProjectShowcase\index.tsx:334:1]
+ 334 |     }, []);
+ 335 | 
+ 336 |     return (
+ 337 |         <section ref={containerRef} className={styles.showcase}>
+     :          ^^^^^^^
+ 338 |             {/* Background */}
+ 339 |             <div className={styles.bgGradient} />
+     `----
+
+Caused by:
+    Syntax Error
+
+Import trace for requested module:
+./components/ProjectPage/ProjectShowcase/index.tsx @ webpack-internal:///../../node_modules/.pnpm/next@14.2.25_react-dom@18.3.1_react@18.3.1_sass@1.93.2/node_modules/next/dist/client/components/react-dev-overlay/internal/helpers/hydration-error-info.js:62
+[   54660ms] [ERROR] ./components/ProjectPage/ProjectShowcase/index.tsx
+Error: 
+  x Unexpected token `section`. Expected jsx identifier
+     ,-[C:\Users\max\abdalkader\apps\portfolio\components\ProjectPage\ProjectShowcase\index.tsx:334:1]
+ 334 |     }, []);
+ 335 | 
+ 336 |     return (
+ 337 |         <section ref={containerRef} className={styles.showcase}>
+     :          ^^^^^^^
+ 338 |             {/* Background */}
+ 339 |             <div className={styles.bgGradient} />
+     `----
+
+Caused by:
+    Syntax Error
+
+Import trace for requested module:
+./components/ProjectPage/ProjectShowcase/index.tsx
+./pages/projects.tsx @ webpack-internal:///../../node_modules/.pnpm/next@14.2.25_react-dom@18.3.1_react@18.3.1_sass@1.93.2/node_modules/next/dist/client/components/react-dev-overlay/internal/helpers/hydration-error-info.js:62

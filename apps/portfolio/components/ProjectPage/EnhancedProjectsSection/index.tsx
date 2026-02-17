@@ -4,7 +4,6 @@ import { projects } from '@/data/projectsData';
 import { useEffect, useRef } from 'react';
 import { gsap } from '@/libs/gsap';
 import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
-import MatrixCodeAnimation from '@/components/MatrixCodeAnimation';
 import VideoBackground from '@/components/VideoBackground';
 
 if (typeof window !== 'undefined') {
@@ -17,7 +16,6 @@ interface ProjectCardProps {
     year: string;
     slug: string;
     index: number;
-    colorVariant: 'orange' | 'gold' | 'blue' | 'green';
 }
 
 // Magnetic Button Component
@@ -67,7 +65,7 @@ function MagneticButton({ children, href }: { children: React.ReactNode; href: s
 }
 
 // Project Card Component
-function ProjectCard({ title, category, year, slug, index, colorVariant }: ProjectCardProps) {
+function ProjectCard({ title, category, year, slug, index }: ProjectCardProps) {
     const cardRef = useRef<HTMLDivElement>(null);
     const animationRef = useRef<HTMLDivElement>(null);
     const contentRef = useRef<HTMLDivElement>(null);
@@ -149,14 +147,14 @@ function ProjectCard({ title, category, year, slug, index, colorVariant }: Proje
                     </div>
                 </div>
 
-                {/* Center: Matrix Animation */}
+                {/* Center: Video Background with Title */}
                 <div ref={animationRef} className={styles.imageContainer}>
-                    <MatrixCodeAnimation
-                        variant={colorVariant}
-                        speed="normal"
-                        density="normal"
-                        text={title}
+                    <VideoBackground
+                        src="/videos/projects-bg.mp4"
+                        opacity={0.8}
+                        overlay={false}
                     />
+                    <div className={styles.projectTitle}>{title}</div>
                 </div>
 
                 {/* Right: CTA */}
@@ -236,20 +234,16 @@ export default function EnhancedProjectsSection() {
 
             {/* Project Cards */}
             <div className={styles.projectsContainer}>
-                {displayProjects.map((project, index) => {
-                    const colorVariants: Array<'orange' | 'gold' | 'blue' | 'green'> = ['orange', 'gold', 'blue', 'green'];
-                    return (
-                        <ProjectCard
-                            key={project.slug}
-                            title={project.title.toUpperCase()}
-                            category={project.category?.[0] || 'Development'}
-                            year="2024"
-                            slug={project.slug}
-                            index={index}
-                            colorVariant={colorVariants[index % colorVariants.length]}
-                        />
-                    );
-                })}
+                {displayProjects.map((project, index) => (
+                    <ProjectCard
+                        key={project.slug}
+                        title={project.title.toUpperCase()}
+                        category={project.category?.[0] || 'Development'}
+                        year="2024"
+                        slug={project.slug}
+                        index={index}
+                    />
+                ))}
             </div>
         </section>
     );

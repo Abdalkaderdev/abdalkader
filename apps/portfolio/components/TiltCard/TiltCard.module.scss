@@ -1,62 +1,23 @@
 @import "@/styles/variables.scss";
 
-// Wrapper provides the perspective context
-.tiltWrapper {
-    display: inline-block;
-    perspective: 1000px;
-    transform-style: preserve-3d;
-}
-
-// The actual card that tilts
 .tiltCard {
     position: relative;
     transform-style: preserve-3d;
     will-change: transform;
-    transition: box-shadow $transition;
+    transition: box-shadow 0.3s ease;
 
-    // Subtle shadow enhancement on hover
-    &.hovering {
-        box-shadow:
-            0 20px 40px rgba(0, 0, 0, 0.3),
-            0 10px 20px rgba(0, 0, 0, 0.2);
-    }
-
-    // Touch device - no tilt, simple hover
-    &.touchDevice {
-        transform: none !important;
-
-        &:active {
-            transform: scale(0.98) !important;
-        }
-    }
-
-    // Disabled state
-    &.disabled {
-        transform: none !important;
-        pointer-events: none;
+    &:hover {
+        box-shadow: 
+            0 25px 50px -12px rgba(0, 0, 0, 0.5),
+            0 0 0 1px rgba($primary, 0.2);
     }
 }
 
-// Global glare styles (injected by hook but can be styled)
-:global(.tilt-glare) {
+.glare {
     position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
+    inset: 0;
     pointer-events: none;
     border-radius: inherit;
+    opacity: 0;
     z-index: 10;
-}
-
-// Reduced motion
-@media (prefers-reduced-motion: reduce) {
-    .tiltCard {
-        transform: none !important;
-        transition: none;
-
-        &:hover {
-            box-shadow: none;
-        }
-    }
 }
