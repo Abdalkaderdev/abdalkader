@@ -4,7 +4,6 @@ import { isReducedMotion } from "@/utils/motion";
 import styles from "./AboutSection.module.scss";
 import Button from "@/components/Button";
 import Tag from "@/components/Tag";
-import MiniSignpost from "@/components/MiniSignpost";
 
 export default function AboutSection() {
     const aboutTextRef = useRef<HTMLHeadingElement | null>(null);
@@ -84,11 +83,6 @@ export default function AboutSection() {
                 </h2>
                 <div className={styles.btnSpace} ref={btnWrapperRef}>
                     <Button text="More About Me" href="/about" />
-                </div>
-
-                {/* Encouraging verse signpost */}
-                <div className={styles.signpostWrapper}>
-                    <MiniSignpost category="hope" />
                 </div>
             </div>
         </section>

@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { 
   Menu, 
@@ -102,6 +102,7 @@ export function GlobalNavigationHub({
   const [menuOpen, setMenuOpen] = useState(false);
   const [hoveredSite, setHoveredSite] = useState<string | null>(null);
   const menuRef = useRef<HTMLDivElement>(null);
+  const toggleRef = useRef<HTMLButtonElement>(null);
 
   // Close menu on escape key
   useEffect(() => {
@@ -116,16 +117,24 @@ export function GlobalNavigationHub({
   }, [menuOpen]);
 
   // Close menu when clicking outside
-  useEffect(() => {
-    const handleClickOutside = (event: MouseEvent) => {
-      if (menuOpen && menuRef.current && !menuRef.current.contains(event.target as Node)) {
-        setMenuOpen(false);
-      }
-    };
+  const handleClickOutside = useCallback((event: MouseEvent) => {
+    const target = event.target as Node;
+    // Don't close if clicking the toggle button (it handles its own state)
+    if (toggleRef.current?.contains(target)) {
+      return;
+    }
+    // Close if clicking outside the menu panel
+    if (menuRef.current && !menuRef.current.contains(target)) {
+      setMenuOpen(false);
+    }
+  }, []);
 
-    document.addEventListener('mousedown', handleClickOutside);
-    return () => document.removeEventListener('mousedown', handleClickOutside);
-  }, [menuOpen]);
+  useEffect(() => {
+    if (menuOpen) {
+      document.addEventListener('mousedown', handleClickOutside);
+      return () => document.removeEventListener('mousedown', handleClickOutside);
+    }
+  }, [menuOpen, handleClickOutside]);
 
   const otherSites = ECOSYSTEM_SITES.filter(site => site.id !== currentSite.id);
 
@@ -198,6 +207,7 @@ export function GlobalNavigationHub({
 
           {/* Menu Toggle */}
           <button
+            ref={toggleRef}
             type="button"
             className="global-nav-menu-toggle"
             aria-label="Open navigation menu"
@@ -214,11 +224,12 @@ export function GlobalNavigationHub({
       </nav>
 
       {/* Navigation Menu Overlay */}
-      <AnimatePresence>
+      <AnimatePresence mode="wait">
         {menuOpen && (
           <>
             {/* Backdrop */}
             <motion.div
+              key="nav-backdrop"
               className="global-nav-backdrop"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
@@ -229,12 +240,13 @@ export function GlobalNavigationHub({
 
             {/* Menu Panel */}
             <motion.div
+              key="nav-menu"
               ref={menuRef}
               className="global-nav-menu"
-              initial={{ x: '100%' }}
-              animate={{ x: 0 }}
-              exit={{ x: '100%' }}
-              transition={{ type: 'spring', damping: 25, stiffness: 200 }}
+              initial={{ opacity: 0, scale: 0.98 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 0.98 }}
+              transition={{ duration: 0.3, ease: 'easeOut' }}
             >
               {/* Current Context */}
               {showContext && (

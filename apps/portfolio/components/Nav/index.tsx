@@ -141,13 +141,14 @@ export default function Nav() {
                 gsap.set(el, { x: 0, y: 0, rotation: 0, opacity: 1, scale: 1 });
             });
 
-            // Reset menu container transform (but NOT opacity - let CSS handle that)
+            // Reset menu container transform including opacity
             if (menuContainer) {
                 gsap.set(menuContainer, {
                     x: 0,
                     y: 0,
                     rotation: 0,
                     scale: 1,
+                    opacity: 1,
                     backdropFilter: '',
                     webkitBackdropFilter: '',
                     backgroundColor: '',
