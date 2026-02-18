@@ -109,10 +109,10 @@ export default function ImageTrail() {
     return (
         <>
             <div className={styles.content}>
-                <div ref={trailRef} className={styles.trail} style={{ backgroundImage: 'url(/images/about2.png)' }} />
+                <div ref={trailRef} className={styles.trail} style={{ backgroundImage: 'url(/images/about2.webp)' }} />
                 {/* Static fallback for reduced motion users (hidden when JS trail is active) */}
                 <noscript>
-                    <Image src="/images/about2.png" width={800} height={600} alt="Decorative" />
+                    <Image src="/images/about2.webp" width={800} height={600} alt="Decorative" />
                 </noscript>
             </div>
         </>

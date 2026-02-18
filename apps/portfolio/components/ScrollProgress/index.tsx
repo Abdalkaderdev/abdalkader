@@ -2,11 +2,12 @@
 
 import { useEffect, useState } from 'react';
 import { motion, useScroll, useSpring } from 'framer-motion';
-import { isReducedMotion } from '../../utils/motion';
+import useReducedMotion from '@/hooks/useReducedMotion';
 import styles from './ScrollProgress.module.scss';
 
 export const ScrollProgress = () => {
   const [isVisible, setIsVisible] = useState(false);
+  const prefersReducedMotion = useReducedMotion();
   const { scrollYProgress } = useScroll();
 
   // Smooth spring animation for the progress bar
@@ -27,7 +28,7 @@ export const ScrollProgress = () => {
   }, []);
 
   // Respect reduced motion preference
-  if (isReducedMotion()) {
+  if (prefersReducedMotion) {
     return null;
   }
 

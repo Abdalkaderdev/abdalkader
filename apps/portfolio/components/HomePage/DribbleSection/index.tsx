@@ -87,7 +87,7 @@ export default function InstagramSection() {
                 </div>
                 <Image src='/images/pngegg (1).png' alt='instagram' width={100} height={50} ref={imageRef} />
                 <h5 ref={headingRef}>
-                    {splitText("Energizing the digital landscape, our creativity shines in bespoke websites.")}
+                    {splitText("Energizing the digital landscape, my creativity shines in bespoke websites.")}
                 </h5>
                 <div className={styles.btnSpace} ref={btnWrapperRef}>
                     <Button text="View Instagram" href="https://www.instagram.com/abdalkader.dev" targetBlank={true} />

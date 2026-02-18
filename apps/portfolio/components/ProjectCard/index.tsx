@@ -63,7 +63,7 @@ export default function ProjectCard({
                                 alt=""
                                 fill
                                 className={styles.customBgImage}
-                                priority
+                                loading="lazy"
                             />
                             <div className={styles.bgOverlay} />
                         </>
@@ -81,10 +81,11 @@ export default function ProjectCard({
                             <div className={styles.thumbnailArea}>
                                 <Image
                                     src={thumbnail}
-                                    alt={`${title} preview`}
+                                    alt={`${title} - ${type} project preview showcasing the main interface`}
                                     width={300}
                                     height={180}
                                     className={styles.thumbnail}
+                                    loading="lazy"
                                 />
                             </div>
                         )}

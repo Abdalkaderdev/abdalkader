@@ -42,7 +42,7 @@ export class ErrorBoundary extends React.Component<Props, State> {
         <div className={styles.errorContainer}>
           <div className={styles.errorContent}>
              <h1>Oops! Something went wrong</h1>
-             <p>We&rsquo;re sorry for the inconvenience. An unexpected error has occurred.</p>
+             <p>I&rsquo;m sorry for the inconvenience. An unexpected error has occurred.</p>
             
             {process.env.NODE_ENV === 'development' && this.state.error && (
               <details className={styles.errorDetails}>

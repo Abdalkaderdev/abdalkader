@@ -1,16 +1,15 @@
 import { GetStaticPaths, GetStaticProps } from 'next';
 import Image from 'next/image';
-import { projects } from '@/data/projectsData'; // Import the data from the new file
+import { projects, Project } from '@/data/projectsData';
 import styles from './ProjectPage.module.scss';
 import Button from '@/components/Button';
 import BookCallSection from '@/components/HomePage/BookCallSection';
 import { ProjectLifecycle } from '@/components/ProjectPage/ProjectLifecycle';
 import { ShareButtons } from '@/components/ProjectPage/ShareButtons';
-import Head from 'next/head';
 import { gsap } from '@/libs/gsap';
 import { useEffect, useRef } from 'react';
-import JsonLd from '@/components/SEO/JsonLd';
-import { projectJsonLd, breadcrumbsJsonLd } from '@/utils/jsonld';
+import { PageSEO, JsonLd, Breadcrumbs } from '@/components/SEO';
+import { projectJsonLd, projectArticleJsonLd } from '@/utils/jsonld';
 import { SITE_URL } from '@/utils/seo';
 
 // Fetch the list of possible slugs for static generation
@@ -40,26 +39,28 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
 };
 
 type ProjectPageProps = {
-    project: {
-        title: string;
-        category: string[];
-        img: string;
-        owner: string;
-        date: string;
-        services: string;
-        duration: string;
-        budget: string;
-        live: string;
-        overview: string;
-        objective: string;
-        process: string;
-        impact: string;
-        slug: string;
-    };
+    project: Project;
 };
 
 const ProjectPage = ({ project }: ProjectPageProps) => {
     const imageRef = useRef<HTMLDivElement | null>(null);
+
+    // Breadcrumb items for navigation
+    const breadcrumbItems = [
+        { label: 'Home', href: '/' },
+        { label: 'Projects', href: '/projects' },
+        { label: project.title, href: `/projects/${project.slug}`, current: true }
+    ];
+
+    // Format date for datetime attribute (extract year or use ISO format)
+    const formatDateForSchema = (dateStr: string): string => {
+        // Try to extract year from formats like "2024 - Present", "Nov 15, 2024", etc.
+        const yearMatch = dateStr.match(/\b(20\d{2})\b/);
+        if (yearMatch) {
+            return yearMatch[1];
+        }
+        return dateStr;
+    };
 
     useEffect(() => {
         gsap.from(imageRef.current, {
@@ -71,143 +72,143 @@ const ProjectPage = ({ project }: ProjectPageProps) => {
 
     return (
         <>
-            <Head>
-                <title>{`${project?.title || 'Untitled Project'} | Abdalkader - AI & Full-Stack Developer`}</title>
-                <meta name="description" content={`${project?.overview?.substring(0, 160)}...`} />
-                <meta name="keywords" content={project?.category?.join(', ') || ''} />
-                <meta name="author" content="Abdalkader Alhamoud" />
-                <link rel="canonical" href={`${SITE_URL}/projects/${project.slug}`} />
-                
-                {/* Open Graph / Facebook */}
-                <meta property="og:type" content="website" />
-                <meta property="og:url" content={`${SITE_URL}/projects/${project.slug}`} />
-                <meta property="og:title" content={`${project?.title || 'Untitled Project'} | Abdalkader`} />
-                <meta property="og:description" content={`${project?.overview?.substring(0, 160)}...`} />
-                <meta property="og:image" content={`${SITE_URL}${project?.img}`} />
-                <meta property="og:image:width" content="1200" />
-                <meta property="og:image:height" content="630" />
-                <meta property="og:site_name" content="Abdalkader Portfolio" />
-                
-                {/* Twitter */}
-                <meta name="twitter:card" content="summary_large_image" />
-                <meta name="twitter:url" content={`${SITE_URL}/projects/${project.slug}`} />
-                <meta name="twitter:title" content={`${project?.title || 'Untitled Project'} | Abdalkader`} />
-                <meta name="twitter:description" content={`${project?.overview?.substring(0, 160)}...`} />
-                <meta name="twitter:image" content={`${SITE_URL}${project?.img}`} />
-                <meta name="twitter:creator" content="@abdalkaderdev" />
-                <script
-                    type="application/ld+json"
-                    dangerouslySetInnerHTML={{
-                        __html: JSON.stringify({
-                            '@context': 'https://schema.org',
-                            '@type': 'CreativeWork',
-                            name: project.title,
-                            url: `${SITE_URL}/projects/${project.slug}`,
-                            image: project.img,
-                            datePublished: project.date,
-                            author: {
-                                '@type': 'Person',
-                                name: 'Abdalkader Alhamoud',
-                                url: SITE_URL
-                            },
-                            about: project.overview,
-                            keywords: project.category.join(', ')
-                        })
-                    }}
-                />
-            </Head>
+            <PageSEO
+                title={`${project.title} - Case Study | Abdalkader Alhamoud`}
+                description={project.overview.substring(0, 155) + '...'}
+                canonical={`/projects/${project.slug}`}
+                ogType="article"
+                ogImage={project.img}
+                ogImageAlt={`${project.title} - Project Screenshot`}
+                publishedTime={formatDateForSchema(project.date)}
+                keywords={[
+                    ...project.category,
+                    ...(project.badges || []),
+                    'Case Study',
+                    'Portfolio',
+                    'Web Development'
+                ]}
+            />
             <JsonLd data={[
                 projectJsonLd(project),
-                breadcrumbsJsonLd([
-                    { name: 'Home', item: SITE_URL },
-                    { name: 'Projects', item: `${SITE_URL}/projects` },
-                    { name: project.title, item: `${SITE_URL}/projects/${project.slug}` },
-                ]),
+                projectArticleJsonLd({
+                    title: project.title,
+                    slug: project.slug,
+                    img: project.img,
+                    overview: project.overview,
+                    date: project.date,
+                    category: project.category,
+                    badges: project.badges
+                })
             ]} />
-            {/*========= Header ==========*/}
-            <header className={styles.ProjectSinglePage}>
-                <div ref={imageRef} className={styles.imageWrapper}>
-                    <Image
-                        src={project.img}
-                        alt={project.title}
-                        width={800}
-                        height={500}
-                        priority
-                        placeholder="empty"
-                    />
-                </div>
 
-                {/* Project Details */}
-                <div className={styles.projectDetails}>
-                    <h1>AI-Powered {project.title}</h1>
-                    <div className={styles.category}>
-                        {project.category.map((cat, idx) => (
-                            <span key={idx}>{cat}</span>
-                        ))}
-                    </div>
-                </div>
-            </header>
+            {/* Visible Breadcrumbs Navigation */}
+            <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '1rem 1.5rem 0' }}>
+                <Breadcrumbs items={breadcrumbItems} />
+            </div>
 
-            {/*========= Content ==========*/}
-            <section className={styles.projectContent}>
-                {/* Sticky project details */}
-                <div className={styles.sticky}>
-                    <div className={styles.wrapper}>
-                        <h2>Project Details</h2>
-                        <div>
-                            <h3>Owner</h3>
-                            <h4>{project.owner}</h4>
-                        </div>
-                        <div>
-                            <h3>Release Date</h3>
-                            <h4>{project.date}</h4>
-                        </div>
-                        <div>
-                            <h3>Services</h3>
-                            <h4>{project.services}</h4>
-                        </div>
-                        <div>
-                            <h3>Duration</h3>
-                            <h4>{project.duration}</h4>
-                        </div>
-                        <div>
-                            <h3>Budget</h3>
-                            <h4>{project.budget}</h4>
-                        </div>
+            {/*========= Article Wrapper for Semantic HTML ==========*/}
+            <article itemScope itemType="https://schema.org/Article">
+                {/*========= Header ==========*/}
+                <header className={styles.ProjectSinglePage}>
+                    <div ref={imageRef} className={styles.imageWrapper}>
+                        <Image
+                            src={project.img}
+                            alt={`${project.title} - Project showcase featuring ${project.category.join(', ')}`}
+                            width={800}
+                            height={500}
+                            priority
+                            fetchPriority="high"
+                            placeholder="empty"
+                            itemProp="image"
+                        />
                     </div>
-                    <Button text="Launch Project" targetBlank={true} href={project.live} />
-                </div>
 
-                {/* Scroll project Content */}
-                <div className={styles.scroll}>
-                    <div>
-                        <h2>Overview</h2>
-                        <p>{project.overview}</p>
+                    {/* Project Details */}
+                    <div className={styles.projectDetails}>
+                        <h1 itemProp="headline">{project.title}</h1>
+                        <div className={styles.category}>
+                            {project.category.map((cat, idx) => (
+                                <span key={idx} itemProp="keywords">{cat}</span>
+                            ))}
+                        </div>
                     </div>
-                    <div>
-                        <h2>Objective</h2>
-                        <p>{project.objective}</p>
+                </header>
+
+                {/*========= Content ==========*/}
+                <section className={styles.projectContent}>
+                    {/* Sticky project details */}
+                    <aside className={styles.sticky}>
+                        <div className={styles.wrapper}>
+                            <h2>Project Details</h2>
+                            <dl>
+                                <div>
+                                    <dt><h3>Owner</h3></dt>
+                                    <dd><span itemProp="provider">{project.owner}</span></dd>
+                                </div>
+                                <div>
+                                    <dt><h3>Release Date</h3></dt>
+                                    <dd>
+                                        <time dateTime={formatDateForSchema(project.date)} itemProp="datePublished">
+                                            {project.date}
+                                        </time>
+                                    </dd>
+                                </div>
+                                <div>
+                                    <dt><h3>Services</h3></dt>
+                                    <dd>{project.services}</dd>
+                                </div>
+                                <div>
+                                    <dt><h3>Duration</h3></dt>
+                                    <dd>{project.duration}</dd>
+                                </div>
+                                <div>
+                                    <dt><h3>Budget</h3></dt>
+                                    <dd>{project.budget}</dd>
+                                </div>
+                            </dl>
+                        </div>
+                        {project.live && (
+                            <Button text="Launch Project" targetBlank={true} href={project.live} />
+                        )}
+                    </aside>
+
+                    {/* Scroll project Content */}
+                    <div className={styles.scroll} itemProp="articleBody">
+                        <section>
+                            <h2>Overview</h2>
+                            <p itemProp="description">{project.overview}</p>
+                        </section>
+                        <section>
+                            <h2>Objective</h2>
+                            <p>{project.objective}</p>
+                        </section>
+                        <section>
+                            <h2>Process</h2>
+                            <p>{project.process}</p>
+                        </section>
+                        <section>
+                            <h2>Technical Implementation</h2>
+                            <p>Leveraged advanced machine learning algorithms and AI models to enhance user experience and system performance. Implemented intelligent recommendation systems using collaborative filtering and deep learning techniques. Utilized modern AI frameworks including TensorFlow.js for real-time inference and Python-based ML pipelines for model training and optimization.</p>
+                        </section>
+                        <section>
+                            <h2>Impact</h2>
+                            <p>{project.impact}</p>
+                        </section>
                     </div>
-                    <div>
-                        <h2>Process</h2>
-                        <p>{project.process}</p>
-                    </div>
-                    <div>
-                        <h2>Technical Implementation</h2>
-                        <p>Leveraged advanced machine learning algorithms and AI models to enhance user experience and system performance. Implemented intelligent recommendation systems using collaborative filtering and deep learning techniques. Utilized modern AI frameworks including TensorFlow.js for real-time inference and Python-based ML pipelines for model training and optimization.</p>
-                    </div>
-                    <div>
-                        <h2>Impact</h2>
-                        <p>{project.impact}</p>
-                    </div>
+                </section>
+
+                {/* Hidden author info for schema */}
+                <div itemProp="author" itemScope itemType="https://schema.org/Person" style={{ display: 'none' }}>
+                    <meta itemProp="name" content="Abdalkader Alhamoud" />
+                    <meta itemProp="url" content={SITE_URL} />
                 </div>
-            </section>
+            </article>
 
             {/*========= Project Lifecycle Integration ==========*/}
             <ProjectLifecycle projectSlug={project.slug} />
 
             {/*========= Share Buttons ==========*/}
-            <ShareButtons 
+            <ShareButtons
               projectTitle={project.title}
               projectSlug={project.slug}
               projectDescription={project.overview}
@@ -215,6 +216,13 @@ const ProjectPage = ({ project }: ProjectPageProps) => {
 
             {/*========= Book Call Section ==========*/}
             <BookCallSection />
+
+            {/*========= Contact Address for SEO ==========*/}
+            <address style={{ display: 'none' }} itemScope itemType="https://schema.org/Person">
+                <meta itemProp="name" content="Abdalkader Alhamoud" />
+                <meta itemProp="email" content="hello@abdalkader.dev" />
+                <meta itemProp="url" content={SITE_URL} />
+            </address>
         </>
     );
 };

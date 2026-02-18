@@ -45,6 +45,11 @@ body {
     top: 10px;
 }
 
+/* Remove outline when main content receives focus from skip link */
+#main:focus {
+    outline: none;
+}
+
 /* Visible focus styles */
 :focus-visible {
     outline: 2px dashed $primary;

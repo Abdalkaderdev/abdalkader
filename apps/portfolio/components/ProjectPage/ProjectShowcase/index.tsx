@@ -32,7 +32,7 @@ const SHOWCASE_PROJECTS: ShowcaseProject[] = [
         ],
         liveUrl: "https://discipleone.life/",
         caseStudyUrl: "/projects/discipleone-platform",
-        backgroundImage: "/images/cards/card-layered-archway.jpg",
+        backgroundImage: "/images/cards/card-layered-archway.webp",
     },
     {
         number: "02",
@@ -48,7 +48,7 @@ const SHOWCASE_PROJECTS: ShowcaseProject[] = [
         ],
         liveUrl: "https://soapboxsuperapp.com/",
         caseStudyUrl: "/projects/soapbox-super-app",
-        backgroundImage: "/images/cards/card-modern-chapel.jpg",
+        backgroundImage: "/images/cards/card-modern-chapel.webp",
     },
     {
         number: "03",
@@ -64,7 +64,7 @@ const SHOWCASE_PROJECTS: ShowcaseProject[] = [
         ],
         liveUrl: "https://parsalink.io/",
         caseStudyUrl: "/projects/parsalink-ai-crm",
-        backgroundImage: "/images/cards/card-black-marble.jpg",
+        backgroundImage: "/images/cards/card-black-marble.webp",
     },
     {
         number: "04",
@@ -80,7 +80,7 @@ const SHOWCASE_PROJECTS: ShowcaseProject[] = [
         ],
         liveUrl: "https://viaapp.life/",
         caseStudyUrl: "/projects/via-discipleship-app",
-        backgroundImage: "/images/cards/card-gothic-arch.jpg",
+        backgroundImage: "/images/cards/card-gothic-arch.webp",
     },
     {
         number: "05",
@@ -96,7 +96,7 @@ const SHOWCASE_PROJECTS: ShowcaseProject[] = [
         ],
         liveUrl: "https://quantumanim.abdalkader.dev/",
         caseStudyUrl: "/projects/quantum-animation-system",
-        backgroundImage: "/images/cards/card-sacred-geometry.jpg",
+        backgroundImage: "/images/cards/card-sacred-geometry.webp",
     },
     {
         number: "06",
@@ -112,7 +112,7 @@ const SHOWCASE_PROJECTS: ShowcaseProject[] = [
         ],
         liveUrl: "https://virtualview.vercel.app/",
         caseStudyUrl: "/projects/virtualview",
-        backgroundImage: "/images/cards/card-black-marble.jpg",
+        backgroundImage: "/images/cards/card-black-marble.webp",
     },
 ];
 

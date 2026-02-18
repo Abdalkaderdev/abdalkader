@@ -10,6 +10,7 @@ interface WelcomeModalProps {
 }
 
 const MUSIC_PREF_KEY = 'portfolio-music-enabled';
+const ENTERED_KEY = 'portfolio-entered';
 
 // Bible verses for the welcome modal
 const VERSES = [
@@ -54,14 +55,30 @@ export default function WelcomeModal({ onMusicToggle }: WelcomeModalProps) {
     }, []);
 
     useEffect(() => {
-        // Show modal on every visit with a small delay for better UX
+        // Check if user has already entered (SSR-safe)
+        if (typeof window !== 'undefined') {
+            const hasEntered = localStorage.getItem(ENTERED_KEY);
+            if (hasEntered) {
+                // User has already entered, don't show modal
+                // Load music preference and apply it
+                const savedMusicPref = localStorage.getItem(MUSIC_PREF_KEY);
+                if (savedMusicPref === 'true') {
+                    onMusicToggle(true);
+                }
+                // Dispatch event so Hero knows to start its animation immediately
+                window.dispatchEvent(new CustomEvent('welcomeModalClosed'));
+                return;
+            }
+        }
+
+        // Show modal on first visit with a small delay for better UX
         const timer = setTimeout(() => {
             // Pick a random verse
             setVerse(VERSES[Math.floor(Math.random() * VERSES.length)]);
             setIsOpen(true);
         }, 1500);
         return () => clearTimeout(timer);
-    }, []);
+    }, [onMusicToggle]);
 
     // Focus trap effect
     useEffect(() => {
@@ -101,6 +118,8 @@ export default function WelcomeModal({ onMusicToggle }: WelcomeModalProps) {
     }, []);
 
     const handleEnter = useCallback(() => {
+        // Save that user has entered (persistent across sessions)
+        localStorage.setItem(ENTERED_KEY, 'true');
         localStorage.setItem(MUSIC_PREF_KEY, musicEnabled ? 'true' : 'false');
         onMusicToggle(musicEnabled);
         setIsOpen(false);

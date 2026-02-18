@@ -1,15 +1,16 @@
 import { useEffect, useRef, useState } from "react";
 import { gsap } from "@/libs/gsap";
-import { isReducedMotion } from "@/utils/motion";
+import useReducedMotion from "@/hooks/useReducedMotion";
 
 export default function Loader() {
     const percentageRef = useRef<HTMLSpanElement>(null);
     const audioRef = useRef<HTMLAudioElement>(null);
     const [isComplete, setIsComplete] = useState(false);
+    const prefersReducedMotion = useReducedMotion();
 
     useEffect(() => {
         // Skip animations for users who prefer reduced motion
-        if (isReducedMotion()) {
+        if (prefersReducedMotion) {
             if (percentageRef.current) {
                 percentageRef.current.textContent = '100';
             }
@@ -90,7 +91,7 @@ export default function Loader() {
             gsap.killTweensOf(".counter span");
             gsap.killTweensOf(".cross-loader");
         };
-    }, []);
+    }, [prefersReducedMotion]);
 
     return (
         <section className="intro">

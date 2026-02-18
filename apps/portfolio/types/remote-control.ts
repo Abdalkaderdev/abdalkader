@@ -1,5 +1,7 @@
 // Remote Control Types for Phone-to-Desktop WebSocket communication
 
+import { NAVIGATION_LINKS, NavigationPath } from '@/data/navigation';
+
 export type RemoteCommandType =
   | 'SCROLL'
   | 'NAVIGATE'
@@ -44,16 +46,8 @@ export interface RemoteSession {
   isPhoneConnected: boolean;
 }
 
-export const NAVIGATION_LINKS = [
-  { name: 'Home', path: '/' },
-  { name: 'About', path: '/about' },
-  { name: 'Projects', path: '/projects' },
-  { name: 'Guidance', path: '/guidance' },
-  { name: 'Prayer', path: '/prayer' },
-  { name: 'Contact', path: '/contact' },
-] as const;
-
-export type NavigationPath = typeof NAVIGATION_LINKS[number]['path'];
+// Re-export navigation for backward compatibility
+export { NAVIGATION_LINKS, type NavigationPath };
 
 // Session expiration time (15 minutes)
 export const SESSION_EXPIRATION_MS = 15 * 60 * 1000;

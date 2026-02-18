@@ -34,7 +34,7 @@ export default function TestUI() {
             placeholder="Enter your email"
             required
           />
-          <div className="portfolio-input-helper">We&apos;ll never share your email</div>
+          <div className="portfolio-input-helper">Your email will never be shared</div>
         </div>
       </div>
 

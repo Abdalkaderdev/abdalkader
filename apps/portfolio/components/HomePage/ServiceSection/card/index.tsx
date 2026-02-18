@@ -16,7 +16,7 @@ const ServiceCard = forwardRef<HTMLDivElement, ServiceCardProps>(
                     <div className={styles.flipCardInner}>
                         <div className={`${styles.flipCardFront} flipCardFrontA`}>
                             <Image
-                                src="/images/serviceCard.png"
+                                src="/images/serviceCard.webp"
                                 width={500}
                                 height={500}
                                 alt={`${title} service card - Decorative background`}

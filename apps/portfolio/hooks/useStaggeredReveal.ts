@@ -1,5 +1,6 @@
 import { useEffect, useRef } from 'react';
 import { gsap, ScrollTrigger } from '@/libs/gsap';
+import useReducedMotion from './useReducedMotion';
 
 interface StaggeredRevealOptions {
     /** Delay between each element in seconds (default: 0.08) */
@@ -73,6 +74,7 @@ export function useStaggeredReveal(
         onComplete,
     } = options;
 
+    const prefersReducedMotion = useReducedMotion();
     const elementsRef = useRef<HTMLElement[]>([]);
     const triggerRef = useRef<ScrollTrigger | null>(null);
     const timelineRef = useRef<gsap.core.Timeline | null>(null);
@@ -122,11 +124,6 @@ export function useStaggeredReveal(
     // Set up animations
     useEffect(() => {
         if (typeof window === 'undefined') return;
-
-        // Check for reduced motion preference
-        const prefersReducedMotion = window.matchMedia(
-            '(prefers-reduced-motion: reduce)'
-        ).matches;
 
         if (prefersReducedMotion || elementsRef.current.length === 0) {
             // Make elements visible immediately if reduced motion
@@ -214,6 +211,7 @@ export function useStaggeredReveal(
             }
         };
     }, [
+        prefersReducedMotion,
         stagger,
         duration,
         distance,

@@ -33,7 +33,7 @@ export const projects: Project[] = [
     title: "SoapBox Super App",
     slug: "soapbox-super-app",
     category: ["Full Stack Development", "AI Engineering", "SaaS Platform"],
-    img: "/images/dribble1.jpeg",
+    img: "/images/dribble1.webp",
     badges: ["React", "Node.js", "AI/ML", "TypeScript", "Cloud Infrastructure"],
     owner: "SoapBox",
     date: "2024 - Present",
@@ -72,7 +72,7 @@ export const projects: Project[] = [
     title: "DiscipleOne Platform",
     slug: "discipleone-platform",
     category: ["Full Stack Development", "Nonprofit", "Church Technology"],
-    img: "/images/dribble2.jpeg",
+    img: "/images/dribble2.webp",
     badges: ["React", "Node.js", "TypeScript", "Cloud Services", "Mobile"],
     owner: "DiscipleOne (501c3 Nonprofit)",
     date: "2024 - Present",
@@ -111,7 +111,7 @@ export const projects: Project[] = [
     title: "VIA Discipleship App",
     slug: "via-discipleship-app",
     category: ["Mobile Development", "Full Stack", "Spiritual Technology"],
-    img: "/images/dribble3.jpeg",
+    img: "/images/dribble3.webp",
     badges: ["React Native", "Node.js", "TypeScript", "iOS", "Android"],
     owner: "DiscipleOne (501c3 Nonprofit)",
     date: "2024 - Present",
@@ -150,7 +150,7 @@ export const projects: Project[] = [
     title: "ParsaLink AI CRM",
     slug: "parsalink-ai-crm",
     category: ["Full Stack Development", "AI Engineering", "SaaS"],
-    img: "/images/dribble4.jpeg",
+    img: "/images/dribble4.webp",
     badges: ["React", "Node.js", "AI/ML", "TypeScript", "CRM"],
     owner: "ParsaLink",
     date: "2024 - Present",
@@ -189,7 +189,7 @@ export const projects: Project[] = [
     title: "Quantum Animation System",
     slug: "quantum-animation-system",
     category: ["Web Development", "Interactive Animation", "Physics Simulation"],
-    img: "/images/dribble5.jpeg",
+    img: "/images/dribble5.webp",
     badges: ["Next.js 15", "TypeScript", "Three.js", "Framer Motion", "GSAP"],
     owner: "Quantum Animation Lab",
     date: "Jan 15, 2025",
@@ -229,7 +229,7 @@ export const projects: Project[] = [
     title: "Apple TV Clone",
     slug: "apple-tv-clone",
     category: ["Frontend Development", "UI/UX Design"],
-    img: "/images/apple.png",
+    img: "/images/apple.webp",
     badges: ["React", "Next.js", "TypeScript", "GSAP"],
 
     // Sticky
@@ -272,7 +272,7 @@ export const projects: Project[] = [
     title: "VirtualView",
     slug: "virtualview",
     category: ["Web Development", "Virtual Reality"],
-    img: "/images/virtual.png",
+    img: "/images/virtual.webp",
     badges: ["Three.js", "WebGL", "Next.js"],
 
     // Sticky
@@ -316,7 +316,7 @@ export const projects: Project[] = [
     title: "Jegr Jalal Company",
     slug: "jegr-jalal-company",
     category: ["Web Development", "Corporate Website"],
-    img: "/images/jegr.png",
+    img: "/images/jegr.webp",
     badges: ["Next.js", "TypeScript", "SCSS"],
 
     // Sticky
@@ -353,7 +353,7 @@ export const projects: Project[] = [
     title: "Doner QR Menu Magic",
     slug: "doner-qr-menu-magic",
     category: ["Web Development", "Restaurant Technology"],
-    img: "/images/doner.png",
+    img: "/images/doner.webp",
     badges: ["Next.js", "React", "SCSS"],
 
     // Sticky
@@ -391,7 +391,7 @@ export const projects: Project[] = [
     title: "Headquarter Iraq Real Estate",
     slug: "headquarter-iraq-real-estate",
     category: ["Web Development", "Real Estate"],
-    img: "/images/head.png",
+    img: "/images/head.webp",
     badges: ["Next.js", "TypeScript", "Performance"],
 
     // Sticky
@@ -428,7 +428,7 @@ export const projects: Project[] = [
     title: "Innovations Architecture Department",
     slug: "innovations-architecture-department",
     category: ["Web Development", "Architecture"],
-    img: "/images/head-quarter-international-find-your-place-to-live-google-chrome-8-3-2025-1-15-34-pm.png",
+    img: "/images/head-quarter-international.webp",
     badges: ["Next.js", "TypeScript", "Design Systems"],
 
     // Sticky
@@ -465,7 +465,7 @@ export const projects: Project[] = [
     title: "Hamilton Iraq Real Estate",
     slug: "hamilton-iraq-real-estate",
     category: ["Web Development", "Real Estate"],
-    img: "/images/hamilton.png",
+    img: "/images/hamilton.webp",
     badges: ["Next.js", "TypeScript", "SEO"],
 
     // Sticky

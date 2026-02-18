@@ -4,7 +4,23 @@ import styles from './HeroSection.module.scss';
 import ImageTrailEffect from "@/components/HomePage/ImageTrail";
 import BibleVerse from "@/components/BibleVerse";
 import VideoBackground from '@/components/VideoBackground';
-import ThreeBackground from '@/components/ThreeBackground';
+import Button from "@/components/Button";
+import dynamic from 'next/dynamic';
+import useReducedMotion from "@/hooks/useReducedMotion";
+
+// Dynamically import Three.js component to reduce initial bundle size (~580KB)
+const ThreeBackground = dynamic(
+    () => import('@/components/ThreeBackground'),
+    {
+        ssr: false, // Three.js doesn't work server-side
+        loading: () => (
+            <div
+                className={styles.threeBackgroundPlaceholder}
+                aria-hidden="true"
+            />
+        ),
+    }
+);
 
 // Split text into individual letter spans for animation
 function ExplodingText({ text, className, delay = 0 }: { text: string; className?: string; delay?: number }) {
@@ -79,9 +95,10 @@ export default function HeroSection() {
     const marqueeTextRef = useRef<HTMLDivElement | null>(null);
     const heroContentRef = useRef<HTMLDivElement>(null);
     const verseRef = useRef<HTMLDivElement>(null);
+    const ctaRef = useRef<HTMLDivElement>(null);
+    const prefersReducedMotion = useReducedMotion();
 
     useEffect(() => {
-        const prefersReducedMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
         if (prefersReducedMotion) return;
 
         // Marquee animation - runs immediately
@@ -109,11 +126,19 @@ export default function HeroSection() {
                     { y: 0, opacity: 0.9, duration: 1, ease: 'power3.out', delay: 1.2 }
                 );
             }
+
+            // CTA button fade in (after verse)
+            if (ctaRef.current) {
+                gsap.fromTo(ctaRef.current,
+                    { y: 20, opacity: 0 },
+                    { y: 0, opacity: 1, duration: 0.8, ease: 'power3.out', delay: 1.8 }
+                );
+            }
         };
 
         window.addEventListener('welcomeModalClosed', animateHeroElements);
         return () => window.removeEventListener('welcomeModalClosed', animateHeroElements);
-    }, []);
+    }, [prefersReducedMotion]);
 
     return (
         <section className={styles.hero}>
@@ -157,6 +182,9 @@ export default function HeroSection() {
                 </h1>
                 <div ref={verseRef} style={{ opacity: 0 }}>
                     <BibleVerse className={styles.bibleVerse} />
+                </div>
+                <div ref={ctaRef} className={styles.ctaButtons} style={{ opacity: 0 }}>
+                    <Button text="Let's Work Together" href="/contact" />
                 </div>
             </div>
         </section>

@@ -3,17 +3,8 @@
 import { MagneticLink } from '@/components/MagneticLink';
 import RootedInChrist from '@/components/RootedInChrist';
 import VideoBackground from '@/components/VideoBackground';
+import { NAVIGATION_LINKS } from '@/data/navigation';
 import styles from './Footer.module.scss';
-
-// Navigation links
-const navigationLinks = [
-    { text: 'Home', href: '/' },
-    { text: 'About', href: '/about' },
-    { text: 'Projects', href: '/projects' },
-    { text: 'Guidance', href: '/guidance' },
-    { text: 'Prayer', href: '/prayer' },
-    { text: 'Contact', href: '/contact' },
-];
 
 // Ecosystem apps
 const ecosystemLinks = [
@@ -52,13 +43,13 @@ const Footer: React.FC = () => {
                     </div>
                     <div className={styles.linksCol}>
                         <h3>Navigation</h3>
-                        {navigationLinks.map(({ text, href }) => (
+                        {NAVIGATION_LINKS.map(({ name, path }) => (
                             <MagneticLink
-                                key={text}
-                                href={href}
+                                key={name}
+                                href={path}
                                 magneticStrength={0.2}
                             >
-                                {text}
+                                {name}
                             </MagneticLink>
                         ))}
                     </div>

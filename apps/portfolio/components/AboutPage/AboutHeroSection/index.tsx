@@ -82,7 +82,7 @@ export default function AboutHeroSection() {
                 </div>
 
                 <div className={styles.image} ref={imageRef}>
-                    <Image src='/images/about2.png' alt='Abdalkader Alhamoud' width={500} height={500} />
+                    <Image src='/images/about2.webp' alt='Abdalkader Alhamoud' width={500} height={500} />
                 </div>
             </div>
         </section>

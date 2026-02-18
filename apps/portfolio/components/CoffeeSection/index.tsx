@@ -119,35 +119,53 @@ export default function CoffeeSection() {
 
                             <form className={styles.form} onSubmit={handleSubmit}>
                                 <div className={styles.formRow}>
-                                    <input
-                                        type="text"
-                                        name="name"
-                                        placeholder="Your name"
-                                        value={formData.name}
-                                        onChange={handleChange}
-                                        required
-                                        className={styles.input}
-                                    />
-                                    <input
-                                        type="email"
-                                        name="email"
-                                        placeholder="Your email"
-                                        value={formData.email}
-                                        onChange={handleChange}
-                                        required
-                                        className={styles.input}
-                                    />
+                                    <div className={styles.formGroup}>
+                                        <label htmlFor="name" className={styles.label}>
+                                            Your Name <span className={styles.required}>*</span>
+                                        </label>
+                                        <input
+                                            id="name"
+                                            type="text"
+                                            name="name"
+                                            placeholder="e.g., John Doe"
+                                            value={formData.name}
+                                            onChange={handleChange}
+                                            required
+                                            className={styles.input}
+                                        />
+                                    </div>
+                                    <div className={styles.formGroup}>
+                                        <label htmlFor="email" className={styles.label}>
+                                            Your Email <span className={styles.required}>*</span>
+                                        </label>
+                                        <input
+                                            id="email"
+                                            type="email"
+                                            name="email"
+                                            placeholder="e.g., john@example.com"
+                                            value={formData.email}
+                                            onChange={handleChange}
+                                            required
+                                            className={styles.input}
+                                        />
+                                    </div>
                                 </div>
 
-                                <textarea
-                                    name="message"
-                                    placeholder="Your message"
-                                    value={formData.message}
-                                    onChange={handleChange}
-                                    required
-                                    rows={4}
-                                    className={styles.textarea}
-                                />
+                                <div className={styles.formGroup}>
+                                    <label htmlFor="message" className={styles.label}>
+                                        Your Message <span className={styles.required}>*</span>
+                                    </label>
+                                    <textarea
+                                        id="message"
+                                        name="message"
+                                        placeholder="e.g., I'd love to discuss a project..."
+                                        value={formData.message}
+                                        onChange={handleChange}
+                                        required
+                                        rows={4}
+                                        className={styles.textarea}
+                                    />
+                                </div>
 
                                 <button
                                     type="submit"

@@ -5,17 +5,8 @@ import gsap from 'gsap';
 import { MagneticLink } from '@/components/MagneticLink';
 import QRCodeSection from './QRCodeSection';
 import { useRemoteControl } from '@/contexts/RemoteControlContext';
+import { NAVIGATION_LINKS } from '@/data/navigation';
 import styles from './Nav.module.scss';
-
-// Define your links and paths
-const links = [
-    { name: 'Home', path: '/' },
-    { name: 'About', path: '/about' },
-    { name: 'Projects', path: '/projects' },
-    { name: 'Guidance', path: '/guidance' },
-    { name: 'Prayer', path: '/prayer' },
-    { name: 'Contact', path: '/contact' },
-];
 
 export default function Nav() {
     const [menuOpen, setMenuOpen] = useState(false);
@@ -228,7 +219,7 @@ export default function Nav() {
                     {/* Left side: Navigation tabs */}
                     <div className={styles.menuLeft}>
                         <ul id="site-navigation-menu" className={styles.menuList}>
-                            {links.map(({ name, path }, index) => (
+                            {NAVIGATION_LINKS.map(({ name, path }, index) => (
                                 <li
                                     key={name}
                                     className={styles.menuItem}

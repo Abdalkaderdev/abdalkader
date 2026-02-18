@@ -1,28 +1,42 @@
 import ContactSection from '@/components/ContactPage';
-import CoffeeSection from '@/components/CoffeeSection';
-import Head from 'next/head';
-import { buildCanonical } from '@/utils/seo';
-import JsonLd from '@/components/SEO/JsonLd';
-import { contactPointJsonLd, breadcrumbsJsonLd } from '@/utils/jsonld';
-import { SITE_URL } from '@/utils/seo';
+import { PageSEO, JsonLd, Breadcrumbs } from '@/components/SEO';
+import { contactPointJsonLd, localBusinessJsonLd, faqPageJsonLd } from '@/utils/jsonld';
 
 export default function ContactPage() {
+    const breadcrumbItems = [
+        { label: 'Home', href: '/' },
+        { label: 'Contact', href: '/contact', current: true }
+    ];
+
     return (
         <>
-            <Head>
-                <title>Contact | Abdalkader Alhamoud</title>
-                <meta name="description" content="Get in touch with Abdalkader Alhamoud for web development and AI engineering projects. Let's discuss your next digital solution." />
-                <link rel="canonical" href={buildCanonical('/contact')} />
-            </Head>
+            <PageSEO
+                title="Contact Abdalkader Alhamoud | Hire AI & Web Developer"
+                description="Ready to start your project? Contact Abdalkader for AI integration, web development, and custom software solutions. Fast response within 24 hours."
+                canonical="/contact"
+                ogType="website"
+                ogImage="/images/og-contact.jpg"
+                ogImageAlt="Contact Abdalkader Alhamoud - AI and Web Developer"
+                keywords={[
+                    'Contact',
+                    'Hire Developer',
+                    'AI Integration',
+                    'Web Development',
+                    'Custom Software',
+                    'Freelance Developer',
+                    'Remote Developer',
+                    'Full-Stack Developer'
+                ]}
+            />
             <JsonLd data={[
                 contactPointJsonLd(),
-                breadcrumbsJsonLd([
-                    { name: 'Home', item: SITE_URL },
-                    { name: 'Contact', item: `${SITE_URL}/contact` },
-                ])
+                localBusinessJsonLd(),
+                faqPageJsonLd()
             ]} />
+            <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 1.5rem' }}>
+                <Breadcrumbs items={breadcrumbItems} />
+            </div>
             <ContactSection />
-            <CoffeeSection />
         </>
     )
 }

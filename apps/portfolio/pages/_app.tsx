@@ -11,7 +11,7 @@ import { useEffect, useRef, useState, useCallback } from "react";
 import { useRouter } from "next/router";
 import Head from "next/head";
 import Loader from "@/components/Loader";
-import { useMemo } from "react";
+import useReducedMotion from "@/hooks/useReducedMotion";
 import { SITE_URL } from "@/utils/seo";
 import JsonLd from "@/components/SEO/JsonLd";
 import { personJsonLd, websiteJsonLd } from "@/utils/jsonld";
@@ -57,11 +57,8 @@ export default function App({ Component, pageProps }: AppPropsWithLayout) {
     const handleMusicToggle = useCallback((enabled: boolean) => {
         setIsMusicEnabled(enabled);
     }, []);
-    
-    const prefersReducedMotion = useMemo(() => {
-        if (typeof window === 'undefined' || !window.matchMedia) return false;
-        return window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    }, []);
+
+    const prefersReducedMotion = useReducedMotion();
 
     // Initialize staging environment
     useEffect(() => {
@@ -126,7 +123,6 @@ export default function App({ Component, pageProps }: AppPropsWithLayout) {
                 {/* Additional SEO tags */}
                 <meta name="viewport" content="width=device-width, initial-scale=1" />
                 <meta name="robots" content="index, follow" />
-                <meta name="keywords" content="AI developer, machine learning engineer, full-stack developer, React developer, Python developer, TensorFlow.js, AI integration, ML applications, intelligent web apps, AI specialist, e-commerce development" />
             </Head>
 
             <Loader />
@@ -191,9 +187,8 @@ export default function App({ Component, pageProps }: AppPropsWithLayout) {
                         showHome={true}
                         onError={(error: Error) => {
                             // Log to existing error tracking system
-                            if (typeof window !== 'undefined' && 'gtag' in window) {
-                                // eslint-disable-next-line @typescript-eslint/no-explicit-any
-                                (window as any).gtag('event', 'exception', {
+                            if (typeof window !== 'undefined' && typeof gtag !== 'undefined') {
+                                gtag('event', 'exception', {
                                     description: error.message,
                                     fatal: false,
                                 });
@@ -211,6 +206,7 @@ export default function App({ Component, pageProps }: AppPropsWithLayout) {
                                     <motion.main
                                         key="main-content"
                                         id="main"
+                                        tabIndex={-1}
                                         initial={{ opacity: 1 }}
                                         animate={{ opacity: 1 }}
                                         exit={{ opacity: prefersReducedMotion ? 1 : 0 }}  // Disable fade on exit if reduced motion

@@ -6,6 +6,22 @@
 import React from 'react';
 import { getEnvironment } from '../src/utils/environment';
 
+/** Context data that can be attached to error reports */
+type ErrorContext = Record<string, unknown>;
+
+/** User context data for error tracking */
+interface UserContext {
+  userId: string;
+  [key: string]: unknown;
+}
+
+/** Window extension for error tracker user context */
+declare global {
+  interface Window {
+    __errorTrackerUserContext?: UserContext;
+  }
+}
+
 interface ErrorReport {
   message: string;
   stack?: string;
@@ -16,7 +32,7 @@ interface ErrorReport {
   sessionId: string;
   buildId?: string;
   environment: string;
-  additionalContext?: Record<string, any>;
+  additionalContext?: ErrorContext;
 }
 
 interface ErrorBoundaryInfo {
@@ -97,7 +113,7 @@ class ErrorTracker {
   /**
    * Capture and report an error
    */
-  captureError(error: Error, additionalContext?: Record<string, any>): void {
+  captureError(error: Error, additionalContext?: ErrorContext): void {
     if (!this.isEnabled) {
       console.error('[Error Tracker] Error captured (tracking disabled):', error);
       return;
@@ -133,7 +149,7 @@ class ErrorTracker {
   /**
    * Capture custom application errors
    */
-  captureException(error: Error, context?: Record<string, any>): void {
+  captureException(error: Error, context?: ErrorContext): void {
     this.captureError(error, {
       type: 'application-error',
       ...context,
@@ -143,7 +159,7 @@ class ErrorTracker {
   /**
    * Log warning messages
    */
-  captureWarning(message: string, context?: Record<string, any>): void {
+  captureWarning(message: string, context?: ErrorContext): void {
     if (!this.isEnabled) return;
 
     const warningReport: ErrorReport = {
@@ -184,10 +200,10 @@ class ErrorTracker {
   /**
    * Set user context for error reports
    */
-  setUserContext(userId: string, additionalData?: Record<string, any>): void {
+  setUserContext(userId: string, additionalData?: Record<string, unknown>): void {
     // Store user context for future error reports
     if (typeof window !== 'undefined') {
-      (window as any).__errorTrackerUserContext = {
+      window.__errorTrackerUserContext = {
         userId,
         ...additionalData,
       };
@@ -197,7 +213,7 @@ class ErrorTracker {
   /**
    * Add breadcrumb for debugging
    */
-  addBreadcrumb(message: string, category?: string, data?: Record<string, any>): void {
+  addBreadcrumb(message: string, category?: string, data?: Record<string, unknown>): void {
     if (!this.isEnabled) return;
 
     const breadcrumb = {
@@ -287,7 +303,7 @@ function DefaultErrorFallback(): React.ReactElement {
     React.createElement('p', null, 
       isStaging 
         ? 'An error occurred in the staging environment. The development team has been notified.'
-        : 'We apologize for the inconvenience. Please try refreshing the page.'
+        : 'I apologize for the inconvenience. Please try refreshing the page.'
     ),
     isStaging && React.createElement('details', { style: { marginTop: '10px', textAlign: 'left' as const } },
       React.createElement('summary', null, 'Error Details (Staging Only)'),

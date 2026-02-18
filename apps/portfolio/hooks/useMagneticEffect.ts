@@ -1,5 +1,6 @@
-import { useCallback, useEffect, useRef, useState } from 'react';
+import { useCallback, useEffect, useRef } from 'react';
 import { gsap } from '@/libs/gsap';
+import useReducedMotion from './useReducedMotion';
 
 interface MagneticOptions {
     /** Strength of the magnetic pull (default: 0.3) */
@@ -34,23 +35,8 @@ export function useMagneticEffect<T extends HTMLElement>(
         returnDuration = 0.8
     } = options;
 
-    const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
+    const prefersReducedMotion = useReducedMotion();
     const animationRef = useRef<gsap.core.Tween | null>(null);
-
-    // Check for reduced motion preference
-    useEffect(() => {
-        if (typeof window === 'undefined') return;
-
-        const mediaQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
-        setPrefersReducedMotion(mediaQuery.matches);
-
-        const handleChange = (e: MediaQueryListEvent) => {
-            setPrefersReducedMotion(e.matches);
-        };
-
-        mediaQuery.addEventListener('change', handleChange);
-        return () => mediaQuery.removeEventListener('change', handleChange);
-    }, []);
 
     const onMouseMove = useCallback((e: React.MouseEvent<HTMLElement>) => {
         if (!ref.current || prefersReducedMotion) return;

@@ -44,7 +44,6 @@ export function ProjectComponents({ project }: ProjectComponentsProps) {
            >
              <div className={styles.componentHeader}>
                <Code className={styles.componentIcon} />
-               {/* eslint-disable-next-line @typescript-eslint/no-explicit-any */}
                <h4>{component.name}</h4>
              </div>
              {component.description && (

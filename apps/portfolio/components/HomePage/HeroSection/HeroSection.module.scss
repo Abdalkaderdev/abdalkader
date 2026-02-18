@@ -99,3 +99,12 @@
         }
     }
 }
+
+// Loading placeholder for dynamically imported Three.js background
+.threeBackgroundPlaceholder {
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+    background: transparent;
+}

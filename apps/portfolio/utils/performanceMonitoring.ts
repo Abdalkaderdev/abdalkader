@@ -3,6 +3,34 @@
  * Tracks Core Web Vitals and custom performance metrics
  */
 
+/** Additional metric data that can be attached to performance metrics */
+type MetricData = Record<string, unknown>;
+
+/** Combined metric payload sent to the analytics endpoint */
+interface MetricPayload extends PerformanceMetric {
+  [key: string]: unknown;
+}
+
+/** Next.js router events interface */
+interface NextRouterEvents {
+  on(event: string, handler: (url: string) => void): void;
+  off(event: string, handler: (url: string) => void): void;
+}
+
+/** Next.js window extension */
+interface NextWindow {
+  router?: {
+    events: NextRouterEvents;
+  };
+}
+
+/** Window extension for Next.js */
+declare global {
+  interface Window {
+    next?: NextWindow;
+  }
+}
+
 interface PerformanceMetric {
   name: string;
   value: number;
@@ -50,7 +78,7 @@ class PerformanceMonitor {
   /**
    * Track custom performance metrics
    */
-  trackCustomMetric(name: string, value: number, additionalData?: Record<string, any>): void {
+  trackCustomMetric(name: string, value: number, additionalData?: MetricData): void {
     if (!this.isEnabled) return;
 
     const metric: PerformanceMetric = {
@@ -140,7 +168,7 @@ class PerformanceMonitor {
   /**
    * Send metric to analytics endpoint
    */
-  private async sendMetric(metric: any): Promise<void> {
+  private async sendMetric(metric: MetricPayload | WebVitalsMetric): Promise<void> {
     try {
       await fetch(this.endpoint, {
         method: 'POST',
@@ -198,17 +226,15 @@ export function initPerformanceMonitoring(): void {
   performanceMonitor.trackBundleMetrics();
 
   // Track route changes in Next.js
-  if (typeof window !== 'undefined' && 'next' in window) {
-    const router = (window as any).next?.router;
-    if (router) {
-      router.events.on('routeChangeStart', (url: string) => {
-        performanceMonitor.trackCustomMetric('route-change-start', performance.now(), { url });
-      });
-      
-      router.events.on('routeChangeComplete', (url: string) => {
-        performanceMonitor.trackCustomMetric('route-change-complete', performance.now(), { url });
-      });
-    }
+  if (typeof window !== 'undefined' && window.next?.router) {
+    const router = window.next.router;
+    router.events.on('routeChangeStart', (url: string) => {
+      performanceMonitor.trackCustomMetric('route-change-start', performance.now(), { url });
+    });
+
+    router.events.on('routeChangeComplete', (url: string) => {
+      performanceMonitor.trackCustomMetric('route-change-complete', performance.now(), { url });
+    });
   }
 }
 

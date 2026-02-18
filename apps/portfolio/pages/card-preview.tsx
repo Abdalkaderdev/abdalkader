@@ -47,7 +47,7 @@ export default function CardPreview() {
                     ]}
                     liveUrl="https://discipleone.app"
                     caseStudyUrl="/projects/discipleone"
-                    customBgImage="/images/cards/card-layered-archway.jpg"
+                    customBgImage="/images/cards/card-layered-archway.webp"
                 />
 
                 {/* Card 2 - Modern Chapel */}
@@ -65,7 +65,7 @@ export default function CardPreview() {
                     ]}
                     liveUrl="https://soapbox.app"
                     caseStudyUrl="/projects/soapbox"
-                    customBgImage="/images/cards/card-modern-chapel.jpg"
+                    customBgImage="/images/cards/card-modern-chapel.webp"
                 />
 
                 {/* Card 3 - Black Marble */}
@@ -83,7 +83,7 @@ export default function CardPreview() {
                     ]}
                     liveUrl="https://parsalink.io"
                     caseStudyUrl="/projects/parsalink"
-                    customBgImage="/images/cards/card-black-marble.jpg"
+                    customBgImage="/images/cards/card-black-marble.webp"
                 />
 
                 {/* Card 4 - Gothic Arch with Light */}
@@ -101,7 +101,7 @@ export default function CardPreview() {
                     ]}
                     liveUrl="https://viaapp.org"
                     caseStudyUrl="/projects/via"
-                    customBgImage="/images/cards/card-gothic-arch.jpg"
+                    customBgImage="/images/cards/card-gothic-arch.webp"
                 />
 
                 {/* Card 5 - Sacred Geometry */}
@@ -119,7 +119,7 @@ export default function CardPreview() {
                     ]}
                     liveUrl="https://quantum.abdalkader.dev"
                     caseStudyUrl="/projects/quantum"
-                    customBgImage="/images/cards/card-sacred-geometry.jpg"
+                    customBgImage="/images/cards/card-sacred-geometry.webp"
                 />
 
                 {/* Card 6 - Black Marble variant (reuse) */}
@@ -137,7 +137,7 @@ export default function CardPreview() {
                     ]}
                     liveUrl="https://virtualview.io"
                     caseStudyUrl="/projects/virtualview"
-                    customBgImage="/images/cards/card-black-marble.jpg"
+                    customBgImage="/images/cards/card-black-marble.webp"
                 />
             </div>
         </div>

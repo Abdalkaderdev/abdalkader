@@ -1,4 +1,8 @@
 User-agent: *
 Allow: /
+Disallow: /api/
+Disallow: /test-ui
+Disallow: /card-preview
+Disallow: /controller
 
 Sitemap: https://abdalkader.dev/sitemap.xml

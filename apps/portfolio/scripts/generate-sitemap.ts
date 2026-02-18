@@ -2,7 +2,7 @@ import { projects } from '@/data/projectsData';
 import fs from 'fs';
 import path from 'path';
 
-const BASE = 'https://abdalkader-alhamoud.vercel.app';
+const BASE = 'https://abdalkader.dev';
 
 export function generateSitemap(): string {
     const staticUrls = ['/', '/about', '/projects', '/contact']

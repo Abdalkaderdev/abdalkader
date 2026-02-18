@@ -1,5 +1,6 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { gsap } from '@/libs/gsap';
+import useReducedMotion from './useReducedMotion';
 
 interface TiltOptions {
     /** Maximum tilt angle in degrees (default: 15) */
@@ -56,28 +57,17 @@ export function useTiltEffect<T extends HTMLElement>(
         ease = 'power2.out',
     } = options;
 
-    const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
+    const prefersReducedMotion = useReducedMotion();
     const [isTouchDevice, setIsTouchDevice] = useState(false);
     const [isHovering, setIsHovering] = useState(false);
 
     const animationRef = useRef<gsap.core.Tween | null>(null);
     const glareRef = useRef<HTMLElement | null>(null);
 
-    // Check for reduced motion preference and touch device
+    // Check for touch device
     useEffect(() => {
         if (typeof window === 'undefined') return;
 
-        // Check for reduced motion
-        const mediaQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
-        setPrefersReducedMotion(mediaQuery.matches);
-
-        const handleChange = (e: MediaQueryListEvent) => {
-            setPrefersReducedMotion(e.matches);
-        };
-
-        mediaQuery.addEventListener('change', handleChange);
-
-        // Check for touch device
         const checkTouch = () => {
             setIsTouchDevice(
                 'ontouchstart' in window ||
@@ -85,8 +75,6 @@ export function useTiltEffect<T extends HTMLElement>(
             );
         };
         checkTouch();
-
-        return () => mediaQuery.removeEventListener('change', handleChange);
     }, []);
 
     // Create glare element if enabled

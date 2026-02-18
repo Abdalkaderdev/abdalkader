@@ -6,7 +6,7 @@
     overflow: hidden;
     margin-top: 4rem;
 
-    /* Big  heading */
+    /* Big heading */
     h1 {
         font-size: 21.6vw;
         letter-spacing: -0.8vw;
@@ -20,45 +20,162 @@
     }
 }
 
-/* Links Section */
+/* Contact Form Section */
+.formSection {
+    @include section;
+    padding-top: 4rem;
+    padding-bottom: 4rem;
+}
+
+.formWrapper {
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.formIntro {
+    margin-bottom: 2.5rem;
+    text-align: center;
+
+    h2 {
+        @include font-1_8;
+        margin-bottom: 1rem;
+        color: $white;
+    }
+
+    p {
+        @include font-1;
+        color: $textGrey;
+        max-width: 500px;
+        margin: 0 auto;
+        line-height: 1.7;
+    }
+}
+
+/* Social Links Section */
 .linkSection {
     @include section;
+    padding-top: 2rem;
+    background: #0a0a0a;
+    border-top: 1px solid rgba($white, 0.08);
+}
+
+.socialHeader {
+    text-align: center;
+    margin-bottom: 2rem;
 
     p {
         @include font-1;
         color: $textGrey;
     }
+}
 
-    .wrapper {
-        @include mT2;
+.wrapper {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+}
+
+.socialLink {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 1rem 1.5rem;
+    background: #151515;
+    border: 1px solid #2a2a2a;
+    border-radius: 12px;
+    color: $white;
+    text-decoration: none;
+    transition: all $transition;
+
+    .icon {
         display: flex;
-        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        color: rgba($white, 0.6);
+        transition: color $transition;
+    }
 
-        a {
-            width: fit-content;
-            @include font-4_5;
-            transition: all $transition;
-            opacity: 0;
+    .linkText {
+        font-size: 1rem;
+        font-weight: 500;
+    }
 
-            &:hover {
-                color: $primary;
-            }
+    &:hover {
+        border-color: $primary;
+        background: #1a1a1a;
+        transform: translateY(-2px);
+
+        .icon {
+            color: $primary;
+        }
+    }
+}
+
+.signpostWrapper {
+    margin-top: 3rem;
+    display: flex;
+    justify-content: center;
+}
+
+/* ========================================
+   RESPONSIVE
+   ======================================== */
+
+@media (max-width: 900px) {
+    .formIntro {
+        h2 {
+            font-size: 1.75rem;
+        }
+    }
+}
+
+@media (max-width: 600px) {
+    .contact {
+        margin-top: 2rem;
+    }
+
+    .formSection {
+        padding-top: 3rem;
+        padding-bottom: 3rem;
+    }
+
+    .formIntro {
+        margin-bottom: 2rem;
+
+        h2 {
+            font-size: 1.5rem;
         }
 
-        .emailLink {
-            color: $white;
-            text-decoration: none;
-
-            &:hover {
-                color: $primary;
-                text-decoration: underline;
-            }
+        p {
+            font-size: 0.95rem;
         }
     }
 
-    .signpostWrapper {
-        margin-top: 3rem;
-        display: flex;
+    .wrapper {
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+    }
+
+    .socialLink {
+        width: 100%;
+        max-width: 280px;
         justify-content: center;
+        padding: 0.875rem 1.25rem;
+    }
+
+    .signpostWrapper {
+        margin-top: 2rem;
+    }
+}
+
+@media (max-width: 400px) {
+    .socialLink {
+        padding: 0.75rem 1rem;
+
+        .linkText {
+            font-size: 0.9rem;
+        }
     }
 }

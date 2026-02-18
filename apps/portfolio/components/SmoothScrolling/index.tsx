@@ -1,6 +1,7 @@
 "use client";
 import { ReactLenis } from "@studio-freight/react-lenis";
 import { ReactNode } from "react";
+import useReducedMotion from "@/hooks/useReducedMotion";
 
 // Define props type for children
 interface SmoothScrollingProps {
@@ -8,7 +9,7 @@ interface SmoothScrollingProps {
 }
 
 export default function SmoothScrolling({ children }: SmoothScrollingProps) {
-    const prefersReducedMotion = typeof window !== 'undefined' && window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const prefersReducedMotion = useReducedMotion();
 
     // Disable Lenis if user prefers reduced motion
     if (prefersReducedMotion) {

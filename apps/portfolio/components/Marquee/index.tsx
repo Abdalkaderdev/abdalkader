@@ -2,7 +2,7 @@
 
 import { useRef, useEffect } from 'react';
 import styles from './Marquee.module.scss';
-import { isReducedMotion } from '@/utils/motion';
+import useReducedMotion from '@/hooks/useReducedMotion';
 
 export type MarqueeDirection = 'left' | 'right';
 export type MarqueeSpeed = 'slow' | 'normal' | 'fast';
@@ -43,6 +43,7 @@ export default function Marquee({
     separator = <span className={styles.separator}>•</span>,
 }: MarqueeProps) {
     const containerRef = useRef<HTMLDivElement>(null);
+    const prefersReducedMotion = useReducedMotion();
 
     // Speed presets in seconds
     const speedDurations: Record<MarqueeSpeed, number> = {
@@ -55,13 +56,13 @@ export default function Marquee({
 
     // Pause animation when reduced motion is preferred
     useEffect(() => {
-        if (isReducedMotion() && containerRef.current) {
+        if (prefersReducedMotion && containerRef.current) {
             const track = containerRef.current.querySelector(`.${styles.track}`) as HTMLElement;
             if (track) {
                 track.style.animationPlayState = 'paused';
             }
         }
-    }, []);
+    }, [prefersReducedMotion]);
 
     const marqueeClasses = [
         styles.marquee,
