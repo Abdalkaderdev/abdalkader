@@ -4,6 +4,8 @@ import styles from './EnhancedProjectHeroSection.module.scss';
 import { isReducedMotion } from '@/utils/motion';
 import VideoBackground from '@/components/VideoBackground';
 
+const rotatingWords = ['Creative', 'Scalable', 'Modern', 'Innovative'];
+
 export default function EnhancedProjectHeroSection() {
     const sectionRef = useRef<HTMLElement | null>(null);
     const headingRef = useRef<HTMLHeadingElement | null>(null);
@@ -11,8 +13,6 @@ export default function EnhancedProjectHeroSection() {
     const descRef = useRef<HTMLParagraphElement | null>(null);
     const statsRef = useRef<HTMLDivElement | null>(null);
     const [currentWord, setCurrentWord] = useState(0);
-
-    const rotatingWords = ['Creative', 'Scalable', 'Modern', 'Innovative'];
 
     useEffect(() => {
         if (isReducedMotion()) return;

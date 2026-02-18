@@ -196,7 +196,7 @@ export default function ProjectSection() {
     const sectionRef = useRef<HTMLElement>(null);
     const headerRef = useRef<HTMLDivElement>(null);
     const wordBoxesRef = useRef<(HTMLSpanElement | null)[]>([]);
-    const [boxesVisible, setBoxesVisible] = useState(true);
+    const [, setBoxesVisible] = useState(true);
 
     // Register word cover boxes
     const registerBox = (el: HTMLSpanElement | null, index: number) => {
