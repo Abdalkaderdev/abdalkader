@@ -42,8 +42,23 @@ type ProjectPageProps = {
     project: Project;
 };
 
+// OG image mapping for projects with dedicated social images
+const OG_IMAGE_MAP: Record<string, string> = {
+    'soapbox-super-app': '/images/og-soapbox-super-app.png',
+    'discipleone-platform': '/images/og-discipleone-platform.png',
+    'via-discipleship-app': '/images/og-via-discipleship-app.png',
+    'parsalink-ai-crm': '/images/og-parsalink-ai-crm.png',
+    'apple-tv-clone': '/images/og-apple-tv-clone.png',
+    'virtualview': '/images/og-virtualview.png',
+    'jegr-jalal-company': '/images/og-jegr-jalal-company.png',
+    'doner-qr-menu-magic': '/images/og-doner-qr-menu-magic.png',
+};
+
 const ProjectPage = ({ project }: ProjectPageProps) => {
     const imageRef = useRef<HTMLDivElement | null>(null);
+
+    // Get OG image - use dedicated OG image if available, fallback to project image
+    const ogImage = OG_IMAGE_MAP[project.slug] || project.img;
 
     // Breadcrumb items for navigation
     const breadcrumbItems = [
@@ -77,7 +92,7 @@ const ProjectPage = ({ project }: ProjectPageProps) => {
                 description={project.overview.substring(0, 155) + '...'}
                 canonical={`/projects/${project.slug}`}
                 ogType="article"
-                ogImage={project.img}
+                ogImage={ogImage}
                 ogImageAlt={`${project.title} - Project Screenshot`}
                 publishedTime={formatDateForSchema(project.date)}
                 keywords={[
@@ -89,11 +104,11 @@ const ProjectPage = ({ project }: ProjectPageProps) => {
                 ]}
             />
             <JsonLd data={[
-                projectJsonLd(project),
+                projectJsonLd({ ...project, img: ogImage }),
                 projectArticleJsonLd({
                     title: project.title,
                     slug: project.slug,
-                    img: project.img,
+                    img: ogImage,
                     overview: project.overview,
                     date: project.date,
                     category: project.category,
