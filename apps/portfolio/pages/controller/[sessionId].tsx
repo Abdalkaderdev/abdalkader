@@ -14,6 +14,7 @@ const ControllerPage: NextPageWithLayout = () => {
 
   const {
     isConnected,
+    isDesktopConnected,
     isConnecting,
     error,
     currentRoute,
@@ -94,11 +95,13 @@ const ControllerPage: NextPageWithLayout = () => {
           <div className={styles.connectionStatus}>
             <span
               className={`${styles.statusDot} ${
-                isConnected ? styles.connected : isConnecting ? styles.connecting : styles.disconnected
+                isConnected && isDesktopConnected ? styles.connected : isConnecting ? styles.connecting : styles.disconnected
               }`}
             />
             <span className={styles.statusText}>
-              {isConnecting ? 'Connecting...' : isConnected ? 'Connected' : 'Disconnected'}
+              {isConnecting ? 'Connecting...' :
+               !isConnected ? 'Disconnected' :
+               isDesktopConnected ? 'Connected to Desktop' : 'Waiting for Desktop...'}
             </span>
           </div>
           <div className={styles.currentRoute}>{currentRoute}</div>
@@ -129,7 +132,7 @@ const ControllerPage: NextPageWithLayout = () => {
               key={path}
               className={`${styles.navButton} ${currentRoute === path ? styles.active : ''}`}
               onClick={() => handleNavigate(path)}
-              disabled={!isConnected}
+              disabled={!isConnected || !isDesktopConnected}
             >
               {name}
             </button>
@@ -140,7 +143,7 @@ const ControllerPage: NextPageWithLayout = () => {
         <button
           className={`${styles.menuButton} ${menuOpen ? styles.menuOpen : ''}`}
           onClick={handleToggleMenu}
-          disabled={!isConnected}
+          disabled={!isConnected || !isDesktopConnected}
         >
           {menuOpen ? 'Close Menu' : 'Toggle Menu'}
         </button>
@@ -150,7 +153,7 @@ const ControllerPage: NextPageWithLayout = () => {
           <button
             className={styles.scrollButton}
             onClick={() => handleScroll('up')}
-            disabled={!isConnected}
+            disabled={!isConnected || !isDesktopConnected}
           >
             <span className={styles.scrollIcon}>↑</span>
             Scroll Up
@@ -158,7 +161,7 @@ const ControllerPage: NextPageWithLayout = () => {
           <button
             className={styles.scrollButton}
             onClick={() => handleScroll('down')}
-            disabled={!isConnected}
+            disabled={!isConnected || !isDesktopConnected}
           >
             <span className={styles.scrollIcon}>↓</span>
             Scroll Down

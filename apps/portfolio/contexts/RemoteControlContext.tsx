@@ -1,7 +1,11 @@
 import React, { createContext, useContext, useEffect, useState, useCallback, useRef } from 'react';
-import { io, Socket } from 'socket.io-client';
+import PartySocket from 'partysocket';
 import { useRouter } from 'next/router';
 import { RemoteCommand, RemoteSession, DesktopEvent, SESSION_EXPIRATION_MS } from '@/types/remote-control';
+import { nanoid } from 'nanoid';
+
+// PartyKit host - use environment variable or default
+const PARTYKIT_HOST = process.env.NEXT_PUBLIC_PARTYKIT_HOST || 'abdalkader-remote-control.abdalkaderdev.partykit.dev';
 
 interface RemoteControlContextType {
   session: RemoteSession | null;
@@ -20,7 +24,7 @@ const RemoteControlContext = createContext<RemoteControlContextType | null>(null
 
 export function RemoteControlProvider({ children }: { children: React.ReactNode }) {
   const router = useRouter();
-  const socketRef = useRef<Socket | null>(null);
+  const socketRef = useRef<PartySocket | null>(null);
   const [session, setSession] = useState<RemoteSession | null>(null);
   const [isPhoneConnected, setIsPhoneConnected] = useState(false);
   const [isConnecting, setIsConnecting] = useState(false);
@@ -76,10 +80,10 @@ export function RemoteControlProvider({ children }: { children: React.ReactNode 
   // Send desktop state to phone
   const sendDesktopState = useCallback((event: DesktopEvent) => {
     if (socketRef.current && session) {
-      socketRef.current.emit('desktop:state', {
-        sessionId: session.id,
-        event,
-      });
+      socketRef.current.send(JSON.stringify({
+        type: 'desktop:state',
+        data: event,
+      }));
     }
   }, [session]);
 
@@ -91,48 +95,74 @@ export function RemoteControlProvider({ children }: { children: React.ReactNode 
     setError(null);
 
     try {
-      const socket = io(window.location.origin, {
-        transports: ['websocket', 'polling'],
+      // Generate a unique session ID
+      const sessionId = nanoid(10);
+      const expiresAt = Date.now() + SESSION_EXPIRATION_MS;
+
+      // Create PartySocket connection
+      const socket = new PartySocket({
+        host: PARTYKIT_HOST,
+        room: sessionId,
       });
 
       socketRef.current = socket;
 
-      socket.on('connect', () => {
-        socket.emit('session:create', (response: { success: boolean; session?: RemoteSession; error?: string }) => {
-          if (response.success && response.session) {
-            setSession(response.session);
-            setTimeRemaining(SESSION_EXPIRATION_MS);
-            setIsConnecting(false);
+      socket.addEventListener('open', () => {
+        // Identify as desktop
+        socket.send(JSON.stringify({ type: 'desktop:connect' }));
+      });
 
-            // Send initial state
-            sendDesktopState({
-              type: 'CURRENT_ROUTE',
-              payload: { route: router.asPath },
-              timestamp: Date.now(),
-            });
-          } else {
-            setError(response.error || 'Failed to create session');
-            setIsConnecting(false);
+      socket.addEventListener('message', (event) => {
+        try {
+          const message = JSON.parse(event.data);
+
+          switch (message.type) {
+            case 'connected':
+              if (message.role === 'desktop') {
+                setSession({
+                  id: sessionId,
+                  expiresAt,
+                  desktopConnected: true,
+                  phoneConnected: message.phoneConnected || false,
+                });
+                setTimeRemaining(SESSION_EXPIRATION_MS);
+                setIsConnecting(false);
+                setIsPhoneConnected(message.phoneConnected || false);
+
+                // Send initial state
+                sendDesktopState({
+                  type: 'CURRENT_ROUTE',
+                  payload: { route: router.asPath },
+                  timestamp: Date.now(),
+                });
+              }
+              break;
+
+            case 'phone:connected':
+              setIsPhoneConnected(true);
+              break;
+
+            case 'phone:disconnected':
+              setIsPhoneConnected(false);
+              break;
+
+            case 'command':
+              if (message.data) {
+                handleCommand(message.data as RemoteCommand);
+              }
+              break;
           }
-        });
+        } catch (err) {
+          console.error('[RemoteControl] Error parsing message:', err);
+        }
       });
 
-      socket.on('phone:connected', () => {
-        setIsPhoneConnected(true);
-      });
-
-      socket.on('phone:disconnected', () => {
-        setIsPhoneConnected(false);
-      });
-
-      socket.on('command', handleCommand);
-
-      socket.on('disconnect', () => {
+      socket.addEventListener('close', () => {
         setSession(null);
         setIsPhoneConnected(false);
       });
 
-      socket.on('connect_error', () => {
+      socket.addEventListener('error', () => {
         setError('Failed to connect to server');
         setIsConnecting(false);
       });
@@ -145,7 +175,7 @@ export function RemoteControlProvider({ children }: { children: React.ReactNode 
   // Destroy session
   const destroySession = useCallback(() => {
     if (socketRef.current) {
-      socketRef.current.disconnect();
+      socketRef.current.close();
       socketRef.current = null;
     }
     setSession(null);
@@ -202,7 +232,7 @@ export function RemoteControlProvider({ children }: { children: React.ReactNode 
   useEffect(() => {
     return () => {
       if (socketRef.current) {
-        socketRef.current.disconnect();
+        socketRef.current.close();
       }
     };
   }, []);

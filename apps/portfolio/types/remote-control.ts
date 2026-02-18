@@ -39,11 +39,12 @@ export interface DesktopEvent {
 
 export interface RemoteSession {
   id: string;
-  createdAt: number;
+  createdAt?: number;
   expiresAt: number;
   desktopSocketId?: string;
   phoneSocketId?: string;
-  isPhoneConnected: boolean;
+  desktopConnected: boolean;
+  phoneConnected: boolean;
 }
 
 // Re-export navigation for backward compatibility
