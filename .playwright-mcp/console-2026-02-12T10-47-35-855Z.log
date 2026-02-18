@@ -1,4 +1,0 @@
-[      38ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3001/projects/:0
-[     396ms] [WARNING] PostHog key or host not configured @ http://localhost:3001/_app/immutable/chunks/BSf-xYRM.js:3
-[     780ms] [ERROR] Failed to load resource: the server responded with a status of 401 (Unauthorized) @ http://localhost:8000/api/auth/me/:0
-[     909ms] [ERROR] Failed to load resource: the server responded with a status of 401 (Unauthorized) @ http://localhost:8000/api/auth/me/:0

@@ -1,6 +1,0 @@
-[     981ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3003/_next/static/webpack/16262a025f512e4f.webpack.hot-update.json:0
-[     983ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3003/images/icons/icon-192.png:0
-[     987ms] [WARNING] Error while trying to use the following icon from the Manifest: http://localhost:3003/images/icons/icon-192.png (Download error or resource isn't a valid image) @ http://localhost:3003/prayer/:0
-[    1453ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3003/images/icons/icon-192.png:0
-[    1455ms] [WARNING] Error while trying to use the following icon from the Manifest: http://localhost:3003/images/icons/icon-192.png (Download error or resource isn't a valid image) @ http://localhost:3003/prayer/:0
-[    1718ms] [WARNING] Image with src "/images/rooted-in-christ.jpg" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: "auto"' or 'height: "auto"' to maintain the aspect ratio. @ webpack-internal:///../../node_modules/.pnpm/next@14.2.25_react-dom@18.3.1_react@18.3.1_sass@1.93.2/node_modules/next/dist/shared/lib/utils/warn-once.js:15
