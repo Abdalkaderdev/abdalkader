@@ -1,0 +1,40 @@
+.footer {
+  margin-top: 80px;
+  padding: 40px 0;
+  border-top: 1px solid var(--border);
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  @media (max-width: 600px) {
+    flex-direction: column;
+    gap: 20px;
+    text-align: center;
+  }
+}
+
+.left {
+  color: var(--text-muted);
+  font-size: 14px;
+}
+
+.right {
+  display: flex;
+  gap: 24px;
+
+  a {
+    color: var(--text-secondary);
+    font-size: 14px;
+    transition: color 0.2s;
+
+    &:hover {
+      color: var(--primary);
+    }
+  }
+}

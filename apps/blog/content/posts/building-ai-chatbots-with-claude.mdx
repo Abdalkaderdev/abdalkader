@@ -1,0 +1,88 @@
+---
+title: "Building AI Chatbots with Claude API"
+description: "A practical guide to integrating Claude AI into your web applications for intelligent conversational experiences."
+date: "2024-12-15"
+author: "Abdalkader Alhamoud"
+category: "AI Engineering"
+tags: ["AI", "Claude", "Chatbots", "TypeScript", "API"]
+---
+
+Building AI-powered chatbots has never been more accessible. In this guide, I'll walk you through how I integrated Claude AI into my portfolio website to create an intelligent assistant that can answer questions about my work and projects.
+
+## Why Claude?
+
+After working with various AI models, I chose Claude for several reasons:
+
+- **Natural conversations** - Claude excels at understanding context and providing helpful responses
+- **Fast response times** - The Haiku model offers great speed for real-time chat
+- **Developer-friendly API** - Clean SDK with excellent TypeScript support
+- **Safety features** - Built-in content moderation and helpful guardrails
+
+## The Architecture
+
+Here's how the chatbot is structured:
+
+```typescript
+// pages/api/chat.ts
+import Anthropic from '@anthropic-ai/sdk';
+
+const anthropic = new Anthropic({
+  apiKey: process.env.ANTHROPIC_API_KEY,
+});
+
+export default async function handler(req, res) {
+  const { messages } = req.body;
+
+  const response = await anthropic.messages.create({
+    model: 'claude-3-5-haiku-20241022',
+    max_tokens: 500,
+    system: SYSTEM_PROMPT,
+    messages: messages,
+  });
+
+  return res.json({ message: response.content[0].text });
+}
+```
+
+## Crafting the System Prompt
+
+The system prompt is crucial for defining your chatbot's personality and knowledge base. Here's my approach:
+
+1. **Define the role** - "You are Abdalkader's AI assistant on his portfolio website"
+2. **Provide context** - Include relevant information about projects, skills, and contact details
+3. **Set guidelines** - Be friendly, concise, and helpful
+
+## Frontend Implementation
+
+The React component handles the UI and state management:
+
+```typescript
+const [messages, setMessages] = useState<Message[]>([]);
+const [isLoading, setIsLoading] = useState(false);
+
+const handleSend = async () => {
+  const response = await fetch('/api/chat', {
+    method: 'POST',
+    body: JSON.stringify({ messages }),
+  });
+
+  const data = await response.json();
+  setMessages(prev => [...prev, { role: 'assistant', content: data.message }]);
+};
+```
+
+## Key Learnings
+
+1. **Keep responses concise** - Users expect quick answers, not essays
+2. **Handle errors gracefully** - Always have a fallback message
+3. **Limit conversation history** - Send only the last 10 messages to stay within context limits
+4. **Use streaming for longer responses** - Better UX for complex questions
+
+## What's Next
+
+I'm planning to add:
+- Voice input/output
+- Memory persistence across sessions
+- Integration with my project documentation
+
+The full code is available on my [GitHub](https://github.com/abdalkaderdev). Feel free to reach out if you have questions!
