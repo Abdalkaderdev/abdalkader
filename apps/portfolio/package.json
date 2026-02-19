@@ -18,6 +18,7 @@
   },
   "dependencies": {
     "@abdalkader/ui": "workspace:*",
+    "@anthropic-ai/sdk": "^0.77.0",
     "@studio-freight/lenis": "^1.0.42",
     "@studio-freight/react-lenis": "^0.0.47",
     "@types/node": "^20",
