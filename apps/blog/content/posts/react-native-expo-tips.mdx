@@ -1,0 +1,125 @@
+---
+title: "React Native with Expo: Tips from Building ViaApp"
+description: "Practical lessons learned from building a cross-platform mobile app for iOS, Android, and Web using React Native and Expo."
+date: "2024-12-05"
+author: "Abdalkader Alhamoud"
+category: "Mobile Development"
+tags: ["React Native", "Expo", "Mobile", "Cross-Platform"]
+---
+
+Building ViaApp—a cross-platform discipleship app—taught me a lot about React Native and Expo. Here are the most valuable lessons.
+
+## Why Expo?
+
+When I started ViaApp, the decision was clear: we needed iOS, Android, AND web from a single codebase. Expo made this possible without ejecting.
+
+```bash
+npx create-expo-app ViaApp
+```
+
+That simple command started a journey that now serves thousands of users across all platforms.
+
+## Lesson 1: Embrace Expo Router
+
+Forget React Navigation for new projects. Expo Router brings file-based routing to React Native, and it's a game-changer.
+
+```typescript
+// app/(tabs)/devotional.tsx
+export default function DevotionalScreen() {
+  return <DailyDevotional />;
+}
+```
+
+The folder structure IS your navigation structure. Simple, predictable, maintainable.
+
+## Lesson 2: Offline-First is Non-Negotiable
+
+Users don't always have internet. For a devotional app, this was critical.
+
+```typescript
+import AsyncStorage from '@react-native-async-storage/async-storage';
+
+// Cache devotionals locally
+const cacheDevotional = async (devotional) => {
+  await AsyncStorage.setItem(
+    `devotional-${devotional.date}`,
+    JSON.stringify(devotional)
+  );
+};
+```
+
+We implemented a sync strategy that downloads content when online and serves from cache when offline.
+
+## Lesson 3: Platform-Specific Code When Needed
+
+While most code is shared, sometimes platforms need special treatment:
+
+```typescript
+import { Platform } from 'react-native';
+
+const styles = StyleSheet.create({
+  shadow: Platform.select({
+    ios: {
+      shadowColor: '#000',
+      shadowOffset: { width: 0, height: 2 },
+      shadowOpacity: 0.25,
+    },
+    android: {
+      elevation: 4,
+    },
+    web: {
+      boxShadow: '0 2px 8px rgba(0,0,0,0.25)',
+    },
+  }),
+});
+```
+
+## Lesson 4: EAS Build for Production
+
+Development builds with Expo Go are great, but production needs EAS:
+
+```bash
+eas build --platform all
+```
+
+This handles code signing, app store requirements, and generates native binaries. Worth every penny of the subscription.
+
+## Lesson 5: Push Notifications the Right Way
+
+Expo's push notification service simplified what used to be a nightmare:
+
+```typescript
+import * as Notifications from 'expo-notifications';
+
+async function scheduleDailyReminder() {
+  await Notifications.scheduleNotificationAsync({
+    content: {
+      title: "Time for your devotional",
+      body: "Your daily reading is ready",
+    },
+    trigger: {
+      hour: 7,
+      minute: 0,
+      repeats: true,
+    },
+  });
+}
+```
+
+## Performance Tips
+
+1. **Use FlatList, not ScrollView** for lists
+2. **Memoize components** that don't need frequent re-renders
+3. **Optimize images** with expo-image instead of Image
+4. **Enable Hermes** for faster JavaScript execution
+
+## The Result
+
+ViaApp now runs on:
+- iOS (iPhone and iPad)
+- Android (phones and tablets)
+- Web (responsive PWA)
+
+All from one codebase. One team. One deployment pipeline.
+
+If you're building cross-platform, Expo is the way to go in 2024.

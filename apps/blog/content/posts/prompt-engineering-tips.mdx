@@ -1,0 +1,181 @@
+---
+title: "Prompt Engineering: Beyond the Basics"
+description: "Advanced prompt engineering techniques I use daily when building AI-powered applications."
+date: "2024-11-05"
+author: "Abdalkader Alhamoud"
+category: "AI Engineering"
+tags: ["AI", "LLM", "Prompt Engineering", "Claude", "GPT"]
+---
+
+Prompt engineering is the art of communicating with AI. Here's what I've learned building AI features for production apps.
+
+## The Foundation: Clear Instructions
+
+Bad prompt:
+```
+Write something about a product.
+```
+
+Good prompt:
+```
+Write a 50-word product description for a CRM software targeted at small businesses.
+Focus on ease of use and time savings.
+Use a professional but friendly tone.
+```
+
+Specificity matters. Always.
+
+## System Prompts Are Your Foundation
+
+For SoapBox's AI content generator, our system prompt includes:
+
+```
+You are a content assistant for faith-based organizations.
+Your tone is warm, encouraging, and spiritually-minded.
+You never use profanity or controversial topics.
+You always suggest relevant Bible verses when appropriate.
+```
+
+This shapes every response without repeating instructions.
+
+## The Power of Examples (Few-Shot)
+
+Instead of explaining what you want, show it:
+
+```
+Create social media posts in this style:
+
+Example 1:
+"Join us this Sunday! Pastor Mike is continuing our series on Grace.
+Doors open at 9:30am. See you there! 🙏"
+
+Example 2:
+"Reminder: Youth Group meets tonight at 7pm.
+Bring a friend and join us for games, worship, and real talk. 🎮✝️"
+
+Now create a post about our upcoming community service event on Saturday.
+```
+
+## Chain of Thought for Complex Tasks
+
+For ParsaLink's lead qualification AI:
+
+```
+Analyze this lead and determine their buying intent.
+
+Think step by step:
+1. What information did they request?
+2. What timeline did they mention?
+3. What budget indicators are present?
+4. What pain points did they express?
+
+Based on your analysis, rate the lead as Hot, Warm, or Cold, and explain why.
+```
+
+This produces more accurate results than asking directly.
+
+## Structured Output
+
+When you need specific formats, be explicit:
+
+```
+Analyze this customer feedback and respond in JSON:
+
+{
+  "sentiment": "positive" | "negative" | "neutral",
+  "topics": ["array", "of", "topics"],
+  "urgency": 1-5,
+  "suggested_action": "string"
+}
+```
+
+Or use Claude's native JSON mode when available.
+
+## Temperature and Model Selection
+
+My guidelines:
+- **Temperature 0**: Factual, consistent outputs (data extraction)
+- **Temperature 0.3-0.5**: Balanced creativity (content generation)
+- **Temperature 0.7+**: Creative tasks (brainstorming)
+
+For production:
+- **Fast responses**: Claude Haiku or GPT-3.5-turbo
+- **Complex reasoning**: Claude Sonnet or GPT-4
+- **Creative tasks**: Higher temperature + capable model
+
+## Error Handling in Prompts
+
+Always include fallbacks:
+
+```
+If you cannot determine the user's intent, respond with:
+{
+  "status": "unclear",
+  "follow_up_question": "Could you please clarify..."
+}
+
+Never make up information. If unsure, say so.
+```
+
+## Testing Your Prompts
+
+I maintain a test suite for prompts:
+
+```python
+test_cases = [
+    {"input": "I need help ASAP!", "expected_urgency": 5},
+    {"input": "Just browsing", "expected_urgency": 1},
+    {"input": "We need this by Q1", "expected_urgency": 3},
+]
+
+for case in test_cases:
+    result = llm.classify(case["input"])
+    assert result["urgency"] == case["expected_urgency"]
+```
+
+Prompts are code. Test them like code.
+
+## Version Control for Prompts
+
+Store prompts in files, not inline:
+
+```
+prompts/
+  lead_qualification_v2.txt
+  content_generation_v1.txt
+  sentiment_analysis_v3.txt
+```
+
+This enables:
+- Version history
+- A/B testing
+- Easy rollback
+
+## The Meta-Prompt
+
+When creating new prompts, I use Claude to help:
+
+```
+I need to create a prompt for [use case].
+The input will be [description].
+The output should be [format].
+
+Generate a prompt that:
+- Is clear and specific
+- Includes examples
+- Handles edge cases
+- Produces consistent results
+```
+
+AI helping build better AI.
+
+## Continuous Improvement
+
+1. Log all prompts and responses
+2. Review failures weekly
+3. Iterate based on real usage
+4. A/B test major changes
+
+Prompt engineering is never "done." It's an ongoing process.
+
+Good luck, and happy prompting!

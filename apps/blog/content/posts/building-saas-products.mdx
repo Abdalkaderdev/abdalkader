@@ -1,0 +1,126 @@
+---
+title: "Building SaaS Products: Lessons from the Trenches"
+description: "Key insights from building multiple SaaS platforms including ParsaLink, SoapBox, and DiscipleOne."
+date: "2024-11-10"
+author: "Abdalkader Alhamoud"
+category: "SaaS"
+tags: ["SaaS", "Product", "Startup", "Business", "Development"]
+---
+
+After building several SaaS products, I've learned lessons that no tutorial teaches. Here they are.
+
+## Start with the Problem, Not the Technology
+
+I've seen developers (including myself) start with "I want to build something with [cool technology]" instead of "I want to solve [real problem]."
+
+ParsaLink started differently. Businesses in Iraq needed better customer management. The CRM market was either too expensive or too complex. That's the problem we solved.
+
+## The MVP Should Be Embarrassingly Simple
+
+For SoapBox's first version, we launched with:
+- Basic user authentication
+- One communication channel (email)
+- Simple event management
+
+That's it. No AI features. No multi-channel communication. Just the core value proposition.
+
+Users didn't complain about missing features. They told us what they actually needed.
+
+## Choose Boring Technology (Mostly)
+
+My production stack:
+- **Database**: PostgreSQL (boring, reliable)
+- **Backend**: Django or FastAPI (well-documented)
+- **Frontend**: React or Svelte (proven)
+- **Hosting**: DigitalOcean or Vercel (simple)
+
+Save the cutting-edge stuff for the features that truly need it.
+
+## Pricing is Product
+
+We learned this the hard way with DiscipleOne. As a nonprofit tool, we wanted it free. But "free" created problems:
+- No budget for support
+- Users didn't value it
+- Sustainability questions
+
+Now we have:
+- Free tier (limited)
+- Paid tier (full features)
+- Nonprofit discounts
+
+Everyone's happier.
+
+## The Features That Matter
+
+After launching multiple products, here's what users actually care about:
+
+1. **It works reliably** - More important than any feature
+2. **It's fast** - Speed is a feature
+3. **It's simple** - Complexity kills adoption
+4. **It's supported** - Someone answers when they need help
+
+Features they think they want but rarely use:
+- Complex customization
+- Detailed analytics
+- Advanced integrations
+
+## Technical Decisions That Paid Off
+
+### 1. Multi-tenancy from Day One
+
+Retrofitting multi-tenancy is painful. Build it in from the start:
+
+```python
+class Organization(models.Model):
+    name = models.CharField(max_length=100)
+
+class BaseModel(models.Model):
+    organization = models.ForeignKey(Organization, on_delete=models.CASCADE)
+
+    class Meta:
+        abstract = True
+```
+
+### 2. Feature Flags
+
+Being able to ship features to specific users is invaluable:
+
+```python
+if feature_enabled(user, 'new_dashboard'):
+    return render_new_dashboard()
+return render_old_dashboard()
+```
+
+### 3. Good Logging
+
+When things break (they will), logs save you:
+
+```python
+logger.info(f"User {user.id} created invoice {invoice.id}")
+```
+
+## The Business Side
+
+Technical founders often neglect:
+
+- **Marketing**: Build it and they won't come
+- **Support**: Users need help
+- **Documentation**: Save support time
+- **Legal**: Terms of service matter
+
+I now spend 40% of my time on non-coding tasks. It's necessary.
+
+## What I'd Do Differently
+
+1. **Charge earlier** - Free users are expensive
+2. **Build less** - Launch smaller, iterate faster
+3. **Talk more** - User conversations > feature development
+4. **Document everything** - Future you will thank present you
+
+## The Reward
+
+There's something special about seeing real people use software you built to solve real problems.
+
+When a church tells us SoapBox helped them reach their community better, or when a business says ParsaLink saved them hours—that's the reward.
+
+Build products that matter. The rest follows.

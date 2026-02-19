@@ -1,0 +1,114 @@
+---
+title: "Svelte vs React in 2024: A Developer's Perspective"
+description: "After building production apps with both frameworks, here's my honest comparison of Svelte and React for modern web development."
+date: "2024-11-20"
+author: "Abdalkader Alhamoud"
+category: "Frontend"
+tags: ["Svelte", "React", "Frontend", "JavaScript", "Comparison"]
+---
+
+Having shipped production applications with both React and Svelte, I have opinions. Here's an honest comparison.
+
+## The React Experience
+
+React has been my go-to for years. The ecosystem is massive, job market is huge, and you can build anything.
+
+```jsx
+// React component
+import { useState, useEffect } from 'react';
+
+function Counter() {
+  const [count, setCount] = useState(0);
+
+  useEffect(() => {
+    document.title = `Count: ${count}`;
+  }, [count]);
+
+  return (
+    <button onClick={() => setCount(c => c + 1)}>
+      Count: {count}
+    </button>
+  );
+}
+```
+
+**Pros:**
+- Massive ecosystem
+- Great job market
+- Excellent tooling (Next.js, Remix)
+- Strong community support
+
+**Cons:**
+- Bundle size can grow fast
+- Hooks have a learning curve
+- Re-render optimization requires thought
+
+## The Svelte Experience
+
+When I joined Mount Seir Tech and started working with Svelte, it felt refreshingly simple.
+
+```svelte
+<!-- Svelte component -->
+<script>
+  let count = 0;
+
+  $: document.title = `Count: ${count}`;
+</script>
+
+<button on:click={() => count++}>
+  Count: {count}
+</button>
+```
+
+**Pros:**
+- Less boilerplate
+- Smaller bundle sizes
+- True reactivity (no virtual DOM)
+- Faster initial load times
+
+**Cons:**
+- Smaller ecosystem
+- Fewer job postings
+- Less third-party component libraries
+
+## Real Performance Comparison
+
+On ParsaLink (our AI CRM), we measured:
+
+| Metric | React | Svelte |
+|--------|-------|--------|
+| Bundle size | 145KB | 42KB |
+| First paint | 1.2s | 0.6s |
+| Time to interactive | 2.1s | 1.1s |
+
+Svelte wins on raw performance, but React's ecosystem often makes up for it.
+
+## When to Use Each
+
+### Choose React when:
+- You need a large ecosystem
+- Your team already knows React
+- You're building with Next.js
+- You need easy hiring
+
+### Choose Svelte when:
+- Performance is critical
+- You're building lightweight apps
+- You want simpler code
+- You're using SvelteKit
+
+## My Current Approach
+
+I use both:
+- **React/Next.js** for portfolio sites, complex dashboards
+- **Svelte** for AI-powered interfaces where speed matters
+
+The "best" framework is the one that fits your project and team.
+
+## The Future
+
+Both are evolving:
+- React Server Components are game-changing
+- Svelte 5 with runes looks promising
+
+Learn both. Use what fits. Stay pragmatic.

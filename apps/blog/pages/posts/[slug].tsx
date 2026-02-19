@@ -1,6 +1,7 @@
 import { GetStaticPaths, GetStaticProps } from 'next';
 import Head from 'next/head';
 import Link from 'next/link';
+import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { MDXRemote, MDXRemoteSerializeResult } from 'next-mdx-remote';
 import { serialize } from 'next-mdx-remote/serialize';
@@ -76,7 +77,15 @@ export default function PostPage({ post, mdxSource }: PostPageProps) {
           {/* Footer */}
           <footer className={styles.footer}>
             <div className={styles.authorCard}>
-              <div className={styles.authorAvatar}>AA</div>
+              <div className={styles.authorAvatar}>
+                <Image
+                  src="/abdalkader.jpg"
+                  alt="Abdalkader Alhamoud"
+                  width={64}
+                  height={64}
+                  style={{ objectFit: 'cover' }}
+                />
+              </div>
               <div className={styles.authorInfo}>
                 <h3>Abdalkader Alhamoud</h3>
                 <p>Full Stack AI Engineer building web apps and SaaS platforms.</p>

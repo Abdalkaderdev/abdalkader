@@ -5,16 +5,17 @@
 }
 
 :root {
-  --bg: #0a0a0f;
-  --bg-secondary: #12121a;
-  --text: #ffffff;
-  --text-secondary: rgba(255, 255, 255, 0.7);
-  --text-muted: rgba(255, 255, 255, 0.4);
-  --primary: #667eea;
-  --primary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  --accent: #4ade80;
+  --bg: #000;
+  --bg-secondary: #0a0a0a;
+  --text: #f8f8f8;
+  --text-secondary: #a8a8a8;
+  --text-muted: #787878;
+  --primary: #f44e00;
+  --primary-gradient: linear-gradient(135deg, #f44e00 0%, #fa7300 100%);
+  --accent: #d4af37;
   --border: rgba(255, 255, 255, 0.1);
   --card: rgba(255, 255, 255, 0.03);
+  --transition: 0.8s cubic-bezier(0.19, 1, 0.22, 1);
 }
 
 html,

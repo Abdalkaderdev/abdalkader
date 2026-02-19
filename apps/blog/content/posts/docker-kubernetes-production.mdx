@@ -1,0 +1,218 @@
+---
+title: "Docker & Kubernetes: From Dev to Production"
+description: "A practical guide to containerizing applications and deploying them with Kubernetes, based on real production experience."
+date: "2024-11-28"
+author: "Abdalkader Alhamoud"
+category: "DevOps"
+tags: ["Docker", "Kubernetes", "DevOps", "CI/CD", "Production"]
+---
+
+Moving from "it works on my machine" to "it works in production" is where Docker and Kubernetes shine. Here's what I've learned deploying real applications.
+
+## Why Containers?
+
+Before Docker, deployment was chaos. Different environments, different configurations, different results. Containers solved this.
+
+```dockerfile
+# Dockerfile for a Node.js API
+FROM node:20-alpine
+
+WORKDIR /app
+
+COPY package*.json ./
+RUN npm ci --only=production
+
+COPY . .
+
+EXPOSE 3000
+CMD ["node", "server.js"]
+```
+
+This simple file ensures your application runs identically everywhere.
+
+## Docker Compose for Development
+
+During development, you often need multiple services. Docker Compose orchestrates them:
+
+```yaml
+# docker-compose.yml
+version: '3.8'
+
+services:
+  api:
+    build: ./api
+    ports:
+      - "3000:3000"
+    environment:
+      - DATABASE_URL=postgres://postgres:password@db:5432/app
+    depends_on:
+      - db
+
+  db:
+    image: postgres:15-alpine
+    environment:
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: app
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+volumes:
+  postgres_data:
+```
+
+One command starts everything: `docker-compose up`
+
+## Moving to Kubernetes
+
+When you need scaling, self-healing, and advanced orchestration, Kubernetes is the answer.
+
+### Deployment
+
+```yaml
+# deployment.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: api
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: api
+  template:
+    metadata:
+      labels:
+        app: api
+    spec:
+      containers:
+        - name: api
+          image: your-registry/api:latest
+          ports:
+            - containerPort: 3000
+          resources:
+            limits:
+              memory: "256Mi"
+              cpu: "500m"
+```
+
+### Service
+
+```yaml
+# service.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: api-service
+spec:
+  selector:
+    app: api
+  ports:
+    - port: 80
+      targetPort: 3000
+  type: LoadBalancer
+```
+
+## CI/CD Pipeline
+
+Automation is key. Here's a simplified GitHub Actions workflow:
+
+```yaml
+name: Deploy
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Build Docker image
+        run: docker build -t your-registry/api:${{ github.sha }} .
+
+      - name: Push to registry
+        run: docker push your-registry/api:${{ github.sha }}
+
+      - name: Deploy to Kubernetes
+        run: |
+          kubectl set image deployment/api api=your-registry/api:${{ github.sha }}
+```
+
+## Production Lessons
+
+### 1. Always Set Resource Limits
+
+Without limits, one container can starve others:
+
+```yaml
+resources:
+  requests:
+    memory: "128Mi"
+    cpu: "250m"
+  limits:
+    memory: "256Mi"
+    cpu: "500m"
+```
+
+### 2. Health Checks are Essential
+
+Kubernetes needs to know if your app is healthy:
+
+```yaml
+livenessProbe:
+  httpGet:
+    path: /health
+    port: 3000
+  initialDelaySeconds: 30
+  periodSeconds: 10
+
+readinessProbe:
+  httpGet:
+    path: /ready
+    port: 3000
+  initialDelaySeconds: 5
+  periodSeconds: 5
+```
+
+### 3. Use Secrets Properly
+
+Never hardcode credentials:
+
+```yaml
+env:
+  - name: DATABASE_URL
+    valueFrom:
+      secretKeyRef:
+        name: db-credentials
+        key: url
+```
+
+### 4. Implement Graceful Shutdown
+
+Handle SIGTERM signals properly:
+
+```javascript
+process.on('SIGTERM', async () => {
+  console.log('SIGTERM received, shutting down gracefully');
+  await server.close();
+  await db.disconnect();
+  process.exit(0);
+});
+```
+
+## The Stack I Use
+
+- **Container Registry**: DigitalOcean Container Registry
+- **Kubernetes**: DigitalOcean Kubernetes (DOKS)
+- **CI/CD**: GitHub Actions
+- **Monitoring**: Prometheus + Grafana
+
+This combination is cost-effective and production-ready.
+
+## Final Thoughts
+
+Docker and Kubernetes have a learning curve, but they're worth it. Start with Docker for development, then graduate to Kubernetes when you need scale.
+
+The investment pays off in reliability, scalability, and peace of mind.

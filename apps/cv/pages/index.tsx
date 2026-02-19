@@ -1,97 +1,156 @@
 import { useState } from 'react';
+import Image from 'next/image';
 import { motion } from 'framer-motion';
-import { Mail, MapPin, Globe, Download, ExternalLink, Github, Linkedin, ChevronRight } from 'lucide-react';
+import { Mail, MapPin, Globe, Download, ExternalLink, Github, Linkedin, ChevronRight, Phone, GraduationCap, Award } from 'lucide-react';
 import styles from '@/styles/Home.module.scss';
 
-// CV Data
+// CV Data from actual resume
 const experience = [
   {
-    title: 'Full Stack AI Engineer',
-    company: 'SoapBox Super App',
-    period: '2024 - Present',
-    location: 'Remote',
-    description: 'Building AI-powered content creation tools and multi-channel communication platform for faith communities.',
-    highlights: [
-      'Developed AI content generation system using Claude API',
-      'Built multi-channel messaging (email, SMS, push notifications)',
-      'Implemented real-time collaboration features',
-    ],
-    tech: ['React', 'Node.js', 'TypeScript', 'AI/ML', 'PostgreSQL'],
-  },
-  {
     title: 'Full Stack Software Engineer',
-    company: 'DiscipleOne Platform',
-    period: '2024 - Present',
+    company: 'Mount Seir Tech',
+    period: 'Jan 2026 - Present',
     location: 'Remote',
-    description: '501(c)(3) nonprofit platform providing free discipleship tools for churches.',
+    description: 'Developing full-stack features for AI-driven applications using modern frameworks.',
     highlights: [
-      'Serving 50+ partner churches with 1,000+ active users',
-      'Built comprehensive spiritual growth tracking system',
-      'Implemented church management dashboard',
+      'Develop full-stack features using Svelte (frontend) and Django + FastAPI (backend)',
+      'Architect backend systems with Docker containerization and Kubernetes deployment',
+      'Integrate AI chat, LLM-powered automation, and business logic into product workflows',
+      'Lead backend design for ParsaLink, an AI-powered CRM and automation platform',
     ],
-    tech: ['React', 'Node.js', 'TypeScript', 'MongoDB'],
+    tech: ['Svelte', 'Django', 'FastAPI', 'Docker', 'Kubernetes', 'Python'],
   },
   {
-    title: 'Full Stack Software Engineer',
-    company: 'VIA Discipleship App',
-    period: '2024 - Present',
+    title: 'AI Engineer',
+    company: 'SoapBox',
+    period: 'Nov 2025 - Present',
     location: 'Remote',
-    description: 'Cross-platform mobile application for daily devotions and spiritual growth.',
+    description: 'Design and implement LLM-powered systems for faith community platforms.',
     highlights: [
-      'Built iOS, Android, and Web versions from single codebase',
-      'Implemented offline-first architecture',
-      'Created Bible study and prayer journaling features',
+      'Design LLM-powered systems including prompt engineering, AI agents, and automation workflows',
+      'Develop backend services and API integrations using Python and Node.js',
+      'Manage deployment infrastructure with Docker, CI/CD pipelines, and cloud services (DigitalOcean, GCP)',
+      'Train and fine-tune proprietary LLM models for product-specific use cases',
     ],
-    tech: ['React Native', 'Node.js', 'TypeScript', 'Firebase'],
+    tech: ['Python', 'Node.js', 'Docker', 'GCP', 'LLM', 'CI/CD'],
   },
   {
-    title: 'Full Stack Developer',
-    company: 'ParsaLink AI CRM',
-    period: '2024 - Present',
+    title: 'Full Stack Software Engineer (Volunteer)',
+    company: 'Disciple One / ViaApp',
+    period: 'Nov 2025 - Present',
     location: 'Remote',
-    description: 'AI-powered CRM with intelligent chatbot for lead capture and conversion.',
+    description: 'Building responsive websites and mobile apps for nonprofit discipleship platform.',
     highlights: [
-      'Built AI chatbot with multi-language support',
-      'Implemented automated email generation system',
-      'Created analytics dashboard for conversion tracking',
+      'Build and deploy responsive websites and admin dashboards using React, Next.js, and Node.js',
+      'Develop React Native (Expo) mobile app features with backend API integration',
+      'Manage containerized application infrastructure using Docker for production deployment',
     ],
-    tech: ['React', 'Node.js', 'AI/ML', 'TypeScript', 'PostgreSQL'],
+    tech: ['React', 'Next.js', 'React Native', 'Node.js', 'Docker'],
+  },
+  {
+    title: 'IT & Contract Manager',
+    company: 'Real House Company',
+    period: 'Apr 2025 - Present',
+    location: 'Erbil, Iraq',
+    description: 'Leading IT operations and implementing scalable technical solutions.',
+    highlights: [
+      'Lead IT operations including internal systems, websites, email infrastructure, and technical support',
+      'Implement scalable technical solutions improving system reliability and operational efficiency',
+    ],
+    tech: ['IT Infrastructure', 'Systems Management', 'Web Development'],
+  },
+  {
+    title: 'E-commerce Web Developer (Freelance)',
+    company: 'Minime Iraq',
+    period: 'Nov 2023 - Nov 2025',
+    location: 'Baghdad, Iraq',
+    description: 'Built full-stack e-commerce platform with comprehensive features.',
+    highlights: [
+      'Built full-stack e-commerce platform with responsive design and third-party API integrations',
+      'Implemented payment processing, inventory management, and customer retention features',
+    ],
+    tech: ['E-commerce', 'Payment Integration', 'API Development'],
+  },
+  {
+    title: 'IT Specialist (Freelance)',
+    company: 'Hamilton Iraq Real Estate',
+    period: 'Nov 2023 - Nov 2025',
+    location: 'Erbil, Iraq',
+    description: 'Developed company website and managed IT infrastructure.',
+    highlights: [
+      'Developed and maintained company website and managed email infrastructure',
+      'Maintained IT systems, resolved connectivity issues, and ensured optimal performance',
+    ],
+    tech: ['Web Development', 'IT Support', 'Email Infrastructure'],
   },
 ];
 
 const skills = [
+  { name: 'Python', level: 95, category: 'Programming' },
+  { name: 'JavaScript / TypeScript', level: 95, category: 'Programming' },
   { name: 'React / Next.js', level: 95, category: 'Frontend' },
-  { name: 'TypeScript', level: 90, category: 'Frontend' },
-  { name: 'Node.js / Express', level: 92, category: 'Backend' },
-  { name: 'AI/ML Integration', level: 85, category: 'AI' },
+  { name: 'Svelte', level: 85, category: 'Frontend' },
+  { name: 'Node.js', level: 92, category: 'Backend' },
+  { name: 'Django / FastAPI', level: 90, category: 'Backend' },
+  { name: 'LLM Integration & Fine-Tuning', level: 90, category: 'AI/ML' },
+  { name: 'Docker / Kubernetes', level: 88, category: 'DevOps' },
   { name: 'PostgreSQL / MongoDB', level: 88, category: 'Database' },
-  { name: 'React Native', level: 82, category: 'Mobile' },
-  { name: 'GSAP / Framer Motion', level: 90, category: 'Animation' },
-  { name: 'AWS / Vercel', level: 85, category: 'Cloud' },
+  { name: 'React Native (Expo)', level: 85, category: 'Mobile' },
 ];
 
 const projects = [
   {
     name: 'SoapBox Super App',
-    description: 'Faith community platform with AI tools',
-    url: 'https://abdalkader.dev/projects/soapbox-super-app',
+    description: 'Full-stack faith community platform with AI-assisted content generation, event management, multi-channel communication',
+    url: 'https://soapboxsuperapp.com',
   },
   {
-    name: 'DiscipleOne Platform',
-    description: 'Free discipleship tools for churches',
-    url: 'https://abdalkader.dev/projects/discipleone-platform',
+    name: 'SoapBox Website Builder',
+    description: 'No-code website builder enabling churches to create custom websites with drag-and-drop functionality',
+    url: 'https://builder.soapboxsuperapp.com',
   },
   {
-    name: 'ParsaLink AI CRM',
-    description: 'AI-powered customer relationship management',
+    name: 'ViaApp',
+    description: 'Cross-platform mobile app (iOS, Android, Web) with daily devotionals, Bible study tools, prayer journal',
+    url: 'https://viaapp.life',
+  },
+  {
+    name: 'Disciple One',
+    description: 'Nonprofit platform with church dashboards for tracking spiritual growth and partner network management',
+    url: 'https://discipleone.life',
+  },
+  {
+    name: 'ParsaLink',
+    description: 'AI-powered CRM with automated lead engagement, AI chat, and workflow automation',
     url: 'https://abdalkader.dev/projects/parsalink-ai-crm',
   },
+];
+
+const certifications = [
   {
-    name: 'VIA Discipleship',
-    description: 'Cross-platform spiritual growth app',
-    url: 'https://abdalkader.dev/projects/via-discipleship-app',
+    name: 'AWS Skill Builder — AI/ML & Generative AI Track',
+    issuer: 'Amazon Web Services',
+    year: '2024 - 2025',
+    description: '16 courses covering ML foundations, Generative AI, Amazon Bedrock, Amazon Q, prompt engineering',
+  },
+  {
+    name: 'Web Accessibility Training',
+    issuer: 'UNICEF',
+    year: '2024',
+  },
+  {
+    name: 'Inclusive Communication',
+    issuer: 'UNICEF',
+    year: '2024',
   },
 ];
+
+const education = {
+  degree: 'Telecommunications Engineering',
+  school: 'University of Aleppo, Syria',
+  period: 'Sep 2015 - Jul 2017',
+  coursework: 'Network Design, Wireless Communication, Telecommunication Systems',
+};
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -107,10 +166,9 @@ const itemVariants = {
 };
 
 export default function Home() {
-  const [activeTab, setActiveTab] = useState<'experience' | 'skills' | 'projects'>('experience');
+  const [activeTab, setActiveTab] = useState<'experience' | 'skills' | 'projects' | 'education'>('experience');
 
   const handleDownloadPDF = () => {
-    // In production, this would generate or link to a PDF
     window.open('/Abdalkader_Alhamoud_CV.pdf', '_blank');
   };
 
@@ -154,7 +212,14 @@ export default function Home() {
         >
           <motion.div className={styles.heroAvatar} variants={itemVariants}>
             <div className={styles.avatarCircle}>
-              <span>AA</span>
+              <Image
+                src="/abdalkader.jpg"
+                alt="Abdalkader Alhamoud"
+                width={100}
+                height={100}
+                className={styles.avatarImage}
+                priority
+              />
             </div>
             <div className={styles.statusBadge}>
               <span className={styles.statusDot} />
@@ -167,18 +232,23 @@ export default function Home() {
           </motion.h1>
 
           <motion.h2 className={styles.heroSubtitle} variants={itemVariants}>
-            Full Stack AI Engineer
+            Full Stack & AI Engineer
           </motion.h2>
 
           <motion.p className={styles.heroDescription} variants={itemVariants}>
-            I build AI-powered web applications and SaaS platforms that solve real problems.
-            Passionate about creating seamless user experiences with cutting-edge technology.
+            I build, train, and deploy LLM-powered systems. Experience fine-tuning models,
+            designing AI agents, and shipping production applications. Proficient across the stack
+            from architecture to production.
           </motion.p>
 
           <motion.div className={styles.heroInfo} variants={itemVariants}>
             <div className={styles.infoItem}>
               <MapPin size={16} />
-              <span>Iraq (Kurdistan Region)</span>
+              <span>Erbil, Iraq</span>
+            </div>
+            <div className={styles.infoItem}>
+              <Phone size={16} />
+              <a href="tel:+9647506913813">+964 750 691 3813</a>
             </div>
             <div className={styles.infoItem}>
               <Mail size={16} />
@@ -191,7 +261,7 @@ export default function Home() {
           </motion.div>
 
           <motion.div className={styles.heroSocial} variants={itemVariants}>
-            <a href="https://github.com/abdalkaderdev" target="_blank" rel="noopener noreferrer" className={styles.socialLink}>
+            <a href="https://github.com/Abdalkaderdev" target="_blank" rel="noopener noreferrer" className={styles.socialLink}>
               <Github size={20} />
             </a>
             <a href="https://linkedin.com/in/abdalkaderdev" target="_blank" rel="noopener noreferrer" className={styles.socialLink}>
@@ -207,7 +277,7 @@ export default function Home() {
           animate={{ opacity: 1 }}
           transition={{ delay: 0.5 }}
         >
-          {(['experience', 'skills', 'projects'] as const).map((tab) => (
+          {(['experience', 'skills', 'projects', 'education'] as const).map((tab) => (
             <button
               key={tab}
               className={`${styles.tab} ${activeTab === tab ? styles.active : ''}`}
@@ -301,9 +371,19 @@ export default function Home() {
             <motion.div className={styles.techCloud} variants={itemVariants}>
               <h3>Also experienced with</h3>
               <div className={styles.techTags}>
-                {['GraphQL', 'REST APIs', 'Git', 'CI/CD', 'Docker', 'Three.js', 'TDD', 'Agile', 'Firebase', 'Supabase', 'Claude API', 'OpenAI'].map((tech) => (
+                {['GraphQL', 'REST APIs', 'Git', 'CI/CD', 'GCP', 'DigitalOcean', 'Vercel', 'Redis', 'Tailwind', 'HTML5', 'CSS3', 'Linux', 'Nginx'].map((tech) => (
                   <span key={tech} className={styles.techTag}>{tech}</span>
                 ))}
+              </div>
+            </motion.div>
+
+            <motion.div className={styles.languages} variants={itemVariants}>
+              <h3>Languages</h3>
+              <div className={styles.languageList}>
+                <span>Arabic (Native)</span>
+                <span>English (Fluent)</span>
+                <span>Kurdish (Basic)</span>
+                <span>French & Spanish (Learning)</span>
               </div>
             </motion.div>
           </motion.section>
@@ -343,6 +423,49 @@ export default function Home() {
                 <ExternalLink size={16} />
               </a>
             </motion.div>
+          </motion.section>
+        )}
+
+        {/* Education Section */}
+        {activeTab === 'education' && (
+          <motion.section
+            className={styles.educationSection}
+            variants={containerVariants}
+            initial="hidden"
+            animate="visible"
+          >
+            {/* Education */}
+            <motion.div className={styles.eduCard} variants={itemVariants}>
+              <div className={styles.eduIcon}>
+                <GraduationCap size={24} />
+              </div>
+              <div className={styles.eduContent}>
+                <h3>{education.degree}</h3>
+                <p className={styles.eduSchool}>{education.school}</p>
+                <p className={styles.eduPeriod}>{education.period}</p>
+                <p className={styles.eduCoursework}>Relevant Coursework: {education.coursework}</p>
+              </div>
+            </motion.div>
+
+            {/* Certifications */}
+            <motion.h3 className={styles.sectionSubtitle} variants={itemVariants}>
+              Certifications & Training
+            </motion.h3>
+
+            <div className={styles.certGrid}>
+              {certifications.map((cert, index) => (
+                <motion.div
+                  key={cert.name}
+                  className={styles.certCard}
+                  variants={itemVariants}
+                >
+                  <Award size={20} className={styles.certIcon} />
+                  <h4>{cert.name}</h4>
+                  <p className={styles.certIssuer}>{cert.issuer} • {cert.year}</p>
+                  {cert.description && <p className={styles.certDesc}>{cert.description}</p>}
+                </motion.div>
+              ))}
+            </div>
           </motion.section>
         )}
 
