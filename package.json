@@ -19,7 +19,7 @@
     "precommit": "pnpm lint:security && pnpm lint"
   },
   "devDependencies": {
-    "next": "14.2.25",
+    "next": "14.2.35",
     "turbo": "^2.0.0"
   },
   "packageManager": "pnpm@8.15.1",
