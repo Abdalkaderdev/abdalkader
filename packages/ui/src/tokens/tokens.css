@@ -111,6 +111,19 @@
   }
 }
 
+/* 'more' is the value defined by Media Queries Level 5. 'high' was an early
+   draft name that no current engine matches — it is emitted second, purely as
+   a fallback for older engines that shipped the draft spelling. */
+@media (prefers-contrast: more) {
+  :root {
+    --color-primary: #ff6600;
+    --color-primary-light: #ff8800;
+    --color-text-primary: #ffffff;
+    --color-text-secondary: #cccccc;
+    --color-border: #666666;
+  }
+}
+
 @media (prefers-contrast: high) {
   :root {
     --color-primary: #ff6600;

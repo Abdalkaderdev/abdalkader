@@ -48,7 +48,7 @@ describe('renderCss', () => {
   it('emits the reduced-motion and high-contrast blocks', () => {
     const css = renderCss(tokens);
     expect(css).toContain('@media (prefers-reduced-motion: reduce)');
-    expect(css).toContain('@media (prefers-contrast: high)');
+    expect(css).toContain('@media (prefers-contrast: more)');
   });
 
   it('never emits a prefers-color-scheme block', () => {

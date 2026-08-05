@@ -54,6 +54,15 @@ ${decls(t.reducedMotion, '    ')}
   }
 }
 
+/* 'more' is the value defined by Media Queries Level 5. 'high' was an early
+   draft name that no current engine matches — it is emitted second, purely as
+   a fallback for older engines that shipped the draft spelling. */
+@media (prefers-contrast: more) {
+  :root {
+${decls(t.highContrast, '    ')}
+  }
+}
+
 @media (prefers-contrast: high) {
   :root {
 ${decls(t.highContrast, '    ')}

@@ -20,7 +20,7 @@ describe('preference support', () => {
   });
 
   it('raises contrast of the primary colour under high contrast', () => {
-    const b = block('prefers-contrast: high');
+    const b = block('prefers-contrast: more');
     expect(b).not.toBe('');
     expect(b).toContain('--color-primary: #ff6600;');
     expect(b).toContain('--color-border: #666666;');
