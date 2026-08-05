@@ -1,0 +1,173 @@
+/**
+ * Abdalkader Design System — utility classes, keyframes, and global element styling.
+ * Design tokens do not belong in this file; they live in their own token stylesheet.
+ */
+/* ===== UTILITY CLASSES - PORTFOLIO STYLES ===== */
+.portfolio-gradient-text {
+  background: var(--color-primary-gradient);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.portfolio-button-primary {
+  background: var(--color-primary);
+  color: var(--color-black);
+  border: none;
+  border-radius: var(--border-radius-sm);
+  padding: 1rem 2rem;
+  font-family: var(--font-secondary);
+  font-size: var(--text-base);
+  text-transform: uppercase;
+  letter-spacing: 0.05rem;
+  transition: var(--transition-smooth);
+  cursor: pointer;
+}
+
+.portfolio-button-primary:hover {
+  background: var(--color-primary-light);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-glow);
+}
+
+.portfolio-button-primary:focus-visible {
+  outline: 2px dashed var(--color-primary);
+  outline-offset: 3px;
+}
+
+.portfolio-input {
+  background: transparent;
+  border: 1px solid var(--color-border);
+  border-radius: var(--border-radius-sm);
+  padding: 1rem;
+  color: var(--color-white);
+  font-family: var(--font-primary);
+  transition: var(--transition-smooth);
+}
+
+.portfolio-input:focus {
+  outline: none;
+  border-color: var(--color-primary);
+  box-shadow: var(--shadow-focus);
+}
+
+/* ===== ANIMATION KEYFRAMES - EXACT PORTFOLIO VALUES ===== */
+@keyframes portfolioFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes portfolioSlideIn {
+  from {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes portfolioFloat {
+  0% {
+    transform: translate(-50%, -50%);
+  }
+  50% {
+    transform: translate(-50%, -40%);
+  }
+  100% {
+    transform: translate(-50%, -50%);
+  }
+}
+
+@keyframes portfolioGlow {
+  0%, 100% {
+    box-shadow: 0 0 5px rgba(244, 78, 0, 0.2);
+  }
+  50% {
+    box-shadow: 0 0 20px rgba(244, 78, 0, 0.4);
+  }
+}
+
+/* ===== ANIMATION CLASSES ===== */
+.portfolio-animate-fade-in {
+  animation: portfolioFadeIn var(--duration-slow) var(--easing-smooth) forwards;
+}
+
+.portfolio-animate-slide-in {
+  animation: portfolioSlideIn var(--duration-slow) var(--easing-smooth) forwards;
+}
+
+.portfolio-animate-float {
+  animation: portfolioFloat 3s ease-in-out infinite;
+}
+
+.portfolio-animate-glow {
+  animation: portfolioGlow 2s ease-in-out infinite;
+}
+
+.portfolio-stagger > * {
+  animation: portfolioFadeIn var(--duration-slow) var(--easing-smooth) forwards;
+  opacity: 0;
+}
+
+.portfolio-stagger > *:nth-child(1) { animation-delay: calc(1 * var(--stagger-delay)); }
+.portfolio-stagger > *:nth-child(2) { animation-delay: calc(2 * var(--stagger-delay)); }
+.portfolio-stagger > *:nth-child(3) { animation-delay: calc(3 * var(--stagger-delay)); }
+.portfolio-stagger > *:nth-child(4) { animation-delay: calc(4 * var(--stagger-delay)); }
+.portfolio-stagger > *:nth-child(5) { animation-delay: calc(5 * var(--stagger-delay)); }
+.portfolio-stagger > *:nth-child(6) { animation-delay: calc(6 * var(--stagger-delay)); }
+.portfolio-stagger > *:nth-child(7) { animation-delay: calc(7 * var(--stagger-delay)); }
+.portfolio-stagger > *:nth-child(8) { animation-delay: calc(8 * var(--stagger-delay)); }
+.portfolio-stagger > *:nth-child(9) { animation-delay: calc(9 * var(--stagger-delay)); }
+.portfolio-stagger > *:nth-child(10) { animation-delay: calc(10 * var(--stagger-delay)); }
+
+/* ===== SCROLLBAR STYLING - EXACT PORTFOLIO ===== */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-primary);
+}
+
+/* ===== SELECTION STYLING - EXACT PORTFOLIO ===== */
+::selection {
+  color: var(--color-black);
+  background-color: var(--color-primary);
+}
+
+/* ===== FOCUS STYLES - EXACT PORTFOLIO ===== */
+:focus-visible {
+  outline: 2px dashed var(--color-primary);
+  outline-offset: 3px;
+}
+
+/* ===== RESPONSIVE UTILITIES ===== */
+@media (max-width: 600px) {
+  .portfolio-hide-mobile {
+    display: none !important;
+  }
+}
+
+@media (max-width: 840px) {
+  .portfolio-hide-tablet {
+    display: none !important;
+  }
+}
+
+@media (max-width: 1080px) {
+  .portfolio-hide-desktop {
+    display: none !important;
+  }
+}

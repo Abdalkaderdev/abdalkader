@@ -5,6 +5,7 @@
 
 // Import all styles to ensure they're bundled
 import './design-tokens.css';
+import './utilities.css';
 import './portfolio-components.css';
 
 // Export design tokens

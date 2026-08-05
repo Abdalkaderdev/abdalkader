@@ -1,5 +1,6 @@
 import './styles/base.css';
 import './styles/design-tokens.css';
+import './styles/utilities.css';
 import './styles/portfolio-components.css';
 
 export * from './components';
