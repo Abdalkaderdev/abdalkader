@@ -1,19 +1,11 @@
-$transition: 0.8s cubic-bezier(0.19, 1, 0.22, 1);
-$primary: #f44e00;
-$white: #f8f8f8;
-$black: #000;
-$textDark: #131313;
-$textGrey: #787878;
-$textLight: #a8a8a8;
-$navigationColor: #2d2d2d59;
-$borderColor: rgb(37, 37, 37);
+// Design tokens come from the single generated source in @abdalkader/ui.
+// @use makes them available to the mixin bodies below; @forward re-exports them
+// to the 59 stylesheets that @import this file (Sass does not re-export @use'd
+// members through @import, so both rules are required).
+@use '@abdalkader/ui/src/tokens/tokens' as *;
+@forward '@abdalkader/ui/src/tokens/tokens';
 
-// Christian/Spiritual accent colors
-$gold: #d4af37;
-$softGold: #f5f5dc;
-$holyWhite: #fafafa;
-
-// Skeuomorphic color helpers
+// Skeuomorphic color helpers — portfolio-local, not design tokens.
 // Use these for creating 3D depth effects
 $shadow-dark: rgba(0, 0, 0, 0.5);
 $shadow-medium: rgba(0, 0, 0, 0.3);
@@ -43,7 +35,8 @@ $elevation-high:
     0 16px 16px rgba(0, 0, 0, 0.06),
     0 32px 32px rgba(0, 0, 0, 0.06);
 
-// Breakpoints
+// Breakpoints — retained for @media queries that are genuinely layout-switching
+// (grid column counts, show/hide). Type and spacing no longer need them.
 $bp-xl: 1440px;
 $bp-lg: 1080px;
 $bp-md: 840px;
@@ -52,126 +45,65 @@ $bp-xs: 480px;
 
 @mixin section {
     position: relative;
-    padding-left: 2rem;
-    padding-right: 2rem;
-
-    @media (max-width: 600px) {
-        padding-left: 1rem;
-        padding-right: 1rem;
-    }
+    padding-left: $pad-section;
+    padding-right: $pad-section;
 }
 
 @mixin paddingAround {
-    padding: 2rem;
-
-    @media (max-width: 600px) {
-        padding: 1rem;
-    }
+    padding: $pad-section;
 }
 
 @mixin gradientText {
-    background: linear-gradient(to bottom, $primary, #fa7300);
+    background: linear-gradient(to bottom, $primary, $primary-light);
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
 }
 
 /*========== Fonts ==========*/
+// Each mixin emits one fluid clamp() instead of a base value plus breakpoint
+// overrides. Ceilings are the former desktop values, floors the former 600px
+// values, so these interpolate between sizes already in use.
 @mixin font-4_5 {
-    font-size: 4.5rem;
+    font-size: $fs-hero;
     line-height: 0.9;
     font-weight: lighter;
     text-transform: uppercase;
-
-    @media (max-width: 1080px) {
-        font-size: 3.2rem;
-    }
-
-    @media (max-width: 600px) {
-        font-size: 2.5rem;
-    }
 }
 
 @mixin font-2_75 {
-    font-size: 2.75rem;
+    font-size: $fs-h2;
     line-height: 0.9;
     font-weight: lighter;
     text-transform: uppercase;
-
-    @media (max-width: 1080px) {
-        font-size: 2.2rem;
-    }
-
-    @media (max-width: 600px) {
-        font-size: 1.8rem;
-    }
 }
 
 @mixin font-1_8 {
-    font-size: 1.8rem;
+    font-size: $fs-h3;
     letter-spacing: 0.08rem;
     text-transform: uppercase;
     font-weight: lighter;
-
-    @media (max-width: 1080px) {
-        font-size: 1.2rem;
-    }
 }
 
 @mixin font-1 {
-    font-size: 1rem;
+    font-size: $fs-body;
     line-height: 1;
     letter-spacing: 0.05rem;
     text-transform: uppercase;
     font-weight: lighter;
-
-    @media (max-width: 1080px) {
-        font-size: 0.8rem;
-    }
 }
 
 @mixin font0_7 {
-    font-size: 0.7rem;
+    font-size: $fs-micro;
     letter-spacing: 0.1rem;
     text-transform: uppercase;
 }
 
 /*========== Margins ==========*/
-@mixin mT4 {
-    margin-top: 8rem;
-
-    @media (max-width: 840px) {
-        margin-top: 5rem;
-    }
-
-    @media (max-width: 600px) {
-        margin-top: 3rem;
-    }
-}
-
-@mixin mT3 {
-    margin-top: 3rem;
-
-    @media (max-width: 600px) {
-        margin-top: 2rem;
-    }
-}
-
-@mixin mT2 {
-    margin-top: 2rem;
-
-    @media (max-width: 600px) {
-        margin-top: 1rem;
-    }
-}
-
-@mixin mT1 {
-    margin-top: 1rem;
-
-    @media (max-width: 600px) {
-        margin-top: 0.8rem;
-    }
-}
+@mixin mT4 { margin-top: $space-4; }
+@mixin mT3 { margin-top: $space-3; }
+@mixin mT2 { margin-top: $space-2; }
+@mixin mT1 { margin-top: $space-1; }
 
 /*========== KeyFrames ==========*/
 @keyframes floating {
