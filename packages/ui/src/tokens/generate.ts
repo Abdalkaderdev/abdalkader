@@ -43,6 +43,9 @@ ${decls(t.colors)}
 ${decls(t.static)}
 
 ${fluid}
+
+  /* Deprecated aliases — retire in Phase C by migrating their call sites. */
+${decls(t.aliases)}
 }
 
 @media (prefers-reduced-motion: reduce) {

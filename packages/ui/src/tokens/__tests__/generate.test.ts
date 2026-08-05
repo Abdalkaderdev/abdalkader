@@ -54,6 +54,38 @@ describe('renderCss', () => {
   it('never emits a prefers-color-scheme block', () => {
     expect(renderCss(tokens)).not.toContain('prefers-color-scheme');
   });
+
+  it('keeps the deprecated names resolving so existing call sites do not break', () => {
+    const css = renderCss(tokens);
+    // These were defined by the file this pipeline replaced and are still
+    // referenced by portfolio-components.css and CrossAppNavigation.css.
+    for (const name of [
+      '--text-hero',
+      '--text-hero-md',
+      '--text-hero-sm',
+      '--text-large',
+      '--text-medium',
+      '--text-base',
+      '--text-small',
+      '--section-padding',
+      '--section-gap-md',
+      '--color-primary-gradient',
+    ]) {
+      expect(css).toContain(`${name}: `);
+    }
+  });
+
+  it('every alias points at a token that actually exists', () => {
+    const css = renderCss(tokens);
+    const defined = new Set(
+      [...css.matchAll(/^\s*(--[a-z0-9-]+):/gm)].map((m) => m[1])
+    );
+    for (const target of Object.values(tokens.aliases)) {
+      const name = target.match(/var\((--[a-z0-9-]+)\)/)?.[1];
+      expect(name, `alias target ${target} is malformed`).toBeDefined();
+      expect(defined.has(name!), `alias points at undefined ${name}`).toBe(true);
+    }
+  });
 });
 
 describe('renderScss', () => {

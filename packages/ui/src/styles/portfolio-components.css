@@ -376,17 +376,17 @@
 /* ===== RESPONSIVE UTILITIES ===== */
 @media (max-width: 1080px) {
   .portfolio-heading-hero {
-    font-size: var(--text-hero-md);
+    font-size: var(--fs-hero);
   }
   
   .portfolio-heading-large {
-    font-size: var(--text-large-md);
+    font-size: var(--fs-h2);
   }
 }
 
 @media (max-width: 840px) {
   .portfolio-nav {
-    padding: var(--space-md) var(--section-padding-sm);
+    padding: var(--space-md) var(--pad-section);
   }
   
   .portfolio-card {
@@ -404,15 +404,15 @@
   }
   
   .portfolio-heading-medium {
-    font-size: var(--text-medium-md);
+    font-size: var(--fs-h3);
   }
   
   .portfolio-text-base {
-    font-size: var(--text-base-md);
+    font-size: var(--fs-body);
   }
   
   .portfolio-nav {
-    padding: var(--space-sm) var(--section-padding-sm);
+    padding: var(--space-sm) var(--pad-section);
   }
   
   .portfolio-btn {

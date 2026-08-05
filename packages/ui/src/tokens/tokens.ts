@@ -9,6 +9,13 @@ export interface TokenSet {
   colors: Record<string, string>;
   fluid: Record<string, FluidToken>;
   static: Record<string, string>;
+  /**
+   * Deprecated names kept alive as `--old: var(--new)` so existing call sites
+   * keep resolving. The fluid tokens made the -md/-sm breakpoint variants
+   * redundant, but rewriting every call site would risk changing values for no
+   * benefit. Retire these in Phase C by migrating their call sites.
+   */
+  aliases: Record<string, string>;
   reducedMotion: Record<string, string>;
   highContrast: Record<string, string>;
 }
@@ -111,6 +118,27 @@ export const tokens: TokenSet = {
     'shadow-inset': 'inset 0 2px 4px rgba(0, 0, 0, 0.1)',
     'shadow-focus': '0 0 0 2px #f44e00',
     'backdrop-blur': 'blur(10px)',
+    // live — consumed by portfolio-components.css and CrossAppNavigation.css
+    'color-primary-gradient': 'linear-gradient(to bottom, #f44e00, #fa7300)',
+  },
+
+  aliases: {
+    // The breakpoint variants collapse into their fluid equivalents.
+    'text-hero': 'var(--fs-hero)',
+    'text-hero-md': 'var(--fs-hero)',
+    'text-hero-sm': 'var(--fs-hero)',
+    'text-large': 'var(--fs-h2)',
+    'text-large-md': 'var(--fs-h2)',
+    'text-large-sm': 'var(--fs-h2)',
+    'text-medium': 'var(--fs-h3)',
+    'text-medium-md': 'var(--fs-h3)',
+    'text-base': 'var(--fs-body)',
+    'text-base-md': 'var(--fs-body)',
+    'text-small': 'var(--fs-micro)',
+    'section-padding': 'var(--pad-section)',
+    'section-padding-sm': 'var(--pad-section)',
+    'section-gap-md': 'var(--section-gap)',
+    'section-gap-sm': 'var(--section-gap)',
   },
 
   // Harvested from the previously-dead designTokens.css. NEW behaviour in Phase A.
