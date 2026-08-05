@@ -12,14 +12,15 @@
     "dist"
   ],
   "scripts": {
-    "build": "rollup -c",
+    "build": "pnpm generate:tokens && rollup -c",
     "dev": "rollup -c -w",
     "test": "vitest run",
     "test:watch": "vitest",
     "test:coverage": "vitest run --coverage",
     "typecheck": "tsc --noEmit",
     "size": "size-limit",
-    "clean": "rm -rf dist"
+    "clean": "rm -rf dist",
+    "generate:tokens": "tsx src/tokens/generate.ts"
   },
   "peerDependencies": {
     "react": "^18.3.1",
@@ -42,9 +43,9 @@
   "devDependencies": {
     "@size-limit/preset-small-lib": "^11.0.0",
     "@testing-library/jest-dom": "^6.0.0",
-    "@types/node": "^20.0.0",
     "@testing-library/react": "^14.0.0",
     "@testing-library/user-event": "^14.0.0",
+    "@types/node": "^20.0.0",
     "@vitejs/plugin-react": "^4.0.0",
     "@vitest/coverage-v8": "^1.0.0",
     "axe-core": "^4.8.0",
@@ -54,6 +55,7 @@
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "size-limit": "^11.0.0",
+    "tsx": "^4.23.8",
     "vitest": "^1.6.1"
   }
 }

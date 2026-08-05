@@ -1,0 +1,95 @@
+// GENERATED FILE — do not edit.
+// Source: packages/ui/src/tokens/tokens.ts
+// Regenerate: pnpm --filter @abdalkader/ui generate:tokens
+//
+// Colours are literal so rgba()/lighten() keep compiling.
+// Sizes are var() references to the fluid clamps in tokens.css.
+
+$primary: #f44e00;
+$primary-light: #fa7300;
+$white: #f8f8f8;
+$black: #000;
+$text-dark: #131313;
+$text-grey: #787878;
+$text-light: #a8a8a8;
+$navigation: #2d2d2d59;
+$border: rgb(37, 37, 37);
+$bg-primary: #000;
+$bg-secondary: #0a0a0a;
+$text-primary: #f8f8f8;
+$text-secondary: #787878;
+$accent: #f44e00;
+$gold: #d4af37;
+$soft-gold: #f5f5dc;
+$holy-white: #fafafa;
+
+$font-primary: 'PPNeueMontreal-Regular', sans-serif;
+$font-secondary: 'PPNeueMontreal-Medium', sans-serif;
+$font-pp-regular: 'PPNeueMontreal-Regular';
+$font-pp-medium: 'PPNeueMontreal-Medium';
+$line-height-tight: 0.9;
+$line-height-normal: 1;
+$line-height-relaxed: 1.2;
+$transition-smooth: 0.8s cubic-bezier(0.19, 1, 0.22, 1);
+$transition-fast: 0.3s ease-in-out;
+$transition-focus: 0.2s ease;
+$easing-smooth: cubic-bezier(0.19, 1, 0.22, 1);
+$duration-slow: 0.8s;
+$duration-fast: 0.3s;
+$duration-focus: 0.2s;
+$stagger-delay: 0.003s;
+$space-xs: 0.8rem;
+$space-sm: 1rem;
+$space-md: 1.5rem;
+$space-lg: 2rem;
+$space-xl: 3rem;
+$space-2xl: 5rem;
+$space-3xl: 6rem;
+$space-4xl: 8rem;
+$space-5xl: 10rem;
+$container-max-width: 1200px;
+$border-radius: 12px;
+$border-radius-sm: 6px;
+$breakpoint-sm: 600px;
+$breakpoint-md: 840px;
+$breakpoint-lg: 1080px;
+$z-dropdown: 1000;
+$z-sticky: 1020;
+$z-fixed: 1030;
+$z-modal-backdrop: 1040;
+$z-modal: 1050;
+$z-popover: 1060;
+$z-tooltip: 1070;
+$z-toast: 1080;
+$z-loading: 5000000;
+$shadow-glow: 0 0 20px rgba(244, 78, 0, 0.3);
+$shadow-inset: inset 0 2px 4px rgba(0, 0, 0, 0.1);
+$shadow-focus: 0 0 0 2px #f44e00;
+$backdrop-blur: blur(10px);
+
+$fs-hero: var(--fs-hero);
+$fs-h2: var(--fs-h2);
+$fs-h3: var(--fs-h3);
+$fs-body: var(--fs-body);
+$fs-micro: var(--fs-micro);
+$space-4: var(--space-4);
+$space-3: var(--space-3);
+$space-2: var(--space-2);
+$space-1: var(--space-1);
+$pad-section: var(--pad-section);
+$section-gap: var(--section-gap);
+$spot-r: var(--spot-r);
+
+// camelCase aliases. The loop above emits kebab-case ($text-dark, $soft-gold),
+// but the portfolio's 205 call sites use camelCase. Only names the loop does
+// NOT already produce appear here — $gold is emitted identically above and must
+// not be repeated.
+$transition: 0.8s cubic-bezier(0.19, 1, 0.22, 1);
+$transition-secondary: 0.3s ease-in-out;
+$textDark: #131313;
+$textGrey: #787878;
+$textLight: #a8a8a8;
+$navigationColor: #2d2d2d59;
+$borderColor: rgb(37, 37, 37);
+$softGold: #f5f5dc;
+$holyWhite: #fafafa;
