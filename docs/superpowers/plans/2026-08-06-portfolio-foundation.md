@@ -83,9 +83,11 @@ Prepend:
 ```css
 /**
  * Abdalkader Design System — utility classes, keyframes, and global element styling.
- * Token declarations live in ../tokens/tokens.css (generated). Do not add tokens here.
+ * Design tokens do not belong in this file; they live in their own token stylesheet.
  */
 ```
+
+Worded to be true both now and after Task 2 — at this point `tokens.css` does not exist yet, so the comment must not name it.
 
 - [ ] **Step 3: Reduce `design-tokens.css` to tokens only**
 
@@ -112,11 +114,17 @@ import './portfolio-components.css';
 
 - [ ] **Step 5: Verify the bundle is equivalent**
 
+`rollup.config.js` sets `minimize: isProduction`, and plain `pnpm build` does not set `NODE_ENV=production` — so **comments survive into `dist/styles.css`**. The comparison must therefore strip comments first, or the header comment added in Step 2 would fail a check that is meant to police declarations.
+
 ```bash
-cd packages/ui && pnpm build && diff <(tr -d '[:space:]' < /tmp/styles-baseline.css | fold -w1 | sort) <(tr -d '[:space:]' < dist/styles.css | fold -w1 | sort) && echo "EQUIVALENT"
+cd packages/ui && pnpm build
+strip() { perl -0777 -pe 's{/\*.*?\*/}{}gs' "$1" | tr -d '[:space:]' | fold -w1 | sort; }
+diff <(strip /tmp/styles-baseline.css) <(strip dist/styles.css) && echo "EQUIVALENT"
 ```
 
-Expected: `EQUIVALENT`. This compares character multisets, so pure reordering passes and any added or dropped declaration fails.
+Expected: `EQUIVALENT`. Comments are ignored; everything else is compared as a character multiset, so pure rule reordering passes while any added or dropped declaration fails.
+
+If this prints differences, do **not** edit the baseline to make it pass — find the declaration you actually added or dropped.
 
 - [ ] **Step 6: Commit**
 
