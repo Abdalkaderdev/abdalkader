@@ -174,10 +174,27 @@
   .experience {
     color: #f44e00;
   }
+}
 
-  .projects {
-    color: #fa7300;
-  }
+/* Evidence Badge - distinguishes shipped work from studied skills */
+.evidenceBadge {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.15rem 0.5rem;
+  border-radius: 3px;
+  font-size: 0.7rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05rem;
+  border: 1px solid currentColor;
+}
+
+.evidenceShipped {
+  color: #f44e00;
+}
+
+.evidenceStudied {
+  color: #787878;
 }
 
 /* Responsive Design */

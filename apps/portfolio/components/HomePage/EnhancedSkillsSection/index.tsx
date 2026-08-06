@@ -136,13 +136,13 @@ export default function EnhancedSkillsSection() {
                                             </span>
                                         </div>
                                     </div>
-                                    
+
                                     <div className={styles.skillBarContainer}>
-                                        <div 
+                                        <div
                                             className={styles.skillBar}
                                             ref={el => {
                                                 if (el) {
-                                                    const globalIndex = category.skills.slice(0, skillIndex).reduce((acc, _, idx) => 
+                                                    const globalIndex = category.skills.slice(0, skillIndex).reduce((acc, _, idx) =>
                                                         acc + skillsCategories.slice(0, categoryIndex).reduce((sum, cat) => sum + cat.skills.length, 0) + idx, 0
                                                     ) + skillIndex;
                                                     skillBarRefs.current[globalIndex] = el;
@@ -152,18 +152,19 @@ export default function EnhancedSkillsSection() {
                                             style={{ backgroundColor: getLevelColor(skill.level) }}
                                         />
                                     </div>
-                                    
+
                                     <div className={styles.skillDetails}>
                                         {skill.yearsOfExperience && (
                                             <span className={styles.experience}>
                                                 {skill.yearsOfExperience} {skill.yearsOfExperience === 1 ? 'year' : 'years'}
                                             </span>
                                         )}
-                                        {skill.projectsCount && (
-                                            <span className={styles.projects}>
-                                                {skill.projectsCount} {skill.projectsCount === 1 ? 'project' : 'projects'}
-                                            </span>
-                                        )}
+                                        <span
+                                            className={`${styles.evidenceBadge} ${skill.evidence === 'shipped' ? styles.evidenceShipped : styles.evidenceStudied}`}
+                                            title={skill.note || (skill.evidence === 'shipped' ? 'Used in delivered work' : 'Learned, not yet shipped in production')}
+                                        >
+                                            {skill.evidence === 'shipped' ? 'Shipped' : 'Studied'}
+                                        </span>
                                     </div>
                                 </div>
                             ))}
