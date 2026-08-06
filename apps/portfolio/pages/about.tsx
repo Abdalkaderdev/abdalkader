@@ -15,8 +15,8 @@ export default function AboutPage() {
     return (
         <>
             <PageSEO
-                title="About Abdalkader Alhamoud | 8+ Years Web Development Experience"
-                description="Learn about Abdalkader Alhamoud's journey as a Web Developer and AI Engineer with 8+ years of experience building modern, fast, user-focused experiences."
+                title="About Abdalkader Alhamoud | 8+ Years in Tech, AI & Full-Stack Engineer"
+                description="Abdalkader Alhamoud's path from telecom engineering to lead AI and full-stack engineer — 8+ years in technology, building software professionally since 2023."
                 canonical="/about"
                 ogType="profile"
                 ogImage="/images/og-about.jpg"
