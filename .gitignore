@@ -32,4 +32,7 @@ yarn-error.log*
 .vercel
 
 # Turbo
-.turbo.playwright-mcp/
+.turbo
+
+# Playwright MCP scratch output
+.playwright-mcp/

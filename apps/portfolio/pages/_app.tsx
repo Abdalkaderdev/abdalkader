@@ -42,7 +42,6 @@ type AppPropsWithLayout = AppProps & {
 // Dynamically import heavy components that don't need to load immediately
 const WelcomeModal = dynamic(() => import("@/components/WelcomeModal"), { ssr: false });
 const MusicPlayer = dynamic(() => import("@/components/MusicPlayer"), { ssr: false });
-const AIChatbot = dynamic(() => import("@/components/AIChatbot"), { ssr: false });
 
 export default function App({ Component, pageProps }: AppPropsWithLayout) {
     const router = useRouter();
@@ -243,9 +242,6 @@ export default function App({ Component, pageProps }: AppPropsWithLayout) {
             {/* Spiritual Enhancement Components */}
             <WelcomeModal onMusicToggle={handleMusicToggle} />
             <MusicPlayer isEnabled={isMusicEnabled} />
-
-            {/* AI Chatbot - Available globally */}
-            <AIChatbot />
         </>
     );
 }
