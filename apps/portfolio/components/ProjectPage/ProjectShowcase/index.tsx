@@ -3,6 +3,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { gsap, ScrollTrigger } from '@/libs/gsap';
 import { useLenis } from '@studio-freight/react-lenis';
+import useSpotlight from '@/hooks/useSpotlight';
 import styles from './ProjectShowcase.module.scss';
 
 interface ShowcaseProject {
@@ -15,6 +16,40 @@ interface ShowcaseProject {
     liveUrl?: string;
     caseStudyUrl?: string;
     backgroundImage: string;
+}
+
+/**
+ * Card front with a cursor-following spotlight.
+ *
+ * Its own component so the hook owns a ref of its own — the card wrapper's ref is
+ * already claimed by GSAP — and so the hook is not called inside a .map callback.
+ *
+ * The spotlight layer carries no second image: it brightens and saturates
+ * whatever is beneath it through a soft radial mask, so the effect costs one
+ * element and no extra download.
+ */
+function CardFront({ project }: { project: ShowcaseProject }) {
+    const { ref, active } = useSpotlight<HTMLDivElement>();
+
+    return (
+        <div ref={ref} className={styles.cardFront}>
+            <Image
+                src={project.backgroundImage}
+                alt={`${project.title} card`}
+                fill
+                className={styles.stackCardImage}
+                sizes="(max-width: 768px) 70vw, 320px"
+            />
+            <div
+                className={`${styles.spotlight} ${active ? styles.spotlightActive : ''}`}
+                aria-hidden="true"
+            />
+            <div className={styles.stackCardOverlay}>
+                <span className={styles.stackCardNumber}>{project.number}</span>
+            </div>
+            <span className={styles.flipHint}>Click to flip</span>
+        </div>
+    );
 }
 
 const SHOWCASE_PROJECTS: ShowcaseProject[] = [
@@ -462,19 +497,7 @@ export default function ProjectShowcase() {
                     >
                         <div className={styles.cardInner}>
                             {/* Front Face */}
-                            <div className={styles.cardFront}>
-                                <Image
-                                    src={project.backgroundImage}
-                                    alt={`${project.title} card`}
-                                    fill
-                                    className={styles.stackCardImage}
-                                    sizes="(max-width: 768px) 70vw, 320px"
-                                />
-                                <div className={styles.stackCardOverlay}>
-                                    <span className={styles.stackCardNumber}>{project.number}</span>
-                                </div>
-                                <span className={styles.flipHint}>Click to flip</span>
-                            </div>
+                            <CardFront project={project} />
 
                             {/* Back Face */}
                             <div className={styles.cardBack}>

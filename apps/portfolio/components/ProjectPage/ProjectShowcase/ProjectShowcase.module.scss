@@ -606,3 +606,63 @@ $mono-font: 'JetBrains Mono', 'SF Mono', 'Consolas', monospace;
         }
     }
 }
+
+/* ===== Cursor spotlight on card fronts =====
+   Brightens and saturates the card art beneath a soft radial mask that eases
+   toward the pointer. Adapted from the MotionSites reference, but with the mask
+   driven by two CSS custom properties instead of re-exporting a canvas via
+   toDataURL() every frame — that would add a readback and a base64 encode per
+   frame to a page already running GSAP, ScrollTrigger and Lenis.
+
+   No second image is needed: backdrop-filter acts on whatever is underneath. */
+.spotlight {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.25s ease;
+
+    -webkit-backdrop-filter: brightness(1.35) saturate(1.2);
+    backdrop-filter: brightness(1.35) saturate(1.2);
+
+    /* seeded by useSpotlight; centred until the pointer arrives */
+    --mx: 50%;
+    --my: 50%;
+
+    /* --spot-r is sized for a viewport-scale effect; scale it down for a card */
+    --card-spot-r: calc(var(--spot-r) * 0.4);
+
+    --spot-gradient: radial-gradient(
+        circle var(--card-spot-r) at var(--mx) var(--my),
+        rgba(0, 0, 0, 1) 0%,
+        rgba(0, 0, 0, 1) 40%,
+        rgba(0, 0, 0, 0.75) 60%,
+        rgba(0, 0, 0, 0.4) 75%,
+        rgba(0, 0, 0, 0.12) 88%,
+        rgba(0, 0, 0, 0) 100%
+    );
+    mask-image: var(--spot-gradient);
+    -webkit-mask-image: var(--spot-gradient);
+    mask-size: 100% 100%;
+    -webkit-mask-size: 100% 100%;
+}
+
+.spotlightActive {
+    opacity: 1;
+}
+
+/* Inert where there is no cursor to follow, or where motion is unwelcome.
+   useSpotlight also refuses to activate in both cases; this is belt and braces
+   so the layer cannot paint even if state were somehow set. */
+@media (prefers-reduced-motion: reduce) {
+    .spotlight {
+        display: none;
+    }
+}
+
+@media (pointer: coarse) {
+    .spotlight {
+        display: none;
+    }
+}
