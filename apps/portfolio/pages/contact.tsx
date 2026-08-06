@@ -15,7 +15,7 @@ export default function ContactPage() {
                 description="Ready to start your project? Contact Abdalkader for AI integration, web development, and custom software solutions. Fast response within 24 hours."
                 canonical="/contact"
                 ogType="website"
-                ogImage="/images/og-contact.jpg"
+                ogImage="/images/og-image.jpg"
                 ogImageAlt="Contact Abdalkader Alhamoud - AI and Web Developer"
                 keywords={[
                     'Contact',

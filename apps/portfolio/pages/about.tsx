@@ -19,7 +19,7 @@ export default function AboutPage() {
                 description="Abdalkader Alhamoud's path from telecom engineering to lead AI and full-stack engineer — 8+ years in technology, building software professionally since 2023."
                 canonical="/about"
                 ogType="profile"
-                ogImage="/images/og-about.jpg"
+                ogImage="/images/og-image.jpg"
                 ogImageAlt="About Abdalkader Alhamoud - AI Engineer and Developer"
                 keywords={[
                     'Abdalkader Alhamoud',

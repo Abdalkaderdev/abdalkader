@@ -22,7 +22,7 @@ export default function HomePage() {
                 description="Expert AI Engineer and Full-Stack Developer specializing in React, Next.js, Python, and ML. Transform your ideas into intelligent digital solutions."
                 canonical="/"
                 ogType="website"
-                ogImage="/images/og-home.jpg"
+                ogImage="/images/og-image.jpg"
                 ogImageAlt="Abdalkader Alhamoud - AI Engineer and Full-Stack Developer Portfolio"
                 keywords={[
                     'AI Engineer',

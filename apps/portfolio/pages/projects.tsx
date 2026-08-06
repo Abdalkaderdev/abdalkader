@@ -27,7 +27,7 @@ export default function ProjectPage() {
                 description="Explore 12+ successful projects including AI-powered platforms, full-stack applications, and web solutions serving 50K+ users. View case studies and results."
                 canonical="/projects"
                 ogType="website"
-                ogImage="/images/og-projects.jpg"
+                ogImage="/images/og-image.jpg"
                 ogImageAlt="Abdalkader's Portfolio - AI and Web Development Projects"
                 keywords={[
                     'Portfolio',
