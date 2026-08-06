@@ -1,0 +1,120 @@
+@import "@/styles/variables.scss";
+
+.faq {
+    @include section;
+    @include mT4;
+    position: relative;
+    padding-bottom: $space-4;
+}
+
+.container {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.heading {
+    @include font-2_75;
+    color: $white;
+    margin-bottom: $space-3;
+}
+
+.list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    border-top: 1px solid $borderColor;
+}
+
+.item {
+    border-bottom: 1px solid $borderColor;
+    transition: border-color $transition;
+
+    &:hover {
+        border-color: rgba($primary, 0.4);
+    }
+}
+
+.itemOpen {
+    border-color: rgba($primary, 0.55);
+}
+
+/* The <h3> exists for heading structure; the button carries all the styling. */
+.questionWrap {
+    margin: 0;
+    font-size: inherit;
+    font-weight: inherit;
+}
+
+.question {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: $space-2;
+    /* 44px minimum touch target — the audit flagged several under that */
+    min-height: 44px;
+    padding: $space-2 0;
+    background: none;
+    border: none;
+    color: $white;
+    cursor: pointer;
+    text-align: left;
+    font-family: inherit;
+    transition: color $transition;
+
+    &:hover {
+        color: $primary;
+    }
+
+    &:focus-visible {
+        outline: 2px dashed $primary;
+        outline-offset: 4px;
+    }
+}
+
+.questionText {
+    @include font-1_8;
+    color: inherit;
+}
+
+.chevron {
+    flex-shrink: 0;
+    color: $textGrey;
+    transition: transform $transition, color $transition;
+
+    .itemOpen & {
+        transform: rotate(180deg);
+        color: $primary;
+    }
+}
+
+.panel {
+    overflow: hidden;
+    padding-bottom: $space-2;
+}
+
+.answer {
+    margin: 0;
+    max-width: 68ch;
+    font-size: $fs-body;
+    /* Body copy, so no uppercase transform and a readable line height -
+       deliberately not using the font-1 mixin, which uppercases. */
+    text-transform: none;
+    letter-spacing: 0;
+    line-height: 1.65;
+    color: $textLight;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .item,
+    .question,
+    .chevron {
+        transition: none;
+    }
+
+    .chevron {
+        .itemOpen & {
+            transform: rotate(180deg);
+        }
+    }
+}

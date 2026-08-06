@@ -1,4 +1,5 @@
 import { SITE_URL } from './seo';
+import { faqItems } from '@/data/faqData';
 
 // ============================================
 // Core Person & Website Schemas
@@ -253,52 +254,23 @@ export function localBusinessJsonLd() {
 // FAQ Page Schema
 // ============================================
 
+/**
+ * FAQPage schema, generated from `data/faqData.ts` — the same source the visible
+ * FAQSection renders. Google requires the declared Q&As to be present on the
+ * page, so these must never be maintained separately.
+ */
 export function faqPageJsonLd() {
   return {
     '@context': 'https://schema.org',
     '@type': 'FAQPage',
-    mainEntity: [
-      {
-        '@type': 'Question',
-        name: 'What services do you offer?',
-        acceptedAnswer: {
-          '@type': 'Answer',
-          text: 'I offer comprehensive AI/ML engineering and full-stack web development services including: AI & Machine Learning integration (OpenAI, LangChain, TensorFlow), full-stack development (React, Next.js, Node.js, Python), custom e-commerce solutions, API development and integration, and cloud architecture on AWS and other platforms.'
-        }
-      },
-      {
-        '@type': 'Question',
-        name: 'What technologies do you specialize in?',
-        acceptedAnswer: {
-          '@type': 'Answer',
-          text: 'I specialize in modern AI/ML frameworks (TensorFlow, PyTorch, LangChain, OpenAI API), frontend technologies (React, Next.js, TypeScript, Three.js), backend development (Node.js, Python, Express, MongoDB, PostgreSQL), and cloud platforms (AWS, Vercel, Docker). I focus on building performant, scalable applications.'
-        }
-      },
-      {
-        '@type': 'Question',
-        name: 'Do you work remotely with international clients?',
-        acceptedAnswer: {
-          '@type': 'Answer',
-          text: 'Yes, I work remotely with clients worldwide. I have experience collaborating with teams across different time zones and use modern communication tools to ensure seamless project delivery regardless of location.'
-        }
-      },
-      {
-        '@type': 'Question',
-        name: 'What is your typical project timeline?',
-        acceptedAnswer: {
-          '@type': 'Answer',
-          text: 'Project timelines vary based on scope and complexity. Small projects typically take 2-4 weeks, medium-sized applications 1-3 months, and enterprise-level solutions 3-6 months. I provide detailed timeline estimates during the initial consultation.'
-        }
-      },
-      {
-        '@type': 'Question',
-        name: 'How can I get started with a project?',
-        acceptedAnswer: {
-          '@type': 'Answer',
-          text: 'Getting started is easy! Simply reach out through the contact form on my website or email me at hello@abdalkader.dev. I\'ll schedule a free consultation to discuss your project requirements, goals, and provide a detailed proposal with timeline and pricing.'
-        }
+    mainEntity: faqItems.map((item) => ({
+      '@type': 'Question',
+      name: item.question,
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: item.answer
       }
-    ]
+    }))
   };
 }
 

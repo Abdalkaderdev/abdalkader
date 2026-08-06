@@ -4,6 +4,7 @@ import InstagramSection from "@/components/HomePage/DribbleSection";
 import HeroSection from "@/components/HomePage/HeroSection";
 import ProjectSection from "@/components/HomePage/ProjectSection";
 import ServiceSection from "@/components/HomePage/ServiceSection";
+import FAQSection from "@/components/HomePage/FAQSection";
 import Marquee, { marqueeStyles } from "@/components/Marquee";
 // LiveDemos removed per text-only preference
 import { PageSEO, JsonLd } from "@/components/SEO";
@@ -54,6 +55,9 @@ export default function HomePage() {
 
             <ProjectSection />
             <ServiceSection />
+            {/* Renders the same Q&As faqPageJsonLd() declares — the schema
+                requires them to be visible on the page. */}
+            <FAQSection />
             <InstagramSection />
             <CoffeeSection />
         </>
