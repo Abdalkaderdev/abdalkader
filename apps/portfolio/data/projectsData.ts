@@ -36,17 +36,17 @@ export const projects: Project[] = [
     img: "/images/dribble1.webp",
     badges: ["React", "Node.js", "AI/ML", "TypeScript", "Cloud Infrastructure"],
     owner: "SoapBox",
-    date: "2024 - Present",
+    date: "Nov 2025 - Mar 2026",
     services: "Full Stack AI Engineering",
-    duration: "Ongoing",
+    duration: "5 Months",
     budget: "Enterprise",
     live: "https://soapboxsuperapp.com/",
     overview:
       "SoapBox is a comprehensive faith community platform founded in 2023 that helps churches and faith communities connect, communicate, and grow together through digital tools. The platform serves as a centralized hub for religious organizations to manage communications, community engagement, and spiritual activities with AI-powered features.",
     objective:
-      "As Full Stack AI Engineer, my role involves building and maintaining the core platform infrastructure, implementing AI-powered content creation tools, developing multi-channel communication systems (email, SMS, push notifications), and creating scalable solutions for multi-campus church management. The platform needed to serve both small churches (under 100 members) and large multi-campus organizations.",
+      "As Full Stack AI Engineer, my role was building and maintaining the core platform infrastructure, implementing AI-powered content creation tools, developing multi-channel communication systems (email, SMS, push notifications), and creating scalable solutions for multi-campus church management. The platform needed to serve both small churches (under 100 members) and large multi-campus organizations.",
     process:
-      "Development focuses on creating robust backend systems for member management, event coordination, and volunteer tracking. I implement AI features for content generation and engagement optimization, build real-time communication infrastructure, and ensure the platform scales efficiently across different church sizes. Special attention is given to data privacy and security for sensitive community information.",
+      "Development centred on robust backend systems for member management, event coordination, and volunteer tracking. I implemented AI features for content generation and engagement optimisation, built real-time communication infrastructure, and made the platform scale across different church sizes. Data privacy and security for sensitive community information were a constant constraint.",
     impact:
       "SoapBox has become a trusted platform for faith communities, offering features like daily devotionals, prayer walls, Bible study resources, event management with room booking, volunteer coordination, attendance tracking, and AI-powered content creation. The tiered pricing model ensures accessibility for churches of all sizes.",
     problemSolved:
@@ -68,6 +68,42 @@ export const projects: Project[] = [
     thumbnailVariant: "gradient",
   },
   {
+    title: "SoapBox Website Builder",
+    slug: "soapbox-website-builder",
+    category: ["Full Stack Development", "No-Code Platform", "SaaS"],
+    img: "/images/dribble1.webp",
+    badges: ["React", "Node.js", "TypeScript", "No-Code", "SaaS"],
+    owner: "SoapBox",
+    date: "Nov 2025 - Mar 2026",
+    services: "Full Stack Software Engineering",
+    duration: "5 Months",
+    budget: "Enterprise",
+    live: "https://builder.soapboxsuperapp.com/",
+    overview:
+      "A no-code website builder that lets churches launch and maintain their own customisable sites without engineering help. Built as a companion product to the SoapBox platform, it gives organisations with no technical staff a way to publish and update a real website themselves.",
+    objective:
+      "The goal was to remove the developer from the critical path. Churches needed to change service times, add events and publish announcements without filing a request and waiting. That meant a builder constrained enough to stay on-brand but open enough to feel like their own site.",
+    process:
+      "I worked on the editor surface and the rendering pipeline that turns saved layouts into published pages. The interesting constraint was reconciling a visual editor with a component system: every block a user can place has to be safe to render in any order, at any nesting depth, without breaking layout.",
+    impact:
+      "Churches can launch a site and keep it current without engineering involvement, which is the difference between a site that reflects the organisation and one that goes stale within a month.",
+    problemSolved:
+      "Small organisations either pay for a developer they cannot afford or accept a website that is permanently out of date. Neither is acceptable when the site is how people find service times.",
+    technicalChallenge:
+      "Designing a block system where arbitrary user-composed layouts always render correctly. A visual editor gives users freedom that a component library does not assume, so every block needs to be defensive about its own context.",
+    resultsAchieved: {
+      metrics: [
+        "No-code editor for non-technical staff",
+        "Component-based block system",
+        "Custom domain support",
+        "Shipped as a companion to the main SoapBox platform"
+      ],
+      businessImpact: "Removes engineering from routine content changes, which is what keeps a small organisation's site accurate over time."
+    },
+    technologyFilter: "Full Stack",
+    thumbnailVariant: "minimal",
+  },
+  {
     // For Post
     title: "DiscipleOne Platform",
     slug: "discipleone-platform",
@@ -75,7 +111,7 @@ export const projects: Project[] = [
     img: "/images/dribble2.webp",
     badges: ["React", "Node.js", "TypeScript", "Cloud Services", "Mobile"],
     owner: "DiscipleOne (501c3 Nonprofit)",
-    date: "2024 - Present",
+    date: "Nov 2025 - Present",
     services: "Full Stack Software Engineering",
     duration: "Ongoing",
     budget: "Nonprofit",
@@ -114,7 +150,7 @@ export const projects: Project[] = [
     img: "/images/dribble3.webp",
     badges: ["React Native", "Node.js", "TypeScript", "iOS", "Android"],
     owner: "DiscipleOne (501c3 Nonprofit)",
-    date: "2024 - Present",
+    date: "Nov 2025 - Present",
     services: "Full Stack Software Engineering",
     duration: "Ongoing",
     budget: "Nonprofit",
@@ -153,7 +189,7 @@ export const projects: Project[] = [
     img: "/images/dribble4.webp",
     badges: ["React", "Node.js", "AI/ML", "TypeScript", "CRM"],
     owner: "ParsaLink",
-    date: "2024 - Present",
+    date: "Jan 2026 - Present",
     services: "Full Stack Software Development",
     duration: "Ongoing",
     budget: "Enterprise",
@@ -185,131 +221,221 @@ export const projects: Project[] = [
     thumbnailVariant: "data-viz",
   },
   {
-    // For Post
-    title: "Quantum Animation System",
-    slug: "quantum-animation-system",
-    category: ["Web Development", "Interactive Animation", "Physics Simulation"],
-    img: "/images/dribble5.webp",
-    badges: ["Next.js 15", "TypeScript", "Three.js", "Framer Motion", "GSAP"],
-    owner: "Quantum Animation Lab",
-    date: "Jan 15, 2025",
-    services: "Web Development, Interactive Animation, Physics Simulation",
-    duration: "45 Days",
-    budget: "2000$",
-    live: "https://quantumanim.abdalkader.dev/",
-    github: "https://github.com/Abdalkaderdev/abdalkader/tree/main/apps/quantumanim",
+    title: "Phoenix Tower",
+    slug: "phoenix-tower",
+    category: ["ERP Development", "Full Stack Development", "Odoo"],
+    img: "/images/project3_1.webp",
+    badges: ["Odoo", "Python", "TypeScript", "ERP", "PostgreSQL"],
+    owner: "Phoenix Tower",
+    date: "Jun 2026 - Present",
+    services: "Odoo System Development, Web Development",
+    duration: "Ongoing",
+    budget: "Contract",
     overview:
-      "Quantum Animation System is an innovative interactive playground that demonstrates quantum physics principles through UI animations and visualizations. Built with Next.js 15, TypeScript, Three.js, Framer Motion, and GSAP, the platform creates an engaging educational experience that makes complex quantum concepts accessible through interactive demos, particle systems, and real-time physics simulations. The system features Schrödinger's UI components, quantum entanglement visualizations, wave function collapse animations, and educational modules that bring quantum mechanics to life.",
+      "Ongoing contract work for Phoenix Tower, which began with web development and moved into Odoo ERP system development. Odoo covers the operational core of the business, so the work sits closer to how the company actually runs than a marketing site does.",
     objective:
-      "The primary goal was to create an interactive educational platform that makes quantum physics concepts accessible and engaging through modern web technologies. The platform needed to demonstrate complex quantum principles like superposition, entanglement, wave function collapse, quantum tunneling, and quantum interference through intuitive UI interactions and stunning visualizations. Special attention was given to creating accurate physics simulations while maintaining visual appeal and educational value. The design approach focused on creating an immersive experience that allows users to explore quantum concepts through hands-on interaction, making abstract physics principles tangible and understandable.",
+      "Adapt Odoo to the way this business already works rather than forcing the business to adopt Odoo's defaults. That means custom modules and modified workflows where the standard behaviour does not fit, and resisting customisation where the default is good enough to live with.",
     process:
-      "The development process began with extensive research into quantum physics principles and educational methodologies. I analyzed existing physics simulation tools and identified opportunities to create a more engaging and accessible learning experience. The design phase involved creating wireframes and prototypes that focused on interactive learning, ensuring that users could explore quantum concepts through intuitive controls and visual feedback. Technical implementation utilized cutting-edge web technologies including Three.js for 3D particle systems, Framer Motion for smooth animations, and GSAP for complex physics simulations. Special attention was given to creating responsive visualizations that work across different devices while maintaining performance. The platform was built with modularity in mind, allowing for easy addition of new quantum experiments and educational content.",
+      "Working in Odoo's Python and XML module system: extending models, adjusting views, and building the integrations that connect ERP data to the rest of the company's tooling. The judgement call on every request is whether to customise or to change the process, because every customisation is maintenance debt at the next upgrade.",
     impact:
-      "The Quantum Animation System has successfully created a new paradigm for physics education, making complex quantum concepts accessible to learners of all levels. The platform has received positive feedback from educators, students, and physics enthusiasts, with many noting the intuitive interface and engaging visualizations. The project has contributed to the advancement of educational technology, demonstrating how modern web development can make abstract scientific concepts tangible and interactive. The platform continues to expand its educational content and is being adopted by educational institutions for physics instruction.",
+      "Operational processes that previously lived in spreadsheets and individual habits now run through a single system with a shared source of truth.",
     problemSolved:
-      "Traditional physics education struggles with abstract quantum concepts that are difficult to visualize and understand. Students often find quantum mechanics intimidating due to its mathematical complexity and counterintuitive nature. Existing educational tools lack interactivity and fail to engage modern learners who expect dynamic, hands-on experiences.",
+      "Business processes spread across spreadsheets and personal conventions do not survive staff changes and cannot be reported on. An ERP makes them explicit.",
     technicalChallenge:
-      "Creating accurate physics simulations that run smoothly in web browsers required solving complex mathematical equations in real-time. The main challenge was balancing scientific accuracy with visual appeal while maintaining 60fps performance. Implementing quantum superposition states, entanglement visualization, and wave function collapse animations demanded advanced mathematical modeling and optimization techniques.",
+      "Odoo is opinionated. Extending it without fighting it requires understanding its ORM and view inheritance well enough to know when the framework is telling you the requirement is wrong.",
     resultsAchieved: {
       metrics: [
-        "95% user satisfaction rate",
-        "40% improvement in concept understanding",
-        "15,000+ interactive sessions",
-        "60fps performance on all devices",
-        "50% reduction in learning time"
+        "Custom Odoo modules for company-specific workflows",
+        "ERP integration with existing web properties",
+        "Python and XML module development",
+        "Current, ongoing engagement"
       ],
-      businessImpact: "Established new standard for educational technology platforms, leading to partnerships with 3 educational institutions and 20,000+ student engagements. The platform has been featured in educational technology conferences and adopted by physics teachers worldwide.",
-      userFeedback: "Students report the interactive animations make quantum concepts 'finally click', while educators praise the platform's ability to demonstrate complex principles through intuitive visualizations."
+      businessImpact: "Moves core operations onto one system with a single source of truth, replacing spreadsheets and undocumented convention."
+    },
+    technologyFilter: "Full Stack",
+    thumbnailVariant: "default",
+  },
+  {
+    title: "Natuzzi Erbil",
+    slug: "natuzzi-erbil",
+    category: ["AI Consulting", "IT Strategy", "Automation"],
+    img: "/images/project4_1.webp",
+    badges: ["AI Strategy", "Workflow Automation", "LLM Integration", "IT"],
+    owner: "Natuzzi Erbil",
+    date: "Mar 2026 - Present",
+    services: "AI & IT Consulting",
+    duration: "Ongoing",
+    budget: "Retainer",
+    overview:
+      "AI and IT consulting for the Erbil operation of Natuzzi, the Italian furniture manufacturer. The work is advisory rather than delivery: finding where automation genuinely pays for itself in a retail and showroom business, and where it does not.",
+    objective:
+      "Identify automation opportunities across business operations and implement the ones worth doing. The useful contribution here is often talking a client out of an AI project that would cost more to maintain than the manual process it replaces.",
+    process:
+      "Auditing existing processes before proposing anything, then implementing practical AI workflows against the ones with real volume. Customer engagement and repetitive internal admin are where the returns have been clearest.",
+    impact:
+      "Reduced manual overhead on high-volume internal processes, and a clearer internal picture of which problems are worth automating at all.",
+    problemSolved:
+      "Businesses adopting AI often start from the technology and look for a use case. Starting from the process and asking whether AI is the right instrument produces fewer projects but better ones.",
+    technicalChallenge:
+      "Advisory work in an established business is constrained by what staff will actually adopt. A workflow that is technically better but unfamiliar gets abandoned, so the design constraint is human as much as technical.",
+    resultsAchieved: {
+      metrics: [
+        "AI adoption and IT strategy advisory",
+        "Practical automation of repetitive internal processes",
+        "LLM-backed customer engagement workflows",
+        "Ongoing retained engagement"
+      ],
+      businessImpact: "Less manual overhead on repetitive work, and better-targeted technology decisions."
     },
     technologyFilter: "AI",
     thumbnailVariant: "gradient",
   },
   {
-    // For Post
-    title: "Apple TV Clone",
-    slug: "apple-tv-clone",
-    category: ["Frontend Development", "UI/UX Design"],
-    img: "/images/apple.webp",
-    badges: ["React", "Next.js", "TypeScript", "GSAP"],
-
-    // Sticky
-    owner: "Apple TV Clone",
-    date: "Nov 15, 2024",
-    services: "Frontend Development, UI/UX Design",
-    duration: "18 Days",
-    budget: "400$",
-    live: "https://apple-tv-clone-steel.vercel.app/",
-
-    // Scroll
+    title: "Real House Company",
+    slug: "real-house-company",
+    category: ["IT Operations", "Infrastructure", "Web Development"],
+    img: "/images/project5_1.webp",
+    badges: ["IT Operations", "Email Infrastructure", "TypeScript", "Hosting"],
+    owner: "Real House Company",
+    date: "Apr 2025 - Present",
+    services: "IT & Contract Management",
+    duration: "Ongoing",
+    budget: "Contract",
+    github: "https://github.com/Abdalkaderdev/Realhouse",
     overview:
-      "Apple TV Clone is a meticulously crafted recreation of the Apple TV interface, built to showcase modern frontend development skills and responsive design principles. The project demonstrates the ability to replicate complex user interfaces with pixel-perfect accuracy while maintaining smooth animations and intuitive navigation. Built with modern web technologies and a focus on user experience, this clone captures the essence of Apple's design philosophy while showcasing advanced frontend development capabilities.",
+      "IT and contract management for Real House Company in Erbil, covering systems, web properties, email infrastructure and end-user support. Unglamorous work that determines whether everything else in the business functions on a given day.",
     objective:
-      "The primary goal was to create a pixel-perfect clone of the Apple TV interface that demonstrates mastery of modern frontend development techniques. The project needed to replicate the smooth animations, responsive design, and intuitive navigation that Apple is known for, while maintaining excellent performance across different devices and screen sizes. Special attention was given to creating fluid transitions, hover effects, and interactive elements that closely match the original Apple TV experience. The design approach focused on achieving visual fidelity while ensuring the interface remains accessible and user-friendly.",
+      "Keep the systems the business depends on reliable, and roll out changes that reduce downtime rather than adding surface area. The measure of success is that nobody has to think about it.",
     process:
-      "The development process began with extensive analysis of the original Apple TV interface, studying its design patterns, animations, and user interaction flows. I conducted research into Apple's design guidelines and analyzed the specific visual elements that make the interface distinctive. The design phase involved creating detailed wireframes and prototypes that focused on achieving pixel-perfect accuracy while maintaining smooth performance. Technical implementation utilized modern CSS techniques, JavaScript animations, and responsive design principles to create a seamless user experience. Special attention was given to creating smooth transitions and hover effects that closely replicate the original interface. The project was built with a focus on code quality and maintainability, demonstrating best practices in frontend development.",
+      "Maintaining and improving web properties and email infrastructure, resolving connectivity and performance problems, and supporting end users directly. Direct support is also the best available signal about what is actually broken, as opposed to what monitoring reports.",
     impact:
-      "The Apple TV Clone has successfully demonstrated advanced frontend development skills and attention to detail in UI/UX design. The project has received positive feedback from developers and designers, with many noting the accuracy of the recreation and the smooth performance. The project serves as an excellent showcase of modern frontend development capabilities, demonstrating proficiency in CSS animations, responsive design, and user interface replication. The clone continues to serve as a valuable learning resource and portfolio piece that highlights the ability to work with complex design systems and create polished user interfaces.",
+      "More reliable systems and less downtime across the company's web and email infrastructure.",
     problemSolved:
-      "Many frontend developers struggle with recreating complex, polished user interfaces that match industry standards. The challenge was to demonstrate mastery of advanced CSS techniques, animation libraries, and responsive design principles while maintaining pixel-perfect accuracy with the original Apple TV interface.",
+      "Businesses without dedicated IT accumulate fragile, undocumented systems that fail at the worst moment and can only be fixed by whoever happened to set them up.",
     technicalChallenge:
-      "Achieving pixel-perfect recreation required deep understanding of Apple's design language and animation patterns. The main technical challenge was implementing smooth 60fps animations across different devices while maintaining visual fidelity. This involved complex CSS transforms, JavaScript animation sequencing, and performance optimization techniques.",
+      "Email infrastructure in particular is unforgiving: deliverability depends on DNS, authentication records and reputation, and the failure mode is silent. Mail simply stops arriving and nobody is told.",
     resultsAchieved: {
       metrics: [
-        "98% visual accuracy achieved",
-        "60fps animations on all devices",
-        "500+ GitHub stars",
-        "10,000+ developer visits",
-        "Featured in CSS animation showcases"
+        "IT operations across systems, web and email",
+        "Email deliverability and DNS configuration",
+        "Website maintenance and hosting",
+        "Direct end-user support"
       ],
-      businessImpact: "Established credibility as a frontend developer capable of handling complex UI/UX challenges. The project became a reference implementation for developers learning advanced CSS animations and responsive design techniques.",
-      userFeedback: "Developers praise the attention to detail and smooth animations, using it as a learning resource for understanding complex frontend development patterns."
+      businessImpact: "Improved reliability and reduced downtime across the systems the business runs on."
     },
-    technologyFilter: "Web",
-    thumbnailVariant: "minimal",
+    technologyFilter: "Full Stack",
+    thumbnailVariant: "default",
   },
   {
     // For Post
-    title: "VirtualView",
-    slug: "virtualview",
-    category: ["Web Development", "Virtual Reality"],
-    img: "/images/virtual.webp",
-    badges: ["Three.js", "WebGL", "Next.js"],
+    title: "Headquarter Iraq Real Estate",
+    slug: "headquarter-iraq-real-estate",
+    category: ["Web Development", "Real Estate"],
+    img: "/images/head.webp",
+    badges: ["Next.js", "TypeScript", "Performance"],
 
     // Sticky
-    owner: "VirtualView",
-    date: "Nov 20, 2024",
-    services: "Web Development, 3D Technology, UI/UX Design",
-    duration: "35 Days",
-    budget: "1200$",
-    live: "https://virtualview.vercel.app/",
-    github: "https://github.com/Abdalkaderdev/virtualview",
+    owner: "Headquarter Iraq Real Estate",
+    date: "Dec 5, 2024",
+    services: "Web Development, UI/UX Design",
+    duration: "60 Days",
+    budget: "2500$",
+    live: "https://headquarteriq.co/",
 
     // Scroll
     overview:
-      "VirtualView is an innovative virtual reality platform that enables users to explore 3D spaces interactively and intuitively through a web interface. The platform leverages cutting-edge web technologies to create immersive virtual environments that can be accessed directly through modern web browsers, eliminating the need for specialized VR hardware. Built with a focus on accessibility and user experience, VirtualView opens up new possibilities for virtual exploration, architectural visualization, and interactive storytelling through the power of web-based VR technology.",
+      "Headquarter Iraq Real Estate is a comprehensive real estate platform designed to serve as the primary digital hub for property transactions across Iraq. The platform offers an extensive range of property listings, from residential apartments to commercial spaces, with advanced search and filtering capabilities tailored to meet diverse client needs. Built with modern web technologies and a focus on user experience, the platform provides a seamless interface for property seekers, real estate agents, and property owners to connect and facilitate successful transactions.",
     objective:
-      "The primary goal was to create an accessible virtual reality platform that brings immersive 3D experiences to users through standard web browsers. The platform needed to provide smooth, responsive 3D navigation while maintaining excellent performance across different devices and network conditions. Special attention was given to creating intuitive controls that allow users to navigate virtual spaces naturally, whether using mouse and keyboard or touch controls on mobile devices. The design approach focused on creating a seamless user experience that makes virtual reality accessible to everyone, regardless of their technical expertise or hardware capabilities.",
+      "The primary goal was to create a comprehensive real estate platform that serves as a one-stop solution for all property-related needs in Iraq. The platform needed to accommodate various property types, user roles, and transaction processes while maintaining high performance and user satisfaction. Special attention was given to creating an intuitive search system that allows users to filter properties by location, price, property type, amenities, and other relevant criteria. The design approach focused on creating a professional, trustworthy interface that builds confidence with users while providing comprehensive property information and smooth transaction processes.",
     process:
-      "The development process began with extensive research into web-based VR technologies and 3D rendering techniques. I analyzed existing VR platforms and identified opportunities to create a more accessible and user-friendly experience. The design phase involved creating wireframes and prototypes that focused on 3D navigation and user interaction patterns, ensuring that users could easily explore virtual environments without feeling overwhelmed. Technical implementation utilized modern web technologies including WebGL, Three.js, and other 3D libraries for optimal performance and compatibility. Special attention was given to creating responsive 3D experiences that work well across different screen sizes and device capabilities. The platform was built with scalability in mind, allowing for easy addition of new virtual environments and features.",
+      "The development process began with extensive market research and user interviews to understand the specific needs of the Iraqi real estate market. I analyzed existing platforms and identified gaps in user experience and functionality. The design phase involved creating detailed wireframes and prototypes that focused on user journey optimization, ensuring that users could easily find, compare, and inquire about properties. Technical implementation utilized modern web development practices, including responsive design, optimized database queries, and efficient image handling. Special attention was given to creating a mobile-first experience, as many users access real estate platforms on mobile devices. The platform was built with scalability and future growth in mind, allowing for easy addition of new features and property listings.",
     impact:
-      "VirtualView has successfully democratized access to virtual reality experiences, making immersive 3D exploration available to users through standard web browsers. The platform has received positive feedback from users across different demographics, with many noting the intuitive navigation and smooth performance. The project has contributed to the advancement of web-based VR technology, demonstrating the potential for creating immersive experiences without requiring specialized hardware. The platform continues to expand its virtual environment library and is being adopted by various industries for virtual tours, architectural visualization, and interactive storytelling.",
+      "Headquarter Iraq Real Estate has successfully established itself as a leading real estate platform in Iraq, facilitating numerous property transactions and building a strong user community. The platform has received positive feedback from both property seekers and real estate professionals, with many noting the comprehensive property information and ease of use. The platform's success has contributed to the digital transformation of the Iraqi real estate market, demonstrating the value of modern web development practices in traditional industries. The platform continues to grow its user base and property listings, solidifying its position as a trusted real estate resource in Iraq.",
     problemSolved:
-      "Virtual reality has traditionally required expensive hardware and specialized software, creating barriers to entry for many users and businesses. The challenge was to create accessible VR experiences that work on standard web browsers while maintaining immersive quality and smooth performance.",
+      "The Iraqi real estate market lacked a comprehensive digital platform for property transactions and information sharing.",
     technicalChallenge:
-      "Implementing smooth 3D rendering in web browsers required optimizing WebGL performance and managing complex 3D scenes. The main challenge was creating responsive 3D navigation that works across different devices while maintaining 60fps performance. This involved advanced 3D mathematics, shader programming, and performance optimization techniques.",
+      "Building a scalable platform that handles complex real estate data, advanced search filters, and multiple user roles.",
     resultsAchieved: {
-      metrics: [
-        "80% reduction in VR hardware requirements",
-        "45,000+ virtual tours completed",
-        "30fps minimum performance on mobile",
-        "25+ virtual environments created",
-        "60% increase in user engagement"
-      ],
-      businessImpact: "Enabled 5+ real estate companies to offer virtual property tours, reducing physical visit costs by 40%. The platform has been adopted by architectural firms and educational institutions for immersive presentations.",
-      userFeedback: "Users appreciate the accessibility of VR experiences without hardware requirements, while businesses value the cost savings and increased engagement."
+      metrics: ["10,000+ property listings", "50,000+ active users", "98% uptime"],
+      businessImpact: "Established trusted real estate platform in Iraq",
+      userFeedback: "Users appreciate comprehensive property information and easy navigation"
     },
     technologyFilter: "Full Stack",
-    thumbnailVariant: "3d",
+    thumbnailVariant: "default",
+  },
+  {
+    // For Post
+    title: "Hamilton Iraq Real Estate",
+    slug: "hamilton-iraq-real-estate",
+    category: ["Web Development", "Real Estate"],
+    img: "/images/hamilton.webp",
+    badges: ["Next.js", "TypeScript", "SEO"],
+
+    // Sticky
+    owner: "Hamilton Iraq Real Estate",
+    date: "Dec 15, 2024",
+    services: "Web Development, UI/UX Design",
+    duration: "45 Days",
+    budget: "1200$",
+    live: "https://hamiltoniq.com/",
+
+    // Scroll
+    overview:
+      "Hamilton Iraq Real Estate is a modern, comprehensive real estate platform designed to showcase properties across Iraq with an intuitive user experience. The platform serves as a bridge between property seekers and real estate professionals, offering detailed property listings, advanced search capabilities, and a seamless browsing experience. Built with modern web technologies, the platform emphasizes user-friendly navigation and responsive design to ensure accessibility across all devices.",
+    objective:
+      "The primary goal was to create a real estate platform that not only displays property listings but also provides an engaging user experience that makes property hunting efficient and enjoyable. The platform needed to handle diverse property types, from residential apartments to commercial spaces, while maintaining fast loading times and intuitive navigation. Special attention was given to creating a search system that allows users to filter properties by location, price range, property type, and other relevant criteria. The design approach focused on creating a clean, professional interface that builds trust with users while showcasing properties in their best light through high-quality imagery and detailed information.",
+    process:
+      "The development process began with extensive research into the Iraqi real estate market and user behavior patterns. I conducted user interviews and analyzed competitor platforms to understand the specific needs of property seekers in Iraq. The design phase involved creating wireframes and prototypes that focused on user flow optimization, ensuring that users could easily find and compare properties. The technical implementation utilized modern web development practices, including responsive design principles, optimized image loading, and efficient database queries. Special attention was given to creating a mobile-first experience, as many users access real estate platforms on mobile devices. The platform was built with scalability in mind, allowing for easy addition of new features and property listings.",
+    impact:
+      "Hamilton Iraq Real Estate has successfully established itself as a trusted platform in the Iraqi real estate market. The platform has facilitated numerous property transactions and continues to grow its user base. The modern, user-friendly interface has received positive feedback from both property seekers and real estate professionals, with many noting the platform's ease of use and comprehensive property information. The platform's success has demonstrated the importance of combining modern web development practices with deep understanding of local market needs.",
+    problemSolved:
+      "The real estate market needed a modern, user-friendly platform that connects property seekers with available listings efficiently.",
+    technicalChallenge:
+      "Building a scalable platform with advanced search capabilities and fast image loading for real estate photography.",
+    resultsAchieved: {
+      metrics: ["5,000+ active users", "500+ property listings", "90+ PageSpeed score"],
+      businessImpact: "Established trusted real estate platform with growing user base",
+      userFeedback: "Users appreciate the clean interface and easy property search"
+    },
+    technologyFilter: "Full Stack",
+    thumbnailVariant: "default",
+  },
+  {
+    // For Post
+    title: "Innovations Architecture Department",
+    slug: "innovations-architecture-department",
+    category: ["Web Development", "Architecture"],
+    img: "/images/head-quarter-international.webp",
+    badges: ["Next.js", "TypeScript", "Design Systems"],
+
+    // Sticky
+    owner: "Innovations Architecture Department",
+    date: "Dec 10, 2024",
+    services: "Web Development, UI/UX Design",
+    duration: "30 Days",
+    budget: "1500$",
+    live: "https://innovations.headquarteriq.co/",
+
+    // Scroll
+    overview:
+      "Innovations Architecture Department is the specialized architecture division of Headquarter Iraq Real Estate, showcasing cutting-edge design projects and modern architectural solutions. The platform serves as a digital portfolio for the company's architectural innovations, featuring detailed project showcases, design philosophies, and technical specifications. Built with a focus on visual storytelling and professional presentation, the website highlights the intersection of creativity and functionality in architectural design.",
+    objective:
+      "The primary objective was to create a sophisticated web platform that effectively communicates the architectural expertise and innovative design capabilities of Headquarter Iraq Real Estate. The website needed to showcase complex architectural projects in an accessible and visually appealing manner, while maintaining professional credibility and technical depth. Special attention was given to creating an immersive browsing experience that allows visitors to explore architectural projects through high-quality imagery, detailed specifications, and interactive elements. The design approach emphasized clean aesthetics that complement the architectural content while ensuring fast loading times and responsive functionality across all devices.",
+    process:
+      "The development process began with in-depth consultation with the architectural team to understand their design philosophy and project portfolio. I conducted research into architectural website best practices and analyzed competitor platforms to identify effective ways to present complex architectural information. The design phase focused on creating a layout that emphasizes visual hierarchy and allows for detailed project exploration. Technical implementation utilized modern web technologies to ensure smooth image loading and interactive features. Special attention was given to creating a mobile-responsive design that maintains the visual impact of architectural photography across all screen sizes. The platform was built with scalability in mind to accommodate future project additions and content updates.",
+    impact:
+      "The Innovations Architecture Department website has successfully established a strong digital presence for Headquarter Iraq Real Estate's architectural division. The platform has received positive feedback from both clients and industry professionals, with many noting the professional presentation and ease of project exploration. The website has facilitated new client inquiries and project collaborations, demonstrating the value of a well-designed digital portfolio in the architecture industry. The platform's success has contributed to the company's reputation as a leader in innovative architectural solutions in Iraq.",
+    problemSolved:
+      "The architectural division needed a specialized digital portfolio to showcase complex design projects and innovations.",
+    technicalChallenge:
+      "Creating an immersive platform that effectively showcases high-quality architectural photography and complex project details.",
+    resultsAchieved: {
+      metrics: ["100+ project showcases", "Mobile-responsive design", "Fast image loading optimization"],
+      businessImpact: "Increased architectural project inquiries and professional credibility",
+      userFeedback: "Clients appreciate the professional presentation of projects"
+    },
+    technologyFilter: "Full Stack",
+    thumbnailVariant: "minimal",
   },
   {
     // For Post
@@ -388,113 +514,124 @@ export const projects: Project[] = [
   },
   {
     // For Post
-    title: "Headquarter Iraq Real Estate",
-    slug: "headquarter-iraq-real-estate",
-    category: ["Web Development", "Real Estate"],
-    img: "/images/head.webp",
-    badges: ["Next.js", "TypeScript", "Performance"],
-
-    // Sticky
-    owner: "Headquarter Iraq Real Estate",
-    date: "Dec 5, 2024",
-    services: "Web Development, UI/UX Design",
-    duration: "60 Days",
-    budget: "2500$",
-    live: "https://headquarteriq.co/",
-
-    // Scroll
-    overview:
-      "Headquarter Iraq Real Estate is a comprehensive real estate platform designed to serve as the primary digital hub for property transactions across Iraq. The platform offers an extensive range of property listings, from residential apartments to commercial spaces, with advanced search and filtering capabilities tailored to meet diverse client needs. Built with modern web technologies and a focus on user experience, the platform provides a seamless interface for property seekers, real estate agents, and property owners to connect and facilitate successful transactions.",
-    objective:
-      "The primary goal was to create a comprehensive real estate platform that serves as a one-stop solution for all property-related needs in Iraq. The platform needed to accommodate various property types, user roles, and transaction processes while maintaining high performance and user satisfaction. Special attention was given to creating an intuitive search system that allows users to filter properties by location, price, property type, amenities, and other relevant criteria. The design approach focused on creating a professional, trustworthy interface that builds confidence with users while providing comprehensive property information and smooth transaction processes.",
-    process:
-      "The development process began with extensive market research and user interviews to understand the specific needs of the Iraqi real estate market. I analyzed existing platforms and identified gaps in user experience and functionality. The design phase involved creating detailed wireframes and prototypes that focused on user journey optimization, ensuring that users could easily find, compare, and inquire about properties. Technical implementation utilized modern web development practices, including responsive design, optimized database queries, and efficient image handling. Special attention was given to creating a mobile-first experience, as many users access real estate platforms on mobile devices. The platform was built with scalability and future growth in mind, allowing for easy addition of new features and property listings.",
-    impact:
-      "Headquarter Iraq Real Estate has successfully established itself as a leading real estate platform in Iraq, facilitating numerous property transactions and building a strong user community. The platform has received positive feedback from both property seekers and real estate professionals, with many noting the comprehensive property information and ease of use. The platform's success has contributed to the digital transformation of the Iraqi real estate market, demonstrating the value of modern web development practices in traditional industries. The platform continues to grow its user base and property listings, solidifying its position as a trusted real estate resource in Iraq.",
-    problemSolved:
-      "The Iraqi real estate market lacked a comprehensive digital platform for property transactions and information sharing.",
-    technicalChallenge:
-      "Building a scalable platform that handles complex real estate data, advanced search filters, and multiple user roles.",
-    resultsAchieved: {
-      metrics: ["10,000+ property listings", "50,000+ active users", "98% uptime"],
-      businessImpact: "Established trusted real estate platform in Iraq",
-      userFeedback: "Users appreciate comprehensive property information and easy navigation"
-    },
-    technologyFilter: "Full Stack",
-    thumbnailVariant: "default",
-  },
-  {
-    // For Post
-    title: "Innovations Architecture Department",
-    slug: "innovations-architecture-department",
-    category: ["Web Development", "Architecture"],
-    img: "/images/head-quarter-international.webp",
-    badges: ["Next.js", "TypeScript", "Design Systems"],
-
-    // Sticky
-    owner: "Innovations Architecture Department",
-    date: "Dec 10, 2024",
-    services: "Web Development, UI/UX Design",
-    duration: "30 Days",
-    budget: "1500$",
-    live: "https://innovations.headquarteriq.co/",
-
-    // Scroll
-    overview:
-      "Innovations Architecture Department is the specialized architecture division of Headquarter Iraq Real Estate, showcasing cutting-edge design projects and modern architectural solutions. The platform serves as a digital portfolio for the company's architectural innovations, featuring detailed project showcases, design philosophies, and technical specifications. Built with a focus on visual storytelling and professional presentation, the website highlights the intersection of creativity and functionality in architectural design.",
-    objective:
-      "The primary objective was to create a sophisticated web platform that effectively communicates the architectural expertise and innovative design capabilities of Headquarter Iraq Real Estate. The website needed to showcase complex architectural projects in an accessible and visually appealing manner, while maintaining professional credibility and technical depth. Special attention was given to creating an immersive browsing experience that allows visitors to explore architectural projects through high-quality imagery, detailed specifications, and interactive elements. The design approach emphasized clean aesthetics that complement the architectural content while ensuring fast loading times and responsive functionality across all devices.",
-    process:
-      "The development process began with in-depth consultation with the architectural team to understand their design philosophy and project portfolio. I conducted research into architectural website best practices and analyzed competitor platforms to identify effective ways to present complex architectural information. The design phase focused on creating a layout that emphasizes visual hierarchy and allows for detailed project exploration. Technical implementation utilized modern web technologies to ensure smooth image loading and interactive features. Special attention was given to creating a mobile-responsive design that maintains the visual impact of architectural photography across all screen sizes. The platform was built with scalability in mind to accommodate future project additions and content updates.",
-    impact:
-      "The Innovations Architecture Department website has successfully established a strong digital presence for Headquarter Iraq Real Estate's architectural division. The platform has received positive feedback from both clients and industry professionals, with many noting the professional presentation and ease of project exploration. The website has facilitated new client inquiries and project collaborations, demonstrating the value of a well-designed digital portfolio in the architecture industry. The platform's success has contributed to the company's reputation as a leader in innovative architectural solutions in Iraq.",
-    problemSolved:
-      "The architectural division needed a specialized digital portfolio to showcase complex design projects and innovations.",
-    technicalChallenge:
-      "Creating an immersive platform that effectively showcases high-quality architectural photography and complex project details.",
-    resultsAchieved: {
-      metrics: ["100+ project showcases", "Mobile-responsive design", "Fast image loading optimization"],
-      businessImpact: "Increased architectural project inquiries and professional credibility",
-      userFeedback: "Clients appreciate the professional presentation of projects"
-    },
-    technologyFilter: "Full Stack",
-    thumbnailVariant: "minimal",
-  },
-  {
-    // For Post
-    title: "Hamilton Iraq Real Estate",
-    slug: "hamilton-iraq-real-estate",
-    category: ["Web Development", "Real Estate"],
-    img: "/images/hamilton.webp",
-    badges: ["Next.js", "TypeScript", "SEO"],
-
-    // Sticky
-    owner: "Hamilton Iraq Real Estate",
-    date: "Dec 15, 2024",
-    services: "Web Development, UI/UX Design",
+    title: "Quantum Animation System",
+    slug: "quantum-animation-system",
+    category: ["Web Development", "Interactive Animation", "Physics Simulation"],
+    img: "/images/dribble5.webp",
+    badges: ["Next.js 15", "TypeScript", "Three.js", "Framer Motion", "GSAP"],
+    owner: "Quantum Animation Lab",
+    date: "Jan 15, 2025",
+    services: "Web Development, Interactive Animation, Physics Simulation",
     duration: "45 Days",
+    budget: "2000$",
+    live: "https://quantumanim.abdalkader.dev/",
+    github: "https://github.com/Abdalkaderdev/abdalkader/tree/main/apps/quantumanim",
+    overview:
+      "Quantum Animation System is an innovative interactive playground that demonstrates quantum physics principles through UI animations and visualizations. Built with Next.js 15, TypeScript, Three.js, Framer Motion, and GSAP, the platform creates an engaging educational experience that makes complex quantum concepts accessible through interactive demos, particle systems, and real-time physics simulations. The system features Schrödinger's UI components, quantum entanglement visualizations, wave function collapse animations, and educational modules that bring quantum mechanics to life.",
+    objective:
+      "The primary goal was to create an interactive educational platform that makes quantum physics concepts accessible and engaging through modern web technologies. The platform needed to demonstrate complex quantum principles like superposition, entanglement, wave function collapse, quantum tunneling, and quantum interference through intuitive UI interactions and stunning visualizations. Special attention was given to creating accurate physics simulations while maintaining visual appeal and educational value. The design approach focused on creating an immersive experience that allows users to explore quantum concepts through hands-on interaction, making abstract physics principles tangible and understandable.",
+    process:
+      "The development process began with extensive research into quantum physics principles and educational methodologies. I analyzed existing physics simulation tools and identified opportunities to create a more engaging and accessible learning experience. The design phase involved creating wireframes and prototypes that focused on interactive learning, ensuring that users could explore quantum concepts through intuitive controls and visual feedback. Technical implementation utilized cutting-edge web technologies including Three.js for 3D particle systems, Framer Motion for smooth animations, and GSAP for complex physics simulations. Special attention was given to creating responsive visualizations that work across different devices while maintaining performance. The platform was built with modularity in mind, allowing for easy addition of new quantum experiments and educational content.",
+    impact:
+      "The Quantum Animation System has successfully created a new paradigm for physics education, making complex quantum concepts accessible to learners of all levels. The platform has received positive feedback from educators, students, and physics enthusiasts, with many noting the intuitive interface and engaging visualizations. The project has contributed to the advancement of educational technology, demonstrating how modern web development can make abstract scientific concepts tangible and interactive. The platform continues to expand its educational content and is being adopted by educational institutions for physics instruction.",
+    problemSolved:
+      "Traditional physics education struggles with abstract quantum concepts that are difficult to visualize and understand. Students often find quantum mechanics intimidating due to its mathematical complexity and counterintuitive nature. Existing educational tools lack interactivity and fail to engage modern learners who expect dynamic, hands-on experiences.",
+    technicalChallenge:
+      "Creating accurate physics simulations that run smoothly in web browsers required solving complex mathematical equations in real-time. The main challenge was balancing scientific accuracy with visual appeal while maintaining 60fps performance. Implementing quantum superposition states, entanglement visualization, and wave function collapse animations demanded advanced mathematical modeling and optimization techniques.",
+    resultsAchieved: {
+      metrics: [
+        "Interactive demos for superposition, entanglement and tunnelling",
+        "Real-time wave-function collapse visualisation",
+        "Three.js particle systems with GSAP-driven physics",
+        "60fps performance on all devices",
+        "Modular architecture for adding new experiments"
+      ],
+      businessImpact: "A self-directed exploration of whether abstract physics can be taught through interaction rather than equations. Built to push what is achievable with Three.js, GSAP and Framer Motion together in the browser."
+    },
+    technologyFilter: "AI",
+    thumbnailVariant: "gradient",
+  },
+  {
+    // For Post
+    title: "VirtualView",
+    slug: "virtualview",
+    category: ["Web Development", "Virtual Reality"],
+    img: "/images/virtual.webp",
+    badges: ["Three.js", "WebGL", "Next.js"],
+
+    // Sticky
+    owner: "VirtualView",
+    date: "Nov 20, 2024",
+    services: "Web Development, 3D Technology, UI/UX Design",
+    duration: "35 Days",
     budget: "1200$",
-    live: "https://hamiltoniq.com/",
+    live: "https://virtualview.vercel.app/",
+    github: "https://github.com/Abdalkaderdev/virtualview",
 
     // Scroll
     overview:
-      "Hamilton Iraq Real Estate is a modern, comprehensive real estate platform designed to showcase properties across Iraq with an intuitive user experience. The platform serves as a bridge between property seekers and real estate professionals, offering detailed property listings, advanced search capabilities, and a seamless browsing experience. Built with modern web technologies, the platform emphasizes user-friendly navigation and responsive design to ensure accessibility across all devices.",
+      "VirtualView is an innovative virtual reality platform that enables users to explore 3D spaces interactively and intuitively through a web interface. The platform leverages cutting-edge web technologies to create immersive virtual environments that can be accessed directly through modern web browsers, eliminating the need for specialized VR hardware. Built with a focus on accessibility and user experience, VirtualView opens up new possibilities for virtual exploration, architectural visualization, and interactive storytelling through the power of web-based VR technology.",
     objective:
-      "The primary goal was to create a real estate platform that not only displays property listings but also provides an engaging user experience that makes property hunting efficient and enjoyable. The platform needed to handle diverse property types, from residential apartments to commercial spaces, while maintaining fast loading times and intuitive navigation. Special attention was given to creating a search system that allows users to filter properties by location, price range, property type, and other relevant criteria. The design approach focused on creating a clean, professional interface that builds trust with users while showcasing properties in their best light through high-quality imagery and detailed information.",
+      "The primary goal was to create an accessible virtual reality platform that brings immersive 3D experiences to users through standard web browsers. The platform needed to provide smooth, responsive 3D navigation while maintaining excellent performance across different devices and network conditions. Special attention was given to creating intuitive controls that allow users to navigate virtual spaces naturally, whether using mouse and keyboard or touch controls on mobile devices. The design approach focused on creating a seamless user experience that makes virtual reality accessible to everyone, regardless of their technical expertise or hardware capabilities.",
     process:
-      "The development process began with extensive research into the Iraqi real estate market and user behavior patterns. I conducted user interviews and analyzed competitor platforms to understand the specific needs of property seekers in Iraq. The design phase involved creating wireframes and prototypes that focused on user flow optimization, ensuring that users could easily find and compare properties. The technical implementation utilized modern web development practices, including responsive design principles, optimized image loading, and efficient database queries. Special attention was given to creating a mobile-first experience, as many users access real estate platforms on mobile devices. The platform was built with scalability in mind, allowing for easy addition of new features and property listings.",
+      "The development process began with extensive research into web-based VR technologies and 3D rendering techniques. I analyzed existing VR platforms and identified opportunities to create a more accessible and user-friendly experience. The design phase involved creating wireframes and prototypes that focused on 3D navigation and user interaction patterns, ensuring that users could easily explore virtual environments without feeling overwhelmed. Technical implementation utilized modern web technologies including WebGL, Three.js, and other 3D libraries for optimal performance and compatibility. Special attention was given to creating responsive 3D experiences that work well across different screen sizes and device capabilities. The platform was built with scalability in mind, allowing for easy addition of new virtual environments and features.",
     impact:
-      "Hamilton Iraq Real Estate has successfully established itself as a trusted platform in the Iraqi real estate market. The platform has facilitated numerous property transactions and continues to grow its user base. The modern, user-friendly interface has received positive feedback from both property seekers and real estate professionals, with many noting the platform's ease of use and comprehensive property information. The platform's success has demonstrated the importance of combining modern web development practices with deep understanding of local market needs.",
+      "VirtualView has successfully democratized access to virtual reality experiences, making immersive 3D exploration available to users through standard web browsers. The platform has received positive feedback from users across different demographics, with many noting the intuitive navigation and smooth performance. The project has contributed to the advancement of web-based VR technology, demonstrating the potential for creating immersive experiences without requiring specialized hardware. The platform continues to expand its virtual environment library and is being adopted by various industries for virtual tours, architectural visualization, and interactive storytelling.",
     problemSolved:
-      "The real estate market needed a modern, user-friendly platform that connects property seekers with available listings efficiently.",
+      "Virtual reality has traditionally required expensive hardware and specialized software, creating barriers to entry for many users and businesses. The challenge was to create accessible VR experiences that work on standard web browsers while maintaining immersive quality and smooth performance.",
     technicalChallenge:
-      "Building a scalable platform with advanced search capabilities and fast image loading for real estate photography.",
+      "Implementing smooth 3D rendering in web browsers required optimizing WebGL performance and managing complex 3D scenes. The main challenge was creating responsive 3D navigation that works across different devices while maintaining 60fps performance. This involved advanced 3D mathematics, shader programming, and performance optimization techniques.",
     resultsAchieved: {
-      metrics: ["5,000+ active users", "500+ property listings", "90+ PageSpeed score"],
-      businessImpact: "Established trusted real estate platform with growing user base",
-      userFeedback: "Users appreciate the clean interface and easy property search"
+      metrics: [
+        "Runs in a standard browser, no VR headset required",
+        "WebGL scene rendering via Three.js",
+        "30fps minimum performance on mobile",
+        "Touch and mouse navigation for the same scene"
+      ],
+      businessImpact: "Built to test how much of a VR experience survives the move to a plain browser tab. The trade-offs between scene fidelity, load time and mobile frame rate were the substance of the project."
     },
     technologyFilter: "Full Stack",
-    thumbnailVariant: "default",
+    thumbnailVariant: "3d",
+  },
+  {
+    // For Post
+    title: "Apple TV Clone",
+    slug: "apple-tv-clone",
+    category: ["Frontend Development", "UI/UX Design"],
+    img: "/images/apple.webp",
+    badges: ["React", "Next.js", "TypeScript", "GSAP"],
+
+    // Sticky
+    owner: "Apple TV Clone",
+    date: "Nov 15, 2024",
+    services: "Frontend Development, UI/UX Design",
+    duration: "18 Days",
+    budget: "400$",
+    live: "https://apple-tv-clone-steel.vercel.app/",
+
+    // Scroll
+    overview:
+      "Apple TV Clone is a meticulously crafted recreation of the Apple TV interface, built to showcase modern frontend development skills and responsive design principles. The project demonstrates the ability to replicate complex user interfaces with pixel-perfect accuracy while maintaining smooth animations and intuitive navigation. Built with modern web technologies and a focus on user experience, this clone captures the essence of Apple's design philosophy while showcasing advanced frontend development capabilities.",
+    objective:
+      "The primary goal was to create a pixel-perfect clone of the Apple TV interface that demonstrates mastery of modern frontend development techniques. The project needed to replicate the smooth animations, responsive design, and intuitive navigation that Apple is known for, while maintaining excellent performance across different devices and screen sizes. Special attention was given to creating fluid transitions, hover effects, and interactive elements that closely match the original Apple TV experience. The design approach focused on achieving visual fidelity while ensuring the interface remains accessible and user-friendly.",
+    process:
+      "The development process began with extensive analysis of the original Apple TV interface, studying its design patterns, animations, and user interaction flows. I conducted research into Apple's design guidelines and analyzed the specific visual elements that make the interface distinctive. The design phase involved creating detailed wireframes and prototypes that focused on achieving pixel-perfect accuracy while maintaining smooth performance. Technical implementation utilized modern CSS techniques, JavaScript animations, and responsive design principles to create a seamless user experience. Special attention was given to creating smooth transitions and hover effects that closely replicate the original interface. The project was built with a focus on code quality and maintainability, demonstrating best practices in frontend development.",
+    impact:
+      "The Apple TV Clone has successfully demonstrated advanced frontend development skills and attention to detail in UI/UX design. The project has received positive feedback from developers and designers, with many noting the accuracy of the recreation and the smooth performance. The project serves as an excellent showcase of modern frontend development capabilities, demonstrating proficiency in CSS animations, responsive design, and user interface replication. The clone continues to serve as a valuable learning resource and portfolio piece that highlights the ability to work with complex design systems and create polished user interfaces.",
+    problemSolved:
+      "Many frontend developers struggle with recreating complex, polished user interfaces that match industry standards. The challenge was to demonstrate mastery of advanced CSS techniques, animation libraries, and responsive design principles while maintaining pixel-perfect accuracy with the original Apple TV interface.",
+    technicalChallenge:
+      "Achieving pixel-perfect recreation required deep understanding of Apple's design language and animation patterns. The main technical challenge was implementing smooth 60fps animations across different devices while maintaining visual fidelity. This involved complex CSS transforms, JavaScript animation sequencing, and performance optimization techniques.",
+    resultsAchieved: {
+      metrics: [
+        "Pixel-accurate recreation of the Apple TV interface",
+        "60fps animations on all devices",
+        "Complex CSS transforms and JavaScript sequencing",
+        "Fully responsive across breakpoints"
+      ],
+      businessImpact: "A craft exercise in matching a reference interface exactly. Chosen because Apple TV's transitions are unforgiving - small easing and timing errors are immediately visible, which makes it a strict test of animation precision."
+    },
+    technologyFilter: "Web",
+    thumbnailVariant: "minimal",
   },
 ];

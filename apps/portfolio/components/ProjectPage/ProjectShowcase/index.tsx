@@ -124,10 +124,10 @@ const SHOWCASE_PROJECTS: ShowcaseProject[] = [
         description: "Innovative interactive platform demonstrating quantum physics through UI animations and real-time physics simulations.",
         techStack: ["Next.js 15", "Three.js", "Framer Motion", "GSAP"],
         features: [
-            "95% user satisfaction rate",
+            "Superposition & entanglement demos",
             "60fps on all devices",
-            "15,000+ interactive sessions",
-            "Educational partnerships"
+            "Wave-function collapse visuals",
+            "Three.js particle systems"
         ],
         liveUrl: "https://quantumanim.abdalkader.dev/",
         caseStudyUrl: "/projects/quantum-animation-system",
@@ -140,10 +140,10 @@ const SHOWCASE_PROJECTS: ShowcaseProject[] = [
         description: "Web-based virtual reality platform enabling immersive 3D exploration without specialized hardware requirements.",
         techStack: ["Three.js", "WebGL", "Next.js"],
         features: [
-            "80% reduction in VR hardware needs",
-            "45,000+ virtual tours",
-            "25+ virtual environments",
-            "60% engagement increase"
+            "No VR headset required",
+            "WebGL scenes via Three.js",
+            "Touch & mouse navigation",
+            "30fps minimum on mobile"
         ],
         liveUrl: "https://virtualview.vercel.app/",
         caseStudyUrl: "/projects/virtualview",
