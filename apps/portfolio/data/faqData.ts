@@ -24,7 +24,7 @@ export const faqItems: FaqItem[] = [
   {
     question: 'What technologies do you work in?',
     answer:
-      'Day to day: TypeScript and Python, React and Next.js, Node.js, Express, FastAPI and Django, React Native, PostgreSQL and MongoDB, Docker, and the Claude and OpenAI APIs with LangChain. On the frontend I use GSAP and Framer Motion heavily. I also work in Svelte and Go, and hold an AWS Skill Builder certification in AI/ML and generative AI.',
+      'Day to day: TypeScript and Python, React and Next.js, Node.js, Express, FastAPI and Django, React Native, PostgreSQL and MongoDB, Docker, and the Claude and OpenAI APIs with LangChain. On the ML side I work with TensorFlow and PyTorch, and hold an AWS Skill Builder certification in AI/ML and generative AI. On the frontend I use GSAP and Framer Motion heavily, and I also build in Svelte and Go.',
   },
   {
     question: 'Do you work remotely with international clients?',
@@ -39,6 +39,6 @@ export const faqItems: FaqItem[] = [
   {
     question: 'How can I get started with a project?',
     answer:
-      'Use the contact form on this site and tell me what you are trying to build and what is currently blocking it. I will come back with an honest read on whether I am the right person for it, a rough timeline, and what I would need from you to start.',
+      'Use the contact form on this site, or email me directly at hello@abdalkader.dev. Tell me what you are trying to build and what is currently blocking it. I will come back with an honest read on whether I am the right person for it, a rough timeline, and what I would need from you to start.',
   },
 ];

@@ -48,7 +48,7 @@ export const skillsCategories: SkillCategory[] = [
       { name: "AWS Generative AI Tools", level: "Advanced", yearsOfExperience: 2, evidence: "studied", note: AWS_CERT_NOTE },
       { name: "Machine Learning Foundations", level: "Expert", yearsOfExperience: 3, evidence: "shipped" },
       { name: "Python for AI/ML", level: "Expert", yearsOfExperience: 3, evidence: "shipped" },
-      { name: "TensorFlow/PyTorch", level: "Advanced", yearsOfExperience: 2, evidence: "studied" },
+      { name: "TensorFlow/PyTorch", level: "Advanced", yearsOfExperience: 2, evidence: "shipped" },
       { name: "Prompt Engineering", level: "Expert", yearsOfExperience: 3, evidence: "shipped" }
     ]
   },

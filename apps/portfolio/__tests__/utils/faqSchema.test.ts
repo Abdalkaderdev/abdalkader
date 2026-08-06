@@ -48,19 +48,25 @@ describe('FAQ schema matches the rendered source', () => {
         }
     });
 
-    it('claims no email address that has not been verified to receive mail', () => {
-        // The previous copy directed people to hello@abdalkader.dev, which was
-        // never confirmed. A dead contact address in schema is worse than none,
-        // so the answers route to the contact form instead.
-        const joined = faqItems.map((i) => i.answer).join(' ');
-        expect(joined).not.toMatch(/[\w.+-]+@[\w-]+\.[\w.]+/);
+    it('only ever advertises the one contact address confirmed to receive mail', () => {
+        // hello@abdalkader.dev is confirmed working. Any *other* address
+        // appearing here would be unverified, and a dead contact address in
+        // structured data is worse than none — so pin it rather than ban emails.
+        // Domain parts are matched label-by-label so a trailing sentence full
+        // stop is not swallowed into the address.
+        const found = faqItems
+            .flatMap((i) => i.answer.match(/[\w.+-]+@[\w-]+(?:\.[\w-]+)+/g) ?? [])
+            .map((e) => e.toLowerCase());
+        for (const email of found) {
+            expect(email).toBe('hello@abdalkader.dev');
+        }
     });
 
-    it('does not claim specialisation in tooling classified as studied-only', () => {
-        // The skills data classifies TensorFlow and PyTorch as `studied`, not
-        // `shipped`. The FAQ must not contradict that.
+    it('stays consistent with how skillsData classifies the ML frameworks', () => {
+        // TensorFlow and PyTorch are shipped work, so the FAQ may name them.
+        // This guards the direction of the claim: it must not inflate back into
+        // blanket "I specialize in" phrasing across a framework list.
         const joined = faqItems.map((i) => i.answer).join(' ').toLowerCase();
         expect(joined).not.toContain('specialize in modern ai/ml frameworks');
-        expect(joined).not.toContain('pytorch');
     });
 });
