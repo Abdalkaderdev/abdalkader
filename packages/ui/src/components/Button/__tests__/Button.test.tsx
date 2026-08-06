@@ -15,24 +15,24 @@ describe('Button', () => {
 
     it('renders with correct variant class', () => {
       const { rerender } = render(<Button variant="primary">Primary</Button>);
-      expect(screen.getByRole('button')).toHaveClass('btn--primary');
+      expect(screen.getByRole('button')).toHaveClass('portfolio-btn--primary');
 
       rerender(<Button variant="secondary">Secondary</Button>);
-      expect(screen.getByRole('button')).toHaveClass('btn--secondary');
+      expect(screen.getByRole('button')).toHaveClass('portfolio-btn--secondary');
 
       rerender(<Button variant="danger">Danger</Button>);
-      expect(screen.getByRole('button')).toHaveClass('btn--danger');
+      expect(screen.getByRole('button')).toHaveClass('portfolio-btn--danger');
     });
 
     it('renders with correct size class', () => {
       const { rerender } = render(<Button size="small">Small</Button>);
-      expect(screen.getByRole('button')).toHaveClass('btn--small');
+      expect(screen.getByRole('button')).toHaveClass('portfolio-btn--small');
 
       rerender(<Button size="medium">Medium</Button>);
-      expect(screen.getByRole('button')).toHaveClass('btn--medium');
+      expect(screen.getByRole('button')).toHaveClass('portfolio-btn--medium');
 
       rerender(<Button size="large">Large</Button>);
-      expect(screen.getByRole('button')).toHaveClass('btn--large');
+      expect(screen.getByRole('button')).toHaveClass('portfolio-btn--large');
     });
   });
 

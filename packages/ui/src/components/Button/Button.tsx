@@ -8,7 +8,27 @@ import { motion } from 'framer-motion';
 import './Button.css';
 // import { animationSets, hoverAnimations, tapAnimations } from '@/animations/presets';
 
-export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+/**
+ * Framer Motion defines its own `onAnimationStart` and drag handlers with
+ * signatures that clash with React's DOM event handlers of the same name, so
+ * those are omitted. They were never reachable anyway — this component did not
+ * forward its rest props at all until they were wired up.
+ */
+type ButtonMotionConflicts =
+  | 'onAnimationStart'
+  | 'onAnimationEnd'
+  | 'onAnimationIteration'
+  | 'onDrag'
+  | 'onDragStart'
+  | 'onDragEnd'
+  | 'onDragEnter'
+  | 'onDragExit'
+  | 'onDragLeave'
+  | 'onDragOver'
+  | 'onDrop';
+
+export interface ButtonProps
+  extends Omit<React.ButtonHTMLAttributes<HTMLButtonElement>, ButtonMotionConflicts> {
   variant?: 'primary' | 'secondary' | 'ghost';
   size?: 'small' | 'medium' | 'large';
   disabled?: boolean;
@@ -46,6 +66,7 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>((
   return (
     <motion.button
       ref={ref}
+      type={type}
       className={buttonClasses}
       disabled={disabled || loading}
       aria-label={ariaLabel}
@@ -53,6 +74,7 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>((
       whileHover={!disabled && !loading ? { scale: 1.05 } : {}}
       whileTap={!disabled && !loading ? { scale: 0.95 } : {}}
       transition={{ duration: 0.2, ease: [0.19, 1, 0.22, 1] }}
+      {...props}
     >
       <span className="portfolio-btn__content">
         {loading && (

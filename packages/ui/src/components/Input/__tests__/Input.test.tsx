@@ -78,7 +78,7 @@ describe('Input', () => {
 
     it('applies error class', () => {
       render(<Input error />);
-      expect(screen.getByRole('textbox')).toHaveClass('input--error');
+      expect(screen.getByRole('textbox')).toHaveClass('portfolio-input--error');
     });
 
     it('sets aria-invalid when error', () => {
