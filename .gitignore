@@ -36,3 +36,7 @@ yarn-error.log*
 
 # Playwright MCP scratch output
 .playwright-mcp/
+
+# TS/rollup build caches
+*.tsbuildinfo
+.rollup.cache/

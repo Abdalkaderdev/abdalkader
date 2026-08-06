@@ -2,7 +2,7 @@
   "extends": "../../tsconfig.base.json",
   "compilerOptions": {
     "plugins": [{ "name": "next" }],
-    "types": ["node", "react", "react-dom"],
+    "types": ["node", "react", "react-dom", "jest", "@testing-library/jest-dom"],
     "paths": {
       "@/*": ["./*"],
       "@/src/*": ["./src/*"]
