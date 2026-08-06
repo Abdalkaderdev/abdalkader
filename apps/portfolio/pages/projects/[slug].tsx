@@ -44,13 +44,13 @@ type ProjectPageProps = {
 
 // OG image mapping for projects with dedicated social images
 const OG_IMAGE_MAP: Record<string, string> = {
-    'soapbox-super-app': '/images/og-soapbox-super-app.png',
-    'discipleone-platform': '/images/og-discipleone-platform.png',
-    'via-discipleship-app': '/images/og-via-discipleship-app.png',
-    'parsalink-ai-crm': '/images/og-parsalink-ai-crm.png',
-    'apple-tv-clone': '/images/og-apple-tv-clone.png',
-    'virtualview': '/images/og-virtualview.png',
-    'jegr-jalal-company': '/images/og-jegr-jalal-company.png',
+    'soapbox-super-app': '/images/og-soapbox-super-app.jpg',
+    'discipleone-platform': '/images/og-discipleone-platform.jpg',
+    'via-discipleship-app': '/images/og-via-discipleship-app.jpg',
+    'parsalink-ai-crm': '/images/og-parsalink-ai-crm.jpg',
+    'apple-tv-clone': '/images/og-apple-tv-clone.jpg',
+    'virtualview': '/images/og-virtualview.jpg',
+    'jegr-jalal-company': '/images/og-jegr-jalal-company.jpg',
     'doner-qr-menu-magic': '/images/og-doner-qr-menu-magic.png',
 };
 
