@@ -666,3 +666,65 @@ $mono-font: 'JetBrains Mono', 'SF Mono', 'Consolas', monospace;
         display: none;
     }
 }
+
+/* ===== Glow border on the engaged card =====
+   Ported from Vengeance UI's GlowBorderCard (MIT, github.com/Ashutoshx7/VengenceUI).
+   Their palette is replaced with this site's own tokens.
+
+   A rotating conic-gradient border-image, blurred, on a negatively-inset layer
+   behind the card. Pure CSS: no JS, no library, no per-frame work, and the
+   whole thing is GPU-composited.
+
+   @property makes --glow-angle an interpolatable <angle>. Without it the
+   custom property is a string and the rotation snaps rather than sweeps.
+   Unsupported engines simply never animate it, leaving a static border. */
+@property --glow-angle {
+    syntax: "<angle>";
+    initial-value: 0deg;
+    inherits: false;
+}
+
+@keyframes glowAngleRotate {
+    to {
+        --glow-angle: 1turn;
+    }
+}
+
+.stackCard::before {
+    content: "";
+    position: absolute;
+    inset: -0.75em;
+    border-radius: inherit;
+    border: 1em solid transparent;
+    filter: blur(0.7em);
+    opacity: 0;
+    /* .stackCard is transform-style: preserve-3d, so paint order comes from Z
+       position rather than z-index. Push the glow behind the card faces. */
+    transform: translateZ(-1px);
+    pointer-events: none;
+    transition: opacity 0.45s ease;
+
+    border-image: conic-gradient(
+        from var(--glow-angle),
+        #{$primary},
+        #{$primary-light},
+        #{$gold},
+        #{$softGold},
+        #{$gold},
+        #{$primary-light},
+        #{$primary}
+    ) 1;
+}
+
+/* Only the card the visitor has actually engaged with glows. */
+.stackCard.flipped::before {
+    opacity: 1;
+    animation: glowAngleRotate 6s linear infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .stackCard.flipped::before {
+        /* Keep the border, drop the rotation. */
+        animation: none;
+    }
+}
