@@ -4,16 +4,13 @@ import InstagramSection from "@/components/HomePage/DribbleSection";
 import HeroSection from "@/components/HomePage/HeroSection";
 import ProjectSection from "@/components/HomePage/ProjectSection";
 import ServiceSection from "@/components/HomePage/ServiceSection";
-import TestimonialsSection from "@/components/HomePage/TestimonialsSection";
 import Marquee, { marqueeStyles } from "@/components/Marquee";
 // LiveDemos removed per text-only preference
 import { PageSEO, JsonLd } from "@/components/SEO";
 import {
     professionalServiceJsonLd,
     faqPageJsonLd,
-    allServicesJsonLd,
-    allReviewsJsonLd,
-    aggregateRatingJsonLd
+    allServicesJsonLd
 } from "@/utils/jsonld";
 
 export default function HomePage() {
@@ -43,9 +40,7 @@ export default function HomePage() {
             <JsonLd data={[
                 professionalServiceJsonLd(),
                 faqPageJsonLd(),
-                ...allServicesJsonLd(),
-                ...allReviewsJsonLd(),
-                aggregateRatingJsonLd()
+                ...allServicesJsonLd()
             ]} />
             <HeroSection />
             <AboutSection />
@@ -59,7 +54,6 @@ export default function HomePage() {
 
             <ProjectSection />
             <ServiceSection />
-            <TestimonialsSection />
             <InstagramSection />
             <CoffeeSection />
         </>
