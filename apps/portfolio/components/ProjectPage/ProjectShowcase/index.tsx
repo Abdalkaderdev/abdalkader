@@ -335,7 +335,16 @@ export default function ProjectShowcase() {
                         const cardOffset = getCardOffset();
                         const stackOffset = getStackOffset();
 
-                        // Animate the current card to position opposite details
+                        // Animate the current card to position opposite details.
+                        // back.out gives a small overshoot and settle rather than a
+                        // flat deceleration, which is the "arrive and hold" beat the
+                        // MotionSites carousel gets from its magnetic dwell easing.
+                        // Its actual formula does not port here: that maps a
+                        // continuous progress scalar so motion lingers near integer
+                        // card indices, and this stack has no scrub - it advances on
+                        // discrete per-section ScrollTrigger callbacks.
+                        // Overshoot is deliberately small; the card is also rotating,
+                        // and anything springier reads as unstable rather than solid.
                         gsap.to(card, {
                             x: cardGoesRight ? cardOffset : `-${cardOffset}`,
                             y: 0,
@@ -344,7 +353,7 @@ export default function ProjectShowcase() {
                             opacity: 1,
                             zIndex: 30 + index,
                             duration: 0.8,
-                            ease: 'power3.out',
+                            ease: 'back.out(1.1)',
                         });
 
                         // Animate details in
@@ -392,7 +401,8 @@ export default function ProjectShowcase() {
                         const cardOffset = getCardOffset();
                         const stackOffset = getStackOffset();
 
-                        // Bring card back to position
+                        // Bring card back to position, matching the forward direction's
+                        // settle so scrolling up feels the same as scrolling down.
                         gsap.to(card, {
                             x: cardGoesRight ? cardOffset : `-${cardOffset}`,
                             y: 0,
@@ -401,7 +411,7 @@ export default function ProjectShowcase() {
                             opacity: 1,
                             zIndex: 30 + index,
                             duration: 0.6,
-                            ease: 'power2.out',
+                            ease: 'back.out(1.1)',
                         });
 
                         // Show details
