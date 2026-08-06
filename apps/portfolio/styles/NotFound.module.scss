@@ -1,0 +1,125 @@
+@import "@/styles/variables.scss";
+
+.notFound {
+    @include section;
+    min-height: 78vh;
+    display: flex;
+    align-items: center;
+    /* No video backdrop by design — Phase A removed 45MB of it and this page
+       does not need bytes to make its point. */
+    background: radial-gradient(
+        ellipse at 20% 0%,
+        rgba($primary, 0.09) 0%,
+        transparent 55%
+    );
+}
+
+.container {
+    width: 100%;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding-block: $space-4;
+}
+
+/* Oversized numeral, outlined rather than filled so it reads as a backdrop
+   instead of competing with the heading. */
+.numeral {
+    margin: 0 0 $space-2;
+    font-size: clamp(6rem, 2rem + 18vw, 18rem);
+    line-height: 0.8;
+    font-weight: lighter;
+    letter-spacing: -0.02em;
+    color: transparent;
+    -webkit-text-stroke: 1.5px rgba($primary, 0.72);
+    user-select: none;
+}
+
+.heading {
+    @include font-2_75;
+    margin: 0 0 $space-2;
+    color: $white;
+}
+
+.body {
+    margin: 0 0 $space-3;
+    max-width: 52ch;
+    font-size: $fs-body;
+    /* Body copy: the font-1 mixin uppercases, which is wrong here. */
+    text-transform: none;
+    letter-spacing: 0;
+    line-height: 1.65;
+    color: $textLight;
+}
+
+.links {
+    ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        display: grid;
+        /* 18rem against the 1100px container yields 3 columns, so the six links
+           fill two complete rows. A narrower track gave 4 + 2 and left a ragged
+           half-row of border. */
+        grid-template-columns: repeat(auto-fit, minmax(min(100%, 18rem), 1fr));
+        gap: 0;
+        border-top: 1px solid $borderColor;
+    }
+
+    li {
+        border-bottom: 1px solid $borderColor;
+    }
+}
+
+.link {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: $space-1;
+    /* 44px minimum touch target, which the audit flagged as missing elsewhere. */
+    min-height: 44px;
+    padding: $space-2 $space-1 $space-2 0;
+    color: $white;
+    text-decoration: none;
+    @include font-1;
+    transition: color $transition, padding-left $transition;
+
+    &:hover,
+    &:focus-visible {
+        color: $primary;
+        padding-left: 0.5rem;
+    }
+
+    &:focus-visible {
+        outline: 2px dashed $primary;
+        outline-offset: 4px;
+    }
+}
+
+.linkIcon {
+    flex-shrink: 0;
+    color: $textGrey;
+    transition: transform $transition, color $transition;
+
+    .link:hover &,
+    .link:focus-visible & {
+        color: $primary;
+        transform: translate(2px, -2px);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .link,
+    .linkIcon {
+        transition: none;
+    }
+
+    .link:hover,
+    .link:focus-visible {
+        padding-left: 0;
+    }
+
+    .link:hover .linkIcon,
+    .link:focus-visible .linkIcon {
+        transform: none;
+    }
+}
