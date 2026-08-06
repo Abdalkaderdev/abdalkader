@@ -37,7 +37,8 @@ export interface VideoBackgroundProps {
  * @example
  * ```tsx
  * <VideoBackground
- *   src="/videos/particle-bg.mp4"
+ *   src="/videos/home-hero-bg.mp4"
+ *   poster="/images/home-hero-poster.jpg"
  *   opacity={0.3}
  *   overlay
  *   overlayDirection="bottom"

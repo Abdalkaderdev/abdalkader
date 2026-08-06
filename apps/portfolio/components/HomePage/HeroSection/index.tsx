@@ -155,6 +155,7 @@ export default function HeroSection() {
             {/* Video Background */}
             <VideoBackground
                 src="/videos/home-hero-bg.mp4"
+                poster="/images/home-hero-poster.jpg"
                 opacity={0.3}
                 overlay
                 overlayDirection="radial"

@@ -2,7 +2,6 @@
 
 import { MagneticLink } from '@/components/MagneticLink';
 import RootedInChrist from '@/components/RootedInChrist';
-import VideoBackground from '@/components/VideoBackground';
 import { NAVIGATION_LINKS } from '@/data/navigation';
 import styles from './Footer.module.scss';
 
@@ -22,13 +21,6 @@ const Footer: React.FC = () => {
     return (
         <footer className={styles.footer}>
             {/* Video Background - Reusing home hero video */}
-            <VideoBackground
-                src="/videos/home-hero-bg.mp4"
-                opacity={0.15}
-                overlay
-                overlayDirection="top"
-            />
-
             <div className={styles.container}>
                 <div className={styles.wrapper}>
                     <div className={styles.col}>

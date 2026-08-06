@@ -7,7 +7,6 @@ import Tag from '@/components/Tag';
 import Button from '@/components/Button';
 import { splitText } from '@/utils/textUtils';
 import GlassCard from '@/components/GlassCard';
-import VideoBackground from '@/components/VideoBackground';
 
 // Animation and layout constants
 const CARD_POSITIONS = [13, 37.7, 62.4, 87];
@@ -173,13 +172,6 @@ export default function ServiceSection() {
     return (
         <section className={styles.services}>
             {/* Video Background - Circuit board pattern */}
-            <VideoBackground
-                src="/videos/services-bg.mp4"
-                opacity={0.12}
-                overlay
-                overlayDirection="bottom"
-            />
-
             {/* heading */}
             <div className={styles.heading}>
                 <div ref={taglineRef}>

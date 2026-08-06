@@ -5,7 +5,6 @@ import { gsap } from '@/libs/gsap';
 import Link from 'next/link';
 import { isReducedMotion } from '@/utils/motion';
 import MiniSignpost from "@/components/MiniSignpost";
-import VideoBackground from '@/components/VideoBackground';
 import ContactForm from '@/components/ContactForm';
 
 export default function ContactSection() {
@@ -56,12 +55,6 @@ export default function ContactSection() {
         <>
             <section className={styles.contact}>
                 {/* Video Background */}
-                <VideoBackground
-                    src="/videos/contact-bg.mp4"
-                    opacity={0.35}
-                    overlay
-                    overlayDirection="radial"
-                />
                 <h1 ref={bannerHeadingRef}>{splitText("Contact")}</h1>
             </section>
 

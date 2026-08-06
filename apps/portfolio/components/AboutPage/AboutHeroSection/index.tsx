@@ -4,7 +4,6 @@ import { splitText } from '@/utils/textUtils';
 import { useRef, useEffect } from 'react';
 import { gsap } from '@/libs/gsap';
 import { isReducedMotion } from '@/utils/motion';
-import VideoBackground from '@/components/VideoBackground';
 
 export default function AboutHeroSection() {
     const bannerHeadingRef = useRef<HTMLDivElement | null>(null);
@@ -58,13 +57,6 @@ export default function AboutHeroSection() {
     return (
         <section className={styles.aboutHero}>
             {/* Video Background */}
-            <VideoBackground
-                src="/videos/about-bg.mp4"
-                opacity={0.3}
-                overlay
-                overlayDirection="radial"
-            />
-
             {/* big heading */}
             <h1 ref={bannerHeadingRef}>
                 {splitText("about")}

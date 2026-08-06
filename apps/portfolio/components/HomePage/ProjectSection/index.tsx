@@ -5,7 +5,6 @@ import { useEffect, useRef, useState } from 'react';
 import { gsap } from '@/libs/gsap';
 import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
 import { isReducedMotion } from '@/utils/motion';
-import VideoBackground from '@/components/VideoBackground';
 
 if (typeof window !== 'undefined') {
     gsap.registerPlugin(ScrollTrigger);
@@ -166,11 +165,6 @@ function ProjectCard({ title, category, year, slug, index }: ProjectCardProps) {
 
                 {/* Center: Video Background with Title */}
                 <div ref={animationRef} className={styles.imageContainer}>
-                    <VideoBackground
-                        src="/videos/projects-bg.mp4"
-                        opacity={0.8}
-                        overlay={false}
-                    />
                     <div className={styles.projectTitle}>{title}</div>
                 </div>
 
@@ -320,13 +314,6 @@ export default function ProjectSection() {
     return (
         <section ref={sectionRef} className={styles.workSection}>
             {/* Video Background - Code/Matrix effect */}
-            <VideoBackground
-                src="/videos/projects-bg.mp4"
-                opacity={0.12}
-                overlay
-                overlayDirection="radial"
-            />
-
             {/* Section Header with Word Cover Boxes */}
             <div ref={headerRef} className={styles.header}>
                 <div className={styles.headerMeta}>
