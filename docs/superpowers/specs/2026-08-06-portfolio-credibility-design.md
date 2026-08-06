@@ -19,25 +19,18 @@ soften it into a vaguer claim. A hedged number reads worse than no number.
 
 ## 1. Fabricated endorsements — remove (highest priority)
 
-`TestimonialsSection` carries four testimonials attributed to named people at named
-companies. They are invented:
+`TestimonialsSection` carried four testimonials attributed to four named individuals at four
+named companies, none of which correspond to real people or real clients. One also asserted a
+specific commercial result on the client's behalf. Names redacted here deliberately — this
+repository is public, and there is no reason to restate them.
 
-```
-"Sarah Mitchell",  Product Manager,     "TechFlow Solutions"
-"Michael Chen",    CEO,                 "Innovate Labs"
-"Emily Rodriguez", Technical Director,  "DataDriven Inc"
-"James Wilson",    Founder,             "NextGen Commerce"
-```
-
-One includes a fabricated result: *"Our e-commerce conversion rate increased by 40%."*
-
-**Worse, the same four are emitted as structured data.** `utils/jsonld.ts` exports
-`allReviewsJsonLd()` (four `@type: Review`) and `aggregateRatingJsonLd()`
+**The same four were also emitted as structured data.** `utils/jsonld.ts` exported a
+review-list helper (four `@type: Review`) and an aggregate-rating helper
 (`ratingValue: 5, ratingCount: 4`), both invoked from `pages/index.tsx`. The site therefore
-publishes a fabricated 5.0-star rating to search engines, which can surface as stars in
-results. Google's structured-data policies prohibit fabricated reviews; the exposure is
-rich-result removal or a manual action against the domain. Removing the visible section
-alone would not fix this.
+published a 5.0-star rating to search engines derived entirely from those entries, which can
+surface as stars in results. Google's structured-data policies prohibit fabricated reviews;
+the exposure is rich-result removal or a manual action against the domain. Removing the
+visible section alone would not have fixed this.
 
 **Action.** Delete:
 - `components/HomePage/TestimonialsSection/` (component + stylesheet)
@@ -176,8 +169,8 @@ craft exercise; it is only harmful when presented as a headline achievement.
 | `pnpm build` (all 5 apps) | exit 0 |
 | `pnpm typecheck` | exit 0 |
 | `pnpm test` | 242 tests green, 0 errors (Phase A baseline) |
-| No fabricated names anywhere | `git grep -iE "Sarah Mitchell\|Michael Chen\|Emily Rodriguez\|James Wilson\|TechFlow\|Innovate Labs\|DataDriven\|NextGen Commerce"` returns nothing |
-| No review schema | `git grep -E "AggregateRating\|'@type': 'Review'"` returns nothing |
+| No fabricated names anywhere | grep the four names and four company names removed in §1 across `apps/` and `packages/`; returns nothing |
+| No review schema | `git grep -E "AggregateRating\|'@type': 'Review'" -- apps packages` returns nothing |
 | No false metrics | `git grep -E "500\+ GitHub\|10,000\+ developer\|45,000\+\|95% user satisfaction"` returns nothing |
 | Dates match CV | SoapBox reads Nov 2025 – Mar 2026 and is not marked ongoing |
 | Rendered JSON-LD is valid | homepage `<script type="application/ld+json">` blocks parse, and contain no Review or AggregateRating |
