@@ -116,6 +116,10 @@ export const skillsCategories: SkillCategory[] = [
     icon: "🛠️",
     skills: [
       { name: "Git & GitHub", level: "Expert", yearsOfExperience: 3, evidence: "shipped" },
+      // 4 WordPress sites and 2 Shopify stores delivered in freelance client work.
+      // Levels reflect that volume, not the previously claimed Expert / 5 years.
+      { name: "WordPress", level: "Intermediate", yearsOfExperience: 2, evidence: "shipped" },
+      { name: "Shopify", level: "Intermediate", yearsOfExperience: 1, evidence: "shipped" },
       { name: "GitHub Actions", level: "Advanced", yearsOfExperience: 2, evidence: "studied" },
       { name: "CI/CD Pipelines", level: "Advanced", yearsOfExperience: 2, evidence: "studied" },
       { name: "Vercel / Netlify", level: "Expert", yearsOfExperience: 3, evidence: "shipped" },
