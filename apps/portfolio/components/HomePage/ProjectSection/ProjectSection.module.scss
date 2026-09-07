@@ -142,6 +142,15 @@ $mono-font: 'JetBrains Mono', 'SF Mono', 'Consolas', monospace;
     align-items: center;
     justify-content: center;
     overflow: hidden;
+
+    /* Below $bp-md the inner grid collapses to a single column and is roughly
+       470px tall, but the card still reserved a full viewport - leaving several
+       hundred pixels of empty black under every project. Size to content here
+       and keep the rhythm with padding instead. */
+    @media (max-width: $bp-md) {
+        min-height: 0;
+        padding-block: $space-4;
+    }
 }
 
 /* Blueprint Grid Lines */
@@ -389,5 +398,29 @@ $mono-font: 'JetBrains Mono', 'SF Mono', 'Consolas', monospace;
 
     .image {
         transform: none !important;
+    }
+}
+
+/* Project artwork behind the title overlay. Dimmed so the title keeps its
+   contrast — the panel used to sit over video and looked empty without it. */
+.projectImage {
+    object-fit: cover;
+    opacity: 0.55;
+    z-index: 1;
+    transition: opacity $transition, transform $transition;
+
+    .projectCard:hover & {
+        opacity: 0.75;
+        transform: scale(1.03);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .projectImage {
+        transition: none;
+
+        .projectCard:hover & {
+            transform: none;
+        }
     }
 }

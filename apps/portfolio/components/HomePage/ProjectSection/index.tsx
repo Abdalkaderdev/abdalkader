@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Image from 'next/image';
 import styles from './ProjectSection.module.scss';
 import { projects } from '@/data/projectsData';
 import { useEffect, useRef, useState } from 'react';
@@ -36,6 +37,7 @@ interface ProjectCardProps {
     category: string;
     year: string;
     slug: string;
+    img: string;
     index: number;
 }
 
@@ -88,7 +90,7 @@ function MagneticButton({ children, href }: { children: React.ReactNode; href: s
 }
 
 // Project Card Component
-function ProjectCard({ title, category, year, slug, index }: ProjectCardProps) {
+function ProjectCard({ title, category, year, slug, img, index }: ProjectCardProps) {
     const cardRef = useRef<HTMLDivElement>(null);
     const animationRef = useRef<HTMLDivElement>(null);
     const contentRef = useRef<HTMLDivElement>(null);
@@ -165,6 +167,19 @@ function ProjectCard({ title, category, year, slug, index }: ProjectCardProps) {
 
                 {/* Center: Video Background with Title */}
                 <div ref={animationRef} className={styles.imageContainer}>
+                    {/* This panel previously sat over a looping video at 0.8 opacity.
+                        That video was removed with the rest of the 45MB of backgrounds,
+                        which left a near-empty dark rectangle. The project's own image
+                        costs no extra bytes - it already ships for the projects page -
+                        and says more than the gradient did. */}
+                    <Image
+                        src={img}
+                        alt=""
+                        aria-hidden="true"
+                        fill
+                        sizes="(max-width: 840px) 100vw, 40vw"
+                        className={styles.projectImage}
+                    />
                     <div className={styles.projectTitle}>{title}</div>
                 </div>
 
@@ -309,6 +324,27 @@ export default function ProjectSection() {
     }, []);
 
     // Show only first 4 projects on home page
+    // Dates come from projectsData rather than being hardcoded. The year was
+    // pinned to "2024" for every card, which survived the date corrections and
+    // so contradicted every project's real date.
+    const yearOf = (date: string) => {
+        const years = date.match(/\d{4}/g);
+        if (!years || years.length === 0) return '';
+        return years.length > 1 && years[0] !== years[years.length - 1]
+            ? `${years[0]}–${years[years.length - 1]}`
+            : years[0];
+    };
+
+    // Earliest project year through to now, derived rather than asserted.
+    const workRange = (() => {
+        const all = projects
+            .flatMap((p) => (p.date.match(/\d{4}/g) ?? []))
+            .map(Number)
+            .filter((n) => n > 2000);
+        if (all.length === 0) return 'SELECTED WORK';
+        return `${Math.min(...all)} — PRESENT`;
+    })();
+
     const displayProjects = projects.slice(0, 4);
 
     return (
@@ -318,7 +354,7 @@ export default function ProjectSection() {
             <div ref={headerRef} className={styles.header}>
                 <div className={styles.headerMeta}>
                     <WordCover word="FEATURED WORK" index={0} onRegisterBox={registerBox} />
-                    <WordCover word="2024 — PRESENT" index={1} onRegisterBox={registerBox} />
+                    <WordCover word={workRange} index={1} onRegisterBox={registerBox} />
                 </div>
                 <h1 className={styles.headerTitle}>
                     <WordCover word="WORK" index={2} onRegisterBox={registerBox} className={styles.bigWord} />
@@ -337,8 +373,9 @@ export default function ProjectSection() {
                         key={project.slug}
                         title={project.title.toUpperCase()}
                         category={project.category?.[0] || 'Development'}
-                        year="2024"
+                        year={yearOf(project.date)}
                         slug={project.slug}
+                        img={project.img}
                         index={index}
                     />
                 ))}
