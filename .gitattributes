@@ -1,0 +1,5 @@
+# Generated token artifacts are always written with LF by the generator.
+# Without this, core.autocrlf rewrites them on Windows checkouts and every
+# regeneration produces a spurious whole-file diff.
+packages/ui/src/tokens/tokens.css text eol=lf
+packages/ui/src/tokens/_tokens.scss text eol=lf

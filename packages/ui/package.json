@@ -12,7 +12,7 @@
     "dist"
   ],
   "scripts": {
-    "build": "pnpm generate:tokens && rollup -c",
+    "build": "rollup -c",
     "dev": "rollup -c -w",
     "test": "vitest run",
     "test:watch": "vitest",

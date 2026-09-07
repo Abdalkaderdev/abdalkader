@@ -133,11 +133,32 @@ describe('renderScss', () => {
 describe('committed outputs are in sync with the source', () => {
   const dir = join(__dirname, '..');
 
+  // Line endings are normalised before comparing: git's core.autocrlf rewrites
+  // these files to CRLF on Windows checkouts while the generator always emits
+  // LF, and that difference is not drift.
+  const lf = (s: string) => s.split(String.fromCharCode(13)).join('');
+
   it('tokens.css matches a fresh render', () => {
-    expect(readFileSync(join(dir, 'tokens.css'), 'utf8')).toBe(renderCss(tokens));
+    expect(lf(readFileSync(join(dir, 'tokens.css'), 'utf8'))).toBe(lf(renderCss(tokens)));
   });
 
   it('_tokens.scss matches a fresh render', () => {
-    expect(readFileSync(join(dir, '_tokens.scss'), 'utf8')).toBe(renderScss(tokens));
+    expect(lf(readFileSync(join(dir, '_tokens.scss'), 'utf8'))).toBe(lf(renderScss(tokens)));
   });
+});
+
+describe('build does not depend on the codegen tool', () => {
+    // The Vercel deploy failed with "tsx: command not found" because the build
+    // script ran the generator, and Vercel prunes devDependencies before
+    // building. The generated files are committed and the drift tests above
+    // prove they match tokens.ts, so the build only needs to read them.
+    it('the ui build script does not invoke generate:tokens', () => {
+        const pkg = JSON.parse(
+            readFileSync(join(__dirname, '..', '..', '..', 'package.json'), 'utf8')
+        ) as { scripts: Record<string, string> };
+        expect(pkg.scripts.build).not.toContain('generate:tokens');
+        expect(pkg.scripts.build).not.toContain('tsx');
+        // still available to run by hand after editing tokens.ts
+        expect(pkg.scripts['generate:tokens']).toContain('tsx');
+    });
 });
