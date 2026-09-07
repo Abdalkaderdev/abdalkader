@@ -157,7 +157,7 @@ export default function WelcomeModal({ onMusicToggle }: WelcomeModalProps) {
                     >
                         {/* Cross Icon - White elegant cross */}
                         <div className={styles.crossIcon} aria-hidden="true">
-                            ✝
+                            ✝︎
                         </div>
 
                         <h2 id="welcome-title" className={styles.title}>Welcome</h2>

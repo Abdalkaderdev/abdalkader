@@ -291,7 +291,7 @@ export default function LordsPrayer() {
             <div className={styles.prayerCard}>
                 <div ref={prayerRef} className={styles.prayerContent}>
                     {/* Cross */}
-                    <div className={styles.cross}>✝</div>
+                    <div className={styles.cross}>✝︎</div>
 
                     {/* Category */}
                     <span className={styles.category}>{currentPrayer.category.toUpperCase()}</span>

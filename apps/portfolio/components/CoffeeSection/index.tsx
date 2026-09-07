@@ -79,7 +79,7 @@ export default function CoffeeSection() {
                 {/* Left Side - Branding */}
                 <div className={styles.branding}>
                     <div className={styles.logo}>
-                        <span className={styles.logoIcon}>✝</span>
+                        <span className={styles.logoIcon}>✝︎</span>
                         <span className={styles.logoText}>Abdalkader</span>
                     </div>
                     <p className={styles.tagline}>

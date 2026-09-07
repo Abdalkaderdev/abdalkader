@@ -422,7 +422,7 @@ $mono-font: 'JetBrains Mono', 'SF Mono', 'Consolas', monospace;
         position: relative;
 
         &::before {
-            content: '✦';
+            content: '✦︎';
             position: absolute;
             left: 0;
             color: $accent;

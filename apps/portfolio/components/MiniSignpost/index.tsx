@@ -83,7 +83,7 @@ export default function MiniSignpost({
     return (
         <div className={`${styles.miniSignpost} ${className}`}>
             {/* Small cross accent */}
-            <div className={styles.crossAccent}>✝</div>
+            <div className={styles.crossAccent}>✝︎</div>
 
             {/* Verse card */}
             <AnimatePresence mode="wait">
