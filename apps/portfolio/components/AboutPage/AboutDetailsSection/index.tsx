@@ -44,41 +44,59 @@ const skillsCategories = [
         skills: ['WordPress', 'Shopify', 'CMS (Custom + Headless CMS)', 'CRM Systems (e.g., Perfex, Homely)', 'HMS (Hospital Management Systems)', 'GitHub Actions (CI/CD)', 'cPanel / WHM', 'Vercel / Netlify / Namecheap Hosting', 'Git & GitHub', 'Docker', 'Linux / Bash']
     }
 ];
+// Titles and dates follow the master CV, which is the source of truth.
+// Newest first. Professional software work began Nov 2023; the 2015-2018
+// telecom role is the earlier, separate chapter and is listed as such.
 const experiences = [
     {
-        position: "Full Stack AI Engineer",
-        company: "at SoapBox Super App",
-        period: "2024 - Present"
+        position: "Full Stack & Lead Engineer",
+        company: "at Why Live Today LLC",
+        period: "Mar 2026 - Present"
+    },
+    {
+        position: "AI & IT Consultant",
+        company: "at Natuzzi Erbil",
+        period: "Mar 2026 - Present"
     },
     {
         position: "Full Stack Software Engineer",
-        company: "at DiscipleOne (Nonprofit) & VIA App",
-        period: "2024 - Present"
+        company: "at Mount Seir Tech",
+        period: "Jan 2026 - Present"
     },
     {
-        position: "Full Stack Software Developer",
-        company: "at ParsaLink",
-        period: "2024 - Present"
+        position: "Lead Engineer",
+        company: "at Disciple One / ViaApp (Nonprofit)",
+        period: "Nov 2025 - Present"
     },
     {
-        position: "IT Specialist",
-        company: "at Real House Real Estate",
-        period: "Jan 2025 - Present"
+        position: "AI Engineer",
+        company: "at SoapBox",
+        period: "Nov 2025 - Jun 2026"
     },
     {
-        position: "IT Specialist (Freelancer)",
-        company: "at Headquarter Realestate & Innovations Department",
+        position: "IT & Contract Manager",
+        company: "at Real House Company",
+        period: "Apr 2025 - Present"
+    },
+    {
+        position: "IT Specialist (Freelance)",
+        company: "at Headquarter Real Estate & Innovations Department",
         period: "Nov 2024 - Jan 2025"
     },
     {
-        position: "IT Manager",
-        company: "at Hamilton Iraq",
+        position: "E-commerce Web Developer (Freelance)",
+        company: "at Minime Iraq",
         period: "Nov 2023 - Nov 2024"
     },
     {
-        position: "E-commerce Web Developer (Freelancer)",
-        company: "at Minime Iraq",
+        position: "IT Manager",
+        company: "at Hamilton Iraq Real Estate",
         period: "Nov 2023 - Nov 2024"
+    },
+    {
+        position: "Cell Site Technician",
+        company: "at MTN Syria & Zain Sudan",
+        period: "Oct 2015 - May 2018"
     }
 ];
 

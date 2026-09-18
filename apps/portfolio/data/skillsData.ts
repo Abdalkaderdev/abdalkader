@@ -31,7 +31,6 @@ export const skillsCategories: SkillCategory[] = [
       { name: "Anthropic SDK", level: "Expert", yearsOfExperience: 2, evidence: "shipped" },
       { name: "Gemini / Vertex AI", level: "Advanced", yearsOfExperience: 2, evidence: "studied" },
       { name: "Amazon Bedrock", level: "Advanced", yearsOfExperience: 2, evidence: "studied" },
-      { name: "LangChain", level: "Expert", yearsOfExperience: 3, evidence: "shipped" },
       { name: "RAG Systems", level: "Expert", yearsOfExperience: 2, evidence: "shipped" },
       { name: "Vector Databases", level: "Advanced", yearsOfExperience: 2, evidence: "shipped" },
       { name: "Embeddings", level: "Expert", yearsOfExperience: 2, evidence: "shipped" },
@@ -48,7 +47,10 @@ export const skillsCategories: SkillCategory[] = [
       { name: "AWS Generative AI Tools", level: "Advanced", yearsOfExperience: 2, evidence: "studied", note: AWS_CERT_NOTE },
       { name: "Machine Learning Foundations", level: "Expert", yearsOfExperience: 3, evidence: "shipped" },
       { name: "Python for AI/ML", level: "Expert", yearsOfExperience: 3, evidence: "shipped" },
-      { name: "TensorFlow/PyTorch", level: "Advanced", yearsOfExperience: 2, evidence: "shipped" },
+      // PyTorch only. TensorFlow appears in no dependency file in any repo.
+      // PyTorch is backed by godfocus-platform/api/training/reranker/ (torch>=2.0.0,
+      // sentence-transformers) — a custom cross-encoder trained and exported to ONNX.
+      { name: "PyTorch", level: "Advanced", yearsOfExperience: 2, evidence: "shipped" },
       { name: "Prompt Engineering", level: "Expert", yearsOfExperience: 3, evidence: "shipped" }
     ]
   },
@@ -79,6 +81,33 @@ export const skillsCategories: SkillCategory[] = [
       { name: "Testing Library", level: "Advanced", yearsOfExperience: 2, evidence: "shipped" },
       { name: "Cypress", level: "Advanced", yearsOfExperience: 2, evidence: "shipped" },
       { name: "Playwright", level: "Advanced", yearsOfExperience: 2, evidence: "shipped" }
+    ]
+  },
+  {
+    title: "Mobile Development",
+    icon: "📱",
+    skills: [
+      // 572 commits across via-mobile (369), godfocus-mobile (159) and
+      // parsalink-mobile (43). via-mobile is live on the App Store as
+      // life.viaapp.app v1.0.2, built and submitted through EAS.
+      { name: "React Native", level: "Advanced", yearsOfExperience: 2, evidence: "shipped" },
+      { name: "Expo", level: "Advanced", yearsOfExperience: 2, evidence: "shipped" },
+      { name: "expo-router", level: "Advanced", yearsOfExperience: 1, evidence: "shipped" },
+      // Native iOS written inside an Expo app — a widget extension and two Expo
+      // native modules, not a from-scratch UIKit app. Live Activities and
+      // WidgetKit are SwiftUI-only APIs, so the SwiftUI claim comes with them.
+      { name: "Swift", level: "Intermediate", yearsOfExperience: 1, evidence: "shipped" },
+      { name: "SwiftUI", level: "Intermediate", yearsOfExperience: 1, evidence: "shipped" },
+      { name: "WidgetKit", level: "Intermediate", yearsOfExperience: 1, evidence: "shipped" },
+      { name: "ActivityKit (Live Activities & Dynamic Island)", level: "Intermediate", yearsOfExperience: 1, evidence: "shipped" },
+      { name: "EAS Build & Submit", level: "Advanced", yearsOfExperience: 1, evidence: "shipped" },
+      { name: "App Store Connect", level: "Advanced", yearsOfExperience: 1, evidence: "shipped" },
+      { name: "StoreKit / In-App Purchases", level: "Intermediate", yearsOfExperience: 1, evidence: "shipped" },
+      { name: "RevenueCat", level: "Intermediate", yearsOfExperience: 1, evidence: "shipped" },
+      { name: "Biometric Authentication", level: "Intermediate", yearsOfExperience: 1, evidence: "shipped" },
+      { name: "Push Notifications", level: "Advanced", yearsOfExperience: 2, evidence: "shipped" },
+      { name: "Offline-First Sync", level: "Advanced", yearsOfExperience: 1, evidence: "shipped" },
+      { name: "Sentry Crash Reporting", level: "Advanced", yearsOfExperience: 2, evidence: "shipped" }
     ]
   },
   {

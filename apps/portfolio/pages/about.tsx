@@ -15,8 +15,8 @@ export default function AboutPage() {
     return (
         <>
             <PageSEO
-                title="About Abdalkader Alhamoud | 8+ Years in Tech, AI & Full-Stack Engineer"
-                description="Abdalkader Alhamoud's path from telecom engineering to lead AI and full-stack engineer — 8+ years in technology, building software professionally since 2023."
+                title="About Abdalkader Alhamoud | AI & Full-Stack Engineer in Erbil"
+                description="Abdalkader Alhamoud's path from telecom engineering in Aleppo and Khartoum to lead AI and full-stack engineer in Erbil — building software professionally since November 2023."
                 canonical="/about"
                 ogType="profile"
                 ogImage="/images/og-image.jpg"

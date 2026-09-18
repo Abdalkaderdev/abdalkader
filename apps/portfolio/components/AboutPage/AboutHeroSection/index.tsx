@@ -66,7 +66,7 @@ export default function AboutHeroSection() {
             <div className={styles.wrapper}>
                 <div className={styles.text}>
                     <h2 ref={headingRef}>
-                        {splitText("8+ years in technology — telecom engineering, then IT and cloud, then software professionally since 2023.")}
+                        {splitText("Telecom engineering from 2015, then IT and cloud, then software professionally since November 2023.")}
                     </h2>
                     <h2 ref={heading2Ref}>
                         {splitText("From cell-site technician to lead engineer in two years, building AI-powered products end to end.")}

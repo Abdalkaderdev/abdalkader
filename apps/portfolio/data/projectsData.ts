@@ -29,6 +29,43 @@ export interface Project {
 
 export const projects: Project[] = [
   {
+    title: "GodFocus",
+    slug: "godfocus",
+    category: ["AI Engineering", "Machine Learning", "Full Stack Development"],
+    img: "/images/rooted-in-christ.jpg",
+    badges: ["PyTorch", "QLoRA", "DPO", "ONNX", "pgvector"],
+    owner: "Why Live Today LLC",
+    date: "Mar 2026 - Present",
+    services: "AI Engineering, Model Training, Full Stack Development",
+    duration: "Ongoing",
+    budget: "Product",
+    live: "https://platform.godfocus.io",
+    overview:
+      "GodFocus is Bible Search and RAG as a service. It answers questions against Scripture with citations, over a retrieval layer built on pgvector. The distinguishing feature is not the interface but what sits behind it: the models serving it were trained here rather than called over an API.",
+    objective:
+      "Build a retrieval system accurate enough to be trusted on a text where a wrong citation is a real failure, not a cosmetic one. That ruled out relying on a general-purpose model and generic embeddings, and made training and evaluation the centre of the work rather than an optimisation done at the end.",
+    process:
+      "Two training tracks run alongside the product. The assistant is a QLoRA fine-tune, then preference-optimised with DPO, with adapters merged and evaluated through a dedicated harness before anything is promoted. Separately, a custom cross-encoder reranker is trained with sentence-transformers and PyTorch on a purpose-built pairs dataset, then exported to ONNX so it runs inline in production instead of adding a network hop. Models are packaged with Ollama Modelfiles, and training is monitored through TensorBoard.",
+    impact:
+      "The retrieval layer returns passages ranked by a model trained on this corpus rather than by generic embedding similarity alone, and the reranker runs in-process rather than as a remote call. The platform spans six repositories covering the API, web, mobile, marketing sites and documentation.",
+    problemSolved:
+      "Generic embedding search over Scripture returns passages that are topically near but contextually wrong, and a general-purpose model asked to cite verses will invent them. Both failures are unacceptable on this text, and neither is fixed by prompt engineering.",
+    technicalChallenge:
+      "Making a cross-encoder fast enough to sit in the request path. Cross-encoders rerank far better than bi-encoders because they read query and passage together, but they are correspondingly slower. Exporting to ONNX via optimum[onnxruntime] and running inference inline is what made the accuracy affordable at request time.",
+    resultsAchieved: {
+      metrics: [
+        "QLoRA fine-tuning and DPO preference optimisation, with adapter merging and an evaluation harness",
+        "Custom cross-encoder reranker trained in PyTorch and exported to ONNX for in-process inference",
+        "pgvector retrieval layer with a purpose-built training-pairs pipeline",
+        "Model packaging via Ollama Modelfiles, training monitored with TensorBoard",
+        "Six-repo platform: API, web, mobile, sites and documentation"
+      ],
+      businessImpact: "Owning the models rather than renting them means retrieval quality is something that can be measured and improved directly, instead of waiting on a provider's next release."
+    },
+    technologyFilter: "AI",
+    thumbnailVariant: "data-viz",
+  },
+  {
     // For Post
     title: "SoapBox Super App",
     slug: "soapbox-super-app",
@@ -36,9 +73,9 @@ export const projects: Project[] = [
     img: "/images/dribble1.webp",
     badges: ["React", "Node.js", "AI/ML", "TypeScript", "Cloud Infrastructure"],
     owner: "SoapBox",
-    date: "Nov 2025 - Mar 2026",
+    date: "Nov 2025 - Jun 2026",
     services: "Full Stack AI Engineering",
-    duration: "5 Months",
+    duration: "8 Months",
     budget: "Enterprise",
     live: "https://soapboxsuperapp.com/",
     overview:
@@ -74,9 +111,9 @@ export const projects: Project[] = [
     img: "/images/dribble1.webp",
     badges: ["React", "Node.js", "TypeScript", "No-Code", "SaaS"],
     owner: "SoapBox",
-    date: "Nov 2025 - Mar 2026",
+    date: "Nov 2025 - Jun 2026",
     services: "Full Stack Software Engineering",
-    duration: "5 Months",
+    duration: "8 Months",
     budget: "Enterprise",
     live: "https://builder.soapboxsuperapp.com/",
     overview:
@@ -221,6 +258,42 @@ export const projects: Project[] = [
     thumbnailVariant: "data-viz",
   },
   {
+    title: "OneAlbum",
+    slug: "onealbum",
+    category: ["Systems Design", "Platform Architecture"],
+    img: "/images/dribble6.jpeg",
+    badges: ["Node.js", "Express", "Prisma", "PostgreSQL", "Docker"],
+    owner: "Personal Project",
+    date: "2026",
+    services: "Systems Design & Architecture",
+    duration: "Ongoing",
+    budget: "Personal",
+    overview:
+      "A shared event photo album for weddings in the Kurdistan Region: guests scan a QR code, their browser opens, and their photos land in one gallery with no app and no account. Designed and scaffolded across nine repositories. It is an architecture and specification exercise — nothing is deployed and there is no live link.",
+    objective:
+      "Design a system around one hard constraint: a guest never installs anything and never creates an account. That single rule sidesteps every payment and distribution wall in the Iraqi market — no app store, no cards, no carrier billing, no Android/iOS split — and it dictates almost every other decision downstream.",
+    process:
+      "The work is specification first. A documentation repository acts as the source of truth for every other repository, covering the data model, the guest upload path, storage and retention economics, the trilingual RTL setup, and the privacy and consent model. The scaffolding that exists follows those documents: a Node/Express/Prisma API against PostgreSQL, zod schemas shared as contracts between services, and a Docker Compose and Caddy configuration for the intended deployment.",
+    impact:
+      "The output is a documented architecture rather than a running service. Its most load-bearing decisions are the ones about cost and consent: object storage chosen for zero egress fees, because a read-heavy album of large binaries is where this class of product usually becomes uneconomic, and a consent model that treats the people photographed as having rights independent of whoever paid.",
+    problemSolved:
+      "At a large wedding, photographs scatter across several hundred phones and are never collected. The couple pays a photographer for a couple of hundred images and never sees the thousands that were actually taken. Existing products in this category offer no Kurdish or Arabic and assume payment rails that do not exist in Iraq.",
+    technicalChallenge:
+      "Designing an upload path that survives four hundred phones on one saturated venue access point. The answer is client-side compression, presigned uploads direct to object storage so the API never touches file bytes, and a queue persisted to IndexedDB so a locked phone or a dropped connection resumes rather than losing a guest's photos.",
+    resultsAchieved: {
+      metrics: [
+        "Nine-repository architecture designed and scaffolded: API, web, host, admin, partners, mobile, shared, infra, docs",
+        "Documentation repository specified as the source of truth for every other repo",
+        "Zod schemas shared as contracts across services",
+        "Node, Express, Prisma and PostgreSQL scaffolding; Docker Compose and Caddy configuration",
+        "Designed and scaffolded only — not deployed, no live link"
+      ],
+      businessImpact: "A systems-design exercise in specifying a product end to end — data model, cost model, failure modes and consent — before writing application code."
+    },
+    technologyFilter: "Full Stack",
+    thumbnailVariant: "minimal",
+  },
+  {
     title: "Phoenix Tower",
     slug: "phoenix-tower",
     category: ["ERP Development", "Full Stack Development", "Odoo"],
@@ -231,6 +304,7 @@ export const projects: Project[] = [
     services: "Odoo System Development, Web Development",
     duration: "Ongoing",
     budget: "Contract",
+    live: "https://phoenixtower.vercel.app",
     overview:
       "Ongoing contract work for Phoenix Tower, which began with web development and moved into Odoo ERP system development. Odoo covers the operational core of the business, so the work sits closer to how the company actually runs than a marketing site does.",
     objective:
@@ -301,6 +375,7 @@ export const projects: Project[] = [
     services: "IT & Contract Management",
     duration: "Ongoing",
     budget: "Contract",
+    live: "https://realhouseiq.com",
     github: "https://github.com/Abdalkaderdev/Realhouse",
     overview:
       "IT and contract management for Real House Company in Erbil, covering systems, web properties, email infrastructure and end-user support. Unglamorous work that determines whether everything else in the business functions on a given day.",
