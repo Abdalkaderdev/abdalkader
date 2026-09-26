@@ -3,10 +3,13 @@
 .BookCall {
     @include paddingAround;
     height: 100vh;
-    background: url(/images/overlay.webp);
-    background-size: cover;
-    background-position: center;
-    object-fit: cover;
+    // Replaced /images/overlay.webp — its purple/blue wash is the stock "AI
+    // gradient" look and fought the brand orange. Radial, not linear: linear
+    // full-screen gradients band under compression on dark backgrounds.
+    background:
+        radial-gradient(60% 55% at 18% 12%, rgba(244, 78, 0, 0.22) 0%, rgba(244, 78, 0, 0) 70%),
+        radial-gradient(45% 50% at 85% 80%, rgba(212, 175, 55, 0.12) 0%, rgba(212, 175, 55, 0) 72%),
+        #0a0908;
 
     @media (max-width: 840px) {
         height: auto;

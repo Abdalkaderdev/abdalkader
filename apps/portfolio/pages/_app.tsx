@@ -7,7 +7,7 @@ import type { AppProps } from "next/app";
 import type { NextPage } from "next";
 import type { ReactElement, ReactNode } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import { useEffect, useRef, useState, useCallback } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useRouter } from "next/router";
 import Head from "next/head";
 import Loader from "@/components/Loader";
@@ -25,7 +25,6 @@ import { initPerformanceMonitoring, reportWebVitals } from "@/utils/performanceM
 import StagingBanner from "@/src/components/StagingBanner";
 import StagingTools from "@/src/components/StagingTools";
 import { initializeStagingEnvironment } from "@/src/config/staging";
-import dynamic from "next/dynamic";
 import { RemoteControlProvider } from "@/contexts/RemoteControlContext";
 // MagneticCursor removed - was causing slowdown
 // import MagneticCursor from "@/components/MagneticCursor";
@@ -40,8 +39,6 @@ type AppPropsWithLayout = AppProps & {
 };
 
 // Dynamically import heavy components that don't need to load immediately
-const WelcomeModal = dynamic(() => import("@/components/WelcomeModal"), { ssr: false });
-const MusicPlayer = dynamic(() => import("@/components/MusicPlayer"), { ssr: false });
 
 export default function App({ Component, pageProps }: AppPropsWithLayout) {
     const router = useRouter();
@@ -51,12 +48,6 @@ export default function App({ Component, pageProps }: AppPropsWithLayout) {
     const scrollPositions = useRef<{ [key: string]: number }>({});
     const [showStagingDashboard, setShowStagingDashboard] = useState(false);
     const isStaging = getEnvironment() === 'staging';
-
-    const [isMusicEnabled, setIsMusicEnabled] = useState(false);
-
-    const handleMusicToggle = useCallback((enabled: boolean) => {
-        setIsMusicEnabled(enabled);
-    }, []);
 
     const prefersReducedMotion = useReducedMotion();
 
@@ -236,12 +227,6 @@ export default function App({ Component, pageProps }: AppPropsWithLayout) {
                     )}
                 </motion.div>
             </AnimatePresence>
-
-            {/* Magnetic Cursor removed - was causing slowdown */}
-
-            {/* Spiritual Enhancement Components */}
-            <WelcomeModal onMusicToggle={handleMusicToggle} />
-            <MusicPlayer isEnabled={isMusicEnabled} />
         </>
     );
 }

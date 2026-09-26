@@ -72,7 +72,7 @@ export default function AboutSection() {
                     <Tag text="About" />
                 </div>
                 <h2 className={styles.aboutText} ref={aboutTextRef}>
-                    {"I'm Abdalkader Alhamoud — a Web Developer and AI Engineer with a passion for building modern, fast, and user-focused digital experiences. Whether it's crafting responsive websites or developing AI-powered tools, I bring ideas to life with clean code and creative energy. ".split(" ").map((word, i) => (
+                    {"I'm Abdalkader Alhamoud, a full-stack and AI engineer in Erbil. I train and serve custom models — QLoRA and DPO fine-tunes, a cross-encoder reranker exported to ONNX — and build the web and mobile products around them. ".split(" ").map((word, i) => (
                         <span key={i} className="word" style={{ willChange: 'opacity', display: 'inline-block' }}>
                             {word.split("").map((letter, j) => (
                                 <span key={`${i}-${j}`} className="letter" style={{ willChange: 'opacity', display: 'inline-block' }}>{letter}</span>

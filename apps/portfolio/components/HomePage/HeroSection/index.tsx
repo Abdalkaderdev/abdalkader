@@ -26,18 +26,8 @@ const ThreeBackground = dynamic(
 function ExplodingText({ text, className, delay = 0 }: { text: string; className?: string; delay?: number }) {
     const containerRef = useRef<HTMLSpanElement>(null);
     const [isAnimated, setIsAnimated] = useState(false);
-    const [modalClosed, setModalClosed] = useState(false);
-
-    // Listen for welcome modal close event
     useEffect(() => {
-        const handleModalClose = () => setModalClosed(true);
-        window.addEventListener('welcomeModalClosed', handleModalClose);
-        return () => window.removeEventListener('welcomeModalClosed', handleModalClose);
-    }, []);
-
-    useEffect(() => {
-        // Wait for modal to close before animating
-        if (!containerRef.current || isAnimated || !modalClosed) return;
+        if (!containerRef.current || isAnimated) return;
 
         const letters = containerRef.current.querySelectorAll(`.${styles.letter}`);
         if (letters.length === 0) return;
@@ -77,7 +67,7 @@ function ExplodingText({ text, className, delay = 0 }: { text: string; className
             },
             delay: delay,
         });
-    }, [delay, isAnimated, modalClosed]);
+    }, [delay, isAnimated]);
 
     return (
         <span ref={containerRef} className={`${styles.explodingText} ${className || ''}`}>
@@ -117,7 +107,6 @@ export default function HeroSection() {
             });
         }
 
-        // Wait for welcome modal to close before animating verse
         const animateHeroElements = () => {
             // Bible verse fade in
             if (verseRef.current) {
@@ -136,8 +125,7 @@ export default function HeroSection() {
             }
         };
 
-        window.addEventListener('welcomeModalClosed', animateHeroElements);
-        return () => window.removeEventListener('welcomeModalClosed', animateHeroElements);
+        animateHeroElements();
     }, [prefersReducedMotion]);
 
     return (

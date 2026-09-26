@@ -2,11 +2,15 @@
 
 .about {
     @include paddingAround;
-    background: url(/images/overlay.webp);
-    object-fit: cover;
-    background-position: center;
-    background-size: cover;
-    min-height: 100vh;
+    // Replaced /images/overlay.webp — its purple/blue wash is the stock "AI
+    // gradient" look and fought the brand orange. Radial, not linear: linear
+    // full-screen gradients band under compression on dark backgrounds.
+    background:
+        radial-gradient(60% 55% at 18% 12%, rgba(244, 78, 0, 0.22) 0%, rgba(244, 78, 0, 0) 70%),
+        radial-gradient(45% 50% at 85% 80%, rgba(212, 175, 55, 0.12) 0%, rgba(212, 175, 55, 0) 72%),
+        #0a0908;
+    // dvh, not vh: iOS Safari's collapsing toolbar makes 100vh jump on scroll
+    min-height: 100dvh;
     height: fit-content;
 
     @media (max-width: 840px) {
@@ -18,7 +22,10 @@
         @include paddingAround;
         width: 100%;
         height: fit-content;
-        min-height: 100vh;
+        // was min-height: 100vh — the card hugged the viewport, not the copy,
+        // leaving a dead black band under the CTA.
+        min-height: auto;
+        padding-block: 9rem;
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -44,9 +51,9 @@
         .aboutText {
             @include font-2_75;
             @include mT2;
-            max-width: 68rem;
+            // ~65 characters. 68rem ran past 90 and read as a wall.
+            max-width: 46rem;
             width: 100%;
-            line-height: 1.1;
         }
 
         .btnSpace {

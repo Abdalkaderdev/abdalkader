@@ -283,7 +283,7 @@ export default function AboutDetailsSection() {
     return (
         <section className={styles.aboutDetails}>
             <h2 ref={headingRef}>
-                {splitText("I focus on understanding your goals to create a visually stunning, user-friendly website that performs flawlessly. Combining creative design and cutting-edge technology, I deliver results that make an impact from day one.")}
+                {splitText("I start from the problem, not the stack. Most of my work is LLM-powered products end to end — retrieval that has to be right, infrastructure that has to stay up, and an interface someone will actually use.")}
             </h2>
 
             {/* AI & Machine Learning */}

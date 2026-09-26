@@ -40,3 +40,7 @@ yarn-error.log*
 # TS/rollup build caches
 *.tsbuildinfo
 .rollup.cache/
+
+# local design audit screenshots and brag video output
+.design-audit/
+brag-output/

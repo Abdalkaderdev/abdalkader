@@ -58,6 +58,9 @@
         @media (max-width: 500px) {
             flex-direction: column;
             width: 100%;
+            // clear the floating nav dock (fixed, bottom: 1.5rem, ~44px tall)
+            // — it was sitting on top of this button's tap target
+            margin-bottom: 6.5rem;
 
             > * {
                 width: 100%;

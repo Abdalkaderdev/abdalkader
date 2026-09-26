@@ -64,33 +64,36 @@ $bp-xs: 480px;
 // Each mixin emits one fluid clamp() instead of a base value plus breakpoint
 // overrides. Ceilings are the former desktop values, floors the former 600px
 // values, so these interpolate between sizes already in use.
+// Display sizes keep their caps; running copy does not. Uppercase at paragraph
+// length is unreadable, and `lighter` rendered the text washed out on black.
 @mixin font-4_5 {
     font-size: $fs-hero;
-    line-height: 0.9;
-    font-weight: lighter;
+    line-height: 0.92;
+    letter-spacing: -0.03em;
+    font-weight: 500;
     text-transform: uppercase;
 }
 
 @mixin font-2_75 {
     font-size: $fs-h2;
-    line-height: 0.9;
-    font-weight: lighter;
-    text-transform: uppercase;
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+    font-weight: 500;
+    text-wrap: balance;
 }
 
 @mixin font-1_8 {
     font-size: $fs-h3;
     letter-spacing: 0.08rem;
     text-transform: uppercase;
-    font-weight: lighter;
+    font-weight: 500;
 }
 
 @mixin font-1 {
     font-size: $fs-body;
-    line-height: 1;
-    letter-spacing: 0.05rem;
-    text-transform: uppercase;
-    font-weight: lighter;
+    line-height: 1.55;
+    font-weight: 400;
+    text-wrap: pretty;
 }
 
 @mixin font0_7 {
